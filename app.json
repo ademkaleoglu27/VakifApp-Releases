@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "VakifApp",
-    "slug": "VakifApp",
+    "name": "Nur Mektebi",
+    "slug": "NurMektebi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,11 +20,28 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "package": "com.ademx.VakifApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font",
+      "expo-sqlite",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Konum paylaşımı ve namaz vakitleri için konum izni gereklidir."
+        }
+      ],
+      "expo-notifications"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "529acc6b-58aa-422c-a75e-66c937c63fba"
+      }
     }
   }
 }

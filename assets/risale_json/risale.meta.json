@@ -1,0 +1,30 @@
+{
+  "version": "1.0.5",
+  "updatedAt": "2026-01-06",
+  "books": [
+    "sozler.json",
+    "mektubat.json",
+    "lemalar.json",
+    "sualar.json",
+    "tarihce-i-hayat.json",
+    "mesnevi-nuriye.json",
+    "isaratul-icaz.json",
+    "sikke-i-tasdiki-gaybi.json",
+    "barla-lahikasi.json",
+    "kastamonu-lahikasi.json",
+    "asayi-musa.json",
+    "muhakemat.json",
+    "emirdag-lahikasi.json",
+    "genclik-rehberi.json",
+    "hanimlar-rehberi.json",
+    "munazarat.json",
+    "hutbe-i-samiye.json",
+    "divan-i-harb-i-orfi.json",
+    "nurun-ilk-kapisi.json",
+    "sunuhat.json",
+    "tuluat.json",
+    "isarat.json",
+    "nur-cesmesi.json",
+    "konferans.json"
+  ]
+}

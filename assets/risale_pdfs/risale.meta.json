@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.4",
+  "jsonVersion": "1.0.0",
+  "updatedAt": "2026-01-04",
+  "books": [
+    "sozler.pdf",
+    "mektubat.pdf",
+    "lemalar.pdf",
+    "sualar.pdf",
+    "barla-lahikasi.pdf",
+    "kastamonu-lahikasi.pdf",
+    "emirdag-lahikasi.pdf",
+    "asayi-musa.pdf",
+    "mesnevi-nuriye.pdf",
+    "muhakemat.pdf",
+    "sikke-i-tasdiki-gaybi.pdf",
+    "tarihce-i-hayat.pdf",
+    "iman-ve-kufur-muvazeneleri.pdf",
+    "isaratul-icaz.pdf"
+  ]
+}
