@@ -45,7 +45,7 @@ export const RisaleHomeScreen = () => {
                 renderItem={({ item }) => (
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate('RisaleSectionList', { workId: item.id, workTitle: item.title })}
+                        onPress={() => navigation.navigate('RisalePdfReader', { bookId: item.id, title: item.title })}
                         activeOpacity={0.7}
                     >
                         <Image
