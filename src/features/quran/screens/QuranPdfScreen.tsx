@@ -32,9 +32,21 @@ export const QuranPdfScreen = () => {
 
                 // 2. Cache'de yoksa Asset'ten yükle (İlk Açılış)
                 console.log('PDF not in cache, preparing...');
-                const asset = Asset.fromModule(require('../../../../assets/quran.pdf'));
-                await asset.downloadAsync();
 
+                // FIXME: quran.pdf asset is missing in project. 
+                // Using a placeholder or throwing handled error to prevent crash.
+                // const asset = Asset.fromModule(require('../../../../assets/quran.pdf'));
+                // await asset.downloadAsync();
+
+                throw new Error("Kuran PDF dosyası (assets/quran.pdf) bulunamadı.");
+
+                /* 
+                if (asset.localUri) {
+                    // ...
+                } 
+                */
+
+                /*
                 if (asset.localUri) {
                     // Eğer asset.localUri varsa oradan kopyala veya direkt kullan
                     // Cache'e kopyalamak okuma performansını artırabilir
@@ -47,6 +59,7 @@ export const QuranPdfScreen = () => {
                     await FileSystem.downloadAsync(asset.uri, destPath);
                     setPdfUri(destPath);
                 }
+                */
             } catch (err) {
                 console.error('PDF Load Error:', err);
                 setError('Dosya yüklenirken hata oluştu: ' + (err as any).message);

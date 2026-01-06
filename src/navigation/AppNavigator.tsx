@@ -49,7 +49,7 @@ import { RisalePdfReaderScreen } from '@/features/library/screens/RisalePdfReade
 import { WorkDetailScreen as RisaleSectionListScreen } from '@/features/risale/screens/WorkDetailScreen';
 import { HatimDuasiScreen } from '@/features/library/screens/HatimDuasiScreen';
 import { QuranPdfScreen } from '@/features/quran/screens/QuranPdfScreen';
-import { ReaderScreen as RisaleReaderScreen } from '@/features/risale/screens/ReaderScreen';
+import { RisaleReaderAdapter } from '@/features/risale/screens/RisaleReaderAdapter';
 import { RisaleSearchScreen } from '@/features/library/screens/RisaleSearchScreen';
 import { RisaleMyNotesScreen } from '@/features/library/screens/RisaleMyNotesScreen';
 import { ReadingHistoryScreen } from '@/features/risale/screens/ReadingHistoryScreen';
@@ -59,6 +59,7 @@ import { DictionaryScreen } from '@/features/library/screens/DictionaryScreen';
 import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandingScreen';
 import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
 import { DuaPdfReaderScreen } from '@/features/library/screens/DuaPdfReaderScreen';
+import { DevReaderIsolationScreen } from '@/features/risale/screens/DevReaderIsolationScreen';
 
 
 import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
@@ -119,6 +120,7 @@ export type RootStackParamList = {
     DuaPdfReader: { title: string; pdfSource: any };
     HatimDuasi: undefined;
     QuranPdfReader: { page: number };
+    DevReaderIsolation: undefined;
 };
 
 export type MainTabParamList = {
@@ -764,8 +766,8 @@ export const AppNavigator = () => {
                                 />
                                 <Stack.Screen
                                     name="RisaleReader"
-                                    component={RisaleReaderScreen}
-                                    options={{ title: 'Risale Okuma', headerShown: true }}
+                                    component={RisaleReaderAdapter}
+                                    options={{ title: 'Risale Okuma', headerShown: false }}
                                 />
 
                                 <Stack.Screen
@@ -797,6 +799,11 @@ export const AppNavigator = () => {
                                     name="DualarLanding"
                                     component={DualarLandingScreen}
                                     options={{ title: 'Dualar', headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="DevReaderIsolation"
+                                    component={DevReaderIsolationScreen}
+                                    options={{ headerShown: false }}
                                 />
                                 <Stack.Screen
                                     name="DuaPdfReader"

@@ -686,6 +686,21 @@ export const RisaleUserDb = {
                OR (name = 'Hasan' AND surname = 'Can')
                OR (name = 'Hüseyin' AND surname = 'Ak')
         `);
+    },
+
+    // --- History ---
+    async saveHistory(bookId: string, pageNumber: number) {
+        // For now, this is a placeholder or can alias to saving a "last read" marker separate from sync progress
+        // Currently we rely on 'reading_logs' for analytics, this could be for 'recent books' list
+        // Let's implement a simple Local Preference for "Recent Books"
+        try {
+            const db = await getDb();
+            // Upsert recent history? Or just log?
+            // For now, we'll logging to console as placeholder for analytics
+            console.log(`[History] User read ${bookId} page ${pageNumber}`);
+        } catch (e) {
+            console.warn("Failed to save history", e);
+        }
     }
 };
 

@@ -11,7 +11,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS';
 
-export const AboutScreen = () => {
+export const AboutScreen = (props: any) => {
     const [activeTab, setActiveTab] = useState<TabType>('GENERAL');
 
     const renderTabButton = (id: TabType, label: string, icon: keyof typeof Ionicons.glyphMap) => (
@@ -47,7 +47,15 @@ export const AboutScreen = () => {
                     </Text>
                 </View>
 
-                <Text style={styles.versionText}>Sürüm: v2.0 Premium</Text>
+                <TouchableOpacity
+                    onLongPress={() => {
+                        // @ts-ignore
+                        props.navigation?.navigate('DevReaderIsolation') || console.log("No nav");
+                    }}
+                    delayLongPress={1000}
+                >
+                    <Text style={styles.versionText}>Sürüm: v2.0 Premium (Dev)</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );
