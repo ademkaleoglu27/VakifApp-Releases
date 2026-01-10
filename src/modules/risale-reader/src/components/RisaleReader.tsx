@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { ReaderProps, ManifestData, ReaderLocation } from '../api/types';
 import { ManifestParser } from '../engine/ManifestParser';
@@ -6,6 +6,7 @@ import { PdfRenderer } from './PdfRenderer';
 import { SegmentRenderer } from './SegmentRenderer';
 import { ReaderHeader } from './ui/ReaderHeader';
 import { FootnotePanel } from './ui/FootnotePanel';
+import { LugatBottomSheet } from './ui/LugatBottomSheet';
 import * as FileSystem from 'expo-file-system';
 
 export const RisaleReader: React.FC<ReaderProps> = (props) => {
@@ -20,6 +21,9 @@ export const RisaleReader: React.FC<ReaderProps> = (props) => {
     const [activeFootnoteContent, setActiveFootnoteContent] = useState<string | null>(null);
     const [currentSection, setCurrentSection] = useState<string>("");
 
+    // Lugat (dictionary) lookup state
+    const [lugatVisible, setLugatVisible] = useState(false);
+
     // Derived state for hooks need to be calculated efficiently or accessed safely
     // effectively "book" and "formats" logic needs to be safe even if manifest is null
     const book = (manifest && currentLocation) ? manifest.books[currentLocation.bookId] : null;
@@ -33,6 +37,14 @@ export const RisaleReader: React.FC<ReaderProps> = (props) => {
             console.warn("Footnote content not found for id:", id);
         }
     };
+
+    // Lugat lookup handler - triggered by long-press on segments
+    const handleLugatLookup = useCallback(() => {
+        if (__DEV__) {
+            console.log('[RisaleReader] Opening Lugat BottomSheet');
+        }
+        setLugatVisible(true);
+    }, []);
 
     // Hook 1: Load Manifest
     useEffect(() => {
@@ -165,11 +177,16 @@ export const RisaleReader: React.FC<ReaderProps> = (props) => {
                     onLocationChange={(loc) => handlePageChange(loc.pageNumber || 1, 1)}
                     onFootnotePress={handleFootnotePress}
                     onSectionChange={setCurrentSection}
+                    onLugatLookup={handleLugatLookup}
                 />
                 <FootnotePanel
                     isVisible={!!activeFootnoteContent}
                     content={activeFootnoteContent}
                     onClose={() => setActiveFootnoteContent(null)}
+                />
+                <LugatBottomSheet
+                    visible={lugatVisible}
+                    onClose={() => setLugatVisible(false)}
                 />
             </View>
         );

@@ -43,6 +43,7 @@ export default function App() {
     LivaNur: require('./assets/fonts/LivaNur.ttf'),
     SouvenirDemi: require('./assets/fonts/SouvenirDemi.ttf'),
     AriaScript: require('./assets/fonts/AriaScript.ttf'),
+    KFGQPC_HAFS: require('./assets/fonts/KFGQPC_HAFS.ttf'), // Clean Uthmanic font
 
     // New Google Fonts
     CrimsonPro: CrimsonPro_400Regular,

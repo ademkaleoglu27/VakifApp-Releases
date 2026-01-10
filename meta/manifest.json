@@ -1,0 +1,16 @@
+{
+    "schemaVersion": "1.0.0",
+    "corpusId": "risale-nur",
+    "build": {
+        "gitCommit": "5f6cfe9",
+        "builtAt": "2026-01-07T00:00:00Z"
+    },
+    "books": [
+        {
+            "bookId": "sozler",
+            "title": "Sözler",
+            "order": 1,
+            "path": "books/sozler"
+        }
+    ]
+}

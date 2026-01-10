@@ -11,24 +11,18 @@ import {
     SafeAreaView
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import * as FileSystem from 'expo-file-system';
 import { useNavigation } from '@react-navigation/native';
-import { RisaleSearchDb, SearchResult } from '@/services/risaleSearchDb';
+import { searchParagraphs, RisaleSearchResult } from '@/services/risaleRepo';
 import { theme } from '@/config/theme';
 
 export const RisaleSearchScreen = () => {
     const navigation = useNavigation<any>();
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState<SearchResult[]>([]);
+    const [results, setResults] = useState<RisaleSearchResult[]>([]);
     const [loading, setLoading] = useState(false);
-    const [searched, setSearched] = useState(false); // To distinguish init state vs no results
+    const [searched, setSearched] = useState(false);
 
-    // Init DB on mount
-    useEffect(() => {
-        RisaleSearchDb.init();
-    }, []);
-
-    // Debounce Logic
+    // Debounce search
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             if (query.length >= 2) {
@@ -37,7 +31,7 @@ export const RisaleSearchScreen = () => {
                 setResults([]);
                 setSearched(false);
             }
-        }, 400); // 400ms debounce
+        }, 300);
 
         return () => clearTimeout(timeoutId);
     }, [query]);
@@ -45,80 +39,61 @@ export const RisaleSearchScreen = () => {
     const performSearch = async (text: string) => {
         setLoading(true);
         try {
-            const data = await RisaleSearchDb.search(text);
+            const data = await searchParagraphs(text, 30);
             setResults(data);
             setSearched(true);
         } catch (error) {
-            console.error(error);
+            console.error('[Search] Error:', error);
+            setResults([]);
         } finally {
             setLoading(false);
         }
     };
 
-    const handleResultPress = (item: SearchResult) => {
-        // Navigate to Reader
-        // We need to map book_id to the fileName or uri logic used in Reader
-        // Assuming Reader takes 'bookId', 'title', 'uri' (optional depending on implementation)
-        // And also 'page' param which we added support for.
+    const handleResultPress = useCallback((item: RisaleSearchResult) => {
+        Keyboard.dismiss();
 
-        // Construct URI as done in HomeScreen. 
-        // NOTE: This assumes default bundled path logic.
-        // It's safer to just pass bookId and let Reader Screen resolve path if it uses the Service?
-        // But PdfReader currently expects 'uri'.
-        // Let's rely on the same logic `RisaleHomeScreen` uses or update Reader to handle ID.
-        // For now, let's construct the expected standard URI.
-        const uri = `${FileSystem.documentDirectory}risale/${item.book_id}.pdf`;
-        // Warning: Hardcoding path is risky. 
-        // Ideally, Reader takes `bookId` and resolves URI itself using RisaleAssets service.
-        // Or we pass `bookId` and Reader handles it.
-        // Checking Reader... it uses `route.params.uri`.
-
-        // Let's update Reader to robustly handle this later, but for now we pass basics.
-        // Actually, better to pass bookId and let Reader resolve if URI is missing?
-        // Or just re-use the standard logic.
-
-        // Since we don't have easy access to the path resolver here without importing RisaleAssets or similar...
-        // Let's pass the params expected.
-
-        // IMPORTANT: We need to actually resolve the URI properly.
-        // In `RisaleHomeScreen` it uses: `await FileSystem.getInfoAsync...`
-        // Let's use `RisaleDownloadService.getLocalPath(bookId)` if available? No, usually in components.
-
-        // For now, let's assume we can navigate and Reader handles it or we pass a dummy URI if Reader can look it up?
-        // Reader code: `const { bookId, title, uri } = route.params;` -> `<Pdf source={{ uri ... }}`
-        // So Reader NEEDS uri.
-        // We will do a quick lookup in the onPress.
+        // Direct navigation with sectionId - NO blank page
         navigation.navigate('RisaleReader', {
-            bookId: item.book_id,
-            title: item.book_title,
-            initialBlockIndex: item.block_index
+            sectionId: item.sectionId,
+            sectionTitle: item.sectionTitle,
+            workTitle: item.workTitle,
+            initialBlockIndex: item.chunkIndex
         });
+    }, [navigation]);
+
+    const highlightQuery = (text: string, q: string) => {
+        if (!q || q.length < 2) return text;
+
+        const index = text.toLowerCase().indexOf(q.toLowerCase());
+        if (index === -1) return text;
+
+        // Get surrounding context
+        const start = Math.max(0, index - 60);
+        const end = Math.min(text.length, index + q.length + 60);
+        let snippet = text.substring(start, end);
+
+        if (start > 0) snippet = '...' + snippet;
+        if (end < text.length) snippet = snippet + '...';
+
+        return snippet;
     };
 
-    const renderItem = ({ item }: { item: SearchResult }) => {
-        // Snippet comes with <b> tags. We need to render them bold.
-        // Simple regex replace for now.
-        const parts = item.snippet.split(/(<b>.*?<\/b>)/g);
+    const renderItem = ({ item }: { item: RisaleSearchResult }) => {
+        const snippet = highlightQuery(item.snippet, query);
 
         return (
-            <TouchableOpacity style={styles.resultItem} onPress={() => handleResultPress(item)}>
+            <TouchableOpacity
+                style={styles.resultItem}
+                onPress={() => handleResultPress(item)}
+                activeOpacity={0.7}
+            >
                 <View style={styles.resultHeader}>
-                    <Text style={styles.bookTitle}>{item.book_title}</Text>
-                    <View style={styles.pageBadge}>
-                        <Text style={styles.pageText}>Sayfa {item.page_number}</Text>
-                    </View>
+                    <Text style={styles.workTitle}>{item.workTitle}</Text>
+                    <Text style={styles.sectionTitle}>{item.sectionTitle}</Text>
                 </View>
                 <Text style={styles.snippet} numberOfLines={3}>
-                    {parts.map((part, index) => {
-                        if (part.startsWith('<b>') && part.endsWith('</b>')) {
-                            return (
-                                <Text key={index} style={styles.highlight}>
-                                    {part.replace(/<\/?b>/g, '')}
-                                </Text>
-                            );
-                        }
-                        return <Text key={index}>{part}</Text>;
-                    })}
+                    {snippet}
                 </Text>
             </TouchableOpacity>
         );
@@ -155,17 +130,20 @@ export const RisaleSearchScreen = () => {
             ) : (
                 <FlatList
                     data={results}
-                    keyExtractor={(item, index) => `${item.book_id}-${item.page_number}-${index}`}
+                    keyExtractor={(item, index) => `${item.sectionId}-${item.chunkIndex}-${index}`}
                     renderItem={renderItem}
                     contentContainerStyle={styles.listContent}
+                    keyboardShouldPersistTaps="handled"
                     ListEmptyComponent={
                         searched ? (
                             <View style={styles.center}>
-                                <Text style={styles.emptyText}>Sonuç bulunamadı.</Text>
+                                <Ionicons name="search-outline" size={48} color="#ccc" />
+                                <Text style={styles.emptyText}>Sonuç bulunamadı</Text>
                             </View>
                         ) : (
                             <View style={styles.center}>
-                                <Text style={styles.infoText}>Aramak için en az 2 harf yazın.</Text>
+                                <Ionicons name="book-outline" size={48} color="#ccc" />
+                                <Text style={styles.infoText}>Aramak için en az 2 harf yazın</Text>
                             </View>
                         )
                     }
@@ -242,30 +220,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 8
     },
-    bookTitle: {
+    workTitle: {
         fontSize: 15,
         fontWeight: 'bold',
         color: theme.colors.primary
     },
-    pageBadge: {
-        backgroundColor: '#F3F4F6',
-        paddingHorizontal: 8,
-        paddingVertical: 2,
-        borderRadius: 4
-    },
-    pageText: {
-        fontSize: 11,
+    sectionTitle: {
+        fontSize: 13,
         color: '#666',
-        fontWeight: '600'
+        fontWeight: '500'
     },
     snippet: {
         fontSize: 14,
         color: '#333',
-        lineHeight: 20
+        lineHeight: 20,
+        marginTop: 4
     },
-    highlight: {
-        backgroundColor: '#fef08a', // yellow-200
-        fontWeight: 'bold',
-        color: '#000'
-    }
 });

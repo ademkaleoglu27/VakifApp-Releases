@@ -46,10 +46,11 @@ import { QuranJuzPickerScreen } from '@/features/library/screens/QuranJuzPickerS
 // Risale Screens
 import { RisaleHomeScreen } from '@/features/risale/screens/RisaleHomeScreen';
 import { RisalePdfReaderScreen } from '@/features/library/screens/RisalePdfReaderScreen';
-import { WorkDetailScreen as RisaleSectionListScreen } from '@/features/risale/screens/WorkDetailScreen';
+import { RisaleSectionListScreen } from '@/features/library/screens/RisaleSectionListScreen';
 import { HatimDuasiScreen } from '@/features/library/screens/HatimDuasiScreen';
 import { QuranPdfScreen } from '@/features/quran/screens/QuranPdfScreen';
 import { RisaleReaderAdapter } from '@/features/risale/screens/RisaleReaderAdapter';
+import { RisaleReaderScreen } from '@/features/library/screens/RisaleReaderScreen';
 import { RisaleSearchScreen } from '@/features/library/screens/RisaleSearchScreen';
 import { RisaleMyNotesScreen } from '@/features/library/screens/RisaleMyNotesScreen';
 import { ReadingHistoryScreen } from '@/features/risale/screens/ReadingHistoryScreen';
@@ -766,7 +767,7 @@ export const AppNavigator = () => {
                                 />
                                 <Stack.Screen
                                     name="RisaleReader"
-                                    component={RisaleReaderAdapter}
+                                    component={RisaleReaderScreen}
                                     options={{ title: 'Risale Okuma', headerShown: false }}
                                 />
 

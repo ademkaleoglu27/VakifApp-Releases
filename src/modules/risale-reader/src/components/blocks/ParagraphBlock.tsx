@@ -5,10 +5,11 @@ import { ReaderTheme } from '../../constants/theme';
 interface ParagraphBlockProps {
     text: string;
     onFootnotePress?: (id: string) => void;
+    onLongPress?: () => void; // Simple callback - opens empty BottomSheet
     style?: StyleProp<TextStyle>;
 }
 
-export const ParagraphBlock: React.FC<ParagraphBlockProps> = memo(({ text, onFootnotePress, style }) => {
+export const ParagraphBlock: React.FC<ParagraphBlockProps> = memo(({ text, onFootnotePress, onLongPress, style }) => {
     // Regex to find standard footnote markers like [1], (1), or just numbers if specific format defined.
     // Diyanet/RNK usually uses [1] or similar. Assuming [id] format for now.
     const FOOTNOTE_REGEX = /\[(\d+)\]/g;
@@ -57,7 +58,10 @@ export const ParagraphBlock: React.FC<ParagraphBlockProps> = memo(({ text, onFoo
     };
 
     return (
-        <Text style={[styles.container, style]}>
+        <Text
+            style={[styles.container, style]}
+            onLongPress={onLongPress}
+        >
             {renderText()}
         </Text>
     );

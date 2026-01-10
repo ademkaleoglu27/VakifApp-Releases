@@ -1,8 +1,9 @@
 import * as FileSystem from 'expo-file-system';
 import * as SQLite from 'expo-sqlite';
 import { Asset } from 'expo-asset';
+import { DatabaseMigration } from './databaseMigration';
 
-const DB_NAME = 'content.db';
+const DB_NAME = 'risale_v3.db';
 const META_FILE = 'content.meta.json';
 
 // Define paths
@@ -33,20 +34,12 @@ export const ensureContentDbReady = async (): Promise<void> => {
             await FileSystem.makeDirectoryAsync(SQLITE_DIR, { intermediates: true });
         }
 
-
-
         // 2. Load expected (bundled) meta directly
         // JSON files are bundled as JS objects by default in React Native 'require'.
-        // We cannot use Asset.fromModule on a JSON object, it throws "Module [object Object] missing from registry".
         const targetMeta = require('../../assets/content/content.meta.json') as MetaData;
 
-
         // 3. Load DB Asset
-        // content.db must be treated as an asset by Metro (see metro.config.js)
-        const dbAsset = Asset.fromModule(require('../../assets/content/content.db'));
-
-        // We don't downloadAsync() metaAsset because we already required the content.
-        // However, we MUST ensure the DB asset is available locally if it's a remote asset (in dev client often local).
+        const dbAsset = Asset.fromModule(require('../../assets/risale.db'));
         await dbAsset.downloadAsync();
 
         // 4. Check existing installed meta
@@ -57,7 +50,6 @@ export const ensureContentDbReady = async (): Promise<void> => {
             const installedMetaContent = await FileSystem.readAsStringAsync(META_PATH);
             try {
                 const installedMeta = JSON.parse(installedMetaContent) as MetaData;
-
                 if (installedMeta.version === targetMeta.version) {
                     installNeeded = false;
                 }
@@ -68,15 +60,28 @@ export const ensureContentDbReady = async (): Promise<void> => {
 
         const dbInfo = await FileSystem.getInfoAsync(DB_PATH);
         if (!dbInfo.exists) {
-
             installNeeded = true;
         }
 
-        // 5. Copy if needed
-        if (installNeeded) {
+        // 5. Schema Check - validate existing DB has required tables
+        let validSchema = false;
+        if (!installNeeded && (await FileSystem.getInfoAsync(DB_PATH)).exists) {
+            try {
+                const tempDb = await SQLite.openDatabaseAsync(DB_NAME);
+                const validation = await DatabaseMigration.validateSchema(tempDb);
+                validSchema = validation.valid;
+                if (!validSchema) {
+                    console.warn(`[ContentDB] Schema invalid, missing tables: ${validation.missing.join(', ')}`);
+                }
+            } catch (e) {
+                console.warn('[ContentDB] Schema check failed:', e);
+            }
+        }
 
-            // Delete existing to be safe
-            if (dbInfo.exists) {
+        // 6. Copy asset if needed
+        if (installNeeded || !validSchema) {
+            console.log('[ContentDB] Installing fresh database asset...');
+            if ((await FileSystem.getInfoAsync(DB_PATH)).exists) {
                 await FileSystem.deleteAsync(DB_PATH);
             }
 
@@ -88,22 +93,22 @@ export const ensureContentDbReady = async (): Promise<void> => {
                 from: dbAsset.localUri,
                 to: DB_PATH
             });
-
-            // Write new meta
             await FileSystem.writeAsStringAsync(META_PATH, JSON.stringify(targetMeta));
-
-        } else {
-
         }
 
-        // 6. Open Database
+        // 7. Open Database
         dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
 
-        // Optional: Pragma execution to enable foreign keys
-        await dbInstance.execAsync(`PRAGMA foreign_keys = ON;`);
+        // 8. Enable foreign keys
+        await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
+
+        // 9. Run migrations to ensure schema is up to date
+        await DatabaseMigration.migrateIfNeeded(dbInstance);
+
+        console.log('[ContentDB] Database ready');
 
     } catch (error) {
-        console.error('Error in ensureContentDbReady:', error);
+        console.error('[ContentDB] Error in ensureContentDbReady:', error);
         throw error;
     }
 };

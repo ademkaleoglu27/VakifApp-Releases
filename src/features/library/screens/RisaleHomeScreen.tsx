@@ -111,7 +111,6 @@ export const RisaleHomeScreen = () => {
                 <View style={styles.header}>
 
 
-                    {/* Legacy button removed to avoid confusion with new engine */}
                     {/* <TouchableOpacity
                         style={styles.card}
                         onPress={() => navigation.navigate('RisaleSectionList', { workId: 1, workTitle: 'Sölzer PDF' })}

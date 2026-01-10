@@ -26,6 +26,14 @@ export const RisaleSectionListScreen = () => {
         );
     }
 
+    if (error) {
+        return (
+            <View style={styles.center}>
+                <Text style={{ color: 'red', fontWeight: 'bold' }}>Hata: {(error as Error).message}</Text>
+            </View>
+        );
+    }
+
     const renderItem = ({ item }: { item: RisaleSection }) => (
         <TouchableOpacity
             style={styles.item}

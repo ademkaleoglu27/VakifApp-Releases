@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useState, useRef } from 'react';
-import { View, StyleSheet, FlatList, ListRenderItem, ViewToken } from 'react-native';
+import { View, StyleSheet, FlatList, ListRenderItem, ViewToken, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { ReaderTheme } from '../constants/theme';
 import { HeadingBlock } from './blocks/HeadingBlock';
 import { ParagraphBlock } from './blocks/ParagraphBlock';
@@ -24,37 +24,101 @@ interface TextRendererProps {
     onLocationChange?: (location: any) => void;
     onFootnotePress?: (id: string) => void;
     onSectionChange?: (title: string) => void;
+    onLugatLookup?: () => void; // Long-press opens empty BottomSheet (no word param)
 }
 
-export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, onLocationChange, onFootnotePress, onSectionChange }) => {
+export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, onLocationChange, onFootnotePress, onSectionChange, onLugatLookup }) => {
     const [currentPage, setCurrentPage] = useState(1);
+
+    // Scroll state for long-press cancellation
+    const isScrollingRef = useRef(false);
 
     // Virtual Page Calculation (Approximate)
     const BLOCKS_PER_PAGE = 8;
     const totalPages = Math.max(1, Math.ceil(content.blocks.length / BLOCKS_PER_PAGE));
+
+    // Guarded long-press handler - cancels if scrolling
+    const handleLugatLongPress = useCallback(() => {
+        if (isScrollingRef.current) {
+            if (__DEV__) {
+                console.log('[SegmentRenderer] Long-press cancelled - user is scrolling');
+            }
+            return;
+        }
+        if (onLugatLookup) {
+            onLugatLookup();
+        }
+    }, [onLugatLookup]);
+
+    // Scroll event handlers
+    const handleScrollBeginDrag = useCallback(() => {
+        isScrollingRef.current = true;
+        if (__DEV__) {
+            console.log('[SegmentRenderer] Scroll started');
+        }
+    }, []);
+
+    const handleMomentumScrollEnd = useCallback(() => {
+        // Small delay to prevent immediate long-press after scroll ends
+        setTimeout(() => {
+            isScrollingRef.current = false;
+            if (__DEV__) {
+                console.log('[SegmentRenderer] Scroll ended');
+            }
+        }, 100);
+    }, []);
+
+    const handleScrollEndDrag = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        // If no momentum, scroll ends immediately
+        const velocity = event.nativeEvent.velocity;
+        if (!velocity || (Math.abs(velocity.y || 0) < 0.1)) {
+            setTimeout(() => {
+                isScrollingRef.current = false;
+            }, 100);
+        }
+    }, []);
 
     const renderItem: ListRenderItem<TextBlock> = useCallback(({ item }) => {
         switch (item.type) {
             case 'heading':
                 return <HeadingBlock text={item.text} />;
             case 'arabic_block':
+                // Arabic blocks excluded from long-press
                 return <ArabicBlock text={item.text} variant={(item.variant as 'hero' | 'block') || 'block'} />;
             case 'ayah_hadith_block':
             case 'verse': // Legacy support
                 return <AyatHadithBlock text={item.text} />;
             case 'note':
-                // Notes are usually small italic explanations
-                return <ParagraphBlock text={item.text} style={{ fontStyle: 'italic', opacity: 0.8, fontSize: ReaderTheme.typography.sizes.footnote }} onFootnotePress={onFootnotePress} />;
+                return (
+                    <ParagraphBlock
+                        text={item.text}
+                        style={{ fontStyle: 'italic', opacity: 0.8, fontSize: ReaderTheme.typography.sizes.footnote }}
+                        onFootnotePress={onFootnotePress}
+                        onLongPress={handleLugatLongPress}
+                    />
+                );
             case 'label':
-                // Labels are bold headers/subheaders
-                return <ParagraphBlock text={item.text} style={{ fontWeight: 'bold' }} onFootnotePress={onFootnotePress} />;
+                return (
+                    <ParagraphBlock
+                        text={item.text}
+                        style={{ fontWeight: 'bold' }}
+                        onFootnotePress={onFootnotePress}
+                        onLongPress={handleLugatLongPress}
+                    />
+                );
             case 'divider':
                 return <DividerBlock />;
             case 'paragraph':
             default:
-                return <ParagraphBlock text={item.text} onFootnotePress={onFootnotePress} />;
+                return (
+                    <ParagraphBlock
+                        text={item.text}
+                        onFootnotePress={onFootnotePress}
+                        onLongPress={handleLugatLongPress}
+                    />
+                );
         }
-    }, [onFootnotePress]);
+    }, [onFootnotePress, handleLugatLongPress]);
 
     const keyExtractor = useCallback((item: TextBlock, index: number) => index.toString(), []);
 
@@ -111,6 +175,9 @@ export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, 
                 showsVerticalScrollIndicator={true}
                 onViewableItemsChanged={onViewableItemsChanged}
                 viewabilityConfig={viewabilityConfig}
+                onScrollBeginDrag={handleScrollBeginDrag}
+                onScrollEndDrag={handleScrollEndDrag}
+                onMomentumScrollEnd={handleMomentumScrollEnd}
             />
         </View>
     );

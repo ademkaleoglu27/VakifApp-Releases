@@ -88,7 +88,34 @@ class DictionaryDb {
         }
     }
 
+    async searchExact(query: string): Promise<DictionaryEntry | null> {
+        if (!this.initialized) await this.init();
+        if (!this.db) return null;
+
+        try {
+            // Try Exact Match (Case Insensitive)
+            // SQL's standard '=' is case-sensitive depending on collation.
+            // We force lowercase comparison to be safe.
+            const qLower = query.toLowerCase();
+            const result = await this.db.getFirstAsync<DictionaryEntry>(
+                `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
+                 FROM dictionary 
+                 WHERE lower(word_plain) = ? OR lower(word) = ?`,
+                [qLower, qLower]
+            );
+            return result;
+        } catch (error) {
+            console.error("Exact search error", error);
+            return null;
+        }
+    }
+
     async searchDefinition(word: string): Promise<DictionaryEntry | null> {
+        // 1. Try Exact Match First (Solves "Hakim" -> "Hakimi" issue)
+        const exact = await this.searchExact(word);
+        if (exact) return exact;
+
+        // 2. Fallback to Prefix Search
         const results = await this.search(word);
         return results.length > 0 ? results[0] : null;
     }

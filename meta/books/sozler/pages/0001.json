@@ -1,0 +1,61 @@
+{
+    "schemaVersion": "1.0.0",
+    "bookId": "sozler",
+    "pageId": "sozler-0001",
+    "pageIndex": 1,
+    "sectionId": "birinci-soz",
+    "header": {
+        "title": "Birinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0001-001",
+            "type": "heading",
+            "text": "Birinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0001-002",
+            "type": "arabicBlock",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0001-003",
+            "type": "arabicBlock",
+            "text": "وَ بِهٖ نَسْتَعٖينُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0001-004",
+            "type": "arabicBlock",
+            "text": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖينَ وَ الصَّلَاةُ وَ السَّلَامُ عَلٰى سَيِّدِنَا مُحَمَّدٍ وَ عَلٰى اٰلِهٖ وَ صَحْبِهٖ اَجْمَعٖينَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0001-005",
+            "type": "paragraph",
+            "text": "Ey kardeş! Benden birkaç nasihat istedin. Sen bir asker olduğun için askerlik temsilatıyla, sekiz hikâyecikler ile birkaç hakikati nefsimle beraber dinle. Çünkü ben nefsimi herkesten ziyade nasihate muhtaç görüyorum. Vaktiyle sekiz âyetten istifade ettiğim sekiz sözü biraz uzunca nefsime demiştim. Şimdi kısaca ve avam lisanıyla nefsime diyeceğim. Kim isterse beraber dinlesin.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0001-006",
+            "type": "paragraph",
+            "text": "Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu mübarek kelime İslâm nişanı olduğu gibi bütün mevcudatın lisan-ı haliyle vird-i zebanıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0001-007",
+            "type": "paragraph",
+            "text": "Bismillah ne büyük tükenmez bir kuvvet, ne çok bitmez bir bereket olduğunu anlamak istersen şu temsilî hikâyeciğe bak, dinle. Şöyle ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0001-008",
+            "type": "paragraph",
+            "text": "Bedevî Arap çöllerinde seyahat eden adama gerektir ki bir kabile reisinin ismini alsın ve himayesine girsin, tâ şakîlerin şerrinden kurtulup hâcatını tedarik edebilsin. Yoksa tek başıyla hadsiz düşman ve ihtiyacatına karşı perişan olacaktır.",
+            "lang": "tr"
+        }
+    ]
+}

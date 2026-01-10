@@ -1,0 +1,55 @@
+{
+    "schemaVersion": "1.0.0",
+    "bookId": "sozler",
+    "pageId": "sozler-0002",
+    "pageIndex": 2,
+    "sectionId": "birinci-soz",
+    "header": {
+        "title": "Birinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0002-001",
+            "type": "paragraph",
+            "text": "İşte böyle bir seyahat için iki adam sahraya çıkıp gidiyorlar. Onlardan birisi mütevazi idi, diğeri mağrur. Mütevazii, bir reisin ismini aldı. Mağrur, almadı. Alanı, her yerde selâmetle gezdi. Bir kātıu't-tarîke rast gelse der: \"Ben, filan reisin ismiyle gezerim.\" Şakî def'olur, ilişemez. Bir çadıra girse o nam ile hürmet görür. Öteki mağrur, bütün seyahatinde öyle belalar çeker ki tarif edilmez. Daima titrer, daima dilencilik ederdi. Hem zelil hem rezil oldu.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-002",
+            "type": "paragraph",
+            "text": "İşte ey mağrur nefsim, sen o seyyahsın. Şu dünya ise bir çöldür. Aczin ve fakrın hadsizdir. Düşmanın, hâcatın nihayetsizdir. Madem öyledir, şu sahranın Mâlik-i Ebedî'si ve Hâkim-i Ezelî'sinin ismini al. Tâ bütün kâinatın dilenciliğinden ve her hâdisatın karşısında titremeden kurtulasın.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-003",
+            "type": "paragraph",
+            "text": "Evet, bu kelime öyle mübarek bir definedir ki senin nihayetsiz aczin ve fakrın, seni nihayetsiz kudrete, rahmete rabtedip Kadîr-i Rahîm'in dergâhında aczi, fakrı en makbul bir şefaatçi yapar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-004",
+            "type": "paragraph",
+            "text": "Evet, bu kelime ile hareket eden, o adama benzer ki askere kaydolur, devlet namına hareket eder. Hiçbir kimseden pervası kalmaz. Kanun namına, devlet namına der, her işi yapar, her şeye karşı dayanır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-005",
+            "type": "label",
+            "text": "Başta demiştik:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-006",
+            "type": "paragraph",
+            "text": "Bütün mevcudat, lisan-ı hal ile Bismillah der. Öyle mi?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0002-007",
+            "type": "paragraph",
+            "text": "Evet, nasıl ki görsen, bir tek adam geldi, bütün şehir ahalisini cebren bir yere sevk etti ve cebren işlerde çalıştırdı. Yakînen bilirsin; o adam kendi namıyla, kendi kuvvetiyle hareket etmiyor. Belki o, bir askerdir, devlet namına hareket eder, bir padişah kuvvetine istinad eder.",
+            "lang": "tr"
+        }
+    ]
+}

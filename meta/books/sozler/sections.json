@@ -1,0 +1,19 @@
+{
+    "schemaVersion": "1.0.0",
+    "bookId": "sozler",
+    "sections": [
+        {
+            "sectionId": "birinci-soz",
+            "title": "Birinci Söz",
+            "order": 1,
+            "startPage": 1,
+            "endPage": 2,
+            "header": {
+                "shortTitle": "Birinci Söz",
+                "breadcrumbs": [
+                    "Sözler"
+                ]
+            }
+        }
+    ]
+}

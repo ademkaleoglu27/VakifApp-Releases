@@ -1,0 +1,13 @@
+{
+    "schemaVersion": "1.0.0",
+    "bookId": "sozler",
+    "title": "Sözler",
+    "lang": [
+        "tr",
+        "ar"
+    ],
+    "sectionsFile": "sections.json",
+    "pagesDir": "pages",
+    "pageCount": 2,
+    "defaultReaderProfile": "classic"
+}

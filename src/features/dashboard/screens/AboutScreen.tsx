@@ -50,7 +50,7 @@ export const AboutScreen = (props: any) => {
                 <TouchableOpacity
                     onLongPress={() => {
                         // @ts-ignore
-                        props.navigation?.navigate('DevReaderIsolation') || console.log("No nav");
+                        props.navigation?.navigate('RisaleSectionList', { workId: 'sozler', workTitle: 'Sözler (Native Test)' }) || console.log("No nav");
                     }}
                     delayLongPress={1000}
                 >

@@ -1,0 +1,83 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://nurmektebi.app/schema/sections.schema.json",
+    "title": "Book Sections",
+    "description": "Table of contents / sections for a book",
+    "type": "object",
+    "required": [
+        "schemaVersion",
+        "bookId",
+        "sections"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "bookId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "sections": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "sectionId",
+                    "title",
+                    "order",
+                    "startPage",
+                    "endPage",
+                    "header"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "sectionId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Unique section identifier"
+                    },
+                    "title": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "order": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "startPage": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "endPage": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "header": {
+                        "type": "object",
+                        "required": [
+                            "shortTitle",
+                            "breadcrumbs"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                            "shortTitle": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "Short title for sticky header"
+                            },
+                            "breadcrumbs": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Navigation breadcrumbs"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

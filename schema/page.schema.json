@@ -1,0 +1,156 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://nurmektebi.app/schema/page.schema.json",
+    "title": "Page Content",
+    "description": "Single page content with segments - the single source of truth for Reader",
+    "type": "object",
+    "required": [
+        "schemaVersion",
+        "bookId",
+        "pageId",
+        "pageIndex",
+        "sectionId",
+        "header",
+        "segments"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "bookId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "pageId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Globally unique page identifier"
+        },
+        "pageIndex": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1-based page number within the book"
+        },
+        "sectionId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Reference to parent section"
+        },
+        "header": {
+            "type": "object",
+            "required": [
+                "title",
+                "sticky"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "sticky": {
+                    "type": "boolean",
+                    "description": "Whether header sticks on scroll"
+                }
+            }
+        },
+        "segments": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "segmentId",
+                    "type",
+                    "text",
+                    "lang"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "segmentId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Stable unique segment identifier - must not change on repagination"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "heading",
+                            "subheading",
+                            "paragraph",
+                            "arabicBlock",
+                            "quote",
+                            "listItem",
+                            "divider",
+                            "footnote",
+                            "hashiye",
+                            "label",
+                            "note"
+                        ],
+                        "description": "Segment type for rendering"
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Text content of the segment"
+                    },
+                    "lang": {
+                        "type": "string",
+                        "enum": [
+                            "tr",
+                            "ar",
+                            "en"
+                        ],
+                        "description": "Language of the segment"
+                    },
+                    "style": {
+                        "type": "string",
+                        "description": "Optional style hint"
+                    },
+                    "anchors": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "anchorId",
+                                "kind"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "anchorId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "footnote",
+                                        "hashiye",
+                                        "bookmark"
+                                    ]
+                                },
+                                "label": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "ref": {
+                        "type": "object",
+                        "required": [
+                            "anchorId"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                            "anchorId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "Reference to an anchor"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
