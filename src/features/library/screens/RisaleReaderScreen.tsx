@@ -108,9 +108,13 @@ export const RisaleReaderScreen = () => {
     // Track visible items to use as anchor and Update Header
     // STABLE CALLBACK (No dependencies)
     const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken[] }) => {
+        console.log('[RisaleReaderScreen] onViewableItemsChanged called, items:', viewableItems.length);
+
         if (viewableItems.length > 0) {
             const first = viewableItems[0];
             const currentIndex = first.index;
+
+            console.log('[RisaleReaderScreen] First visible index:', currentIndex);
 
             if (currentIndex === null) return;
 
@@ -135,28 +139,21 @@ export const RisaleReaderScreen = () => {
                     }
                 }
 
+                console.log('[RisaleReaderScreen] Active title:', activeTitle, 'headerMap size:', currentHeaderMap.length);
+
                 // Only update if changed to prevent render thrashing
-                setSubTitle(prev => prev !== activeTitle ? activeTitle : prev);
-
-                // Page Number
-                let pNo = currentChunks[currentIndex]?.page_no;
-                // Fallback search backwards
-                if (!pNo) {
-                    for (let i = currentIndex; i >= 0; i--) {
-                        if (currentChunks[i]?.page_no) {
-                            pNo = currentChunks[i].page_no;
-                            break;
-                        }
+                setSubTitle(prev => {
+                    if (prev !== activeTitle) {
+                        console.log('[RisaleReaderScreen] Updating subTitle from', prev, 'to', activeTitle);
+                        return activeTitle;
                     }
-                }
-                // FALLBACK ESTIMATION
-                if (!pNo) {
-                    pNo = Math.floor(currentIndex / 7) + 1;
-                }
+                    return prev;
+                });
 
-                if (pNo) {
-                    setPageNumber(pNo);
-                }
+                // Page Number - Use estimated calculation
+                const estimatedPage = Math.floor(currentIndex / 7) + 1;
+                console.log('[RisaleReaderScreen] Page number:', estimatedPage, 'for index:', currentIndex);
+                setPageNumber(estimatedPage);
             }
         }
     }, [sectionTitle]); // sectionTitle is the only dep, stable enough. Refs handle the rest.
@@ -373,7 +370,9 @@ export const RisaleReaderScreen = () => {
 
     // Stable Viewability Config - MOVED UP to avoid conditional hook call error
     const viewabilityConfig = useRef({
-        itemVisiblePercentThreshold: 10
+        itemVisiblePercentThreshold: 1, // Very low threshold
+        minimumViewTime: 0, // Fire immediately
+        waitForInteraction: false, // Fire immediately on mount
     }).current;
 
     if (!chunks) {
@@ -403,13 +402,6 @@ export const RisaleReaderScreen = () => {
                     </Text>
                 </View>
 
-                {/* Page Counter */}
-                <View style={styles.pageBadge}>
-                    <Text style={styles.pageText}>
-                        {pageNumber > 0 ? pageNumber : '-'} / 862
-                    </Text>
-                </View>
-
                 {/* Reset Zoom Button (Subtle) */}
                 <TouchableOpacity onPress={resetFont} style={[styles.headerBtn, { marginLeft: 5 }]}>
                     <Ionicons name="text-outline" size={20} color="#5D4037" />
@@ -428,8 +420,8 @@ export const RisaleReaderScreen = () => {
                             viewabilityConfig={viewabilityConfig}
                             onContentSizeChange={onContentSizeChange}
 
-                            estimatedItemSize={350} // Optimized for paragraph height (avg 350px)
-                            drawDistance={2500} // Render screens ahead for smoothness
+                            estimatedItemSize={350}
+                            drawDistance={2500}
                             removeClippedSubviews={Platform.OS === 'android'}
                             contentContainerStyle={styles.listContent}
                             onScrollBeginDrag={() => {

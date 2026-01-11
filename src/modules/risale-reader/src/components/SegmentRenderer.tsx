@@ -33,6 +33,16 @@ export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, 
     // Scroll state for long-press cancellation
     const isScrollingRef = useRef(false);
 
+    // Refs for stable callbacks passed to FlatList
+    const onLocationChangeRef = useRef(onLocationChange);
+    const onSectionChangeRef = useRef(onSectionChange);
+    const blocksRef = useRef(content.blocks);
+
+    // Keep refs up-to-date
+    onLocationChangeRef.current = onLocationChange;
+    onSectionChangeRef.current = onSectionChange;
+    blocksRef.current = content.blocks;
+
     // Virtual Page Calculation (Approximate)
     const BLOCKS_PER_PAGE = 8;
     const totalPages = Math.max(1, Math.ceil(content.blocks.length / BLOCKS_PER_PAGE));
@@ -75,6 +85,44 @@ export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, 
             setTimeout(() => {
                 isScrollingRef.current = false;
             }, 100);
+        }
+    }, []);
+
+    // Track item layouts for scroll-based calculations
+    const itemLayoutsRef = useRef<{ [key: number]: { y: number; height: number } }>({});
+    const ESTIMATED_ITEM_HEIGHT = 80; // Approximate height per block
+
+    const getItemLayout = useCallback((data: any, index: number) => ({
+        length: ESTIMATED_ITEM_HEIGHT,
+        offset: ESTIMATED_ITEM_HEIGHT * index,
+        index,
+    }), []);
+
+    // onScroll-based page and section update (more reliable than viewability)
+    const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const offsetY = event.nativeEvent.contentOffset.y;
+        const visibleIndex = Math.floor(offsetY / ESTIMATED_ITEM_HEIGHT);
+        const blocks = blocksRef.current;
+
+        if (!blocks || blocks.length === 0) return;
+
+        // Clamp to valid range
+        const safeIndex = Math.max(0, Math.min(visibleIndex, blocks.length - 1));
+
+        // Calculate page
+        const estimatedPage = Math.floor(safeIndex / BLOCKS_PER_PAGE) + 1;
+        if (onLocationChangeRef.current) {
+            onLocationChangeRef.current({ pageNumber: estimatedPage });
+        }
+
+        // Find active section (look backwards)
+        for (let i = safeIndex; i >= 0; i--) {
+            if (blocks[i] && blocks[i].type === 'heading') {
+                if (onSectionChangeRef.current) {
+                    onSectionChangeRef.current(blocks[i].text);
+                }
+                break;
+            }
         }
     }, []);
 
@@ -124,41 +172,58 @@ export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, 
 
     const data = useMemo(() => content.blocks, [content]);
 
-    // Viewability Config for "IntersectionObserver" logic
-    const viewabilityConfig = useRef({
-        itemVisiblePercentThreshold: 50,
-        minimumViewTime: 50,
-    }).current;
+    // Use viewabilityConfigCallbackPairs for stable FlatList behavior
+    // This is the recommended pattern to avoid the "changing onViewableItemsChanged" warning
+    const viewabilityConfigCallbackPairs = useRef([
+        {
+            viewabilityConfig: {
+                itemVisiblePercentThreshold: 50,
+                minimumViewTime: 50,
+            },
+            onViewableItemsChanged: ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+                console.log('[SegmentRenderer] onViewableItemsChanged called, viewableItems:', viewableItems.length);
 
-    const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken[] }) => {
-        if (viewableItems.length > 0) {
-            const firstVisible = viewableItems[0];
-            const estimatedPage = Math.floor((firstVisible.index || 0) / BLOCKS_PER_PAGE) + 1;
+                if (viewableItems.length > 0) {
+                    const firstVisible = viewableItems[0];
+                    const visibleIndex = firstVisible.index || 0;
+                    const estimatedPage = Math.floor(visibleIndex / BLOCKS_PER_PAGE) + 1;
 
-            // Page Update
-            if (estimatedPage !== currentPage) {
-                setCurrentPage(estimatedPage);
-                if (onLocationChange) {
-                    onLocationChange({ pageNumber: estimatedPage });
-                }
-            }
+                    console.log('[SegmentRenderer] visibleIndex:', visibleIndex, 'estimatedPage:', estimatedPage);
 
-            // Section Update (Find the last heading *before* or *at* the visible item)
-            // This is a simplified approach: just check if the *top* visible item is a heading
-            // For better "sticky" behavior, we'd search backwards from visible index, but for now:
-            if (firstVisible.item.type === 'heading') {
-                if (onSectionChange) {
-                    onSectionChange(firstVisible.item.text);
+                    // Page Update - use ref for callback
+                    if (onLocationChangeRef.current) {
+                        console.log('[SegmentRenderer] Calling onLocationChangeRef with page:', estimatedPage);
+                        onLocationChangeRef.current({ pageNumber: estimatedPage });
+                    }
+
+                    // Section Update (Look-behind logic)
+                    // 1. Check if the top item itself is a heading
+                    if (firstVisible.item.type === 'heading') {
+                        console.log('[SegmentRenderer] Top item is heading:', firstVisible.item.text);
+                        if (onSectionChangeRef.current) onSectionChangeRef.current(firstVisible.item.text);
+                        return;
+                    }
+
+                    // 2. Search BACKWARDS from the first visible item to find the active section
+                    let foundHeading: string | null = null;
+                    const blocks = blocksRef.current;
+                    console.log('[SegmentRenderer] Searching backwards, blocks count:', blocks?.length);
+
+                    for (let i = visibleIndex; i >= 0; i--) {
+                        if (blocks[i] && blocks[i].type === 'heading') {
+                            foundHeading = blocks[i].text;
+                            break;
+                        }
+                    }
+
+                    console.log('[SegmentRenderer] Found heading:', foundHeading);
+                    if (foundHeading && onSectionChangeRef.current) {
+                        onSectionChangeRef.current(foundHeading);
+                    }
                 }
-            } else {
-                // Search visible items for a heading
-                const visibleHeading = viewableItems.find(v => v.item.type === 'heading');
-                if (visibleHeading && onSectionChange) {
-                    onSectionChange(visibleHeading.item.text);
-                }
-            }
-        }
-    }, [currentPage, onLocationChange, onSectionChange]);
+            },
+        },
+    ]).current;
 
     return (
         <View style={styles.container}>
@@ -173,8 +238,9 @@ export const SegmentRenderer: React.FC<TextRendererProps> = ({ content, config, 
                 windowSize={5}
                 removeClippedSubviews={true}
                 showsVerticalScrollIndicator={true}
-                onViewableItemsChanged={onViewableItemsChanged}
-                viewabilityConfig={viewabilityConfig}
+                getItemLayout={getItemLayout}
+                onScroll={handleScroll}
+                scrollEventThrottle={100}
                 onScrollBeginDrag={handleScrollBeginDrag}
                 onScrollEndDrag={handleScrollEndDrag}
                 onMomentumScrollEnd={handleMomentumScrollEnd}

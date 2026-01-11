@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { ReaderProps, ManifestData, ReaderLocation } from '../api/types';
 import { ManifestParser } from '../engine/ManifestParser';
@@ -30,13 +30,13 @@ export const RisaleReader: React.FC<ReaderProps> = (props) => {
     const jsonFormat = book?.formats?.json;
     const manifestDir = manifestUri.substring(0, manifestUri.lastIndexOf('/'));
 
-    const handleFootnotePress = (id: string) => {
+    const handleFootnotePress = useCallback((id: string) => {
         if (jsonContent && jsonContent.footnotes && jsonContent.footnotes[id]) {
             setActiveFootnoteContent(jsonContent.footnotes[id]);
         } else {
             console.warn("Footnote content not found for id:", id);
         }
-    };
+    }, [jsonContent]);
 
     // Lugat lookup handler - triggered by long-press on segments
     const handleLugatLookup = useCallback(() => {
@@ -169,14 +169,17 @@ export const RisaleReader: React.FC<ReaderProps> = (props) => {
                     totalPage={jsonContent?.blocks ? Math.ceil(jsonContent.blocks.length / 8) : undefined}
                 />
                 <SegmentRenderer
-                    content={{
+                    content={useMemo(() => ({
                         blocks: jsonContent.blocks,
                         title: book.title
-                    }}
+                    }), [jsonContent, book.title])}
                     config={config}
                     onLocationChange={(loc) => handlePageChange(loc.pageNumber || 1, 1)}
                     onFootnotePress={handleFootnotePress}
-                    onSectionChange={setCurrentSection}
+                    onSectionChange={(section) => {
+                        console.log('[RisaleReader] onSectionChange called with:', section);
+                        setCurrentSection(section);
+                    }}
                     onLugatLookup={handleLugatLookup}
                 />
                 <FootnotePanel

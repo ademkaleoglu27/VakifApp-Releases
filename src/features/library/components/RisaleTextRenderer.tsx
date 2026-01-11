@@ -36,19 +36,29 @@ const RE_ARABIC_RUN = /([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uF
 // <ar>...</ar> tag support
 const RE_AR_TAG = /<ar>([\s\S]*?)<\/ar>/gi;
 
-const HEADER_KEYWORDS = [
-    "Birinci", "İkinci", "Üçüncü", "Dördüncü", "Beşinci",
-    "Altıncı", "Yedinci", "Sekizinci", "Dokuzuncu", "Onuncu",
-    "Söz", "Mektup", "Lem'a", "Lem’a", "Şua", "İhtar",
-    "Tenbih", "Mukaddime", "Hâtime", "Hatıra", "Temsil", "Nükte",
-    "BİRİNCİ", "İKİNCİ", "ÜÇÜNCÜ", "DÖRDÜNCÜ", "BEŞİNCİ"
-];
+// SMART HEADER DETECTION (Pattern Matching - WhiteList Structural Logic) v21.0
+const RE_NUMBERS = /(Birinci|İkinci|Üçüncü|Dördüncü|Beşinci|Altıncı|Yedinci|Sekizinci|Dokuzuncu|Onuncu|Yirminci|Otuzuncu|Kırkıncı|Ellinci|Altmışıncı|Yetmişinci|Sekseninci|Doksanınca|Yüzüncü|\d+\.?)/i;
+const RE_TYPES = /(Söz|Mektup|Lem'a|Lem’a|Şua|Nükte|Mebhas|İşaret|Zeyl|Mes'ele|Mesele|Nokta|Hatve|Remiz|Reşha|Sır|Esas|Vecih|Sebep|Hikmet|Düstur|Temsil|Makale|Fıkra|Levha|Sual|Elcevap)/i;
+const RE_STANDALONE = /^(Mukaddime|Hâtime|Hatıra|Takdim|İfade|Başlangıç|İhtar|Tenbih|Sözler|Mektubat|Lem'alar|Şualar|Lahika|Fihrist|Münderecat)$/i;
 
 export function isHeadingLine(t: string): boolean {
     const s = t.trim();
     if (!s) return false;
-    if (s.length > 70) return false;
-    return HEADER_KEYWORDS.some((k) => s.includes(k));
+
+    // 1. Safety Filters (Exclude obvious paragraphs)
+    if (s.length > 150) return false;
+    if (s.endsWith('.')) return false; // Sentences end with dot
+    if (s.includes(':')) return false; // Definitions/Labels usually have colon (e.g. "Birinci Nokta: ...")
+
+    // 2. Standalone Headers (Exact or special terms)
+    if (RE_STANDALONE.test(s)) return true;
+
+    // 3. Composite Headers (Structure: Number + Type)
+    // Valid: "Birinci Söz", "İkinci Nükte", "Onuncu Lem'a"
+    // Invalid: "Birinci kâr" (No Type), "Birinci adam" (No Type)
+    if (RE_NUMBERS.test(s) && RE_TYPES.test(s)) return true;
+
+    return false;
 }
 
 function arabicRatio(t: string): number {
