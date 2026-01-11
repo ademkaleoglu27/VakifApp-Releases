@@ -4,21 +4,13 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {
-    // We pass a getter/setter or just a callback?
-    // User wants "Local state only" in this component for UI.
-    // The parent only needs to know when the *value* changes to update the Ref.
+    // Controlled component - value comes from parent
+    lugatEnabled: boolean;
     onLugatToggle: (isEnabled: boolean) => void;
-    initialEnabled: boolean;
 }
 
-export const ReaderMoreMenuButton = React.memo(({ onLugatToggle, initialEnabled }: Props) => {
+export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle }: Props) => {
     const [visible, setVisible] = useState(false);
-    const [lugatEnabled, setLugatEnabled] = useState(initialEnabled);
-
-    // Keep state in sync if parent mounts with different initial
-    useEffect(() => {
-        setLugatEnabled(initialEnabled);
-    }, [initialEnabled]);
 
     const handleOpen = useCallback(() => {
         // Defer opening to avoid scroll/touch conflicts
@@ -37,9 +29,7 @@ export const ReaderMoreMenuButton = React.memo(({ onLugatToggle, initialEnabled 
 
         // 2. Perform Logic after interaction complete
         InteractionManager.runAfterInteractions(() => {
-            const newVal = !lugatEnabled;
-            setLugatEnabled(newVal); // Update local UI state
-            onLugatToggle(newVal);   // Update parent Ref / Storage
+            onLugatToggle(!lugatEnabled);
         });
     }, [lugatEnabled, onLugatToggle]);
 

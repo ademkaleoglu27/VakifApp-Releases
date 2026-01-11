@@ -7,6 +7,7 @@ import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigatio
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
+import { getEnabledBooks } from '@/config/booksRegistry';
 import * as Notifications from 'expo-notifications';
 
 // Debug & VP Test Screens
@@ -224,11 +225,11 @@ const CustomDrawerContent = React.memo((props: any) => {
         setIsCouncilExpanded(!isCouncilExpanded);
     };
 
-    const navigate = (screen: string) => {
+    const navigate = (screen: string, params?: object) => {
         // Close drawer first for smoother animation, then navigate
         props.navigation.closeDrawer();
         requestAnimationFrame(() => {
-            props.navigation.navigate(screen);
+            props.navigation.navigate(screen, params);
         });
     };
 
@@ -311,13 +312,20 @@ const CustomDrawerContent = React.memo((props: any) => {
                                         isSubItem
                                         color="#334155"
                                     />
-                                    <DrawerItem
-                                        label="Risale-i Nur"
-                                        icon="book-outline"
-                                        onPress={() => navigate('RisaleHome')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
+                                    {/* Books from Registry → Go to Section List (TOC) first */}
+                                    {getEnabledBooks().map(book => (
+                                        <DrawerItem
+                                            key={book.id}
+                                            label={book.title}
+                                            icon={book.icon as any}
+                                            onPress={() => navigate('RisaleVirtualPageSectionList', {
+                                                workId: book.id,
+                                                workTitle: book.title
+                                            })}
+                                            isSubItem
+                                            color="#334155"
+                                        />
+                                    ))}
                                     <DrawerItem
                                         label="Cevşen"
                                         icon="shield-checkmark-outline"

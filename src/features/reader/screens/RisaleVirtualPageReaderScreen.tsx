@@ -8,8 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, runOnJS, withTiming } from 'react-native-reanimated';
 
-import { buildReadingStream, buildTocIndexMap, getSectionsByWork, StreamItem } from '@/services/risaleRepo';
-import { RisaleChunk, RisaleSection } from '@/types/risale';
+import { buildReadingStream, buildTocIndexMap, StreamItem } from '@/services/risaleRepo';
+import { RisaleChunk } from '@/types/risale';
 import { RisaleTextRenderer } from '@/features/library/components/RisaleTextRenderer';
 
 import { InteractionManager } from 'react-native';
@@ -20,21 +20,27 @@ import { ReadingProgressService } from '@/services/ReadingProgressService';
 import { LugatOverlay, LugatControlRef } from '@/features/library/components/LugatOverlay';
 import { ReaderMoreMenuButton } from '@/features/reader/components/ReaderMoreMenuButton';
 import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
+// TOC removed from reader - now accessed via SectionList screen
 
 /**
- * RisaleVirtualPageReaderScreen (Diamond Standard V23.1 - LOCKED)
+ * RisaleVirtualPageReaderScreen (Diamond Standard V23.3 - LOCKED)
  * ─────────────────────────────────────────────────────────────
  * CONTINUOUS READING STREAM IMPLEMENTATION
  * 
  * Features:
  * 1. Full book stream (all sections in single FlashList)
  * 2. Book-like section headers (decorative dividers)
- * 3. TOC modal with accordion + jump navigation
- * 4. Dynamic header (current section + position counter)
- * 5. Progressive Hydration (only visible page interactive)
- * 6. Lugat integration with improved touch targets
- * 7. Pinch-to-zoom preserved
- * 8. Inline footnotes (collapsed, lazy fetch, local state)
+ * 3. Dynamic header (current section + position counter)
+ * 4. Progressive Hydration (only visible page interactive)
+ * 5. Lugat integration with controlled toggle
+ * 6. Pinch-to-zoom preserved
+ * 7. Inline footnotes (collapsed, lazy fetch, fail-soft)
+ * 8. TOC accessed via SectionList screen (not in reader)
+ * 
+ * NEW IN V23.3:
+ * - TOC removed from reader header (stable model)
+ * - Books Registry pattern for easy additions
+ * - Controlled Lugat toggle (no internal state copy)
  * 
  * LOCKED: Do not modify Virtual Page, Hydration, Zoom, or Footnote logic.
  * ─────────────────────────────────────────────────────────────
@@ -120,114 +126,8 @@ const SectionHeader = React.memo(({ item, isMain }: { item: StreamItem, isMain: 
     </View>
 ));
 
-// TOC Modal Component
-const TOCModal = React.memo(({
-    visible,
-    onClose,
-    sections,
-    onSelect
-}: {
-    visible: boolean,
-    onClose: () => void,
-    sections: RisaleSection[],
-    onSelect: (sectionId: string) => void
-}) => {
-    // Group sections by parent for accordion display
-    const groupedSections = useMemo(() => {
-        const mainSections: { main: RisaleSection; children: RisaleSection[] }[] = [];
-        const childMap = new Map<string, RisaleSection[]>();
 
-        for (const section of sections) {
-            if (section.parent_id) {
-                if (!childMap.has(section.parent_id)) {
-                    childMap.set(section.parent_id, []);
-                }
-                childMap.get(section.parent_id)!.push(section);
-            }
-        }
 
-        for (const section of sections) {
-            if (!section.parent_id && section.type === 'main') {
-                mainSections.push({
-                    main: section,
-                    children: childMap.get(section.id) || []
-                });
-            }
-        }
-
-        return mainSections;
-    }, [sections]);
-
-    const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-
-    const toggleExpand = (sectionId: string) => {
-        setExpandedSections(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(sectionId)) {
-                newSet.delete(sectionId);
-            } else {
-                newSet.add(sectionId);
-            }
-            return newSet;
-        });
-    };
-
-    return (
-        <Modal visible={visible} animationType="slide" transparent>
-            <View style={styles.modalOverlay}>
-                <View style={styles.modalContent}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.modalTitle}>İçindekiler</Text>
-                        <TouchableOpacity onPress={onClose} style={styles.modalClose}>
-                            <Ionicons name="close" size={24} color="#000" />
-                        </TouchableOpacity>
-                    </View>
-                    <ScrollView style={styles.tocList}>
-                        {groupedSections.map((group) => {
-                            const isExpanded = expandedSections.has(group.main.id);
-                            const hasChildren = group.children.length > 0;
-
-                            return (
-                                <View key={group.main.id}>
-                                    <TouchableOpacity
-                                        style={styles.tocItem}
-                                        onPress={() => {
-                                            onSelect(group.main.id);
-                                            onClose();
-                                        }}
-                                    >
-                                        <Text style={styles.tocItemText}>{group.main.title}</Text>
-                                        {hasChildren && (
-                                            <TouchableOpacity onPress={() => toggleExpand(group.main.id)}>
-                                                <Ionicons
-                                                    name={isExpanded ? "chevron-up" : "chevron-down"}
-                                                    size={18}
-                                                    color="#0EA5E9"
-                                                />
-                                            </TouchableOpacity>
-                                        )}
-                                    </TouchableOpacity>
-                                    {isExpanded && group.children.map((child) => (
-                                        <TouchableOpacity
-                                            key={child.id}
-                                            style={styles.tocSubItem}
-                                            onPress={() => {
-                                                onSelect(child.id);
-                                                onClose();
-                                            }}
-                                        >
-                                            <Text style={styles.tocSubItemText}>{child.title}</Text>
-                                        </TouchableOpacity>
-                                    ))}
-                                </View>
-                            );
-                        })}
-                    </ScrollView>
-                </View>
-            </View>
-        </Modal>
-    );
-});
 
 export const RisaleVirtualPageReaderScreen = () => {
     const route = useRoute<any>();
@@ -239,7 +139,6 @@ export const RisaleVirtualPageReaderScreen = () => {
     const [fontSize, setFontSize] = useState(18);
     const [currentSectionTitle, setCurrentSectionTitle] = useState(workTitle || 'Okuyucu');
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
-    const [tocVisible, setTocVisible] = useState(false);
 
     const flatListRef = useRef<any>(null);
     const fontSizeRef = useRef(fontSize);
@@ -254,6 +153,7 @@ export const RisaleVirtualPageReaderScreen = () => {
     const LUGAT_PREF_KEY = 'lugat_enabled_pref';
     const lugatEnabledRef = useRef(false);
     const [lugatEnabled, setLugatEnabled] = useState(false); // State to trigger re-render
+    const [lugatPrefLoaded, setLugatPrefLoaded] = useState(false); // Track if pref loaded
     const lugatRef = useRef<LugatControlRef>(null);
     const isScrollingRef = useRef(false);
     const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -264,7 +164,10 @@ export const RisaleVirtualPageReaderScreen = () => {
     // Load Lugat Pref
     useEffect(() => {
         AsyncStorage.getItem(LUGAT_PREF_KEY).then(val => {
-            lugatEnabledRef.current = val === 'true';
+            const enabled = val === 'true';
+            lugatEnabledRef.current = enabled;
+            setLugatEnabled(enabled);
+            setLugatPrefLoaded(true);
         });
     }, []);
 
@@ -274,13 +177,7 @@ export const RisaleVirtualPageReaderScreen = () => {
         queryFn: () => buildReadingStream(effectiveWorkId),
     });
 
-    // Fetch Sections for TOC
-    const { data: tocSections } = useQuery({
-        queryKey: ['sections', effectiveWorkId],
-        queryFn: () => getSectionsByWork(effectiveWorkId),
-    });
-
-    // TOC Index Map
+    // TOC Index Map - kept for initial scroll to section
     const tocIndexMap = useMemo(() => {
         if (!stream) return new Map<string, number>();
         return buildTocIndexMap(stream);
@@ -356,12 +253,13 @@ export const RisaleVirtualPageReaderScreen = () => {
         if (!isEnabled) lugatRef.current?.close();
     }, []);
 
-    // Word Click (preserved)
+    // Word Click (preserved) - with lugatPrefLoaded guard
     const handleWordClick = useCallback((word: string, chunkId: number, pageY: number) => {
         if (isScrollingRef.current) return;
+        if (!lugatPrefLoaded) return; // Guard: don't process until pref loaded
         if (!lugatEnabledRef.current) return;
         lugatRef.current?.open(word, chunkId, pageY);
-    }, []);
+    }, [lugatPrefLoaded]);
 
     // Scroll Handlers (preserved)
     const onScrollBegin = useCallback(() => {
@@ -457,6 +355,13 @@ export const RisaleVirtualPageReaderScreen = () => {
         }
     }, [tocIndexMap]);
 
+    // Direct scroll by index for TOCLauncher (isolated)
+    const handleTocScrollToIndex = useCallback((streamIndex: number) => {
+        if (flatListRef.current) {
+            flatListRef.current.scrollToIndex({ index: streamIndex, animated: true });
+        }
+    }, []);
+
     // Estimate item size based on type
     const getItemSize = useCallback((item: StreamItem) => {
         if (item.type === 'section_header') return 80;
@@ -490,14 +395,9 @@ export const RisaleVirtualPageReaderScreen = () => {
                     </Text>
                 </View>
 
-                {/* TOC Button */}
-                <TouchableOpacity onPress={() => setTocVisible(true)} style={styles.headerBtn}>
-                    <Ionicons name="list" size={22} color="#0EA5E9" />
-                </TouchableOpacity>
-
-                {/* Menu Button */}
+                {/* Menu Button - Controlled UI */}
                 <ReaderMoreMenuButton
-                    initialEnabled={lugatEnabledRef.current}
+                    lugatEnabled={lugatEnabled}
                     onLugatToggle={handleToggleLugat}
                 />
             </View>
@@ -540,13 +440,6 @@ export const RisaleVirtualPageReaderScreen = () => {
                 </GestureDetector>
             </GestureHandlerRootView>
 
-            {/* TOC Modal */}
-            <TOCModal
-                visible={tocVisible}
-                onClose={() => setTocVisible(false)}
-                sections={tocSections || []}
-                onSelect={handleTocSelect}
-            />
         </SafeAreaView>
     );
 };

@@ -12,6 +12,13 @@ if (!fs.existsSync(path.dirname(DB_PATH))) {
     fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 }
 
+// Skip rebuild if DB exists unless FORCE_REBUILD_DB=1
+if (fs.existsSync(DB_PATH) && process.env.FORCE_REBUILD_DB !== '1') {
+    console.log('✅ content.db already exists. Skipping rebuild.');
+    console.log('   To force rebuild: FORCE_REBUILD_DB=1 node build-content-db.js');
+    process.exit(0);
+}
+
 if (fs.existsSync(DB_PATH)) {
     fs.unlinkSync(DB_PATH);
 }

@@ -24,9 +24,12 @@ export const FootnoteToggle = React.memo(({ sectionId, footnoteNumber, fontSize 
     const [expanded, setExpanded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState<RisaleChunk[] | null>(null);
-    const [error, setError] = useState(false);
+    const [notFound, setNotFound] = useState(false); // Fail-soft: hide if not found
 
     const handleToggle = useCallback(async () => {
+        // If already marked as not found, do nothing (fail-soft)
+        if (notFound) return;
+
         if (expanded) {
             // Just collapse, don't refetch
             setExpanded(false);
@@ -36,7 +39,6 @@ export const FootnoteToggle = React.memo(({ sectionId, footnoteNumber, fontSize 
         // Expand - fetch if not cached locally
         if (!content && !loading) {
             setLoading(true);
-            setError(false);
             try {
                 const footnotes = await getFootnotesBySectionId(sectionId);
                 // Find the matching footnote by number
@@ -45,20 +47,26 @@ export const FootnoteToggle = React.memo(({ sectionId, footnoteNumber, fontSize 
                     return fnNum && parseInt(fnNum[1], 10) === footnoteNumber;
                 });
 
-                if (match) {
+                if (match && match.chunks.length > 0) {
                     setContent(match.chunks);
+                    setExpanded(true);
                 } else {
-                    setError(true);
+                    // Fail-soft: mark as not found, don't show error
+                    setNotFound(true);
                 }
             } catch (e) {
-                console.error('Footnote fetch error:', e);
-                setError(true);
+                console.warn('Footnote not found:', sectionId, footnoteNumber);
+                setNotFound(true); // Fail-soft
             } finally {
                 setLoading(false);
             }
+        } else if (content) {
+            setExpanded(true);
         }
-        setExpanded(true);
-    }, [expanded, content, loading, sectionId, footnoteNumber]);
+    }, [expanded, content, loading, sectionId, footnoteNumber, notFound]);
+
+    // Fail-soft: Don't render anything if footnote not found
+    if (notFound) return null;
 
     return (
         <View style={styles.container}>
@@ -70,20 +78,14 @@ export const FootnoteToggle = React.memo(({ sectionId, footnoteNumber, fontSize 
                     color="#795548"
                 />
                 <Text style={styles.toggleText}>
-                    {expanded ? `Dipnot ${footnoteNumber}'i kapat` : `Dipnot ${footnoteNumber}'i göster`}
+                    {loading ? 'Yükleniyor...' : expanded ? `Dipnot ${footnoteNumber}'i kapat` : `Dipnot ${footnoteNumber}'i göster`}
                 </Text>
             </TouchableOpacity>
 
             {/* Expanded Content */}
-            {expanded && (
+            {expanded && content && (
                 <View style={styles.content}>
-                    {loading && (
-                        <ActivityIndicator size="small" color="#795548" />
-                    )}
-                    {error && (
-                        <Text style={styles.errorText}>Dipnot bulunamadı</Text>
-                    )}
-                    {content && content.map((chunk, idx) => (
+                    {content.map((chunk, idx) => (
                         <Text
                             key={`fn-chunk-${idx}`}
                             style={[styles.footnoteText, { fontSize: fontSize * 0.9 }]}
