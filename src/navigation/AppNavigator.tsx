@@ -9,7 +9,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 import * as Notifications from 'expo-notifications';
 
-import { LoginScreen } from '@/features/auth/screens/LoginScreen';
+// Debug & VP Test Screens
+import { ReaderDevMenuScreen } from '@/features/debug/screens/ReaderDevMenuScreen';
+import { RisaleVirtualPageSectionList } from '@/features/reader/screens/RisaleVirtualPageSectionList';
+import { RisaleVirtualPageReaderScreen } from '@/features/reader/screens/RisaleVirtualPageReaderScreen';
+
+
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
 import { AddReadingLogScreen } from '@/features/risale/screens/AddReadingLogScreen';
@@ -84,6 +89,11 @@ export type RootStackParamList = {
     AddTransaction: undefined;
     ReadingTracking: undefined;
     Agenda: undefined;
+
+    // Debug & Test
+    ReaderDevMenu: undefined;
+    RisaleVirtualPageSectionList: { workId: string; workTitle: string };
+    RisaleVirtualPageReader: { bookId: string; sectionId: string; sectionTitle: string; workTitle: string };
 
     // Library Screens
     QuranSurahList: undefined;
@@ -705,14 +715,26 @@ export const AppNavigator = () => {
                                     options={{ title: 'İşlem Ekle', headerShown: true }}
                                 />
                                 <Stack.Screen
-                                    name="ReadingTracking"
-                                    component={ReadingTrackingScreen}
-                                    options={{ title: 'Okuma Takibi', headerShown: false }}
-                                />
-                                <Stack.Screen
                                     name="Agenda"
                                     component={AgendaScreen}
                                     options={{ title: 'Ajanda', headerShown: false }}
+                                />
+
+                                {/* Debug & VP Test Screens */}
+                                <Stack.Screen
+                                    name="ReaderDevMenu"
+                                    component={ReaderDevMenuScreen}
+                                    options={{ title: 'Geliştirici Menüsü', headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="RisaleVirtualPageSectionList"
+                                    component={RisaleVirtualPageSectionList}
+                                    options={{ title: 'Bölümler (VP)', headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="RisaleVirtualPageReader"
+                                    component={RisaleVirtualPageReaderScreen}
+                                    options={{ title: 'Okuma (VP)', headerShown: false }}
                                 />
 
                                 {/* Library Screens */}

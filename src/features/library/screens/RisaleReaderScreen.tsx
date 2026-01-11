@@ -32,9 +32,11 @@ export const RisaleReaderScreen = () => {
     const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
     const flatListRef = useRef<any>(null);
 
-    // Dynamic Header State
-    const [subTitle, setSubTitle] = useState<string>('');
-    const [pageNumber, setPageNumber] = useState<number>(0);
+    // Dynamic Header State (Consolidated)
+    const [headerState, setHeaderState] = useState({
+        subTitle: '',
+        pageNumber: 0
+    });
 
     const { data: chunks } = useQuery({
         queryKey: ['risaleChunks', sectionId],
@@ -47,8 +49,7 @@ export const RisaleReaderScreen = () => {
         },
     });
 
-    // Pre-calculate Heade Indices for O(1) lookup or O(log n)
-    // Structure: [{ index: 0, title: "..." }, { index: 50, title: "..." }]
+    // Pre-calculate Header Indices for O(1) lookup or O(log n)
     const headerMap = useMemo(() => {
         if (!chunks) return [];
         const map: { index: number; title: string }[] = [];
@@ -64,7 +65,6 @@ export const RisaleReaderScreen = () => {
                 map.push({ index: idx, title: clean });
             }
         });
-        console.log("DEBUG headerMap size:", map.length, "First 3:", map.slice(0, 3));
         return map;
     }, [chunks, sectionTitle]);
 
@@ -72,7 +72,6 @@ export const RisaleReaderScreen = () => {
     const [lugatWord, setLugatWord] = useState<string>('');
     const [lugatY, setLugatY] = useState<number>(0);
     const [lugatContext, setLugatContext] = useState<{ prev?: string; next?: string }>({});
-    const [activeLugatChunkId, setActiveLugatChunkId] = useState<number | null>(null);
 
     // Zoom State
     const lastFontSize = useRef(DEFAULT_FONT_SIZE);
@@ -91,7 +90,7 @@ export const RisaleReaderScreen = () => {
     const restoreRequestedRef = useRef(false);
 
     // ─────────────────────────────────────────────────────────────
-    // STABLE DATA REFS (To prevent onViewableItemsChanged recreation)
+    // STABLE DATA REFS & CALLBACKS
     // ─────────────────────────────────────────────────────────────
     const chunksRef = useRef(chunks);
     const headerMapRef = useRef(headerMap);
@@ -105,60 +104,53 @@ export const RisaleReaderScreen = () => {
         headerMapRef.current = headerMap;
     }, [headerMap]);
 
-    // Track visible items to use as anchor and Update Header
-    // STABLE CALLBACK (No dependencies)
-    const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken[] }) => {
-        console.log('[RisaleReaderScreen] onViewableItemsChanged called, items:', viewableItems.length);
+    // Throttled Header Updater
+    const updateHeaderState = useMemo(() => throttle((currentIndex: number) => {
+        const currentHeaderMap = headerMapRef.current;
+        if (!currentHeaderMap) return;
 
-        if (viewableItems.length > 0) {
-            const first = viewableItems[0];
-            const currentIndex = first.index;
-
-            console.log('[RisaleReaderScreen] First visible index:', currentIndex);
-
-            if (currentIndex === null) return;
-
-            // 1. Anchor Management
-            if (!isRestoringRef.current) {
-                anchorIndexRef.current = currentIndex;
-            }
-
-            // 2. Dynamic Header & Page Update
-            const currentChunks = chunksRef.current;
-            const currentHeaderMap = headerMapRef.current;
-
-            if (currentChunks && currentHeaderMap) {
-                // Find active header
-                let activeTitle = sectionTitle; // Default: capture from closure (sectionTitle usually stable or we can ref it too)
-
-                // Optimization: Loop backwards
-                for (let i = currentHeaderMap.length - 1; i >= 0; i--) {
-                    if (currentHeaderMap[i].index <= currentIndex) {
-                        activeTitle = currentHeaderMap[i].title;
-                        break;
-                    }
-                }
-
-                console.log('[RisaleReaderScreen] Active title:', activeTitle, 'headerMap size:', currentHeaderMap.length);
-
-                // Only update if changed to prevent render thrashing
-                setSubTitle(prev => {
-                    if (prev !== activeTitle) {
-                        console.log('[RisaleReaderScreen] Updating subTitle from', prev, 'to', activeTitle);
-                        return activeTitle;
-                    }
-                    return prev;
-                });
-
-                // Page Number - Use estimated calculation
-                const estimatedPage = Math.floor(currentIndex / 7) + 1;
-                console.log('[RisaleReaderScreen] Page number:', estimatedPage, 'for index:', currentIndex);
-                setPageNumber(estimatedPage);
+        // Find active header (Top-most visible item controls the header)
+        let activeTitle = sectionTitle;
+        // Search backwards efficiently
+        for (let i = currentHeaderMap.length - 1; i >= 0; i--) {
+            if (currentHeaderMap[i].index <= currentIndex) {
+                activeTitle = currentHeaderMap[i].title;
+                break;
             }
         }
-    }, [sectionTitle]); // sectionTitle is the only dep, stable enough. Refs handle the rest.
 
+        // Page Number - Use estimated calculation (Chunk based estimate)
+        // Adjust divider based on approximate chunk count per page (7 is heuristic)
+        const estimatedPage = Math.floor(currentIndex / 7) + 1;
 
+        setHeaderState(prev => {
+            if (prev.subTitle !== activeTitle || prev.pageNumber !== estimatedPage) {
+                return { subTitle: activeTitle, pageNumber: estimatedPage };
+            }
+            return prev;
+        });
+
+    }, 120, { leading: true, trailing: true }), [sectionTitle]);
+
+    // Stabilized Viewability Handler
+    const onViewableItemsChanged = useRef(({ viewableItems }: { viewableItems: ViewToken[] }) => {
+        if (!viewableItems || viewableItems.length === 0) return;
+
+        // Pick the top-most visible item (lowest index)
+        const topItem = viewableItems[0];
+        const currentIndex = topItem.index;
+
+        if (currentIndex === null || currentIndex === undefined) return;
+
+        // 1. Anchor Management
+        if (!isRestoringRef.current) {
+            anchorIndexRef.current = currentIndex;
+        }
+
+        // 2. Trigger Throttled Update
+        updateHeaderState(currentIndex);
+
+    }).current;
 
     // ─────────────────────────────────────────────────────────────
     // INITIAL LOAD & SAVE
@@ -186,7 +178,7 @@ export const RisaleReaderScreen = () => {
                     viewPosition: 0,
                 });
                 initialScrollDoneRef.current = true;
-            }, 250); // Increased delay slightly for reliability
+            }, 250);
         }
     }, [chunks, initialBlockIndex]);
 
@@ -209,20 +201,14 @@ export const RisaleReaderScreen = () => {
 
     const onPinchEnd = (e: any) => {
         const finalScale = e.scale;
-
-        // Calculate new font size based on scale
         const tentativeNewSize = lastFontSize.current * finalScale;
         const clampedSize = Math.min(MAX_FONT_SCALE, Math.max(MIN_FONT_SCALE, Math.round(tentativeNewSize)));
 
-        // Reset Visual Scale smoothly
         scale.value = withTiming(1, { duration: 150 });
 
         if (clampedSize !== lastFontSize.current) {
-            // 1. Set Restore Flag
             restoreRequestedRef.current = true;
             isRestoringRef.current = true;
-
-            // 2. Commit New Size
             runOnJS(setFontSize)(clampedSize);
             runOnJS(updateLastFontSize)(clampedSize);
         }
@@ -245,89 +231,62 @@ export const RisaleReaderScreen = () => {
         setFontSize(DEFAULT_FONT_SIZE);
         lastFontSize.current = DEFAULT_FONT_SIZE;
         AsyncStorage.setItem(FONT_SIZE_KEY, DEFAULT_FONT_SIZE.toString());
-
-        // Ensure scale is 1
         scale.value = 1;
     };
-
 
     // ─────────────────────────────────────────────────────────────
     // ANCHOR RESTORE
     // ─────────────────────────────────────────────────────────────
     const onContentSizeChange = () => {
         if (restoreRequestedRef.current && anchorIndexRef.current !== null) {
-            // Immediate restore attempt
             restoreRequestedRef.current = false;
-
-            // We can't scroll immediately if layout isn't ready, but contentSizeChange usually means it is.
-            // Using index-based scrolling (scrollToIndex) is reliable if data hasn't changed.
             flatListRef.current?.scrollToIndex({
                 index: anchorIndexRef.current,
                 animated: false,
-                viewPosition: 0 // Top alignment
+                viewPosition: 0
             });
-
-            // Reset lock after short delay
             setTimeout(() => {
                 isRestoringRef.current = false;
             }, 100);
         }
     };
 
-
-
     // ─────────────────────────────────────────────────────────────
     // RENDERERS
     // ─────────────────────────────────────────────────────────────
 
     const handleWordClick = useCallback(async (word: string, chunkId: number, pageY: number, prev?: string, next?: string) => {
-        // Toggle off if same word clicked?
         if (lugatWord === word) {
             setLugatWord('');
             setLugatContext({});
             return;
         }
 
-        // Save Raw Context for UI Builder
         setLugatContext({ prev, next });
 
         let resolvedWord = word;
 
-        // SMART SPAN (V10): Check Compound Words
-        // We eagerly check if the dictionary has the compound phrase.
-        // Priority: Longest Match.
-
-        // 1. Try "Prev + Word" (e.g. "Münim" + "Hakiki" -> "Münim-i Hakiki")
+        // SMART SPAN Logic
         if (prev) {
             const candidate = `${prev} ${word}`;
             const def = await LugatService.search(candidate);
-            if (def) {
-                resolvedWord = candidate;
-            }
+            if (def) resolvedWord = candidate;
         }
 
-        // 2. If not found, Try "Word + Next" (e.g. "Kamal-i" + "Suhulet")
         if (resolvedWord === word && next) {
             const candidate = `${word} ${next}`;
             const def = await LugatService.search(candidate);
-            if (def) {
-                resolvedWord = candidate;
-            }
+            if (def) resolvedWord = candidate;
         }
 
-        // 3. Fallback to single word (which LugatService will Stem)
         setLugatWord(resolvedWord);
         setLugatY(pageY);
     }, [lugatWord]);
 
-    // Chain Handlers
     const handleExpandLeft = () => {
         if (lugatContext.prev) {
             const merged = `${lugatContext.prev} ${lugatWord}`;
             setLugatWord(merged);
-            // After merge, consume prev? Or keep it?
-            // "Münim-i Hakiki" -> if we merge left, prev is used.
-            // Disable further Left? For V1, yes.
             setLugatContext(c => ({ ...c, prev: undefined }));
         }
     };
@@ -340,8 +299,25 @@ export const RisaleReaderScreen = () => {
         }
     };
 
+    // ─────────────────────────────────────────────────────────────
+    // SCROLL INTERACTIONS (Stutter Fix)
+    // ─────────────────────────────────────────────────────────────
+    const [isScrolling, setIsScrolling] = useState(false);
+    const scrollEndTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    // Helper to detect standalone "Sual:" (ends with colon, no content after)
+    const handleScrollBegin = () => {
+        if (scrollEndTimeout.current) clearTimeout(scrollEndTimeout.current);
+        setIsScrolling(true);
+        if (lugatWord) setLugatWord(''); // Close dictionary on scroll
+    };
+
+    const handleScrollEnd = () => {
+        if (scrollEndTimeout.current) clearTimeout(scrollEndTimeout.current);
+        scrollEndTimeout.current = setTimeout(() => {
+            setIsScrolling(false);
+        }, 150); // Debounce to prevent flicker on short stops
+    };
+
     const isStandaloneSualChunk = useCallback((text: string) => {
         const trimmed = text.trim();
         const RE_SUAL = /^(SU[AÂa]L|EL-?CEVAP|CEVAP)\s*:$/i;
@@ -349,7 +325,6 @@ export const RisaleReaderScreen = () => {
     }, []);
 
     const renderItem = useCallback(({ item, index }: { item: RisaleChunk; index: number }) => {
-        // Premium V20: Check if previous chunk was standalone "Sual:"
         let isAfterSual = false;
         if (index > 0 && chunks) {
             const prevChunk = chunks[index - 1];
@@ -364,15 +339,16 @@ export const RisaleReaderScreen = () => {
                 fontSize={fontSize}
                 isAfterSual={isAfterSual}
                 onWordPress={handleWordClick}
+                interactiveEnabled={!isScrolling} // Disable interactivity during scroll
             />
         );
-    }, [fontSize, handleWordClick, chunks, isStandaloneSualChunk]);
+    }, [fontSize, handleWordClick, chunks, isStandaloneSualChunk, isScrolling]);
 
-    // Stable Viewability Config - MOVED UP to avoid conditional hook call error
+    // Viewability Config -> Stabilized
     const viewabilityConfig = useRef({
-        itemVisiblePercentThreshold: 1, // Very low threshold
-        minimumViewTime: 0, // Fire immediately
-        waitForInteraction: false, // Fire immediately on mount
+        itemVisiblePercentThreshold: 60,
+        minimumViewTime: 80,
+        waitForInteraction: false,
     }).current;
 
     if (!chunks) {
@@ -389,20 +365,23 @@ export const RisaleReaderScreen = () => {
             <StatusBar barStyle="dark-content" backgroundColor="#FDF6E3" />
 
             {/* Custom Header (Minimal) */}
-            {/* NEW DYNAMIC HEADER (Golden Standard) */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerBtn}>
                     <Ionicons name="arrow-back" size={24} color="#000" />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1, paddingHorizontal: 10 }}>
-                    {/* BREADCRUMB: Work - Section */}
                     <Text style={styles.headerBreadcrumb} numberOfLines={1}>
-                        {workTitle} - <Text style={{ fontWeight: '700' }}>{subTitle || sectionTitle}</Text>
+                        {workTitle} - <Text style={{ fontWeight: '700' }}>{headerState.subTitle || sectionTitle}</Text>
                     </Text>
                 </View>
 
-                {/* Reset Zoom Button (Subtle) */}
+                {/* Page Number Badge */}
+                <View style={styles.pageBadge}>
+                    <Text style={styles.pageText}>{headerState.pageNumber > 0 ? `s. ${headerState.pageNumber}` : ''}</Text>
+                </View>
+
+                {/* Reset Zoom Button */}
                 <TouchableOpacity onPress={resetFont} style={[styles.headerBtn, { marginLeft: 5 }]}>
                     <Ionicons name="text-outline" size={20} color="#5D4037" />
                 </TouchableOpacity>
@@ -419,22 +398,25 @@ export const RisaleReaderScreen = () => {
                             onViewableItemsChanged={onViewableItemsChanged}
                             viewabilityConfig={viewabilityConfig}
                             onContentSizeChange={onContentSizeChange}
+                            extraData={isScrolling} // Re-render when scroll state changes
 
-                            estimatedItemSize={350}
-                            drawDistance={2500}
+                            estimatedItemSize={110} // Adjusted to avg 110 as requested
+                            drawDistance={200} // Tuned to 200
                             removeClippedSubviews={Platform.OS === 'android'}
                             contentContainerStyle={styles.listContent}
-                            onScrollBeginDrag={() => {
-                                if (lugatWord) setLugatWord('');
-                            }}
+
+                            // Scroll Handlers
+                            onScrollBeginDrag={handleScrollBegin}
+                            onMomentumScrollBegin={handleScrollBegin}
+                            onScrollEndDrag={handleScrollEnd}
+                            onMomentumScrollEnd={handleScrollEnd}
                         />
                     </Animated.View>
 
-                    {/* GLOBAL LUGAT POPOVER (Outside Scaled View to prevent distortion) */}
                     {lugatWord ? (
                         <View style={{
                             position: 'absolute',
-                            top: lugatY + 15, // Display slightly below touch point
+                            top: lugatY + 15,
                             left: 20,
                             right: 20,
                             zIndex: 9999,
@@ -451,7 +433,6 @@ export const RisaleReaderScreen = () => {
                                 nextWord={lugatContext.next}
                                 onExpandLeft={handleExpandLeft}
                                 onExpandRight={handleExpandRight}
-                            // Lugat Logic is V13 Unified
                             />
                         </View>
                     ) : null}
@@ -464,7 +445,7 @@ export const RisaleReaderScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FDF6E3', // Solarisized Light / Book paper
+        backgroundColor: '#FDF6E3',
     },
     center: {
         flex: 1,
@@ -473,8 +454,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FDF6E3',
     },
     header: {
-        height: Platform.OS === 'android' ? 56 + (StatusBar.currentHeight || 24) : 56, // Add StatusBar height
-        paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 24) : 0, // Push content down
+        height: Platform.OS === 'android' ? 56 + (StatusBar.currentHeight || 24) : 56,
+        paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 24) : 0,
         paddingHorizontal: 16,
         flexDirection: 'row',
         alignItems: 'center',
@@ -502,30 +483,28 @@ const styles = StyleSheet.create({
     chunkContainer: {
         marginBottom: 8,
     },
-    // NEW HEADER STYLES (LOCKED - Gold Standard V20.2)
-    // Clean, seamless header with no distracting backgrounds
     headerBreadcrumb: {
         fontSize: 14,
-        color: '#3E2723', // Darker brown
+        color: '#3E2723',
         fontFamily: 'serif',
-    },
-    pageBadge: {
-        // backgroundColor: '#D7CCC8', // REMOVED background for seamless look
-        paddingHorizontal: 0, // Removed padding
-        paddingVertical: 0,
-        marginHorizontal: 8,
-    },
-    pageText: {
-        fontSize: 14, // Increased to match header text
-        fontWeight: '700', // Bold for visibility
-        color: '#3E2723', // Matched color
-        fontFamily: 'serif', // Ensure consistent font
     },
     headerSeparator: {
         height: 1,
         width: '100%',
-        backgroundColor: '#A1887F', // Separator line
+        backgroundColor: '#A1887F',
         marginBottom: 0,
-        elevation: 2, // Shadow hint
+        elevation: 2,
+    },
+    pageBadge: {
+        backgroundColor: '#EFEBE9',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        marginHorizontal: 8,
+        borderRadius: 8,
+    },
+    pageText: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#5D4037',
     },
 });

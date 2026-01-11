@@ -7,7 +7,8 @@ import { LugatService } from '../../../services/lugatService';
 import { normalizeText } from '../../../services/textNormalization';
 
 interface Props {
-    word: string;
+    word?: string; // Optional if entry is provided
+    entry?: DictionaryEntry | null; // Direct entry injection
     onClose: () => void;
     prevWord?: string;
     nextWord?: string;
@@ -17,12 +18,21 @@ interface Props {
 
 // Local normalize removed, using imported one.
 
-export const LugatInlineCard = ({ word, onClose, prevWord, nextWord, onExpandLeft, onExpandRight }: Props) => {
-    const [loading, setLoading] = useState(true);
-    const [entry, setEntry] = useState<DictionaryEntry | null>(null);
+export const LugatInlineCard = ({ word, entry: initialEntry, onClose, prevWord, nextWord, onExpandLeft, onExpandRight }: Props) => {
+    const [loading, setLoading] = useState(!initialEntry);
+    const [entry, setEntry] = useState<DictionaryEntry | null>(initialEntry || null);
     const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
+        // If we already have the entry, don't fetch!
+        if (initialEntry) {
+            setLoading(false);
+            setEntry(initialEntry);
+            return;
+        }
+
+        if (!word) return;
+
         let mounted = true;
         const search = async () => {
             setLoading(true);
@@ -47,9 +57,9 @@ export const LugatInlineCard = ({ word, onClose, prevWord, nextWord, onExpandLef
         };
         search();
         return () => { mounted = false; };
-    }, [word]);
+    }, [word, initialEntry]);
 
-    if (!word) return null;
+    if (!word && !initialEntry) return null;
 
     return (
         <View style={styles.card}>

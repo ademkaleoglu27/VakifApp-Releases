@@ -1,4 +1,5 @@
 import { getDb } from './contentDb';
+import { RisaleWork, RisaleSection, RisaleChunk } from '@/types/risale';
 
 // ════════════════════════════════════════════════════════════════
 // LOAD & STABILIZE MODE
@@ -8,28 +9,6 @@ const LOAD_STABILIZE_MODE = false;
 const ALLOWED_WORK_IDS = ['sozler']; // Only Sözler
 const MAX_SECTIONS = 5; // Birinci-Beşinci Söz
 
-export interface RisaleWork {
-    id: string;
-    title: string;
-    category: string;
-    order_no: number;
-}
-
-export interface RisaleSection {
-    id: string;
-    work_id: string;
-    title: string;
-    order_no: number;
-}
-
-export interface RisaleChunk {
-    id: number;
-    section_id: string;
-    chunk_no: number;
-    text_tr: string;
-    page_no?: number;
-}
-
 export interface RisaleSearchResult {
     sectionId: string;
     sectionTitle: string;
@@ -38,6 +17,7 @@ export interface RisaleSearchResult {
     chunkIndex: number;
     snippet: string;
 }
+
 
 export const getChunksBySection = async (sectionId: string): Promise<RisaleChunk[]> => {
     const db = getDb();

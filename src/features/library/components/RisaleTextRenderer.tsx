@@ -26,6 +26,7 @@ type Props = {
     onWordPress?: (word: string, pageY: number, prev?: string, next?: string) => void;
     onWordLongPress?: (word: string) => void;
     arabicColor?: string; // default RNK kırmızısı
+    interactiveEnabled?: boolean; // Scroll Optimization: Disable interactions during scroll
 };
 
 const RNK_ARABIC = "#B3261E";
@@ -104,6 +105,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
         isAfterSual = false,
         onWordPress,
         arabicColor = RNK_ARABIC,
+        interactiveEnabled = true, // Default enabled
     } = props;
 
     const isAndroid = Platform.OS === "android";
@@ -130,7 +132,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
 
     // Word press handler - Now captures coordinates and context (Smart Span)
     const handlePress = useCallback((w: string, pageY: number, prev?: string, next?: string) => {
-        if (!onWordPress) return;
+        if (!onWordPress || !interactiveEnabled) return;
         // Normalize: remove punctuation
         const clean = w.replace(/[.,;:!?(){}[\]"']/g, "").toLowerCase();
 
@@ -140,7 +142,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
 
         // Pass coordinates and context up
         onWordPress(clean, pageY, cleanPrev, cleanNext);
-    }, [onWordPress]);
+    }, [onWordPress, interactiveEnabled]);
 
     // ─────────────────────────────────────────────────────────────
     // SEMANTIC DETECTORS
@@ -227,7 +229,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                     <Text
                         key={`${keyPrefix}-ey-${eyIdx}`}
                         style={styles.eyAddress}
-                        onPress={(e) => handlePress(chunk, e.nativeEvent.pageY)}
+                        onPress={interactiveEnabled ? (e) => handlePress(chunk, e.nativeEvent.pageY) : undefined}
                     >
                         {chunk}
                     </Text>
@@ -246,7 +248,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                         <Text
                             key={`${keyPrefix}-sacred-${eyIdx}-${i}`}
                             style={{ fontWeight: '700', color: '#000' }}
-                            onPress={(e) => handlePress(part, e.nativeEvent.pageY)}
+                            onPress={interactiveEnabled ? (e) => handlePress(part, e.nativeEvent.pageY) : undefined}
                         >
                             {part}
                         </Text>
@@ -259,10 +261,6 @@ export const RisaleTextRenderer = memo((props: Props) => {
                         const cleanW = w.trim();
                         if (cleanW.length > 0 && !/^[.,;!?]+$/.test(cleanW)) {
                             // SMART SPAN: Find neighbors
-                            // Filter out empty spaces/punct to find real words? 
-                            // The split keeps delimiters. So words[wIdx-1] might be space.
-                            // We need to look back/forward skipping spaces.
-
                             let prevWord = undefined;
                             let nextWord = undefined;
 
@@ -287,7 +285,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                             return (
                                 <Text
                                     key={`${keyPrefix}-tr-${i}-${wIdx}`}
-                                    onPress={(e) => handlePress(cleanW, e.nativeEvent.pageY, prevWord, nextWord)}
+                                    onPress={interactiveEnabled ? (e) => handlePress(cleanW, e.nativeEvent.pageY, prevWord, nextWord) : undefined}
                                     suppressHighlighting={false}
                                 >
                                     {w}
@@ -300,7 +298,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                 return <Text key={`${keyPrefix}-tr-${eyIdx}-${i}`}>{part}</Text>;
             });
         });
-    }, [color, onWordPress, handlePress]);
+    }, [color, onWordPress, handlePress, interactiveEnabled]);
 
     // ─────────────────────────────────────────────────────────────
     // SEGMENTED RENDERER (Flow Control)
