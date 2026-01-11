@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0139",
+    "pageIndex": 139,
+    "sectionId": "sozler-section-023",
+    "header": {
+        "title": "On Üçüncü Söz’ün İkinci Makamı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0139-001",
+            "type": "paragraph",
+            "text": "Eğer mazi, yani geçmiş zamanın hâdisatını, sinema ile halihazırda gösterdikleri gibi istikbaldeki ahval dahi mesela elli sene sonraki halleri bir sinema ile gösterilse idi, ehl-i sefahet şimdiki güldüklerine yüz binlerce nefrin ve nefret edip ağlayacaktılar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0139-002",
+            "type": "paragraph",
+            "text": "Dünya ve âhirette ebedî ve daimî süruru isteyen, iman dairesindeki terbiye-i Muhammediyeyi (asm) kendine rehber etmek gerektir.",
+            "lang": "tr"
+        }
+    ]
+}

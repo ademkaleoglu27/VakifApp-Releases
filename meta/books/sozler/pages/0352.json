@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0352",
+    "pageIndex": 352,
+    "sectionId": "sozler-section-066",
+    "header": {
+        "title": "[1] Hâşiye: Ağaçları başlarında taşıyan çekirdeklere işarettir.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0352-001",
+            "type": "paragraph",
+            "text": "[23] Hâşiye: Nurani ferman Kur’an’a ve üstündeki turra ise i’cazına işarettir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0352-002",
+            "type": "paragraph",
+            "text": "[24] Hâşiye: Bu hitap, Kur’an’ı kaldırmaya çalışanadır.",
+            "lang": "tr"
+        }
+    ]
+}

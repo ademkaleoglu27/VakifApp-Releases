@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0029",
+    "pageIndex": 29,
+    "sectionId": "sozler-section-008",
+    "header": {
+        "title": "Yedinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0029-001",
+            "type": "paragraph",
+            "text": "Sual: Hâ hâ, nedir ağzında gizli okuyorsun?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-002",
+            "type": "paragraph",
+            "text": "Cevap: Bir tılsım.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-003",
+            "type": "paragraph",
+            "text": "— Bırak şu anlaşılmaz işi. Hazır keyfimizi bozmayalım.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-004",
+            "type": "paragraph",
+            "text": "S- Hâ, şu ellerindeki nedir?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-005",
+            "type": "paragraph",
+            "text": "C- Bir ilaç.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-006",
+            "type": "paragraph",
+            "text": "— At şunu. Sağlamsın. Neyin var? Alkış zamanıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0029-007",
+            "type": "paragraph",
+            "text": "S- Hâ, şu beş nişanlı kâğıt nedir?",
+            "lang": "tr"
+        }
+    ]
+}

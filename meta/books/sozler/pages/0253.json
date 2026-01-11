@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0253",
+    "pageIndex": 253,
+    "sectionId": "sozler-section-050",
+    "header": {
+        "title": "Bir vakit Barla’da Çam Dağı’nda yüksek bir mevkide, gecede semanın yüzüne baktım. Gelecek fıkralar, birden hutur etti. Yıldızların lisan-ı hal ile konuşmalarını hayalen işittim gibi bu yazıldı. Nazım ve şiir bilmediğim için şiir kaidesine girmedi. Tahattur olduğu gibi yazılmış.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0253-header",
+            "type": "heading",
+            "text": "Bir vakit Barla’da Çam Dağı’nda yüksek bir mevkide, gecede semanın yüzüne baktım. Gelecek fıkralar, birden hutur etti. Yıldızların lisan-ı hal ile konuşmalarını hayalen işittim gibi bu yazıldı. Nazım ve şiir bilmediğim için şiir kaidesine girmedi. Tahattur olduğu gibi yazılmış.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-001",
+            "type": "paragraph",
+            "text": "Dördüncü Mektup ile Otuz İkinci Söz’ün Birinci Mevkıfı’nın âhirinden alınmıştır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-002",
+            "type": "paragraph",
+            "text": "Yıldızları Konuşturan Bir Yıldızname",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-003",
+            "type": "paragraph",
+            "text": "Dinle de yıldızları şu hutbe-i şirinine",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-004",
+            "type": "paragraph",
+            "text": "Name-i nurîn-i hikmet, bak ne takrir eylemiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-005",
+            "type": "paragraph",
+            "text": "Hep beraber nutka gelmiş, hak lisanıyla derler:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-006",
+            "type": "paragraph",
+            "text": "“Bir Kadîr-i Zülcelal’in haşmet-i sultanına",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0253-007",
+            "type": "paragraph",
+            "text": "Birer bürhan-ı nur-efşanız vücud-u Sâni’a",
+            "lang": "tr"
+        }
+    ]
+}

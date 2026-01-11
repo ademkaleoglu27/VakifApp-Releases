@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0522",
+    "pageIndex": 522,
+    "sectionId": "sozler-section-082",
+    "header": {
+        "title": "Zeyl",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0522-001",
+            "type": "paragraph",
+            "text": "Hakikat şöyledir ki: Her şey nefsinde mana-yı ismiyle fânidir, mefkuddur, hâdistir, ma’dumdur. Fakat mana-yı harfiyle ve Sâni’-i Zülcelal’in esmasına âyinedarlık cihetiyle ve vazifedarlık itibarıyla şahittir, meşhuddur, vâciddir, mevcuddur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0522-002",
+            "type": "paragraph",
+            "text": "Şu makamda tezkiyesi ve tathiri şudur ki: Vücudunda adem, ademinde vücudu vardır. Yani kendini bilse, vücud verse kâinat kadar bir zulümat-ı adem içindedir. Yani vücud-u şahsîsine güvenip Mûcid-i Hakiki’den gaflet etse yıldız böceği gibi bir şahsî ziya-yı vücudu, nihayetsiz zulümat-ı adem ve firaklar içinde bulunur, boğulur. Fakat enaniyeti bırakıp, bizzat nefsi hiç olduğunu ve Mûcid-i Hakiki’nin bir âyine-i tecellisi bulunduğunu gördüğü vakit, bütün mevcudatı ve nihayetsiz bir vücudu kazanır. Zira bütün mevcudat, esmasının cilvelerine mazhar olan Zat-ı Vâcibü’l-vücud’u bulan, her şeyi bulur.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0789",
+    "pageIndex": 789,
+    "sectionId": "sozler-section-144",
+    "header": {
+        "title": "Nur-u akıl, kalpten gelir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0789-header",
+            "type": "heading",
+            "text": "Nur-u akıl, kalpten gelir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0789-001",
+            "type": "paragraph",
+            "text": "Zulmetli münevverler bu sözü bilmeliler: Ziya-yı kalpsiz olmaz nur-u fikir münevver.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0789-002",
+            "type": "paragraph",
+            "text": "O nur ile bu ziya mezcolmazsa zulmettir, zulüm ve cehli fışkırır. Nurun libasını giymiş bir zulmet-i müzevver.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0789-003",
+            "type": "paragraph",
+            "text": "Gözünde bir nehar var, lâkin ebyaz ve muzlim. İçinde bir sevad var ki bir leyl-i münevver.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0789-004",
+            "type": "paragraph",
+            "text": "O içinde bulunmazsa o şahm-pare göz olmaz, sen de bir şey göremez. Basîretsiz basar da para etmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0789-005",
+            "type": "paragraph",
+            "text": "Ger fikret-i beyzada süveyda-i kalp olmazsa halita-i dimağî ilim ve basîret olmaz. Kalpsiz akıl olamaz.",
+            "lang": "tr"
+        }
+    ]
+}

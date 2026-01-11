@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0751",
+    "pageIndex": 751,
+    "sectionId": "sozler-section-115",
+    "header": {
+        "title": "*[4]) hüsran-ı İslâm’a.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0751-header",
+            "type": "heading",
+            "text": "*[4]) hüsran-ı İslâm’a.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-001",
+            "type": "paragraph",
+            "text": "Mezar taşımla pür-emvat enîndar o mezarımla",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-002",
+            "type": "paragraph",
+            "text": "Revanım saha-i ukba-yı ferdâma.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-003",
+            "type": "paragraph",
+            "text": "Yakînim var ki istikbal semavatı, zemin-i Asya",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-004",
+            "type": "paragraph",
+            "text": "Bâhem olur teslim, yed-i beyza-yı İslâm’a.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-005",
+            "type": "paragraph",
+            "text": "Zira yemin-i yümn-ü imandır",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0751-006",
+            "type": "paragraph",
+            "text": "Verir emni eman ile enama…",
+            "lang": "tr"
+        }
+    ]
+}

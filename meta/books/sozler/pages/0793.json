@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0793",
+    "pageIndex": 793,
+    "sectionId": "sozler-section-148",
+    "header": {
+        "title": "Kuvvet hakka hizmetkâr olmalı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0793-header",
+            "type": "heading",
+            "text": "Kuvvet hakka hizmetkâr olmalı",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0793-001",
+            "type": "paragraph",
+            "text": "Hikmetteki desatir, hükûmette nevamis, hakta olan kavanin, kuvvetteki kavaid birbiriyle olmazsa müstenid ve müstemid",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0793-002",
+            "type": "paragraph",
+            "text": "Cumhur-u nâsta olmaz, ne müsmir ve müessir. Şeriatta şeair; kalır mühmel, muattal. Umûr-u nâsta olmaz, müstenid ve mutemid.",
+            "lang": "tr"
+        }
+    ]
+}

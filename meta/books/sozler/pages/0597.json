@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0597",
+    "pageIndex": 597,
+    "sectionId": "sozler-section-096",
+    "header": {
+        "title": "İkinci Maksat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0597-header",
+            "type": "heading",
+            "text": "İkinci Maksat",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0597-001",
+            "type": "paragraph",
+            "text": "Tahavvülat-ı zerrata dair",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0597-002",
+            "type": "paragraph",
+            "text": "Şu âyetin hazinesinden bir zerreye işaret edecektir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0597-003",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0597-004",
+            "type": "paragraph",
+            "text": "وَقَالَ الَّذٖينَ كَفَرُوا لَا تَاْتٖينَا السَّاعَةُ قُلْ بَلٰى وَ رَبّٖى لَتَاْتِيَنَّكُمْ عَالِمِ الْغَيْبِ لَا يَعْزُبُ عَنْهُ مِثْقَالُ ذَرَّةٍ فِى السَّمٰوَاتِ وَلَا فِى الْاَرْضِ وَلَٓا اَصْغَرُ مِنْ ذٰلِكَ وَلَٓا اَكْبَرُ اِلَّا فٖى كِتَابٍ مُبٖينٍ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0597-005",
+            "type": "paragraph",
+            "text": "Şu âyetin pek büyük hazinesinden bir miskal zerre miktarında, yani zerre sandukçasında olan cevheri gösterir ve zerrenin hareket ve vazifesinden bir nebze bahseder. Şu maksat, bir mukaddime ile üç noktadan ibarettir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0597-006",
+            "type": "paragraph",
+            "text": "Mukaddime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0597-007",
+            "type": "paragraph",
+            "text": "Tahavvülat-ı zerrat; Nakkaş-ı Ezelî’nin kalem-i kudreti, kitab-ı kâinatta yazdığı âyât-ı tekviniyenin hengâmındaki ihtizazatı ve cevelanıdır. Yoksa maddiyyun ve tabiiyyunların tevehhüm ettikleri gibi tesadüf oyuncağı ve karışık, manasız bir hareket değildir. Çünkü bütün mevcudat gibi zerreler ve her bir zerre, mebde-i hareketinde “Bismillah” der. Çünkü nihayetsiz, kuvvetinden fazla yükleri kaldırır ve buğday tanesi kadar bir çekirdeğin koca bir çam ağacı gibi bir yükü omuzuna alması gibi…",
+            "lang": "tr"
+        }
+    ]
+}

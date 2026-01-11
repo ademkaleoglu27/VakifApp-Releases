@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0173",
+    "pageIndex": 173,
+    "sectionId": "sozler-section-036",
+    "header": {
+        "title": "[1] Hâşiye: İzmir’in zelzelesi münasebetiyle yazılmıştır.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0173-header",
+            "type": "heading",
+            "text": "[1] Hâşiye: İzmir’in zelzelesi münasebetiyle yazılmıştır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0173-001",
+            "type": "paragraph",
+            "text": "[2] Hâşiye: Hem Rus gibi olanlar, mensuh ve tahrif edilmiş bir dini terk etmekle, hak ve ebedî ve kabil-i nesh olmayan bir dine ihanet etmek derecesinde gayretullaha dokunmadığından, zemin şimdilik onları bırakıp bunlara hiddet ediyor.",
+            "lang": "tr"
+        }
+    ]
+}

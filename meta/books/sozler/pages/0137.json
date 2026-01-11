@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0137",
+    "pageIndex": 137,
+    "sectionId": "sozler-section-023",
+    "header": {
+        "title": "On Üçüncü Söz’ün İkinci Makamı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0137-header",
+            "type": "heading",
+            "text": "On Üçüncü Söz’ün İkinci Makamı",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0137-002",
+            "type": "paragraph",
+            "text": "(Cazibedar bir fitne içinde bulunan ve daha aklını kaybetmeyen bazı gençlerle bir muhaveredir.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-003",
+            "type": "paragraph",
+            "text": "Bir kısım gençler tarafından şimdiki aldatıcı ve cazibedar lehviyat ve hevesatın hücumları karşısında “Âhiretimizi ne suretle kurtaracağız?” diye Risale-i Nur’dan meded istediler. Ben de Risale-i Nur’un şahs-ı manevîsi namına onlara dedim ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-004",
+            "type": "paragraph",
+            "text": "Kabir var, hiç kimse inkâr edemez. Herkes ister istemez oraya girecek. Ve oraya girmek için de üç tarzda üç yoldan başka yol yok.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-005",
+            "type": "paragraph",
+            "text": "Birinci yol: O kabir, ehl-i iman için bu dünyadan daha güzel bir âlemin kapısıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-006",
+            "type": "paragraph",
+            "text": "İkinci yol: Âhireti tasdik eden fakat sefahet ve dalalette gidenlere bir haps-i ebedî ve bütün dostlarından bir tecrit içinde bir haps-i münferid, yalnız başına bir hapis kapısıdır. Öyle gördüğü ve itikad ettiği ve inandığı gibi hareket etmediği için öyle muamele görecek.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0137-007",
+            "type": "paragraph",
+            "text": "Üçüncü yol: Âhirete inanmayan ehl-i inkâr ve dalalet için bir idam-ı ebedî kapısı yani hem kendisini hem bütün sevdiklerini idam edecek bir darağacıdır. Öyle bildiği için cezası olarak aynını görecek. Bu iki şık bedihîdir, delil istemiyor, göz ile görünür.",
+            "lang": "tr"
+        }
+    ]
+}

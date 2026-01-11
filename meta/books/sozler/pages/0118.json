@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0118",
+    "pageIndex": 118,
+    "sectionId": "sozler-section-020",
+    "header": {
+        "title": "On Birinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0118-001",
+            "type": "paragraph",
+            "text": "Sâlisen: Rahmet-i İlahiyenin hazinelerinde iddihar edilen nimetlerini zahir ve bâtın duygularla tadıp anlamak makamında, şükür ve sena vazifesini edaya başladılar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0118-002",
+            "type": "paragraph",
+            "text": "Râbian: Esma-i İlahiyenin definelerindeki cevherleri, manevî cihazat mizanlarıyla tartıp bilmek makamında, tenzih ve medih vazifesine başladılar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0118-003",
+            "type": "paragraph",
+            "text": "Hâmisen: Mistar-ı kader üstünde kalem-i kudretiyle yazılan mektubat-ı Rabbaniyeyi mütalaa makamında, tefekkür ve istihsan vazifesine başladılar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0118-004",
+            "type": "paragraph",
+            "text": "Sâdisen: Eşyanın yaratılışında ve masnuatın sanatındaki latîf incelik ve nâzenin güzellikleri temaşa ile tenzih makamında Fâtır-ı Zülcelal, Sâni’-i Zülcemal’lerine muhabbet ve iştiyak vazifesine girdiler.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0118-005",
+            "type": "paragraph",
+            "text": "Demek, kâinata ve âsâra bakıp gaibane muamele-i ubudiyetle mezkûr makamatta mezkûr vezaifi eda ettikten sonra Sâni’-i Hakîm’in dahi muamelesine ve ef’aline bakmak derecesine çıktılar ki hazırane bir muamele suretinde evvela Hâlık-ı Zülcelal’in kendi sanatının mu’cizeleriyle kendini zîşuura tanıttırmasına karşı hayret içinde bir marifet ile mukabele ederek سُبْحَانَكَ مَا عَرَفْنَاكَ حَقَّ مَعْرِفَتِكَ dediler. “Senin tarif edicilerin bütün masnuatındaki mu’cizelerindir.”",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0118-006",
+            "type": "paragraph",
+            "text": "Sonra o Rahman’ın kendi rahmetinin güzel meyveleriyle kendini sevdirmesine karşı, muhabbet ve aşk ile mukabele edip اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعٖينُ dediler.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0118-007",
+            "type": "paragraph",
+            "text": "Sonra o Mün’im-i Hakiki’nin tatlı nimetleriyle terahhum ve şefkatini göstermesine karşı şükür ve hamd ile mukabele ettiler, dediler: سُبْحَانَكَ وَبِحَمْدِكَ “Senin hak şükrünü nasıl eda edebiliriz? Sen öyle şükre lâyık bir meşkûrsun ki bütün kâinata serilmiş bütün ihsanatın açık lisan-ı halleri, şükür ve senanızı okuyorlar. Hem âlem çarşısında dizilmiş ve zeminin yüzüne serpilmiş bütün nimetlerin ilanatıyla hamd ve medhinizi bildiriyorlar. Hem rahmet ve nimetin manzum meyveleri ve mevzun yemişleri, senin cûd ve keremine şehadet etmekle senin şükrünü enzar-ı mahlukat önünde îfa ederler.”",
+            "lang": "ar"
+        }
+    ]
+}

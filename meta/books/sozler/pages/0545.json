@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0545",
+    "pageIndex": 545,
+    "sectionId": "sozler-section-089",
+    "header": {
+        "title": "Yirmi Sekizinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0545-header",
+            "type": "heading",
+            "text": "Yirmi Sekizinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0545-001",
+            "type": "paragraph",
+            "text": "Şu söz, cennete dairdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0545-002",
+            "type": "paragraph",
+            "text": "Şu Söz’ün iki makamı var. Birinci Makam, cennetin bazı letaifine işaret eder. Fakat Onuncu Söz’de on iki hakikat-i kātıa ile gayet kat’î bir surette ve bu Söz’ün İkinci Makamı’nda Onuncu Söz’ün hülâsası ve esası, müteselsil gayet metin Arabî bir bürhan-ı kat’î ile gayet parlak bir tarzda vücudu ispat olunan cennetin ispat-ı vücudundan bahis değil belki şu makamda yalnız sual ve cevaba ve tenkide medar olan birkaç ahval-i cennetten bahseder. Eğer tevfik-i İlahî refik olsa sonra azîm bir söz, o muazzam hakikate dair yazılacaktır, inşâallah.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0545-003",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0545-004",
+            "type": "paragraph",
+            "text": "وَبَشِّرِ الَّذٖينَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ اَنَّ لَهُمْ جَنَّاتٍ تَجْرٖى مِنْ تَحْتِهَا الْاَنْهَارُ كُلَّمَا رُزِقُوا مِنْهَا مِنْ ثَمَرَةٍ رِزْقًا قَالُوا هٰذَا الَّذٖى رُزِقْنَا مِنْ قَبْلُ وَ اُتُوا بِهٖ مُتَشَابِهًا وَ لَهُمْ فٖيهَٓا اَزْوَاجٌ مُطَهَّرَةٌ وَهُمْ فٖيهَا خَالِدُونَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0545-005",
+            "type": "paragraph",
+            "text": "Cennet-i bâkiyeye dair bazı suallere kısa cevaplardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0545-006",
+            "type": "paragraph",
+            "text": "Cennete dair, cennetten daha güzel, hurilerinden daha latîf, selsebilinden daha tatlı olan beyanat-ı âyât-ı Kur’aniye kimseye söz bırakmamıştır ki fazla bir şey söylensin. Fakat o parlak, ezelî ve ebedî, yüksek ve güzel âyetleri fehme takrib için bazı basamakları hem o cennet-i Kur’aniyeden numune için bazı çiçeklerin numunesi nevinden bazı nükteleri söyleyeceğiz. Beş rumuzlu sual ve cevapla işaret edeceğiz. Evet, cennet bütün lezaiz-i maneviyeye medar olduğu gibi bütün lezaiz-i cismaniyeye de medardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0545-007",
+            "type": "paragraph",
+            "text": "Sual: Kusurlu, noksaniyetli, mütegayyir, kararsız, elemli cismaniyetin ebediyetle ve cennetle ne alâkası var? Madem ruhun âlî lezaizi vardır, ona kâfidir. Lezaiz-i cismaniye için bir haşr-i cismanî neden icab ediyor?",
+            "lang": "tr"
+        }
+    ]
+}

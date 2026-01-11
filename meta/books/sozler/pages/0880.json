@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0880",
+    "pageIndex": 880,
+    "sectionId": "sozler-section-199",
+    "header": {
+        "title": "اُولَاشْمَازْ دَسْتِ أَدَبِ غَرْبِ هَوَسْبَارِ هَوَاكَارِ دَهَادَارْ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0880-001",
+            "type": "paragraph",
+            "text": "Her köşede istînas, o cemiyet içinde mahzunu vaz’ediyor bir hüzn-ü müştakane, bir hiss-i ulvi verir, gamlı bir hüznü vermez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0880-002",
+            "type": "paragraph",
+            "text": "İkisi birer şevki de verir: O yabani edebin verdiği bir şevk ile nefis düşer heyecana, heves olur münbasit; ruha ferah veremez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0880-003",
+            "type": "paragraph",
+            "text": "Kur’an’ın şevki ise: Ruh düşer heyecana, şevk-i maâlî verir. İşte bu sırra binaen, şeriat-ı Ahmediye (asm) lehviyatı istemez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0880-004",
+            "type": "paragraph",
+            "text": "Bazı âlât-ı lehvi tahrim edip, bir kısmı helâl diye izin verip… Demek, hüzn-ü Kur’anî veya şevk-i Tenzilî veren âlet, zarar vermez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0880-005",
+            "type": "paragraph",
+            "text": "Eğer hüzn-ü yetimî veya şevk-i nefsanî verse âlet haramdır. Değişir eşhasa göre herkes birbirine benzemez.",
+            "lang": "tr"
+        }
+    ]
+}

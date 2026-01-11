@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0834",
+    "pageIndex": 834,
+    "sectionId": "sozler-section-175",
+    "header": {
+        "title": "İcad ve cem’-i ezdadda büyük bir hikmet var. Kudret elinde şems ve zerre birdir.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0834-001",
+            "type": "paragraph",
+            "text": "Semavat bir denizdir, bir nefes-i Rahman’la çin-i cebînlerinde mevcelenip, katarat ki nücum ve hem şümustur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0834-002",
+            "type": "paragraph",
+            "text": "Kudret tecelli etti, o katarata serpti nurani lemaatı. Her bir güneş bir katre, her bir yıldız bir şebnem, her bir lem’a timsaldir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0834-003",
+            "type": "paragraph",
+            "text": "O feyz-i tecellinin küçücük bir aksidir o katre-misal güneş. Eder mücella camını o lümey’a zücace dürri-misal parlıyor",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0834-004",
+            "type": "paragraph",
+            "text": "O şebnem-misal yıldız latîf gözü içinde, bir yer yapar lem’aya, lem’a olur bir sirac, gözü olur zücace, misbahı nurlanıyor.",
+            "lang": "tr"
+        }
+    ]
+}

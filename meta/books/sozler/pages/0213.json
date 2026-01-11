@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0213",
+    "pageIndex": 213,
+    "sectionId": "sozler-section-044",
+    "header": {
+        "title": "Siyah Dutun Bir Meyvesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0213-001",
+            "type": "paragraph",
+            "text": "Rahmet kapısı, nur kapısı, hak kapısı, ondan sıkılmam, geri çekilmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0213-002",
+            "type": "paragraph",
+            "text": "Bismillah diyerek çalıyorum (Hâşiye[2]) arkama bakmam, dehşet de almam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0213-003",
+            "type": "paragraph",
+            "text": "Elhamdülillah diyerek rahat bulup yatacağım, zahmeti çekmem, vahşette kalmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0213-004",
+            "type": "paragraph",
+            "text": "Allahu ekber diyerek ezan-ı haşri işitip kalkacağım (Hâşiye[3]) mahşer-i ekberden çekinmem, mescid-i a’zamdan çekilmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0213-005",
+            "type": "paragraph",
+            "text": "Lütf-u Yezdan, nur-u Kur’an, feyz-i iman sayesinde hiç üzülmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0213-006",
+            "type": "paragraph",
+            "text": "Durmayıp koşacağım, arş-ı Rahman zılline uçacağım, sen gibi şaşmam inşâallah.",
+            "lang": "tr"
+        }
+    ]
+}

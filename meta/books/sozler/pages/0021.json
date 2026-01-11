@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0021",
+    "pageIndex": 21,
+    "sectionId": "sozler-section-006",
+    "header": {
+        "title": "Beşinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0021-001",
+            "type": "paragraph",
+            "text": "Demek ey nefsim! Eğer hayat-ı dünyeviyeyi gaye-i maksat yapsan ve ona daim çalışsan en edna bir serçe kuşunun bir neferi hükmünde olursun. Eğer hayat-ı uhreviyeyi gaye-i maksat yapsan ve şu hayatı dahi ona vesile ve mezraa etsen ve ona göre çalışsan; o vakit hayvanatın büyük bir kumandanı hükmünde ve şu dünyada Cenab-ı Hakk’ın nazlı ve niyazdar bir abdi, mükerrem ve muhterem bir misafiri olursun.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0021-002",
+            "type": "paragraph",
+            "text": "İşte sana iki yol, istediğini intihab edebilirsin. Hidayet ve tevfiki Erhamü’r-Râhimîn’den iste.",
+            "lang": "tr"
+        }
+    ]
+}

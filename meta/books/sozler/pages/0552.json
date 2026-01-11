@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0552",
+    "pageIndex": 552,
+    "sectionId": "sozler-section-091",
+    "header": {
+        "title": "[1] Hâşiye: Şu dünyada cism-i insanî ve hayvanî, zerrat için güya bir misafirhane, bir kışla, bir mektep hükmündedir ki camid zerreler ona girerler, hayattar olan âlem-i bekaya zerrat olmak için liyakat kesbederler, çıkarlar. Âhirette ise اِنَّ الدَّارَ الْاٰخِرَةَ لَهِىَ الْحَيَوَانُ sırrınca, nur-u hayat orada âmmdır. Nurlanmak için o seyr ü sefere ve o talimat ve talime lüzum yoktur. Zerreler demirbaş olarak sabit kalabilirler.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0552-header",
+            "type": "heading",
+            "text": "[1] Hâşiye: Şu dünyada cism-i insanî ve hayvanî, zerrat için güya bir misafirhane, bir kışla, bir mektep hükmündedir ki camid zerreler ona girerler, hayattar olan âlem-i bekaya zerrat olmak için liyakat kesbederler, çıkarlar. Âhirette ise اِنَّ الدَّارَ الْاٰخِرَةَ لَهِىَ الْحَيَوَانُ sırrınca, nur-u hayat orada âmmdır. Nurlanmak için o seyr ü sefere ve o talimat ve talime lüzum yoktur. Zerreler demirbaş olarak sabit kalabilirler.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0552-001",
+            "type": "paragraph",
+            "text": "[2] Hâşiye: Sekiz sene kemal-i sadakatle bu fakire hizmet eden Süleyman’ın bahçesidir ki bir veya iki saat zarfında şu Söz orada yazıldı.",
+            "lang": "tr"
+        }
+    ]
+}

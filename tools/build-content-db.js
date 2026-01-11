@@ -6,15 +6,12 @@ const xml2js = require('xml2js');
 
 const DB_PATH = path.join(__dirname, 'output', 'content.db');
 const SCHEMA_PATH = path.join(__dirname, 'schema.sql');
-// Using Zekr's reliable mirror of Tanzil XML
 const QURAN_XML_URL = 'https://raw.githubusercontent.com/cchartm16/quran/master/quran-simple.xml';
 
-// Ensure output dir exists
 if (!fs.existsSync(path.dirname(DB_PATH))) {
     fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 }
 
-// Remove old DB
 if (fs.existsSync(DB_PATH)) {
     fs.unlinkSync(DB_PATH);
 }
@@ -39,9 +36,6 @@ async function build() {
         const parser = new xml2js.Parser();
         const result = await parser.parseStringPromise(xmlData);
 
-        // xmlData structure: <quran> <sura ...> <aya .../> </sura> </quran>
-        // result.quran.sura -> Array of sura objects
-
         const surahs = result.quran.sura;
 
         const insertSurah = db.prepare('INSERT INTO q_surah (id, name_ar, name_tr, ayah_count) VALUES (?, ?, ?, ?)');
@@ -51,7 +45,7 @@ async function build() {
             for (const sura of surahs) {
                 const id = parseInt(sura.$.index);
                 const nameAr = sura.$.name;
-                const nameTr = sura.$.tname || sura.$.name; // Fallback if tname missing
+                const nameTr = sura.$.tname || sura.$.name;
                 const ayahs = sura.aya;
 
                 insertSurah.run(id, nameAr, nameTr, ayahs.length);
@@ -74,53 +68,82 @@ async function build() {
         process.exit(1);
     }
 
-    // 3. Generate Risale Placeholders
-    console.log('📚 Generating Risale Placeholder Data...');
+    // 3. Ingest Real Risale Data from meta/books
+    console.log('📚 Ingesting Real Risale Corpus from meta/books...');
 
-    const insertWork = db.prepare('INSERT INTO r_work (title, category, order_no) VALUES (?, ?, ?)');
-    const insertSection = db.prepare('INSERT INTO r_section (work_id, title, order_no) VALUES (?, ?, ?)');
-    const insertChunk = db.prepare('INSERT INTO r_chunk (section_id, chunk_no, text_tr) VALUES (?, ?, ?)');
+    const insertWork = db.prepare('INSERT INTO works (id, title, order_index, category) VALUES (?, ?, ?, ?)');
+    const insertSection = db.prepare('INSERT INTO sections (id, work_id, title, order_index, type, parent_id) VALUES (?, ?, ?, ?, ?, ?)');
+    const insertParagraph = db.prepare('INSERT INTO paragraphs (id, section_id, text, order_index, is_arabic, page_no) VALUES (?, ?, ?, ?, ?, ?)');
 
-    const works = [
-        { title: 'Sözler', cat: 'Ana Kitaplar' },
-        { title: 'Mektubat', cat: 'Ana Kitaplar' },
-        { title: 'Lemalar', cat: 'Ana Kitaplar' },
-        { title: 'Şualar', cat: 'Ana Kitaplar' },
-        { title: 'Asa-yı Musa', cat: 'Lahikalar' },
-        { title: 'Barla Lahikası', cat: 'Lahikalar' },
-        { title: 'Kastamonu Lahikası', cat: 'Lahikalar' },
-        { title: 'Emirdağ Lahikası', cat: 'Lahikalar' },
-        { title: 'Tarihçe-i Hayat', cat: 'Biyografi' },
-        { title: 'Mesnevi-i Nuriye', cat: 'Diğer' }
-    ];
+    const booksDir = path.join(__dirname, '..', 'meta', 'books');
 
-    const risaleTrans = db.transaction(() => {
-        let workId = 1;
-        for (const work of works) {
-            insertWork.run(work.title, work.cat, workId);
+    if (fs.existsSync(booksDir)) {
+        const bookFolders = fs.readdirSync(booksDir).filter(f => fs.statSync(path.join(booksDir, f)).isDirectory());
 
-            // 10 Sections per work
-            for (let s = 1; s <= 10; s++) {
-                const sectionInfo = insertSection.run(workId, `${work.title} - Bölüm ${s}`, s);
-                const realSectionId = sectionInfo.lastInsertRowid;
+        const risaleTrans = db.transaction(() => {
+            let workOrder = 0;
 
-                // 10 Chunks per section
-                for (let c = 1; c <= 10; c++) {
-                    const text = `SAMPLE_RISALE_CHUNK_${String(c).padStart(4, '0')} for ${work.title} Section ${s}.\n\nBu bir test metnidir. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`;
-                    insertChunk.run(realSectionId, c, text);
+            for (const bookFolder of bookFolders) {
+                const bookPath = path.join(booksDir, bookFolder);
+                const sectionsPath = path.join(bookPath, 'sections.json');
+                if (!fs.existsSync(sectionsPath)) continue;
+
+                const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf-8'));
+                const workId = 'sozler'; // Matching app code
+                const workTitle = 'Sözler';
+                const category = 'Ana Kitaplar';
+
+                insertWork.run(workId, workTitle, workOrder, category);
+                console.log(`   📘 Processing Work: ${workTitle} (ID: ${workId})`);
+
+                if (sectionsData.sections) {
+                    for (const s of sectionsData.sections) {
+                        const sectionId = s.sectionId;
+                        const sectionType = s.type || 'main';
+                        const parentId = s.parentId || null;
+                        insertSection.run(sectionId, workId, s.title, s.order || 0, sectionType, parentId);
+                    }
                 }
-            }
-            workId++;
-        }
-    });
 
-    risaleTrans();
+                // Read pages and insert paragraphs
+                const pagesDir = path.join(bookPath, 'pages');
+                if (fs.existsSync(pagesDir)) {
+                    const pageFiles = fs.readdirSync(pagesDir).filter(f => f.endsWith('.json')).sort();
+                    let paragraphCounter = 0;
+
+                    for (const pageFile of pageFiles) {
+                        const pageData = JSON.parse(fs.readFileSync(path.join(pagesDir, pageFile), 'utf-8'));
+                        const pageIndex = pageData.pageIndex || 0;
+
+                        if (pageData.segments) {
+                            for (const seg of pageData.segments) {
+                                const paragraphId = seg.segmentId || `p-${paragraphCounter}`;
+                                const sectionId = pageData.sectionId;
+                                const text = Array.isArray(seg.text) ? seg.text.join('\n') : seg.text;
+                                const isArabic = (seg.lang === 'ar') ? 1 : 0;
+
+                                insertParagraph.run(paragraphId, sectionId, text, paragraphCounter, isArabic, pageIndex);
+                                paragraphCounter++;
+                            }
+                        }
+                    }
+                    console.log(`   📄 Inserted ${paragraphCounter} paragraphs`);
+                }
+                workOrder++;
+            }
+        });
+
+        risaleTrans();
+    } else {
+        console.warn('⚠️ meta/books Not Found - Cannot Restore Assets');
+    }
+
     console.log('✅ Risale Data populate complete.');
 
     // 4. Stats
     const qSurahCount = db.prepare('SELECT COUNT(*) as c FROM q_surah').get().c;
     const qAyahCount = db.prepare('SELECT COUNT(*) as c FROM q_ayah').get().c;
-    const rChunkCount = db.prepare('SELECT COUNT(*) as c FROM r_chunk').get().c;
+    const rParagraphCount = db.prepare('SELECT COUNT(*) as c FROM paragraphs').get().c;
 
     console.log('------------------------------------------------');
     console.log('🎉 Database Build Complete!');
@@ -128,7 +151,7 @@ async function build() {
     console.log(`📊 Stats:`);
     console.log(`   - Surahs: ${qSurahCount}`);
     console.log(`   - Ayahs: ${qAyahCount}`);
-    console.log(`   - Risale Chunks: ${rChunkCount}`);
+    console.log(`   - Paragraphs: ${rParagraphCount}`);
     console.log('------------------------------------------------');
 }
 

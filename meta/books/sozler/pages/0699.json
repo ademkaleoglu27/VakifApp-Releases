@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0699",
+    "pageIndex": 699,
+    "sectionId": "sozler-section-106",
+    "header": {
+        "title": "İkinci Nokta’nın İkinci Mebhası",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0699-001",
+            "type": "paragraph",
+            "text": "Şu sözün âhirinde uzun tafsilatı uzun görme; ehemmiyetine nisbeten kısadır, daha uzun ister.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0699-002",
+            "type": "paragraph",
+            "text": "Bütün Sözlerde konuşan ben değilim. Belki işarat-ı Kur’aniye namına hakikattir. Hakikat ise hak söyler, doğru konuşur. Eğer yanlış bir şey gördünüz, muhakkak biliniz ki haberim olmadan fikrim karışmış, karıştırmış, yanlış etmiş.",
+            "lang": "tr"
+        }
+    ]
+}

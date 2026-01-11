@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0788",
+    "pageIndex": 788,
+    "sectionId": "sozler-section-143",
+    "header": {
+        "title": "Müstaid, müçtehid olabilir; müşerri’ olamaz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0788-header",
+            "type": "heading",
+            "text": "Müstaid, müçtehid olabilir; müşerri’ olamaz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0788-001",
+            "type": "paragraph",
+            "text": "İçtihadın şartını haiz olan her müstaid, ediyor nefsi için nass olmayanda içtihad. Ona lâzım, gayra ilzam edemez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0788-002",
+            "type": "paragraph",
+            "text": "Ümmeti davetle teşri edemez. Fehmi, şeriattan olur; lâkin şeriat olamaz. Müçtehid olabilir fakat müşerri’ olamaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0788-003",
+            "type": "paragraph",
+            "text": "İcma ile cumhurdur, sikke-i şer’i görür. Bir fikre davet etmek; zann-ı kabul-ü cumhur, şart-ı evvel oluyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0788-004",
+            "type": "paragraph",
+            "text": "Yoksa davet bid’attır, reddedilir. Ağzına tıkılır, onda daha çıkamaz.",
+            "lang": "tr"
+        }
+    ]
+}

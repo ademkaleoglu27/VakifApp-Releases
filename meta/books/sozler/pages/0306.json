@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0306",
+    "pageIndex": 306,
+    "sectionId": "sozler-section-059",
+    "header": {
+        "title": "[1] Hâşiye: Evet, zemin denilen muhteşem ve seyyar sarayın temel taşı olan taş tabakasının Fâtır-ı Zülcelal tarafından tavzif edilen en mühim üç vazifeyi beyan etmek ancak Kur’an’a yakışır.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0306-001",
+            "type": "paragraph",
+            "text": "[5] Hâşiye: Bir tefsir diyor: سَلَامًا demese idi, bürudetiyle ihrak edecekti.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0306-002",
+            "type": "paragraph",
+            "text": "[6] Hâşiye: Belki otuz üç adet Sözleri, otuz üç adet Mektupları, otuz bir Lem’aları, on üç Şuâları; yüz yirmi basamaklı bir merdivendir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0306-003",
+            "type": "paragraph",
+            "text": "[7] Hâşiye: Şu ciddi meseleyi yazarken ihtiyarsız olarak kalemim üslubunu, şu latîf latîfeye çevirdi. Ben de kalemimi serbest bıraktım. Ümit ederim ki üslubun latîfeliği, meselenin ciddiyetine halel vermesin.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0306-004",
+            "type": "paragraph",
+            "text": "[8] Hâşiye: Ebucehil-i Laîn ile Ebubekir-i Sıddık müsavi görünecek. Sırr-ı teklif zayi olacak.",
+            "lang": "tr"
+        }
+    ]
+}

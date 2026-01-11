@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0760",
+    "pageIndex": 760,
+    "sectionId": "sozler-section-117",
+    "header": {
+        "title": "Sebep sırf zahirîdir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0760-header",
+            "type": "heading",
+            "text": "Sebep sırf zahirîdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0760-001",
+            "type": "paragraph",
+            "text": "İzzet-i azamet ister ki esbab-ı tabiî, perdedar-ı dest-i kudret ola aklın nazarında.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0760-002",
+            "type": "paragraph",
+            "text": "Tevhid ve celal ister ki esbab-ı tabiî, dâmenkeş-i tesir-i hakiki ola (*[5]) kudret eserinde.",
+            "lang": "tr"
+        }
+    ]
+}

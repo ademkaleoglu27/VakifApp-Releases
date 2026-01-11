@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0353",
+    "pageIndex": 353,
+    "sectionId": "sozler-section-067",
+    "header": {
+        "title": "Yirmi Üçüncü Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0353-header",
+            "type": "heading",
+            "text": "Yirmi Üçüncü Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0353-001",
+            "type": "paragraph",
+            "text": "Şu sözün iki mebhası vardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0353-002",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0353-003",
+            "type": "paragraph",
+            "text": "لَقَدْ خَلَقْنَا الْاِنْسَانَ فٖٓى اَحْسَنِ تَقْوٖيمٍ ۞ ثُمَّ رَدَدْنَاهُ اَسْفَلَ سَافِلٖينَ ۞ اِلَّا الَّذٖينَ اٰمَنُوا وَ عَمِلُوا الصَّالِحَاتِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0353-004",
+            "type": "paragraph",
+            "text": "Birinci Mebhas",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0353-005",
+            "type": "paragraph",
+            "text": "İmanın binler mehasininden yalnız beşini beş nokta içinde beyan ederiz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0353-006",
+            "type": "paragraph",
+            "text": "Birinci Nokta",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0353-007",
+            "type": "paragraph",
+            "text": "İnsan, nur-u iman ile a’lâ-yı illiyyîne çıkar, cennete lâyık bir kıymet alır. Ve zulmet-i küfür ile esfel-i safilîne düşer, cehenneme ehil (olacak) bir vaziyete girer. Çünkü iman, insanı Sâni’-i Zülcelal’ine nisbet ediyor; iman, bir intisaptır. Öyle ise insan, iman ile insanda tezahür eden sanat-ı İlahiye ve nukuş-u esma-i Rabbaniye itibarıyla bir kıymet alır. Küfür, o nisbeti kateder. O kat’dan sanat-ı Rabbaniye gizlenir. Kıymeti dahi yalnız madde itibarıyla olur. Madde ise hem fâniye hem zâile hem muvakkat bir hayat-ı hayvanî olduğundan kıymeti hiç hükmündedir.",
+            "lang": "tr"
+        }
+    ]
+}

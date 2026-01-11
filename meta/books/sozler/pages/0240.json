@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0240",
+    "pageIndex": 240,
+    "sectionId": "sozler-section-049",
+    "header": {
+        "title": "Barla Yaylası Çam, Katran, Ardıç, Karakavağın Bir Meyvesidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0240-header",
+            "type": "heading",
+            "text": "Barla Yaylası Çam, Katran, Ardıç, Karakavağın Bir Meyvesidir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0240-001",
+            "type": "paragraph",
+            "text": "(Makam münasebetiyle buraya alınmış, On Birinci Mektup’un bir parçasıdır.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0240-002",
+            "type": "paragraph",
+            "text": "Bir vakit esaretimde dağ başında azametli çam ve katran ve ardıç ağaçlarının heybet-nüma suretlerini, hayret-feza vaziyetlerini temaşa ederken pek latîf bir rüzgâr esti. O vaziyeti pek muhteşem ve şirin, velvele-âlûd bir zelzele-i raks-nüma, bir tesbihat-ı cezbe-eda suretine çevirdiğinden eğlence temaşası, nazar-ı ibrete ve sem’-i hikmete döndü. Birden Ahmed-i Cezerî’nin Kürtçe şu fıkrası:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0240-003",
+            "type": "paragraph",
+            "text": "هَرْكَسْ بِتَمَاشَاگَهِ حُسْنَاتَه زِهَرْ جَاىْ تَشْبٖيهِ نِگَارَانْ بِجَمَالَاتَه دِنَازِنْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0240-004",
+            "type": "paragraph",
+            "text": "hatırıma geldi. Kalbim, ibret manalarını ifade için şöyle ağladı:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0240-005",
+            "type": "paragraph",
+            "text": "يَا رَبْ هَرْ حَىْ بِتَمَاشَاگَهِ صُنْعِ تُو زِهَرْجَاىْ بَتَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0240-006",
+            "type": "paragraph",
+            "text": "زِنِشٖيبُ اَزْ فِرَازٖى مَانَنْدِ دَلَّالَانْ بِنِدَاءِ بِاٰوَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0240-007",
+            "type": "paragraph",
+            "text": "دَمْ دَمْ زِجَمَالِ نَقْشِ تُو دَرْ رَقْصْ بَازٖى",
+            "lang": "ar"
+        }
+    ]
+}

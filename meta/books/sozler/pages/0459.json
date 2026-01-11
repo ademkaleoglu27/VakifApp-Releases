@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0459",
+    "pageIndex": 459,
+    "sectionId": "sozler-section-074",
+    "header": {
+        "title": "BİRİNCİ ŞULE",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0459-001",
+            "type": "paragraph",
+            "text": "İşte Kur’an-ı Mu’cizü’l-Beyan, âyetlerin hâtimelerinde galiben bazı fezlekeleri zikreder ki o fezlekeler, ya esma-i hüsnayı veya manalarını tazammun ediyor veyahut aklı tefekküre sevk etmek için akla havale eder veyahut makasıd-ı Kur’aniyeden bir kaide-i külliyeyi tazammun eder ki âyetin tekid ve teyidi için fezlekeler yapar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0459-002",
+            "type": "paragraph",
+            "text": "İşte o fezlekelerde Kur’an’ın hikmet-i ulviyesinden bazı işarat ve hidayet-i İlahiyenin âb-ı hayatından bazı reşaşat, i’caz-ı Kur’an’ın berklerinden bazı şerarat vardır. Şimdi pek çok o işarattan yalnız on tanesini icmalen zikrederiz. Hem pek çok misallerinden birer misal ve her bir misalin pek çok hakaikinden yalnız her birinde bir hakikatin meal-i icmalîsine işaret ederiz. Bu on işaretin ekserisi, ekser âyetlerde müctemian beraber bulunup hakiki bir nakş-ı i’cazî teşkil ederler. Hem misal olarak getirdiğimiz âyetlerin ekserisi, ekser işarata misaldir. Biz yalnız her âyetten bir işaret göstereceğiz. Misal getireceğimiz âyetlerden eski Sözlerde bahsi geçenlerin yalnız mealine bir hafif işaret ederiz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0459-003",
+            "type": "paragraph",
+            "text": "BİRİNCİ MEZİYET-İ CEZALET: Kur’an-ı Hakîm, i’cazkâr beyanatıyla Sâni’-i Zülcelal’in ef’al ve eserlerini nazara karşı serer, bast eder. Sonra o âsâr ve ef’alinde esma-i İlahiyeyi istihraç eder veya haşir ve tevhid gibi bir makasıd-ı asliye-i Kur’aniyeyi ispat ediyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0459-004",
+            "type": "paragraph",
+            "text": "Birinci mananın misallerinden mesela",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0459-005",
+            "type": "paragraph",
+            "text": "هُوَ الَّذٖى خَلَقَ لَكُمْ مَا فِى الْاَرْضِ جَمٖيعًا ثُمَّ اسْتَوٰٓى اِلَى السَّمَٓاءِ فَسَوّٰيهُنَّ سَبْعَ سَمٰوَاتٍ وَهُوَ بِكُلِّ شَىْءٍ عَلٖيمٌ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0459-006",
+            "type": "paragraph",
+            "text": "İkinci şıkkın misallerinden mesela",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0459-007",
+            "type": "paragraph",
+            "text": "اَلَمْ نَجْعَلِ الْاَرْضَ مِهَادًا ۞ وَ الْجِبَالَ اَوْتَادًا ۞ وَخَلَقْنَاكُمْ اَزْوَاجًا …اِلٰى اٰخِرِ",
+            "lang": "ar"
+        }
+    ]
+}

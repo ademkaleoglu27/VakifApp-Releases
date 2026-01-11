@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0860",
+    "pageIndex": 860,
+    "sectionId": "sozler-section-192",
+    "header": {
+        "title": "Maddiyyunluk, bir taun-u manevîdir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0860-header",
+            "type": "heading",
+            "text": "Maddiyyunluk, bir taun-u manevîdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0860-001",
+            "type": "paragraph",
+            "text": "Maddiyyunluk bir taun-u manevî, beşere de tutturdu şu müthiş bir sıtmayı. (*[17]) Hem de âni çarptırdı bir gazab-ı İlahî. Telkin hem de taklit,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0860-002",
+            "type": "paragraph",
+            "text": "Tenkide kabiliyet-i tevessüü nisbeten, o taun da ediyor tevessü ve intişar. Telkini fenden almış, medeniyetten taklit.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0860-003",
+            "type": "paragraph",
+            "text": "Hürriyet, tenkit vermiş, gururundan dalalet çıkmış.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0876",
+    "pageIndex": 876,
+    "sectionId": "sozler-section-199",
+    "header": {
+        "title": "اُولَاشْمَازْ دَسْتِ أَدَبِ غَرْبِ هَوَسْبَارِ هَوَاكَارِ دَهَادَارْ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0876-header",
+            "type": "heading",
+            "text": "اُولَاشْمَازْ دَسْتِ أَدَبِ غَرْبِ هَوَسْبَارِ هَوَاكَارِ دَهَادَارْ",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-001",
+            "type": "paragraph",
+            "text": "دَأْبِ أَدَبْ أَبَدْ مُدَّتْ قُرْاٰنِ ضِيَابَارِ شِفَاكَارِ هُدَادَارْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0876-002",
+            "type": "paragraph",
+            "text": "Kâmilîn insanların zevk-i maâlîsini hoşnut eden bir halet, çocukça bir hevese, sefihçe bir tabiat sahibine hoş gelmez,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-003",
+            "type": "paragraph",
+            "text": "Onları eğlendirmez. Bu hikmete binaen, bir zevk-i süflî, sefih hem nefsî ve şehvanî içinde tam beslenmiş, zevk-i ruhîyi bilmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-004",
+            "type": "paragraph",
+            "text": "Avrupa’dan tereşşuh etmiş şu hazır edebiyat romanvari nazarla, Kur’an’da olan letaif-i ulviyet, mezaya-yı haşmeti göremez hem tadamaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-005",
+            "type": "paragraph",
+            "text": "Kendindeki miheki ona ayar edemez. Edebiyatta vardır üç meydan-ı cevelan; onlar içinde gezer, haricine çıkamaz:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-006",
+            "type": "paragraph",
+            "text": "Ya aşkla hüsündür, ya hamaset ve şehamet, ya tasvir-i hakikat. İşte yabani edepse hamaset noktasında hakperestliği etmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0876-007",
+            "type": "paragraph",
+            "text": "Belki zalim nev-i beşerin gaddarlıklarını alkışlamakla kuvvet-perestlik hissini telkin eder. Hüsün ve aşk noktasında, aşk-ı hakiki bilmez.",
+            "lang": "tr"
+        }
+    ]
+}

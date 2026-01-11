@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0842",
+    "pageIndex": 842,
+    "sectionId": "sozler-section-181",
+    "header": {
+        "title": "Böyle zamanda tereffühte izn-i Şer’î bizi muhtar bırakmaz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0842-header",
+            "type": "heading",
+            "text": "Böyle zamanda tereffühte izn-i Şer’î bizi muhtar bırakmaz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0842-001",
+            "type": "paragraph",
+            "text": "Lezaiz çağırdıkça “Sanki yedim.” demeli. Sanki yedim düstur eden, bir mescidi yemedi. (*[14])",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0842-002",
+            "type": "paragraph",
+            "text": "Eskide ekser İslâm filcümle aç değildi. Tena’uma ihtiyar bir derece var idi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0842-003",
+            "type": "paragraph",
+            "text": "Şimdi ise ekseri açlığa düştü kaldı. Telezzüze ihtiyar, izn-i şer’î kalmadı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0842-004",
+            "type": "paragraph",
+            "text": "Sevad-ı a’zam hem ekseriyet-i masumun maişeti basittir. Tagaddi besatetiyle onlara tabi olmak",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0842-005",
+            "type": "paragraph",
+            "text": "Bin kere müreccahtır, ekalliyet-i müsrife, ya bir kısım sefihe tagaddide tereffüh noktasında benzemek…",
+            "lang": "tr"
+        }
+    ]
+}

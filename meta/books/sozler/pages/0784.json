@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0784",
+    "pageIndex": 784,
+    "sectionId": "sozler-section-140",
+    "header": {
+        "title": "Mübtıl, bâtılı hak nazarıyla alır",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0784-header",
+            "type": "heading",
+            "text": "Mübtıl, bâtılı hak nazarıyla alır",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0784-001",
+            "type": "paragraph",
+            "text": "İnsandaki fıtratı, mükerrem olduğundan kasden hakkı arıyor. Bazen gelir eline, bâtılı hak zanneder, koynunda saklıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0784-002",
+            "type": "paragraph",
+            "text": "Hakikati kazarken ihtiyarı olmadan dalal düşer başına; hakikattir zanneder, kafasına geçirir.",
+            "lang": "tr"
+        }
+    ]
+}

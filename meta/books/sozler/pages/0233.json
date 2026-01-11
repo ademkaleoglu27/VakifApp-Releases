@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0233",
+    "pageIndex": 233,
+    "sectionId": "sozler-section-047",
+    "header": {
+        "title": "Bundan yirmi beş sene kadar evvel İstanbul Boğazı’ndaki Yuşa Tepesi’nde, dünyanın terkine karar verdiğim bir zamanda, bir kısım mühim dostlarım beni dünyaya, eski vaziyetime döndürmek için yanıma geldiler. Dedim: “Yarına kadar beni bırakınız, istihare edeyim.” Sabahleyin kalbime bu iki levha hutur etti. Şiire benzer fakat şiir değiller. O mübarek hatıranın hatırı için ilişmedim. Geldiği gibi muhafaza edildi.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0233-header",
+            "type": "heading",
+            "text": "Bundan yirmi beş sene kadar evvel İstanbul Boğazı’ndaki Yuşa Tepesi’nde, dünyanın terkine karar verdiğim bir zamanda, bir kısım mühim dostlarım beni dünyaya, eski vaziyetime döndürmek için yanıma geldiler. Dedim: “Yarına kadar beni bırakınız, istihare edeyim.” Sabahleyin kalbime bu iki levha hutur etti. Şiire benzer fakat şiir değiller. O mübarek hatıranın hatırı için ilişmedim. Geldiği gibi muhafaza edildi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-001",
+            "type": "paragraph",
+            "text": "Yirmi Üçüncü Söz’ün âhirine ilhak edilmişti. Makam münasebetiyle buraya alındı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-002",
+            "type": "paragraph",
+            "text": "Birinci Levha",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-003",
+            "type": "paragraph",
+            "text": "Ehl-i gaflet dünyasının hakikatini tasvir eder levhadır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-004",
+            "type": "paragraph",
+            "text": "Beni dünyaya çağırma   Ona geldim fena gördüm.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-005",
+            "type": "paragraph",
+            "text": "Demâ gaflet hicab oldu  Ve nur-u Hak nihan gördüm.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-006",
+            "type": "paragraph",
+            "text": "Bütün eşya-yı mevcudat            Birer fâni muzır gördüm.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0233-007",
+            "type": "paragraph",
+            "text": "Vücud desen onu giydim           Âh ademdi çok bela gördüm.",
+            "lang": "tr"
+        }
+    ]
+}

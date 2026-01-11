@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0247",
+    "pageIndex": 247,
+    "sectionId": "sozler-section-049",
+    "header": {
+        "title": "Barla Yaylası Çam, Katran, Ardıç, Karakavağın Bir Meyvesidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0247-001",
+            "type": "paragraph",
+            "text": "Ders aldıktan sonra her bir ağaç, yüksek bir taş üstünde arşa başını kaldırıp durmuşlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0247-002",
+            "type": "paragraph",
+            "text": "دِرَازْ كَرْدَسْتْ دَسْتْهَارَا بَدَرْگَاهِ اِلٰهٖى هَمْ چُو شَهْبَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0247-003",
+            "type": "paragraph",
+            "text": "Her birisi, yüzler ellerini Şehbaz-ı Kalender (Hâşiye[5]) gibi dergâh-ı İlahîye uzatıp muhteşem bir ibadet vaziyetini almışlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0247-004",
+            "type": "paragraph",
+            "text": "بِجُنْبٖيدَسْتْ زُلْفْهَارَا بَشَوْقْ اَنْگٖيزِ شَهْنَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0247-005",
+            "type": "paragraph",
+            "text": "(Hâşiye[6])",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0247-006",
+            "type": "paragraph",
+            "text": "Oynattırıyorlar, zülüfvari küçük dallarını ve onunla, temaşa edenlere de latîf şevklerini ve ulvi zevklerini ihtar ediyorlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0247-007",
+            "type": "paragraph",
+            "text": "بَبَالَا مٖيزَنَنْدْ اَزْ پَرْدَه هَاىِ هَاىِ هُوىِ عِشْقْ بَازٖى",
+            "lang": "ar"
+        }
+    ]
+}

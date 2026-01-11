@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0244",
+    "pageIndex": 244,
+    "sectionId": "sozler-section-049",
+    "header": {
+        "title": "Barla Yaylası Çam, Katran, Ardıç, Karakavağın Bir Meyvesidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0244-001",
+            "type": "paragraph",
+            "text": "فَيَا حَىُّ يَا قَيُّومُ بِحَقِّ اِسْمِ حَىِّ قَيُّومِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0244-002",
+            "type": "paragraph",
+            "text": "حَيَاتٖى دِهْ بَاٖينْ قَلْبِ پَرٖيشَانْ رَا اِسْتِقَامَتْ دِهْ بَاٖينْ عَقْلِ مُشَوَّشْ رَا اٰمٖينْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0244-003",
+            "type": "paragraph",
+            "text": "Barla yaylası Tepelice’de çam, katran, ardıç, karakavak meyvesi hakkında yazılan Farisî beyitlerin manası:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0244-004",
+            "type": "paragraph",
+            "text": "هَرْكَسْ بِتَمَاشَاگَهِ حُسْنَاتَه زِهَرْ جَاىْ تَشْبٖيهِ نِگَارَانْ بِجَمَالَاتَه دِنَازِنْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0244-005",
+            "type": "paragraph",
+            "text": "Hatırıma geldi. Kalbim dahi ibret manalarını ifade için şöyle ağladı:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0244-006",
+            "type": "paragraph",
+            "text": "Yani senin temaşageh-i hüsnüne, herkes her yerden koşup gelmiş. Senin cemalinle nazdarlık ediyorlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0244-007",
+            "type": "paragraph",
+            "text": "يَا رَبْ هَرْ حَىْ بِتَمَاشَاگَهِ صُنْعِ تُو زِهَرْجَاىْ بَتَازٖى",
+            "lang": "ar"
+        }
+    ]
+}

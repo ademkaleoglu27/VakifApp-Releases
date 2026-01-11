@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0523",
+    "pageIndex": 523,
+    "sectionId": "sozler-section-083",
+    "header": {
+        "title": "Hâtime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0523-header",
+            "type": "heading",
+            "text": "Hâtime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0523-001",
+            "type": "paragraph",
+            "text": "Şu acz, fakr, şefkat, tefekkür tarîkındaki dört hatvenin izahatı; hakikatin ilmine, şeriatın hakikatine, Kur’an’ın hikmetine dair olan yirmi altı adet Sözlerde geçmiştir. Yalnız şurada bir iki noktaya kısa bir işaret edeceğiz. Şöyle ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0523-002",
+            "type": "paragraph",
+            "text": "Evet, şu tarîk daha kısadır. Çünkü dört hatvedir. Acz, elini nefisten çekse doğrudan doğruya Kadîr-i Zülcelal’e verir. Halbuki en keskin tarîk olan aşk, nefisten elini çeker fakat maşuk-u mecazîye yapışır. Onun zevalini bulduktan sonra Mahbub-u Hakiki’ye gider.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0523-003",
+            "type": "paragraph",
+            "text": "Hem şu tarîk daha eslemdir. Çünkü nefsin şatahat ve bâlâ-pervazane davaları bulunmaz. Çünkü acz ve fakr ve kusurdan başka nefsinde bulmuyor ki haddinden fazla geçsin.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0523-004",
+            "type": "paragraph",
+            "text": "Hem bu tarîk daha umumî ve cadde-i kübradır. Çünkü kâinatı ehl-i vahdetü’l-vücud gibi huzur-u daimî kazanmak için idama mahkûm zannedip ‌لَا مَوْجُودَ اِلَّا هُوَ‌ hükmetmeye veyahut ehl-i vahdetü’ş-şuhud gibi huzur-u daimî için kâinatı nisyan-ı mutlak hapsinde hapse mahkûm tahayyül edip ‌لَا مَشْهُودَ اِلَّا هُوَ demeye mecbur olmuyor. Belki idamdan ve hapisten gayet zahir olarak Kur’an affettiğinden, o da sarf-ı nazar edip ve mevcudatı kendileri hesabına hizmetten azlederek Fâtır-ı Zülcelal hesabına istihdam edip, esma-i hüsnasının mazhariyet ve âyinedarlık vazifesinde istimal ederek mana-yı harfî nazarıyla onlara bakıp, mutlak gafletten kurtulup huzur-u daimîye girmektir; her şeyde Cenab-ı Hakk’a bir yol bulmaktır.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0523-005",
+            "type": "paragraph",
+            "text": "Elhasıl: Mevcudatı mevcudat hesabına hizmetten azlederek, mana-yı ismiyle bakmamaktır.",
+            "lang": "tr"
+        }
+    ]
+}

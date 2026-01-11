@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0219",
+    "pageIndex": 219,
+    "sectionId": "sozler-section-045",
+    "header": {
+        "title": "Kalbe Farisî Olarak Tahattur Eden Bir Münâcat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0219-001",
+            "type": "paragraph",
+            "text": "مَيْدَانِ اُو اٖينْ زَمَانِ حَالْ و يَكْ اٰنِ سَيَّالَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0219-002",
+            "type": "paragraph",
+            "text": "O cüz-i ihtiyarînin meydan-ı cevelanı, kısacık şu zaman-ı hazır ve bir ân-ı seyyaldir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0219-003",
+            "type": "paragraph",
+            "text": "بَا اٖينْ هَمَه فَقْرْهَا وَ ضَعْفْهَا قَلَمِ قُدْرَتِ تُو اٰشِكَارَه نُوِشْتَه اَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0219-004",
+            "type": "paragraph",
+            "text": "دَرْ فِطْرَتِ مَا مَيْلِ اَبَدْ وَ اَمَلِ سَرْمَدْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0219-005",
+            "type": "paragraph",
+            "text": "İşte şu bütün ihtiyaçlarımla ve zayıflığımla ve fakr ve aczimle beraber altı cihetten gelen dehşetler ve vahşetlerle perişan bir halde iken; kalem-i kudretle sahife-i fıtratımda ebede uzanan arzular ve sermede yayılan emeller aşikâre bir surette yazılmıştır, mahiyetimde dercedilmiştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0219-006",
+            "type": "paragraph",
+            "text": "بَلْكِه هَرْ چِه هَسْتْ ، هَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0219-007",
+            "type": "paragraph",
+            "text": "Belki dünyada ne varsa numuneleri fıtratımda vardır. Umum onlara karşı alâkadarım. Onlar için çalıştırıyorum, çalışıyorum.",
+            "lang": "tr"
+        }
+    ]
+}

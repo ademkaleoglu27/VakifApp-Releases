@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0506",
+    "pageIndex": 506,
+    "sectionId": "sozler-section-080",
+    "header": {
+        "title": "Yirmi Altıncı Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0506-header",
+            "type": "heading",
+            "text": "Yirmi Altıncı Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0506-001",
+            "type": "paragraph",
+            "text": "Kader Risalesi",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0506-002",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0506-003",
+            "type": "paragraph",
+            "text": "وَ اِنْ مِنْ شَىْءٍ اِلَّا عِنْدَنَا خَزَٓائِنُهُ وَمَا نُنَزِّلُهُٓ اِلَّا بِقَدَرٍ مَعْلُومٍ ۞ وَ كُلَّ شَىْءٍ اَحْصَيْنَاهُ فٖٓى اِمَامٍ مُبٖينٍ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0506-004",
+            "type": "paragraph",
+            "text": "Kader ile cüz-i ihtiyarî, iki mesele-i mühimmedir. Ona dair dört mebhas içinde birkaç sırlarını açmaya çalışacağız.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0506-005",
+            "type": "paragraph",
+            "text": "Birinci Mebhas",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0506-006",
+            "type": "paragraph",
+            "text": "Kader ve cüz-i ihtiyarî, İslâmiyet’in ve imanın nihayet hududunu gösteren, halî ve vicdanî bir imanın cüzlerindendir. Yoksa ilmî ve nazarî değillerdir. Yani mü’min her şeyi, hattâ fiilini, nefsini Cenab-ı Hakk’a vere vere, tâ nihayette teklif ve mes’uliyetten kurtulmamak için “cüz-i ihtiyarî” önüne çıkıyor. Ona “Mes’ul ve mükellefsin.” der. Sonra, ondan sudûr eden iyilikler ve kemalât ile mağrur olmamak için “kader” karşısına geliyor. Der: “Haddini bil, yapan sen değilsin.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0506-007",
+            "type": "paragraph",
+            "text": "Evet kader, cüz-i ihtiyarî; iman ve İslâmiyet’in nihayet meratibinde kader, nefsi gururdan ve cüz-i ihtiyarî, adem-i mes’uliyetten kurtarmak içindir ki mesail-i imaniyeye girmişler. Yoksa mütemerrid nüfus-u emmarenin işledikleri seyyiatının mes’uliyetinden kendilerini kurtarmak için kadere yapışmak ve onlara in’am olunan mehasinle iftihar etmek, gururlanmak, cüz-i ihtiyarîye istinad etmek; bütün bütün sırr-ı kadere ve hikmet-i cüz-i ihtiyariyeye zıt bir harekete sebebiyet veren ilmî meseleler değildir.",
+            "lang": "tr"
+        }
+    ]
+}

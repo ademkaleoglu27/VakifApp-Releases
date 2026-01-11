@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0932",
+    "pageIndex": 932,
+    "sectionId": "sozler-section-210",
+    "header": {
+        "title": "Fihrist",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0932-001",
+            "type": "paragraph",
+            "text": "Gençliği, dalalet ve sefahet uçurumuna düşmekten kurtaran ve imanda, bu dünyada dahi hakiki bir cennet lezzeti ve dalalette ise cehennemî bir azap ve sıkıntı bulunduğunu misallerle izah ve ispat eden bir derstir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-002",
+            "type": "paragraph",
+            "text": "İKİNCİ MAKAMIN HÂŞİYESİ:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-003",
+            "type": "paragraph",
+            "text": "Mahpuslara teselli hakkında dört mektuptur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-004",
+            "type": "paragraph",
+            "text": "İKİNCİ MAKAMIN ZEYLİ:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-005",
+            "type": "paragraph",
+            "text": "Leyle-i Kadirde ihtar edilen bir mesele-i mühimmedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-006",
+            "type": "paragraph",
+            "text": "MEYVE RİSALESİNDEN ALTINCI MESELE:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0932-007",
+            "type": "paragraph",
+            "text": "HÜVE NÜKTESİ:",
+            "lang": "tr"
+        }
+    ]
+}

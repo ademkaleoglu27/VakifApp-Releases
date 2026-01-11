@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0237",
+    "pageIndex": 237,
+    "sectionId": "sozler-section-047",
+    "header": {
+        "title": "Bundan yirmi beş sene kadar evvel İstanbul Boğazı’ndaki Yuşa Tepesi’nde, dünyanın terkine karar verdiğim bir zamanda, bir kısım mühim dostlarım beni dünyaya, eski vaziyetime döndürmek için yanıma geldiler. Dedim: “Yarına kadar beni bırakınız, istihare edeyim.” Sabahleyin kalbime bu iki levha hutur etti. Şiire benzer fakat şiir değiller. O mübarek hatıranın hatırı için ilişmedim. Geldiği gibi muhafaza edildi.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0237-001",
+            "type": "paragraph",
+            "text": "Fakrı kenz-i gına buldum          Aczde tam kuvvet var gör.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-002",
+            "type": "paragraph",
+            "text": "Eğer Allah’ı buldunsa    Bütün eşya senindir gör.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-003",
+            "type": "paragraph",
+            "text": "Eğer Mâlik-i Mülk’e memlûk isen       Onun mülkü senindir gör.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-004",
+            "type": "paragraph",
+            "text": "Eğer hodbin ve kendi nefsine mâlik isen       Bilâ-addin beladır gör,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-005",
+            "type": "paragraph",
+            "text": "Bilâ-haddin azaptır tat  Bilâ-gayet ağırdır gör.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-006",
+            "type": "paragraph",
+            "text": "Eğer hakiki abd-i hudâbin isen            Hudutsuz bir safadır gör,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0237-007",
+            "type": "paragraph",
+            "text": "Hesapsız bir sevap var tat        Nihayetsiz saadet gör.",
+            "lang": "tr"
+        }
+    ]
+}

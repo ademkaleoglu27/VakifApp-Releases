@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0267",
+    "pageIndex": 267,
+    "sectionId": "sozler-section-055",
+    "header": {
+        "title": "On Dokuzuncu Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0267-header",
+            "type": "heading",
+            "text": "On Dokuzuncu Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-001",
+            "type": "paragraph",
+            "text": "Risalet-i Ahmediyeye Dairdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-002",
+            "type": "paragraph",
+            "text": "وَ مَا مَدَحْتُ مُحَمَّدًا بِمَقَالَتٖى § وَ لٰكِنْ مَدَحْتُ مَقَالَتٖى بِمُحَمَّدٍ (ع.ص.م)",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0267-003",
+            "type": "paragraph",
+            "text": "Evet, şu söz güzeldir. Fakat onu güzelleştiren, güzellerin güzeli olan evsaf-ı Muhammediyedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-004",
+            "type": "paragraph",
+            "text": "On dört reşehatı tazammun eden On Dördüncü Lem’a’nın",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-005",
+            "type": "paragraph",
+            "text": "Birinci Reşhası",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-006",
+            "type": "paragraph",
+            "text": "Rabb’imizi bize tarif eden üç büyük, küllî muarrif var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0267-007",
+            "type": "paragraph",
+            "text": "Birisi: Şu kitab-ı kâinattır ki bir nebze şehadetini on üç Lem’a ile Arabî Nur risalesinden On Üçüncü Ders’ten işittik.",
+            "lang": "tr"
+        }
+    ]
+}

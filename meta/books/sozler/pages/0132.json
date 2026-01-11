@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0132",
+    "pageIndex": 132,
+    "sectionId": "sozler-section-022",
+    "header": {
+        "title": "On Üçüncü Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0132-header",
+            "type": "heading",
+            "text": "On Üçüncü Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0132-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0132-002",
+            "type": "paragraph",
+            "text": "وَنُنَزِّلُ مِنَ الْقُرْاٰنِ مَا هُوَ شِفَٓاءٌ وَرَحْمَةٌ لِلْمُؤْمِنٖينَ ۞ وَمَا عَلَّمْنَاهُ الشِّعْرَ وَمَا يَنْبَغٖى لَهُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0132-003",
+            "type": "paragraph",
+            "text": "Kur’an-ı Hakîm ile felsefe ulûmunun mahsul-ü hikmetlerini, ders-i ibretlerini, derece-i ilimlerini muvazene etmek istersen şu gelecek sözlere dikkat et!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0132-004",
+            "type": "paragraph",
+            "text": "İşte Kur’an-ı Mu’cizü’l-Beyan’ın bütün kâinattaki âdiyat namıyla yâd olunan, hârikulâde ve birer mu’cize-i kudret olan mevcudat üstündeki âdet ve ülfet perdesini keskin beyanatıyla yırtıp, o hakaik-i acibeyi zîşuura açıp, nazar-ı ibretlerini celbedip ukûle tükenmez bir hazine-i ulûm açar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0132-005",
+            "type": "paragraph",
+            "text": "Felsefe hikmeti ise bütün hârikulâde olan mu’cizat-ı kudreti, âdet perdesi içinde saklayıp cahilane ve lâkaydane üstünde geçer. Yalnız hârikulâdelikten düşen ve intizam-ı hilkatten huruç eden ve kemal-i fıtrattan sukut eden nadir fertleri nazar-ı dikkate arz eder, onları birer ibretli hikmet diye zîşuura takdim eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0132-006",
+            "type": "paragraph",
+            "text": "Mesela, en câmi’ bir mu’cize-i kudret olan insanın hilkatini âdi deyip lâkaytlıkla bakar. Fakat insanın kemal-i hilkatinden huruç etmiş, üç ayaklı yahut iki başlı bir insanı bir velvele-i istiğrabla nazar-ı ibrete teşhir eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0132-007",
+            "type": "paragraph",
+            "text": "Mesela, en latîf ve umumî bir mu’cize-i rahmet olan bütün yavruların hazine-i gaybdan muntazam iaşelerini âdi görüp küfran perdesini üstüne çeker. Fakat intizamdan şüzuz etmiş, kabilesinden cüda olmuş, yalnız olarak gurbete düşmüş, denizin altında olan bir böceğin bir yeşil yaprakla iaşesini görür, ondan tecelli eden lütf u keremle hazır balıkçıları ağlatmak ister (Hâşiye[1]).",
+            "lang": "tr"
+        }
+    ]
+}

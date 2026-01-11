@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0226",
+    "pageIndex": 226,
+    "sectionId": "sozler-section-046",
+    "header": {
+        "title": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0226-001",
+            "type": "paragraph",
+            "text": "نَمٖى زٖيبَاسْتْ اُفُولْدَه گُمْ شُدَنْ مَحْبُوبْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0226-002",
+            "type": "paragraph",
+            "text": "Güzel değil batmakla gaib olan bir mahbub. Çünkü zevale mahkûm, hakiki güzel olamaz. Aşk-ı ebedî için yaratılan ve âyine-i Samed olan kalp ile sevilmez ve sevilmemeli.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0226-003",
+            "type": "paragraph",
+            "text": "نَمٖى اَرْزَدْ غُرُوبْدَه غَيْبْ شُدَنْ مَطْلُوبْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0226-004",
+            "type": "paragraph",
+            "text": "Bir matlub ki gurûbda gaybubet etmeye mahkûmdur; kalbin alâkasına, fikrin merakına değmiyor. Âmâle merci olamıyor. Arkasında gam ve kederle teessüf etmeye lâyık değildir. Nerede kaldı ki kalp ona perestiş etsin ve ona bağlansın kalsın.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0226-005",
+            "type": "paragraph",
+            "text": "نَمٖى خٰواهَمْ فَنَادَه مَحْوْ شُدَنْ مَقْصُودْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0226-006",
+            "type": "paragraph",
+            "text": "Bir maksud ki fenada mahvoluyor, o maksudu istemem. Çünkü fâniyim, fâni olanı istemem; neyleyeyim?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0226-007",
+            "type": "paragraph",
+            "text": "نَمٖى خٰوانَمْ زَوَالْدَه دَفْنْ شُدَنْ مَعْبُودْ",
+            "lang": "ar"
+        }
+    ]
+}

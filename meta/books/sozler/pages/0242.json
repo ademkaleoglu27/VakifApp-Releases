@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0242",
+    "pageIndex": 242,
+    "sectionId": "sozler-section-049",
+    "header": {
+        "title": "Barla Yaylası Çam, Katran, Ardıç, Karakavağın Bir Meyvesidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0242-001",
+            "type": "paragraph",
+            "text": "بَبَالَا مٖيزَنَنْدْ اَزْ پَرْدَه هَاىِ هَاىِ هُوىِ عِشْقْ بَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-002",
+            "type": "paragraph",
+            "text": "مٖيدِهَدْ هُوشَه گِرٖينْهَاىِ دَرٖينْهَاىِ زَوَالٖى اَزْ حُبِّ مَجَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-003",
+            "type": "paragraph",
+            "text": "بَرْ سَرِ مَحْمُودْهَا نَغْمَهَاىِ حُزْنْ اَنْگٖيزِ اَيَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-004",
+            "type": "paragraph",
+            "text": "مُرْدَهَارَا نَغْمَهَاىِ اَزَلٖى اَزْ حُزْنْ اَنْگٖيزِ نَوَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-005",
+            "type": "paragraph",
+            "text": "رُوحَه مٖى اٰيَدْ اَزُو زَمْزَمَۀِ نَازُ نِيَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-006",
+            "type": "paragraph",
+            "text": "قَلْبْ مٖيخٰوانَدْ اَزٖينْ اٰيَاتْهَا سِرِّ تَوْحٖيدْ زِعُلُوِّ نَظْمِ اِعْجَازٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0242-007",
+            "type": "paragraph",
+            "text": "نَفْسْ مٖيخٰواهَدْ دَرْ اٖينْ وَلْوَلَهَا زَلْزَلَهَا ذَوْقِ بَاقٖى دَرْ فَنَاىِ دُنْيَا بَازٖى",
+            "lang": "ar"
+        }
+    ]
+}

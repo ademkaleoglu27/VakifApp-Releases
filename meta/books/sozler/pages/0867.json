@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0867",
+    "pageIndex": 867,
+    "sectionId": "sozler-section-196",
+    "header": {
+        "title": "Talim-i nazariyattan ziyade, tezkir-i müsellemata ihtiyaç var",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0867-header",
+            "type": "heading",
+            "text": "Talim-i nazariyattan ziyade, tezkir-i müsellemata ihtiyaç var",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0867-001",
+            "type": "paragraph",
+            "text": "Zaruriyat-ı dinî, müsellemat-ı şer’î; kulûblerde hasıldır, ihtar ile huzuru, tezkir ile şuuru.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0867-002",
+            "type": "paragraph",
+            "text": "Matlub da hasıl olur. İbare-i Arabî (*[19]) daha ulvi ediyor tezkiri hem ihtarı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0867-003",
+            "type": "paragraph",
+            "text": "Onun için cumada hutbe-i Arabiye; zaruriyatı ihtar, müsellematı tezkir, maalkifaye olur onun tarz-ı tezkiri.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0867-004",
+            "type": "paragraph",
+            "text": "Nazariyatı talim onda maksud değildir. Hem İslâm’ın vahdanî simasında şu Arabî ibare bir nakş-ı vahdettir, kabul etmez teksiri.",
+            "lang": "tr"
+        }
+    ]
+}

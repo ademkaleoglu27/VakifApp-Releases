@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0527",
+    "pageIndex": 527,
+    "sectionId": "sozler-section-085",
+    "header": {
+        "title": "Yirmi Yedinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0527-001",
+            "type": "paragraph",
+            "text": "Birincisi: Bir hükmün hikmeti ayrıdır, illeti ayrıdır. Hikmet ve maslahat ise tercihe sebeptir, icaba, icada medar değildir. İllet ise vücuduna medardır. Mesela, seferde namaz kasredilir, iki rekat kılınır. Şu ruhsat-ı şer’iyenin illeti seferdir, hikmeti ise meşakkattir. Sefer bulunsa, meşakkat hiç olmasa da namaz kasredilir. Çünkü illet var. Fakat sefer bulunmasa, yüz meşakkat bulunsa, namazın kasredilmesine illet olamaz. İşte şu hakikatin aksine olarak, şu zamanın nazarı ise maslahat ve hikmeti illet yerine ikame edip ona göre hükmediyor. Elbette böyle içtihadat arziyedir, semavî değildir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0527-002",
+            "type": "paragraph",
+            "text": "İkincisi: Şu zamanın nazarı, evvela ve bizzat saadet-i dünyeviyeye bakıyor ve ahkâmları ona tevcih ediyor. Halbuki şeriatın nazarı ise evvela ve bizzat saadet-i uhreviyeye bakar, ikinci derecede –âhirete vesile olmak dolayısıyla– dünyanın saadetine nazar eder. Demek şu zamanın nazarı, ruh-u şeriattan yabanidir. Öyle ise şeriat namına içtihad edemez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0527-003",
+            "type": "paragraph",
+            "text": "Üçüncüsü: اِنَّ الضَّرُورَاتِ تُبٖيحُ الْمَحْظُورَاتِ kaidesi, yani “Zaruret, haramı helâl derecesine getirir.” İşte şu kaide ise küllî değil. Zaruret eğer haram yoluyla olmamış ise haramı helâl etmeye sebebiyet verir. Yoksa sû-i ihtiyarıyla, gayr-ı meşru sebeplerle zaruret olmuş ise haramı helâl edemez, ruhsatlı ahkâmlara medar olamaz, özür teşkil edemez.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0527-004",
+            "type": "paragraph",
+            "text": "Mesela, bir adam sû-i ihtiyarıyla, haram bir tarzda kendini sarhoş etse; tasarrufatı, ulema-i şeriatça aleyhinde caridir, mazur sayılmaz. Tatlik etse talakı vaki olur. Bir cinayet etse ceza görür. Fakat sû-i ihtiyarıyla olmazsa talak vaki olmaz, ceza da görmez. Hem mesela, bir içki müptelası zaruret derecesinde müptela olsa da diyemez ki: “Zarurettir, bana helâldir.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0527-005",
+            "type": "paragraph",
+            "text": "İşte şu zamanda zaruret derecesine geçen ve insanları müptela eden bir beliyye-i âmme suretine giren çok umûrlar vardır ki sû-i ihtiyardan, gayr-ı meşru meyillerden ve haram muamelelerden tevellüd ettiklerinden, ruhsatlı ahkâmlara medar olup, haramı helâl etmeye medar olamazlar. Halbuki şu zamanın ehl-i içtihadı, o zaruratı ahkâm-ı şer’iyeye medar yaptıklarından içtihadları arziyedir, hevesîdir, felsefîdir; semavî olamaz, şer’î değil. Halbuki semavat ve arzın Hâlık’ının ahkâm-ı İlahiyesinde tasarruf ve ibadının ibadatına müdahale, o Hâlık’ın izn-i manevîsi olmazsa; o tasarruf, o müdahale merduddur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0527-006",
+            "type": "paragraph",
+            "text": "Mesela bazı gafiller, hutbe gibi bazı şeair-i İslâmiyeyi, Arabîden çıkarıp her milletin lisanıyla söylemeyi, iki sebep için istihsan ediyorlar:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0527-007",
+            "type": "paragraph",
+            "text": "Birincisi: “Tâ siyaset-i hazıra avam-ı müslimîne de o suretle tefhim edilsin.” Halbuki siyaset-i hazıra, o kadar çok yalan ve hile ve şeytanet içine girmiş ki vesvese-i şeyatîn hükmüne geçmiştir. Halbuki minber, vahy-i İlahînin tebliğ makamı olduğundan o vesvese-i siyasiyenin hakkı yoktur ki o makam-ı âlîye çıkabilsin.",
+            "lang": "tr"
+        }
+    ]
+}

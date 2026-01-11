@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0210",
+    "pageIndex": 210,
+    "sectionId": "sozler-section-044",
+    "header": {
+        "title": "Siyah Dutun Bir Meyvesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0210-header",
+            "type": "heading",
+            "text": "Siyah Dutun Bir Meyvesi",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-001",
+            "type": "paragraph",
+            "text": "(O mübarek dut başında Eski Said, Yeni Said lisanıyla söylemiştir.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-002",
+            "type": "paragraph",
+            "text": "Muhatabım Ziya Paşa değil, Avrupa meftunlarıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-003",
+            "type": "paragraph",
+            "text": "Mütekellim nefsim değil, tilmiz-i Kur’an namına kalbimdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-004",
+            "type": "paragraph",
+            "text": "Geçen sözler hakikattir, sakın şaşma, hududundan hazer aşma,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-005",
+            "type": "paragraph",
+            "text": "Ecanib fikrine sapma, dalalettir kulak asma, eder elbet seni nâdim.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-006",
+            "type": "paragraph",
+            "text": "Görürsün en ziyadarın, zekâvette alemdarın,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0210-007",
+            "type": "paragraph",
+            "text": "O hayretten der daim: “Eyvah, kimden kime şekva edeyim, ben dahi şaştım!”",
+            "lang": "tr"
+        }
+    ]
+}

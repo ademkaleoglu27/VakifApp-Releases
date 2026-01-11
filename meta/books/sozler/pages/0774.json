@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0774",
+    "pageIndex": 774,
+    "sectionId": "sozler-section-130",
+    "header": {
+        "title": "Nübüvvet beşerde zaruriyedir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0774-header",
+            "type": "heading",
+            "text": "Nübüvvet beşerde zaruriyedir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0774-001",
+            "type": "paragraph",
+            "text": "Karıncayı emîrsiz, arıları ya’subsuz bırakmayan kudret-i ezeliye elbette",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0774-002",
+            "type": "paragraph",
+            "text": "Beşeri de bırakmaz şeriatsız, nebisiz. Sırr-ı nizam-ı âlem, böyle ister elbette.",
+            "lang": "tr"
+        }
+    ]
+}

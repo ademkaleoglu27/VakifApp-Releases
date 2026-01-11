@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0928",
+    "pageIndex": 928,
+    "sectionId": "sozler-section-210",
+    "header": {
+        "title": "Fihrist",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0928-001",
+            "type": "paragraph",
+            "text": "اَلَّذٖينَ يُؤْمِنُونَ بِالْغَيْبِ mealinde ve iman hakkındaki âyetlerin mühim bir sırrını, gayet makul bir temsil ile tefsir eder.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0928-002",
+            "type": "paragraph",
+            "text": "ÜÇÜNCÜ SÖZ:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0928-003",
+            "type": "paragraph",
+            "text": "يَٓا اَيُّهَا النَّاسُ اعْبُدُوا âyetinin mealinde ve ubudiyet hakkındaki âyetlerin mühim bir hakikatini, mantıkî bir temsil ile tefsir ediyor.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0928-004",
+            "type": "paragraph",
+            "text": "DÖRDÜNCÜ SÖZ:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0928-005",
+            "type": "paragraph",
+            "text": "اِنَّ الصَّلٰوةَ كَانَتْ عَلَى الْمُؤْمِنٖينَ كِتَابًا مَوْقُوتًا âyetinin mealinde ve namaz hakkındaki âyetlerin mühim bir sırrını, gayet makul ve mantıkî bir temsil ile tefsir ediyor. Zerre miktar insafı bulunanı teslime mecbur ediyor.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0928-006",
+            "type": "paragraph",
+            "text": "BEŞİNCİ SÖZ:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0928-007",
+            "type": "paragraph",
+            "text": "اِنَّ اللّٰهَ مَعَ الَّذٖينَ اتَّقَوْا وَالَّذٖينَ هُمْ مُحْسِنُونَ âyetinin mealinde ve takva ve ubudiyet hakkındaki âyetlerin ve vazife-i ubudiyet ve takvanın mühim bir sırrını gayet güzel bir temsil ile tefsir ediyor. O tefsir herkesi ikna ediyor.",
+            "lang": "ar"
+        }
+    ]
+}

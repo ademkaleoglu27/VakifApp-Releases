@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0837",
+    "pageIndex": 837,
+    "sectionId": "sozler-section-177",
+    "header": {
+        "title": "Allah’ın rahmet ve gazabından fazla tahassüs hatadır",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0837-header",
+            "type": "heading",
+            "text": "Allah’ın rahmet ve gazabından fazla tahassüs hatadır",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0837-001",
+            "type": "paragraph",
+            "text": "Allah’ın rahmetinden fazla rahmet edilmez. Allah’ın gazabından fazla gazap edilmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0837-002",
+            "type": "paragraph",
+            "text": "Öyle ise işi bırak o Âdil-i Rahîm’e. Fazla şefkat elemdir, fazla gazap zemîme…",
+            "lang": "tr"
+        }
+    ]
+}

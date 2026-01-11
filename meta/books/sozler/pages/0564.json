@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0564",
+    "pageIndex": 564,
+    "sectionId": "sozler-section-093",
+    "header": {
+        "title": "İkinci Maksat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0564-header",
+            "type": "heading",
+            "text": "İkinci Maksat",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-001",
+            "type": "paragraph",
+            "text": "Kıyamet ve mevt-i dünya ve hayat-ı âhiret hakkındadır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-002",
+            "type": "paragraph",
+            "text": "Şu maksadın dört esası ve bir mukaddime-i temsiliyesi vardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-003",
+            "type": "paragraph",
+            "text": "Mukaddime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-004",
+            "type": "paragraph",
+            "text": "Nasıl ki bir saray veya bir şehir hakkında biri dava etse: “Şu saray veya şehir, tahrip edilip yeniden muhkem bir surette bina ve tamir edilecektir.” Elbette, onun davasına karşı altı sual terettüp eder:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-005",
+            "type": "paragraph",
+            "text": "Birincisi: “Niçin tahrip edilecek? Sebep ve muktezî var mıdır?” Eğer “Evet var.” diye ispat etti:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-006",
+            "type": "paragraph",
+            "text": "İkincisi şöyle bir sual gelir ki: “Bunu tahrip edip, tamir edecek usta muktedir midir? Yapabilir mi?” Eğer “Evet yapabilir.” diye ispat etti:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0564-007",
+            "type": "paragraph",
+            "text": "Üçüncüsü şöyle bir sual gelir ki: “Tahribi mümkün müdür?”",
+            "lang": "tr"
+        }
+    ]
+}

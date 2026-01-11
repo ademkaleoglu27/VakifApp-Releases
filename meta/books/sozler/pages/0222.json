@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0222",
+    "pageIndex": 222,
+    "sectionId": "sozler-section-045",
+    "header": {
+        "title": "Kalbe Farisî Olarak Tahattur Eden Bir Münâcat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0222-001",
+            "type": "paragraph",
+            "text": "O çare ise şudur ki o cüz-i ihtiyarîden dahi vazgeçip, irade-i İlahiyeye işini bırakıp, kendi havl ve kuvvetinden teberri edip, Cenab-ı Hakk’ın havl ve kuvvetine iltica ederek hakikat-i tevekküle yapışmaktır. Yâ Rab! Madem çare-i necat budur. Senin yolunda o cüz-i ihtiyarîden vazgeçiyorum ve enaniyetimden teberri ediyorum.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0222-002",
+            "type": "paragraph",
+            "text": "تَا عِنَايَتِ تُو دَسْتْگٖيرِ مَنْ شَوَدْ رَحْمَتِ بٖى نِهَايَتِ تُو پَنَاهِ مَنْ اَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0222-003",
+            "type": "paragraph",
+            "text": "Tâ senin inayetin, acz ve zaafıma merhameten elimi tutsun. Hem tâ senin rahmetin, fakr u ihtiyacıma şefkat edip bana istinadgâh olabilsin, kendi kapısını bana açsın.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0222-004",
+            "type": "paragraph",
+            "text": "اٰنْ كَسْ كِه بَحْرِ بٖى نِهَايَتِ رَحْمَتْ يَافْتْ اَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0222-005",
+            "type": "paragraph",
+            "text": "تَكْيَه نَه كُنَدْ بَرْ اٖينْ جُزْءِ اِخْتِيَارٖى كِه يَكْ قَطْرَه سَرَابَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0222-006",
+            "type": "paragraph",
+            "text": "Evet, her kim ki rahmetin nihayetsiz denizini bulsa elbette bir katre serap hükmünde olan cüz-i ihtiyarına itimat etmez, rahmeti bırakıp ona müracaat etmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0222-007",
+            "type": "paragraph",
+            "text": "اَيْوَاهْ اٖينْ زِنْدِگَانٖى هَمْ چُو خَابَسْتْ",
+            "lang": "ar"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0785",
+    "pageIndex": 785,
+    "sectionId": "sozler-section-141",
+    "header": {
+        "title": "Kudretin âyineleri çoktur",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0785-header",
+            "type": "heading",
+            "text": "Kudretin âyineleri çoktur",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0785-001",
+            "type": "paragraph",
+            "text": "Kudret-i Zülcelal’in pek çoktur mir’atları. Her biri ötekinden daha eşeff ve eltaf pencereler açıyor bir âlem-i misale.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0785-002",
+            "type": "paragraph",
+            "text": "Sudan havaya kadar, havadan tâ esîre, esîrden tâ misale, misalden tâ ervaha, ervahtan tâ zamana, zamandan tâ hayale,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0785-003",
+            "type": "paragraph",
+            "text": "Hayalden fikre kadar muhtelif âyineler, daima temsil eder şuunat-ı seyyale.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0785-004",
+            "type": "paragraph",
+            "text": "Kulağınla nazar et âyine-i havaya: Kelime-i vâhide, olur milyon kelimat!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0785-005",
+            "type": "paragraph",
+            "text": "Acib istinsah eder o kudretin kalemi, şu sırr-ı tenasülat…",
+            "lang": "tr"
+        }
+    ]
+}

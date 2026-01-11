@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0209",
+    "pageIndex": 209,
+    "sectionId": "sozler-section-043",
+    "header": {
+        "title": "On Yedinci Söz’ün İkinci Makamı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0209-001",
+            "type": "paragraph",
+            "text": "Ticaret istiyorsan ger, şu fâni ömrünü bâkiye tebdilde.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0209-002",
+            "type": "paragraph",
+            "text": "Eğer nefsine talip isen çürüktür hem temelsiz de.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0209-003",
+            "type": "paragraph",
+            "text": "Eğer âfakı ister isen fena damgası üstünde.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0209-004",
+            "type": "paragraph",
+            "text": "Demek, değmez ki alınsa çürük maldır hep bu çarşıda.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0209-005",
+            "type": "paragraph",
+            "text": "Öyle ise geç, iyi mallar dizilmiş arkasında.",
+            "lang": "tr"
+        }
+    ]
+}

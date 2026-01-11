@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0165",
+    "pageIndex": 165,
+    "sectionId": "sozler-section-034",
+    "header": {
+        "title": "Hâtime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0165-header",
+            "type": "heading",
+            "text": "Hâtime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0165-001",
+            "type": "paragraph",
+            "text": "(Gafil kafaya bir tokmak ve bir ders-i ibrettir.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0165-002",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0165-003",
+            "type": "paragraph",
+            "text": "وَمَا الْحَيٰوةُ الدُّنْيَٓا اِلَّا مَتَاعُ الْغُرُورِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0165-004",
+            "type": "paragraph",
+            "text": "Ey gaflete dalıp ve bu hayatı tatlı görüp ve âhireti unutup dünyaya talip bedbaht nefsim! Bilir misin neye benzersin? Deve kuşuna… Avcıyı görür, uçamıyor; başını kuma sokuyor, tâ avcı onu görmesin. Koca gövdesi dışarıda. Avcı görür. Yalnız o, gözünü kum içinde kapamış, görmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0165-005",
+            "type": "paragraph",
+            "text": "Ey nefis! Şu temsile bak, gör; nasıl dünyaya hasr-ı nazar, aziz bir lezzeti, elîm bir eleme kalbeder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0165-006",
+            "type": "paragraph",
+            "text": "Mesela, şu karyede yani Barla’da iki adam bulunur. Birisinin yüzde doksan dokuz ahbabı İstanbul’a gitmişler, güzelce yaşıyorlar. Yalnız bir tek burada kalmış, o dahi oraya gidecek. Bunun için şu adam İstanbul’a müştaktır, orayı düşünür. Ahbaba kavuşmak ister. Ne vakit ona denilse “Oraya git!”, sevinip gülerek gider. İkinci adam ise yüzde doksan dokuz dostları buradan gitmişler. Bir kısmı mahvolmuşlar. Bir kısmı ne görür ne de görünür yerlere sokulmuşlar. Perişan olup gitmişler, zanneder. Şu bîçare adam ise bütün onlara bedel yalnız bir misafire ünsiyet edip teselli bulmak ister. Onunla o elîm âlâm-ı firakı kapamak ister.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0165-007",
+            "type": "paragraph",
+            "text": "Ey nefis! Başta Habibullah, bütün ahbabın kabrin öbür tarafındadırlar. Burada kalan bir iki tane ise onlar da gidiyorlar. Ölümden ürküp kabirden korkup başını çevirme. Merdane kabre bak; dinle, ne talep eder. Erkekçesine ölümün yüzüne gül; bak, ne ister. Sakın gafil olup ikinci adama benzeme.",
+            "lang": "tr"
+        }
+    ]
+}

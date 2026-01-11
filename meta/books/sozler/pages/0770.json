@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0770",
+    "pageIndex": 770,
+    "sectionId": "sozler-section-127",
+    "header": {
+        "title": "Tabiat, bir sanat-ı İlahiyedir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0770-header",
+            "type": "heading",
+            "text": "Tabiat, bir sanat-ı İlahiyedir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0770-001",
+            "type": "paragraph",
+            "text": "Değil tabi tabiat, belki matba’. Değil nakkaş, o belki bir nakıştır. Değil fâil, o kabildir. Değil masdar, o mistardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0770-002",
+            "type": "paragraph",
+            "text": "Değil nâzım, o nizamdır. Değil kudret, o kanundur. İradî bir şeriattır, değil hariç hakikattar.",
+            "lang": "tr"
+        }
+    ]
+}

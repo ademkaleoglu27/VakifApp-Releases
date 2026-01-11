@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0519",
+    "pageIndex": 519,
+    "sectionId": "sozler-section-082",
+    "header": {
+        "title": "Zeyl",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0519-header",
+            "type": "heading",
+            "text": "Zeyl",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0519-002",
+            "type": "paragraph",
+            "text": "(Bu küçücük zeylin büyük bir ehemmiyeti var. Herkese menfaatlidir.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-003",
+            "type": "paragraph",
+            "text": "Cenab-ı Hakk’a vâsıl olacak tarîkler pek çoktur. Bütün hak tarîkler Kur’an’dan alınmıştır. Fakat tarîkatların bazısı, bazısından daha kısa, daha selâmetli, daha umumiyetli oluyor. O tarîkler içinde, kāsır fehmimle Kur’an’dan istifade ettiğim acz ve fakr ve şefkat ve tefekkür tarîkıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-004",
+            "type": "paragraph",
+            "text": "Evet, acz dahi aşk gibi belki daha eslem bir tarîktir ki ubudiyet tarîkıyla mahbubiyete kadar gider.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-005",
+            "type": "paragraph",
+            "text": "Fakr dahi Rahman ismine îsal eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-006",
+            "type": "paragraph",
+            "text": "Hem şefkat dahi aşk gibi belki daha keskin ve daha geniş bir tarîktir ki Rahîm ismine îsal eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0519-007",
+            "type": "paragraph",
+            "text": "Hem tefekkür dahi aşk gibi belki daha zengin, daha parlak, daha geniş bir tarîktir ki Hakîm ismine îsal eder.",
+            "lang": "tr"
+        }
+    ]
+}

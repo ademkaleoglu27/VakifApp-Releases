@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0798",
+    "pageIndex": 798,
+    "sectionId": "sozler-section-153",
+    "header": {
+        "title": "Gaye-i hayal olmazsa enaniyet kuvvetleşir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0798-header",
+            "type": "heading",
+            "text": "Gaye-i hayal olmazsa enaniyet kuvvetleşir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0798-001",
+            "type": "paragraph",
+            "text": "Bir gaye-i hayal olmazsa, yahut nisyan basarsa, ya tenasi edilse elbette zihinler enelere dönerler,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0798-002",
+            "type": "paragraph",
+            "text": "Etrafında gezerler. Ene kuvvetleşiyor, bazen sinirleniyor. Delinmez, tâ “nahnü” olsun. Enesini sevenler, başkaları sevmezler.",
+            "lang": "tr"
+        }
+    ]
+}

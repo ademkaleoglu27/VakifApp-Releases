@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0055",
+    "pageIndex": 55,
+    "sectionId": "sozler-section-012",
+    "header": {
+        "title": "Mukaddime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0055-header",
+            "type": "heading",
+            "text": "Mukaddime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-001",
+            "type": "paragraph",
+            "text": "Birkaç işaretle, başka yerlerde yani Yirmi İkinci, On Dokuzuncu, Yirmi Altıncı Sözlerde izah edilen birkaç meseleye işaret ederiz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-002",
+            "type": "paragraph",
+            "text": "Birinci İşaret: Hikâyedeki sersem adamın o emin arkadaşıyla üç hakikatleri var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-003",
+            "type": "paragraph",
+            "text": "Birincisi: Nefs-i emmarem ile kalbimdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-004",
+            "type": "paragraph",
+            "text": "İkincisi: Felsefe şakirdleriyle Kur’an-ı Hakîm tilmizleridir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-005",
+            "type": "paragraph",
+            "text": "Üçüncüsü: Ümmet-i İslâmiye ile millet-i küfriyedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-006",
+            "type": "paragraph",
+            "text": "Felsefe şakirdleri ve millet-i küfriye ve nefs-i emmarenin en müthiş dalaleti, Cenab-ı Hakk’ı tanımamaktadır. Hikâyede nasıl emin adam demişti: “Bir harf kâtipsiz olmaz, bir kanun hâkimsiz olmaz.” Biz de deriz:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0055-007",
+            "type": "paragraph",
+            "text": "Nasıl ki bir kitap, bâhusus öyle bir kitap ki her kelimesi içinde küçük kalemle bir kitap yazılmış, her harfi içinde ince kalem ile muntazam bir kaside yazılmış. Kâtipsiz olmak, son derece muhaldir.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -16,29 +16,39 @@ CREATE TABLE IF NOT EXISTS q_ayah (
 
 CREATE INDEX IF NOT EXISTS idx_q_ayah_surah_ayah ON q_ayah(surah_id, ayah_number);
 
--- Risale Tables
-CREATE TABLE IF NOT EXISTS r_work (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
+-- Risale Tables (MATCHING APP EXPECTATIONS)
+CREATE TABLE IF NOT EXISTS works (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    order_index INTEGER NOT NULL DEFAULT 0,
     category TEXT,
-    order_no INTEGER
+    meta_json TEXT
 );
 
-CREATE TABLE IF NOT EXISTS r_section (
-    id INTEGER PRIMARY KEY,
-    work_id INTEGER,
-    title TEXT,
-    order_no INTEGER,
-    FOREIGN KEY(work_id) REFERENCES r_work(id)
+CREATE TABLE IF NOT EXISTS sections (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL,
+    title TEXT NOT NULL,
+    order_index INTEGER NOT NULL DEFAULT 0,
+    type TEXT DEFAULT 'main',
+    parent_id TEXT,
+    FOREIGN KEY(work_id) REFERENCES works(id),
+    FOREIGN KEY(parent_id) REFERENCES sections(id)
 );
 
-CREATE TABLE IF NOT EXISTS r_chunk (
-    id INTEGER PRIMARY KEY,
-    section_id INTEGER,
-    chunk_no INTEGER,
-    text_tr TEXT,
-    FOREIGN KEY(section_id) REFERENCES r_section(id)
+CREATE INDEX IF NOT EXISTS idx_sections_work ON sections(work_id);
+CREATE INDEX IF NOT EXISTS idx_sections_type ON sections(type);
+CREATE INDEX IF NOT EXISTS idx_sections_parent ON sections(parent_id);
+
+CREATE TABLE IF NOT EXISTS paragraphs (
+    id TEXT PRIMARY KEY,
+    section_id TEXT NOT NULL,
+    text TEXT NOT NULL,
+    order_index INTEGER NOT NULL DEFAULT 0,
+    is_arabic INTEGER DEFAULT 0,
+    page_no INTEGER,
+    FOREIGN KEY(section_id) REFERENCES sections(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_r_section_work ON r_section(work_id, order_no);
-CREATE INDEX IF NOT EXISTS idx_r_chunk_section ON r_chunk(section_id, chunk_no);
+CREATE INDEX IF NOT EXISTS idx_paragraphs_section ON paragraphs(section_id);
+CREATE INDEX IF NOT EXISTS idx_paragraphs_section_order ON paragraphs(section_id, order_index);

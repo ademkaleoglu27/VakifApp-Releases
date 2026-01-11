@@ -55,15 +55,19 @@ export const getSectionsByWork = async (workId: string): Promise<RisaleSection[]
     // LOAD_STABILIZE_MODE: Limit to first 5 sections
     const limit = LOAD_STABILIZE_MODE ? MAX_SECTIONS : 999;
 
+    // Return all sections (main + sub) with hierarchy info, exclude footnotes from TOC
     const results = await db.getAllAsync<any>(
-        'SELECT * FROM sections WHERE work_id = ? ORDER BY order_index ASC LIMIT ?',
-        [workId, limit]
+        'SELECT * FROM sections WHERE work_id = ? AND type != ? ORDER BY order_index ASC LIMIT ?',
+        [workId, 'footnote', limit]
     );
     return results.map(r => ({
         id: r.id,
         work_id: r.work_id,
         title: r.title,
-        order_no: r.order_index
+        order_no: r.order_index,
+        section_index: r.order_index,
+        type: r.type || 'main',
+        parent_id: r.parent_id
     }));
 };
 
@@ -144,3 +148,168 @@ export const searchParagraphs = async (query: string, limit: number = 20): Promi
 
 // Alias for backward compatibility
 export const getRisaleWorks = getAllWorks;
+
+// ════════════════════════════════════════════════════════════════
+// CONTINUOUS READING STREAM
+// ════════════════════════════════════════════════════════════════
+
+export type StreamItemType = 'section_header' | 'sub_header' | 'page';
+
+export interface StreamItem {
+    type: StreamItemType;
+    id: string;
+    sectionId: string;
+    title?: string;
+    chunks?: RisaleChunk[];
+    orderIndex: number;
+}
+
+/**
+ * Build a continuous reading stream for an entire work.
+ * Returns array of StreamItems: headers interleaved with page chunks.
+ */
+export const buildReadingStream = async (workId: string): Promise<StreamItem[]> => {
+    const db = getDb();
+    const stream: StreamItem[] = [];
+    let globalOrderIndex = 0;
+
+    // 1. Fetch all sections (main + sub, exclude footnotes) in order
+    const sections = await db.getAllAsync<any>(
+        'SELECT * FROM sections WHERE work_id = ? AND type != ? ORDER BY order_index ASC',
+        [workId, 'footnote']
+    );
+
+    // 2. For each section, add header + paginated chunks
+    for (const section of sections) {
+        const sectionId = section.id;
+        const sectionTitle = section.title;
+        const isMain = section.type === 'main' || !section.parent_id;
+
+        // Add section header
+        stream.push({
+            type: isMain ? 'section_header' : 'sub_header',
+            id: `header-${sectionId}`,
+            sectionId,
+            title: sectionTitle,
+            orderIndex: globalOrderIndex++
+        });
+
+        // Fetch paragraphs for this section
+        const paragraphs = await db.getAllAsync<any>(
+            'SELECT * FROM paragraphs WHERE section_id = ? ORDER BY order_index ASC',
+            [sectionId]
+        );
+
+        // Group into pages (7 paragraphs per page)
+        const CHUNKS_PER_PAGE = 7;
+        const chunks: RisaleChunk[] = paragraphs.map((p: any) => ({
+            id: p.order_index,
+            section_id: p.section_id,
+            chunk_no: p.order_index,
+            text_tr: p.text,
+            page_no: p.page_no || 0
+        }));
+
+        for (let i = 0; i < chunks.length; i += CHUNKS_PER_PAGE) {
+            const pageChunks = chunks.slice(i, i + CHUNKS_PER_PAGE);
+            const pageIndex = Math.floor(i / CHUNKS_PER_PAGE);
+
+            stream.push({
+                type: 'page',
+                id: `page-${sectionId}-${pageIndex}`,
+                sectionId,
+                chunks: pageChunks,
+                orderIndex: globalOrderIndex++
+            });
+        }
+    }
+
+    console.log(`[Stream] Built ${stream.length} items for work ${workId}`);
+    return stream;
+};
+
+/**
+ * Build TOC to Stream Index mapping for jump navigation.
+ */
+export const buildTocIndexMap = (stream: StreamItem[]): Map<string, number> => {
+    const map = new Map<string, number>();
+    stream.forEach((item, idx) => {
+        if (item.type === 'section_header' || item.type === 'sub_header') {
+            map.set(item.sectionId, idx);
+        }
+    });
+    return map;
+};
+
+// ════════════════════════════════════════════════════════════════
+// FOOTNOTES (Diamond Standard V23.1)
+// ════════════════════════════════════════════════════════════════
+
+// Footnote cache to prevent re-fetching
+const footnoteCache = new Map<string, RisaleChunk[]>();
+
+/**
+ * Get footnotes for a section by parent_id.
+ * Returns chunks with text content for the footnote.
+ * Cached for performance.
+ */
+export const getFootnotesBySectionId = async (sectionId: string): Promise<{ id: string, title: string, chunks: RisaleChunk[] }[]> => {
+    const cacheKey = `fn-${sectionId}`;
+
+    const db = getDb();
+
+    // 1. Find footnote sections with this parent_id
+    const footnotes = await db.getAllAsync<any>(
+        'SELECT * FROM sections WHERE parent_id = ? AND type = ? ORDER BY order_index ASC',
+        [sectionId, 'footnote']
+    );
+
+    if (!footnotes || footnotes.length === 0) return [];
+
+    const result: { id: string, title: string, chunks: RisaleChunk[] }[] = [];
+
+    for (const fn of footnotes) {
+        // Check cache first
+        if (footnoteCache.has(fn.id)) {
+            result.push({
+                id: fn.id,
+                title: fn.title,
+                chunks: footnoteCache.get(fn.id)!
+            });
+            continue;
+        }
+
+        // Fetch paragraphs for this footnote
+        const paragraphs = await db.getAllAsync<any>(
+            'SELECT * FROM paragraphs WHERE section_id = ? ORDER BY order_index ASC',
+            [fn.id]
+        );
+
+        const chunks: RisaleChunk[] = paragraphs.map((p: any) => ({
+            id: p.order_index,
+            section_id: p.section_id,
+            chunk_no: p.order_index,
+            text_tr: p.text,
+            page_no: p.page_no || 0
+        }));
+
+        // Cache for future use
+        footnoteCache.set(fn.id, chunks);
+
+        result.push({
+            id: fn.id,
+            title: fn.title,
+            chunks
+        });
+    }
+
+    return result;
+};
+
+/**
+ * Extract footnote number from text like "[1] Haşiye:"
+ */
+export const extractFootnoteNumber = (title: string): number | null => {
+    const match = title.match(/^\[(\d+)\]/);
+    return match ? parseInt(match[1], 10) : null;
+};

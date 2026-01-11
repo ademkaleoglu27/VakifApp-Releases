@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0762",
+    "pageIndex": 762,
+    "sectionId": "sozler-section-119",
+    "header": {
+        "title": "Kalem-i kudrette ittihat, tevhidi ilan eder",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0762-header",
+            "type": "heading",
+            "text": "Kalem-i kudrette ittihat, tevhidi ilan eder",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0762-001",
+            "type": "paragraph",
+            "text": "Eser-i itkan-ı sanat, fıtratın her köşesinde bilbedahe reddeder esbabının icadını.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0762-002",
+            "type": "paragraph",
+            "text": "Nakş-ı kilkî ayn-ı kudret, hilkatin her noktasında bizzarure reddeder vesaitin vücudunu.",
+            "lang": "tr"
+        }
+    ]
+}

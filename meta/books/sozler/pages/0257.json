@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0257",
+    "pageIndex": 257,
+    "sectionId": "sozler-section-051",
+    "header": {
+        "title": "[1] Hâşiye: Bu İkinci Makam’daki parçalar şiire benzer fakat şiir değiller. Kasdî nazmedilmemişler. Belki hakikatlerin kemal-i intizamı cihetinde, bir derece manzum suretini almışlar.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0257-header",
+            "type": "heading",
+            "text": "[1] Hâşiye: Bu İkinci Makam’daki parçalar şiire benzer fakat şiir değiller. Kasdî nazmedilmemişler. Belki hakikatlerin kemal-i intizamı cihetinde, bir derece manzum suretini almışlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-001",
+            "type": "paragraph",
+            "text": "[2] Hâşiye: Eyvah diyerek kaçmıyorum.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-002",
+            "type": "paragraph",
+            "text": "[3] Hâşiye: İsrafil’in ezanını fecr-i haşirde işitip Allahu ekber diyerek kalkacağım. Salât-ı kübradan çekilmem, mecma-ı ekberden çekinmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-003",
+            "type": "paragraph",
+            "text": "[4] Hâşiye: Yalnız bu satır Mevlana Câmî’nin kelâmıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-004",
+            "type": "paragraph",
+            "text": "[5] Hâşiye: Şehbaz-ı Kalender, meşhur bir kahramandır ki Şeyh-i Geylanî’nin irşadıyla dergâh-ı İlahîye iltica edip mertebe-i velayete çıkmıştır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-005",
+            "type": "paragraph",
+            "text": "[6] Hâşiye: Şehnaz-ı Çelkezî, kırk örme saç ile meşhur bir dünya güzelidir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-006",
+            "type": "paragraph",
+            "text": "[7] Nüsha: Şu nüsha, mezaristandaki ardıç ağacına bakar:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0257-007",
+            "type": "paragraph",
+            "text": "بَبَالَا مٖيزَنَنْدْ اَزْ پَرْدَه هَاىِ هَاىِ هُوىِ چَرْخِ بَازٖى § مُرْدَهَارَا نَغْمَهَاىِ اَزَلٖى اَزْ حُزْنْ اَنْگٖيزِ نَوَازٖى",
+            "lang": "ar"
+        }
+    ]
+}

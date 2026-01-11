@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0901",
+    "pageIndex": 901,
+    "sectionId": "sozler-section-206",
+    "header": {
+        "title": "* Yirmi sene sonraki bu şimdiki hali, hiss-i kable’l-vuku ile hissetmiş.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0901-header",
+            "type": "heading",
+            "text": "* Yirmi sene sonraki bu şimdiki hali, hiss-i kable’l-vuku ile hissetmiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-001",
+            "type": "paragraph",
+            "text": "[5] * Hakiki tesirden elini çeksin, icada karışmasın, demektir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-002",
+            "type": "paragraph",
+            "text": "[6] * Bu dehşetli Harb-i Umumî neticesindeki vaziyete işaret eder. Belki İkinci Harb-i Umumî’den tam haber verir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-003",
+            "type": "paragraph",
+            "text": "[7] * Bu zamanı tam görmüş gibi bahseder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-004",
+            "type": "paragraph",
+            "text": "[8] * Bunda da bir işaret-i gaybiye var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-005",
+            "type": "paragraph",
+            "text": "[9] * Kuvvetli bir işaret-i gaybiyedir. Evet beşer dinlemedi, İkinci Harb-i Umumî ile bu dehşetli silleyi de yedi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-006",
+            "type": "paragraph",
+            "text": "[10] * Demek, daha dehşetli kusacak. Evet, iki harb-i umumî ile öyle kustu ki hava, deniz, kara yüzlerini bulandırdı, kanla lekeledi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0901-007",
+            "type": "paragraph",
+            "text": "[11] * Bunda da bir ince işaret var.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0411",
+    "pageIndex": 411,
+    "sectionId": "sozler-section-073",
+    "header": {
+        "title": "Mu’cizat-ı Kur’aniye Risalesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0411-001",
+            "type": "paragraph",
+            "text": "Bütün âlemlerin Rabb’i itibarıyla Allah’ın kelâmıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-002",
+            "type": "paragraph",
+            "text": "Hem bütün mevcudatın İlahı unvanıyla Allah’ın fermanıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-003",
+            "type": "paragraph",
+            "text": "Hem bütün semavat ve arzın Hâlık’ı namına bir hitaptır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-004",
+            "type": "paragraph",
+            "text": "Hem rububiyet-i mutlaka cihetinde bir mükâlemedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-005",
+            "type": "paragraph",
+            "text": "Hem saltanat-ı âmme-i Sübhaniye hesabına bir hutbe-i ezeliyedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-006",
+            "type": "paragraph",
+            "text": "Hem rahmet-i vâsia-i muhita nokta-i nazarında bir defter-i iltifatat-ı Rahmaniyedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0411-007",
+            "type": "paragraph",
+            "text": "Hem uluhiyetin azamet-i haşmeti haysiyetiyle, başlarında bazen şifre bulunan bir muhabere mecmuasıdır.",
+            "lang": "tr"
+        }
+    ]
+}

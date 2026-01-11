@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0415",
+    "pageIndex": 415,
+    "sectionId": "sozler-section-074",
+    "header": {
+        "title": "BİRİNCİ ŞULE",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0415-001",
+            "type": "paragraph",
+            "text": "Birinci Nokta: Kur’an’ın nazmında bir cezalet-i hârika var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0415-002",
+            "type": "paragraph",
+            "text": "O nazımdaki cezalet ve metaneti, İşaratü’l-İ’caz baştan aşağıya kadar bu cezalet-i nazmiyeyi beyan eder. Saatin saniye, dakika, saati sayan ve birbirinin nizamını tekmil eden ne ise Kur’an-ı Hakîm’in her bir cümledeki, hey’atındaki nazım ve kelimelerindeki nizam ve cümlelerin birbirine karşı münasebatındaki intizamı öyle bir tarzda İşaratü’l-İ’caz’da âhirine kadar beyan edilmiştir. Kim isterse ona bakabilir ve bu nazımdaki cezalet-i hârikayı bu surette görebilir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0415-003",
+            "type": "paragraph",
+            "text": "Yalnız bir iki misal, bir cümlenin hey’atındaki nazmı göstermek için zikredeceğiz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0415-004",
+            "type": "paragraph",
+            "text": "Mesela وَلَئِنْ مَسَّتْهُمْ نَفْحَةٌ مِنْ عَذَابِ رَبِّكَ Bu cümlede, azabı dehşetli göstermek için en azının şiddetle tesirini göstermekle göstermek ister. Demek, taklili ifade edecek cümlenin bütün heyetleri de bu taklile bakıp ona kuvvet verecek. İşte:",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0415-005",
+            "type": "paragraph",
+            "text": "لَئِنْ lafzı, teşkiktir. Şek, kıllete bakar.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0415-006",
+            "type": "paragraph",
+            "text": "مَسَّ lafzı, azıcık dokunmaktır. Yine kılleti ifade eder.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0415-007",
+            "type": "paragraph",
+            "text": "نَفْحَةٌ lafzı maddesi, bir kokucuk olup kılleti ifade ettiği gibi sîgası bire delâlet eder. Masdar-ı merre tabir-i sarfiyesinde biricik demektir, kılleti ifade eder.",
+            "lang": "ar"
+        }
+    ]
+}

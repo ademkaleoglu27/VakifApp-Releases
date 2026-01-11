@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0263",
+    "pageIndex": 263,
+    "sectionId": "sozler-section-052",
+    "header": {
+        "title": "On Sekizinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0263-001",
+            "type": "paragraph",
+            "text": "Diğeri: Gayet münevver, müzehher bir daire-i ubudiyet ve gayet vâsi, câmi’ bir levha-i tefekkür ve istihsan ve teşekkür ve iman vardır ki ikinci daire bütün kuvvetiyle birinci dairenin namına hareket eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0263-002",
+            "type": "paragraph",
+            "text": "İşte o Sâni’in bütün makasıd-ı sanatperveranesine hizmet eden o daire reisinin ne derece o Sâni’ ile münasebettar ve onun nazarında ne kadar mahbub ve makbul olduğu bilbedahe anlaşılır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0263-003",
+            "type": "paragraph",
+            "text": "Acaba hiç akıl kabul eder mi ki şu güzel masnuatın bu derece sanat-perver, hattâ ağzın her çeşit tadını nazara alan in’am-perver sanatkârı, arş ve ferşi çınlattıracak bir velvele-i istihsan ve takdir içinde, berr ve bahri cezbeye getirecek bir zemzeme-i şükran ve tekbir ile perestişkârane ona müteveccih olan en güzel masnuuna karşı lâkayt kalsın ve onunla konuşmasın ve alâkadarane onu resul yapıp, güzel vaziyetinin başkalara da sirayet etmesini istemesin? Kellâ! Konuşmamak ve onu resul yapmamak mümkün değil.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0263-004",
+            "type": "paragraph",
+            "text": "اِنَّ الدّٖينَ عِنْدَ اللّٰهِ الْاِسْلَامُ ۞ مُحَمَّدٌ رَسُولُ اللّٰهِ وَالَّذٖينَ مَعَهُ",
+            "lang": "ar"
+        }
+    ]
+}

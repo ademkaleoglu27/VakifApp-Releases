@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0265",
+    "pageIndex": 265,
+    "sectionId": "sozler-section-053",
+    "header": {
+        "title": "Firkatli ve gurbetli bir esarette, fecir vaktinde ağlayan bir kalbin ağlayan ağlamalarıdır",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0265-001",
+            "type": "paragraph",
+            "text": "بَخٰوابِ غَفْلَتْ سَرْسَمْ نَفْسَمْ حَتّٰى كَىْ..",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0265-002",
+            "type": "paragraph",
+            "text": "عُمْرْ عَصْرٖيسْتْ سَفَرْ بَاقَبْرْ مٖى بَايَدْ زِهَرْ حَىْ..",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0265-003",
+            "type": "paragraph",
+            "text": "بِبَرْخٖيزْ نَمَازٖى چُو نِيَازٖى گُو بِكُنْ اٰوَازٖى چُونْ نَىْ..",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0265-004",
+            "type": "paragraph",
+            "text": "بَگُو يَا رَبْ پَشٖيمَانَمْ خَجٖيلَمْ شَرْمْسَارَمْ اَزْ گُنَاهْ بٖى شُمَارَمْ پَرٖيشَانَمْ ذَلٖيلَمْ اَشْكْ بَارَمْ اَزْ حَيَاتْ بٖى قَرَارَمْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0265-005",
+            "type": "paragraph",
+            "text": "غَرٖيبَمْ بٖى كَسَمْ ضَعٖيفَمْ نَاتُوَانَمْ عَلٖيلَمْ عَاجِزَمْ اِخْتِيَارَمْ بٖى اِخْتِيَارَمْ اَلْاَمَانْ گُويَمْ عَفُوْ جُويَمْ مَدَدْ خٰواهَمْ زِدَرْگَاهَتْ اِلٰهٖى",
+            "lang": "ar"
+        }
+    ]
+}

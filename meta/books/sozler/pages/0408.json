@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0408",
+    "pageIndex": 408,
+    "sectionId": "sozler-section-073",
+    "header": {
+        "title": "Mu’cizat-ı Kur’aniye Risalesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0408-001",
+            "type": "paragraph",
+            "text": "Ve âlem-i şehadette âlem-i gaybın lisanı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-002",
+            "type": "paragraph",
+            "text": "Ve şu âlem-i şehadet perdesi arkasında olan âlem-i gayb cihetinden gelen iltifatat-ı ebediye-i Rahmaniye ve hitabat-ı ezeliye-i Sübhaniyenin hazinesi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-003",
+            "type": "paragraph",
+            "text": "Ve şu İslâmiyet âlem-i manevîsinin güneşi, temeli, hendesesi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-004",
+            "type": "paragraph",
+            "text": "Ve avâlim-i uhreviyenin mukaddes haritası.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-005",
+            "type": "paragraph",
+            "text": "Ve zat ve sıfât ve esma ve şuun-u İlahiyenin kavl-i şârihi, tefsir-i vâzıhı, bürhan-ı kātı’ı, tercüman-ı sâtıı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-006",
+            "type": "paragraph",
+            "text": "Ve şu âlem-i insaniyetin mürebbisi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0408-007",
+            "type": "paragraph",
+            "text": "Ve insaniyet-i kübra olan İslâmiyet’in mâ ve ziyası.",
+            "lang": "tr"
+        }
+    ]
+}

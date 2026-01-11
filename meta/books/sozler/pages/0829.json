@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0829",
+    "pageIndex": 829,
+    "sectionId": "sozler-section-173",
+    "header": {
+        "title": "Hakkı bulduktan sonra ehak için ihtilafı çıkarma",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0829-header",
+            "type": "heading",
+            "text": "Hakkı bulduktan sonra ehak için ihtilafı çıkarma",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0829-001",
+            "type": "paragraph",
+            "text": "Ey talib-i hakikat, madem hakta ittifak, ehakta ihtilaftır. Bazen hak, ehaktan ehaktır. Hem de olur hasen, ahsenden ahsen.",
+            "lang": "tr"
+        }
+    ]
+}

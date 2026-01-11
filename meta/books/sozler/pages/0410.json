@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0410",
+    "pageIndex": 410,
+    "sectionId": "sozler-section-073",
+    "header": {
+        "title": "Mu’cizat-ı Kur’aniye Risalesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0410-001",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı zikir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-002",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı fikir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-003",
+            "type": "paragraph",
+            "text": "hem bütün insanın bütün hâcat-ı maneviyesine merci olacak çok kitapları tazammun eden tek, câmi’ bir kitab-ı mukaddestir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-004",
+            "type": "paragraph",
+            "text": "Hem bütün evliya ve sıddıkîn ve urefa ve muhakkikînin muhtelif meşreplerine ve ayrı ayrı mesleklerine, her birindeki meşrebin mezâkına lâyık ve o meşrebi tenvir edecek ve her bir mesleğin mesâkına muvafık ve onu tasvir edecek birer risale ibraz eden mukaddes bir kütüphane hükmünde bir kitab-ı semavîdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-005",
+            "type": "paragraph",
+            "text": "İkinci Cüz ve Tetimme-i Tarif",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-006",
+            "type": "paragraph",
+            "text": "Kur’an arş-ı a’zamdan, ism-i a’zamdan, her ismin mertebe-i a’zamından geldiği için, On İkinci Söz’de beyan ve ispat edildiği gibi:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0410-007",
+            "type": "paragraph",
+            "text": "KUR’AN",
+            "lang": "tr"
+        }
+    ]
+}

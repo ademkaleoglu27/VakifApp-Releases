@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0524",
+    "pageIndex": 524,
+    "sectionId": "sozler-section-084",
+    "header": {
+        "title": "[1] Hâşiye: Bu İkinci Mebhas, en derin ve en müşkül bir sırr-ı kader meselesidir. Bütün ulema-i muhakkikînce en ehemmiyetli ve münazaralı bir mesele-i akaid-i kelâmiyedir. Risale-i Nur tam halletmiş.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0524-header",
+            "type": "heading",
+            "text": "[1] Hâşiye: Bu İkinci Mebhas, en derin ve en müşkül bir sırr-ı kader meselesidir. Bütün ulema-i muhakkikînce en ehemmiyetli ve münazaralı bir mesele-i akaid-i kelâmiyedir. Risale-i Nur tam halletmiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0524-001",
+            "type": "paragraph",
+            "text": "[2] Hâşiye: Gayet müdakkik âlimlere mahsus bir hakikattir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0524-002",
+            "type": "paragraph",
+            "text": "[3] Hâşiye: Tereccuh ayrıdır, tercih ayrıdır, çok fark var.",
+            "lang": "tr"
+        }
+    ]
+}

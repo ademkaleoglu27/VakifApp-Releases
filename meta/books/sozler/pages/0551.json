@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0551",
+    "pageIndex": 551,
+    "sectionId": "sozler-section-090",
+    "header": {
+        "title": "Cennet Sözüne Küçük Bir Zeyl",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0551-header",
+            "type": "heading",
+            "text": "Cennet Sözüne Küçük Bir Zeyl",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-001",
+            "type": "paragraph",
+            "text": "Cehenneme Dairdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-002",
+            "type": "paragraph",
+            "text": "İkinci ve Sekizinci Sözlerde ispat edildiği gibi iman, manevî bir cennetin çekirdeğini taşıyor. Küfür dahi manevî bir cehennemin tohumunu saklıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-003",
+            "type": "paragraph",
+            "text": "Nasıl ki küfür, cehennemin bir çekirdeğidir. Öyle de cehennem, onun bir meyvesidir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-004",
+            "type": "paragraph",
+            "text": "Nasıl küfür, cehenneme duhûlüne sebeptir; öyle de cehennemin vücuduna ve icadına dahi sebeptir. Zira küçük bir hâkimin küçük bir izzeti, küçük bir gayreti, küçük bir celali bulunsa bir edepsiz ona serkeşane dese: “Beni te’dib etmezsin ve edemezsin.” Herhalde o yerde hapishane yoksa da tek o edepsiz için bir hapishane teşkil edecek, onu içine atacaktır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-005",
+            "type": "paragraph",
+            "text": "Halbuki kâfir, cehennemi inkâr ile nihayetsiz izzet ve gayret ve celal sahibi ve gayet büyük ve nihayetsiz kadîr bir zatı tekzip ve isnad-ı acz ediyor, yalancılıkla ve acz ile ittiham ediyor, izzetine şiddetle dokunuyor, gayretine dehşetli dokunduruyor, celaline âsiyane ilişiyor. Elbette farz-ı muhal olarak, cehennemin hiçbir sebeb-i vücudu bulunmazsa da şu derece tekzip ve isnad-ı aczi tazammun eden küfür için bir cehennem halk edilecek, o kâfir içine atılacaktır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0551-006",
+            "type": "paragraph",
+            "text": "رَبَّنَا مَا خَلَقْتَ هٰذَا بَاطِلًا سُبْحَانَكَ فَقِنَا عَذَابَ النَّارِ",
+            "lang": "ar"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0550",
+    "pageIndex": 550,
+    "sectionId": "sozler-section-089",
+    "header": {
+        "title": "Yirmi Sekizinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0550-001",
+            "type": "paragraph",
+            "text": "Zira bu terazi o kadar sıkleti çekmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0550-002",
+            "type": "paragraph",
+            "text": "سُبْحَانَكَ لَا عِلْمَ لَنَٓا اِلَّا مَا عَلَّمْتَنَٓا اِنَّكَ اَنْتَ الْعَلٖيمُ الْحَكٖيمُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0550-003",
+            "type": "paragraph",
+            "text": "رَبَّنَا لَا تُؤَاخِذْنَٓا اِنْ نَسٖينَٓا اَوْ اَخْطَاْنَا",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0550-004",
+            "type": "paragraph",
+            "text": "اَللّٰهُمَّ صَلِّ عَلٰى حَبٖيبِكَ الَّذٖى فَتَحَ اَبْوَابَ الْجَنَّةِ بِحَبٖيبِيَّتِهٖ وَ بِصَلَاتِهٖ وَ اَيَّدَتْهُ اُمَّتُهُ عَلٰى فَتْحِهَا بِصَلَوَاتِهِمْ عَلَيْهِ عَلَيْهِ الصَّلَاةُ وَ السَّلَامُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0550-005",
+            "type": "paragraph",
+            "text": "اَللّٰهُمَّ اَدْخِلْنَا الْجَنَّةَ مَعَ الْاَبْرَارِ بِشَفَاعَةِ حَبٖيبِكَ الْمُخْتَارِ اٰمٖينَ",
+            "lang": "ar"
+        }
+    ]
+}

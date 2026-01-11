@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0279",
+    "pageIndex": 279,
+    "sectionId": "sozler-section-055",
+    "header": {
+        "title": "On Dokuzuncu Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0279-001",
+            "type": "paragraph",
+            "text": "اَللّٰهُمَّ اجْعَلِ الْقُرْاٰنَ شِفَاءً لَنَا وَ لِكَاتِبِهٖ وَ اَمْثَالِهٖ مِنْ كُلِّ دَاءٍ وَ مُونِسًا لَنَا وَ لَهُمْ فٖى حَيَاتِنَا وَ بَعْدَ مَمَاتِنَا وَ فِى الدُّنْيَا قَرٖينًا وَ فِى الْقَبْرِ مُونِسًا وَ فِى الْقِيَامَةِ شَفٖيعًا وَ عَلَى الصِّرَاطِ نُورًا وَ مِنَ النَّارِ سِتْرًا وَ حِجَابًا وَ فِى الْجَنَّةِ رَفٖيقًا وَ اِلَى الْخَيْرَاتِ كُلِّهَا دَلٖيلًا وَ اِمَامًا بِفَضْلِكَ وَ جُودِكَ وَ كَرَمِكَ وَ رَحْمَتِكَ يَا اَكْرَمَ الْاَكْرَمٖينَ وَ يَا اَرْحَمَ الرَّاحِمٖينَ اٰمٖينَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0279-002",
+            "type": "paragraph",
+            "text": "اَللّٰهُمَّ صَلِّ وَ سَلِّمْ عَلٰى مَنْ اُنْزِلَ عَلَيْهِ الْفُرْقَانُ الْحَكٖيمُ وَ عَلٰى اٰلِهٖ وَ صَحْبِهٖ اَجْمَعٖينَ اٰمٖينَ اٰمٖينَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0279-003",
+            "type": "paragraph",
+            "text": "İhtar: Arabî Risaletü’n-Nur’da On Dördüncü Reşha’nın altı katresi, bâhusus Dördüncü Katre’nin altı nüktesi, Kur’an-ı Hakîm’in kırk kadar enva-ı i’cazından on beşini beyan eder. Ona iktifaen burada ihtisar ettik. İstersen ona müracaat et, bir hazine-i mu’cizat bulursun.",
+            "lang": "tr"
+        }
+    ]
+}

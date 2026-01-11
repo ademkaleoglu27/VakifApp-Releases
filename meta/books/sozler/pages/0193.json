@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0193",
+    "pageIndex": 193,
+    "sectionId": "sozler-section-040",
+    "header": {
+        "title": "On Altıncı Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0193-header",
+            "type": "heading",
+            "text": "On Altıncı Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0193-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0193-002",
+            "type": "paragraph",
+            "text": "اِنَّمَٓا اَمْرُهُٓ اِذَٓا اَرَادَ شَيْئًا اَنْ يَقُولَ لَهُ كُنْ فَيَكُونُ ۞ فَسُبْحَانَ الَّذٖى بِيَدِهٖ مَلَكُوتُ كُلِّ شَىْءٍ وَاِلَيْهِ تُرْجَعُونَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0193-003",
+            "type": "paragraph",
+            "text": "İtminan-ı nefsime medar olacak, zulmeti dağıtacak şu âyetin nurundan dört şuâyı göstermekle kör nefsime bir basîret vermek için yazılmıştır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0193-004",
+            "type": "paragraph",
+            "text": "Birinci Şuâ",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0193-005",
+            "type": "paragraph",
+            "text": "Ey nefs-i nâdan! Diyorsun ki: Ehadiyet-i Zat-ı İlahiye ile külliyet-i ef’ali ve vahdet-i şahsiyesiyle muînsiz umumiyet-i rububiyeti ve ferdaniyeti ile şeriksiz şümul-ü tasarrufatı ve mekândan münezzehiyetiyle her yerde hazır bulunması ve nihayetsiz ulviyetiyle her şeye yakın olması ve birliği ile her işi bizzat elinde tutması hakaik-i Kur’aniyedendir. Kur’an ise hakîmdir. Hakîm ise akıl kabul etmeyen şeyleri akla tahmil etmez. Akıl ise zahirî bir münafatı görüyor. Aklı teslime sevk edecek bir izah isterim.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0193-006",
+            "type": "paragraph",
+            "text": "Elcevap: Madem öyledir, itminan için istersen biz de Kur’an’ın feyzine istinaden diyoruz: İsm-i Nur, çok müşkülatımızı halletmiş, inşâallah bunu da halleder. Akla vâzıh, kalbe nurani olacak temsil yolunu ihtiyar ile İmam-ı Rabbanî (ra) gibi deriz:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0193-007",
+            "type": "paragraph",
+            "text": "نَه شَبَمْ نَه شَبْ پَرَسْتَمْ مَنْ § غُلَامِ شَمْسَمْ اَزْ شَمْسْ مٖى گُويَمْ خَبَرْ",
+            "lang": "ar"
+        }
+    ]
+}

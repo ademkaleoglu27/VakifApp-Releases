@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0430",
+    "pageIndex": 430,
+    "sectionId": "sozler-section-074",
+    "header": {
+        "title": "BİRİNCİ ŞULE",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0430-001",
+            "type": "paragraph",
+            "text": "Birinci misal:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0430-002",
+            "type": "paragraph",
+            "text": "وَاِنْ كُنْتُمْ فٖى رَيْبٍ مِمَّا نَزَّلْنَا عَلٰى عَبْدِنَا فَاْتُوا بِسُورَةٍ مِنْ مِثْلِهٖ وَادْعُوا شُهَدَٓاءَكُمْ مِنْ دُونِ اللّٰهِ اِنْ كُنْتُمْ صَادِقٖينَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0430-003",
+            "type": "paragraph",
+            "text": "Yani “Eğer bir şüpheniz varsa size yardım edecek, şehadet edecek bütün büyüklerinizi ve taraftarlarınızı çağırınız. Bir tek suresine bir nazire yapınız.” İşaratü’l-İ’caz’da izah ve ispat edildiği için burada yalnız icmaline işaret ederiz. Şöyle ki Kur’an-ı Mu’cizü’l-Beyan diyor:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0430-004",
+            "type": "paragraph",
+            "text": "Ey ins ve cin! Eğer Kur’an, Kelâm-ı İlahî olduğunda şüpheniz varsa, bir beşer kelâmı olduğunu tevehhüm ediyorsanız, haydi işte meydan, geliniz! Siz dahi ona Muhammedü’l-Emin dediğiniz zat gibi okumak yazmak bilmez, kıraat ve kitabet görmemiş bir ümmiden bu Kur’an gibi bir kitap getiriniz, yaptırınız.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0430-005",
+            "type": "paragraph",
+            "text": "Bunu yapamazsanız, haydi ümmi olmasın, en meşhur bir edib, bir âlim olsun.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0430-006",
+            "type": "paragraph",
+            "text": "Bunu da yapamazsanız, haydi bir tek olmasın, bütün büleganız, hutebanız, belki bütün geçmiş beliğlerin güzel eserlerini ve bütün gelecek ediblerin yardımlarını ve ilahlarınızın himmetlerini beraber alınız. Bütün kuvvetinizle çalışınız, şu Kur’an’a bir nazire yapınız.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0430-007",
+            "type": "paragraph",
+            "text": "Bunu da yapamazsanız, haydi kabil-i taklit olmayan hakaik-i Kur’aniyeden ve manevî çok mu’cizatından kat-ı nazar, yalnız nazmındaki belâgatına nazire olarak bir eser yapınız.",
+            "lang": "tr"
+        }
+    ]
+}

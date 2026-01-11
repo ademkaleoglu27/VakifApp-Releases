@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0062",
+    "pageIndex": 62,
+    "sectionId": "sozler-section-012",
+    "header": {
+        "title": "Mukaddime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0062-001",
+            "type": "paragraph",
+            "text": "Bab-ı hikmet ve adalet olup ism-i Hakîm ve Âdil’in cilvesidir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-002",
+            "type": "paragraph",
+            "text": "Hiç mümkün müdür ki: (Hâşiye[8]) Zerrelerden güneşlere kadar cereyan eden hikmet ve intizam, adalet ve mizanla rububiyetin saltanatını gösteren Zat-ı Zülcelal, rububiyetin cenah-ı himayesine iltica eden ve hikmet ve adalete iman ve ubudiyetle tevfik-i hareket eden mü’minleri taltif etmesin ve o hikmet ve adalete küfür ve tuğyan ile isyan eden edepsizleri te’dib etmesin? Halbuki bu muvakkat dünyada o hikmet, o adalete lâyık binden biri, insanda icra edilmiyor, tehir ediliyor. Ehl-i dalaletin çoğu ceza almadan; ehl-i hidayetin de çoğu mükâfat görmeden buradan göçüp gidiyorlar. Demek bir mahkeme-i kübraya, bir saadet-i uzmaya bırakılıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-003",
+            "type": "paragraph",
+            "text": "Evet, görünüyor ki şu âlemde tasarruf eden zat, nihayetsiz bir hikmetle iş görüyor. Ona bürhan mı istersin? Her şeyde maslahat ve faydalara riayet etmesidir. Görmüyor musun ki insanda bütün aza, kemikler ve damarlarda, hattâ bedenin hüceyratında, her yerinde, her cüzünde faydalar ve hikmetlerin gözetilmesi, hattâ bazı azası, bir ağacın ne kadar meyveleri varsa o derece o uzva hikmetler ve faydalar takması gösteriyor ki nihayetsiz bir hikmet eliyle iş görülüyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-004",
+            "type": "paragraph",
+            "text": "Hem her şeyin sanatında nihayet derecede intizam bulunması gösterir ki nihayetsiz bir hikmet ile iş görülüyor. Evet, güzel bir çiçeğin dakik programını, küçücük bir tohumunda dercetmek, büyük bir ağacın sahife-i a’malini, tarihçe-i hayatını, fihriste-i cihazatını küçücük bir çekirdekte manevî kader kalemiyle yazmak; nihayetsiz bir hikmet kalemi işlediğini gösterir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-005",
+            "type": "paragraph",
+            "text": "Hem her şeyin hilkatinde gayet derecede hüsn-ü sanat bulunması, nihayet derecede hakîm bir Sâni’in nakşı olduğunu gösterir. Evet, şu küçücük insan bedeni içinde bütün kâinatın fihristesini, bütün hazain-i rahmetin anahtarlarını, bütün esmalarının âyinelerini dercetmek; nihayet derecede bir hüsn-ü sanat içinde bir hikmeti gösterir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-006",
+            "type": "paragraph",
+            "text": "Şimdi hiç mümkün müdür ki şöyle icraat-ı rububiyette hâkim bir hikmet, o rububiyetin kanadına iltica eden ve iman ile itaat edenlerin taltifini istemesin ve ebedî taltif etmesin?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0062-007",
+            "type": "paragraph",
+            "text": "Hem adalet ve mizan ile iş görüldüğüne bürhan mı istersin? Her şeye hassas mizanlarla, mahsus ölçülerle vücud vermek, suret giydirmek, yerli yerine koymak; nihayetsiz bir adalet ve mizan ile iş görüldüğünü gösterir.",
+            "lang": "tr"
+        }
+    ]
+}

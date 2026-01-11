@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0027",
+    "pageIndex": 27,
+    "sectionId": "sozler-section-007",
+    "header": {
+        "title": "Altıncı Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0027-001",
+            "type": "paragraph",
+            "text": "Allah’a abd ve asker olmak, öyle lezzetli bir şereftir ki tarif edilmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0027-002",
+            "type": "paragraph",
+            "text": "Vazife ise yalnız, bir asker gibi Allah namına işlemeli, başlamalı. Ve Allah hesabıyla vermeli ve almalı. Ve izni ve kanunu dairesinde hareket etmeli, sükûnet bulmalı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0027-003",
+            "type": "paragraph",
+            "text": "Kusur etse istiğfar etmeli. “Yâ Rab! Kusurumuzu affet, bizi kendine kul kabul et, emanetini kabzetmek zamanına kadar bizi emanette emin kıl, âmin!” demeli ve ona yalvarmalı.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0553",
+    "pageIndex": 553,
+    "sectionId": "sozler-section-092",
+    "header": {
+        "title": "Yirmi Dokuzuncu Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0553-header",
+            "type": "heading",
+            "text": "Yirmi Dokuzuncu Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0553-001",
+            "type": "paragraph",
+            "text": "Beka-i Ruh ve Melaike ve Haşre Dairdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0553-002",
+            "type": "paragraph",
+            "text": "اَعُوذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجٖيمِ بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0553-003",
+            "type": "paragraph",
+            "text": "تَنَزَّلُ الْمَلٰٓئِكَةُ وَالرُّوحُ فٖيهَا بِاِذْنِ رَبِّهِمْ ۞ قُلِ الرُّوحُ مِنْ اَمْرِ رَبّٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0553-004",
+            "type": "paragraph",
+            "text": "Şu makam, iki maksad-ı esas ile bir mukaddimeden ibarettir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0553-005",
+            "type": "paragraph",
+            "text": "Mukaddime",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0553-006",
+            "type": "paragraph",
+            "text": "Melaike ve ruhaniyatın vücudu, insan ve hayvanların vücudu kadar kat’îdir, denilebilir. Evet, On Beşinci Söz’ün Birinci Basamak’ında beyan edildiği gibi: Hakikat kat’iyen iktiza eder ve hikmet yakînen ister ki zemin gibi semavatın dahi sekeneleri bulunsun ve zîşuur sekeneleri olsun ve o sekeneler, o semavata münasip bulunsun. Şeriatın lisanında, pek çok muhtelifü’l-cins olan o sekenelere melaike ve ruhaniyat tesmiye edilir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0553-007",
+            "type": "paragraph",
+            "text": "Evet, hakikat böyle iktiza eder. Zira şu zeminimiz, semaya nisbeten küçüklüğü ve hakaretiyle beraber zîşuur mahluklarla doldurulması, ara sıra boşaltıp yeniden yeni zîşuurlarla şenlendirilmesi işaret eder belki tasrih eder ki: Şu muhteşem burçlar sahibi olan müzeyyen kasırlar misali olan semavat dahi nur-u vücudun nuru olan zîhayat ve zîhayatın ziyası olan zîşuur ve zevi’l-idrak mahluklarla elbette doludur. O mahluklar dahi ins ve cin gibi şu saray-ı âlemin seyircileri ve şu kâinat kitabının mütalaacıları ve şu saltanat-ı rububiyetin dellâllarıdırlar. Küllî ve umumî ubudiyetleri ile kâinatın büyük ve küllî mevcudatın tesbihatlarını temsil ediyorlar.",
+            "lang": "tr"
+        }
+    ]
+}

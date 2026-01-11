@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0779",
+    "pageIndex": 779,
+    "sectionId": "sozler-section-135",
+    "header": {
+        "title": "Hayatsız vücud, adem gibidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0779-header",
+            "type": "heading",
+            "text": "Hayatsız vücud, adem gibidir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0779-001",
+            "type": "paragraph",
+            "text": "Ziya ile hayatın her biri, mevcudatın birer keşşafıdır. Bak nur-u hayat olmazsa",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0779-002",
+            "type": "paragraph",
+            "text": "Vücud, adem-âlûddur; belki adem gibidir. Evet garib, yetimdir; hayatsız ger kamerse.",
+            "lang": "tr"
+        }
+    ]
+}

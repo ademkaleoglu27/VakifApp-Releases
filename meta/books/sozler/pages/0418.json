@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0418",
+    "pageIndex": 418,
+    "sectionId": "sozler-section-074",
+    "header": {
+        "title": "BİRİNCİ ŞULE",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0418-001",
+            "type": "paragraph",
+            "text": "Kelimatın dahi birbirine karşı, aynen geniş böyle bir daire-i nazmiyesi var.    ",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0418-002",
+            "type": "paragraph",
+            "text": "Sonra kelâmların da:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0418-003",
+            "type": "paragraph",
+            "text": "Mesela قُلْ هُوَ اللّٰهُ اَحَدٌ de altı cümle var. Üçü müsbet, üçü menfî. Altı mertebe-i tevhidi ispat etmekle beraber şirkin altı envaını reddeder. Her bir cümlesi öteki cümlelere hem delil olur hem netice olur. Çünkü her bir cümlenin iki manası var. Bir mana ile netice olur, bir mana ile de delil olur. Demek, Sure-i İhlas’ta otuz Sure-i İhlas kadar, muntazam, birbirini ispat eder delillerden mürekkeb sureler vardır.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0418-004",
+            "type": "paragraph",
+            "text": "Mesela قُلْ هُوَ اللّٰهُ لِاَنَّهُ اَحَدٌ ، لِاَنَّهُ صَمَدٌ ، لِاَنَّهُ لَمْ يَلِدْ ، لِاَنَّهُ لَمْ يُولَدْ ، لِاَنَّهُ لَمْ يَكُنْ لَهُ كُفُوًا اَحَدٌ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0418-005",
+            "type": "paragraph",
+            "text": "Hem وَلَمْ يَكُنْ لَهُ كُفُوًا اَحَدٌ ، لِاَنَّهُ لَمْ يُولَدْ ، لِاَنَّهُ لَم يَلِدْ ، لِاَنَّهُ صَمَدٌ ، لِاَنَّهُ اَحَدٌ ، لِاَنَّهُ هُوَ اللّٰهُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0418-006",
+            "type": "paragraph",
+            "text": "Hem هُوَ اللّٰهُ فَهُوَ اَحَدٌ ، فَهُوَ صَمَدٌ ، فَاِذًا لَمْ يَلِدْ ، فَاِذًا لَمْ يُولَدْ ، فَاِذًا لَمْ يَكُنْ لَهُ كُفُوًا اَحَدٌ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0418-007",
+            "type": "paragraph",
+            "text": "Daha sen buna göre kıyas et.",
+            "lang": "tr"
+        }
+    ]
+}

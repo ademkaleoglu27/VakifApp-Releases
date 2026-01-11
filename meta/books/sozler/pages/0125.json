@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0125",
+    "pageIndex": 125,
+    "sectionId": "sozler-section-021",
+    "header": {
+        "title": "On İkinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0125-header",
+            "type": "heading",
+            "text": "On İkinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0125-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0125-002",
+            "type": "paragraph",
+            "text": "وَمَنْ يُؤْتَ الْحِكْمَةَ فَقَدْ اُوتِىَ خَيْرًا كَثٖيرًا",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0125-003",
+            "type": "paragraph",
+            "text": "Kur’an-ı Hakîm’in hikmet-i kudsiyesi ile felsefe hikmetinin icmalen muvazenesi, hem hikmet-i Kur’aniyenin insanın hayat-ı şahsiyesine ve hayat-ı içtimaiyesine verdiği ders-i terbiyenin gayet kısa bir fezlekesi, hem Kur’an’ın sair kelimat-ı İlahiyeye ve bütün kelâmlara cihet-i rüçhaniyetine bir işarettir. İşte bu sözde dört esas vardır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0125-004",
+            "type": "paragraph",
+            "text": "Birinci Esas",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0125-005",
+            "type": "paragraph",
+            "text": "Hikmet-i Kur’aniye ile hikmet-i fenniyenin farklarına şu gelecek hikâye-i temsiliye dürbünüyle bak:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0125-006",
+            "type": "paragraph",
+            "text": "Bir zaman hem dindar hem gayet sanatkâr bir hâkim-i namdar istedi ki Kur’an-ı Hakîm’i, maânîsindeki kudsiyetine ve kelimatındaki i’caza şayeste bir yazı ile yazsın. O mu’ciz-nüma kamete, hârika bir libas giydirilsin. İşte o nakkaş zat, Kur’an’ı pek acib bir tarzda yazdı. Bütün kıymettar cevherleri, yazısında istimal etti. Hakaikinin tenevvüüne işaret için bazı mücessem hurufatını elmas ve zümrüt ile ve bir kısmını lü’lü ve akik ile ve bir taifesini pırlanta ve mercanla ve bir nevini altın ve gümüş ile yazdı. Hem öyle bir tarzda süslendirip münakkaş etti ki okumayı bilen ve bilmeyen herkes temaşasından hayran olup istihsan ederdi. Bâhusus ehl-i hakikatin nazarına o surî güzellik, manasındaki gayet parlak güzelliğin ve gayet şirin tezyinatın işaratı olduğundan pek kıymettar bir antika olmuştur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0125-007",
+            "type": "paragraph",
+            "text": "Sonra o hâkim, şu musanna ve murassa Kur’an’ı, bir ecnebi feylesofa ve bir Müslüman âlime gösterdi. Hem tecrübe hem mükâfat için emretti ki: “Her biriniz, bunun hikmetine dair bir eser yazınız.” Evvela o feylesof sonra o âlim, ona dair birer kitap telif ettiler.",
+            "lang": "tr"
+        }
+    ]
+}

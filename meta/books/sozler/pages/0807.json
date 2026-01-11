@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0807",
+    "pageIndex": 807,
+    "sectionId": "sozler-section-162",
+    "header": {
+        "title": "Yalan, bir lafz-ı kâfirdir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0807-header",
+            "type": "heading",
+            "text": "Yalan, bir lafz-ı kâfirdir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0807-001",
+            "type": "paragraph",
+            "text": "Bir dane sıdk, yakar milyonla yalanı. Bir dane-i hakikat, yıkar kasr-ı hayali. Sıdk büyük esastır, bir cevher-i ziyalı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0807-002",
+            "type": "paragraph",
+            "text": "Yeri verir sükûta, eğer çıksa zararlı. Yalana yer hiç yoktur, çendan olsa faydalı. Her sözün doğru olsun, her hükmün hak olmalı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0807-003",
+            "type": "paragraph",
+            "text": "Lâkin hakkın olamaz, her doğruyu söz etmek. Bunu iyi bilmeli. خُذْ مَا صَفَا دَعْ مَا كَدَرْ kendine düstur etmeli.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0807-004",
+            "type": "paragraph",
+            "text": "Güzel gör hem güzel bak. Tâ güzel düşünmeli. Güzel bil hem güzel düşün. Tâ leziz hayatı bulmalı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0807-005",
+            "type": "paragraph",
+            "text": "Hayat içinde hayattır, hüsn-ü zanda emeli. Sû-i zanla yeistir saadet muharribi hem de hayatın kātili.",
+            "lang": "tr"
+        }
+    ]
+}

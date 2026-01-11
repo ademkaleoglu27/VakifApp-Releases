@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0828",
+    "pageIndex": 828,
+    "sectionId": "sozler-section-172",
+    "header": {
+        "title": "İnadın gözü, meleği şeytan görür",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0828-header",
+            "type": "heading",
+            "text": "İnadın gözü, meleği şeytan görür",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0828-001",
+            "type": "paragraph",
+            "text": "İnadın işi budur: Şeytan yardım ederse birisine “melek” der, rahmeti de okutur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0828-002",
+            "type": "paragraph",
+            "text": "Muhalif tarafında eğer meleği görse libasını değişmiş, onu şeytan zanneder; adâvet, lanet eder.",
+            "lang": "tr"
+        }
+    ]
+}

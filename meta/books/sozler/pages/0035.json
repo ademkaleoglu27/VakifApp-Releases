@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0035",
+    "pageIndex": 35,
+    "sectionId": "sozler-section-009",
+    "header": {
+        "title": "Sekizinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0035-001",
+            "type": "paragraph",
+            "text": "Ve o iki tarîkten sağ ise tarîk-i Kur’an ve imandır, sol ise tarîk-ı isyan ve küfrandır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0035-002",
+            "type": "paragraph",
+            "text": "Ve o yoldaki bahçe ise cemiyet-i beşeriye ve medeniyet-i insaniye içinde muvakkat hayat-ı içtimaiyedir ki hayır ve şer, iyi ve fena, temiz ve pis şeyler beraber bulunur. Âkıl odur ki: خُذْ مَا صَفَا دَعْ مَا كَدَرْ kaidesiyle amel eder, selâmet-i kalp ile gider.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0035-003",
+            "type": "paragraph",
+            "text": "Ve o sahra ise şu arz ve dünyadır. Ve o arslan ise ölüm ve eceldir. Ve o kuyu ise beden-i insan ve zaman-ı hayattır. Ve o altmış arşın derinlik ise ömr-ü vasatî ve ömr-ü galibî olan altmış seneye işarettir. Ve o ağaç ise müddet-i ömür ve madde-i hayattır. Ve o siyah ve beyaz iki hayvan ise gece ve gündüzdür.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0035-004",
+            "type": "paragraph",
+            "text": "Ve o ejderha ise ağzı kabir olan tarîk-ı berzahiye ve revak-ı uhrevîdir. Fakat o ağız, mü’min için zindandan bir bahçeye açılan bir kapıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0035-005",
+            "type": "paragraph",
+            "text": "Ve o haşerat-ı muzırra ise musibat-ı dünyeviyedir. Fakat mü’min için gaflet uykusuna dalmamak için tatlı ikazat-ı İlahiye ve iltifatat-ı Rahmaniye hükmündedir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0035-006",
+            "type": "paragraph",
+            "text": "Ve o ağaçtaki yemişler ise dünyevî nimetlerdir ki Cenab-ı Kerîm-i Mutlak, onları âhiret nimetlerine bir liste hem ihtar edici hem müşabihleri hem cennet meyvelerine müşterileri davet eden numuneler suretinde yapmış.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0035-007",
+            "type": "paragraph",
+            "text": "Ve o ağacın birliğiyle beraber muhtelif başka başka meyveler vermesi ise kudret-i Samedaniyenin sikkesine ve rububiyet-i İlahiyenin hâtemine ve saltanat-ı uluhiyetin turrasına işarettir. Çünkü “Bir tek şeyden her şeyi yapmak” yani bir topraktan bütün nebatat ve meyveleri yapmak, hem bir sudan bütün hayvanatı halk etmek, hem basit bir yemekten bütün cihazat-ı hayvaniyeyi icad etmek; bununla beraber “Her şeyi bir tek şey yapmak” yani zîhayatın yediği gayet muhtelifü’l-cins taamlardan o zîhayata bir lahm-ı mahsus yapmak, bir cild-i basit dokumak gibi sanatlar; Zat-ı Ehad-i Samed olan Sultan-ı ezel ve ebed’in sikke-i hâssasıdır, hâtem-i mahsusudur, taklit edilmez bir turrasıdır. Evet, bir şeyi her şey ve her şeyi bir şey yapmak; her şeyin Hâlık’ına has ve Kādir-i külli şey’e mahsus bir nişandır, bir âyettir.",
+            "lang": "tr"
+        }
+    ]
+}

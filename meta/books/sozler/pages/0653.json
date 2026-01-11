@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0653",
+    "pageIndex": 653,
+    "sectionId": "sozler-section-104",
+    "header": {
+        "title": "İKİNCİ MEVKIF",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0653-header",
+            "type": "heading",
+            "text": "İKİNCİ MEVKIF",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0653-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0653-002",
+            "type": "paragraph",
+            "text": "قُلْ هُوَ اللّٰهُ اَحَدٌ ۞ اَللّٰهُ الصَّمَدُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0653-003",
+            "type": "paragraph",
+            "text": "Şu Mevkıfın üç maksadı var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0653-004",
+            "type": "paragraph",
+            "text": "Birinci Maksat",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0653-005",
+            "type": "paragraph",
+            "text": "Bir yıldızın tokadıyla yere sukut eden ehl-i şirk ve dalaletin vekili, zerrelerden yıldızlara kadar hiçbir yerde zerre miktar şirke yer bulamadığından, o tarzdaki davadan vazgeçip fakat şeytan gibi vahdete dair teşkikat yapmak için üç mühim sual ile ehadiyete ve vahdete dair ehl-i tevhide vesvese yapmak istedi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0653-006",
+            "type": "paragraph",
+            "text": "Birinci sual: Zındıka lisanıyla diyor ki: “Ey ehl-i tevhid! Ben, kendi müekkillerim namına bir şey bulamadım, mevcudatta bir hisse çıkaramadım, mesleğimi ispat edemedim. Fakat siz ne ile nihayetsiz bir kudret sahibi bir Vâhid-i Ehad’i ispat ediyorsunuz? Neden onun kudretiyle beraber başka eller karışmasını kabil görmüyorsunuz?”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0653-007",
+            "type": "paragraph",
+            "text": "Elcevap: Yirmi İkinci Söz’de kat’î ispat edilmiş ki bütün mevcudat, bütün zerrat, bütün yıldızlar, her biri Vâcibü’l-vücud’un ve Kadîr-i Mutlak’ın vücub-u vücuduna birer bürhan-ı neyyirdir. Bütün kâinattaki silsilelerin her biri, onun vahdaniyetine birer delil-i kat’îdir. Kur’an-ı Hakîm hadsiz bürhanlarında ispat ettiği gibi umumun nazarına en zahir bürhanları daha ziyade zikreder. Ezcümle:",
+            "lang": "tr"
+        }
+    ]
+}

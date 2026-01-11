@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0899",
+    "pageIndex": 899,
+    "sectionId": "sozler-section-204",
+    "header": {
+        "title": "[1] * Hattâ tarihi نَجْمُ اَدَبٍ وُلِدَ لِهِلَالَىْ رَمَضَانَ çıkmış. Yani “Ramazanın iki hilâlinden doğmuş bir edep yıldızıdır.” (Bin üç yüz otuz yedi eder.)",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0899-header",
+            "type": "heading",
+            "text": "[1] * Hattâ tarihi نَجْمُ اَدَبٍ وُلِدَ لِهِلَالَىْ رَمَضَانَ çıkmış. Yani “Ramazanın iki hilâlinden doğmuş bir edep yıldızıdır.” (Bin üç yüz otuz yedi eder.)",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0899-001",
+            "type": "paragraph",
+            "text": "[2] ** Bu kıta, onun imzasıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0899-002",
+            "type": "paragraph",
+            "text": "[3]",
+            "lang": "tr"
+        }
+    ]
+}

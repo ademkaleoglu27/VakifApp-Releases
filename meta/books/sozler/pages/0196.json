@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0196",
+    "pageIndex": 196,
+    "sectionId": "sozler-section-040",
+    "header": {
+        "title": "On Altıncı Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0196-001",
+            "type": "paragraph",
+            "text": "Ey nefs-i bîhuş! Diyorsun ki: اِنَّمَٓا اَمْرُهُٓ اِذَٓا اَرَادَ شَيْئًا اَنْ يَقُولَ لَهُ كُنْ فَيَكُونُ hem اِنْ كَانَتْ اِلَّا صَيْحَةً وَاحِدَةً فَاِذَاهُمْ جَمٖيعٌ لَدَيْنَا مُحْضَرُونَ gibi âyetler; vücud-u eşya, sırf bir emir ile ve def’î olduğunu ve اَحْسَنَ كُلَّ شَىْءٍ خَلَقَهُ hem صُنْعَ اللّٰهِ الَّذٖٓى اَتْقَنَ كُلَّ شَىْءٍ gibi âyetler; vücud-u eşya, ilim içinde azîm bir kudretle, hikmet içinde dakik bir sanatla tedricî olduğunu gösteriyorlar. Vech-i tevfiki nedir?",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0196-002",
+            "type": "paragraph",
+            "text": "Elcevap: Kur’an’ın feyzine istinaden deriz:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0196-003",
+            "type": "paragraph",
+            "text": "Evvela, münafat yoktur. Bir kısım öyledir: İptidadaki icad gibi. Bir kısmı böyledir: Mislini iade gibi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0196-004",
+            "type": "paragraph",
+            "text": "Sâniyen: Mevcudatta meşhud olan suhulet ve sürat ve kesret ve vüs’at içinde nihayet intizam, gayet itkan ve hüsn-ü sanat ve kemal-i hilkat, şu iki kısım âyetlerin vücud-u hakikatlerine kat’iyen şehadet eder. Öyle ise şunların hariçte tahakkukları medar-ı bahis olması lüzumsuzdur. Belki yalnız “Sırr-ı hikmeti nedir?” denilebilir. Öyle ise biz dahi bir kıyas-ı temsilî ile şu hikmete işaret ederiz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0196-005",
+            "type": "paragraph",
+            "text": "Mesela, nasıl ki terzi gibi bir sanatçı; birçok külfetler, maharetlerle musanna bir şeyi icad eder ve ona bir model yapar. Sonra onun emsalini külfetsiz çabuk yapabilir. Hattâ bazen öyle bir derece suhulet peyda eder ki güya emreder, yapılır ve öyle kuvvetli bir intizam kesbeder, saat gibi güya bir emrin dokunmasıyla işlenir ve işler.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0196-006",
+            "type": "paragraph",
+            "text": "Öyle de Sâni’-i Hakîm ve Nakkaş-ı Alîm, şu âlem sarayını müştemilatıyla beraber bedî’ bir surette yaptıktan sonra cüz’î ve küllî, cüz ve küll her şeye bir model hükmünde bir nizam-ı kaderî ile bir miktar-ı muayyen vermiştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0196-007",
+            "type": "paragraph",
+            "text": "İşte bak o Nakkaş-ı Ezelî, her bir asrı bir model yaparak mu’cizat-ı kudreti ile murassa, taze bir âlemi ona giydiriyor. Her bir seneyi bir mikyas ederek havârık-ı rahmetiyle musanna, taze bir kâinatı o kamete göre dikiyor. Her bir günü bir satır yaparak dekaik-i hikmetiyle müzeyyen, mücedded mevcudatı onda yazıyor.",
+            "lang": "tr"
+        }
+    ]
+}

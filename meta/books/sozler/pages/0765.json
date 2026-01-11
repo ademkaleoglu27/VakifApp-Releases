@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0765",
+    "pageIndex": 765,
+    "sectionId": "sozler-section-122",
+    "header": {
+        "title": "Küçük şeyler büyük şeylerle merbuttur",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0765-header",
+            "type": "heading",
+            "text": "Küçük şeyler büyük şeylerle merbuttur",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0765-001",
+            "type": "paragraph",
+            "text": "Sivrisinek gözünü halkeyleyendir mutlaka, güneşi hem Kehkeş’i halkeylemiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0765-002",
+            "type": "paragraph",
+            "text": "Pirenin midesini tanzim edendir mutlaka, manzume-i şemsiyeyi nazmeylemiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0765-003",
+            "type": "paragraph",
+            "text": "Gözde rü’yet, midede hem ihtiyacı dercedendir mutlaka, sema gözüne ziya sürmesi çekmiş, zemin yüzüne gıda sofrası sermiş.",
+            "lang": "tr"
+        }
+    ]
+}

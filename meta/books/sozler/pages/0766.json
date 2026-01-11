@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0766",
+    "pageIndex": 766,
+    "sectionId": "sozler-section-123",
+    "header": {
+        "title": "Kâinatın nazmında büyük bir i’caz var",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0766-header",
+            "type": "heading",
+            "text": "Kâinatın nazmında büyük bir i’caz var",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0766-001",
+            "type": "paragraph",
+            "text": "Kâinatın gör ki telifinde bir i’caz var. Ger bütün esbab-ı tabiiye bi’l-farzı’l-muhal",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0766-002",
+            "type": "paragraph",
+            "text": "Ola her biri muktedir bir fâil-i muhtar. O i’caza karşı nihayet acz ile bi’l-imtisal",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0766-003",
+            "type": "paragraph",
+            "text": "Ederek secde ki سُبْحَانَكَ لَا قُدْرَةَ فٖينَا رَبَّنَا اَنْتَ الْقَدٖيرُ الْاَزَلِىُّ ذُو الْجَلَالِ",
+            "lang": "ar"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0782",
+    "pageIndex": 782,
+    "sectionId": "sozler-section-138",
+    "header": {
+        "title": "Tebeî nazar, muhali mümkün görür",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0782-header",
+            "type": "heading",
+            "text": "Tebeî nazar, muhali mümkün görür",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-001",
+            "type": "paragraph",
+            "text": "Meşhurdur ki iyd’in hilâline bakardı cemaat-i kesîre. Kimse bir şey görmedi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-002",
+            "type": "paragraph",
+            "text": "Zevalî bir ihtiyar yemin etti ki: “Gördüm.” Halbuki gördüğü, kirpiğinin takavvüs etmiş beyaz bir kılı idi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-003",
+            "type": "paragraph",
+            "text": "O kıl oldu onun hilâli. O mukavves kıl nerede? Hilâl olmuş kamer nerede? Ger anladın şu remzi:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-004",
+            "type": "paragraph",
+            "text": "Zerrattaki harekât; kirpik-i aklın olmuş, birer kıl-ı zulmettar, kör etmiş maddî gözü.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-005",
+            "type": "paragraph",
+            "text": "Teşkil-i cümle enva fâilini göremez, düşer başına dalal.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0782-006",
+            "type": "paragraph",
+            "text": "O hareket nerede? Nazzam-ı kevn nerede? Onu ona vehmetmek, muhal-ender muhal!",
+            "lang": "tr"
+        }
+    ]
+}

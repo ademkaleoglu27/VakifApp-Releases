@@ -287,6 +287,10 @@ export const RisaleTextRenderer = memo((props: Props) => {
                                     key={`${keyPrefix}-tr-${i}-${wIdx}`}
                                     onPress={interactiveEnabled ? (e) => handlePress(cleanW, e.nativeEvent.pageY, prevWord, nextWord) : undefined}
                                     suppressHighlighting={false}
+                                    style={{
+                                        // Slightly larger touch area
+                                        paddingVertical: 2,
+                                    }}
                                 >
                                     {w}
                                 </Text>

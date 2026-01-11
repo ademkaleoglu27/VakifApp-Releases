@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0780",
+    "pageIndex": 780,
+    "sectionId": "sozler-section-136",
+    "header": {
+        "title": "Hayat sebebiyle karınca küreden büyük olur",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0780-header",
+            "type": "heading",
+            "text": "Hayat sebebiyle karınca küreden büyük olur",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0780-001",
+            "type": "paragraph",
+            "text": "Ger mizanü’l-vücudla karıncayı tartarsan, onda çıkan kâinat küremize sıkışmaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0780-002",
+            "type": "paragraph",
+            "text": "Bence küre hayevandır, başkaların zannınca meyyit olan küreyi ger getirip koyarsan",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0780-003",
+            "type": "paragraph",
+            "text": "Karıncanın karşısına, o zîşuur başının nısfı bile olamaz.",
+            "lang": "tr"
+        }
+    ]
+}

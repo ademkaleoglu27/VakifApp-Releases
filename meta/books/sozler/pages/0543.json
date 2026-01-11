@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0543",
+    "pageIndex": 543,
+    "sectionId": "sozler-section-087",
+    "header": {
+        "title": "Yirmi Yedinci Söz’ün Zeyli",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0543-001",
+            "type": "paragraph",
+            "text": "لَاتَسُبُّوا اَصْحَابٖى لَوْ اَنْفَقَ اَحَدُكُمْ مِثْلَ اُحُدٍ ذَهَبًا مَا بَلَغَ نِصْفَ مُدٍّ مِنْ اَصْحَابٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0543-002",
+            "type": "paragraph",
+            "text": "صَدَقَ رَسُولُ اللّٰهِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0543-003",
+            "type": "paragraph",
+            "text": "سُبْحَانَكَ لَا عِلْمَ لَنَٓا اِلَّا مَا عَلَّمْتَنَٓا اِنَّكَ اَنْتَ الْعَلٖيمُ الْحَكٖيمُ",
+            "lang": "ar"
+        }
+    ]
+}

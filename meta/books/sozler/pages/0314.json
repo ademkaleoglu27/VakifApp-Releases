@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0314",
+    "pageIndex": 314,
+    "sectionId": "sozler-section-061",
+    "header": {
+        "title": "Yirmi Birinci Söz’ün İkinci Makamı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0314-header",
+            "type": "heading",
+            "text": "Yirmi Birinci Söz’ün İkinci Makamı",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0314-001",
+            "type": "paragraph",
+            "text": "Kalbin beş yarasına beş merhemi tazammun eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0314-002",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0314-003",
+            "type": "paragraph",
+            "text": "رَبِّ اَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطٖينِ ۞ وَاَعُوذُ بِكَ رَبِّ اَنْ يَحْضُرُونِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0314-004",
+            "type": "paragraph",
+            "text": "Ey maraz-ı vesvese ile müptela! Biliyor musun vesvesen neye benzer? Musibete benzer. Ehemmiyet verdikçe şişer, ehemmiyet vermezsen söner. Ona büyük nazarıyla baksan büyür. Küçük görsen küçülür. Korksan ağırlaşır, hasta eder. Havf etmezsen hafif olur, mahfî kalır. Mahiyetini bilmezsen devam eder, yerleşir. Mahiyetini bilsen, onu tanısan gider. Öyle ise şu musibetli vesvesenin aksam-ı kesîresinden kesîrü’l-vuku olan yalnız beş vechini beyan edeceğim. Belki sana ve bana şifa olur. Zira şu vesvese öyle bir şeydir ki cehil onu davet eder, ilim onu tard eder. Tanımazsan gelir, tanısan gider.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0314-005",
+            "type": "paragraph",
+            "text": "Birinci Vecih",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0314-006",
+            "type": "paragraph",
+            "text": "Birinci yara, şeytan evvela şüpheyi kalbe atar. Eğer kalp kabul etmezse şüpheden şetme döner. Hayale karşı şetme benzer bazı pis hatıraları ve münafî-i edep çirkin halleri tasvir eder. Kalbe “Eyvah!” dedirtir, yeise düşürtür. Vesveseli adam zanneder ki kalbi, Rabb’ine karşı sû-i edepte bulunuyor. Müthiş bir halecan ve heyecan hisseder. Bundan kurtulmak için huzurdan kaçar, gaflete dalmak ister.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0314-007",
+            "type": "paragraph",
+            "text": "Bu yaranın merhemi budur:",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0207",
+    "pageIndex": 207,
+    "sectionId": "sozler-section-043",
+    "header": {
+        "title": "On Yedinci Söz’ün İkinci Makamı",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0207-header",
+            "type": "heading",
+            "text": "On Yedinci Söz’ün İkinci Makamı",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-001",
+            "type": "paragraph",
+            "text": "(Hâşiye[1])",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-002",
+            "type": "paragraph",
+            "text": "Bırak bîçare feryadı, beladan gel tevekkül kıl!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-003",
+            "type": "paragraph",
+            "text": "Zira feryat, bela-ender, hata-ender beladır bil!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-004",
+            "type": "paragraph",
+            "text": "Bela vereni buldunsa atâ-ender, safa-ender beladır bil!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-005",
+            "type": "paragraph",
+            "text": "Bırak feryadı, şükür kıl manend-i belâbil, demâ keyfinden güler hep gül mül.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-006",
+            "type": "paragraph",
+            "text": "Ger bulmazsan bütün dünya cefa-ender, fena-ender hebadır bil!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0207-007",
+            "type": "paragraph",
+            "text": "Cihan dolu bela başında varken ne bağırırsın küçük bir beladan, gel tevekkül kıl!",
+            "lang": "tr"
+        }
+    ]
+}

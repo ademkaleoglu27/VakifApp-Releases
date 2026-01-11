@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0128",
+    "pageIndex": 128,
+    "sectionId": "sozler-section-021",
+    "header": {
+        "title": "On İkinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0128-001",
+            "type": "paragraph",
+            "text": "Hikmet-i felsefe ile hikmet-i Kur’aniyenin hayat-ı içtimaiye-i beşeriyeye verdiği terbiyeler:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-002",
+            "type": "paragraph",
+            "text": "Amma hikmet-i felsefe ise hayat-ı içtimaiyede nokta-i istinadı, “kuvvet” kabul eder. Hedefi, “menfaat” bilir. Düstur-u hayatı, “cidal” tanır. Cemaatlerin rabıtasını, “unsuriyet, menfî milliyet”i tutar. Semeratı ise “hevesat-ı nefsaniyeyi tatmin ve hâcat-ı beşeriyeyi tezyid”dir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-003",
+            "type": "paragraph",
+            "text": "Halbuki kuvvetin şe’ni tecavüzdür. Menfaatin şe’ni her arzuya kâfi gelmediğinden üstünde boğuşmaktır. Düstur-u cidalin şe’ni çarpışmaktır. Unsuriyetin şe’ni başkasını yutmakla beslenmek olduğundan tecavüzdür. İşte bu hikmettendir ki beşerin saadeti selb olmuştur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-004",
+            "type": "paragraph",
+            "text": "Amma hikmet-i Kur’aniye ise nokta-i istinadı, kuvvete bedel “hakk”ı kabul eder. Gayede menfaate bedel, “fazilet ve rıza-yı İlahî”yi kabul eder. Hayatta düstur-u cidal yerine, “düstur-u teavün”ü esas tutar. Cemaatlerin rabıtalarında unsuriyet, milliyet yerine “rabıta-i dinî ve sınıfî ve vatanî” kabul eder. Gayatı, hevesat-ı nefsaniyenin tecavüzatına set çekip ruhu maâliyata teşvik ve hissiyat-ı ulviyesini tatmin eder ve insanı kemalât-ı insaniyeye sevk edip insan eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-005",
+            "type": "paragraph",
+            "text": "Hakkın şe’ni ittifaktır. Faziletin şe’ni tesanüddür. Düstur-u teavünün şe’ni birbirinin imdadına yetişmektir. Dinin şe’ni uhuvvettir, incizabdır. Nefsi gemlemekle bağlamak, ruhu kemalâta kamçılamakla serbest bırakmanın şe’ni saadet-i dâreyndir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-006",
+            "type": "paragraph",
+            "text": "Dördüncü Esas",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0128-007",
+            "type": "paragraph",
+            "text": "Kur’an’ın bütün kelimat-ı İlahiye içinde cihet-i ulviyetini ve bütün kelâmlar üstünde cihet-i tefevvukunu anlamak istersen şu iki temsile bak:",
+            "lang": "tr"
+        }
+    ]
+}

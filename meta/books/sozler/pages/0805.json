@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0805",
+    "pageIndex": 805,
+    "sectionId": "sozler-section-160",
+    "header": {
+        "title": "Bazen küçük bir şey, büyük bir iş yapar",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0805-header",
+            "type": "heading",
+            "text": "Bazen küçük bir şey, büyük bir iş yapar",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0805-001",
+            "type": "paragraph",
+            "text": "Öyle şerait oluyor; tahtında az bir hareke, sahibini çıkarıyor tâ a’lâ-yı illiyyîn",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0805-002",
+            "type": "paragraph",
+            "text": "Öyle hâlât oluyor ki küçük bir hareket, kâsibini indiriyor tâ esfel-i safilîn",
+            "lang": "tr"
+        }
+    ]
+}

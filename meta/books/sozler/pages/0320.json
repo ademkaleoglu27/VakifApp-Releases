@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0320",
+    "pageIndex": 320,
+    "sectionId": "sozler-section-063",
+    "header": {
+        "title": "Yirmi İkinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0320-header",
+            "type": "heading",
+            "text": "Yirmi İkinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0320-001",
+            "type": "paragraph",
+            "text": "İki makamdır",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0320-002",
+            "type": "paragraph",
+            "text": "Birinci Makam",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0320-003",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0320-004",
+            "type": "paragraph",
+            "text": "وَيَضْرِبُ اللّٰهُ الْاَمْثَالَ لِلنَّاسِ لَعَلَّهُمْ يَتَذَكَّرُونَ ۞ وَ تِلْكَ الْاَمْثَالُ نَضْرِبُهَا لِلنَّاسِ لَعَلَّهُمْ يَتَفَكَّرُونَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0320-005",
+            "type": "paragraph",
+            "text": "Bir zaman iki adam, bir havuzda yıkandılar. Fevkalâde bir tesir altında kendilerinden geçtiler. Gözlerini açtıkları vakit gördüler ki acib bir âleme götürülmüşler. Öyle bir âlem ki kemal-i intizamından bir memleket hükmünde, belki bir şehir hükmünde, belki bir saray hükmündedir. Kemal-i hayretlerinden etraflarına baktılar. Gördüler ki bir cihette bakılsa azîm bir âlem görünüyor. Bir cihette bakılsa muntazam bir memleket, bir cihette bakılsa mükemmel bir şehir, diğer bir cihette bakılsa gayet muhteşem bir âlemi içine almış bir saraydır. Şu acayip âlemde gezerek seyran ettiler. Gördüler ki bir kısım mahluklar var, bir tarz ile konuşuyorlar fakat bunlar onların dillerini bilmiyorlar. Yalnız işaretlerinden anlaşılıyor ki mühim işler görüyorlar ve ehemmiyetli vazifeler yapıyorlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0320-006",
+            "type": "paragraph",
+            "text": "O iki adamdan birisi, arkadaşına dedi ki: “Şu acib âlemin elbette bir müdebbiri ve şu muntazam memleketin bir mâliki, şu mükemmel şehrin bir sahibi, şu musanna sarayın bir ustası vardır. Biz çalışmalıyız, onu tanımalıyız. Çünkü anlaşılıyor ki bizi buraya getiren odur. Onu tanımazsak kim bize meded verecek? Dillerini bilmediğimiz ve onlar bizi dinlemedikleri şu âciz mahluklardan ne bekleyebiliriz? Hem koca bir âlemi bir memleket suretinde, bir şehir tarzında, bir saray şeklinde yapan ve baştan başa hârika şeylerle dolduran ve müzeyyenatın envaıyla tezyin eden ve ibret-nüma mu’cizatlarla donatan bir zat, elbette bizden ve buraya gelenlerden bir istediği vardır. Onu tanımalıyız. Hem ne istediğini bilmekliğimiz lâzımdır.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0320-007",
+            "type": "paragraph",
+            "text": "Öteki adam dedi: “İnanmam, böyle bahsettiğin gibi bir zat bulunsun ve bütün bu âlemi tek başıyla idare etsin.”",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0750",
+    "pageIndex": 750,
+    "sectionId": "sozler-section-114",
+    "header": {
+        "title": "[3]) bâ-âsam âlâma.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0750-header",
+            "type": "heading",
+            "text": "[3]) bâ-âsam âlâma.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0750-001",
+            "type": "paragraph",
+            "text": "Sekseninci olmuştur, mezara bir mezar taş",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0750-002",
+            "type": "paragraph",
+            "text": "Beraber ağlıyor (",
+            "lang": "tr"
+        }
+    ]
+}

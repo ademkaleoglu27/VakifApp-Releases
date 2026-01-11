@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0239",
+    "pageIndex": 239,
+    "sectionId": "sozler-section-048",
+    "header": {
+        "title": "Yirmi beş sene evvel ramazanda ikindiden sonra Şeyh-i Geylanî’nin (ks) Esma-i Hüsna manzumesini okudum. Bana bir arzu geldi ki esma-i hüsna ile bir münâcat yazayım. Fakat o vakit bu kadar yazıldı. O kudsî üstadımın mübarek münâcat-ı esmaiyesine bir nazire yapmak istedim. Heyhat! Nazma istidadım yok. Yapamadım, noksan kaldı.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0239-001",
+            "type": "paragraph",
+            "text": "كَرٖيمُ الْعَطَايَا نَحْنُ مِنْ رَكْبِ ضَيْفِهٖ § هُوَ الرَّزَّاقُ الْكَافٖى لَهُ الْحَمْدُ وَ الثَّنَاءُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0239-002",
+            "type": "paragraph",
+            "text": "جَمٖيلُ الْهَدَايَا نَحْنُ مِنْ نَسْجِ عِلْمِهٖ § هُوَ الْخَالِقُ الْوَافٖى لَهُ الْجُودُ وَ الْعَطَاءُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0239-003",
+            "type": "paragraph",
+            "text": "سَمٖيعُ الشَّكَايَا وَ الدُّعَاءِ لِخَلْقِهٖ § هُوَ الرَّاحِمُ الشَّافٖى لَهُ الشُّكْرُ وَ الثَّنَاءُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0239-004",
+            "type": "paragraph",
+            "text": "غَفُورُ الْخَطَايَا وَ الذُّنُوبِ لِعَبْدِهٖ § هُوَ الْغَفَّارُ الرَّحٖيمُ لَهُ الْعَفْوُ وَ الرِّضَاءُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0239-005",
+            "type": "paragraph",
+            "text": "Ey nefsim! Kalbim gibi ağla ve bağır ve de ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0239-006",
+            "type": "paragraph",
+            "text": "“Fâniyim, fâni olanı istemem. Âcizim, âciz olanı istemem. Ruhumu Rahman’a teslim eyledim, gayr istemem. İsterim fakat bir yâr-ı bâki isterim. Zerreyim fakat bir şems-i sermed isterim. Hiç-ender hiçim fakat bu mevcudatı umumen isterim.”",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0307",
+    "pageIndex": 307,
+    "sectionId": "sozler-section-060",
+    "header": {
+        "title": "Yirmi Birinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0307-header",
+            "type": "heading",
+            "text": "Yirmi Birinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0307-001",
+            "type": "paragraph",
+            "text": "İki makamdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0307-002",
+            "type": "paragraph",
+            "text": "Birinci Makam",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0307-003",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0307-004",
+            "type": "paragraph",
+            "text": "اِنَّ الصَّلٰوةَ كَانَتْ عَلَى الْمُؤْمِنٖينَ كِتَابًا مَوْقُوتًا",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0307-005",
+            "type": "paragraph",
+            "text": "Bir zaman sinnen, cismen, rütbeten büyük bir adam bana dedi: “Namaz iyidir. Fakat her gün her gün beşer defa kılmak çoktur. Bitmediğinden usanç veriyor.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0307-006",
+            "type": "paragraph",
+            "text": "O zatın o sözünden hayli zaman geçtikten sonra, nefsimi dinledim. İşittim ki aynı sözleri söylüyor ve ona baktım gördüm ki tembellik kulağıyla şeytandan aynı dersi alıyor. O vakit anladım o zat o sözü, bütün nüfus-u emmarenin namına söylemiş gibidir veya söylettirilmiştir. O zaman ben dahi dedim: “Madem nefsim emmaredir. Nefsini ıslah etmeyen, başkasını ıslah edemez. Öyle ise nefsimden başlarım.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0307-007",
+            "type": "paragraph",
+            "text": "Dedim: Ey nefis! Cehl-i mürekkeb içinde, tembellik döşeğinde, gaflet uykusunda söylediğin şu söze mukabil beş ikazı benden işit.",
+            "lang": "tr"
+        }
+    ]
+}

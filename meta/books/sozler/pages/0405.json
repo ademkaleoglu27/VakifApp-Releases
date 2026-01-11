@@ -1,0 +1,48 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0405",
+    "pageIndex": 405,
+    "sectionId": "sozler-section-072",
+    "header": {
+        "title": "Bu Mu’cizat-ı Kur’aniye Risalesi’ndeki ekser âyetlerin her biri, ya mülhidler tarafından medar-ı tenkit olmuş veya ehl-i fen tarafından itiraza uğramış veya cinnî ve insî şeytanların vesvese ve şüphelerine maruz olmuş âyetlerdir.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0405-header",
+            "type": "heading",
+            "text": "Bu Mu’cizat-ı Kur’aniye Risalesi’ndeki ekser âyetlerin her biri, ya mülhidler tarafından medar-ı tenkit olmuş veya ehl-i fen tarafından itiraza uğramış veya cinnî ve insî şeytanların vesvese ve şüphelerine maruz olmuş âyetlerdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0405-001",
+            "type": "paragraph",
+            "text": "İşte bu Yirmi Beşinci Söz, öyle bir tarzda o âyetlerin hakikatlerini ve nüktelerini beyan etmiş ki ehl-i ilhad ve fennin kusur zannettikleri noktalar, i’cazın lemaatı ve belâgat-ı Kur’aniyenin kemalâtının menşeleri olduğu, ilmî kaideleriyle ispat edilmiş. Bulantı vermemek için onların şüpheleri zikredilmeden cevab-ı kat’î verilmiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0405-002",
+            "type": "paragraph",
+            "text": "وَ الشَّمْسُ تَجْرٖى ۞ وَ الْجِبَالَ اَوْتَادًا",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0405-003",
+            "type": "paragraph",
+            "text": "gibi. Yalnız Yirminci Söz’ün Birinci Makamı’nda üç dört âyette şüpheleri söylenmiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0405-004",
+            "type": "paragraph",
+            "text": "Hem bu Mu’cizat-ı Kur’aniye Risalesi gerçi gayet muhtasar ve acele yazılmış ise de fakat ilm-i belâgat ve ulûm-u Arabiye noktasında, âlimlere hayret verecek derecede âlimane ve derin ve kuvvetli bir tarzda beyan edilmiş. Gerçi her bahsini her ehl-i dikkat tam anlamaz, istifade etmez. Fakat o bahçede herkesin ehemmiyetli hissesi var. Pek acele ve müşevveş haletler içinde telif edildiğinden ifade ve ibaresinde kusur var olmasıyla beraber ilim noktasında çok ehemmiyetli meselelerin hakikatini beyan etmiş.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0405-005",
+            "type": "paragraph",
+            "text": "Said Nursî",
+            "lang": "tr"
+        }
+    ]
+}

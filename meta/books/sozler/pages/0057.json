@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0057",
+    "pageIndex": 57,
+    "sectionId": "sozler-section-012",
+    "header": {
+        "title": "Mukaddime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0057-001",
+            "type": "paragraph",
+            "text": "Demek, Vâhid-i Ehad’i kabul etmemek ile mevcudat adedince ilahları kabul etmek lâzım gelir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-002",
+            "type": "paragraph",
+            "text": "İkinci İşaret: Hikâyede bir yaver-i ekremden bahsedilmiş ve denilmiş ki: “Kör olmayan herkes onun nişanlarını görmekle anlar ki o zat, padişahın emriyle hareket eder ve onun has bendesidir.” İşte o yaver-i ekrem, Resul-i Ekrem’dir (asm).",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-003",
+            "type": "paragraph",
+            "text": "Evet, şöyle müzeyyen bir kâinatın, öyle mukaddes bir Sâni’ine böyle bir Resul-i Ekrem, ışık şemse lüzumu derecesinde elzemdir. Çünkü nasıl güneş, ziya vermeksizin mümkün değildir. Öyle de uluhiyet de peygamberleri göndermekle kendini göstermeksizin mümkün değildir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-004",
+            "type": "paragraph",
+            "text": "Hem hiç mümkün olur mu ki nihayet kemalde olan bir cemal, gösterici ve tarif edici bir vasıta ile kendini göstermek istemesin?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-005",
+            "type": "paragraph",
+            "text": "Hem mümkün olur mu ki gayet cemalde bir kemal-i sanat, onun üzerine enzar-ı dikkati celbeden bir dellâl vasıtasıyla teşhir istemesin?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-006",
+            "type": "paragraph",
+            "text": "Hem hiç mümkün olur mu ki bir rububiyet-i âmmenin saltanat-ı külliyesi, kesret ve cüz’iyat tabakatında vahdaniyet ve Samedaniyetini, zülcenaheyn bir mebus vasıtasıyla ilanını istemesin? Yani o zat, ubudiyet-i külliye cihetiyle kesret tabakatının dergâh-ı İlahiye elçisi olduğu gibi kurbiyet ve risalet cihetiyle dergâh-ı İlahînin kesret tabakatına memurudur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0057-007",
+            "type": "paragraph",
+            "text": "Hem hiç mümkün olur mu ki nihayet derecede bir hüsn-ü zatî sahibi, cemalinin mehasinini ve hüsnünün letaifini âyinelerde görmek ve göstermek istemesin? Yani bir habib resul vasıtasıyla ki hem habibdir, ubudiyetiyle kendini ona sevdirir, âyinedarlık eder. Hem resuldür; onu mahlukatına sevdirir, cemal-i esmasını gösterir.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0206",
+    "pageIndex": 206,
+    "sectionId": "sozler-section-042",
+    "header": {
+        "title": "On Yedinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0206-001",
+            "type": "paragraph",
+            "text": "Hem muvakkat bir seyrangâhtır. Öyle ise nazar-ı ibretle bak ve zahirî çirkin yüzüne değil; belki Cemil-i Bâki’ye bakan gizli, güzel yüzüne dikkat et, hoş ve faydalı bir tenezzüh yap, dön ve o güzel manzaraları irae eden ve güzelleri gösteren perdelerin kapanmasıyla akılsız çocuk gibi ağlama, merak etme.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0206-002",
+            "type": "paragraph",
+            "text": "Hem bir misafirhanedir. Öyle ise onu yapan Mihmandar-ı Kerîm’in izni dairesinde ye, iç, şükret. Kanunu dairesinde işle, hareket et. Sonra arkana bakma; çık, git. Herzekârane fuzulî bir surette karışma. Senden ayrılan ve sana ait olmayan şeylerle manasız uğraşma ve geçici işlerine bağlanıp boğulma.” gibi zahir hakikatlerle dünyanın içyüzündeki esrarı gösterip dünyadan müfarakatı gayet hafifleştirir belki hüşyar olanlara sevdirir ve rahmetinin her şeyde ve her şe’ninde bir izi bulunduğunu gösterir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0206-003",
+            "type": "paragraph",
+            "text": "İşte Kur’an, şu beş veche işaret ettiği gibi başka hususi vecihlere dahi âyât-ı Kur’aniye işaret ediyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0206-004",
+            "type": "paragraph",
+            "text": "Veyl o kimseye ki şu beş vecihten bir hissesi olmaya…",
+            "lang": "tr"
+        }
+    ]
+}

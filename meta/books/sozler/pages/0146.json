@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0146",
+    "pageIndex": 146,
+    "sectionId": "sozler-section-026",
+    "header": {
+        "title": "بِاسْمِهٖ سُبْحَانَهُ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0146-header",
+            "type": "heading",
+            "text": "بِاسْمِهٖ سُبْحَانَهُ",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-001",
+            "type": "paragraph",
+            "text": "اَلسَّلَامُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0146-002",
+            "type": "paragraph",
+            "text": "Aziz, sıddık kardeşlerim!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-003",
+            "type": "paragraph",
+            "text": "Hapis musibetine düşenlere ve onlara merhametkârane, sadakatle hariçten gelen erzaklarına nezaret ve yardım edenlere kuvvetli bir teselliyi üç noktada beyan edeceğim.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-004",
+            "type": "paragraph",
+            "text": "Birinci Nokta: Hapiste geçen ömür günleri, her bir gün on gün kadar bir ibadet kazandırabilir ve fâni saatleri, meyveleri cihetiyle manen bâki saatlere çevirebilir ve beş on sene ceza ile milyonlar sene haps-i ebedîden kurtulmaya vesile olabilir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-005",
+            "type": "paragraph",
+            "text": "İşte ehl-i iman için bu pek büyük ve çok kıymettar kazanç şartı, farz namazını kılmak ve hapse sebebiyet veren günahlardan tövbe etmek ve sabır içinde şükretmektir. Zaten hapis çok günahlara manidir, meydan vermiyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-006",
+            "type": "paragraph",
+            "text": "İkinci Nokta: Zeval-i lezzet elem olduğu gibi zeval-i elem dahi lezzettir. Evet, herkes geçmiş lezzetli, safalı günlerini düşünse teessüf ve tahassür elem-i manevîsini hissedip “Eyvah!” der. Ve geçmiş musibetli, elemli günlerini tahattur etse zevalinden bir manevî lezzet hisseder ki: “Elhamdülillah şükür, o bela sevabını bıraktı, gitti.” der. Ferah ile teneffüs eder. Demek bir saat muvakkat elem, ruhta bir manevî lezzet bırakır ve lezzetli saat, bilakis elem bırakır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0146-007",
+            "type": "paragraph",
+            "text": "Madem hakikat budur ve madem geçmiş musibet saatleri, elemleri ile beraber ma’dum ve yok olmuş ve gelecek bela günleri, şimdi ma’dum ve yoktur ve yoktan elem yok ve ma’dumdan elem gelmez. Mesela, birkaç gün sonra aç ve susuz olmak ihtimalinden, bugün o niyetle mütemadiyen ekmek yese ve su içse ne derece divaneliktir.",
+            "lang": "tr"
+        }
+    ]
+}

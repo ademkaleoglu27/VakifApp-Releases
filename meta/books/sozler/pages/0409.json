@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0409",
+    "pageIndex": 409,
+    "sectionId": "sozler-section-073",
+    "header": {
+        "title": "Mu’cizat-ı Kur’aniye Risalesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0409-001",
+            "type": "paragraph",
+            "text": "Ve nev-i beşerin hikmet-i hakikiyesi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-002",
+            "type": "paragraph",
+            "text": "Ve insaniyeti saadete sevk eden hakiki mürşidi ve hâdîsi.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-003",
+            "type": "paragraph",
+            "text": "Ve insana hem bir kitab-ı şeriat",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-004",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı dua",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-005",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı hikmet",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-006",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı ubudiyet",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0409-007",
+            "type": "paragraph",
+            "text": "hem bir kitab-ı emir ve davet",
+            "lang": "tr"
+        }
+    ]
+}

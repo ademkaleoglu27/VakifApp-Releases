@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0212",
+    "pageIndex": 212,
+    "sectionId": "sozler-section-044",
+    "header": {
+        "title": "Siyah Dutun Bir Meyvesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0212-001",
+            "type": "paragraph",
+            "text": "Halktan Hakk’a seyran ederim, sen gibi sapmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-002",
+            "type": "paragraph",
+            "text": "Dikenli yolda tayran ederim, sen gibi basmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-003",
+            "type": "paragraph",
+            "text": "Ferşten arşa şükran ederim, sen gibi asmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-004",
+            "type": "paragraph",
+            "text": "Mevte, ecele dost bakarım, sen gibi korkmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-005",
+            "type": "paragraph",
+            "text": "Kabre gülerekten girerim, sen gibi ürkmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-006",
+            "type": "paragraph",
+            "text": "Ejder ağzı, vahşet yatağı, hiçlik boğazı; sen gibi görmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0212-007",
+            "type": "paragraph",
+            "text": "Ahbaba kavuşturur beni, kabirden darılmam, sen gibi kızmam.",
+            "lang": "tr"
+        }
+    ]
+}

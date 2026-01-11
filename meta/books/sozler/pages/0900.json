@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0900",
+    "pageIndex": 900,
+    "sectionId": "sozler-section-205",
+    "header": {
+        "title": "Her senede iki defa cisim tazelendiği için iki Said ölmüş demektir. Hem bu sene Said yetmiş dokuz senesindedir. Her bir senede bir Said ölmüş demektir ki bu tarihe kadar Said yaşayacak.",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0900-header",
+            "type": "heading",
+            "text": "Her senede iki defa cisim tazelendiği için iki Said ölmüş demektir. Hem bu sene Said yetmiş dokuz senesindedir. Her bir senede bir Said ölmüş demektir ki bu tarihe kadar Said yaşayacak.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0900-001",
+            "type": "paragraph",
+            "text": "[4]",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0794",
+    "pageIndex": 794,
+    "sectionId": "sozler-section-149",
+    "header": {
+        "title": "Bazen zıt, zıddını tazammun eder",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0794-header",
+            "type": "heading",
+            "text": "Bazen zıt, zıddını tazammun eder",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0794-001",
+            "type": "paragraph",
+            "text": "Zaman olur zıt, zıddını saklarmış. Lisan-ı siyasette lafız, mananın zıddıdır. Adalet külahını (*[7])",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0794-002",
+            "type": "paragraph",
+            "text": "Zulüm başına geçirmiş. Hamiyet libasını, hıyanet ucuz giymiş. Cihad ve hem gazâya, bağy ismi takılmış. Esaret-i hayvanî,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0794-003",
+            "type": "paragraph",
+            "text": "İstibdad-ı şeytanî; hürriyet nam verilmiş. Zıtlarda emsal olmuş, suretlerde tebadül, isimlerde tekabül, makamlarda becayiş-i mekânî.",
+            "lang": "tr"
+        }
+    ]
+}

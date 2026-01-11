@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0211",
+    "pageIndex": 211,
+    "sectionId": "sozler-section-044",
+    "header": {
+        "title": "Siyah Dutun Bir Meyvesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0211-001",
+            "type": "paragraph",
+            "text": "Kur’an dedirtir ben de derim, hiç de çekinmem.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-002",
+            "type": "paragraph",
+            "text": "Ondan ona şekva ederim, sen gibi şaşmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-003",
+            "type": "paragraph",
+            "text": "Hak’tan Hakk’a feryat ederim, sen gibi aşmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-004",
+            "type": "paragraph",
+            "text": "Yerden göğe dava ederim, sen gibi kaçmam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-005",
+            "type": "paragraph",
+            "text": "Ki Kur’an’da hep dava nurdan nuradır, sen gibi caymam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-006",
+            "type": "paragraph",
+            "text": "Kur’an’dadır hak hikmet, ispat ederim, muhalif felsefeyi beş para saymam.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0211-007",
+            "type": "paragraph",
+            "text": "Furkan’dadır elmas hakikat, dercan ederim, sen gibi satmam.",
+            "lang": "tr"
+        }
+    ]
+}

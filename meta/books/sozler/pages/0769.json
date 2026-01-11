@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0769",
+    "pageIndex": 769,
+    "sectionId": "sozler-section-126",
+    "header": {
+        "title": "İhya-yı nev, ihya-yı fert gibidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0769-header",
+            "type": "heading",
+            "text": "İhya-yı nev, ihya-yı fert gibidir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0769-001",
+            "type": "paragraph",
+            "text": "Mevt-âlûd bir nevm ile kışta uyuşmuş bir sinek, nasıl onun ihyası kudrete ağır gelmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0769-002",
+            "type": "paragraph",
+            "text": "Şu dünyanın mevti de ihyası da öyledir. Bütün zîruh ihyası onda fazla nazlanmaz.",
+            "lang": "tr"
+        }
+    ]
+}

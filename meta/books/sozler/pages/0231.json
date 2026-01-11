@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0231",
+    "pageIndex": 231,
+    "sectionId": "sozler-section-046",
+    "header": {
+        "title": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0231-001",
+            "type": "paragraph",
+            "text": "2 – Biri çağır, başkaları imdada gelmiyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0231-002",
+            "type": "paragraph",
+            "text": "3 – Biri talep et, başkalar lâyık değiller.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0231-003",
+            "type": "paragraph",
+            "text": "4 – Biri gör, başkalar her vakit görünmüyorlar, zeval perdesinde saklanıyorlar.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0231-004",
+            "type": "paragraph",
+            "text": "5 – Biri bil, marifetine yardım etmeyen başka bilmekler faydasızdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0231-005",
+            "type": "paragraph",
+            "text": "6 – Biri söyle, ona ait olmayan sözler malayani sayılabilir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0231-006",
+            "type": "paragraph",
+            "text": "نَعَمْ صَدَقْتَ اَىْ جَامٖى",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0231-007",
+            "type": "paragraph",
+            "text": "هُوَ الْمَطْلُوبُ § هُوَ الْمَحْبُوبُ § هُوَ الْمَقْصُودُ § هُوَ الْمَعْبُودُ",
+            "lang": "ar"
+        }
+    ]
+}

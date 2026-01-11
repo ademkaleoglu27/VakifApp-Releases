@@ -10,6 +10,9 @@ export interface RisaleSection {
     work_id: string;
     title: string;
     order_no: number;
+    section_index?: number;
+    type?: string;
+    parent_id?: string | null;
 }
 
 export interface RisaleChunk {

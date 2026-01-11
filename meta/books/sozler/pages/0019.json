@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0019",
+    "pageIndex": 19,
+    "sectionId": "sozler-section-006",
+    "header": {
+        "title": "Beşinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0019-header",
+            "type": "heading",
+            "text": "Beşinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0019-001",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0019-002",
+            "type": "paragraph",
+            "text": "اِنَّ اللّٰهَ مَعَ الَّذٖينَ اتَّقَوْا وَالَّذٖينَ هُمْ مُحْسِنُونَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0019-003",
+            "type": "paragraph",
+            "text": "Namaz kılmak ve büyük günahları işlememek, ne derece hakiki bir vazife-i insaniye ve ne kadar fıtrî, münasip bir netice-i hilkat-i beşeriye olduğunu görmek istersen şu temsilî hikâyeciğe bak, dinle:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0019-004",
+            "type": "paragraph",
+            "text": "Seferberlikte bir taburda biri muallem, vazife-perver; diğeri acemi, nefis-perver iki asker beraber bulunuyordu. Vazife-perver nefer, talime ve cihada dikkat eder, erzak ve tayinatını hiç düşünmezdi. Çünkü anlamış ki onu beslemek ve cihazatını vermek, hasta olsa tedavi etmek, hattâ inde’l-hace lokmayı ağzına koymaya kadar devletin vazifesidir. Ve onun asıl vazifesi, talim ve cihaddır. Fakat bazı erzak ve cihazat işlerinde işler. Kazan kaynatır, karavanayı yıkar, getirir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0019-005",
+            "type": "paragraph",
+            "text": "Ona sorulsa: “Ne yapıyorsun?”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0019-006",
+            "type": "paragraph",
+            "text": "“Devletin angaryasını çekiyorum.” der. Demiyor: “Nafakam için çalışıyorum.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0019-007",
+            "type": "paragraph",
+            "text": "Diğer şikem-perver ve acemi nefer ise talime ve harbe dikkat etmezdi. “O, devlet işidir. Bana ne?” derdi. Daim nafakasını düşünüp onun peşine dolaşır, taburu terk eder, çarşıya gider, alışveriş ederdi.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0158",
+    "pageIndex": 158,
+    "sectionId": "sozler-section-031",
+    "header": {
+        "title": "Hüve Nüktesi",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0158-001",
+            "type": "paragraph",
+            "text": "Ve serseri tesadüf ve kör kuvvet ve sağır tabiat ve karışık, hedefsiz esbab ve âciz, camid, cahil maddeler bu sahife-i havaiyenin kitabetine ve vazifelerine karışması hiçbir cihetle ihtimal ve imkânı bulunmadığını aynelyakîn derecesinde ispat ettiğini kat’î kanaat getirdim. Ve her bir zerre ve her bir parça lisan-ı hal ile لَا اِلٰهَ اِلَّا هُوَ ve قُلْ هُوَ اللّٰهُ اَحَدٌ dediklerini bildim. Ve bu هُوَ anahtarı ile havanın maddî cihetindeki bu acayibi gördüğüm gibi hava unsuru da bir هُوَ olarak âlem-i misal ve âlem-i manaya bir anahtar oldu.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0158-002",
+            "type": "paragraph",
+            "text": "Mütebâkisi şimdilik yazdırılmadı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0158-003",
+            "type": "paragraph",
+            "text": "Umuma binler selâm…",
+            "lang": "tr"
+        }
+    ]
+}

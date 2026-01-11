@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0066",
+    "pageIndex": 66,
+    "sectionId": "sozler-section-012",
+    "header": {
+        "title": "Mukaddime",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0066-001",
+            "type": "paragraph",
+            "text": "Beşinci Hakikat",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-002",
+            "type": "paragraph",
+            "text": "Bab-ı şefkat ve ubudiyet-i Muhammediyedir (asm). İsm-i Mücîb ve Rahîm’in cilvesidir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-003",
+            "type": "paragraph",
+            "text": "Hiç mümkün müdür ki: En edna bir hâceti, en edna bir mahlukundan görüp kemal-i şefkatle ummadığı yerden is’af eden ve en gizli bir sesi, en gizli bir mahlukundan işitip imdat eden, lisan-ı hal ve kāl ile istenilen her şeye icabet eden nihayetsiz bir şefkat ve bir merhamet sahibi bir Rab; en büyük bir abdinden (Hâşiye[12]), en sevgili bir mahlukundan en büyük hâcetini görüp bitirmesin, is’af etmesin; en yüksek duayı işitip kabul etmesin?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-004",
+            "type": "paragraph",
+            "text": "Evet mesela, hayvanatın zayıflarının ve yavrularının rızık ve terbiyeleri hususunda görünen lütuf ve suhuleti gösteriyor ki şu kâinatın mâliki, nihayetsiz bir rahmetle rububiyet eder. Rububiyetinde bu derece rahîmane bir şefkat, hiç kabil midir ki mahlukatın en efdalinin en güzel duasını kabul etmesin? Bu hakikati On Dokuzuncu Söz’de izah ettiğim vechile, şurada dahi mükerreren şöyle beyan edelim:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-005",
+            "type": "paragraph",
+            "text": "Ey nefsimle beraber beni dinleyen arkadaş! Hikâye-i temsiliyede demiştik: “Bir adada bir içtima var, bir yaver-i ekrem bir nutuk okuyor.” Onun işaret ettiği hakikat şöyledir ki: Gel! Bu zamandan tecerrüd edip fikren asr-ı saadete ve hayalen Ceziretü’l-Arab’a gidiyoruz. Tâ ki Resul-i Ekrem’i (asm) vazife başında ve ubudiyet içinde görüp, ziyaret ederiz. Bak! O zat nasıl ki risaletiyle, hidayetiyle saadet-i ebediyenin sebeb-i husulü ve vesile-i vusulüdür. Onun gibi ubudiyetiyle ve duasıyla, o saadetin sebeb-i vücudu ve cennetin vesile-i icadıdır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-006",
+            "type": "paragraph",
+            "text": "İşte bak! O zat öyle bir salât-ı kübrada, bir ibadet-i ulyâda saadet-i ebediye için dua ediyor ki güya bu cezire, belki bütün arz onun azametli namazıyla namaz kılar, niyaz eder. Çünkü ubudiyeti ise ona ittiba eden ümmetin ubudiyetini tazammun ettiği gibi muvafakat sırrıyla bütün enbiyanın sırr-ı ubudiyetini tazammun eder.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0066-007",
+            "type": "paragraph",
+            "text": "Hem o salât-ı kübrayı öyle bir cemaat-i uzmada kılar, niyaz ediyor ki güya benî-Âdem’in Hazret-i Âdem’den asrımıza kadar, belki kıyamete kadar bütün nurani ve kâmil insanlar ona tebaiyetle iktida edip duasına âmin derler. (Hâşiye[13])",
+            "lang": "tr"
+        }
+    ]
+}

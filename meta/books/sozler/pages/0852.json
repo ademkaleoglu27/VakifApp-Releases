@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0852",
+    "pageIndex": 852,
+    "sectionId": "sozler-section-187",
+    "header": {
+        "title": "Bir kısım desatir-i içtimaiye",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0852-header",
+            "type": "heading",
+            "text": "Bir kısım desatir-i içtimaiye",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0852-001",
+            "type": "paragraph",
+            "text": "İçtimaî heyette düsturları istersen: Müsavatsız adalet, önce adalet değil. Temasülse tezadın mühim bir sebebidir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0852-002",
+            "type": "paragraph",
+            "text": "Tenasüpse tesanüdün esası. Sıgar-ı nefistir tekebbürün menbaı. Zaaf-ı kalptir gururun madeni. Olmuş acz, muhalefet menşei. Meraksa ilme hocadır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0852-003",
+            "type": "paragraph",
+            "text": "İhtiyaçtır terakkinin üstadı. Sıkıntıdır muallime-i sefahet. Demek, sefahetin menbaı sıkıntı olmuş. Sıkıntı ise madeni: Yeisle sû-i zandır,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0852-004",
+            "type": "paragraph",
+            "text": "Dalalet-i fikrîdir, zulümat-ı kalbîdir, israf-ı cesedîdir.",
+            "lang": "tr"
+        }
+    ]
+}

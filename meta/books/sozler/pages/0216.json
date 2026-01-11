@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0216",
+    "pageIndex": 216,
+    "sectionId": "sozler-section-045",
+    "header": {
+        "title": "Kalbe Farisî Olarak Tahattur Eden Bir Münâcat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0216-001",
+            "type": "paragraph",
+            "text": "İşbu cihetten dahi deva bulamadım. Sonra başımı kaldırıp şecere-i ömrümün başına baktım. Gördüm ki o ağacın tek meyvesi, benim cenazemdir ki o ağacın üstünde duruyor, bana bakıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0216-002",
+            "type": "paragraph",
+            "text": "Hâşiye: İman, o ağacın meyvesini cenaze değil belki ebedî hayata mazhar ve ebedî saadete namzet olan ruhumun eskimiş yuvasından yıldızlarda gezmek için çıktığını gösterir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0216-003",
+            "type": "paragraph",
+            "text": "دَرْ قَدَمْ اٰبِ خَاكِ خِلْقَتِ مَنْ وَ خَاكِسْتَرِ عِظَامِ مَنَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0216-004",
+            "type": "paragraph",
+            "text": "O cihetten dahi meyus olup başımı aşağıya eğdim. Baktım ki aşağıda ayak altında kemiklerimin toprağı ile mebde-i hilkatimin toprağı birbirine karışmış gördüm. Derman değil, derdime dert kattı.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0216-005",
+            "type": "paragraph",
+            "text": "Hâşiye: İman, o toprağı rahmet kapısı ve cennet salonunun perdesi olduğunu gösterir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0216-006",
+            "type": "paragraph",
+            "text": "چُونْ دَرْ پَسْ مٖينِگَرَمْ بٖينَمْ اٖينْ دُنْيَاءِ بٖى بُنْيَادْ هٖيچْ دَرْ هٖيچَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0216-007",
+            "type": "paragraph",
+            "text": "Ondan dahi nazarı çevirip arkama baktım. Gördüm ki esassız, fâni bir dünya, hiçlik derelerinde ve adem zulümatında yuvarlanıp gidiyor. Derdime merhem değil belki vahşet ve dehşet zehirini ilâve etti.",
+            "lang": "tr"
+        }
+    ]
+}

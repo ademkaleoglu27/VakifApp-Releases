@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0868",
+    "pageIndex": 868,
+    "sectionId": "sozler-section-197",
+    "header": {
+        "title": "Hadîs der âyete: Sana yetişmek muhal!",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0868-header",
+            "type": "heading",
+            "text": "Hadîs der âyete: Sana yetişmek muhal!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0868-001",
+            "type": "paragraph",
+            "text": "Hadîs ile âyeti muvazene edersen, bilbedahe görürsün; beşerin en beliği, vahyin de mübelliği, o dahi bâliğ olmaz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0868-002",
+            "type": "paragraph",
+            "text": "Belâgat-ı âyete. O da ona benzemez. Demek ki lisan-ı Ahmedîden gelen her bir kelâm her dem onun olamaz.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0757",
+    "pageIndex": 757,
+    "sectionId": "sozler-section-116",
+    "header": {
+        "title": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0757-001",
+            "type": "paragraph",
+            "text": "Lâ Mabude İllâ Hû…",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0757-002",
+            "type": "paragraph",
+            "text": "Üçüncü cümle: اَللّٰهُ الصَّمَدُ dir. İki cevher-i tevhide sadeftir. Birinci dürrü: Tevhid-i rububiyet. Evet, nizam-ı kevn lisanı der ki:",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0757-003",
+            "type": "paragraph",
+            "text": "Lâ Hâlıka İllâ Hû…",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0757-004",
+            "type": "paragraph",
+            "text": "İkinci dürrü: Tevhid-i kayyumiyet. Evet, serâser kâinatta, vücud ve hem bekada, müessire ihtiyaç lisanı der ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0757-005",
+            "type": "paragraph",
+            "text": "Lâ Kayyume İllâ Hû…",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0757-006",
+            "type": "paragraph",
+            "text": "Dördüncü: لَمْ يَلِدْ dir. Bir tevhid-i celalî müstetirdir; enva-ı şirki reddeder, küfrü keser bîiştibah.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0757-007",
+            "type": "paragraph",
+            "text": "Yani tagayyür ya tenasül ya tecezzi eden elbet, ne Hâlık’tır ne Kayyum’dur ne İlah…",
+            "lang": "tr"
+        }
+    ]
+}

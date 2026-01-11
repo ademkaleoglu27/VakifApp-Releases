@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0808",
+    "pageIndex": 808,
+    "sectionId": "sozler-section-163",
+    "header": {
+        "title": "Bir meclis-i misalîde",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0808-header",
+            "type": "heading",
+            "text": "Bir meclis-i misalîde",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-001",
+            "type": "paragraph",
+            "text": "Şeriatla medeniyet-i hazıra, deha-i fennî ile hüda-i şer’î muvazeneleri",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-002",
+            "type": "paragraph",
+            "text": "(Birinci Harb’in) Mütareke başında, bir cuma gecesinde bir rüya-yı sadıkada, misalî âleminde, bir meclis-i azîmde, benden sual ettiler:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-003",
+            "type": "paragraph",
+            "text": "“Mağlubiyet sonunda İslâm’ın âleminde ne hal peyda olacak?” Asr-ı hazır mebusu sıfatıyla söyledim, onlar da dinlediler:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-004",
+            "type": "paragraph",
+            "text": "Eski zamandan beri istiklal-i İslâm’ın bekası hem kelimetullahın i’lâsı için farz-ı kifaye-i cihadı, o lâzıme-i diyanet",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-005",
+            "type": "paragraph",
+            "text": "Deruhte ile kendini yekvücud-u vahdanî İslâm’ın âlemine fedaya vazifedar, hilafete bayraktar görmüş olan bu devlet,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-006",
+            "type": "paragraph",
+            "text": "Şu millet-i İslâm’ın felaket-i mazisi, getirecek de elbet İslâm’ın âlemine saadet ve hürriyet. Olur geçen musibet,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0808-007",
+            "type": "paragraph",
+            "text": "İstikbalde telafi. Üçü veren, üç yüzü kazandıran, etmiyor elbette hiç hasaret. Halini istikbale tebdil eder, zîhimmet…",
+            "lang": "tr"
+        }
+    ]
+}

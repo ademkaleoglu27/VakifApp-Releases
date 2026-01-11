@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0878",
+    "pageIndex": 878,
+    "sectionId": "sozler-section-199",
+    "header": {
+        "title": "اُولَاشْمَازْ دَسْتِ أَدَبِ غَرْبِ هَوَسْبَارِ هَوَاكَارِ دَهَادَارْ",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0878-001",
+            "type": "paragraph",
+            "text": "Güneşi gösterirse sarı saçlı güzel bir aktrisi kārie ihtar eder. Zahiren der: “Sefahet fenadır, insanlara yakışmaz.”",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-002",
+            "type": "paragraph",
+            "text": "Netice-i muzırrayı gösterir. Halbuki sefahete öyle müşevvikane bir tasviri yapar ki ağız suyu akıtır, akıl hâkim kalamaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-003",
+            "type": "paragraph",
+            "text": "İştihayı kabartır, hevesi tehyic eder, his daha söz dinlemez. Kur’an’daki edepse hevayı karıştırmaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-004",
+            "type": "paragraph",
+            "text": "Hakperestlik hissi, hüsn-ü mücerred aşkı, cemal-perestlik zevki, hakikat-perestlik şevki verir hem de aldatmaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-005",
+            "type": "paragraph",
+            "text": "Kâinata tabiat cihetinde bakmıyor; belki bir sanat-ı İlahî, bir sıbga-i Rahmanî noktasında bahseder, akılları şaşırtmaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-006",
+            "type": "paragraph",
+            "text": "Marifet-i Sâni’in nurunu telkin eder. Her şeyde âyetini gösterir. Her ikisi rikkatli birer hüzün de veriyor fakat birbirine benzemez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0878-007",
+            "type": "paragraph",
+            "text": "Avrupazade edepse fakdü’l-ahbaptan, sahipsizlikten neş’et eden gamlı bir hüznü veriyor, ulvi hüznü veremez.",
+            "lang": "tr"
+        }
+    ]
+}

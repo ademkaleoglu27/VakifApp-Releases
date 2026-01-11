@@ -1,0 +1,36 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0801",
+    "pageIndex": 801,
+    "sectionId": "sozler-section-156",
+    "header": {
+        "title": "Beşer esirliği parçaladığı gibi ecîrliği de parçalayacaktır",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0801-header",
+            "type": "heading",
+            "text": "Beşer esirliği parçaladığı gibi ecîrliği de parçalayacaktır",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0801-001",
+            "type": "paragraph",
+            "text": "Bir rüyada demiştim: Devletler, milletlerin hafif muharebesi; tabakat-ı beşerin şedit olan harbine terk-i mevki ediyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0801-002",
+            "type": "paragraph",
+            "text": "Zira beşer, edvarda esirlik istemedi, kanıyla parçaladı. Şimdi ecîr olmuştur; onun yükünü çeker, onu da parçalıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0801-003",
+            "type": "paragraph",
+            "text": "Beşerin başı ihtiyar, edvar-ı hamsesi var. Vahşet ve bedeviyet, memlûkiyet, esaret, şimdi dahi ecîrdir, başlamıştır geçiyor.",
+            "lang": "tr"
+        }
+    ]
+}

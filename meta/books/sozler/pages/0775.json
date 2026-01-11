@@ -1,0 +1,42 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0775",
+    "pageIndex": 775,
+    "sectionId": "sozler-section-131",
+    "header": {
+        "title": "Meleklerde mi’rac, insanlarda şakk-ı kamer gibidir",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0775-header",
+            "type": "heading",
+            "text": "Meleklerde mi’rac, insanlarda şakk-ı kamer gibidir",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0775-001",
+            "type": "paragraph",
+            "text": "Bir mi’rac-ı kerametle melekler, gördüler elhak ki müsellem bir nübüvvette muazzam bir velayet var.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0775-002",
+            "type": "paragraph",
+            "text": "O parlak zat, buraka binmiş de berk olmuş. Kamervari serâser, âlem-i nuru da görmüştür.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0775-003",
+            "type": "paragraph",
+            "text": "Şu şehadet âleminde münteşir insanlara hissî büyük bir mu’cize nasıl ki اِنْشَقَّ الْقَمَرُ dir.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0775-004",
+            "type": "paragraph",
+            "text": "Bu mi’racdır, âlem-i ervahtaki sakinlere en büyük bir mu’cize ki سُبْحَانَ الَّذٖٓى اَسْرٰى dır.",
+            "lang": "ar"
+        }
+    ]
+}

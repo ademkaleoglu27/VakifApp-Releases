@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0625",
+    "pageIndex": 625,
+    "sectionId": "sozler-section-098",
+    "header": {
+        "title": "Otuz Birinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0625-001",
+            "type": "paragraph",
+            "text": "Evvela: Tevrat, İncil, Zebur gibi kütüb-ü mukaddeseden, pek çok tahrifata maruz oldukları halde, şu zamanda dahi Hüseyin-i Cisrî gibi bir muhakkik, nübüvvet-i Ahmediyeye (asm) dair yüz on dört işarî beşaretleri çıkarıp “Risale-i Hamîdiye”de göstermiştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0625-002",
+            "type": "paragraph",
+            "text": "Sâniyen: Tarihçe sabit, Şıkk ve Satih gibi meşhur iki kâhinin, nübüvvet-i Ahmediyeden (asm) biraz evvel, nübüvvetine ve Âhir Zaman Peygamberi o olduğuna beyanatları gibi çok beşaretler, sahih bir surette tarihen nakledilmiştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0625-003",
+            "type": "paragraph",
+            "text": "Sâlisen: Veladet-i Ahmediye (asm) gecesinde Kâbe’deki sanemlerin sukutuyla, Kisra-yı Faris’in saray-ı meşhuresi olan Eyvan’ı inşikak etmesi gibi irhasat denilen yüzer hârika, tarihçe meşhurdur.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0625-004",
+            "type": "paragraph",
+            "text": "Râbian: Bir orduya parmağından gelen suyu içirmesi ve camide bir cemaat-i azîme huzurunda, kuru direğin, minberin naklinden dolayı müfarakat-ı Ahmediyeden (asm) deve gibi enîn ederek ağlaması وَ انْشَقَّ الْقَمَرُ nassı ile şakk-ı kamer gibi muhakkiklerin tahkikatıyla bine bâliğ mu’cizatla serfiraz olduğunu tarih ve siyer gösteriyor.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0625-005",
+            "type": "paragraph",
+            "text": "Hâmisen: Dost ve düşmanın ittifakıyla ahlâk-ı hasenenin şahsında en yüksek derecede; ve bütün muamelatının şehadetiyle secaya-yı sâmiye, vazifesinde ve tebligatında en âlî bir derecede; ve din-i İslâm’daki mehasin-i ahlâkın şehadetiyle, şeriatında en âlî hisal-ı hamîde, en mükemmel derecede bulunduğuna ehl-i insaf ve dikkat tereddüt etmez.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0625-006",
+            "type": "paragraph",
+            "text": "Sâdisen: Onuncu Söz’ün İkinci İşareti’nde işaret edildiği gibi uluhiyet, mukteza-yı hikmet olarak tezahür istemesine mukabil, en a’zamî bir derecede Zat-ı Ahmediye (asm) dinindeki a’zamî ubudiyetiyle en parlak bir derecede göstermiştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0625-007",
+            "type": "paragraph",
+            "text": "Hem Hâlık-ı âlem’in nihayet kemaldeki cemalini bir vasıta ile göstermek, mukteza-yı hikmet ve hakikat olarak istemesine mukabil; en güzel bir surette gösterici ve tarif edici, bilbedahe o zattır.",
+            "lang": "tr"
+        }
+    ]
+}

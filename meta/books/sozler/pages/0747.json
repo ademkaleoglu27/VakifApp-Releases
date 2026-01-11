@@ -1,0 +1,24 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0747",
+    "pageIndex": 747,
+    "sectionId": "sozler-section-112",
+    "header": {
+        "title": "Lemaat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0747-001",
+            "type": "paragraph",
+            "text": "Risale-i Nur şakirdlerinden",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0747-002",
+            "type": "paragraph",
+            "text": "Sungur, Mehmed Feyzi, Hüsrev",
+            "lang": "tr"
+        }
+    ]
+}

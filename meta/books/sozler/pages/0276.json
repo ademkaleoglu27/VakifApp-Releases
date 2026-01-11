@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0276",
+    "pageIndex": 276,
+    "sectionId": "sozler-section-055",
+    "header": {
+        "title": "On Dokuzuncu Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0276-001",
+            "type": "paragraph",
+            "text": "Şu sahaif-i arz ve semada müstetir künuz-u esma-i İlahiyenin keşşafı,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-002",
+            "type": "paragraph",
+            "text": "Şu sutûr-u hâdisatın altında muzmer hakaikin miftahı,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-003",
+            "type": "paragraph",
+            "text": "Şu âlem-i şehadet perdesi arkasındaki âlem-i gayb cihetinden gelen iltifatat-ı Rahmaniye ve hitabat-ı ezeliyenin hazinesi,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-004",
+            "type": "paragraph",
+            "text": "Şu âlem-i maneviye-i İslâmiyenin güneşi, temeli, hendesesi,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-005",
+            "type": "paragraph",
+            "text": "Avâlim-i uhreviyenin haritası,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-006",
+            "type": "paragraph",
+            "text": "Zat ve sıfât ve şuun-u İlahiyenin kavl-i şârihi, tefsir-i vâzıhı, bürhan-ı nâtıkı, tercüman-ı sâtıı,",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0276-007",
+            "type": "paragraph",
+            "text": "Şu âlem-i insaniyetin mürebbisi, hikmet-i hakikisi, mürşid ve hâdîsi,",
+            "lang": "tr"
+        }
+    ]
+}

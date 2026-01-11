@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0720",
+    "pageIndex": 720,
+    "sectionId": "sozler-section-109",
+    "header": {
+        "title": "Otuz Üçüncü Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0720-001",
+            "type": "paragraph",
+            "text": "On Yedinci Pencere",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0720-002",
+            "type": "paragraph",
+            "text": "اِنَّ فِى السَّمٰوَاتِ وَالْاَرْضِ لَاٰيَاتٍ لِلْمُؤْمِنٖينَ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0720-003",
+            "type": "paragraph",
+            "text": "Zeminin yüzünü yaz zamanında temaşa edip görüyoruz ki icad-ı eşyada, müşevveşiyeti iktiza eden ve intizamsızlığa sebep olan nihayetsiz sehavet ve bir cûd-u mutlak, gayet derecede bir insicam ve intizam içinde görünüyor. İşte zemin yüzünü tezyin eden bütün nebatatı gör.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0720-004",
+            "type": "paragraph",
+            "text": "Hem mizansızlığı ve kabalığı iktiza eden icad-ı eşyadaki sürat-i mutlaka dahi kemal-i mevzuniyet içinde görünüyor. İşte zemin yüzünü süslendiren bütün meyvelere bak.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0720-005",
+            "type": "paragraph",
+            "text": "Hem ehemmiyetsizliği, belki çirkinliği iktiza eden kesret-i mutlaka dahi kemal-i hüsn-ü sanat içinde görünüyor. İşte yeryüzünü yaldızlayan bütün çiçeklere bak.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0720-006",
+            "type": "paragraph",
+            "text": "Hem sanatsızlığı, basitliği iktiza eden icad-ı eşyadaki suhulet-i mutlaka dahi nihayetsiz derecede sanatkârlık ve maharet ve ihtimamkârlık içinde görünüyor. İşte yeryüzündeki ağaç ve nebatat cihazatının sandukçaları ve programları ve tarihçe-i hayatlarının kutucukları hükmünde olan bütün tohumlara, çekirdeklere dikkatle bak.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0720-007",
+            "type": "paragraph",
+            "text": "Hem ihtilaf ve ayrılığı iktiza eden uzaklık ve bu’d-u mutlak dahi bir ittifak-ı mutlak içinde görünüyor. İşte bütün aktar-ı zeminde zer’edilen her nevi hububata bak.",
+            "lang": "tr"
+        }
+    ]
+}

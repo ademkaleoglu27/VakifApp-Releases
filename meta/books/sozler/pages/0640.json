@@ -1,0 +1,60 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0640",
+    "pageIndex": 640,
+    "sectionId": "sozler-section-101",
+    "header": {
+        "title": "Otuz İkinci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0640-header",
+            "type": "heading",
+            "text": "Otuz İkinci Söz",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0640-001",
+            "type": "paragraph",
+            "text": "Şu Söz üç mevkıftır.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0640-002",
+            "type": "paragraph",
+            "text": "Yirmi İkinci Söz’ün Sekizinci Lem’a’sını izah eden bir zeyldir. Mevcudat-ı âlem, vahdaniyete şehadet ettikleri elli beş lisandan (ki Katre Risalesi’nde onlara işaret edilmiş) birinci lisanına bir tefsirdir. Ve لَوْ كَانَ فٖيهِمَٓا اٰلِهَةٌ اِلَّا اللّٰهُ لَفَسَدَتَا âyetinin pek çok hakaikinden, temsil libası giydirilmiş bir hakikattir.",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0640-003",
+            "type": "paragraph",
+            "text": "BİRİNCİ MEVKIF",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0640-004",
+            "type": "paragraph",
+            "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0640-005",
+            "type": "paragraph",
+            "text": "لَوْ كَانَ فٖيهِمَٓا اٰلِهَةٌ اِلَّا اللّٰهُ لَفَسَدَتَا",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0640-006",
+            "type": "paragraph",
+            "text": "لَا اِلٰهَ اِلَّا اللّٰهُ وَحْدَهُ لَا شَرٖيكَ لَهُ لَهُ الْمُلْكُ وَ لَهُ الْحَمْدُ يُحْيٖى وَ يُمٖيتُ وَ هُوَ حَىٌّ لَا يَمُوتُ بِيَدِهِ الْخَيْرُ وَ هُوَ عَلٰى كُلِّ شَىْءٍ قَدٖيرٌ وَ اِلَيْهِ الْمَصٖيرُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0640-007",
+            "type": "paragraph",
+            "text": "Bir ramazan gecesinde, şu kelâm-ı tevhidînin on bir cümlesinin her birinde birer tevhid mertebesi ve birer müjde bulunduğunu ve o mertebelerden yalnız لَا شَرٖيكَ لَهُ deki manayı, basit avamın fehmine gelecek bir muhavere-i temsiliye ve bir münazara-i faraziye tarzında ve lisan-ı hali, lisan-ı kāl suretinde söylemiştim. Bana hizmet eden kıymettar kardeşlerimin ve mescid arkadaşlarımın arzuları ve istemeleri üzerine o muhavereyi yazıyorum. Şöyle ki:",
+            "lang": "ar"
+        }
+    ]
+}

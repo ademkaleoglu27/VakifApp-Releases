@@ -1,0 +1,30 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0792",
+    "pageIndex": 792,
+    "sectionId": "sozler-section-147",
+    "header": {
+        "title": "Tahrip esheldir; zayıf, tahripçi olur",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0792-header",
+            "type": "heading",
+            "text": "Tahrip esheldir; zayıf, tahripçi olur",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0792-001",
+            "type": "paragraph",
+            "text": "Vücud-u cümle ecza, şart-ı vücud-u külldür. Adem ise oluyor bir cüzün ademiyle, tahrip eshel oluyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0792-002",
+            "type": "paragraph",
+            "text": "Bundandır ki âciz adam, sebeb-i zuhur-u iktidar müsbete hiç yanaşmaz. Menfîce müteharrik, daim tahripkâr olur.",
+            "lang": "tr"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0220",
+    "pageIndex": 220,
+    "sectionId": "sozler-section-045",
+    "header": {
+        "title": "Kalbe Farisî Olarak Tahattur Eden Bir Münâcat",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0220-001",
+            "type": "paragraph",
+            "text": "دَائِرَۀِ اِحْتِيَاجْ مَانَنْدِ دَائِرَۀِ مَدِّ نَظَرْ بُزُرْگٖى دَارَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0220-002",
+            "type": "paragraph",
+            "text": "İhtiyaç dairesi, nazar dairesi kadar büyüktür, geniştir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0220-003",
+            "type": "paragraph",
+            "text": "خَيَالْ كُدَامْ رَسَدْ اِحْتِيَاجْ نٖيزْ رَسَدْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0220-004",
+            "type": "paragraph",
+            "text": "دَرْ دَسْتْ هَرْچِه نٖيسْتْ دَرْ اِحْتِيَاجْ هَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0220-005",
+            "type": "paragraph",
+            "text": "Hattâ hayal nereye gitse ihtiyaç dairesi dahi oraya gider. Orada da hâcet vardır. Belki her ne ki elde yok, ihtiyaçta vardır. Elde olmayan, ihtiyaçta vardır. Elde bulunmayan ise hadsizdir.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0220-006",
+            "type": "paragraph",
+            "text": "دَائِرَۀِ اِقْتِدَارْ هَمْچُو دَائِرَۀِ دَسْتِ كُوتَاهْ كُوتَاهَسْتْ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0220-007",
+            "type": "paragraph",
+            "text": "Halbuki daire-i iktidar, kısa elimin dairesi kadar kısa ve dardır.",
+            "lang": "tr"
+        }
+    ]
+}

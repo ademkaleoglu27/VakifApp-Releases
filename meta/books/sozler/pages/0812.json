@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0812",
+    "pageIndex": 812,
+    "sectionId": "sozler-section-163",
+    "header": {
+        "title": "Bir meclis-i misalîde",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0812-001",
+            "type": "paragraph",
+            "text": "Şimdiye kadar İslâmlar ihtiyarla girmemiş, şu medeniyet-i hazıra. Onlara yaramamış hem de onlara vurmuş müthiş kayd-ı esaret.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-002",
+            "type": "paragraph",
+            "text": "Belki nev-i beşere tiryak iken zehir olmuş. Yüzde seksenini atmış meşakkat ve şakavet. Yüzde onu çıkarmış muzahref bir saadet!",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-003",
+            "type": "paragraph",
+            "text": "Diğer onu bırakmış beyne beyne bîrahat! Zalim ekallin olmuş gelen rıbh-i ticaret. Lâkin saadet odur, külle ola saadet.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-004",
+            "type": "paragraph",
+            "text": "Lâekall ekseriyete olsa medar-ı necat. Nev-i beşere rahmet nâzil olan şu Kur’an ancak kabul ediyor bir tarz-ı medeniyet;",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-005",
+            "type": "paragraph",
+            "text": "Umuma, ya eksere verirse bir saadet. Şimdiki tarz-ı hazır, heves serbest olmuştur, heva da hür olmuştur, hayvanî bir hürriyet.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-006",
+            "type": "paragraph",
+            "text": "Heves tahakküm eder. Heva da müstebittir, gayr-ı zarurî hâcatı havaic-i zarurî hükmüne geçirmiştir. İzale etti rahat.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0812-007",
+            "type": "paragraph",
+            "text": "Bedavette bir adam dört şeye muhtaç iken, medeniyet yüz şeye muhtaç, fakir etmiştir. Sa’y-i helâl, masrafa etmemiştir kifayet.",
+            "lang": "tr"
+        }
+    ]
+}

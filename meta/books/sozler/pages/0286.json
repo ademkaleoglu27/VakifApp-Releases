@@ -1,0 +1,54 @@
+{
+    "bookId": "sozler",
+    "pageId": "sozler-0286",
+    "pageIndex": 286,
+    "sectionId": "sozler-section-057",
+    "header": {
+        "title": "Yirminci Söz",
+        "sticky": true
+    },
+    "segments": [
+        {
+            "segmentId": "sozler-0286-001",
+            "type": "paragraph",
+            "text": "Hem üçüncü fıkrada der: وَاِنَّ مِنْهَا لَمَا يَهْبِطُ مِنْ خَشْيَةِ اللّٰهِ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0286-002",
+            "type": "paragraph",
+            "text": "Şu fıkra ile Tûr-i Sina’daki münâcat-ı Museviyede (as) vuku bulan tecelliye-i celaliye heybetinden koca dağ parçalanıp dağılması ve o haşyetten taşların etrafa yuvarlanması olan vakıa-yı meşhureyi ihtar ile şöyle bir manayı ders veriyor ki:",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0286-003",
+            "type": "paragraph",
+            "text": "Ey kavm-i Musa (as)! Nasıl Allah’tan korkmuyorsunuz? Halbuki taşlardan ibaret olan dağlar, onun haşyetinden ezilip dağılıyor ve sizden ahz-ı misak için üstünüzde Cebel-i Tûr’u tuttuğunu hem “taleb-i rü’yet” hâdisesinde dağın parçalanmasını bilip ve gördüğünüz halde, ne cesaretle onun haşyetinden titremeyip kalbinizi katılık ve kasavette bulunduruyorsunuz?",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0286-004",
+            "type": "paragraph",
+            "text": "Hem birinci fıkrada diyor: وَاِنَّ مِنَ الْحِجَارَةِ لَمَا يَتَفَجَّرُ مِنْهُ الْاَنْهَارُ",
+            "lang": "ar"
+        },
+        {
+            "segmentId": "sozler-0286-005",
+            "type": "paragraph",
+            "text": "Bu fıkra ile dağlardan nebean eden Nil-i Mübarek, Dicle ve Fırat gibi ırmakları hatırlatmakla, taşların evamir-i tekviniyeye karşı ne kadar hârika-nüma ve mu’cizevari bir surette mazhar ve musahhar olduğunu ifham eder ve onunla böyle bir manayı müteyakkız kalplere veriyor ki şöyle azîm ırmakların elbette mümkün değil, şu dağlar hakiki menbaları olsun. Çünkü faraza o dağlar tamamen su kesilse ve mahrutî birer havuz olsalar, o büyük nehirlerin şöyle süratli ve kesretli cereyanlarına muvazeneyi kaybetmeden birkaç ay ancak dayanabilirler. Ve o kesretli masarife karşı galiben bir metre kadar toprakta nüfuz eden yağmur, kâfi vâridat olamaz.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0286-006",
+            "type": "paragraph",
+            "text": "Demek ki şu enharın nebeanları, âdi ve tabiî ve tesadüfî bir iş değildir. Belki pek hârika bir surette Fâtır-ı Zülcelal, onları sırf hazine-i gaybdan akıttırıyor.",
+            "lang": "tr"
+        },
+        {
+            "segmentId": "sozler-0286-007",
+            "type": "paragraph",
+            "text": "İşte bu sırra işareten bu manayı ifade için hadîste rivayet ediliyor ki: “O üç nehrin her birine cennetten birer katre her vakit damlıyor ve ondan bereketlidirler.” Hem bir rivayette denilmiş ki: “Şu üç nehrin menbaları cennettendir.” Şu rivayetin hakikati şudur ki: Madem esbab-ı maddiye, şunların bu derece kesretli nebeanına kabil değildir. Elbette menbaları, bir âlem-i gaybdadır ve gizli bir hazine-i rahmetten gelir ki masarif ile vâridatın muvazenesi devam eder.",
+            "lang": "tr"
+        }
+    ]
+}
