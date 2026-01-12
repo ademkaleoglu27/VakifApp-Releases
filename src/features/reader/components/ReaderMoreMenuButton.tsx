@@ -7,9 +7,10 @@ interface Props {
     // Controlled component - value comes from parent
     lugatEnabled: boolean;
     onLugatToggle: (isEnabled: boolean) => void;
+    onRestartBook?: () => void;
 }
 
-export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle }: Props) => {
+export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle, onRestartBook }: Props) => {
     const [visible, setVisible] = useState(false);
 
     const handleOpen = useCallback(() => {
@@ -32,6 +33,13 @@ export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle }:
             onLugatToggle(!lugatEnabled);
         });
     }, [lugatEnabled, onLugatToggle]);
+
+    const handleRestart = useCallback(() => {
+        setVisible(false);
+        InteractionManager.runAfterInteractions(() => {
+            onRestartBook?.();
+        });
+    }, [onRestartBook]);
 
     return (
         <>
@@ -82,12 +90,21 @@ export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle }:
                                     </View>
                                 </TouchableOpacity>
 
+                                {/* Yeniden Başla (Restart Book) */}
+                                {onRestartBook && (
+                                    <TouchableOpacity style={styles.menuItem} onPress={handleRestart}>
+                                        <View style={[styles.iconBox, { backgroundColor: '#FEF3C7' }]}>
+                                            <Ionicons name="refresh" size={20} color="#D97706" />
+                                        </View>
+                                        <View style={{ flex: 1, marginLeft: 12 }}>
+                                            <Text style={styles.itemTitle}>Yeniden Başla</Text>
+                                            <Text style={styles.itemSub}>Bu kitabı baştan oku</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                )}
+
                                 {/* Future Placeholders (Disabled) */}
                                 <View style={{ opacity: 0.5 }}>
-                                    <View style={styles.menuItem}>
-                                        <View style={styles.iconBox}><Ionicons name="bookmark-outline" size={20} color="#999" /></View>
-                                        <Text style={[styles.itemTitle, { marginLeft: 12, color: '#999' }]}>Yer İmi</Text>
-                                    </View>
                                     <View style={styles.menuItem}>
                                         <View style={styles.iconBox}><Ionicons name="share-social-outline" size={20} color="#999" /></View>
                                         <Text style={[styles.itemTitle, { marginLeft: 12, color: '#999' }]}>Paylaş</Text>

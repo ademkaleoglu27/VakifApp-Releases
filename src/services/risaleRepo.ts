@@ -71,6 +71,24 @@ export const getSectionsByWork = async (workId: string): Promise<RisaleSection[]
     }));
 };
 
+export const getNextSection = async (workId: string, currentSectionId: string): Promise<{ id: string; title: string } | null> => {
+    const db = getDb();
+
+    // 1. Get current section's order index
+    const current = await db.getFirstAsync<any>('SELECT order_index FROM sections WHERE id = ?', [currentSectionId]);
+    if (!current) return null;
+
+    // 2. Find the immediate next section (main or sub, but not footnote)
+    // We strictly use order_index > current.order_index to find the next one.
+    const next = await db.getFirstAsync<any>(
+        'SELECT id, title FROM sections WHERE work_id = ? AND order_index > ? AND type != ? ORDER BY order_index ASC LIMIT 1',
+        [workId, current.order_index, 'footnote']
+    );
+
+    if (!next) return null;
+    return { id: next.id, title: next.title };
+};
+
 export const getAllWorks = async (): Promise<RisaleWork[]> => {
     const db = getDb();
 
@@ -162,6 +180,7 @@ export interface StreamItem {
     title?: string;
     chunks?: RisaleChunk[];
     orderIndex: number;
+    globalPageOrdinal?: number;  // 1-indexed global page number for display
 }
 
 /**
@@ -172,6 +191,7 @@ export const buildReadingStream = async (workId: string): Promise<StreamItem[]> 
     const db = getDb();
     const stream: StreamItem[] = [];
     let globalOrderIndex = 0;
+    let globalPageOrdinal = 0;  // Track global page number for display
 
     // 1. Fetch all sections (main + sub, exclude footnotes) in order
     const sections = await db.getAllAsync<any>(
@@ -213,18 +233,104 @@ export const buildReadingStream = async (workId: string): Promise<StreamItem[]> 
         for (let i = 0; i < chunks.length; i += CHUNKS_PER_PAGE) {
             const pageChunks = chunks.slice(i, i + CHUNKS_PER_PAGE);
             const pageIndex = Math.floor(i / CHUNKS_PER_PAGE);
+            globalPageOrdinal++;  // Increment global page counter
 
             stream.push({
                 type: 'page',
                 id: `page-${sectionId}-${pageIndex}`,
                 sectionId,
                 chunks: pageChunks,
-                orderIndex: globalOrderIndex++
+                orderIndex: globalOrderIndex++,
+                globalPageOrdinal
             });
         }
     }
 
-    console.log(`[Stream] Built ${stream.length} items for work ${workId}`);
+    console.log(`[Stream] Built ${stream.length} items for work ${workId}, total pages: ${globalPageOrdinal}`);
+    return stream;
+};
+
+/**
+ * Build a section-only reading stream (V25.6)
+ * Optimized for TOC navigation to avoid scroll jumps.
+ * Calculates global page ordinal but only loads the target section.
+ */
+export const buildSectionReadingStream = async (workId: string, targetSectionId: string): Promise<StreamItem[]> => {
+    const db = getDb();
+    const stream: StreamItem[] = [];
+    let globalOrderIndex = 0;
+    let globalPageOrdinal = 0;  // Track global page number
+
+    // 1. Fetch all sections order (lightweight)
+    const sections = await db.getAllAsync<any>(
+        'SELECT id, title, type FROM sections WHERE work_id = ? AND type != ? ORDER BY order_index ASC',
+        [workId, 'footnote']
+    );
+
+    // 2. Iterate sections until we find target
+    for (const section of sections) {
+        const sectionId = section.id;
+
+        // Count pages efficiently
+        const paragraphCount = (await db.getFirstAsync<any>(
+            'SELECT COUNT(*) as count FROM paragraphs WHERE section_id = ?',
+            [sectionId]
+        )).count;
+
+        const CHUNKS_PER_PAGE = 7;
+        const pageCount = Math.ceil(paragraphCount / CHUNKS_PER_PAGE);
+
+        if (sectionId === targetSectionId) {
+            // THIS IS THE TARGET SECTION - BUILD IT FULLY
+            // Add section header
+            stream.push({
+                type: section.type === 'main' ? 'section_header' : 'sub_header',
+                id: `header-${sectionId}`,
+                sectionId,
+                title: section.title,
+                orderIndex: globalOrderIndex++
+            });
+
+            // Fetch paragraphs for this section
+            const paragraphs = await db.getAllAsync<any>(
+                'SELECT * FROM paragraphs WHERE section_id = ? ORDER BY order_index ASC',
+                [sectionId]
+            );
+
+            // Group into pages
+            const chunks: RisaleChunk[] = paragraphs.map((p: any) => ({
+                id: p.order_index,
+                section_id: p.section_id,
+                chunk_no: p.order_index,
+                text_tr: p.text,
+                page_no: p.page_no || 0
+            }));
+
+            for (let i = 0; i < chunks.length; i += CHUNKS_PER_PAGE) {
+                const pageChunks = chunks.slice(i, i + CHUNKS_PER_PAGE);
+                const pageIndex = Math.floor(i / CHUNKS_PER_PAGE);
+                globalPageOrdinal++;  // Increment global page counter
+
+                stream.push({
+                    type: 'page',
+                    id: `page-${sectionId}-${pageIndex}`,
+                    sectionId,
+                    chunks: pageChunks,
+                    orderIndex: globalOrderIndex++,
+                    globalPageOrdinal // Correct global ordinal!
+                });
+            }
+            break; // Stop after building target section
+        } else {
+            // NOT TARGET - JUST SKIP PAGES (Add offset)
+            globalPageOrdinal += pageCount;
+            // We assume stream item indices (orderIndex) are local to this partial stream?
+            // Actually orderIndex assumes 0-based for flashlist. So we just reset globalOrderIndex 0 at start and increment.
+            // But globalPageOrdinal accumulates.
+        }
+    }
+
+    console.log(`[SectionStream] Built ${stream.length} items for section ${targetSectionId}, starting at global page ${globalPageOrdinal - stream.filter(x => x.type === 'page').length + 1}`);
     return stream;
 };
 
@@ -238,6 +344,38 @@ export const buildTocIndexMap = (stream: StreamItem[]): Map<string, number> => {
             map.set(item.sectionId, idx);
         }
     });
+    return map;
+};
+
+/**
+ * Section page mapping for deterministic TOC navigation (V25.1)
+ */
+export interface SectionPageMapping {
+    sectionId: string;
+    firstPageIndex: number;       // Stream index of first page item
+    firstGlobalPageOrdinal: number;  // Global page number (1-indexed)
+}
+
+/**
+ * Build section-to-first-page mapping for deterministic TOC navigation.
+ * Returns map from sectionId to its first page info.
+ */
+export const buildSectionPageMap = (stream: StreamItem[]): Map<string, SectionPageMapping> => {
+    const map = new Map<string, SectionPageMapping>();
+    const seenSections = new Set<string>();
+
+    stream.forEach((item, idx) => {
+        // Only track first page for each section
+        if (item.type === 'page' && !seenSections.has(item.sectionId)) {
+            seenSections.add(item.sectionId);
+            map.set(item.sectionId, {
+                sectionId: item.sectionId,
+                firstPageIndex: idx,
+                firstGlobalPageOrdinal: item.globalPageOrdinal || 1,
+            });
+        }
+    });
+
     return map;
 };
 

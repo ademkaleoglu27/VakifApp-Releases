@@ -55,7 +55,7 @@ export const LibraryScreen = () => {
                 <TouchableOpacity
                     style={styles.card}
                     activeOpacity={0.9}
-                    onPress={() => navigation.navigate('RisaleHome')}
+                    onPress={() => navigation.navigate('LibraryDetail', { libraryId: 'risale_nur' })}
                 >
                     <LinearGradient
                         colors={['#b45309', '#d97706']}

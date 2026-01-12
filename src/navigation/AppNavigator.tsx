@@ -48,6 +48,8 @@ import { QuranPageReaderScreen } from '@/features/library/screens/QuranPageReade
 import { QuranSurahListScreen } from '@/features/library/screens/QuranSurahListScreen';
 import { QuranPagePickerScreen } from '@/features/library/screens/QuranPagePickerScreen';
 import { QuranJuzPickerScreen } from '@/features/library/screens/QuranJuzPickerScreen';
+import { LibraryDetailScreen } from '@/features/library/screens/LibraryDetailScreen';
+import { WorkDetailScreen } from '@/features/library/screens/WorkDetailScreen';
 
 // Risale Screens
 import { RisaleHomeScreen } from '@/features/risale/screens/RisaleHomeScreen';
@@ -98,6 +100,10 @@ export type RootStackParamList = {
     QuranSurahList: undefined;
     QuranHomeScreen: undefined;
     QuranPageReader: { page: number };
+
+    // Risale Library V1
+    LibraryDetail: { libraryId: string };
+    WorkDetail: { workId: string };
     QuranPagePicker: undefined;
     QuranJuzPicker: undefined;
 
@@ -309,20 +315,15 @@ const CustomDrawerContent = React.memo((props: any) => {
                                         isSubItem
                                         color="#334155"
                                     />
-                                    {/* Books from Registry → Go to Section List (TOC) first */}
-                                    {getEnabledBooks().map(book => (
-                                        <DrawerItem
-                                            key={book.id}
-                                            label={book.title}
-                                            icon={book.icon as any}
-                                            onPress={() => navigate('RisaleVirtualPageSectionList', {
-                                                workId: book.id,
-                                                workTitle: book.title
-                                            })}
-                                            isSubItem
-                                            color="#334155"
-                                        />
-                                    ))}
+
+                                    {/* Risale-i Nur Library V1 Link */}
+                                    <DrawerItem
+                                        label="Risale-i Nur"
+                                        icon="library-outline"
+                                        onPress={() => navigate('LibraryDetail', { libraryId: 'risale_nur' })}
+                                        isSubItem
+                                        color="#334155"
+                                    />
                                     <DrawerItem
                                         label="Cevşen"
                                         icon="shield-checkmark-outline"
@@ -828,6 +829,9 @@ export const AppNavigator = () => {
                                     component={DuaPdfReaderScreen}
                                     options={{ title: 'Dua', headerShown: false }}
                                 />
+                                {/* Risale Library V1 */}
+                                <Stack.Screen name="LibraryDetail" component={LibraryDetailScreen} options={{ headerShown: false }} />
+                                <Stack.Screen name="WorkDetail" component={WorkDetailScreen} options={{ headerShown: false }} />
                                 <Stack.Screen
                                     name="HatimDuasi"
                                     component={HatimDuasiScreen}
