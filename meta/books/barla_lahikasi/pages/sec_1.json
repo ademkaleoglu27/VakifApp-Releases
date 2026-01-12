@@ -1,0 +1,35 @@
+{
+  "id": "intro",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "TAKDİM",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu lâhika mektupları –ki Yirmi Yedinci Mektup’tur– Risale-i Nur’un ilk telifi ile başlayıp devam edegelmiştir. Risaleler Barla’da telif edilmeye başlanıp Isparta ve civarındaki kıymettar talebeleri bu risaleleri okumak ve yazmak suretiyle istifade ve istifaza ettiklerinde hissiyatlarını, iştiyak ve ihtiramlarını bir şükran borcu olarak muhterem müellifi Hazret-i Üstada mektuplarla takdim etmişler. Bazı müşkülatlarının ve suallerinin halledilmesini rica etmişler. Böylece hem Hazret-i Üstadın hem talebelerin mektupları ile Barla, Kastamonu ve Emirdağ lâhika mektupları vücuda gelmiştir.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Barla Lâhikaları: Risale-i Nur’un Barla’da telif edildiği ve kalemle istinsah edilerek neşre başlandığından Eskişehir hapsi zamanına kadar olan devrede Nur’un ilk müştak talebelerinin, Nurların hemen telifi zamanında, ilk okuyup yazdıklarında duydukları samimi hissiyat, kalbî ve ruhî istifade ve istifazalarını dile getiren fıkralarını ve Hazret-i Üstadın da bazı mektuplarını ihtiva etmektedir.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Kastamonu Lâhikaları ise: Eskişehir hapsinden tahliyeden sonra Nur Müellifi Kastamonu’ya nefyedilmiş, Denizli hapsi zamanına kadar orada ikamete mecbur edilmiş; bu müddet zarfında Nur Müellifi Isparta’daki talebeleri ile daimî muhabere ederek Nurların hatt-ı Kur’an’la yazılıp çoğalması, neşri ve inkişafı ve eski yazı bilmeyen gençlerin istifadesi için de Risale-i Nur Külliyatı’ndan bazı bahislerin daktilo ile çoğaltılması hususunda şedit alâka göstermiş ve Risale-i Nur’un mahiyeti, kıymeti, deruhte ettiği kudsî vazife-i imaniyesi ve mazhariyeti hem talebelerinin tarz-ı hizmetleri, mütecaviz dinsizler karşısında sebat ve metanetleri ve ehl-i İslâm’ın birbiri ile muamelatında takip edecekleri ihlaslı hareketleri gibi dâhilî ve haricî birçok meselelere temas etmiştir.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu itibarla Kastamonu lâhika mektupları bilhassa yazıldığı zaman itibarıyla da büyük ehemmiyet kesbeden bir devrin mahsulü olması ve birçok içtimaî meseleleri ve küllî, imanî bir nazar-ı hakikatle mütalaa, mülahaza ve küllîleşmesi gibi cihetlerde büyük kıymeti haizdir.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Emirdağ Lâhika Mektupları Birinci Kısmı: 15 Haziran 1944’te Denizli hapsinden beraet ile tahliyeden sonra Heyet-i Vekile kararıyla Emirdağı’nda ikamete memur edilen Risale-i Nur müellifi Said Nursî Hazretleri 1947 sonlarına kadar, yani üçüncü büyük hapis olan Afyon hapsine kadar Emirdağı’nda ikamet ettiği müddetçe Isparta, Kastamonu, İstanbul, Ankara ve üniversite talebeleri ve Anadolu’da Nurların neşre başlandığı yerlerdeki talebelerine, hizmete müteallik bazı mektup ve suallerine cevaben yazdığı mektuplardır.",
+      "order_index": 5
+    }
+  ]
+}

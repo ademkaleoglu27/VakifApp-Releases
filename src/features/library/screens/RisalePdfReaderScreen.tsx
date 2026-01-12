@@ -155,14 +155,8 @@ export const RisalePdfReaderScreen = () => {
                 if (initialJump) {
                     setPdfPage(initialJump);
                     setUiPage(initialJump);
-                } else {
-                    // Normal Progress Load
-                    const progress = await RisaleDownloadService.getProgress(bookId);
-                    if (progress && progress.lastPage > 1) {
-                        setPdfPage(progress.lastPage);
-                        setUiPage(progress.lastPage);
-                    }
                 }
+                // Bookmark/Resume feature removed requested by user.
             } catch (e) {
                 console.warn('Failed to load progress', e);
             } finally {
@@ -177,10 +171,11 @@ export const RisalePdfReaderScreen = () => {
         setUiPage(page);
         if (numberOfPages > 0) setTotalPages(numberOfPages);
 
-        if (saveTimeout.current) clearTimeout(saveTimeout.current);
-        saveTimeout.current = setTimeout(() => {
-            RisaleDownloadService.saveProgress(bookId, page);
-        }, PAGE_CHANGE_DEBOUNCE);
+        // Progress saving removed.
+        // if (saveTimeout.current) clearTimeout(saveTimeout.current);
+        // saveTimeout.current = setTimeout(() => {
+        //     RisaleDownloadService.saveProgress(bookId, page);
+        // }, PAGE_CHANGE_DEBOUNCE);
     }, [bookId]);
 
     // 3. Jump Logic

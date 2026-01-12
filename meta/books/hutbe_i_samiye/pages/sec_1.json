@@ -1,0 +1,3095 @@
+{
+  "id": "intro",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur Külliyatı’ndan",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "HUTBE-İ ŞAMİYE",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Müellifi",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu Hutbe-i Şamiye eseri, Üstad Bedîüzzaman Said Nursî Hazretlerinin otuz beş yaşında iken Şam’da, Şam ulemasının ısrarı üzerine Cami-i Emevî’de îrad ettiği bir hutbedir. Çok büyük bir ehemmiyeti haiz olması hasebiyle o zaman Şam’da bir hafta içinde iki defa tabedilmiştir. Bilâhare müellif Bedîüzzaman Said Nursî tarafından tercümesi neşredilmiştir.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Arabî Hutbe-i Şamiye’nin Mukaddimesidir",
+      "order_index": 6
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 7
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ اَبَدًا دَائِمًا",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Kırk sene evvel Şam’daki Cami-i Emevî’de Şam ulemasının ısrarıyla içinde yüz ehl-i ilim bulunan on bin adama yakın bir azîm cemaate verilen bu Arabî ders risalesindeki hakikatleri bir hiss-i kable’l-vuku ile Eski Said hissetmiş, kemal-i kat’iyetle müjdeler vermiş ve pek yakın bir zamanda o hakikatler görünecek zannetmiş. Halbuki iki harb-i umumî ve yirmi beş sene bir istibdad-ı mutlak, o hiss-i kable’l-vukuun kırk elli sene tehirine sebep olmuş ve şimdi o zamandaki verdiği haberlerin aynen tezahürleri âlem-i İslâmiyet’te başlamış.",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek bu pek ehemmiyetli ders, zamanı geçmiş eski bir hutbe değil belki doğrudan doğruya 1327’ye bedel, 1371’de ve Cami-i Emevî yerine âlem-i İslâm camiinde üç yüz yetmiş milyon bir cemaate hakikatli ve taze bir ders-i içtimaî ve İslâmîdir diye tercümesini neşretmek zamanıdır tahmin ederim.",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Gayet mühim bir suale verilen çok ehemmiyetli bir cevabı burada yazmaya münasebet geldi. Çünkü kırk sene evvel Eski Said, o dersinde bir hiss-i kable’l-vuku ile Risale-i Nur’un hârika derslerini ve tesiratını görmüş gibi bahsediyor. Onun için o sual ve cevabı yazacağız. Şöyle ki:",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Çoklar tarafından hem bana hem bazı Nur kardeşlerime sual etmişler ve ediyorlar ki: “Neden bu kadar muarızlara karşı ve muannid feylesoflara ve ehl-i dalalete mukabil Risale-i Nur mağlup olmuyor? Milyonlar kıymettar hakiki kütüb-ü imaniye ve İslâmiyenin intişarlarına bir derece set çektikleri halde; sefahet ve hayat-ı dünyeviyenin lezzetleriyle çok bîçare gençleri ve insanları hakaik-i imaniyeden mahrum bıraktıkları halde en şiddetli hücum ve en gaddarane muamele ve en ziyade yalanlarla ve aleyhinde yapılan propagandalarla Risale-i Nur’u kırmak, insanları ondan ürkütmek ve vazgeçirmeye çalıştıkları halde, hiçbir eserde görülmediği bir tarzda Risale-i Nur’un intişarı, hattâ çoğu el yazması ile altı yüz bin nüsha risalelerinden kemal-i iştiyak ile perde altında intişar etmesi ve dâhil ve hariçte kemal-i iştiyak ile kendini okutturması hikmeti nedir? Sebebi nedir?” diye bu mealde çok suallere karşı elcevap deriz ki:",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an-ı Hakîm’in sırr-ı i’cazıyla hakiki bir tefsiri olan Risale-i Nur, bu dünyada bir manevî cehennemi dalalette gösterdiği gibi imanda dahi bu dünyada manevî bir cennet bulunduğunu ispat ediyor. Ve günahların ve fenalıkların ve haram lezzetlerin içinde manevî elîm elemleri gösterip hasenat ve güzel hasletlerde ve hakaik-i şeriatın amelinde cennet lezaizi gibi manevî lezzetler bulunduğunu ispat ediyor. Sefahet ehlini ve dalalete düşenlerini o cihetle, aklı başında olanlarını kurtarıyor. Çünkü bu zamanda iki dehşetli hal var:",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Âkıbeti görmeyen, bir dirhem hazır lezzeti, ileride bir batman lezzetlere tercih eden hissiyat-ı insaniye, akıl ve fikre galebe ettiğinden ehl-i sefaheti sefahetinden kurtarmanın yegâne çaresi; aynı lezzetinde elemini gösterip hissini mağlup etmektir. Ve يَسْتَحِبُّونَ الْحَيٰوةَ الدُّنْيَا âyetinin işaretiyle; bu zamanda âhiretin elmas gibi nimetlerini, lezzetlerini bildiği halde, dünyevî kırılacak şişe parçalarını ona tercih etmek, ehl-i iman iken ehl-i dalalete o hubb-u dünya ve o sır için tabi olmak tehlikesinden kurtarmanın çare-i yegânesi, dünyada dahi cehennem azabını ve elemlerini göstermekle olur ki Risale-i Nur o meslekten gidiyor.",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "Yoksa bu zamandaki küfr-ü mutlakın ve fenden gelen dalaletin ve sefahetten gelen tiryakiliğin inadı karşısında Cenab-ı Hakk’ı tanıttırdıktan sonra ve cehennemin vücudunu ispat ile ve onun azabı ile insanları fenalıktan, seyyiattan vazgeçirmek; ondan belki yirmiden birisi ders alabilir. Ders aldıktan sonra da “Cenab-ı Hak Gafuru’r-Rahîm’dir hem cehennem pek uzaktır.” der, sefahetine devam edebilir. Kalbi, ruhu hissiyatına mağlup olur.",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Risale-i Nur’daki ekser muvazeneler küfür ve dalaletin dünyadaki elîm ve ürkütücü neticelerini göstermekle, en muannid ve nefis-perest insanları dahi o menhus, gayr-ı meşru lezzetlerden ve sefahetlerden bir nefret verip aklı başında olanları tövbeye sevk eder. O muvazenelerden Altıncı, Yedinci, Sekizinci Sözlerdeki küçük muvazeneler ve Otuz İkinci Söz’ün Üçüncü Mevkıfı’ndaki uzun muvazene; en sefih ve dalalette giden adamı da ürkütüyor, dersini kabul ettiriyor.",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela Âyet-i Nur’daki seyahat-i hayaliye ile hakikat olarak gördüğü vaziyetleri gayet kısaca işaret edeceğiz. Tafsilatını isteyen Sikke-i Gaybiye’nin âhirine baksın.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Ezcümle: O seyahat-i hayaliyede, rızka muhtaç hayvanat âlemini gördüğüm vakit, maddî felsefe ile baktım. Hadsiz ihtiyacat ve şiddetli açlıklarıyla beraber zaaf ve aczleri, o zîhayat âlemini bana çok acıklı ve elîm gösterdi. Ehl-i dalalet ve gafletin gözüyle baktığımdan feryat eyledim. Birden hikmet-i Kur’aniye ve imanın dürbünü ile gördüm: Rahman ismi Rezzak burcunda, parlak bir güneş gibi tulû etti. O aç, bîçare zîhayat âlemini rahmet ışığıyla yaldızladı.",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra hayvanat âlemi içinde, yavruların zaaf ve acz ve ihtiyaç içinde çırpındıkları hazîn ve elîm ve herkesi rikkat ve acımaya getirecek bir karanlık içinde diğer bir âlemi gördüm. Ehl-i dalaletin nazarıyla baktığıma eyvah dedim. Birden iman bana bir gözlük verdi, gördüm ki: Rahîm ismi şefkat burcunda tulû etti. O kadar güzel ve şirin bir surette o acı âlemi sevinçli âleme çevirip ışıklandırdı ki şekva ve acımak ve hüzünden gelen gözyaşlarımı, sevinç ve şükrün lezzetlerinden gelen damlalara çevirdi.",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra sinema perdesi gibi insan âlemi bana göründü. Ehl-i dalaletin dürbünü ile baktım. O âlemi o kadar karanlıklı, dehşetli gördüm ki en derin kalbimden feryat ettim. “Eyvah!” dedim. Çünkü insanlarda ebede uzanıp giden arzuları, emelleri ve kâinatı ihata eden tasavvurat ve efkârları ve ebedî beka ve saadet-i ebediyeyi ve cenneti gayet ciddi isteyen himmetleri ve fıtrî istidatları ve fıtrî had konulmayan, serbest bırakılan kuvveleri ve hadsiz maksatlara müteveccih ihtiyaçları ve zaaf ve aczleriyle beraber hücumlarına maruz kaldıkları hadsiz musibet ve a’daları ile beraber gayet kısa bir ömür, her gün ve her saat ölüm endişesi altında, gayet dağdağalı bir hayat, yaşamak için gayet perişan bir maişet içinde kalbe, vicdana en elîm ve en müthiş halet olan mütemadî zeval ve firak belasını çekmek içinde ehl-i gaflet için zulümat-ı ebediye kapısı suretinde görülen kabre ve mezaristana bakıyorlar. Birer birer ve taife taife o zulümat kuyusuna atılıyorlar.",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu insan âlemini bu zulümat içinde gördüğüm anda, kalp ve ruh ve aklımla bütün letaif-i insaniyem, belki bütün zerrat-ı vücudum feryat ile ağlamaya hazır iken birden Kur’an’dan gelen nur ve kuvvet-i iman o dalalet gözlüğünü kırdı, kafama bir göz verdi. Gördüm ki:",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Cenab-ı Hakk’ın Âdil ismi Hakîm burcunda, Rahman ismi Kerîm burcunda, Rahîm ismi Gafur burcunda yani manasında, Bâis ismi Vâris burcunda, Muhyî ismi Muhsin burcunda, Rab ismi Mâlik burcunda birer güneş gibi tulû ettiler. O karanlıklı insan âlemi içinde çok âlemler bulunan umumunu ışıklandırdılar, şenlendirdiler. Cehennemî haletleri dağıtıp, nurani âhiret âleminden pencereler açıp o perişan insan dünyasına nurlar serptiler. Zerrat-ı kâinat adedince اَلْحَمْدُ لِلّٰهِ ، اَلشُّكْرُ لِلّٰهِ dedim. Ve aynelyakîn gördüm ki imanda manevî bir cennet ve dalalette manevî bir cehennem bu dünyada da vardır, yakînen bildim.",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra küre-i arzın âlemi göründü. O seyahat-i hayaliyemde dine itaat etmeyen felsefenin karanlıklı kavanin-i ilmiyeleri, hayalime dehşetli bir âlem gösterdi. Yetmiş defa top güllesinden daha süratli hareketiyle, yirmi beş bin sene mesafeyi bir senede gezip devreden ve her vakit dağılmaya ve parçalanmaya müstaid ve içi zelzeleli, çok ihtiyar ve çok yaşlı küre-i arz içinde ve o dehşetli gemi üstünde kâinatın hadsiz boşluğunda seyahat eden bîçare nev-i insan vaziyeti bana vahşetli bir karanlık içinde göründü. Başım döndü, gözüm karardı. Felsefenin gözlüğünü yere vurdum, kırdım. Birden hikmet-i Kur’aniye ile ışıklanmış bir göz ile baktım, gördüm ki:",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâlık-ı arz ve semavat’ın Kadîr, Alîm, Rab, Allah ve Rabbü’s-semavati ve’l-arz ve Musahhirü’ş-şemsi ve’l-kamer isimleri; rahmet, azamet, rububiyet burçlarında güneş gibi tulû ettiler. O karanlıklı, vahşetli, dehşetli âlemi öyle ışıklandırdılar ki o halette, benim imanlı gözüme küre-i arz gayet muntazam, musahhar, mükemmel, hoş, emniyetli, herkesin erzakı içinde bir seyahat gemisi ve tenezzüh ve keyif ve ticaret için müheyya edilmiş ve zîruhları güneşin etrafında, memleket-i Rabbaniyede gezdirmek ve yaz ve bahar ve güzün mahsulatını rızık isteyenlere getirmek için bir gemi, bir tayyare, bir şimendifer hükmünde gördüm. Küre-i arzın zerratı adedince اَلْحَمْدُ لِلّٰهِ عَلٰى نِعْمَةِ الْاٖيمَانِ dedim.",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte buna kıyasen Risale-i Nur’da pek çok muvazenelerle, ehl-i sefahet ve dalalet, dünyada dahi bir manevî cehennem içinde azap çektiklerini ve ehl-i iman ve salahat, dünyada dahi bir manevî cennet içinde, İslâmiyet ve insaniyet midesiyle ve imanın tecelliyatıyla ve cilveleriyle, manevî cennet lezzetleri tadabilirler, belki derece-i imanlarına göre istifade edebilirler.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat bu fırtınalı zamanın hissi iptal eden ve beşerin nazarını âfaka dağıtan ve boğan cereyanlar, iptal-i his nevinden bir sersemlik vermiş ki ehl-i dalalet manevî azabını muvakkaten tam hissedemiyor. Ehl-i hidayete dahi gaflet basıyor, hakiki lezzetini takdir edemiyor.",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu asırda ikinci dehşetli hal: Eski zamanda küfr-ü mutlak ve fenden gelen dalaletler ve küfr-ü inadîden gelen temerrüd, bu zamana nisbeten pek azdı. Onun için eski İslâm muhakkiklerinin dersleri, hüccetleri o zamanda tam kâfi olurdu. Küfr-ü meşkuku çabuk izale ederlerdi. Allah’a iman umumî olduğundan Allah’ı tanıttırmakla ve cehennem azabını ihtar etmekle çokları sefahetlerden, dalaletlerden vazgeçebilirlerdi.",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi ise eski zamanda bir memlekette bir kâfir-i mutlak yerine, şimdi bir kasabada yüz tane bulunabilir. Eskide fen ve ilim ile dalalete girip inat ve temerrüd ile hakaik-i imana karşı çıkana nisbeten şimdi yüz derece ziyade olmuş. Bu mütemerrid inatçılar, firavunluk derecesinde bir gurur ile ve dehşetli dalaletleriyle hakaik-i imaniyeye karşı muaraza ettiklerinden, elbette bunlara karşı atom bombası gibi –bu dünyada onların temellerini parça parça edecek– bir hakikat-i kudsiye lâzımdır ki onların tecavüzatını durdursun ve bir kısmını imana getirsin.",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Cenab-ı Hakk’a hadsiz şükürler olsun ki bu zamanın tam yarasına bir tiryak olarak Kur’an-ı Mu’cizü’l-Beyan’ın bir mu’cize-i maneviyesi ve lemaatı bulunan Risale-i Nur, pek çok muvazenelerle, en dehşetli muannid mütemerridleri, Kur’an’ın elmas kılıncı ile kırıyor. Ve kâinat zerreleri adedince vahdaniyet-i İlahiyeye ve imanın hakikatlerine hüccetleri, delilleri gösteriyor ki yirmi beş seneden beri en şiddetli hücumlara karşı mağlup olmayıp galebe etmiş.",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet Risale-i Nur’da, iman ve küfür muvazeneleri ve hidayet ve dalalet mukayeseleri, bu mezkûr hakikati bilmüşahede ispat ediyor. Mesela, Yirmi İkinci Söz’ün iki makamının bürhanları ve lem’alarına ve Otuz İkinci Söz’ün Birinci Mevkıf’ına ve Otuz Üçüncü Mektup’un pencerelerine ve Asâ-yı Musa’nın on bir hüccetine, sair muvazeneler kıyas edilse ve dikkat edilse anlaşılır ki bu zamanda küfr-ü mutlakı ve mütemerrid dalaletin inadını kıracak, parçalayacak Risale-i Nur’da tecelli eden hakikat-i Kur’aniyedir.",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "İnşâallah nasıl Tılsımlar mecmuasında, dinin mühim tılsımlarını ve hilkat-i âlemin muammalarını keşfeden parçalar, o mecmuada toplanmış. Aynen öyle de ehl-i dalaletin dünyada dahi cehennemlerini ve ehl-i hidayetin dünyada lezaiz-i cennetlerini gösteren ve iman cennetin bir manevî çekirdeği ve küfür ise cehennem zakkumunun bir tohumu olduğunu gösteren Nur’un o gibi parçaları, kısacık bir tarzda bir mecmuacık olarak yazılacak ve inşâallah neşredilecek.",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Arabî Hutbe-i Şamiye Eserinin Tercümesi",
+      "order_index": 36
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "Bütün zîhayatlar, hayatlarının lisan-ı halleriyle Hâlıklarına takdim ettikleri manevî hediyelerini ve lisan-ı halle hamd ve şükürlerini, o Zat-ı Vâcibü’l-vücud’a biz de takdim ediyoruz ki demiş: لَا تَقْنَطُوا مِنْ رَحْمَةِ اللّٰهِ Yani rahmet-i İlahiyeden ümidinizi kesmeyiniz. Hem hadsiz salât ü selâm ol Peygamberimiz Muhammed Mustafa (asm) üzerine olsun ki demiş: جِئْتُ لِاُتَمِّمَ مَكَارِمَ الْاَخْلَاقِ Yani benim, insanlara Cenab-ı Hak tarafından bi’setim ve gelmemin ehemmiyetli bir hikmeti, ahlâk-ı haseneyi ve güzel hasletleri tekmil etmek ve beşeri ahlâksızlıktan kurtarmaktır.",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "Hamd ve salâttan sonra: Ey bu Cami-i Emevî’de bu dersi dinleyen Arap kardeşlerim! Ben haddimin fevkinde bu minbere ve bu makama irşadınız için çıkmadım. Çünkü size ders vermek haddimin fevkindedir. Belki içinizde yüze yakın ulema bulunan cemaate karşı benim misalim, medreseye giden bir çocuğun misalidir ki o sabî çocuk, sabahleyin medreseye gidip okuyup akşam da babasına gelip okuduğu dersini babasına arz eder. Tâ doğru ders almış mı, almamış mı? Babasının irşadını veya tasvibini bekler. Evet, bizler size nisbeten çocuk hükmündeyiz ve talebeleriniziz. Sizler bizim ve İslâm milletlerinin üstadlarısınız. İşte ben de aldığım dersimin bir kısmını sizler gibi üstadlarımıza şöyle beyan ediyorum:",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben bu zaman ve zeminde, beşerin hayat-ı içtimaiye medresesinde ders aldım ve bildim ki: Ecnebiler, Avrupalılar terakkide istikbale uçmalarıyla beraber bizi maddî cihette kurûn-u vustâda durduran ve tevkif eden altı tane hastalıktır. O hastalıklar da bunlardır:",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Yeisin, ümitsizliğin içimizde hayat bulup dirilmesi.",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Sıdkın hayat-ı içtimaiye-i siyasiyede ölmesi.",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncüsü: Adâvete muhabbet.",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncüsü: Ehl-i imanı birbirine bağlayan nurani rabıtaları bilmemek.",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşincisi: Çeşit çeşit sâri hastalıklar gibi intişar eden istibdat.",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Altıncısı: Menfaat-i şahsiyesine himmeti hasretmek.",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu altı dehşetli hastalığın ilacını da bir tıp fakültesi hükmünde hayat-ı içtimaiyemizde, eczahane-i Kur’aniyeden ders aldığım altı kelime ile beyan ediyorum. Mualecenin esasları onları biliyorum.",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "BİRİNCİ KELİME: “El-emel”. Yani rahmet-i İlahiyeden kuvvetli ümit beslemek. Evet, ben kendi hesabıma aldığım dersime binaen: Ey İslâm cemaati! Müjde veriyorum ki: Şimdiki âlem-i İslâm’ın saadet-i dünyeviyesi, bâhusus Osmanlıların saadeti ve bilhassa İslâm’ın terakkisi onların intibahıyla olan Arab’ın saadetinin fecr-i sadıkının emareleri inkişafa başlıyor ve saadet güneşinin de çıkması yakınlaşmış. Yeisin burnunun rağmına olarak (Hâşiye[1]) ben dünyaya işittirecek derecede kanaat-i kat’iyemle derim:",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "İstikbal yalnız ve yalnız İslâmiyet’in olacak. Ve hâkim, hakaik-i Kur’aniye ve imaniye olacak. Öyle ise şimdiki kader-i İlahî ve kısmetimize razı olmalıyız ki bize parlak bir istikbal, ecnebilere müşevveş bir mazi düşmüş.",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu davama çok bürhanlardan ders almışım. Şimdi o bürhanlardan mukaddimatlı bir buçuk bürhanı zikredeceğim. O bürhanın mukaddimatına başlıyoruz:",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte İslâmiyet’in hakaiki hem manen hem maddeten terakki etmeye kabil ve mükemmel bir istidadı var.",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci cihet olan manen terakki ise: Biliniz! Hakiki vukuatı kaydeden tarih, hakikate en doğru şahittir. İşte tarih bize gösteriyor. Hattâ Rus’u mağlup eden Japon Başkumandanının İslâmiyet’in hakkaniyetine şehadeti de şudur ki:",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikat-i İslâmiyet’in kuvveti nisbetinde, Müslümanlar o kuvvete göre hareket etmeleri derecesinde ehl-i İslâm temeddün edip terakki ettiğini tarih gösteriyor. Ve ehl-i İslâm’ın hakikat-i İslâmiye’de zafiyeti derecesinde tevahhuş ettiklerini, vahşete ve tedenniye düştüklerini ve herc ü merc içinde belalara, mağlubiyetlere düştüklerini tarih gösteriyor. Sair dinler ise bilakistir. Yani salabet ve taassuplarının zafiyeti nisbetinde temeddün ve terakki ettikleri gibi dinlerine salabet ve taassuplarının kuvveti derecesinde de tedenni ve ihtilallere maruz kaldıklarını tarih gösteriyor. Şimdiye kadar zaman böyle geçmiş.",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem asr-ı saadetten şimdiye kadar hiçbir tarih bize göstermiyor ki bir Müslüman’ın muhakeme-i akliye ile ve delil-i yakînî ile ve İslâmiyet’e tercih etmekle eski ve yeni ayrı bir dine girdiğini tarih göstermiyor. Avamın delilsiz, taklidî bir surette başka dine girmesinin bu meselede ehemmiyeti yok. Dinsiz olmak da başka meseledir. Halbuki bütün dinlerin etbaları ise –hattâ en ziyade dinine taassup gösteren İngilizlerin ve eski Rusların– muhakeme-i akliye ile İslâmiyet’e dâhil olduklarını ve günden güne, bazı zaman takım takım kat’î bürhan ile İslâmiyet’e girdiklerini tarihler bize bildiriyorlar (Hâşiye[2]).",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer biz ahlâk-ı İslâmiyenin ve hakaik-i imaniyenin kemalâtını ef’alimizle izhar etsek, sair dinlerin tabileri elbette cemaatlerle İslâmiyet’e girecekler belki küre-i arzın bazı kıtaları ve devletleri de İslâmiyet’e dehalet edecekler.",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem nev-i beşer, hususan medeniyet fenlerinin ikazatıyla uyanmış, intibaha gelmiş, insaniyetin mahiyetini anlamış elbette ve elbette dinsiz, başıboş yaşamazlar ve olamazlar. Ve en dinsizi de dine iltica etmeye mecburdur. Çünkü acz-i beşerî ile beraber hadsiz musibetler ve onu inciten haricî ve dâhilî düşmanlara karşı istinad noktası ve fakrıyla beraber, hadsiz ihtiyacata müptela ve ebede kadar uzanmış arzularına meded ve yardım edecek istimdad noktası, yalnız ve yalnız Sâni’-i âlem’i tanımak ve iman etmek ve âhirete inanmak ve tasdik etmekten başka, uyanmış beşerin çaresi yok!..",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "Kalbin sadefinde din-i hakkın cevheri bulunmazsa beşerin başında maddî manevî kıyametler kopacak ve hayvanatın en bedbahtı, en perişanı olacak.",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Hasıl-ı kelâm: Beşer bu asırda harplerin ve fenlerin ve dehşetli hâdiselerin ikazatıyla uyanmış ve insaniyetin cevherini ve câmi’ istidadını hissetmiş. Ve insan, acib cem’iyetli istidadıyla yalnız bu kısacık, dağdağalı dünya hayatı için yaratılmamış belki ebede mebustur ki ebede uzanan arzular, mahiyetinde var. Ve bu dar, fâni dünya; insanın nihayetsiz emel ve arzularına kâfi gelmediğini herkes bir derece hissetmeye başlamış.",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Hattâ insaniyetin bir kuvası ve hâdimi olan kuvve-i hayaliyeye denilse: “Sana dünya saltanatı ile beraber bir milyon sene ömür olacak fakat sonunda hiç dirilmeyecek bir surette bir idam senin başına gelecek.” Elbette hakiki insaniyetini kaybetmeyen ve intibaha gelmiş o insanın hayali; sevinç ve beşarete bedel, derinden derine teessüf ve eyvahlarla saadet-i ebediyenin bulunmamasına ağlayacak.",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu nükte içindir ki herkesin kalbinde derinden derine bir din-i hakkı aramak meyli çıkmış. Her şeyden evvel, ölüm idamına karşı din-i haktaki bir hakikati arıyor ki kendini kurtarsın. Şimdiki hal-i âlem bu hakikate şehadet eder.",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "Kırk beş sene sonra, tamamıyla beşerin bu ihtiyac-ı şedidini dinsizliğin zuhuruyla küre-i arzın kıtaları ve devletleri birer insan gibi hissetmeye başlamışlar. Hem âyât-ı Kur’aniye, başlarında ve âhirlerinde beşeri aklına havale eder “Aklına bak.” der “Fikrine, kalbine müracaat et, meşveret et, onunla görüş ki bu hakikati bilesin.” diyor.",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela bakınız, o âyetlerin başında ve âhirlerinde diyor ki: “Neden bakmıyorsunuz? İbret almıyorsunuz? Bakınız ki hakikati bilesiniz.” “Biliniz!” ve “Bil!” hakikatine dikkat et. “Acaba neden beşer bilemiyorlar, cehl-i mürekkebe düşüyorlar? Neden taakkul etmiyorlar, divaneliğe düşerler? Neden bakmıyorlar, hakkı görmeye kör olmuşlar? Neden insan sergüzeşt-i hayatında, hâdisat-ı âlemden tahattur ve tefekkür etmiyor ki istikamet yolunu bulsun. Neden tefekkür ve tedebbür ve aklen muhakeme etmiyorlar, dalalete düşüyorlar. Ey insanlar ibret alınız! Geçmiş kurûnlardan ibret alıp gelecek manevî belalardan kurtulmaya çalışınız!” manasında gelen âyetlerin bu cümlelerine kıyasen çok âyetlerde beşeri aklına, fikriyle meşverete havale ediyor.",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey bu Cami-i Emevî’deki kardeşlerim gibi âlem-i İslâm’ın cami-i kebirinde olan kardeşlerim! Siz de ibret alınız. Bu kırk beş senedeki bu dehşetli hâdisattan ibret alınız. Tam aklınızı başınıza alınız, ey mütefekkir ve akıl sahibi ve kendini münevver telakki edenler!",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Hasıl-ı kelâm: Biz Kur’an şakirdleri olan Müslümanlar, bürhana tabi oluyoruz. Akıl ve fikir ve kalbimizle hakaik-i imaniyeye giriyoruz. Başka dinlerin bazı efradları gibi ruhbanları taklit için bürhanı bırakmıyoruz. Onun için akıl ve ilim ve fen hükmettiği istikbalde, elbette bürhan-ı aklîye istinad eden ve bütün hükümlerini akla tesbit ettiren Kur’an hükmedecek.",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem de İslâmiyet güneşinin tutulmasına, inkisafına ve beşeri tenvir etmesine mümanaat eden perdeler açılmaya başlamışlar. O mümanaat edenler çekilmeye başlıyorlar. Kırk beş sene evvel o fecrin emareleri göründü. 71’de fecr-i sadıkı başladı veya başlayacak. Eğer bu fecr-i kâzib de olsa otuz kırk sene sonra fecr-i sadık çıkacak.",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, hakaik-i İslâmiyet’in mazi kıtasını tamamen istilasına sekiz dehşetli manialar mümanaat ettiler:",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci, İkinci, Üçüncü Maniler: Ecnebilerin cehli ve o zamanda vahşetleri ve dinlerine taassuplarıdır. Bu üç mani, marifet ve medeniyetin mehasini ile kırıldı, dağılmaya başlıyor.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncü ve Beşinci Maniler: Papazların ve ruhanî reislerin riyasetleri ve tahakkümleri ve ecnebilerin körü körüne onları taklit etmeleridir. Bu iki mani dahi fikr-i hürriyet ve meyl-i taharri-i hakikat, nev-i beşerde başlamasıyla zeval bulmaya başlıyor.",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Altıncı, Yedinci Maniler: Bizdeki istibdat ve şeriatın muhalefetinden gelen sû-i ahlâkımız mümanaat ediyordular. Bir şahıstaki münferid istibdat kuvveti şimdi zeval bulması, cemaat ve komitenin dehşetli istibdatlarının otuz kırk sene sonra zeval bulmasına işaret etmekle ve hamiyet-i İslâmiyenin şiddetli feveranı ile ve sû-i ahlâkın çirkin neticeleri görülmesiyle bu iki mani de zeval buluyor ve bulmaya başlamış. İnşâallah tam zeval bulacak.",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Sekizinci Mani: Fünun-u cedidenin bazı müsbet mesaili, hakaik-i İslâmiyenin zahirî manalarına muhalif ve muarız tevehhüm edilmesiyle, zaman-ı mazideki istilasına bir derece set çekmiş. Mesela, küre-i arza emr-i İlahî ile nezarete memur Sevr ve Hut namlarında iki ruhanî melaikeyi dehşetli cismanî bir öküz, bir balık tevehhüm edip ehl-i fen ve felsefe hakikati bilmediklerinden İslâmiyet’e muarız çıkmışlar.",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu misal gibi yüz misal var ki hakikati bilindikten sonra en muannid feylesof da teslim olmaya mecbur oluyor. Hattâ Risale-i Nur, Mu’cizat-ı Kur’aniye Risalesi’nde fennin iliştiği bütün âyetlerin her birisinin altında Kur’an’ın bir lem’a-i i’cazını gösterip ehl-i fennin medar-ı tenkit zannettikleri Kur’an-ı Kerîm’in cümle ve kelimelerinde fennin eli yetişmediği yüksek hakikatleri izhar edip en muannid feylesofu da teslime mecbur ediyor. Meydandadır, isteyen bakabilir ve baksın. Bu mani, kırk beş sene evvel söylenen o sözden sonra nasıl kırıldığını görsün.",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, bazı muhakkikîn-i İslâmiyenin bu yolda telifatları var. Bu sekizinci dehşetli manianın zîr ü zeber olacağına emareler görünüyor.",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, şimdi olmasa da otuz kırk sene sonra fen ve hakiki marifet ve medeniyetin mehasini, bu üç kuvveti tam teçhiz edip cihazatını verip o sekiz manileri mağlup edip dağıtmak için taharri-i hakikat meyelanını ve insafı ve muhabbet-i insaniyeti, o sekiz düşman taifesinin sekiz cephesine göndermiş. Şimdi onları kaçırmaya başlamış. İnşâallah yarım asır sonra onları darmadağın edecek.",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, meşhurdur ki: “En kat’î fazilet odur ki düşmanları dahi o faziletin tasdikine şehadet etsin.”",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte yüzer misallerinden iki misal:",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: On dokuzuncu asrın ve Amerika Kıtası’nın en meşhur feylesofu Mister Karlayl, en yüksek sadâsıyla çekinmeyerek feylesoflara ve Hristiyan âlimlerine neşriyatıyla bağırarak böyle diyor, eserlerinde şöyle yazmış:",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "“İslâmiyet gayet parlak bir ateş gibi doğdu. Sair dinleri kuru ağacın dalları gibi yuttu. Hem bu yutmak, İslâmiyet’in hakkı imiş. Çünkü sair dinler –fakat Kur’an’ın tasdikine mazhar olmayan kısmı– hiç hükmündedir.”",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Mister Karlayl yine diyor: “En evvel kulak verilecek sözlerin en lâyıkı, Muhammed’in (asm) sözüdür. Çünkü hakiki söz onun sözleridir.”",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem yine diyor ki: “Eğer hakikat-i İslâmiyet’te şüphe etsen bedihiyat ve zaruriyat-ı kat’iyede iştibah edersin. Çünkü en bedihî ve zarurî bir hakikat ise İslâmiyet’tir.”",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu meşhur feylesof, İslâmiyet hakkında bu şehadetini eserinde müteferrik yerde yazmış.",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Misal: Avrupa’nın asr-ı âhirde en meşhur bir feylesofu Prens Bismark diyor ki:",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "“Ben bütün kütüb-ü semaviyeyi tetkik ettim. Tahrif olmalarına binaen beşerin saadeti için aradığım hakiki hikmeti bulamadım. Fakat Muhammed’in aleyhissalâtü vesselâm Kur’an’ını umum kütüblerin fevkinde gördüm. Her kelimesinde bir hikmet buldum. Bunun gibi beşerin saadetine hizmet edecek bir eser yoktur. Böyle bir eser beşerin sözü olamaz. Bunu Muhammed’in aleyhissalâtü vesselâm sözüdür diyenler, ilmin zaruriyatını inkâr etmiş olurlar. Yani Kur’an Allah kelâmı olduğu bedihîdir.”",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Amerika ve Avrupa’nın zekâ tarlaları Mister Karlayl ve Bismark gibi böyle dâhî muhakkikleri mahsulat vermesine istinaden ben de bütün kanaatimle derim ki:",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "Avrupa ve Amerika, İslâmiyet’le hamiledir. Günün birinde bir İslâmî devlet doğuracak. Nasıl ki Osmanlılar Avrupa ile hamile olup bir Avrupa devleti doğurdu.",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey Cami-i Emevî’deki kardeşlerim ve yarım asır sonraki âlem-i İslâm camiindeki ihvanlarım! Acaba baştan buraya kadar olan mukaddimeler netice vermiyor mu ki istikbalin kıtalarında hakiki ve manevî hâkim olacak ve beşeri, dünyevî ve uhrevî saadete sevk edecek yalnız İslâmiyet’tir ve İslâmiyet’e inkılab etmiş ve hurafattan ve tahrifattan sıyrılacak İsevîlerin hakiki dinidir ki Kur’an’a tabi olur, ittifak eder.",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Cihet: Yani maddeten İslâmiyet’in terakkisinin kuvvetli sebepleri gösteriyor ki maddeten dahi İslâmiyet istikbale hükmedecek. Birinci Cihet, maneviyat cihetinde terakkiyatı ispat ettiği gibi; bu İkinci Cihet dahi maddî terakkiyatını ve istikbaldeki hâkimiyetini kuvvetli gösteriyor. Çünkü âlem-i İslâm’ın şahs-ı manevîsinin kalbinde, gayet kuvvetli ve kırılmaz beş kuvvet içtima ve imtizaç edip yerleşmiş (Hâşiye[3]).",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Bütün kemalâtın üstadı ve üç yüz yetmiş milyon nefisleri bir tek nefis hükmüne getirebilen ve hakiki bir medeniyetle ve müsbet ve doğru fenlerle teçhiz edilmiş olan ve hiçbir kuvvet onu kıramayacak bir mahiyette bulunan hakikat-i İslâmiyet’tir.",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Kuvvet: Medeniyet ve sanatın hakiki üstadı ve vesilelerin ve mebâdilerin tekemmülüyle cihazlanmış olan şedit bir ihtiyaç ve belimizi kıran tam bir fakr, öyle bir kuvvettir ki susmaz ve kırılmaz.",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncü Kuvvet: Yüksek şeylere müsabaka suretinde beşere yüksek maksatları ders veren ve o yolda çalıştıran ve istibdadatı parça parça eden ve ulvi hisleri heyecana getiren ve gıpta ve hased ve kıskançlık ve rekabetle ve tam uyanmakla ve müsabaka şevkiyle ve teceddüd meyliyle ve temeddün meyelanıyla teçhiz edilen üçüncü kuvvet, yalnız hürriyet-i şer’iyedir. Yani insaniyete lâyık en yüksek kemalâta olan meyil ve arzu ile cihazlanmış olmak.",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncü Kuvvet: Şefkatle cihazlanmış şehamet-i imaniyedir. Yani tezellül etmemek; haksızlara, zalimlere zillet göstermemek, mazlumları da zelil etmemek. Yani hürriyet-i şer’iyenin esasları olan, müstebitlere dalkavukluk etmemek ve bîçarelere tahakküm ve tekebbür etmemektir.",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşinci Kuvvet: İzzet-i İslâmiyedir ki i’lâ-yı kelimetullahı ilan ediyor. Ve bu zamanda i’lâ-yı kelimetullah, maddeten terakkiye mütevakkıf ve medeniyet-i hakikiyeye girmekle i’lâ-yı kelimetullah edilebilir. İzzet-i İslâmiye’nin iman ile kat’î verdiği emri, elbette âlem-i İslâm’ın şahs-ı manevîsi o kat’î emri, istikbalde tam yerine getireceğine şüphe edilmez.",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, nasıl ki eski zamanda İslâmiyet’in terakkisi, düşmanın taassubunu parçalamak ve inadını kırmak ve tecavüzatını def’etmek, silah ile kılınç ile olmuş. İstikbalde silah, kılınç yerine hakiki medeniyet ve maddî terakki ve hak ve hakkaniyetin manevî kılınçları düşmanları mağlup edip dağıtacak.",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "Biliniz ki:",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizim muradımız medeniyetin mehasini ve beşere menfaati bulunan iyilikleridir. Yoksa medeniyetin günahları, seyyiatları değil ki ahmaklar o seyyiatları, o sefahetleri mehasin zannedip taklit edip malımızı harap ettiler. Ve dini rüşvet verip dünyayı da kazanamadılar. Medeniyetin günahları iyiliklerine galebe edip seyyiatı hasenatına racih gelmekle, beşer iki harb-i umumî ile iki dehşetli tokat yiyip o günahkâr medeniyeti zîr ü zeber edip öyle bir kustu ki yeryüzünü kanla bulaştırdı. İnşâallah istikbaldeki İslâmiyet’in kuvveti ile medeniyetin mehasini galebe edecek, zemin yüzünü pisliklerden temizleyecek, sulh-u umumîyi de temin edecek.",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Avrupa’nın medeniyeti fazilet ve hüda üstüne tesis edilmediğinden belki heves ve heva, rekabet ve tahakküm üzerine bina edildiğinden, şimdiye kadar medeniyetin seyyiatı hasenatına galebe edip ihtilalci komitelerle kurtlaşmış bir ağaç hükmüne girdiği cihetle; Asya medeniyetinin galebesine kuvvetli bir medar, bir delil hükmündedir. Ve az vakitte galebe edecektir.",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "Acaba istikbale karşı ehl-i iman ve İslâm için böyle maddî ve manevî terakkiyata vesile ve kuvvetli, sarsılmaz esbab varken ve demir yolu gibi istikbal saadetine yol açıldığı halde, nasıl meyus olup yeise düşüyorsunuz ve âlem-i İslâm’ın kuvve-i maneviyesini kırıyorsunuz? Ve yeis ve ümitsizlikle zannediyorsunuz ki dünya herkese ve ecnebilere terakki dünyasıdır fakat yalnız bîçare ehl-i İslâm için tedenni dünyası oldu diye pek yanlış bir hataya düşüyorsunuz.",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem meylü’l-istikmal (tekâmül meyli) kâinatta fıtrat-ı beşeriyede fıtraten dercedilmiş. Elbette beşerin zulüm ve hatasıyla başına çabuk bir kıyamet kopmazsa istikbalde hak ve hakikat, âlem-i İslâm’da nev-i beşerin eski hatîatına keffaret olacak bir saadet-i dünyeviyeyi de gösterecek inşâallah…",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet bakınız, zaman hatt-ı müstakim üzerine hareket etmiyor ki mebde ve müntehası birbirinden uzaklaşsın. Belki küre-i arzın hareketi gibi bir daire içinde dönüyor. Bazen terakki içinde yaz ve bahar mevsimi gösterir. Bazen tedenni içinde kış ve fırtına mevsimini gösterir.",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "Her kıştan sonra bir bahar, her geceden sonra bir sabah olduğu gibi nev-i beşerin dahi bir sabahı, bir baharı olacak inşâallah. Hakikat-i İslâmiyenin güneşi ile sulh-u umumî dairesinde hakiki medeniyeti görmeyi, rahmet-i İlahiyeden bekliyebilirsiniz.",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Dersin başında, bir buçuk bürhanı davamıza şahit göstereceğiz demiştik. Şimdi bir bürhan mücmelen bitti. O davanın yarı bürhanı da şudur ki:",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "Fenlerin casus gibi tetkikatıyla ve hadsiz tecrübelerle sabit olmuş ki: Kâinatın nizamında galib-i mutlak ve maksud-u bizzat ve Sâni’-i Zülcelal’in hakiki maksatları, hayır ve hüsün ve güzellik ve mükemmeliyettir. Çünkü kâinata ait fenlerden her bir fen, küllî kaideleriyle bahsettiği nevi ve taifede öyle bir intizam ve mükemmeliyet gösteriyor ki ondan daha mükemmel akıl bulamıyor. Mesela, tıbba ait teşrih-i beden-i insanî fenni ve kozmoğrafyaya tabi Manzume-i Şemsiye fenni; nebatat ve hayvanata ait fenler gibi bütün fenlerin her birisi, küllî kaideleriyle o bahsettiği kısımda Sâni’-i Zülcelal’in o nevideki nizamında mu’cizat-ı kudretini ve hikmetini ve اَحْسَنَ كُلَّ شَىْءٍ خَلَقَهُ hakikatini gösteriyor.",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem istikra-i tamme ve tecrübe-i umumî gösteriyor, netice veriyor ki:",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "Şer, kubuh, çirkinlik, bâtıl, fenalık hilkat-i kâinatta cüz’îdir. Maksud değil, tebeîdir ve dolayısıyladır. Yani mesela, çirkinlik, çirkinlik için kâinata girmemiş; belki güzelliğin bir hakikati çok hakikatlere inkılab etmek için çirkinlik bir vâhid-i kıyasî olarak hilkate girmiş. Şer hattâ şeytan dahi beşerin hadsiz terakkiyatına müsabaka ile vesile olmak için beşere musallat edilmiş. Bunlar gibi cüz’î şerler, çirkinlikler; küllî güzelliklere, hayırlara vesile olmak için kâinatta halk edilmiş.",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte kâinatta hakiki maksat ve netice-i hilkat, istikra-i tamme ile ispat ediyor ki hayır ve hüsün ve tekemmül esastır ve hakiki maksud onlardır. Elbette beşer bu kadar zulmî küfriyatlarıyla zemin yüzünü mülevves ve perişan ettikleri halde, cezasını görmeden ve kâinattaki maksud-u hakikiye mazhar olmadan, dünyayı bırakıp ademe kaçamayacak. Belki cehennem hapsine girecek.",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem istikra-i tamme ile ve fenlerin tahkikatıyla sabit olmuş ki mahlukat içinde en mükerrem, en ehemmiyetli beşerdir. Çünkü beşer, hilkat-i kâinattaki zahirî esbab ve neticelerinin mabeynindeki basamakları ve teselsül eden illetlerin ve sebeplerin münasebetlerini aklıyla keşfedip sanat-ı İlahiyeyi ve muntazam hikmetli icadat-ı Rabbaniyenin taklidini sanatçığıyla yapmak ve ef’al-i İlahiyeyi anlamak için ve sanat-ı İlahiyeyi bilmek ve cüz’î ilmiyle ve sanatlarıyla anlamak için bir mizan, bir mikyas, kendi cüz’î ihtiyarıyla işlediği maddelerle, Hâlık-ı Zülcelal’in küllî, muhit ef’al ve sıfatlarını bilerek kâinatın en eşref, en ekrem mahluku beşer olduğunu ispat ediyor.",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem İslâmiyet’in kâinata ve beşere ait hakikatlerinin şehadetiyle mükerrem beşer içinde en eşref ve en a’lâsı ehl-i hak ve hakikat olan ehl-i İslâmiyet hem istikra-i tamme ile tarihlerin şehadetiyle, en mükerrem beşer içindeki en müşerref olan ehl-i hakkın içinde dahi bin mu’cizatı ve çok yüksek ahlâkının ve İslâmiyet ve Kur’an hakikatlerinin şehadetiyle en efdal, en yüksek olan Muhammed aleyhissalâtü vesselâmdır.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem bu yarı bürhanın üç hakikati böyle haber veriyor. Acaba hiç mümkün müdür ki nev-i beşer şakavetiyle bu kadar fenlerin şehadetini cerh edip bu istikra-i tammeyi kırıp meşiet-i İlahiyeye ve kâinatı içine alan hikmet-i ezeliyeye karşı temerrüd edip şimdiye kadar ekseriyetle yaptığı gibi o zalimane vahşetinde ve mütemerridane küfründe ve dehşetli tahribatında devam edebilsin? Ve İslâmiyet aleyhinde bu halin devam etmesi hiç mümkün müdür?",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben bütün kuvvetimle, hadsiz lisanım olsa o hadsiz lisanlarla kasem ederim ki âlemi bu nizam-ı ekmel ile bu kâinatı zerreden seyyarata kadar, sinek kanadından semavat kandillerine kadar nihayet bir hikmet-i intizam ile halk eden Hakîm-i Zülcelal’e ve Sâni’-i Zülcemal’e o hadsiz lisanlarla kasem ediyoruz ki beşer; hiçbir cihetle bütün enva-ı kâinata muhalif olarak ve küçük kardeşleri olan sair taifelere zıt olarak kâinattaki nizama, küllî şerleriyle muhalefet edip nev-i beşerde şerrin hayra galebesine binler senede sebep olan o zakkumları yiyip hazmetmesi mümkün değil.",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun imkânı ancak ve ancak bu farz-ı muhal ile olabilir ki beşer bu âleme emanet-i kübra mertebesinde ve halife-i rûy-i zemin makamında sair enva-ı kâinata büyük ve mükerrem bir kardeş olduğu halde en edna, en berbat, en perişan, en muzır ve ehemmiyetsiz, hırsızcasına ve dolayısıyla bu kâinat içine girmiş, karıştırmış. Bu farz-ı muhal, hiçbir cihetle kabul olunamaz.",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hakikat için elbette bu yarım bürhanımız netice veriyor ki âhirette cennet ve cehennemin zarurî vücudları gibi hayır ve hak din istikbalde mutlak galebe edecektir. Tâ ki nev-i beşerde dahi sair neviler gibi hayır ve fazilet galib-i mutlak olacak. Tâ beşer de sair kâinattaki kardeşlerine müsavi olabilsin ve sırr-ı hikmet-i ezeliye nev-i beşerde dahi takarrur etti, denilebilsin.",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Madem mezkûr kat’î hakikatlerle bu kâinatta en müntehab netice ve Hâlık’ın nazarında en ehemmiyetli mahluk beşerdir. Elbette ve elbette ve hayat-ı bâkiyede cennet ve cehennemi, bilbedahe beşerdeki şimdiye kadar zalimane vaziyetler cehennemin vücudunu ve fıtratındaki küllî istidadat-ı kemaliyesi ve kâinatı alâkadar eden hakaik-i imaniyesi, cenneti bedahetle istilzam ettiği gibi; her halde iki harb-i umumî ile ve kâinatı ağlattıran cinayetleri ve yuttuğu zakkum şerlerini hazmetmediği için kustuğu ve zeminin bütün yüzünü pislendirdiği vaziyetiyle, beşeriyeti en berbat bir dereceye düşürüp bin senelik terakkiyatını zîr ü zeber etmek cinayetini beşer hazmetmeyecek.",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "Her halde çabuk başında bir kıyamet kopmazsa hakaik-i İslâmiye, beşeri esfel-i safilîn derece-i sukutundan kurtarmaya ve rûy-i zemini temizlemeye ve sulh-u umumîyi temin etmeye vesile olmasını Rahman-ı Rahîm’in rahmetinden niyaz ediyoruz ve ümit ediyoruz ve bekliyoruz.",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "İKİNCİ KELİME ki müddet-i hayatımda tecrübelerimle fikrimde tevellüd eden şudur:",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "Yeis en dehşetli bir hastalıktır ki âlem-i İslâm’ın kalbine girmiş.",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte o yeistir ki bizi öldürmüş gibi Garpta bir iki milyonluk küçük bir devlet, Şarkta yirmi milyon Müslümanları kendine hizmetkâr ve vatanlarını müstemleke hükmüne getirmiş.",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem o yeistir ki yüksek ahlâkımızı öldürmüş, menfaat-i umumiyeyi bırakıp menfaat-i şahsiyeye nazarımızı hasrettirmiş.",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem o yeistir ki kuvve-i maneviyemizi kırmış. Az bir kuvvetle, imandan gelen kuvve-i maneviye ile şarktan garba kadar istila ettiği halde; o kuvve-i maneviye-i hârika, meyusiyetle kırıldığı için zalim ecnebiler dört yüz seneden beri üç yüz milyon Müslüman’ı kendilerine esir etmiş. Hattâ bu yeis ile başkasının lâkaytlığını ve füturunu kendi tembelliğine özür zannedip “Neme lâzım!” der “Herkes benim gibi berbattır.” diye şehamet-i imaniyeyi terk edip hizmet-i İslâmiyeyi yapmıyor.",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem bu derece bu hastalık bize bu zulmü etmiş, bizi öldürüyor; biz de o kātilimizden kısasımızı alıp öldüreceğiz.",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "لَا تَقْنَطُوا مِنْ رَحْمَةِ اللّٰهِ kılıncı ile o yeisin başını parçalayacağız. مَا لَا يُدْرَكُ كُلُّهُ لَا يُتْرَكُ كُلُّهُ hadîsinin hakikatiyle belini kıracağız inşâallah.",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "Yeis; ümmetlerin, milletlerin “seretan” denilen en dehşetli bir hastalığıdır. Ve kemalâta mani ve اَنَا عِنْدَ حُسْنِ ظَنِّ عَبْدٖى بٖى hakikatine muhaliftir. Korkak, aşağı ve âcizlerin şe’nidir, bahaneleridir. Şehamet-i İslâmiyenin şe’ni değildir. Hususan Arap gibi nev-i beşerde medar-ı iftihar yüksek seciyelerle mümtaz bir kavmin şe’ni olamaz. Âlem-i İslâm milletleri Arab’ın metanetinden ders almışlar. İnşâallah yine Araplar yeisi bırakıp İslâmiyet’in kahraman ordusu olan Türklerle hakiki bir tesanüd ve ittifak ile el ele verip Kur’an’ın bayrağını dünyanın her tarafında ilan edeceklerdir.",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "ÜÇÜNCÜ KELİME ki bütün hayatımdaki tahkikatımla ve hayat-ı içtimaiyenin çalkamasıyla hülâsa ve zübdesi bana kat’î bildirmiş ki:",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "Sıdk, İslâmiyet’in üssü’l-esasıdır ve ulvi seciyelerinin rabıtasıdır ve hissiyat-ı ulviyesinin mizacıdır. Öyle ise hayat-ı içtimaiyemizin esası olan sıdkı, doğruluğu içimizde ihya edip onunla manevî hastalıklarımızı tedavi etmeliyiz.",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet sıdk ve doğruluk, İslâmiyet’in hayat-ı içtimaiyesinde ukde-i hayatiyesidir. Riyakârlık, fiilî bir nevi yalancılıktır. Dalkavukluk ve tasannu, alçakça bir yalancılıktır. Nifak ve münafıklık, muzır bir yalancılıktır. Yalancılık ise Sâni’-i Zülcelal’in kudretine iftira etmektir.",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "Küfür, bütün envaıyla kizbdir, yalancılıktır. İman sıdktır, doğruluktur. Bu sırra binaen kizb ve sıdkın ortasında hadsiz bir mesafe var, şark ve garp kadar birbirinden uzak olmak lâzım geliyor. Nâr ve nur gibi birbirine girmemek lâzım. Halbuki gaddar siyaset ve zalim propaganda birbirini karıştırmış, beşerin kemalâtını da karıştırmış. (Hâşiye[4])",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu sıdk ve kizb, küfür ve iman kadar birbirinden uzak. Asr-ı saadette sıdk vasıtasıyla Muhammed aleyhissalâtü vesselâmın a’lâ-yı illiyyîne çıkması ve o sıdk anahtarıyla hakaik-i imaniye ve hakaik-i kâinat hazinesi açılması sırrıyla, içtimaiyat-ı beşeriye çarşısında sıdk, en revaçlı bir mal ve satın alınacak en kıymetli bir meta hükmüne geçmiş.",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve kizb vasıtasıyla Müseylime-i Kezzab’ın emsali, esfel-i safilîne sukut etmiş. Ve kizb o zamanda küfriyat ve hurafatın anahtarı olduğunu o inkılab-ı azîm gösterdiğinden, kâinat çarşısında en fena en pis bir mal olup o malı satın almak değil; herkes nefret etmesi hükmüne geçen kizb ve yalana, elbette o inkılab-ı azîmin saff-ı evveli olan ve fıtratlarında en revaçlı ve medar-ı iftihar şeyleri almak ve en kıymetli ve revaçlı mallara müşteri olmak fıtratında bulunan sahabeler; elbette şüphesiz bilerek ellerini yalana uzatmazlar. Kizb ile kendilerini mülevves etmezler. Müseylime-i Kezzab’a kendilerini benzetemezler. Belki bütün kuvvetleriyle ve meyl-i fıtrîleriyle en revaçlı mal ve en kıymettar meta ve hakikatlerin anahtarı Muhammed aleyhissalâtü vesselâmın a’lâ-yı illiyyîne çıkmasının basamağı olan sıdk ve doğruluğa müşteri olup mümkün olduğu kadar sıdktan ayrılmamaya çalıştıklarından, ilm-i hadîsçe ve ulema-i şeriat içinde bir kaide-i mukarrere olan “Sahabeler, daima doğru söylerler. Onlardaki rivayet tezkiyeye muhtaç değil. Peygamber’den aleyhissalâtü vesselâm rivayet ettikleri hadîsler, bütün sahihtir.” diye ehl-i şeriat ve ehl-i hadîsin ittifakına kat’î hüccet, bu mezkûr hakikattir.",
+      "order_index": 126
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte asr-ı saadetteki inkılab-ı azîm, sıdk ile kizb, iman ile küfür kadar birbirinden uzak iken zaman geçtikçe gele gele birbirine yakınlaştı. Ve siyaset propagandası bazen yalana ziyade revaç verdi. Fenalık ve yalancılık bir derece meydan aldı. İşte bu hakikat içindir ki sahabelere kimse yetişemez. Yirmi Yedinci Söz’ün zeyli olan sahabeler hakkındaki risaleye havale edip kısa kesiyoruz.",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey bu Cami-i Emevî’deki kardeşlerim! Ve kırk elli sene sonra âlem-i İslâm mescid-i kebirindeki dört yüz milyon ehl-i iman olan ihvanımız! Necat yalnız sıdkla, doğrulukla olur. “Urvetü’l-vüska” sıdktır. Yani en muhkem ve onunla bağlanacak zincir doğruluktur.",
+      "order_index": 128
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma maslahat için kizb ise zaman onu neshetmiş. Maslahat ve zaruret için bazı âlim “muvakkat” fetvası vermişler. Bu zamanda o fetva verilmez. Çünkü o kadar sû-i istimal edilmiş ki yüz zararı içinde bir menfaati olabilir. Onun için hüküm maslahata bina edilmez.",
+      "order_index": 129
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, seferde namazı kasretmenin sebebi, meşakkattir. Fakat illet olamaz. Çünkü muayyen bir haddi yok. Sû-i istimale düşebilir. Belki illet, yalnız sefer olabilir.",
+      "order_index": 130
+    },
+    {
+      "type": "paragraph",
+      "text": "Aynen öyle de maslahat dahi yalan söylemeye illet olamaz. Çünkü muayyen bir haddi yok, sû-i istimale müsait bir bataklıktır. Hükm-ü fetva ona bina edilmez. Öyle ise اِمَّا الصِّدْقُ وَاِمَّا السُّكُوتُ Yani yol ikidir, üç değildir. Ya doğru, ya yalan, ya sükût değildir.",
+      "order_index": 131
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte şimdi beşerin ortadaki dehşetli yalancılığıyla ve tezviratlarıyla emniyet-i umumiyenin ve rûy-i zemin asayişlerinin zîr ü zeber olması kizble ve maslahatın sû-i istimali ile olmasından, elbette o üçüncü yolu kapatmaya beşeri mecbur ediyor ve kat’î emir veriyor. Yoksa bu yarım asırda gördükleri umumî harpler ve dehşetli inkılablar ve sukutlar ve tahribatlar, başlarına bir kıyameti koparacak.",
+      "order_index": 132
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, her söylediğin doğru olmalı fakat her doğruyu söylemek doğru değil. Bazen zarar verse sükût etmek… Yoksa yalana hiç fetva yok. Her söylediğin hak olmalı fakat her hakkı söylemeye senin hakkın yok. Çünkü hâlis olmazsa sû-i tesir eder; hak, haksızlıkta sarf olur.",
+      "order_index": 133
+    },
+    {
+      "type": "paragraph",
+      "text": "DÖRDÜNCÜ KELİME: Bütün hayatımda, hayat-ı içtimaiye-i beşeriyeden kat’î bildiğim ve tahkikatların bana verdiği netice şudur ki:",
+      "order_index": 134
+    },
+    {
+      "type": "paragraph",
+      "text": "Muhabbete en lâyık şey muhabbettir ve husumete en lâyık sıfat husumettir. Yani hayat-ı içtimaiye-i beşeriyeyi temin eden ve saadete sevk eden muhabbet ve sevmek sıfatı, en ziyade sevilmeye ve muhabbete lâyıktır. Ve hayat-ı içtimaiye-i beşeriyeyi zîr ü zeber eden düşmanlık ve adâvet, her şeyden ziyade nefrete ve adâvete ve ondan çekilmeye müstahak ve çirkin ve muzır bir sıfattır.",
+      "order_index": 135
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hakikat Risale-i Nur’un “Yirmi İkinci Mektup”unda izahıyla beyan edildiğinden burada kısa bir işaret ediyoruz. Şöyle ki:",
+      "order_index": 136
+    },
+    {
+      "type": "paragraph",
+      "text": "Husumet ve adâvetin vakti bitti. İki harb-i umumî adâvetin ne kadar fena ve tahrip edici ve dehşetli zulüm olduğunu gösterdi. İçinde hiçbir fayda olmadığı tezahür etti. Öyle ise düşmanlarımızın seyyiatı –tecavüz olmamak şartıyla– adâvetinizi celbetmesin. Cehennem ve azab-ı İlahî kâfidir onlara.",
+      "order_index": 137
+    },
+    {
+      "type": "paragraph",
+      "text": "Bazen insanın gururu ve nefis-perestliği, şuursuz olarak ehl-i imana karşı haksız olarak adâvet eder; kendini haklı zanneder. Halbuki bu husumet ve adâvetle, ehl-i imana karşı muhabbete vesile olan iman, İslâmiyet ve cinsiyet gibi kuvvetli esbabı istihfaf etmektir, kıymetlerini tenzil etmektir. Adâvetin ehemmiyetsiz esbablarını, muhabbetin dağ gibi sebeplerine tercih etmek gibi bir divaneliktir.",
+      "order_index": 138
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem muhabbet adâvete zıttır. Ziya ve zulmet gibi hakiki içtima edemezler. Hangisinin esbabı galip ise o, hakikatiyle kalpte bulunacak; onun zıddı hakikatiyle olmayacak. Mesela, muhabbet, hakikatiyle bulunsa o vakit adâvet şefkate, acımaya inkılab eder. Ehl-i imana karşı vaziyet budur. Yahut adâvet hakikatiyle kalpte bulunsa o vakit muhabbet; mümaşat ve karışmamak, zahiren dost olmak suretine döner. Bu ise tecavüz etmeyen ehl-i dalalete karşı olabilir.",
+      "order_index": 139
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet muhabbetin sebepleri; iman, İslâmiyet, cinsiyet ve insaniyet gibi nurani, kuvvetli zincirler ve manevî kalelerdir. Adâvetin sebepleri, ehl-i imana karşı küçük taşlar gibi bir kısım hususi sebeplerdir. Öyle ise bir Müslüman’a hakiki adâvet eden, o dağ gibi muhabbet esbablarını istihfaf etmek hükmünde büyük bir hatadır.",
+      "order_index": 140
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Muhabbet, uhuvvet, sevmek; İslâmiyet’in mizacıdır, rabıtasıdır. Ehl-i adâvet, mizacı bozulmuş bir çocuğa benziyor ki ağlamak ister, bir şey arıyor ki onunla ağlasın. Sinek kanadı kadar ehemmiyetsiz bir şey, ağlamasına bahane olur. Hem insafsız, bedbin bir adama benzer ki sû-i zan mümkün oldukça hüsn-ü zan etmez. Bir seyyie ile on haseneyi örter. Bu ise seciye-i İslâmiye olan insaf ve hüsn-ü zan bunu reddeder.",
+      "order_index": 141
+    },
+    {
+      "type": "paragraph",
+      "text": "BEŞİNCİ KELİME: Meşveret-i şer’iyeden aldığım ders budur: Şu zamanda bir adamın bir günahı, bir kalmıyor. Bazen büyür, sirayet eder, yüz olur. Bir tek hasene bazen bir kalmıyor. Belki bazen binler dereceye terakki ediyor. Bunun sırr-ı hikmeti şudur:",
+      "order_index": 142
+    },
+    {
+      "type": "paragraph",
+      "text": "Hürriyet-i şer’iye ile meşveret-i meşrua, hakiki milliyetimizin hâkimiyetini gösterdi. Hakiki milliyetimizin esası, ruhu ise İslâmiyet’tir. Ve Hilafet-i Osmaniye ve Türk Ordusunun o milliyete bayraktarlığı itibarıyla, o İslâmiyet milliyetinin sadefi ve kalesi hükmünde Arap ve Türk hakiki iki kardeş, o kale-i kudsiyenin nöbettarlarıdırlar.",
+      "order_index": 143
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu kudsî milliyetin rabıtasıyla, umum ehl-i İslâm bir tek aşiret hükmüne geçiyor. Aşiretin efradı gibi İslâm taifeleri de birbirine uhuvvet-i İslâmiye ile mürtebit ve alâkadar olur. Birbirine manen, lüzum olsa maddeten yardım eder. Güya bütün İslâm taifeleri bir silsile-i nuraniye ile birbirine bağlıdır.",
+      "order_index": 144
+    },
+    {
+      "type": "paragraph",
+      "text": "Nasıl ki bir aşiretin bir ferdi bir cinayet işlese o aşiretin bütün efradı, o aşiretin düşmanı olan başka aşiretin nazarında müttehem olur. Güya her bir fert o cinayeti işlemiş gibi o düşman aşiret onlara düşman olur. O tek cinayet, binler cinayet hükmüne geçer. Eğer o aşiretin bir ferdi o aşiretin mahiyetine temas eden medar-ı iftihar bir iyilik yapsa o aşiretin bütün efradı onunla iftihar eder. Güya her bir adam, aşirette o iyiliği yapmış gibi iftihar eder.",
+      "order_index": 145
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu mezkûr hakikat içindir ki bu zamanda, hususan kırk elli sene sonra seyyie, fenalık işleyenin üstünde kalmaz. Belki milyonlar nüfus-u İslâmiyenin hukuklarına tecavüz olur. Kırk elli sene sonra çok misalleri görülecek.",
+      "order_index": 146
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey bu sözlerimi dinleyen bu Cami-i Emevî’deki kardeşler ve kırk elli sene sonra âlem-i İslâm camiindeki ihvan-ı Müslimîn! “Biz zarar vermiyoruz fakat menfaat vermeye iktidarımız yok, onun için mazuruz.” diye böyle özür beyan etmeyiniz. Bu özrünüz kabul değil. Tembelliğiniz ve “Neme lâzım!” deyip çalışmamanız ve ittihad-ı İslâm ile milliyet-i hakikiye-i İslâmiye ile gayrete gelmediğiniz, sizler için gayet büyük bir zarar ve bir haksızlıktır.",
+      "order_index": 147
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte seyyie böyle binlere çıktığı gibi bu zamanda hasene –yani İslâmiyet’in kudsiyetine temas eden iyilik– yalnız işleyene münhasır kalmaz. Belki o hasene, milyonlar ehl-i imana manen fayda verebilir. Hayat-ı maneviye ve maddiyesinin rabıtasına kuvvet verebilir. Onun için “Neme lâzım!” deyip kendini tembellik döşeğine atmak zamanı değil!..",
+      "order_index": 148
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey bu camideki kardeşlerim ve kırk elli sene sonraki âlem-i İslâm mescid-i kebirindeki ihvanlarım! Zannetmeyiniz ki ben bu ders makamına size nasihat etmek için çıktım. Belki buraya çıktım, sizde olan hakkımızı dava ediyoruz. Yani Kürt gibi küçük taifelerin menfaati ve saadet-i dünyeviyeleri ve uhreviyeleri, sizin gibi büyük ve muazzam taife olan Arap ve Türk gibi hâkim üstadlarla bağlıdır. Sizin tembelliğiniz ve füturunuz ile biz bîçare küçük kardeşleriniz olan İslâm taifeleri zarar görüyoruz.",
+      "order_index": 149
+    },
+    {
+      "type": "paragraph",
+      "text": "Hususan ey muazzam ve büyük ve tam intibaha gelmiş veya gelecek olan Araplar! En evvel bu sözler ile sizinle konuşuyorum. Çünkü bizim ve bütün İslâm taifelerinin üstadlarımız ve imamlarımız ve İslâmiyet’in mücahidleri sizlerdiniz. Sonra muazzam Türk milleti o kudsî vazifenize tam yardım ettiler. Onun için tembellikle günahınız büyüktür. Ve iyiliğiniz ve haseneniz de gayet büyük ve ulvidir.",
+      "order_index": 150
+    },
+    {
+      "type": "paragraph",
+      "text": "Hususan kırk elli sene sonra Arap taifeleri, Cemahir-i Müttefika-i Amerika gibi en ulvi bir vaziyete girmeye, esarette kalan hâkimiyet-i İslâmiyeyi eski zaman gibi küre-i arzın nısfında, belki ekserisinde tesisine muvaffak olmanızı rahmet-i İlahiyeden kuvvetle bekliyoruz. Bir kıyamet çabuk kopmazsa inşâallah nesl-i âti görecek.",
+      "order_index": 151
+    },
+    {
+      "type": "paragraph",
+      "text": "Sakın kardeşlerim! Tevehhüm, tahayyül etmeyiniz ki ben, bu sözlerimle siyasetle iştigal için himmetinizi tahrik ediyorum. Hâşâ! Hakikat-i İslâmiye bütün siyasatın fevkindedir. Bütün siyasetler ona hizmetkâr olabilir. Hiçbir siyasetin haddi değil ki İslâmiyet’i kendine âlet etsin.",
+      "order_index": 152
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben kusurlu fehmimle şu zamanda, heyet-i içtimaiye-i İslâmiyeyi çok çark ve dolapları bulunan bir fabrika suretinde tasavvur ediyorum. O fabrikanın bir çarkı geri kalsa yahut bir arkadaşı olan başka bir çarka tecavüz etse makinenin mihanikiyeti bozulur. Onun için ittihad-ı İslâm’ın tam zamanı gelmeye başlıyor. Birbirinizin şahsî kusurlarına bakmamak gerektir.",
+      "order_index": 153
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunu da teessüf ve teellüm ile size beyan ediyorum ki: Ecnebilerin bir kısmı, nasıl kıymettar malımızı ve vatanlarımızı bizden aldılar. Onun bedeline çürük bir fiyat verdiler.",
+      "order_index": 154
+    },
+    {
+      "type": "paragraph",
+      "text": "Aynen öyle de yüksek ahlâkımızı ve yüksek ahlâkımızdan çıkan ve hayat-ı içtimaiyeye temas eden seciyelerimizin bir kısmını da bizden aldılar. Terakkilerine medar ettiler. Ve onun fiyatı olarak bize verdikleri sefihane ahlâk-ı seyyieleridir, sefihane seciyeleridir.",
+      "order_index": 155
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, bizden aldıkları seciye-i milliye ile bir adam onlarda der: “Eğer ben ölsem milletim sağ olsun. Çünkü milletimin içinde bir hayat-ı bâkiyem var.”",
+      "order_index": 156
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu kelimeyi bizden almışlar ve terakkiyatlarında en metin esas da budur. Bizden hırsızlamışlar. Bu kelime ise din-i haktan ve iman hakikatlerinden çıkar. O bizim, ehl-i imanın malıdır.",
+      "order_index": 157
+    },
+    {
+      "type": "paragraph",
+      "text": "Halbuki ecnebilerden içimize giren pis ve fena seciye itibarıyla bir hodgâm adam bizde diyor: “Ben susuzluktan ölsem yağmur hiçbir daha dünyaya gelmesin. Eğer ben görmezsem bir saadeti, dünya istediği gibi bozulsun.” İşte bu ahmakane kelime dinsizlikten çıkıyor, âhireti bilmemekten geliyor. Hariçten içimize girmiş, zehirliyor.",
+      "order_index": 158
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem o ecnebilerin bizden aldıkları fikr-i milliyetle bir ferdi, bir millet gibi kıymet alıyor. Çünkü bir adamın kıymeti, himmeti nisbetindedir. Kimin himmeti milleti ise o kimse tek başıyla küçük bir millettir.",
+      "order_index": 159
+    },
+    {
+      "type": "paragraph",
+      "text": "Bazılarımızdaki dikkatsizlikten ve ecnebilerin zararlı seciyelerini almamızdan, kuvvetli ve kudsî İslâmî milliyetimizle beraber herkes “Nefsî! Nefsî!” demekle ve milletin menfaatini düşünmemekle –menfaat-i şahsiyesini düşünmekle– bin adam, bir adam hükmüne sukut eder.",
+      "order_index": 160
+    },
+    {
+      "type": "arabic_block",
+      "text": "مَنْ كَانَ هِمَّتُهُ نَفْسُهُ فَلَيْسَ مِنَ الْاِنْسَانِ لِاَنَّهُ مَدَنِىٌّ بِالطَّبْعِ",
+      "order_index": 161
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani kimin himmeti yalnız nefsi ise o, insan değil. Çünkü insanın fıtratı medenidir. Ebna-yı cinsini mülahazaya mecburdur. Hayat-ı içtimaiye ile hayat-ı şahsiyesi devam edebilir. Mesela, bir ekmeği yese kaç ellere muhtaç ve ona mukabil o elleri manen öptüğünü ve giydiği libasla kaç fabrikayla alâkadar olduğunu kıyas ediniz. Hayvan gibi bir postla yaşayamadığından ebna-yı cinsiyle fıtraten alâkadar olduğundan ve onlara manevî bir fiyat vermeye mecbur bulunduğundan fıtratıyla medeniyet-perverdir. Menfaat-i şahsiyesine hasr-ı nazar eden, insanlıktan çıkar, masum olmayan cani bir hayvan olur. Bir şey elinden gelmese hakiki özrü olsa o müstesna.",
+      "order_index": 162
+    },
+    {
+      "type": "paragraph",
+      "text": "ALTINCI KELİME: Müslümanların hayat-ı içtimaiye-i İslâmiyedeki saadetlerinin anahtarı, meşveret-i şer’iyedir. وَ اَمْرُهُمْ شُورٰى بَيْنَهُمْ âyet-i kerîmesi, şûrayı esas olarak emrediyor. Evet, nasıl ki nev-i beşerdeki “telahuk-u efkâr” unvanı altında asırlar ve zamanların tarih vasıtasıyla birbiriyle meşvereti, bütün beşeriyetin terakkiyatı ve fünununun esası olduğu gibi en büyük kıta olan Asya’nın en geri kalmasının bir sebebi, o şûra-yı hakikiyeyi yapmamasıdır.",
+      "order_index": 163
+    },
+    {
+      "type": "paragraph",
+      "text": "Asya Kıtası’nın ve istikbalinin keşşafı ve miftahı, şûradır. Yani nasıl fertler birbiriyle meşveret eder; taifeler, kıtalar dahi o şûrayı yapmaları lâzımdır ki üç yüz belki dört yüz milyon İslâm’ın ayaklarına konulmuş çeşit çeşit istibdatların kayıtlarını, zincirlerini açacak, dağıtacak, meşveret-i şer’iye ile şehamet ve şefkat-i imaniyeden tevellüd eden hürriyet-i şer’iyedir ki o hürriyet-i şer’iye, âdab-ı şer’iye ile süslenip Garp medeniyet-i sefihanesindeki seyyiatı atmaktır.",
+      "order_index": 164
+    },
+    {
+      "type": "paragraph",
+      "text": "İmandan gelen hürriyet-i şer’iye, iki esası emreder:",
+      "order_index": 165
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَنْ لَا يُذَلِّلَ وَ لَا يَتَذَلَّلَ مَنْ كَانَ عَبْدًا لِلّٰهِ لَا يَكُونُ عَبْدًا لِلْعِبَادِ",
+      "order_index": 166
+    },
+    {
+      "type": "arabic_block",
+      "text": "لَا يَجْعَلْ بَعْضُكُمْ بَعْضًا اَرْبَابًا مِنْ دُونِ اللّٰهِ ۞ نَعَمْ اَلْحُرِّيَّةُ الشَّرْعِيَّةُ عَطِيَّةُ الرَّحْمٰنِ",
+      "order_index": 167
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani iman bunu iktiza ediyor ki tahakküm ve istibdat ile başkasını tezlil etmemek ve zillete düşürmemek ve zalimlere tezellül etmemek. Allah’a hakiki abd olan, başkalara abd olamaz. Birbirinizi –Allah’tan başka– kendinize Rab yapmayınız! Yani Allah’ı tanımayan; her şeye, herkese nisbetine göre bir rububiyet tevehhüm eder, başına musallat eder. Evet hürriyet-i şer’iye; Cenab-ı Hakk’ın Rahman, Rahîm tecellisiyle bir ihsanıdır ve imanın bir hâssasıdır.",
+      "order_index": 168
+    },
+    {
+      "type": "arabic_block",
+      "text": "فَلْيَحْيَا الصِّدْقُ وَلَا عَاشَ الْيَاْسُ فَلْتَدُمِ الْمُحَبَّةُ وَلْتَقْوَى الشُّورٰى",
+      "order_index": 169
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَالْمَلَامُ عَلٰى مَنِ اتَّبَعَ الْهَوٰى وَالسَّلَامُ عَلٰى مَنِ اتَّبَعَ الْهُدٰى",
+      "order_index": 170
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın sıdk! Ölsün yeis! Muhabbet devam etsin! Şûra kuvvet bulsun! Bütün levm ve itab ve nefret, heva ve hevese tabi olanlara olsun. Selâm ve selâmet hüdaya tabi olanlar üstüne olsun, âmin!",
+      "order_index": 171
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer denilse: Neden şûraya bu kadar ehemmiyet veriyorsun? Ve beşerin hususan Asya’nın hususan İslâmiyet’in hayatı ve terakkisi nasıl o şûra ile olabilir?",
+      "order_index": 172
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Nur’un Yirmi Birinci Lem’a-i İhlas’ında izah edildiği gibi haklı şûra; ihlas ve tesanüdü netice verdiğinden üç elif, yüz on bir olduğu gibi ihlas ve tesanüd-ü hakiki ile üç adam yüz adam kadar millete fayda verebilir. Ve on adamın hakiki ihlas ve tesanüd ve meşveretin sırrı ile bin adam kadar iş gördüklerini çok vukuat-ı tarihiye bize haber veriyor.",
+      "order_index": 173
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem beşerin ihtiyacatı hadsiz ve düşmanları nihayetsiz ve kuvveti ve sermayesi pek cüz’î; hususan dinsizlikle canavarlaşmış, tahribatçı, muzır insanların çoğalmasıyla elbette ve elbette o hadsiz düşmanlara ve o nihayetsiz hâcetlere karşı, imandan gelen nokta-i istinad ve o nokta-i istimdad ile beraber hayat-ı şahsiye-i insaniyesi dayandığı gibi hayat-ı içtimaiyesi de yine imanın hakaikinden gelen şûra-yı şer’î ile yaşayabilir. O düşmanları durdurur, o hâcetlerin teminine yol açar.",
+      "order_index": 174
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 175
+    },
+    {
+      "type": "paragraph",
+      "text": "Arabî Hutbe-i Şamiye’nin Zeyli’nin Kısa Bir Tercümesi",
+      "order_index": 176
+    },
+    {
+      "type": "paragraph",
+      "text": "Hutbe-i Şamiye’nin Arabî Zeyli’nde, gayet latîf bir temsil ile imandan gelen manevî ve kırılmaz bir kahramanlık gösteriyor. Bu meselemiz münasebetiyle bir hülâsasını beyan ediyoruz:",
+      "order_index": 177
+    },
+    {
+      "type": "paragraph",
+      "text": "Hürriyet’in başında Sultan Reşad’ın Rumeli’ye seyahati münasebetiyle Vilayat-ı Şarkiye namına ben de refakat ettim. Şimendiferimizde iki mektepli mütefennin arkadaşla bir mübahase oldu.",
+      "order_index": 178
+    },
+    {
+      "type": "paragraph",
+      "text": "Benden sual ettiler ki: “Hamiyet-i diniye mi, yoksa hamiyet-i milliye mi daha kuvvetli, daha lâzım?”",
+      "order_index": 179
+    },
+    {
+      "type": "paragraph",
+      "text": "O zaman dedim: Biz Müslümanlar indimizde ve yanımızda din ve milliyet bizzat müttehiddir. İtibarî, zahirî, ârızî bir ayrılık var. Belki din, milliyetin hayatı ve ruhudur. İkisine birbirinden ayrı ve farklı bakıldığı zaman hamiyet-i diniye, avam ve havassa şâmil oluyor. Hamiyet-i milliye, yüzden birisine yani menafi-i şahsiyesini millete feda edene has kalır. Öyle ise hukuk-u umumiye içinde hamiyet-i diniye esas olmalı. Hamiyet-i milliye ona hâdim ve kuvvet ve kalesi olmalı. Hususan biz Şarklılar, Garplılar gibi değiliz. İçimizde kalplere hâkim, hiss-i dinîdir. Kader-i Ezelî ekser enbiyayı Şarkta göndermesi işaret ediyor ki yalnız hiss-i dinî Şarkı uyandırır, terakkiye sevk eder. Asr-ı saadet ve tabiîn, bunun bir bürhan-ı kat’îsidir.",
+      "order_index": 180
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey bu hamiyet-i diniye ve milliyeden hangisine daha ziyade ehemmiyet vermek lâzım geldiğini soran, bu şimendifer denilen medrese-i seyyarede ders arkadaşlarım! Ve şimdi zamanın şimendiferinde istikbal tarafına bizimle beraber giden bütün mektepliler! Size de derim ki:",
+      "order_index": 181
+    },
+    {
+      "type": "paragraph",
+      "text": "“Hamiyet-i diniye ve İslâmiyet milliyeti, Türk ve Arap içinde tamamıyla mezcolmuş ve kabil-i tefrik olamaz bir hale gelmiş. Hamiyet-i İslâmiye, en kuvvetli ve metin ve arştan gelmiş bir zincir-i nuranidir. Kırılmaz ve kopmaz bir urvetü’l-vüskadır. Tahrip edilmez, mağlup olmaz bir kudsî kaledir.” dediğim vakit o iki münevver mektep muallimleri bana dediler: “Delilin nedir? Bu büyük davaya büyük bir hüccet ve gayet kuvvetli bir delil lâzım. Delil nedir?”",
+      "order_index": 182
+    },
+    {
+      "type": "paragraph",
+      "text": "Birden şimendiferimiz tünelden çıktı. Biz de başımızı çıkardık, pencereden baktık. Altı yaşına girmemiş bir çocuğu şimendiferin tam geçeceği yolun yanında durmuş gördük. O iki muallim arkadaşlarıma dedim:",
+      "order_index": 183
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu çocuk lisan-ı haliyle sualimize tam cevap veriyor. Benim bedelime o masum çocuk, bu seyyar medresemizde üstadımız olsun. İşte lisan-ı hali bu gelecek hakikati der:",
+      "order_index": 184
+    },
+    {
+      "type": "paragraph",
+      "text": "Bakınız bu dabbetü’l-arz, dehşetli hücum ve gürültüsü ve bağırmasıyla ve tünel deliğinden çıkıp hücum ettiği dakikada, geçeceği yolda bir metre yakınlıkta o çocuk duruyor. O dabbetü’l-arz tehdidiyle ve hücumunun tahakkümü ile bağırarak tehdit ediyor. “Bana rast gelenlerin vay haline!” dediği halde o masum, yolunda duruyor. Mükemmel bir hürriyet ve hârika bir cesaret ve kahramanlıkla beş para onun tehdidine ehemmiyet vermiyor. Bu dabbetü’l-arzın hücumunu istihfaf ediyor ve kahramancıklığıyla diyor: “Ey şimendifer! Sen ra’d ve gök gürültüsü gibi bağırmanla beni korkutamazsın.”",
+      "order_index": 185
+    },
+    {
+      "type": "paragraph",
+      "text": "Sebat ve metanetinin lisan-ı haliyle güya der: “Ey şimendifer! Sen bir nizamın esirisin. Senin gem’in, senin dizginin, seni gezdirenin elindedir. Senin bana tecavüz etmen haddin değil. Beni istibdadın altına alamazsın. Haydi yolunda git, kumandanının izniyle yolundan geç.”",
+      "order_index": 186
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ey bu şimendiferdeki arkadaşlarım ve elli sene sonra fenlere çalışan kardeşlerim! Bu masum çocuğun yerinde Rüstem-i İranî ve Herkül-ü Yunanî o acib kahramanlıklarıyla beraber tayy-ı zaman ederek, o çocuk yerinde burada bulunduklarını farz ediniz. Onların zamanında şimendifer olmadığı için elbette şimendiferin bir intizam ile hareket ettiğine bir itikadları olmayacak. Birden bu tünel deliğinden başında ateş, nefesi gök gürültüsü gibi gözlerinde elektrik berkleri olduğu halde birden çıkan şimendiferin dehşetli tehdit hücumuyla Rüstem ve Herkül tarafına koşmasına karşı o iki kahraman ne kadar korkacaklar, ne kadar kaçacaklar? O hârika cesaretleriyle bin metreden fazla kaçacaklar. Bakınız nasıl bu dabbetü’l-arzın tehdidine karşı hürriyetleri, cesaretleri mahvolur. Kaçmaktan başka çare bulamıyorlar. Çünkü onlar, onun kumandanına ve intizamına itikad etmedikleri için mutî bir merkep zannetmiyorlar. Belki gayet müthiş, parçalayıcı, vagon cesametinde yirmi arslanı arkasına takmış bir nevi arslan tevehhüm ederler.",
+      "order_index": 187
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey kardeşlerim ve ey elli sene sonra bu sözleri işiten arkadaşlarım! İşte altı yaşına girmeyen bu çocuğa o iki kahramandan ziyade cesaret ve hürriyet veren ve çok mertebe onların fevkinde bir emniyet ve korkmamak haletini veren, o masumun kalbinde hakikatin bir çekirdeği olan şimendiferin intizamına ve dizgini bir kumandanın elinde bulunduğuna ve cereyanı bir intizam altında ve birisi onu kendi hesabıyla gezdirmesine olan itikadı ve itminanı ve imanıdır. Ve o iki kahramanı gayet korkutan ve vicdanlarını vehme esir eden, onların onun kumandanını bilmemek ve intizamına inanmamak olan cahilane itikadsızlıklarıdır.",
+      "order_index": 188
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu temsilde, o masum çocuğun imanından gelen kahramanlık gibi bin senede İslâm taifelerinin birkaç aşiretinin (Türk ve Türkleşmiş milletin) kalbinde yerleşen iman ve itikad cihetiyle, rûy-i zeminde yüz mislinden ziyade devletlere, milletlere karşı imanından gelen bir kahramanlıkla, İslâmiyet ve kemalât-ı maneviyenin bayrağını Asya ve Afrika’da ve yarı Avrupa’da gezdiren ve “Ölsem şehidim, öldürsem gaziyim!” deyip ölümü gülerek karşılamakla beraber, dünyadaki müteselsil düşman hâdisatlara karşı da hattâ mikroptan kuyruklu yıldızlara kadar beşerin küllî istidadına karşı düşmanlık vaziyetini alan o dehşetli şimendiferlerin tehditlerine karşı, imanın kahramanlığıyla mukabele edip korkmayan; kaza ve kader-i İlahiyeye karşı imanın teslimiyetiyle korkmak, dehşet almak yerinde, hikmet ve ibret ve bir nevi saadet-i dünyeviyeyi kazanan başta Türk ve Arap taifeleri ve bütün Müslüman kabileleri, o masum çocuk gibi fevkalâde bir manevî kahramanlık gösterdikleri gösteriyor ki istikbalin hâkim-i mutlakı, âhirette olduğu gibi dünyada da İslâmiyet milliyetidir.",
+      "order_index": 189
+    },
+    {
+      "type": "paragraph",
+      "text": "O iki temsilde, o iki acib kahramanın pek acib korku ve telaşlarına ve elemlerine sebep, onların adem-i itikadları ve cehaletleri ve dalaletleri olduğu gibi Risale-i Nur’un yüzer hüccetlerle ispat ettiği bir hakikati ki bu risalenin mukaddimesinde bir iki misali söylenmiş. Mesele şudur ki:",
+      "order_index": 190
+    },
+    {
+      "type": "paragraph",
+      "text": "Küfür ve dalalet, bütün kâinatı ehl-i dalalete binler müthiş düşmanlar taifeleri ve silsileleri gösteriyor. Kör kuvvet, serseri tesadüf, sağır tabiat elleriyle, manzume-i şemsiyeden tut tâ kalpteki verem mikroplarına kadar binler taife düşmanlar bîçare beşere hücum ettiklerini ve insanın câmi’ mahiyeti ve küllî istidadatı ve hadsiz ihtiyacatı ve nihayetsiz arzularına karşı mütemadiyen korku, elem, dehşet ve telaş vermesiyle küfür ve dalalet bir cehennem zakkumu olduğunu ve bu dünyada da sahibini bir cehennem içine koyduğunu; din ve imandan hariç binler fen ve terakkiyat-ı beşeriye o Rüstem ve Herkül’ün kahramanlıkları gibi beş para fayda vermediğini; yalnız iptal-i his nevinden muvakkaten o elîm korkuları hissetmemek için sefahet ve sarhoşlukla şırınga ediyor.",
+      "order_index": 191
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte iman ve küfrün muvazenesi âhirette cennet ve cehennem gibi meyveleri ve neticeleri verdiği gibi; dünyada da iman bir manevî cenneti temin ve ölümü bir terhis tezkeresine çevirmesini ve küfür dünyada dahi bir manevî cehennem ve hakiki saadet-i beşeriyeyi mahvetmesi ve ölümü bir idam-ı ebedî mahiyetine getirmesini, kat’î ve his ve şuhuda istinad eden Risale-i Nur’un yüzer hüccetlerine havale edip kısa kesiyoruz.",
+      "order_index": 192
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu temsilin hakikatini görmek isterseniz başınızı kaldırınız, bu kâinata bakınız. Ne kadar şimendifer misillü balon, otomobil, tayyare, berriye ve bahriye gemiler; karada, denizde, havada kudret-i ezeliyenin nizam ve hikmetle halk ettiği yıldızların kürelerine ve kâinat ecramına ve hâdisatın silsilelerine ve müteselsil vakıatlarına bakınız.",
+      "order_index": 193
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem âlem-i şehadette ve cismanî kâinatta bunların vücudu gibi âlem-i ruhanî ve maneviyatta kudret-i ezeliyenin daha acib müteselsil nazireleri var olduğunu aklı bulunan tasdik eder, gözü bulunan çoğunu görebilir.",
+      "order_index": 194
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte kâinat içinde maddî ve manevî bütün bu silsileler; imansız ehl-i dalalete hücum ediyor, tehdit ediyor, korku veriyor, kuvve-i maneviyesini zîr ü zeber ediyor. Ehl-i imana değil tehdit ve korkutmak belki sevinç ve saadet, ünsiyet ve ümit ve kuvvet veriyor. Çünkü ehl-i iman, iman ile görüyor ki o hadsiz silsileleri, maddî ve manevî şimendiferleri, seyyar kâinatları mükemmel intizam ve hikmet dairesinde birer vazifeye sevk eden bir Sâni’-i Hakîm onları çalıştırıyor. Zerre miktar vazifelerinde şaşırmıyorlar, birbirine tecavüz edemiyorlar. Ve kâinattaki kemalât-ı sanata ve tecelliyat-ı cemaliyeye mazhar olduklarını görüp kuvve-i maneviyeyi tamamıyla eline verip saadet-i ebediyenin bir numunesini iman gösteriyor.",
+      "order_index": 195
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ehl-i dalaletin imansızlıktan gelen dehşetli elemlerine ve korkularına karşı hiçbir şey, hiçbir fen, hiçbir terakkiyat-ı beşeriye buna karşı bir teselli veremez, kuvve-i maneviyeyi temin edemez. Cesareti zîr ü zeber olur. Fakat muvakkat gaflet perde çeker, aldatır.",
+      "order_index": 196
+    },
+    {
+      "type": "paragraph",
+      "text": "Ehl-i iman, iman cihetiyle değil korkmak ve kuvve-i maneviyesi kırılmak belki o temsildeki masum çocuk gibi fevkalâde bir kuvvet-i maneviye ve bir metanetle ve imandaki hakikatle onlara bakıyor. Bir Sâni’-i Hakîm’in hikmet dairesinde tedbir ve idaresini müşahede eder, evham ve korkulardan kurtulur. “Sâni’-i Hakîm’in emri ve izni olmadan bu seyyar kâinatlar hareket edemezler, ilişemezler.” deyip anlar. Kemal-i emniyetle hayat-ı dünyeviyesinde de derecesine göre saadete mazhar olur.",
+      "order_index": 197
+    },
+    {
+      "type": "paragraph",
+      "text": "Kimin kalbinde imandan ve din-i haktan gelen bu hakikat çekirdeği –vicdanında– bulunmazsa ve nokta-i istinadı olmazsa bilbedahe temsildeki Rüstem ve Herkül’ün cesaretleri ve kahramanlıkları kırıldığı gibi onun cesareti ve kuvve-i maneviyesi müzmahil olur ve vicdanı tefessüh eder. Ve kâinatın hâdisatına esir olur. Her şeye karşı korkak bir dilenci hükmüne düşer.",
+      "order_index": 198
+    },
+    {
+      "type": "paragraph",
+      "text": "İmanın bu sırr-ı hakikatini ve dalaletin de bu dehşetli şakavet-i dünyeviyesini Risale-i Nur yüzer kat’î hüccetlerle ispat ettiğine binaen, bu pek uzun hakikati kısa kesiyoruz.",
+      "order_index": 199
+    },
+    {
+      "type": "paragraph",
+      "text": "Acaba en ziyade kuvve-i maneviyeye ve teselliye ve metanete ihtiyacını hissetmiş bu asırdaki beşer, bu zamanda o kuvve-i maneviyeyi ve teselliyi ve saadeti temin eden ve İslâmiyet ve imandaki nokta-i istinad olan hakaik-i imaniyeyi bırakıp Garplılaşmak unvanı ile İslâmiyet milliyetinden istifade yerine, bütün bütün kuvve-i maneviyeyi kırıp ve teselliyi mahveden ve metanetini kıran dalalet ve sefahete ve yalancı politika ve siyasete dayanmak ne kadar maslahat-ı beşeriyeden ve menfaat-i insaniyeden uzak bir hareket olduğunu; pek yakın bir zamanda intibaha gelmiş, başta İslâm olarak beşer, hissedecek; dünyanın ömrü kalmışsa Kur’an’ın hakaikine yapışacak.",
+      "order_index": 200
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 201
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte sâbık temsil gibi eski zamanda, Hürriyet’in başında bazı dindar mebuslar, Eski Said’e dediler:",
+      "order_index": 202
+    },
+    {
+      "type": "paragraph",
+      "text": "Sen her cihette siyaseti dine, şeriata âlet ediyorsun ve dine hizmetkâr yapıyorsun ve yalnız şeriat hesabına hürriyeti kabul ediyorsun. Ve meşrutiyeti de meşruiyet suretinde beğeniyorsun. Demek hürriyet ve meşrutiyet, şeriatsız olamaz. Bunun için seni de “Şeriat isteriz!” diyenlerin içine 31 Mart’ta dâhil ettiler.",
+      "order_index": 203
+    },
+    {
+      "type": "paragraph",
+      "text": "Eski Said onlara demiş ki:",
+      "order_index": 204
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, millet-i İslâmiyenin sebeb-i saadeti, yalnız ve yalnız hakaik-i İslâmiye ile olabilir. Ve hayat-ı içtimaiyesi ve saadet-i dünyeviyesi şeriat-ı İslâmiye ile olabilir. Yoksa adalet mahvolur. Emniyet zîr ü zeber olur. Ahlâksızlık, pis hasletler galebe eder. İş yalancıların, dalkavukların elinde kalır. Size bu hakikati ispat edecek binler hüccetten bir küçük numune olarak bu hikâyeyi nazar-ı dikkatinize gösteriyorum:",
+      "order_index": 205
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir zaman bir adam, bir sahrada, bedevîler içinde ehl-i hakikat bir zatın evine misafir olur. Bakıyor ki onlar mallarının muhafazasına ehemmiyet vermiyorlar. Hattâ ev sahibi, evinin köşesinde paraları oralarda açıkta bırakmış. Misafir, hane sahibine dedi: “Hırsızlıktan korkmuyor musunuz, böyle malınızı köşeye atmışsınız?”",
+      "order_index": 206
+    },
+    {
+      "type": "paragraph",
+      "text": "Hane sahibi dedi: “Bizde hırsızlık olmaz.”",
+      "order_index": 207
+    },
+    {
+      "type": "paragraph",
+      "text": "Misafir dedi: “Biz, paralarımızı kasalarımıza koyduğumuz ve kilitlediğimiz halde çok defalar hırsızlık oluyor.”",
+      "order_index": 208
+    },
+    {
+      "type": "paragraph",
+      "text": "Hane sahibi demiş: “Biz emr-i İlahî namına ve adalet-i şer’iye hesabına hırsızın elini kesiyoruz.”",
+      "order_index": 209
+    },
+    {
+      "type": "paragraph",
+      "text": "Misafir dedi: “Öyle ise çoğunuzun bir eli olmamak lâzım gelir.”",
+      "order_index": 210
+    },
+    {
+      "type": "paragraph",
+      "text": "Hane sahibi dedi: “Ben elli yaşıma girdim, bütün ömrümde bir tek el kesildiğini gördüm.”",
+      "order_index": 211
+    },
+    {
+      "type": "paragraph",
+      "text": "Misafir taaccüb etti, dedi ki: “Memleketimizde her gün elli adamı hırsızlık ettikleri için hapse sokuyoruz. Sizin buradaki adaletinizin yüzde biri kadar tesiri olmuyor.”",
+      "order_index": 212
+    },
+    {
+      "type": "paragraph",
+      "text": "Hane sahibi dedi: Siz büyük bir hakikatten ve acib ve kuvvetli bir sırdan gaflet etmişsiniz, terk etmişsiniz. Onun için adaletin hakikatini kaybediyorsunuz. Maslahat-ı beşeriye yerine adalet perdesi altında garazlar, zalimane ve tarafgirane cereyanlar müdahale eder, hükümlerin tesirini kırar. O hakikatin sırrı budur:",
+      "order_index": 213
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizde bir hırsız elini başkasının malına uzattığı dakikada hadd-i şer’înin icrasını tahattur eder. Arş-ı İlahîden nâzil olan emir hatırına gelir. İmanın hâssası ile kalbin kulağı ile kelâm-ı ezelîden gelen ve “hırsız elinin idamına” hükmeden اَلسَّارِقُ وَ السَّارِقَةُ فَاقْطَعُوا اَيْدِيَهُمَا âyetini hissedip işitir gibi iman ve itikadı heyecana ve hissiyat-ı ulviyesi harekete gelir. Ruhun etrafından, vicdanın derin yerlerinden, o sirkat meyelanına hücum gibi bir halet-i ruhiye hasıl olur. Nefis ve hevesten gelen meyelan parçalanır, çekilir. Gitgide o meyelan bütün bütün kesilir. Çünkü yalnız vehim ve fikir değil belki manevî kuvveleri –akıl, kalp ve vicdan– birden o hisse, o hevese hücum eder. Hadd-i şer’îyi tahattur ile ulvi zecir ve vicdanî bir yasakçı o hissin karşısına çıkar, susturur.",
+      "order_index": 214
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet iman kalpte, kafada daimî bir manevî yasakçı bıraktığından fena meyelanlar histen, nefisten çıktıkça “Yasaktır!” der, tard eder kaçırır.",
+      "order_index": 215
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, insanın fiilleri kalbin, hissin temayülatından çıkar. O temayülat, ruhun ihtisasatından ve ihtiyacatından gelir. Ruh ise iman nuru ile harekete gelir. Hayır ise yapar, şer ise kendini çekmeye çalışır. Daha kör hisler onu yanlış yola sevk edip mağlup etmez.",
+      "order_index": 216
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Had ve ceza, emr-i İlahî ve adalet-i Rabbaniye namına icra edildiği vakit hem ruh hem akıl hem vicdan hem insaniyetin mahiyetindeki latîfeleri müteessir ve alâkadar olurlar.",
+      "order_index": 217
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu mana içindir ki elli senede bir ceza, sizin her gün müteaddid hapsinizden ziyade bize fayda veriyor. Sizin adalet namı altındaki cezalarınız, yalnız vehminizi müteessir eder. Çünkü biriniz hırsızlığa niyet ettiği vakit millet, vatan maslahatı ve menfaati hesabına cezaya çarpılmak vehmi gelir. Yahut insanlar eğer bilseler ona fena nazarla bakarlar. Eğer aleyhinde tebeyyün etse hükûmet de onu hapsetmek ihtimali hatırına geliyor. O vakit yalnız kuvve-i vâhimesi cüz’î bir teessür hisseder. Halbuki nefis ve hissinden çıkan –hususan ihtiyacı da varsa– kuvvetli bir meyelan galebe eder. Daha o fenalıktan vazgeçmek için o cezanız fayda vermiyor. Hem de emr-i İlahî ile olmadığından o cezalar da adalet değil. Abdestsiz, kıblesiz namaz kılmak gibi battal olur, bozulur. Demek hakiki adalet ve tesirli ceza odur ki: Allah’ın emri namıyla olsun. Yoksa tesiri yüzden bire iner.",
+      "order_index": 218
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu cüz’î sirkat meselesine sair küllî ve şümullü ahkâm-ı İlahiye kıyas edilsin. Tâ anlaşılsın ki: Saadet-i beşeriye dünyada adalet ile olabilir. Adalet ise doğrudan doğruya Kur’an’ın gösterdiği yol ile olabilir…",
+      "order_index": 219
+    },
+    {
+      "type": "paragraph",
+      "text": "(Hikâyenin hülâsası bitti.)",
+      "order_index": 220
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 221
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer beşer çabuk aklını başına alıp adalet-i İlahiye namına ve hakaik-i İslâmiye dairesinde mahkemeler açmazsa maddî ve manevî kıyametler başlarına kopacak; anarşilere, ye’cüc ve me’cüclere teslim-i silah edecekler diye kalbe ihtar edildi.",
+      "order_index": 222
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu hikâyeyi o zamandaki bazı dindar mebuslara Eski Said söylemiş. Ve iki defa tabedilen Arabî Hutbe-i Şamiye’nin Zeyli’nde kırk beş sene evvel yazılmış. (Hâşiye[5])",
+      "order_index": 223
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi bu hikâye ile evvelki temsil, o zamandan ziyade tam bu zamanın dersi olmasından bera-yı malûmat hakiki dindar mebusların nazarına medar-ı ibret için gösteriyoruz.",
+      "order_index": 224
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 225
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 226
+    },
+    {
+      "type": "paragraph",
+      "text": "HUTBE-İ ŞAMİYE’NİN ZEYLİNİN ZEYLİ",
+      "order_index": 227
+    },
+    {
+      "type": "paragraph",
+      "text": "(Kırk iki (*[6]) sene evvel dinî ceridelerde neşredilen Said’in makalesidir.)",
+      "order_index": 228
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın Şeriat-ı Garra",
+      "order_index": 229
+    },
+    {
+      "type": "paragraph",
+      "text": "29 Şubat 324",
+      "order_index": 230
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinî ceride: 73",
+      "order_index": 231
+    },
+    {
+      "type": "paragraph",
+      "text": "Mart 1909",
+      "order_index": 232
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey mebusan!",
+      "order_index": 233
+    },
+    {
+      "type": "paragraph",
+      "text": "Uzunluğu ile beraber gayet mûciz bir tek cümle söyleyeceğim. Dikkat ediniz zira itnabında îcaz var. Şöyle ki:",
+      "order_index": 234
+    },
+    {
+      "type": "paragraph",
+      "text": "Meşrutiyet ve kanun-u esasî denilen adalet ve meşveret ve kanunda cem’-i kuvvet, bu unvan ile beraber asıl mâlik-i hakiki ve sahib-i unvan-ı muhteşem (1)",
+      "order_index": 235
+    },
+    {
+      "type": "paragraph",
+      "text": "ve müessir ve adalet-i mahzayı mutazammın (2)",
+      "order_index": 236
+    },
+    {
+      "type": "paragraph",
+      "text": "ve nokta-i istinadımızı temin eden (3)",
+      "order_index": 237
+    },
+    {
+      "type": "paragraph",
+      "text": "ve meşrutiyeti bir esas-ı metine istinad ettiren (4)",
+      "order_index": 238
+    },
+    {
+      "type": "paragraph",
+      "text": "ve evham ve şükûk sahibini varta-i hayretten kurtaran (5)",
+      "order_index": 239
+    },
+    {
+      "type": "paragraph",
+      "text": "ve istikbal ve âhiretimizi tekeffül eden (6)",
+      "order_index": 240
+    },
+    {
+      "type": "paragraph",
+      "text": "ve menafi-i umumiye olan hukukullahı izinsiz tasarruftan sizi tahlis eden (7)",
+      "order_index": 241
+    },
+    {
+      "type": "paragraph",
+      "text": "ve hayat-ı milliyemizi muhafaza eden (8)",
+      "order_index": 242
+    },
+    {
+      "type": "paragraph",
+      "text": "ve umum ezhanı manyetizmalandıran (9)",
+      "order_index": 243
+    },
+    {
+      "type": "paragraph",
+      "text": "ve ecanibe karşı metanetimizi ve kemalimizi ve mevcudiyetimizi gösteren (10)",
+      "order_index": 244
+    },
+    {
+      "type": "paragraph",
+      "text": "ve sizi muaheze-i dünyeviye ve uhreviyeden kurtaran (11)",
+      "order_index": 245
+    },
+    {
+      "type": "paragraph",
+      "text": "ve maksat ve neticede ittihad-ı umumiyeyi tesis eden (12)",
+      "order_index": 246
+    },
+    {
+      "type": "paragraph",
+      "text": "ve o ittihadın ruhu olan efkâr-ı âmmeyi tevlid eden (13)",
+      "order_index": 247
+    },
+    {
+      "type": "paragraph",
+      "text": "ve çürük mesavî-i medeniyeti hudud-u hürriyet ve medeniyetimize girmekten yasak eden (14) ve bizi Avrupa dilenciliğinden kurtaran (15)",
+      "order_index": 248
+    },
+    {
+      "type": "paragraph",
+      "text": "ve geri kaldığımız uzun mesafe-i terakkide –sırr-ı i’caza binaen– bir zaman-ı kasîrede tayyettiren (16)",
+      "order_index": 249
+    },
+    {
+      "type": "paragraph",
+      "text": "ve Arap ve Turan ve İran ve Samileri tevhid ederek az zamanla bize bir büyük kıymet veren (17)",
+      "order_index": 250
+    },
+    {
+      "type": "paragraph",
+      "text": "ve şahs-ı manevî-i hükûmeti Müslüman gösteren (18)",
+      "order_index": 251
+    },
+    {
+      "type": "paragraph",
+      "text": "ve kanun-u esasînin ruhunu ve On Birinci Madde’yi muhafaza ile ve sizi hıns-ı yeminden kurtaran (19)",
+      "order_index": 252
+    },
+    {
+      "type": "paragraph",
+      "text": "ve Avrupa’nın eski zann-ı fâsidlerini tekzip eden (20)",
+      "order_index": 253
+    },
+    {
+      "type": "paragraph",
+      "text": "Muhammed aleyhissalâtü vesselâm hâtem-i enbiya ve şeriatın ebedî olduğunu tasdik ettiren (21)",
+      "order_index": 254
+    },
+    {
+      "type": "paragraph",
+      "text": "ve muharrib-i medeniyet olan dinsizliğe karşı set çeken (22)",
+      "order_index": 255
+    },
+    {
+      "type": "paragraph",
+      "text": "ve zulmet-i tebayün-ü efkâr ve teşettüt-ü ârâyı safha-i nuranisi ile ortadan kaldıran (23)",
+      "order_index": 256
+    },
+    {
+      "type": "paragraph",
+      "text": "ve umum ulema ve vaizleri ittihat ve saadet-i millete ve icraat-ı hükûmeti meşruta-i meşruaya hâdim eden (24)",
+      "order_index": 257
+    },
+    {
+      "type": "paragraph",
+      "text": "ve adalet-i mahzası merhametli olduğundan anâsır-ı gayr-ı müslimeyi daha ziyade telif ve rabteden (25)",
+      "order_index": 258
+    },
+    {
+      "type": "paragraph",
+      "text": "ve en cebîn ve âmî adamı en cesur ve en has adam gibi hiss-i hakiki-i terakki ve fedakârlık ve hubb-u vatanla mütehassis eden (26)",
+      "order_index": 259
+    },
+    {
+      "type": "paragraph",
+      "text": "ve hēdim-i medeniyet (*[7]) olan sefahet ve israfat ve havaic-i gayr-ı zaruriyeden bizi halâs eden (27)",
+      "order_index": 260
+    },
+    {
+      "type": "paragraph",
+      "text": "ve muhafaza-i âhiretle beraber imar-ı dünya etmekle sa’ye neşat veren (28)",
+      "order_index": 261
+    },
+    {
+      "type": "paragraph",
+      "text": "ve hayat-ı medeniyet olan ahlâk-ı hasene ve hissiyat-ı ulviyenin düsturlarını öğreten (29)",
+      "order_index": 262
+    },
+    {
+      "type": "paragraph",
+      "text": "ve her birinizi ey mebuslar elli bin kişinin takazasını yani haklarını sizden dava etmelerini hakkınızda tebrie eden (30)",
+      "order_index": 263
+    },
+    {
+      "type": "paragraph",
+      "text": "ve sizi icma-ı ümmete küçük bir misal-i meşru gösteren (31)",
+      "order_index": 264
+    },
+    {
+      "type": "paragraph",
+      "text": "ve hüsn-ü niyete binaen a’malinizi ibadet gibi ettiren (32)",
+      "order_index": 265
+    },
+    {
+      "type": "paragraph",
+      "text": "ve üç yüz milyon Müslüman’ın hayat-ı maneviyesine sû-i kasd ve cinayetten sizi tahlis eden (33)",
+      "order_index": 266
+    },
+    {
+      "type": "paragraph",
+      "text": "ol şeriat-ı garra unvanıyla gösterseniz ve hükümlerinize me’haz edinseniz ve düsturlarını tatbik etseniz acaba bu kadar fevaidi ile beraber ne gibi şey kaybedeceksiniz? Vesselâm.",
+      "order_index": 267
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın şeriat-ı garra!..",
+      "order_index": 268
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 269
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 270
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın Şeriat-ı Ahmedî (asm)",
+      "order_index": 271
+    },
+    {
+      "type": "paragraph",
+      "text": "5 Mart 1325",
+      "order_index": 272
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinî Ceride No: 77",
+      "order_index": 273
+    },
+    {
+      "type": "paragraph",
+      "text": "18 Mart 1909",
+      "order_index": 274
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeriat-ı garra, kelâm-ı ezelîden geldiğinden ebede gidecektir. Nefs-i emmarenin istibdad-ı rezilesinden selâmetimiz, İslâmiyet’e istinad iledir. O hablü’l-metine temessük iledir. Ve haklı hürriyetten hakkıyla istifade etmek, imandan istimdad iledir. Zira Sâni’-i âlem’e hakkıyla abd ve hizmetkâr olanın, halka ubudiyete tenezzül etmemesi gerektir. Herkes kendi âleminde bir kumandan olduğundan âlem-i asgarında cihad-ı ekber ile mükelleftir. Ve ahlâk-ı Ahmediye aleyhissalâtü vesselâm ile tahalluk ve sünnet-i Nebeviyeyi ihya ile muvazzaftır.",
+      "order_index": 275
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey evliya-i umûr! Tevfik isterseniz kavanin-i âdetullaha tevfik-i hareket ediniz. Yoksa tevfiksizlik ile cevab-ı red alacaksınız. Zira maruf umum enbiyanın memalik-i İslâmiye ve Osmaniye’den zuhuru, kader-i İlahînin bir işaret ve remzidir ki bu memleket insanlarının makine-i tekemmülatının buharı diyanettir. Ve bu Asya ve Afrika tarlasının ve Rumeli bostanının çiçekleri, ziya-yı İslâmiyet ile neşv ü nema bulacaktır.",
+      "order_index": 276
+    },
+    {
+      "type": "paragraph",
+      "text": "Dünya için din feda olunmaz. Gebermiş istibdadı muhafaza için vaktiyle mesail-i şeriat rüşvet verilirdi. Dinin meseleleri terk ve feda edilmesinden, zarardan başka ne faydası görüldü? Milletin kalp hastalığı zaaf-ı diyanettir. Bunu takviye ile sıhhat bulabilir.",
+      "order_index": 277
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizim cemaatimizin meşrebi: Muhabbete muhabbet ve husumete husumettir. Yani beyne’l-İslâm muhabbete imdat ve husumet askerini bozmaktır.",
+      "order_index": 278
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesleğimiz ise ahlâk-ı Ahmediye aleyhissalâtü vesselâm ile tahalluk ve sünnet-i Peygamberîyi ihya etmektir. Ve rehberimiz şeriat-ı garra ve kılıncımız da berahin-i kātıa ve maksadımız i’lâ-yı kelimetullahtır. Cemaatimize her bir mü’min manen müntesiptir. Sureten intisap ise sünnet-i Nebeviyeyi kendi âleminde ihyaya azm-i kat’î iledir. En evvel mürşid-i umumî olan ulema ve meşayih ve talebeyi, şeriat namına ittihada davet ederiz.",
+      "order_index": 279
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 280
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 281
+    },
+    {
+      "type": "paragraph",
+      "text": "İhtar-ı Mahsus",
+      "order_index": 282
+    },
+    {
+      "type": "paragraph",
+      "text": "Gazeteci denilen huteba-i umumî, iki kıyas-ı fâsidle milleti bataklığa düşürtmüştür.",
+      "order_index": 283
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Vilayatı, İstanbul’a kıyas ederek… Halbuki elifbayı okumayan çocuklara felsefe dersi verilse sathî olur.",
+      "order_index": 284
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: İstanbul’u Avrupa’ya kıyas etmişler. Halbuki bir erkek, kadının kametinden istihsan ettiği libası giyinse maskara ve rezil olur.",
+      "order_index": 285
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 286
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 287
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikat",
+      "order_index": 288
+    },
+    {
+      "type": "paragraph",
+      "text": "26 Şubat 1324",
+      "order_index": 289
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinî Ceride: 70",
+      "order_index": 290
+    },
+    {
+      "type": "paragraph",
+      "text": "Mart 1909",
+      "order_index": 291
+    },
+    {
+      "type": "paragraph",
+      "text": "Biz Kalû Belâ’dan Cemiyet-i Muhammedî’de (aleyhissalâtü vesselâm) dâhiliz. Cihetü’l-vahdet-i ittihadımız tevhiddir. Peyman ve yeminimiz imandır. Mademki muvahhidiz, müttehidiz. Her bir mü’min i’lâ-yı kelimetullah ile mükelleftir. Bu zamanda en büyük sebebi, maddeten terakki etmektir. Zira ecnebiler fünun ve sanayi silahıyla bizi istibdad-ı manevîleri altında eziyorlar. Biz de fen ve sanat silahıyla i’lâ-yı kelimetullahın en müthiş düşmanı olan cehil ve fakr ve ihtilaf-ı efkâra cihad edeceğiz.",
+      "order_index": 292
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma cihad-ı haricîyi şeriat-ı garranın berahin-i kātıasının elmas kılınçlarına havale edeceğiz. Zira medenilere galebe çalmak ikna iledir, söz anlamayan vahşiler gibi icbar ile değildir. Biz muhabbet fedaileriyiz, husumete vaktimiz yoktur. Cumhuriyet ki (Hâşiye[8]) adalet ve meşveret ve kanunda inhisar-ı kuvvetten ibarettir. On üç asır evvel şeriat-ı garra teessüs ettiğinden, ahkâmda Avrupa’ya dilencilik etmek, din-i İslâm’a büyük bir cinayettir ve şimale müteveccihen namaz kılmak gibidir. Kuvvet kanunda olmalı. Yoksa istibdat tevzi olunmuş olur. اِنَّ اللّٰهَ هُوَ الْقَوِىُّ الْمَتٖينُ  hâkim ve âmir-i vicdanî olmalı. O da marifet-i tam ve medeniyet-i âmm veyahut din-i İslâm namıyla olmalı. Yoksa istibdat daima hüküm-ferma olacaktır.",
+      "order_index": 293
+    },
+    {
+      "type": "paragraph",
+      "text": "İttifak hüdadadır, heva ve heveste değil.",
+      "order_index": 294
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsanlar hür oldular amma yine abdullahtırlar. Her şey hür oldu, şeriat da hürdür, meşrutiyet de. Mesail-i şeriatı rüşvet vermeyeceğiz. Başkasının kusuru, insanın kusuruna senet ve özür olamaz.",
+      "order_index": 295
+    },
+    {
+      "type": "paragraph",
+      "text": "Yeis, mani-i herkemaldir. “Neme lâzım, başkası düşünsün.” istibdadın yadigârıdır.",
+      "order_index": 296
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu cümlelerin mabeynini rabtedecek olan mukaddimatı, Türkçe bilmediğim için mütaliînin fikirlerine havale ediyorum.",
+      "order_index": 297
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 298
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 299
+    },
+    {
+      "type": "paragraph",
+      "text": "Sadâ-yı Hakikat",
+      "order_index": 300
+    },
+    {
+      "type": "paragraph",
+      "text": "27 Mart 1909",
+      "order_index": 301
+    },
+    {
+      "type": "paragraph",
+      "text": "Tarîk-i Muhammedî (aleyhissalâtü vesselâm) şüphe ve hileden münezzeh olduğundan, şüphe ve hileyi îma eden gizlemekten de müstağnidir. Hem o derece azîm ve geniş ve muhit bir hakikat, bâhusus bu zaman ehline karşı hiçbir cihetle saklanmaz. Bahr-i umman nasıl bir testide saklanacak?",
+      "order_index": 302
+    },
+    {
+      "type": "paragraph",
+      "text": "Tekraren söylüyorum ki: İttihad-ı İslâm hakikatinde olan İttihad-ı Muhammedî’nin (aleyhissalâtü vesselâm) cihet-i vahdeti tevhid-i İlahîdir. Peyman ve yemini de imandır. Encümen ve cemiyetleri, mesacid ve medaris ve zevayadır. Müntesibîni umum mü’minlerdir. Nizamnamesi sünen-i Ahmediyedir (aleyhissalâtü vesselâm). Kanunu, evamir ve nevahi-i şer’iyedir. Bu ittihat, âdetten değil, ibadettir.",
+      "order_index": 303
+    },
+    {
+      "type": "paragraph",
+      "text": "İhfa ve havf riyadandır. Farzda riya yoktur. Bu zamanın en büyük farz vazifesi, ittihad-ı İslâm’dır. İttihadın hedef ve maksadı; o kadar uzun, münşaib ve muhit ve merakiz ve meâbid-i İslâmiyeyi birbirine rabtettiren bir silsile-i nuraniyi ihtizaza getirmekle, onunla merbut olanları ikaz ve tarîk-i terakkiye bir hâhiş ve emr-i vicdanî ile sevk etmektir.",
+      "order_index": 304
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu ittihadın meşrebi, muhabbettir. Husumeti ise cehalet ve zaruret ve nifakadır. Gayr-ı müslimler emin olsunlar ki bu ittihadımız, bu üç sıfata hücumdur. Gayr-ı müslime karşı hareketimiz iknadır. Zira onları medeni biliriz. Ve İslâmiyet’i mahbub ve ulvi göstermektir. Zira onları munsif zannediyoruz. Lâübaliler iyi bilsinler ki dinsizlikle kendilerini hiçbir ecnebiye sevdiremezler. Zira mesleksizliklerini göstermiş olurlar. Mesleksizlik, anarşilik sevilmez. Ve bu ittihada tahkik ile dâhil olanlar, onları taklit edip çıkmazlar.",
+      "order_index": 305
+    },
+    {
+      "type": "paragraph",
+      "text": "İttihad-ı Muhammedî (aleyhissalâtü vesselâm) olan ittihad-ı İslâm’ın efkâr ve meslek ve hakikatini efkâr-ı umumiyeye arz ederiz. Kimin bir itirazı varsa etsin, cevaba hazırız.",
+      "order_index": 306
+    },
+    {
+      "type": "arabic_block",
+      "text": "جُمْلَه شٖيرَانِ جِهَانْ بَسْتَۀِ اٖينْ سِلْسِلَه اَنْد",
+      "order_index": 307
+    },
+    {
+      "type": "arabic_block",
+      "text": "رُوبَه اَزْ حٖيلَه چِه سَانْ بِگُسَلَدْ اٖينْ سِلْسِلَه رَا",
+      "order_index": 308
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 309
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 310
+    },
+    {
+      "type": "paragraph",
+      "text": "Neşrettiğim fihriste-i makasıddan terk ettiğim bir fıkradır. Şöyle ki:",
+      "order_index": 311
+    },
+    {
+      "type": "paragraph",
+      "text": "Zahiren hariçten cereyan eden maarif-i cedidenin bir mecrası da bir kısım ehl-i medrese olmalı. Tâ gıll ü gıştan tasaffi etsin.",
+      "order_index": 312
+    },
+    {
+      "type": "paragraph",
+      "text": "Zira bulanıklığıyla başka mecradan taaffün ile gelmiş ve atalet bataklığından neş’et ve istibdat sümumu ile teneffüs eden, zulüm tazyiki ile ezilen efkâra bu müteaffin su, bazı aksü’l-amel yaptığından, misfat-ı şeriat ile süzdürmek zarurîdir. Bu da ehl-i medresenin dûş-u himmetine muhavveldir.",
+      "order_index": 313
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَالسَّلَامُ عَلٰى مَنِ اتَّبَعَ الْهُدٰى",
+      "order_index": 314
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 315
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 316
+    },
+    {
+      "type": "paragraph",
+      "text": "Reddü’l-Evham",
+      "order_index": 317
+    },
+    {
+      "type": "paragraph",
+      "text": "31 Mart 1909",
+      "order_index": 318
+    },
+    {
+      "type": "paragraph",
+      "text": "İttihad-ı Muhammedî (aleyhissalâtü vesselâm) cemaatine isnad ettikleri dokuz evham-ı fâsideyi reddedeceğim.",
+      "order_index": 319
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Vehim: Böyle nazik bir zamanda din meselesini ortaya atmak münasip görülmüyor.",
+      "order_index": 320
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Biz dini severiz. Dünyayı da yine din için severiz.",
+      "order_index": 321
+    },
+    {
+      "type": "arabic_block",
+      "text": "لَا خَيْرَ فِى الدُّنْيَا بِلَا دٖينٍ",
+      "order_index": 322
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Mademki meşrutiyette hâkimiyet millettedir. Mevcudiyet-i milleti göstermek lâzımdır. Milletimiz de yalnız İslâmiyet’tir. Zira Arap, Türk, Kürt, Arnavut, Çerkez ve Lazların en kuvvetli ve hakikatli revabıt ve milliyetleri, İslâmiyet’ten başka bir şey değildir. Nasıl ki az ihmal ile tavaif-i mülûk temelleri atılmakta ve on üç asır evvel ölmüş olan asabiyet-i cahiliyeyi ihya ile fitne ikaz olunmaktadır. Ve oldu gördük…",
+      "order_index": 323
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Vehim: Bu unvan tahsisiyle, müntesip olmayanları vehim ve telaşa düşürüyor?",
+      "order_index": 324
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Evvel de söylemiştim. Ya mütalaa olunmamış veya sû-i tefehhüme uğramış olduğundan tekrarına mecbur oldum. Şöyle ki:",
+      "order_index": 325
+    },
+    {
+      "type": "paragraph",
+      "text": "İttihad-ı İslâm olan İttihad-ı Muhammedî (aleyhissalâtü vesselâm) dediğimiz vakit, umum mü’minlerin mabeyninde bi’l-kuvve veya bilfiil sabit olan ittihat muraddır. Yoksa İstanbul ve Anadolu’daki cemaat murad değildir. Amma bir katre su da sudur. Bu unvandan tahsis çıkmaz. Tarif-i hakikisi şöyledir:",
+      "order_index": 326
+    },
+    {
+      "type": "paragraph",
+      "text": "Esas temeli, şarktan garba cenuptan şimale mümted ve merkezi Haremeyn-i Şerifeyn ve cihet-i vahdeti tevhid-i İlahî; peyman ve yemini iman; nizamnamesi, sünnet-i Ahmediye (aleyhissalâtü vesselâm); kanunnamesi, evamir ve nevahi-i şer’iye; kulüp ve encümenleri, umum medaris, mesacid ve zevaya; o cemaatin ile’l-ebed ve muhalled nâşir-i efkârı, umum kütüb-ü İslâmiye ve her vakit nâşir-i efkârı başta Kur’an ve tefsirleri (ve bu zamanda bir tefsiri, Risale-i Nur) ve i’lâ-yı kelimetullahı hedef ve maksat eden umum dinî ve müstakim ceraiddir. Müntesibîni, umum mü’minlerdir. Reisi de Fahr-i Âlem’dir (aleyhissalâtü vesselâm).",
+      "order_index": 327
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi istediğimiz nokta, mü’minlerin teveccühleri ve teyakkuzlarıdır. Teveccüh-ü umumînin tesiri inkâr edilmez. İttihadın hedefi ve maksadı i’lâ-yı kelimetullah ve mesleği de kendi nefsiyle cihad-ı ekber ve başkalarını irşaddır. Bu mübarek heyetin yüzde doksan dokuz himmeti siyaset değildir. Siyasetin gayrı olan hüsn-ü ahlâk ve istikamet vesaire gibi makasıd-ı meşruaya masruftur. Zira bu vazifeye müteveccih olan cemiyetler pek az, kıymet ve ehemmiyeti ise pek çoktur. Ancak yüzde biri, siyasiyyunu irşad tarîkiyle siyasete taalluk edecektir. Kılınçları, berahin-i kat’iyedir. Meşrepleri de muhabbet olduğu gibi beyne’l-mü’minîn uhuvvet çekirdeğinde mündemic olan muhabbete şecere-i tûba gibi neşv ü nema vermektir.",
+      "order_index": 328
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşinci Vehim: Ecnebilerin bundan tevahhuş etmek ihtimali var?",
+      "order_index": 329
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Bu ihtimale ihtimal verenler mütevahhiştir. Zira merkez-i taassuplarında İslâmiyet’in ulviyetine dair konferanslarla (Hâşiye[9]) takdis etmeleri bu ihtimali reddeder. Hem de düşmanlarımız onlar değil; asıl bizi bu kadar düşürüp i’lâ-yı kelimetullaha mani olan ve cehalet neticesi olan muhalefet-i şeriattır. Ve zaruret ve onun semeresi olan sû-i ahlâk ve harekettir ve ihtilaf ve onun mahsulü olan ağraz ve nifaktır ki ittihadımız bu üç insafsız düşmana hücumdur.",
+      "order_index": 330
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma ecnebilerin vahşi oldukları kurûn-u vustâda; İslâmiyet, vahşete karşı husumet ve taassuba mecbur olduğu halde, adalet ve itidalini muhafaza etmiş. Hiçbir vakit engizisyon gibi etmemiş. Ve zaman-ı medeniyette ecnebiler medeni ve kuvvetli olduklarından, zararlı olan husumet ve taassup zâil olmuştur. Zira din nokta-i nazarından medenilere galebe çalmak ikna iledir, icbar ile değildir. Ve İslâmiyet’i, mahbub ve ulvi olduğunu, evamirine imtisalen ef’al ve ahlâk ile göstermek iledir. İcbar ve husumet, vahşilerin vahşetine karşıdır.",
+      "order_index": 331
+    },
+    {
+      "type": "paragraph",
+      "text": "Altıncı Vehim: Bazıları “Sünnet-i Nebeviyeyi hedef-i maksat eden ittihad-ı İslâm, hürriyeti tahdid eder ve levazım-ı medeniyeye münafîdir.” diyorlar.",
+      "order_index": 332
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Asıl mü’min, hakkıyla hürdür. Sâni’-i âlem’e abd ve hizmetkâr olan, halka tezellüle tenezzül etmemek gerektir. Demek ne kadar imana kuvvet verilse hürriyet de o kadar kuvvet bulur.",
+      "order_index": 333
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma hürriyet-i mutlak ise vahşet-i mutlakadır belki hayvanlıktır. Tahdid-i hürriyet dahi insaniyet nokta-i nazarından zarurîdir.",
+      "order_index": 334
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Bazı sefih ve lâübaliler hür yaşamak istemediklerinden nefs-i emmarenin esaret-i rezilesi altına girmek istiyorlar.",
+      "order_index": 335
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Şeriat dairesinden hariç olan hürriyet, ya istibdat veya esaret-i nefis veya canavarcasına hayvanlık veya vahşettir. Böyle lâübaliler ve zındıklar iyi bilsinler ki dinsizlikle ve sefahetle sahib-i vicdan hiçbir ecnebiye kendilerini sevdiremezler ve benzetemezler. Zira mesleksiz ve sefih sevilmez. Ve bir kadına yakışır –istihsan ettiği– libası erkek giyse maskara olur.",
+      "order_index": 336
+    },
+    {
+      "type": "paragraph",
+      "text": "Yedinci Vehim: İttihad-ı İslâm cemaati, sair cemiyet-i diniye ile şakku’l-asâdır. Rekabet ve münaferatı intac eder.",
+      "order_index": 337
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Evvela umûr-u uhreviyede hased ve müzahamet ve münakaşa olmadığından bu cemiyetlerden hangisi münakaşaya, rekabete kalkışsa ibadette riya ve nifak etmiş gibidir.",
+      "order_index": 338
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Muhabbet-i din sâikasıyla teşekkül eden cemaatlerin iki şart ile umumunu tebrik ve onlarla ittihat ederiz.",
+      "order_index": 339
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci şart: Hürriyet-i şer’iyeyi ve asayişi muhafaza etmektir.",
+      "order_index": 340
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci şart: Muhabbet üzerinde hareket etmek, başka cemiyete leke sürmekle kendisine kıymet vermeye çalışmamak. Birinde hata bulunsa müfti-i ümmet cemiyet-i ulemaya havale etmektir.",
+      "order_index": 341
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: İ’lâ-yı kelimetullahı hedef-i maksat eden cemaat, hiçbir garaza vasıta olamaz. İsterse de muvaffak olamaz. Zira nifaktır. Hakkın hatırı âlîdir, hiçbir şeye feda olunmaz. Nasıl Süreyya yıldızları süpürge olur veya üzüm salkımı gibi yenilir? Şems-i hakikate “Püf, üf!” eden, divaneliğini ilan eder.",
+      "order_index": 342
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey dinî cerideler! Maksadımız: Dinî cemaatler maksatta ittihat etmelidirler. Mesalikte ve meşreplerde ittihat mümkün olmadığı gibi caiz de değildir. Zira taklit yolunu açar ve “Neme lâzım, başkası düşünsün.” sözünü de söylettirir.",
+      "order_index": 343
+    },
+    {
+      "type": "paragraph",
+      "text": "Sekizinci Vehim: Ehl-i ittihad-ı İslâm olan buradaki cemaate, manen gibi sureten de intisap edenlerin ekserisi avam, bir kısmı da meçhulü’l-hal olduğundan fitne ve ihtilafı îma ediyor.",
+      "order_index": 344
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Belki ağraza adem-i müsaadesine binaendir. Hem de madem maksadı, ittihat ve i’lâ-yı kelimetullahtır. Teşebbüsat ve harekâtı da ibadettir. İbadet camiinde şah ve geda birdir. Müsavat hakiki düsturdur. İmtiyaz yoktur. Zira en ekrem, en müttakidir. Ve en müttaki, en mütevazidir.",
+      "order_index": 345
+    },
+    {
+      "type": "paragraph",
+      "text": "Binaenaleyh manen asıl hakikat-i ittihada intisap ile beraber sureten onun numunesi olan bu uhrevî ve sırf dinî cemaate intisap ile teşerrüf edecek, yoksa şeref vermeyecektir. Bir katre, bahr-i ummanı tezyid edemez. Hem de bir günah-ı kebire ile imandan çıkmadığı gibi şems garptan tulû etmediğinden tövbenin kapısı da açıktır. Bir testi müteneccis su, bir denizi tencis etmediği gibi kendi de temizlendiğinden şimdi bu numune-i ittihada intisap eden adama şartımız olan sünnet-i Nebeviyeyi (aleyhissalâtü vesselâm) ihya ve evamirine imtisal ve nevahiden içtinab ve asayişe ilişmemek –elinden gelse– azm-i kat’î ile dâhil olan bazı meçhulü’l-hal olanlar bu hakikat-i âliyeyi lekedar etmez. Zira kendi lekedar olsa da imanı mukaddestir. Rabıta da imandır. Bu unvan-ı mukaddese böyle bahane ile leke sürmek; İslâmiyet’in kıymet ve ulviyetini bilmemekle beraber, kendini ahmaku’n-nâs ilan etmektir.",
+      "order_index": 346
+    },
+    {
+      "type": "paragraph",
+      "text": "Numune-i ittihat olan cemaatimize –sair cem’iyat-ı dünyeviyeye kıyasen– leke sürmeyi, ta’riz etmeyi cemi’ kuvvetimizle reddederiz. İstifsar tarîkiyle bir itirazları olursa cevaba hazırız. İşte meydan!",
+      "order_index": 347
+    },
+    {
+      "type": "paragraph",
+      "text": "Benim dâhil olduğum cemaat, burada tafsil ettiğim ittihad-ı İslâm’dır. Yoksa muterizlerin bâtıl tevehhüm ettikleri cemiyet-i mütehayyile değildir. Bu dinî heyet efradı, şarkta olsa garpta olsa cenupta olsa şimalde olsa beraberiz.",
+      "order_index": 348
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Sen imzanı bazen Bedîüzzaman yazıyorsun. Lakap medhi îma eder?",
+      "order_index": 349
+    },
+    {
+      "type": "paragraph",
+      "text": "Cevap: Medih için değildir. Kusurlarımı, sened-i özrümü, mazeretimi bu unvan ile ibraz ediyorum. Zira bedî’, garib demektir. Benim ahlâkım suretim gibi üslub-u beyanım elbisem gibi garibdir, muhaliftir. Görenekle revaçta olan muhakemat ve esalibi, benim üslup ve muhakematımla mikyas ve mihenk itibar yapmamayı bu unvanın lisan-ı haliyle rica ediyorum. Hem de muradım bedî’, acib demektir.",
+      "order_index": 350
+    },
+    {
+      "type": "paragraph",
+      "text": "اِلَىَّ لَعَمْرٖى قَصْدُ كُلِّ عَجٖيبَةٍ ۞ كَاَنّٖى عَجٖيبٌ فٖى عُيُونِ الْعَجَائِبِ mâsadak oldum. Bir misali budur: Bir senedir İstanbul’a geldim, yüz senenin inkılabatını gördüm. وَالسَّلَامُ عَلٰى مَنِ اتَّبَعَ الْهُدٰى",
+      "order_index": 351
+    },
+    {
+      "type": "paragraph",
+      "text": "Cemi’ mü’minlerin lisanıyla insanların adedi kadar deriz: Yaşasın şeriat-ı Ahmedî! (aleyhissalâtü vesselâm).",
+      "order_index": 352
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî",
+      "order_index": 353
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 354
+    },
+    {
+      "type": "paragraph",
+      "text": "Biraderim Başmuharrir Bey’e!",
+      "order_index": 355
+    },
+    {
+      "type": "paragraph",
+      "text": "Edibler edepli olmalıdırlar. Hem de edeb-i İslâmiye ile müteeddib olmalıdırlar. Matbuat nizamnamesini vicdanlarındaki hiss-i diyanet tanzim etsin. Zira bu inkılab-ı şer’iye gösterdi ki vicdanlarda hüküm-ferma, nure’n-nur olan hamiyet-i İslâmiyedir. Hem de anlaşıldı ki ittihad-ı İslâm umum askere ve umum ehl-i imana şâmildir. Hariç kimse yoktur.",
+      "order_index": 356
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 357
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 358
+    },
+    {
+      "type": "paragraph",
+      "text": "HUTBE-İ ŞAMİYE’NİN BİRİNCİ ZEYLİNİN ZEYLİNDEN SON PARÇADIR",
+      "order_index": 359
+    },
+    {
+      "type": "paragraph",
+      "text": "(31 Mart Hâdisesi’nde isyan eden sekiz taburu itaate getiren ve musibeti yüzden bire indiren iki derstir ki dinî ceridelerde 1325’te neşredilmiştir. Miladî: 1909)",
+      "order_index": 360
+    },
+    {
+      "type": "paragraph",
+      "text": "Kahraman Askerlerimize",
+      "order_index": 361
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey şanlı asakir-i muvahhidîn! Ve ey bu millet-i mazlumeyi ve mukaddes İslâmiyet’i iki defa büyük vartadan tahlis eden muhteşem kahramanlar!",
+      "order_index": 362
+    },
+    {
+      "type": "paragraph",
+      "text": "Cemal ve kemaliniz, intizam ve inzibattır. Bunu da hakkıyla en müşevveş bir zamanda gösterdiniz. Ve hayatınız ve kuvvetiniz itaattir. Bu meziyet-i mukaddeseyi en ufak âmirinize karşı bile irae ediniz. Otuz milyon Osmanlı ve üç yüz milyon İslâm’ın namusu artık sizin itaatinize bağlıdır. Sancak ve tevhid-i İlahî sizin yed-i şecaatinizdedir.",
+      "order_index": 363
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin o mübarek elinizin kuvveti de itaattir. Sizin zabitleriniz, müşfik pederlerinizdir. Kur’an ve hadîs ve hikmet ve tecrübe ile sabittir ki: Haklı âmire itaat farzdır.",
+      "order_index": 364
+    },
+    {
+      "type": "paragraph",
+      "text": "Malûmunuzdur ki otuz üç milyon nüfus yüz sene zarfında böyle iki inkılabı yapamadı. Sizin o itaatten neş’et eden hakiki kuvvetiniz, umum millet-i İslâmiyeyi medyun-u şükran etti. Bu şerefi hakkıyla teyid etmek, zabitlerinize itaatledir. İslâmiyet’in namusu da o itaattedir. Biliyorum ki müşfik pederleriniz olan zabitlerinizi mes’ul etmemek için işe karıştırmadınız. Şimdi ise iş bitti. Zabitlerinizin âğuş-u şefkatlerine atılınız. Şeriat-ı garra böyle emrediyor. Zira zabitler ulü’l-emrdirler. Vatan ve millet menfaatinde, hususan nizam-ı askerîde ulü’l-emre itaat farzdır. Şeriat-ı Muhammedî’nin (aleyhissalâtü vesselâm) muhafazası da itaat iledir.",
+      "order_index": 365
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 366
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 367
+    },
+    {
+      "type": "paragraph",
+      "text": "Asakire Hitap",
+      "order_index": 368
+    },
+    {
+      "type": "paragraph",
+      "text": "(Dinî Ceride Numara: 110",
+      "order_index": 369
+    },
+    {
+      "type": "paragraph",
+      "text": "30 Nisan 1909)",
+      "order_index": 370
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey asakir-i muvahhidîn! Fahr-i Âlem’in (aleyhissalâtü vesselâm) fermanını size tebliğ ediyorum ki şeriat dairesinde ulü’l-emre itaat farzdır. Ulü’l-emriniz ve üstadlarınız zabitlerinizdir. Askerlik ocağı cesîm ve muntazam bir fabrikaya benzer. Çarkların biri intizam ve itaatte serkeşlik etmekle, bütün fabrika herc ü merc olur.",
+      "order_index": 371
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin o muntazam ve kuvvetli fabrika-i askeriyeniz, otuz milyon Osmanlı ve üç yüz milyon nüfus-u İslâmiyenin nokta-i istinadı ve maden-i istimdadıdır.",
+      "order_index": 372
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin iki müthiş istibdadı kansız ve def’aten öldürmeniz hârikulâde olduğundan ve şeriat-ı garranın iki mu’cize-i garrasını izhar ettiğinizden zayıfü’l-akide olanlara, hamiyet-i İslâmiyenin kuvvetini ve şeriatın kudsiyetini iki bürhan ile izhar eylediniz. Bu iki inkılabın pahasına binler şehit verse idik ucuz sayacaktık. Lâkin itaatinizden binde bir cüzü feda olunsa bize pek çok pahalı düşer. Zira itaatinizin tenakusu, ukde-i hayatiye veya hararet-i gariziyenin tenakusu gibi mevti intac eder.",
+      "order_index": 373
+    },
+    {
+      "type": "paragraph",
+      "text": "Tarih-i âlem serâpa şehadet ediyor ki asker neferatının siyasete müdahaleleri, devletçe ve milletçe müthiş zararları intac etmiştir. Elbette hamiyet-i İslâmiyeniz, böyle sizi uhdenizde olan hayat-ı İslâmiyeye zarar verecek noktalardan men’edecektir. Siyaseti düşünenler, sizin kuvve-i müfekkireniz hükmünde olan zabitleriniz ve ulü’l-emrlerinizdir.",
+      "order_index": 374
+    },
+    {
+      "type": "paragraph",
+      "text": "Bazen zarar zannettiğiniz şey, siyaseten büyük zararı def’ettiği için ayn-ı maslahat olduğundan, zabitleriniz tecrübeleri hasebiyle görüyor ve size emir veriyor. Sizde de tereddüt caiz değildir. Ef’al-i hususiye-i nâmeşrua, sanattaki maharet ve hazakate münafî değildir ve sanatı menfur etmez. Nasıl ki bir tabib-i hâzık ve bir mühendis-i mahirin nâmeşru harekâtı için onların tıp ve hendeselerinden mani-i istifade olamaz. Kezalik fenn-i harpte tecrübeli ve o sanatta mahir ve hamiyet-i İslâmiye ile münevverü’l-fikir zabitlerinizin bazılarının cüz’î nâmeşru harekâtı için itaatinize halel vermeyiniz. Zira fenn-i harp, mühim bir sanattır.",
+      "order_index": 375
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem de sizin kıyamınız; şeriat-ı garra, –yed-i beyza-i Musa gibi– sair sebeb-i tefrika ve teşettüt-ü efkâr olan cemiyetleri bel’ etti. Sahirleri de secdeye mecbur eyledi. Harekâtınız bu inkılabda ilaç gibi idi ki fazla olsa zehire münkalib olur. Ve hayat-ı İslâmiyeyi fena bir hastalığa hedef eder. Hem de himmetinizle bizdeki istibdat şimdilik mahvoldu. Lâkin terakkiler için Avrupa’nın istibdad-ı manevîsi altındayız. Nihayet derecede ihtiyat ve itidal lâzımdır.",
+      "order_index": 376
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın şeriat-ı garra!.. Yaşasın askerler!..",
+      "order_index": 377
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 378
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 379
+    },
+    {
+      "type": "paragraph",
+      "text": "Cemiyetlere İhtar-ı Mühim",
+      "order_index": 380
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi cemiyetimiz bir hükûmet-i meşruta-i meşruadır. Hükûmet içinde hükûmetin zararı görüldü. Seviye-i irfan bir olmadığından fırkalarda husumet, taassup ve taraftarlık intac eder. Tabiî o kuvveti istimal ile siyasete karışacak ve umumî idarede herkesçe lezzetli olan tahakkümatı yapacak sahib-i ağraza müsait bir zemin olur. Binaenaleyh bizdeki fırkaların şimdiki hal ile devamı gayet muzırdır. Lâkin bir şirkette veya münevverü’l-fikir ve bîtaraf mabeyninde tenkidat-ı siyasetten veya ehl-i ilim mabeyninde nasihat ve irşaddan menfaat olabilir. Şimdi hükûmet-i meşruamız asıl büyük cemiyettir.",
+      "order_index": 381
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî",
+      "order_index": 382
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 383
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikat Çekirdekleri",
+      "order_index": 384
+    },
+    {
+      "type": "paragraph",
+      "text": "Otuz beş sene evvel tabedilen “Hakikat Çekirdekleri” namındaki risaleden vecizelerdir.",
+      "order_index": 385
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 386
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖينَ وَ الصَّلَاةُ وَ السَّلَامُ عَلٰى سَيِّدِنَا مُحَمَّدٍ وَ عَلٰى اٰلِهٖ وَ صَحْبِهٖ اَجْمَعٖينَ",
+      "order_index": 387
+    },
+    {
+      "type": "paragraph",
+      "text": "1- Marîz bir asrın, hasta bir unsurun, alîl bir uzvun reçetesi; ittiba-ı Kur’an’dır.",
+      "order_index": 388
+    },
+    {
+      "type": "paragraph",
+      "text": "2- Azametli bahtsız bir kıtanın, şanlı tâli’siz bir devletin, değerli sahipsiz bir kavmin reçetesi; ittihad-ı İslâm’dır.",
+      "order_index": 389
+    },
+    {
+      "type": "paragraph",
+      "text": "3- Arzı ve bütün nücum ve şümusu tesbih taneleri gibi kaldıracak ve çevirecek kuvvetli bir ele mâlik olmayan kimse, kâinatta dava-yı halk ve iddia-yı icad edemez. Zira her şey, her şeyle bağlıdır.",
+      "order_index": 390
+    },
+    {
+      "type": "paragraph",
+      "text": "4- Haşirde bütün zevi’l-ervahın ihyası, mevt-âlûd bir nevm ile kışta uyuşmuş bir sineğin baharda ihya ve inşasından kudrete daha ağır olamaz. Zira kudret-i ezeliye zatiyedir; tagayyür edemez, acz tahallül edemez, avâik tedahül edemez. Onda meratib olamaz, her şey ona nisbeten birdir.",
+      "order_index": 391
+    },
+    {
+      "type": "paragraph",
+      "text": "5- Sivrisineğin gözünü halk eden, güneşi dahi o halk etmiştir.",
+      "order_index": 392
+    },
+    {
+      "type": "paragraph",
+      "text": "6- Pirenin midesini tanzim eden, manzume-i şemsiyeyi de o tanzim etmiştir.",
+      "order_index": 393
+    },
+    {
+      "type": "paragraph",
+      "text": "7- Kâinatın telifinde öyle bir i’caz var ki bütün esbab-ı tabiiye farz-ı muhal olarak muktedir birer fâil-i muhtar olsalar yine kemal-i acz ile o i’caza karşı secde ederek سُبْحَانَكَ لَا قُدْرَةَ لَنَا اِنَّكَ اَنْتَ الْعَزٖيزُ الْحَكٖيمُ diyeceklerdir.",
+      "order_index": 394
+    },
+    {
+      "type": "paragraph",
+      "text": "8- Esbaba tesir-i hakiki verilmemiş, vahdet ve celal öyle ister. Lâkin mülk cihetinde esbab dest-i kudrete perde olmuştur, izzet ve azamet öyle ister. Tâ nazar-ı zahirde dest-i kudret, mülk cihetindeki umûr-u hasise ile mübaşir görülmesin.",
+      "order_index": 395
+    },
+    {
+      "type": "paragraph",
+      "text": "9- Mahall-i taalluk-u kudret olan her şeydeki melekûtiyet ciheti şeffaftır, nezihtir.",
+      "order_index": 396
+    },
+    {
+      "type": "paragraph",
+      "text": "10- Âlem-i şehadet, avâlimü’l-guyub üstünde tenteneli bir perdedir.",
+      "order_index": 397
+    },
+    {
+      "type": "paragraph",
+      "text": "11- Bir noktayı tam yerinde icad etmek için bütün kâinatı icad edecek bir kudret-i gayr-ı mütenahî lâzımdır. Zira şu kitab-ı kebir-i kâinatın her bir harfinin, bâhusus zîhayat her bir harfinin, her bir cümlesine müteveccih birer yüzü, nâzır birer gözü vardır.",
+      "order_index": 398
+    },
+    {
+      "type": "paragraph",
+      "text": "12- Meşhurdur ki: Hilâl-i iyd’e bakarlardı. Kimse bir şey görmedi. İhtiyar bir zat yemin ederek “Hilâli gördüm.” dedi. Halbuki gördüğü hilâl değil, kirpiğinin takavvüs etmiş beyaz bir kılı idi. O kıl nerede? Kamer nerede? Harekât-ı zerrat nerede? Fâil-i teşkil-i enva nerede?",
+      "order_index": 399
+    },
+    {
+      "type": "paragraph",
+      "text": "13- Tabiat, misalî bir matbaadır, tâbi’ (طابع) değil; nakıştır, nakkaş değil; kabildir, fâil değil; mistardır, masdar değil; nizamdır, nâzım değil; kanundur, kudret değil; şeriat-ı iradiyedir, hakikat-i hariciye değil.",
+      "order_index": 400
+    },
+    {
+      "type": "paragraph",
+      "text": "14- Fıtrat-ı zîşuur olan vicdandaki incizab ve cezbe, bir hakikat-i cazibedarın cezbesiyledir.",
+      "order_index": 401
+    },
+    {
+      "type": "paragraph",
+      "text": "15- Fıtrat yalan söylemez. Bir çekirdekteki meyelan-ı nümüv der: “Ben sümbülleneceğim, meyve vereceğim.” Doğru söyler. Yumurtada bir meyelan-ı hayat var. Der: “Piliç olacağım.” Biiznillah olur, doğru söyler. Bir avuç su, meyelan-ı incimad ile der: “Fazla yer tutacağım.” Metin demir onu yalan çıkaramaz, sözünün doğruluğu demiri parçalar. Şu meyelanlar, iradeden gelen evamir-i tekviniyenin tecellileridir, cilveleridir.",
+      "order_index": 402
+    },
+    {
+      "type": "paragraph",
+      "text": "16- Karıncayı emirsiz, arıyı ya’subsuz bırakmayan kudret-i ezeliye; elbette beşeri nebisiz bırakmaz. Âlem-i şehadetteki insanlara inşikak-ı kamer, bir mu’cize-i Ahmediye (asm) olduğu gibi mi’rac dahi âlem-i melekûttaki melaike ve ruhaniyata karşı bir mu’cize-i kübra-yı Ahmediyedir ki nübüvvetinin velayeti bu keramet-i bâhire ile ispat edilmiştir. Ve o parlak zat, berk ve kamer gibi melekûtta şule-feşan olmuştur.",
+      "order_index": 403
+    },
+    {
+      "type": "paragraph",
+      "text": "17- Kelime-i şehadetin iki kelâmı birbirine şahittir. Birincisi, ikincisine bürhan-ı limmîdir; ikincisi, birincisine bürhan-ı innîdir.",
+      "order_index": 404
+    },
+    {
+      "type": "paragraph",
+      "text": "18- Hayat, kesrette bir çeşit tecelli-i vahdettir. Onun için ittihada sevk eder. Hayat, bir şeyi her şeye mâlik eder.",
+      "order_index": 405
+    },
+    {
+      "type": "paragraph",
+      "text": "19- Ruh, bir kanun-u zîvücud-u haricîdir, bir namus-u zîşuurdur. Sabit ve daim fıtrî kanunlar gibi ruh dahi âlem-i emirden, sıfat-ı iradeden gelmiş; kudret ona vücud-u hissî giydirmiştir. Bir seyyale-i latîfeyi o cevhere sadef etmiştir. Mevcud ruh, makul kanunun kardeşidir. İkisi hem daimî hem âlem-i emirden gelmişlerdir. Şayet nevilerdeki kanunlara kudret-i ezeliye bir vücud-u haricî giydirseydi ruh olurdu. Eğer ruh, vücudu çıkarsa şuuru başından indirse yine lâyemut bir kanun olurdu.",
+      "order_index": 406
+    },
+    {
+      "type": "paragraph",
+      "text": "20- Ziya ile mevcudat görünür, hayat ile mevcudatın varlığı bilinir. Her birisi birer keşşaftır.",
+      "order_index": 407
+    },
+    {
+      "type": "paragraph",
+      "text": "21- Nasraniyet, ya intıfa veya ıstıfa edip İslâmiyet’e karşı terk-i silah edecektir. Nasraniyet birkaç defa yırtıldı, protestanlığa geldi. Protestanlık da yırtıldı, tevhide yaklaştı. Tekrar yırtılmaya hazırlanıyor. Ya intıfa bulup sönecek veya hakiki Nasraniyet’in esasını câmi’ olan hakaik-i İslâmiyeyi karşısında görecek, teslim olacaktır.",
+      "order_index": 408
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırr-ı azîme, Hazret-i Peygamber aleyhissalâtü vesselâm işaret etmiştir ki: “Hazret-i İsa nâzil olup gelecek, ümmetimden olacak, şeriatımla amel edecektir.”",
+      "order_index": 409
+    },
+    {
+      "type": "paragraph",
+      "text": "22- Cumhur-u avamı, bürhandan ziyade, me’hazdeki kudsiyet imtisale sevk eder.",
+      "order_index": 410
+    },
+    {
+      "type": "paragraph",
+      "text": "23- Şeriatın yüzde doksanı –zaruriyat ve müsellemat-ı diniye– birer elmas sütundur. Mesail-i içtihadiye-i hilafiye, yüzde ondur. Doksan elmas sütun, on altının himayesine verilmez.",
+      "order_index": 411
+    },
+    {
+      "type": "paragraph",
+      "text": "Kitaplar ve içtihadlar Kur’an’a dürbün olmalı, âyine olmalı; gölge ve vekil olmamalı!",
+      "order_index": 412
+    },
+    {
+      "type": "paragraph",
+      "text": "24- Her müstaid; nefsi için içtihad edebilir, teşri edemez.",
+      "order_index": 413
+    },
+    {
+      "type": "paragraph",
+      "text": "25- Bir fikre davet, cumhur-u ulemanın kabulüne vâbestedir. Yoksa davet bid’attır, reddedilir.",
+      "order_index": 414
+    },
+    {
+      "type": "paragraph",
+      "text": "26- İnsan fıtraten mükerrem olduğundan hakkı arıyor. Bazen bâtıl eline gelir, hak zannederek koynunda saklar. Hakikati kazarken ihtiyarsız dalalet başına düşer, hakikat zannederek kafasına giydiriyor.",
+      "order_index": 415
+    },
+    {
+      "type": "paragraph",
+      "text": "27- Birbirinden eşeff ve eltaf, kudretin çok âyineleri vardır; sudan havaya, havadan esîre, esîrden âlem-i misale, âlem-i misalden âlem-i ervaha, hattâ zamana, fikre tenevvü ediyor. Hava âyinesinde bir kelime milyonlar kelimat olur. Kalem-i kudret, şu sırr-ı tenasülü pek acib istinsah ediyor. İn’ikas, ya hüviyeti veya hüviyetle mahiyeti tutar. Kesifin timsalleri birer meyyit-i müteharriktir. Bir ruh-u nuraninin kendi âyinelerinde olan timsalleri, birer hayy-ı murtabıttır; aynı olmasa da gayrı da değildir.",
+      "order_index": 416
+    },
+    {
+      "type": "paragraph",
+      "text": "28- Şems, hareket-i mihveriyesiyle silkinse meyveleri düşmez; silkinmezse yemişleri olan seyyarat düşüp dağılacaktır.",
+      "order_index": 417
+    },
+    {
+      "type": "paragraph",
+      "text": "29- Nur-u fikir, ziya-yı kalp ile ışıklanıp mezcolmazsa zulmettir, zulüm fışkırır. Gözün muzlim nehar-ı ebyazı, muzii (Hâşiye[10]) leyle-i süveyda ile mezcolmazsa basarsız olduğu gibi fikret-i beyzada süveyda-i kalp bulunmazsa basîretsizdir.",
+      "order_index": 418
+    },
+    {
+      "type": "paragraph",
+      "text": "30- İlimde iz’an-ı kalp olmazsa cehildir. İltizam başka, itikad başkadır.",
+      "order_index": 419
+    },
+    {
+      "type": "paragraph",
+      "text": "31- Bâtıl şeyleri iyice tasvir, safi zihinleri idlâldir.",
+      "order_index": 420
+    },
+    {
+      "type": "paragraph",
+      "text": "32- Âlim-i mürşid, koyun olmalı; kuş olmamalı. Koyun, kuzusuna süt; kuş, yavrusuna kay verir.",
+      "order_index": 421
+    },
+    {
+      "type": "paragraph",
+      "text": "33- Bir şeyin vücudu, bütün eczasının vücuduna vâbestedir. Ademi ise bir cüzünün ademiyle olduğundan zayıf adam, iktidarını göstermek için tahrip taraftarı oluyor, müsbet yerine menfîce hareket ediyor.",
+      "order_index": 422
+    },
+    {
+      "type": "paragraph",
+      "text": "34- Desatir-i hikmet, nevamis-i hükûmetle; kavanin-i hak, revabıt-ı kuvvetle imtizaç etmezse cumhur-u avamda müsmir olamaz.",
+      "order_index": 423
+    },
+    {
+      "type": "paragraph",
+      "text": "35- Zulüm, başına adalet külahını geçirmiş; hıyanet, hamiyet libasını giymiş; cihada bağy ismi takılmış, esarete hürriyet namı verilmiş. Ezdad, suretlerini mübadele etmişler.",
+      "order_index": 424
+    },
+    {
+      "type": "paragraph",
+      "text": "36- Menfaat üzerine dönen siyaset, canavardır.",
+      "order_index": 425
+    },
+    {
+      "type": "paragraph",
+      "text": "37- Aç canavara karşı tahabbüb; merhametini değil, iştihasını açar. Hem de diş ve tırnağının kirasını da ister.",
+      "order_index": 426
+    },
+    {
+      "type": "paragraph",
+      "text": "38- Zaman gösterdi ki cennet ucuz değil, cehennem dahi lüzumsuz değil.",
+      "order_index": 427
+    },
+    {
+      "type": "paragraph",
+      "text": "39- Dünyaca havas tanınan insanlardaki meziyet, sebeb-i tevazu ve mahviyet iken tahakküm ve tekebbüre sebep olmuştur. Fukaranın aczi, avamın fakrı sebeb-i merhamet ve ihsan iken esaret ve mahkûmiyetlerine müncer olmuştur.",
+      "order_index": 428
+    },
+    {
+      "type": "paragraph",
+      "text": "40- Bir şeyde mehasin ve şeref hasıl oldukça havassa peşkeş ederler, seyyiat olsa avama taksim ederler.",
+      "order_index": 429
+    },
+    {
+      "type": "paragraph",
+      "text": "41- Gaye-i hayal olmazsa veyahut nisyan veya tenasi edilse, ezhan enelere dönüp etrafında gezerler.",
+      "order_index": 430
+    },
+    {
+      "type": "paragraph",
+      "text": "42- Bütün ihtilalat ve fesadın asıl madeni ve bütün ahlâk-ı rezilenin muharrik ve menbaı tek iki kelimedir:",
+      "order_index": 431
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Kelime: “Ben tok olsam, başkası açlıktan ölse bana ne!”",
+      "order_index": 432
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Kelime: “İstirahatim için zahmet çek; sen çalış, ben yiyeyim.”",
+      "order_index": 433
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci kelimenin ırkını kesecek tek bir devası var ki o da vücub-u zekâttır.",
+      "order_index": 434
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci kelimenin devası, hurmet-i ribadır.",
+      "order_index": 435
+    },
+    {
+      "type": "paragraph",
+      "text": "Adalet-i Kur’aniye âlem kapısında durup ribaya “Yasaktır, girmeye hakkın yoktur!” der. Beşer bu emri dinlemedi, büyük bir sille yedi. Daha müthişini yemeden dinlemeli!",
+      "order_index": 436
+    },
+    {
+      "type": "paragraph",
+      "text": "43- Devletler, milletler muharebesi; tabakat-ı beşer muharebesine terk-i mevki ediyor. Zira beşer esir olmak istemediği gibi ecîr olmak da istemez.",
+      "order_index": 437
+    },
+    {
+      "type": "paragraph",
+      "text": "44- Tarîk-ı gayr-ı meşru ile bir maksadı takip eden, galiben maksudunun zıddıyla ceza görür. Avrupa muhabbeti gibi gayr-ı meşru muhabbetin âkıbetinin mükâfatı, mahbubun gaddarane adâvetidir.",
+      "order_index": 438
+    },
+    {
+      "type": "paragraph",
+      "text": "45- Maziye, mesaibe kader nazarıyla ve müstakbele, maâsiye teklif noktasında bakmak lâzımdır. Cebir ve İtizal, burada barışırlar.",
+      "order_index": 439
+    },
+    {
+      "type": "paragraph",
+      "text": "46- Çaresi bulunan şeyde acze, çaresi bulunmayan şeyde cez’a iltica etmemek gerektir.",
+      "order_index": 440
+    },
+    {
+      "type": "paragraph",
+      "text": "47- Hayatın yarası iltiyam bulur. İzzet-i İslâmiyenin ve namusun ve izzet-i milliyenin yaraları pek derindir.",
+      "order_index": 441
+    },
+    {
+      "type": "paragraph",
+      "text": "48- Öyle zaman olur ki bir kelime bir orduyu batırır, bir gülle otuz milyonun mahvına sebep olur. (Hâşiye[11]) Öyle şerait tahtında olur ki küçük bir hareket, insanı a’lâ-yı illiyyîne çıkarır ve öyle hal olur ki küçük bir fiil, insanı esfel-i safilîne indirir.",
+      "order_index": 442
+    },
+    {
+      "type": "paragraph",
+      "text": "49- Bir tane sıdk, bir harman yalanları yakar. Bir tane hakikat, bir harman hayalata müreccahtır.",
+      "order_index": 443
+    },
+    {
+      "type": "arabic_block",
+      "text": "لَا يَلْزَمُ مِنْ لُزُومِ صِدْقِ كُلِّ قَوْلٍ قَوْلُ كُلِّ صِدْقٍ",
+      "order_index": 444
+    },
+    {
+      "type": "paragraph",
+      "text": "Her sözün doğru olmalı fakat her doğruyu söylemek, doğru değil.",
+      "order_index": 445
+    },
+    {
+      "type": "paragraph",
+      "text": "50- Güzel gören, güzel düşünür. Güzel düşünen, hayatından lezzet alır.",
+      "order_index": 446
+    },
+    {
+      "type": "paragraph",
+      "text": "51- İnsanları canlandıran emeldir, öldüren yeistir.",
+      "order_index": 447
+    },
+    {
+      "type": "paragraph",
+      "text": "52- Eskiden beri i’la-yı kelimetullah ve beka-yı istiklaliyet-i İslâm için farz-ı kifaye-i cihadı deruhte ile kendini, yekvücud olan âlem-i İslâm’a fedaya vazifedar ve hilafete bayraktar görmüş olan bu devlet-i İslâmiyenin felaketi; âlem-i İslâm’ın saadet ve hürriyet-i müstakbelesiyle telafi edilecektir. Zira şu musibet, mâye-i hayatımız olan uhuvvet-i İslâmiyenin inkişafını hârikulâde tacil etti.",
+      "order_index": 448
+    },
+    {
+      "type": "paragraph",
+      "text": "53- Hristiyanlığın malı olmayan mehasin-i medeniyeti ona mal etmek ve İslâmiyet’in düşmanı olan tedenniyi ona dost göstermek, feleğin ters dönmesine delildir.",
+      "order_index": 449
+    },
+    {
+      "type": "paragraph",
+      "text": "54- Paslanmış bîhemta bir elmas, daima mücella cama müreccahtır.",
+      "order_index": 450
+    },
+    {
+      "type": "paragraph",
+      "text": "55- Her şeyi maddede arayanların akılları gözlerindedir, göz ise maneviyatta kördür.",
+      "order_index": 451
+    },
+    {
+      "type": "paragraph",
+      "text": "56- Mecaz, ilmin elinden cehlin eline düşse hakikate inkılab eder; hurafata kapı açar.",
+      "order_index": 452
+    },
+    {
+      "type": "paragraph",
+      "text": "57- İhsan-ı İlahîden fazla ihsan, ihsan değildir. Her şeyi, olduğu gibi tavsif etmek gerektir.",
+      "order_index": 453
+    },
+    {
+      "type": "paragraph",
+      "text": "58- Şöhret, insanın malı olmayanı dahi insana mal eder.",
+      "order_index": 454
+    },
+    {
+      "type": "paragraph",
+      "text": "59- Hadîs, maden-i hayat ve mülhim-i hakikattir.",
+      "order_index": 455
+    },
+    {
+      "type": "paragraph",
+      "text": "60- İhya-yı din, ihya-yı millettir. Hayat-ı din, nur-u hayattır.",
+      "order_index": 456
+    },
+    {
+      "type": "paragraph",
+      "text": "61- Nev-i beşere rahmet olan Kur’an ancak umumun, lâekall ekseriyetin saadetini tazammun eden bir medeniyeti kabul eder. Medeniyet-i hazıra, beş menfî esas üzerine teessüs etmiştir:",
+      "order_index": 457
+    },
+    {
+      "type": "paragraph",
+      "text": "1- Nokta-i istinadı kuvvettir. O ise şe’ni tecavüzdür.",
+      "order_index": 458
+    },
+    {
+      "type": "paragraph",
+      "text": "2- Hedef-i kasdı menfaattir. O ise şe’ni tezahümdür.",
+      "order_index": 459
+    },
+    {
+      "type": "paragraph",
+      "text": "3- Hayatta düsturu cidaldir. O ise şe’ni tenazudur.",
+      "order_index": 460
+    },
+    {
+      "type": "paragraph",
+      "text": "4- Kitleler mabeynindeki rabıtası, âheri yutmakla beslenen unsuriyet ve menfî milliyettir. O ise şe’ni müthiş tesadümdür.",
+      "order_index": 461
+    },
+    {
+      "type": "paragraph",
+      "text": "5- Cazibedar hizmeti, heva ve hevesi teşci ve arzularını tatmindir. O heva ise insanın mesh-i manevîsine sebeptir.",
+      "order_index": 462
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeriat-ı Ahmediyenin (asm) tazammun ettiği ve emrettiği medeniyet ise:",
+      "order_index": 463
+    },
+    {
+      "type": "paragraph",
+      "text": "Nokta-i istinadı, kuvvete bedel haktır ki şe’ni, adalet ve tevazündür.",
+      "order_index": 464
+    },
+    {
+      "type": "paragraph",
+      "text": "Hedefi de menfaat yerine fazilettir ki şe’ni, muhabbet ve tecazübdür.",
+      "order_index": 465
+    },
+    {
+      "type": "paragraph",
+      "text": "Cihetü’l-vahdet de unsuriyet ve milliyet yerine, rabıta-i dinî ve vatanî ve sınıfîdir ki şe’ni, samimi uhuvvet ve müsalemet ve haricin tecavüzüne karşı, yalnız tedafüdür.",
+      "order_index": 466
+    },
+    {
+      "type": "paragraph",
+      "text": "Hayatta, düstur-u cidal yerine düstur-u teavündür ki şe’ni, ittihat ve tesanüddür.",
+      "order_index": 467
+    },
+    {
+      "type": "paragraph",
+      "text": "Heva yerine hüdadır ki şe’ni, insaniyeten terakki ve ruhen tekâmüldür.",
+      "order_index": 468
+    },
+    {
+      "type": "paragraph",
+      "text": "Mevcudiyetimizin hâmisi olan İslâmiyet’ten elini gevşetme, dört el ile sarıl; yoksa mahvolursun.",
+      "order_index": 469
+    },
+    {
+      "type": "paragraph",
+      "text": "62- Musibet-i âmme, ekseriyetin hatasından terettüp eder. Musibet cinayetin neticesi, mükâfatın mukaddimesidir.",
+      "order_index": 470
+    },
+    {
+      "type": "paragraph",
+      "text": "63- Şehit kendini hay bilir. Feda ettiği hayatı, sekeratı tatmadığından gayr-ı münkatı’ ve bâki görüyor. Yalnız daha nezih olarak buluyor.",
+      "order_index": 471
+    },
+    {
+      "type": "paragraph",
+      "text": "64- Adalet-i mahza-i Kur’aniye; bir masumun hayatını ve kanını, hattâ umum beşer için de olsa heder etmez. İkisi nazar-ı kudrette bir olduğu gibi nazar-ı adalette de birdir. Hodgâmlık ile öyle insan olur ki ihtirasına mani her şeyi, hattâ elinden gelirse dünyayı harap ve nev-i beşeri mahvetmek ister.",
+      "order_index": 472
+    },
+    {
+      "type": "paragraph",
+      "text": "65- Havf ve zaaf, tesirat-ı hariciyeyi teşci eder.",
+      "order_index": 473
+    },
+    {
+      "type": "paragraph",
+      "text": "66- Muhakkak maslahat, mevhum mazarrata feda edilmez.",
+      "order_index": 474
+    },
+    {
+      "type": "paragraph",
+      "text": "67- Şimdilik İstanbul siyaseti, İspanyol hastalığı gibi bir hastalıktır.",
+      "order_index": 475
+    },
+    {
+      "type": "paragraph",
+      "text": "68- Deli adama “İyisin! İyisin!” denilse iyileşmesi, iyi adama “Fenasın! Fenasın!” denilse fenalaşması nadir değildir.",
+      "order_index": 476
+    },
+    {
+      "type": "paragraph",
+      "text": "69- Düşmanın düşmanı, düşman kaldıkça dosttur; düşmanın dostu, dost kaldıkça düşmandır.",
+      "order_index": 477
+    },
+    {
+      "type": "paragraph",
+      "text": "70- İnadın işi, şeytan birisine yardım etse “Melektir.” der, rahmet okur; muhalifinde melek görse “Libasını değiştirmiş şeytandır.” der, lanet eder.",
+      "order_index": 478
+    },
+    {
+      "type": "paragraph",
+      "text": "71- Bir derdin dermanı, başka bir derde zehir olabilir. Bir derman, haddinden geçse dert getirir.",
+      "order_index": 479
+    },
+    {
+      "type": "arabic_block",
+      "text": "72- اَلْجَمْعِيَّةُ الَّتٖى فٖيهَا التَّسَانُدُ اٰلَةٌ خُلِقَتْ لِتَحْرٖيكِ السَّكَنَاتِ وَالْجَمَاعَةُ الَّتٖى فٖيهَا التَّحَاسُدُ اٰلَةٌ خُلِقَتْ لِتَسْكٖينِ الْحَرَكَاتِ",
+      "order_index": 480
+    },
+    {
+      "type": "paragraph",
+      "text": "73- Cemaatte vâhid-i sahih olmazsa; cem’ ve zam, kesir darbı gibi küçültür. (Hâşiye[12])",
+      "order_index": 481
+    },
+    {
+      "type": "paragraph",
+      "text": "74- Adem-i kabul, kabul-ü ademle iltibas olunur. Adem-i kabul; adem-i delil-i sübut, onun delilidir. Kabul-ü adem, delil-i adem ister. Biri şek, biri inkârdır.",
+      "order_index": 482
+    },
+    {
+      "type": "paragraph",
+      "text": "75- İmanî meselelerde şüphe, bir delili, hattâ yüz delili atsa da medlûle îras-ı zarar edemez. Çünkü binler delil var.",
+      "order_index": 483
+    },
+    {
+      "type": "paragraph",
+      "text": "76- Sevad-ı a’zama ittiba edilmeli. Ekseriyete ve sevad-ı a’zama dayandığı zaman, lâkayt Emevîlik, en nihayet Ehl-i Sünnet cemaatine girdi. Adetçe ekalliyette kalan salabetli Alevîlik, en nihayet az bir kısmı Râfızîliğe dayandı.",
+      "order_index": 484
+    },
+    {
+      "type": "paragraph",
+      "text": "77- Hakta ittifak, ehakta ihtilaf olduğundan bazen hak, ehaktan ehaktır; hasen, ahsenden ahsendir. Herkes kendi mesleğine “Hüve hak” demeli “Hüve’l-hak” dememeli. Veyahut “Hüve hasen” demeli “Hüve’l-hasen” dememeli.",
+      "order_index": 485
+    },
+    {
+      "type": "paragraph",
+      "text": "78- Cennet olmazsa cehennem tazip etmez.",
+      "order_index": 486
+    },
+    {
+      "type": "paragraph",
+      "text": "79- Zaman ihtiyarlandıkça Kur’an gençleşiyor, rumuzu tavazzuh ediyor. Nur, nâr göründüğü gibi; bazen şiddet-i belâgat dahi mübalağa görünür.",
+      "order_index": 487
+    },
+    {
+      "type": "paragraph",
+      "text": "80- Hararetteki meratib, bürûdetin tahallülü iledir; hüsündeki derecat, kubhun tedahülü iledir. Kudret-i ezeliye zatiyedir, lâzımedir, zaruriyedir; acz tahallül edemez, meratib olamaz, her şey ona nisbeten müsavidir.",
+      "order_index": 488
+    },
+    {
+      "type": "paragraph",
+      "text": "81- Şemsin feyz-i tecellisi olan timsali, denizin sathında ve denizin katresinde aynı hüviyeti gösteriyor.",
+      "order_index": 489
+    },
+    {
+      "type": "paragraph",
+      "text": "82- Hayat, cilve-i tevhiddendir, müntehası da vahdet kesbediyor.",
+      "order_index": 490
+    },
+    {
+      "type": "paragraph",
+      "text": "83- İnsanlarda veli, cumada dakika-i icabe, ramazanda Leyle-i Kadir, esma-i hüsnada ism-i a’zam, ömürde ecel meçhul kaldıkça; sair efrad dahi kıymettar kalır, ehemmiyet verilir. Yirmi sene mübhem bir ömür, nihayeti muayyen bin sene ömre müreccahtır.",
+      "order_index": 491
+    },
+    {
+      "type": "paragraph",
+      "text": "84- Dünyada masiyetin âkıbeti, ikab-ı uhrevîye delildir.",
+      "order_index": 492
+    },
+    {
+      "type": "paragraph",
+      "text": "85- Rızık, hayat kadar kudret nazarında ehemmiyetlidir. Kudret çıkarıyor, kader giydiriyor, inayet besliyor. Hayat; muhassal-ı mazbuttur, görünür. Rızık; gayr-ı muhassal, tedricî münteşirdir, düşündürür. Açlıktan ölmek yoktur. Zira bedende şahm vesaire suretinde iddihar olunan gıda bitmeden evvel ölüyor. Demek, terk-i âdetten neş’et eden maraz öldürür; rızıksızlık değil.",
+      "order_index": 493
+    },
+    {
+      "type": "paragraph",
+      "text": "86- Âkilü’l-lahm vahşilerin helâl rızıkları, hayvanatın hadsiz cenazeleridir hem rûy-i zemini temizliyorlar hem rızıklarını buluyorlar.",
+      "order_index": 494
+    },
+    {
+      "type": "paragraph",
+      "text": "87- Bir lokma kırk paraya, diğer bir lokma on kuruşa. Ağza girmeden ve boğazdan geçtikten sonra birdirler. Yalnız, birkaç saniye ağızda bir fark var. Müfettiş ve kapıcı olan kuvve-i zaikayı taltif ve memnun etmek için birden ona gitmek, israfın en sefihidir.",
+      "order_index": 495
+    },
+    {
+      "type": "paragraph",
+      "text": "88- Lezaiz çağırdıkça sanki yedim demeli. Sanki yedimi düstur yapan “Sanki Yedim” namındaki bir mescidi yiyebilirdi, yemedi.",
+      "order_index": 496
+    },
+    {
+      "type": "paragraph",
+      "text": "89- Eskiden ekser İslâm aç değildi, tereffühe ihtiyar vardı. Şimdi açtır, telezzüze ihtiyar yoktur.",
+      "order_index": 497
+    },
+    {
+      "type": "paragraph",
+      "text": "90- Muvakkat lezzetten ziyade, muvakkat eleme tebessüm etmeli; hoş geldin demeli. Geçmiş lezaiz, “Âh vâh!” dedirtir. “Âh!” müstetir bir elemin tercümanıdır. Geçmiş âlâm “Oh!” dedirtir. O “Oh!” muzmer bir lezzet ve nimetin muhbiridir.",
+      "order_index": 498
+    },
+    {
+      "type": "paragraph",
+      "text": "91- Nisyan dahi bir nimettir. Yalnız her günün âlâmını çektirir, müterakimi unutturur.",
+      "order_index": 499
+    },
+    {
+      "type": "paragraph",
+      "text": "92- Derece-i hararet gibi her musibette bir derece-i nimet vardır. Daha büyüğünü düşünüp, küçükteki derece-i nimeti görüp Allah’a şükretmeli. Yoksa isti’zam ile üflense şişer, merak edilse ikileşir; kalpteki misali, hayali, hakikate inkılab eder; o da kalbi döver.",
+      "order_index": 500
+    },
+    {
+      "type": "paragraph",
+      "text": "93- Her adam için heyet-i içtimaiyede görmek ve görünmek için mertebe denilen bir penceresi vardır. O pencere kamet-i kıymetinden yüksek ise tekebbür ile tetavül edecek; eğer kamet-i kıymetinden aşağı ise tevazu ile takavvüs edecek ve eğilecek, tâ o seviyede görsün ve görünsün.",
+      "order_index": 501
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsanda büyüklüğün mikyası; küçüklüktür, yani tevazudur. Küçüklüğün mizanı; büyüklüktür, yani tekebbürdür.",
+      "order_index": 502
+    },
+    {
+      "type": "paragraph",
+      "text": "94- Zayıfın kavîye karşı izzet-i nefsi, kavîde tekebbür olur; kavînin zayıfa karşı tevazuu, zayıfta tezellül olur. Bir ulü’l-emrin makamındaki ciddiyeti, vakardır; mahviyeti, zillettir. Hanesindeki ciddiyeti, kibirdir; mahviyeti tevazudur.",
+      "order_index": 503
+    },
+    {
+      "type": "paragraph",
+      "text": "Fert mütekellim-i vahde olsa müsamahası ve fedakârlığı amel-i salihtir; mütekellim-i maalgayr olsa hıyanettir, amel-i talihtir. Bir şahıs, kendi namına hazm-ı nefis eder, tefahur edemez; millet namına tefahur eder, hazm-ı nefis edemez.",
+      "order_index": 504
+    },
+    {
+      "type": "paragraph",
+      "text": "95- Tertib-i mukaddimatta “tefviz” tembelliktir, terettüb-ü neticede tevekküldür. Semere-i sa’yine ve kısmetine rıza; kanaattir, meyl-i sa’yi kuvvetlendirir. Mevcuda iktifa, dûn-himmetliktir.",
+      "order_index": 505
+    },
+    {
+      "type": "paragraph",
+      "text": "96- Evamir-i şer’iyeye karşı itaat ve isyan olduğu gibi evamir-i tekviniyeye karşı da itaat ve isyan vardır. Birincisinde mükâfat ve mücazatın ekseri âhirette; ikincisinde, ağlebi dünyada olur.",
+      "order_index": 506
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, sabrın mükâfatı zaferdir, ataletin mücazatı sefalettir, sa’yin sevabı servettir, sebatın mükâfatı galebedir. Müsavatsız adalet, adalet değildir.",
+      "order_index": 507
+    },
+    {
+      "type": "paragraph",
+      "text": "97- Temasül tezadın sebebidir. Tenasüp tesanüdün esasıdır. Sıgar-ı nefis tekebbürün menbaıdır. Zaaf gururun madenidir. Acz muhalefetin menşeidir. Merak ilmin hocasıdır.",
+      "order_index": 508
+    },
+    {
+      "type": "paragraph",
+      "text": "98- Kudret-i Fâtıra, ihtiyaç ile hususan açlık ihtiyacıyla; başta insan bütün hayvanatı gemlendirip nizama sokmuş. Hem âlemi herc ü mercden halâs edip hem ihtiyacı medeniyete üstad ederek, terakkiyatı temin etmiştir.",
+      "order_index": 509
+    },
+    {
+      "type": "paragraph",
+      "text": "99- Sıkıntı, sefahetin muallimidir. Yeis, dalalet-i fikrin; zulmet-i kalp, ruh sıkıntısının menbaıdır.",
+      "order_index": 510
+    },
+    {
+      "type": "arabic_block",
+      "text": "100- اِذَا تَاَنَّثَ الرِّجَالُ بِالتَّهَوُّسِ تَرَجَّلَ النِّسَاءُ بِالتَّوَقُّحِ",
+      "order_index": 511
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir meclis-i ihvana güzel bir karı girdikçe riya, rekabet, hased damarı intibah eder. Demek inkişaf-ı nisvandan, medeni beşerde ahlâk-ı seyyie inkişaf eder.",
+      "order_index": 512
+    },
+    {
+      "type": "paragraph",
+      "text": "101- Beşerin şimdiki seyyiat-âlûd hırçın ruhunda, mütebessim küçük cenazeler olan suretlerin rolü ehemmiyetlidir.",
+      "order_index": 513
+    },
+    {
+      "type": "paragraph",
+      "text": "102- Memnû heykel, ya bir zulm-ü mütehaccir ya bir heves-i mütecessim veya bir riya-yı mütecessiddir.",
+      "order_index": 514
+    },
+    {
+      "type": "paragraph",
+      "text": "103- İslâmiyet’in müsellematını tamamen imtisal ettiği cihetle bihakkın daire-i dâhiline girmiş zatta; meylü’t-tevsi, meylü’t-tekemmüldür. Lâkaytlık ile haricde sayılan zatta meylü’t-tevsi, meylü’t-tahriptir. Fırtına ve zelzele zamanında; değil içtihad kapısını açmak, belki pencerelerini de kapatmak maslahattır.",
+      "order_index": 515
+    },
+    {
+      "type": "paragraph",
+      "text": "Lâübaliler ruhsatlarla okşanılmaz; azîmetlerle, şiddetle ikaz edilir.",
+      "order_index": 516
+    },
+    {
+      "type": "paragraph",
+      "text": "104- Bîçare hakikatler, kıymetsiz ellerde kıymetsiz olur.",
+      "order_index": 517
+    },
+    {
+      "type": "paragraph",
+      "text": "105- Küremiz hayvana benziyor, âsâr-ı hayat gösteriyor. Acaba yumurta kadar küçülse bir nevi hayvan olmayacak mıdır? Veya bir mikrop küremiz kadar büyüse ona benzemeyecek midir? Hayatı varsa ruhu da vardır. Âlem, insan kadar küçülse yıldızları zerrat ve cevahir-i ferdiye hükmüne geçse; o da bir hayvan-ı zîşuur olmayacak mıdır? Allah’ın böyle çok hayvanları var.",
+      "order_index": 518
+    },
+    {
+      "type": "paragraph",
+      "text": "106- Şeriat ikidir:",
+      "order_index": 519
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Âlem-i asgar olan insanın ef’al ve ahvalini tanzim eden ve sıfat-ı kelâmdan gelen bildiğimiz şeriattır.",
+      "order_index": 520
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: İnsan-ı ekber olan âlemin harekât ve sekenatını tanzim eden, sıfat-ı iradeden gelen şeriat-ı kübra-yı fıtriyedir ki bazen yanlış olarak tabiat tesmiye edilir. Melaike bir ümmet-i azîmedir ki sıfat-ı iradeden gelen ve şeriat-ı fıtriye denilen evamir-i tekviniyesinin hamelesi ve mümessili ve mütemessilleridirler.",
+      "order_index": 521
+    },
+    {
+      "type": "arabic_block",
+      "text": "107- اِذَا وَازَنْتَ بَيْنَ حَوَاسِّ حُوَيْنَةٍ خُرْدَبٖينِيَّةٍ وَحَوَاسِّ الْاِنْسَانِ تَرٰى سِرًّا عَجٖيبًا اِنَّ الْاِنْسَانَ كَصُورَةِ يٰسٓ كُتِبَ فٖيهَا سُورَةُ يٰسٓ",
+      "order_index": 522
+    },
+    {
+      "type": "paragraph",
+      "text": "108- Maddiyyunluk manevî taundur ki beşere şu müthiş sıtmayı tutturdu, gazab-ı İlahîye çarptırdı. Telkin ve tenkit kabiliyeti tevessü ettikçe o taun da tevessü eder.",
+      "order_index": 523
+    },
+    {
+      "type": "paragraph",
+      "text": "109- En bedbaht en muzdarip en sıkıntılı, işsiz adamdır. Zira atalet, ademin biraderzadesidir; sa’y, vücudun hayatı ve hayatın yakazasıdır.",
+      "order_index": 524
+    },
+    {
+      "type": "paragraph",
+      "text": "110- Ribanın kap ve kapıları olan bankaların nef’i, beşerin fenası olan gâvurlara ve onların en zalimlerine ve bunların en sefihlerinedir. Âlem-i İslâm’a zarar-ı mutlaktır, mutlak beşerin refahı nazara alınmaz. Zira gâvur harbî ve mütecaviz ise hürmetsiz ve ismetsizdir.",
+      "order_index": 525
+    },
+    {
+      "type": "paragraph",
+      "text": "111- Cumada hutbe; zaruriyat ve müsellematı tezkirdir, nazariyatı talim değildir. İbare-i Arabiye daha ulvi ihtar eder. Hadîs ile âyet muvazene edilse görünür ki beşerin en beliği dahi âyetin belâgatına yetişemez, ona benzemez.",
+      "order_index": 526
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 527
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 528
+    },
+    {
+      "type": "paragraph",
+      "text": "Hutbe-i Şamiye’nin İkinci Zeyli’nin İkinci Kısmı",
+      "order_index": 529
+    },
+    {
+      "type": "paragraph",
+      "text": "Sure-i İhlas’ın Bir Remzi",
+      "order_index": 530
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 531
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖينَ وَ الصَّلَاةُ وَ السَّلَامُ عَلٰى مُحَمَّدٍ سَيِّدِ الْمُرْسَلٖينَ",
+      "order_index": 532
+    },
+    {
+      "type": "paragraph",
+      "text": "قُلْ هُوَ ıtlak ile tayini, tevhid-i şuhuda işarettir.",
+      "order_index": 533
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَىْ: لَا مَشْهُودَ بِنَظَرِ الْحَقٖيقَةِ اِلَّا هُوَ",
+      "order_index": 534
+    },
+    {
+      "type": "paragraph",
+      "text": "اَللّٰهُ اَحَدٌ tevhid-i uluhiyete tasrihtir.",
+      "order_index": 535
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَىْ: لَا مَعْبُودَ اِلَّا هُوَ",
+      "order_index": 536
+    },
+    {
+      "type": "paragraph",
+      "text": "اَللّٰهُ الصَّمَدُ tevhid-i rububiyete remizdir.",
+      "order_index": 537
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَىْ: لَا خَالِقَ وَلَا رَبَّ اِلَّا هُوَ",
+      "order_index": 538
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve tevhid-i ceberuta telvihtir.",
+      "order_index": 539
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَىْ: لَا قَيُّومَ وَلَا غَنِىَّ عَلَى الْاِطْلَاقِ اِلَّا هُوَ",
+      "order_index": 540
+    },
+    {
+      "type": "paragraph",
+      "text": "لَمْ يَلِدْ tevhid-i celale telmihtir. Şirkin envaını reddeder. Yani tagayyür veya tecezzi veya tenasül eden, ilah olamaz. Ukûl-ü aşere veya melaike veya İsa veya Üzeyr’in velediyetini dava eden şirkleri reddeder.",
+      "order_index": 541
+    },
+    {
+      "type": "paragraph",
+      "text": "وَلَمْ يُولَدْ ispat-ı ezeliyet ile tevhiddir. Esbab-perest, nücum-perest, sanem-perest, tabiat-perestin şirkini reddeder. Yani hâdis veya bir asıldan münfasıl veya bir maddeden mütevellid olan ilah olamaz.",
+      "order_index": 542
+    },
+    {
+      "type": "paragraph",
+      "text": "وَلَمْ يَكُنْ لَهُ كُفُوًا اَحَدٌ câmi’ bir tevhiddir. Yani zatında, sıfatında, ef’alinde naziri, şeriki, şebihi yoktur.",
+      "order_index": 543
+    },
+    {
+      "type": "arabic_block",
+      "text": "لَيْسَ كَمِثْلِهٖ شَىْءٌ وَ هُوَ السَّمٖيعُ الْبَصٖيرُ",
+      "order_index": 544
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu sure, bütün enva-ı şirki reddeder. Ve yedi meratib-i tevhidi tazammun eden altı cümlesi mütenaticedir. Her biri ötekinin hem neticesi hem bürhanıdır.",
+      "order_index": 545
+    },
+    {
+      "type": "paragraph",
+      "text": "Muvahhid-i ekber ve tevhidin bürhan-ı muazzamı olan kâinat, değil yalnız erkân ve azası belki bütün hüceyratı, belki bütün zerratı birer lisan-ı zâkir-i tevhid olarak bu büyük bürhanın sadâ-yı bülendine iştirak ederek hep birden لَا اِلٰهَ اِلَّا اللّٰهُ diye mevlevîvari zikrediyorlar.",
+      "order_index": 546
+    },
+    {
+      "type": "paragraph",
+      "text": "Tevhidin bürhan-ı nâtıkı olan Kur’an’ın sinesine kulağını yapıştırırsan işiteceksin ki kalbinde derinden derine gayet ulvi, nihayet derecede ciddi, gayet samimi, nihayet derecede munis ve mukni ve bürhan ile mücehhez bir sadâ-yı semavî işiteceksin ki: اَللّٰهُ لَا اِلٰهَ اِلَّا هُوَ zikrini tekrar ediyor.",
+      "order_index": 547
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, şu bürhan-ı münevverin altı ciheti de şeffaftır. Üstünde sikke-i i’caz, içinde nur-u hidayet, altında mantık ve delil, sağında aklı istintak; solunda vicdanı istişhad; önünde hayır, hedefinde saadet-i dâreyn, nokta-i istinadı vahy-i mahzdır. Vehmin ne haddi var, girebilsin!",
+      "order_index": 548
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 549
+    },
+    {
+      "type": "paragraph",
+      "text": "Vicdanın anâsır-ı erbaası ve ruhun dört havassı olan irade, zihin, his, latîfe-i Rabbaniye, her birinin bir gayatü’l-gayatı var:",
+      "order_index": 550
+    },
+    {
+      "type": "paragraph",
+      "text": "İradenin ibadetullahtır.",
+      "order_index": 551
+    },
+    {
+      "type": "paragraph",
+      "text": "Zihnin marifetullahtır.",
+      "order_index": 552
+    },
+    {
+      "type": "paragraph",
+      "text": "Hissin muhabbetullahtır.",
+      "order_index": 553
+    },
+    {
+      "type": "paragraph",
+      "text": "Latîfenin müşahedetullahtır.",
+      "order_index": 554
+    },
+    {
+      "type": "paragraph",
+      "text": "Takva denilen ibadet-i kâmile, dördünü tazammun eder. Şeriat şunları hem tenmiye hem tehzib hem bu gayatü’l-gayata sevk eder.",
+      "order_index": 555
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 556
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer icaddaki vasıta hakiki olsaydı ve hakiki tesir verilseydi hem bir şuur-u küllî verilmek lâzım idi hem de bizzarure eserde itkan-ı kemal-i sanat muhtelif olacaktı. Halbuki en âdiden en âlîye, en küçükten en büyüğe itkan; derece-i kemalde, mahiyetin kameti nisbetindedir. Demek Müessir-i Hakiki’den bazı karib, bazı baîd, kısmen vasıtasız, kısmen vasıta ile kısmen vesait ile değildir. İnsanın ihtiyarî eserindeki adem-i kemal; cebri nefiy, ihtiyarı ispat eder.",
+      "order_index": 557
+    },
+    {
+      "type": "paragraph",
+      "text": "Cây-ı dikkattir ki: Cüz’î bir ihtiyarın tavassutu ile eser-i akıl bir insan şehri, intizamca semere-i vahiy bir arı kovanındaki cemaate yetişmez. Ve arıların meşher-i sanatı bir petek hüceyrat şehri; bir nar ve (cilnar) gülnardan intizamca geridir. Demek, kâinattaki cazibe-i umumiye hangi kalemden akmışsa cüz-i lâyetecezzadaki küçücük cazibeler o kalemin noktalarıdır.",
+      "order_index": 558
+    },
+    {
+      "type": "paragraph",
+      "text": "İslâmiyet der: لَا خَالِقَ اِلَّا هُوَ Hem vesait ve esbabı, müessir-i hakiki olarak kabul etmez. Vasıtaya mana-yı harfî nazarıyla bakar. Akide-i tevhid ve vazife-i teslim ve tefviz öyle ister. Tahrif sebebiyle şimdiki Hristiyanlık esbab ve vesaiti müessir bilir, mana-yı ismî nazarıyla bakar. Akide-i velediyet ve fikr-i ruhbaniyet öyle ister, öyle sevk eder. Onlar azizlerine mana-yı ismiyle birer menba-ı feyz ve –güneşin ziyasından bir fikre göre istihale etmiş lambanın nuru gibi– birer maden-i nur nazarıyla bakıyorlar. Biz ise evliyaya mana-yı harfiyle yani âyine güneşin ziyasını neşrettiği gibi birer ma’kes-i tecelli nazarıyla bakıyoruz. (Hâşiye[13])",
+      "order_index": 559
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu sırdandır ki bizde sülûk tevazudan başlar, mahviyetten geçer, fena fillah makamını görür. Gayr-ı mütenahî makamatta sülûka başlar. Ene ve nefs-i emmare kibriyle, gururuyla söner. Hakiki Hristiyanlık değil belki tahrif ve felsefe ile sarsılmış Hristiyan’da, ene levazımatıyla kuvvetleşir. Enesi kuvvetli, müteşahhıs, rütbeli, makam sahibi bir adam, Hristiyan olsa mütesallib olur. Fakat Müslüman olsa lâkayt olur.",
+      "order_index": 560
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 561
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuvveden fiile geçmek olan faaliyetteki şedit ve mütenevvi lezzet, tagayyür-ü âlemin mâyesi ve kanun-u tekâmülün nüvesidir. Zindandan bostana çıkmak, daneden sümbüle geçmek ayn-ı lezzettir. Faaliyet istihaleyi tazammun etse lezzet tezayüd ederek taşar. Vazifedeki külfeti taşıttıran o tattır. Zîşuura nisbeten gayetteki kemal, ne kadar cazibedarsa “Lâmüdrike”ye nisbeten nefs-i faaliyet öyle de cazibedardır, sa’ye sevk eder. Bu sırdandır ki rahat zahmettir, zahmet rahattır.",
+      "order_index": 562
+    },
+    {
+      "type": "paragraph",
+      "text": "Hırs ile acûliyet, sebeb-i haybettir. Zira müretteb basamaklar gibi fıtrattaki tertibe, teselsüle tatbik-i hareket etmediğinden harîs muvaffak olamaz. Olsa da tertib-i ca’lîsi bir basamak kadar seyr-i fıtrîden kısa olduğundan yeise düşüp gaflet bastıktan sonra kapı açılır.",
+      "order_index": 563
+    },
+    {
+      "type": "paragraph",
+      "text": "Allah kalbin bâtınını iman ve marifet ve muhabbeti için yaratmıştır. Kalbin zahirini, sair şeylere müheyya etmiştir. Cinayetkâr hırs kalbi deler, sanemleri içine idhal eder. Allah darılır, maksudunun aksiyle mücazat eder.",
+      "order_index": 564
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 565
+    },
+    {
+      "type": "paragraph",
+      "text": "Hırs cihetiyle siyaset efkârını, İslâmiyet akaidinin yerlerine kadar îsal eden herifler şan ve şeref değil belki şeyn ü şenaate mazhar oldular. Nefsanî aşklardaki felaketler, haybetler bu sırdandır. O çeşit âşıkların bütün divanları birer feryad-ı matemdir.",
+      "order_index": 566
+    },
+    {
+      "type": "paragraph",
+      "text": "Gece kalben nevmi merak edersin, bakiyyesini de kaçırıp uyanık kalırsın.",
+      "order_index": 567
+    },
+    {
+      "type": "paragraph",
+      "text": "İki dilenci: Biri musırr-ı muhteris, biri müstağni-i muhteriz… İkincisine vermeyi daha ziyade arzu etmekliğin, şu geniş kanunun bir numunesidir.",
+      "order_index": 568
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 569
+    },
+    {
+      "type": "paragraph",
+      "text": "En müthiş maraz ve musibetimiz, cerbeze ve gurura istinad eden tenkittir. Tenkidi eğer insaf işletirse hakikati rendeçler. Eğer gurur istihdam etse tahrip eder, parçalar. O müthişin en müthişidir ki akaid-i imaniyeye ve mesail-i diniyeye girse. Zira iman hem tasdik hem iz’an hem iltizam hem teslim hem manevî imtisaldir. Şu tenkit; imtisali, iltizamı, iz’anı kırar. Tasdikte de bîtaraf kalır.",
+      "order_index": 570
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu zaman-ı tereddüt ve evhamda, iz’an ve iltizamı tenmiye ve takviye eden nurani sıcak kalplerden çıkan müsbet efkârı ve müşevvik beyanatı, hüsn-ü zan ile temaşa etmek gerektir. “Bîtarafane muhakeme” dedikleri şey, muvakkat bir dinsizliktir. Yeniden mühtedi ve müşteri olan yapar.",
+      "order_index": 571
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَالَّذٖى عَلَّمَ الْقُرْاٰنَ الْمُعْجِزَ اِنَّ نَظَرَ الْبَشٖيرِ النَّذٖيرِ وَبَصٖيرَتَهُ النَّقَّادَةَ اَدَقُّ وَاَجَلَّ وَاَجْلٰى وَاَنْفَذُ مِنْ اَنْ يَلْتَبِسَ اَوْ تَشْتَبِهَ عَلَيْهِ الْحَقٖيقَةُ بِالْخَيَالِ وَاِنَّ مَسْلَكَهُ الْحَقَّ اَغْنٰى وَاَنْزَهُ وَاَرْفَعُ مِنْ اَنْ يُدَلِّسَ اَوْ يُغَالِطَ عَلَى النَّاسِ",
+      "order_index": 572
+    },
+    {
+      "type": "paragraph",
+      "text": "Zira hakikatbîn göz aldanmaz, hakperest kalp aldatmaz.",
+      "order_index": 573
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 574
+    },
+    {
+      "type": "paragraph",
+      "text": "Gıybetin Derece-i Şenaati",
+      "order_index": 575
+    },
+    {
+      "type": "arabic_block",
+      "text": "Kur’an der: اَيُحِبُّ اَحَدُكُمْ اَنْ يَاْكُلَ لَحْمَ اَخٖيهِ مَيْتًا",
+      "order_index": 576
+    },
+    {
+      "type": "paragraph",
+      "text": "Altı kelime ile altı derece şiddetle gıybeti takbih ediyor. Yani hemze ile der:",
+      "order_index": 577
+    },
+    {
+      "type": "paragraph",
+      "text": "Aklına bak, böyle şeye cevaz verir mi? Müstakim aklın yoksa kalbine bak! Böyle şeye muhabbet eder mi? Selim kalbin yoksa vicdanına bak, böyle dişinle kendi etini parçalamak gibi hayat-ı içtimaiyeyi bozmaya rıza gösterir mi? Vicdan-ı içtimaiyen olmazsa insaniyetine bak, böyle canavarvari iftirasa iştiha gösterir mi? Manen insaniyetin olmazsa rikkat-i cinsiye ve karabet-i rahmiyene bak! Böyle kendi belini kıracak harekete meyleder mi? Rikkat-i cinsiyen olmazsa hiç sağlam tabiatın yok mu ki ölüyü dişlerinle parçalıyorsun.",
+      "order_index": 578
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek akıl, kalp, vicdan, insaniyet, rikkat-i cinsiye, tabiat, şeriat nazarında gıybet; merduddur, matruddur.",
+      "order_index": 579
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 580
+    },
+    {
+      "type": "arabic_block",
+      "text": "اِنَّ الْاِنْسَانَ الَّذٖى لَا يُدْرِكُ سِرَّ التَّعَاوُنِ لَهُوَ اَجْمَدُ مِنَ الْحَجَرِ اِذْ مِنَ الْحَجَرِ مَا يَتَقَوَّسُ لِمُعَاوَنَةِ اَخٖيهِ اِذِ الْحَجَرُ مَعَ حَجَرِيَّتِهٖ اِذَا خَرَجَ مِنْ يَدِ الْمُعَقِّدِ الْبَانٖى فِى السَّقْفِ الْمُحَدَّبِ يَمٖيلُ وَ يَخْضَعُ رَاْسَهُ لِيُمَاسَّ رَاْسَ اَخٖيهِ لِيَتَمَاسَكَا عَنِ السُّقُوطِ",
+      "order_index": 581
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani kubbelerde taşlar, baş başa vururlar tâ düşmesinler.",
+      "order_index": 582
+    },
+    {
+      "type": "paragraph",
+      "text": "Cüz-i lâyetecezza zerresinden insana, insandan şems-i şümusa müteselsil mahrutî silsilenin vasatındaki cevher-i ferîdi, insan-ı mükerremdir.",
+      "order_index": 583
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 584
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsanın meşhur havassından başka havassı vardır. Zaika gibi bir hiss-i sâika hem bir hiss-i şâika vardır. Hem insanda gayr-ı meş’ur hisler çoktur.",
+      "order_index": 585
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 586
+    },
+    {
+      "type": "paragraph",
+      "text": "Bazen arzu, fikir suretini giyer. Şahs-ı muhteris, arzu-yu nefsaniyesini fikir zanneder.",
+      "order_index": 587
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 588
+    },
+    {
+      "type": "paragraph",
+      "text": "Garibdir ki bazı adam pis bir çamura düşer, kendini aldatmak için misk ü amber diye yüzüne gözüne bulaştırır.",
+      "order_index": 589
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 590
+    },
+    {
+      "type": "paragraph",
+      "text": "Şehit velidir. Cihad farz-ı kifaye iken farz-ı ayn olmuştur. Belki muzaaf bir farz-ı ayn hükmüne geçmiştir. Hac ve zekât gibi cihadda da niyetin tasarrufu azdır. Hattâ adem-i niyet dahi asıl nokta-i nazarından niyet hükmündedir. Demek zıdd-ı niyet, yakînen tebeyyün etmezse cihad, şehadet-i hakikiyeyi intac eder. Zira vücub tezauf etse taayyün eder. İhtiyarı tazammun eden niyetin tesiri azalır. Şu günahkâr millette, birdenbire on binler evliya inkişaf ve tezahür etse az bir mükâfat değildir.",
+      "order_index": 591
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 592
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizde biri fâsık olsa galiben ahlâksız ve vicdansız olur. Zira arzu-yu masiyet, vicdandaki imanın sadâsını susturmakla inkişaf edebilir. Demek vicdanını ve maneviyatını sarsmadan, istihfaf etmeden tam ihtiyar ile şerri işlemez. Onun için İslâmiyet; fâsıkı hain bilir, şehadetini reddeder. Mürtedi zehir bilir, idam eder. Hristiyan bir zimmîyi ve kâfir muahidi ibka eder. Hanefî mezhebi zimmînin şehadetini kabul eder.",
+      "order_index": 593
+    },
+    {
+      "type": "paragraph",
+      "text": "İcra-yı adalet, din namına olmalı tâ akıl ve kalp ve ruh müteessir olsunlar, imtisal etsinler. Yoksa yalnız vehim müteessir olur. Yalnız hükûmetin cezasından korkar eğer tahakkuk etse. Nâsın itabından çekinir eğer tebeyyün etse.",
+      "order_index": 594
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 595
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir cani yüzünden, çok masumları ihtiva eden bir gemi batırılmaz. Bir cani sıfat yüzünden, çok evsaf-ı masumeyi muhtevi bir mü’mine adâvet edilmez.",
+      "order_index": 596
+    },
+    {
+      "type": "paragraph",
+      "text": "Lâsiyyema sebeb-i muhabbet olan iman ve tevhid, Cebel-i Uhud gibidir. Sebeb-i adâvet olan şeyler, çakıl taşları gibidir. Çakıl taşlarını Cebel-i Uhud’dan daha ağır telakki etmek ne kadar akılsızlıksa mü’minin mü’mine adâveti, o kadar kalpsizliktir. Mü’minlerde adâvet, yalnız acımak manasında olabilir.",
+      "order_index": 597
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: İman muhabbeti, İslâmiyet uhuvveti istilzam eder.",
+      "order_index": 598
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْكَلَامُ كَالْمَالِ لَا يَجُوزُ فٖيهِ الْاِسْرَافُ",
+      "order_index": 599
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 600
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 601
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ",
+      "order_index": 602
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ اَبَدًا دَائِمًا",
+      "order_index": 603
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 604
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Hem geçmiş hem gelecek hem maddî hem manevî bayramlarınızı ve mübarek gecelerinizi, bütün ruh u canımla tebrik ve ettiğiniz ibadet ve duaların makbuliyetini rahmet-i İlahiyeden bütün ruh u canımızla niyaz edip isteyip o mübarek dualara âmin deriz.",
+      "order_index": 605
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Hem çok defa manevî hem çok cihetlerden ehemmiyetli iki suallerine mahremce cevap vermeye mecbur oldum.",
+      "order_index": 606
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Sualleri: Ne için eskide hürriyetin başında siyasetle hararetli meşgul oluyordun? Bu kırk seneye yakındır ki bütün bütün terk ettin?",
+      "order_index": 607
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Siyaset-i beşeriyenin en esaslı bir kanun-u esasîsi olan: “Selâmet-i millet için fertler feda edilir. Cemaatin selâmeti için eşhas kurban edilir. Vatan için her şey feda edilir.” diye bütün nev-i beşerdeki şimdiye kadar dehşetli cinayetler bu kanunun sû-i istimalinden neş’et ettiğini kat’iyen bildim.",
+      "order_index": 608
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu kanun-u esasî-yi beşeriye, bir hadd-i muayyenesi olmadığı için çok sû-i istimale yol açılmış. İki harb-i umumî, bu gaddar kanun-u esasînin sû-i istimalinden çıkıp bin sene beşerin terakkiyatını zîr ü zeber ettiği gibi on cani yüzünden doksan masumun mahvına fetva verdi. Bir menfaat-i umumî perdesi altında şahsî garazlar, bir cani yüzünden bir kasabayı harap etti. Risale-i Nur bu hakikati bazı mecmua ve müdafaatında ispat ettiği için onlara havale ediyorum.",
+      "order_index": 609
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte beşeriyet siyasetlerinin bu gaddar kanun-u esasîsine karşı arş-ı a’zamdan gelen Kur’an-ı Mu’cizü’l-Beyan’daki bu gelen kanun-u esasîyi buldum. O kanunu da şu âyet ifade ediyor:",
+      "order_index": 610
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَ لَا تَزِرُ وَازِرَةٌ وِزْرَ اُخْرٰى ۞ مَنْ قَتَلَ نَفْسًا بِغَيْرِ نَفْسٍ اَوْ فَسَادٍ فِى الْاَرْضِ فَكَاَنَّمَا قَتَلَ النَّاسَ جَمٖيعًا",
+      "order_index": 611
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani bu iki âyet, bu esası ders veriyor ki: “Bir adamın cinayetiyle başkalar mes’ul olmaz. Hem bir masum, rızası olmadan bütün insana da feda edilmez. Kendi ihtiyarıyla, kendi rızasıyla kendini feda etse o fedakârlık bir şehadettir ki o başka meseledir.” diye hakiki adalet-i beşeriyeyi tesis ediyor. Bunun tafsilatını da Risale-i Nur’a havale ediyorum.",
+      "order_index": 612
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Sual: Sen eskide Şark’taki bedevî aşâirde seyahat ettiğin vakit, onları medeniyet ve terakkiyata çok teşvik ediyordun. Neden kırk seneye yakındır, medeniyet-i hazıradan “mimsiz” diyerek hayat-ı içtimaiyeden çekildin, inzivaya sokuldun?",
+      "order_index": 613
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Medeniyet-i hazıra-i Garbiye, semavî kanun-u esasîlere muhalif olarak hareket ettiği için seyyiatı hasenatına; hataları, zararları faydalarına racih geldi. Medeniyetteki maksud-u hakiki olan istirahat-i umumiye ve saadet-i hayat-ı dünyeviye bozuldu. İktisat, kanaat yerine israf ve sefahet ve sa’y ve hizmet yerine tembellik ve istirahat meyli galebe çaldığından, bîçare beşeri hem gayet fakir hem gayet tembel eyledi.",
+      "order_index": 614
+    },
+    {
+      "type": "paragraph",
+      "text": "Semavî Kur’an’ın kanun-u esasîsi لَيْسَ لِلْاِنْسَانِ اِلَّا مَا سَعٰى ۞ كُلُوا وَ اشْرَبُوا وَ لَا تُسْرِفُوا ferman-ı esasîsiyle: “Beşerin saadet-i hayatiyesi, iktisat ve sa’ye gayrette olduğunu ve onunla beşerin havas, avam tabakası birbiriyle barışabilir.” diye Risale-i Nur bu esası izahına binaen kısa bir iki nükte söyleyeceğim:",
+      "order_index": 615
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Bedevîlikte beşer üç dört şeye muhtaç oluyordu. O üç dört hâcatını tedarik etmeyen on adette ancak ikisi idi. Şimdiki Garp medeniyet-i zalime-i hazırası, sû-i istimalat ve israfat ve hevesatı tehyic ve havaic-i gayr-ı zaruriyeyi, zarurî hâcatlar hükmüne getirip görenek ve tiryakilik cihetiyle şimdiki o medeni insanın tam muhtaç olduğu dört hâcatı yerine, yirmi şeye bu zamanda muhtaç oluyor. O yirmi hâcatı tam helâl bir tarzda tedarik edecek, yirmiden ancak ikisi olabilir. On sekizi muhtaç hükmünde kalır.",
+      "order_index": 616
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek, bu medeniyet-i hazıra insanı çok fakir ediyor. O ihtiyaç cihetinde beşeri zulme, başka haram kazanmaya sevk etmiş. Bîçare avam ve havas tabakasını daima mübarezeye teşvik etmiş. Kur’an’ın kanun-u esasîsi olan “vücub-u zekât ve hurmet-i riba” vasıtasıyla avamın havassa karşı itaatini ve havassın avama karşı şefkatini temin eden o kudsî kanunu bırakıp burjuvaları zulme, fukaraları isyana sevk etmeye mecbur etmiş. İstirahat-i beşeriyeyi zîr ü zeber etti!",
+      "order_index": 617
+    }
+  ]
+}

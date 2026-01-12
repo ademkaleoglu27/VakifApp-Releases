@@ -37,7 +37,13 @@ export const RisaleSectionListScreen = () => {
     const renderItem = ({ item }: { item: RisaleSection }) => (
         <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate('RisaleReader', { sectionId: item.id, sectionTitle: item.title, workTitle })}
+            onPress={() => navigation.navigate('RisaleReader', {
+                mode: 'section',
+                bookId: workId,
+                sectionId: item.id,
+                sectionTitle: item.title,
+                workTitle
+            })}
         >
             <Text style={styles.title}>{item.title}</Text>
         </TouchableOpacity>

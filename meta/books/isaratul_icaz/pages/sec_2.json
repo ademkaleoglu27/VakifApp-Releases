@@ -1,0 +1,15 @@
+{
+  "id": "sec_1",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Birinci Nükte: Bidayet-i zuhur-u İslâmiyet’te muannid ve kitapsız kâfirlerin ve nifaka giren eski dinlerin münafıkları gibi aynen bu zaman-ı âhirde bir naziresi çıkacağını, ders-i Kur’anîden gelen bir sünuhat ile Eski Said hissetmiş. Münafıklar hakkındaki âyetleri izah ile en ince nükteleri beyan etmiş fakat mütalaacıların zihnini bulandırmamak için mahiyet-i mesleklerini ve istinad noktalarını mücmel bırakmış, izah etmemiş.",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Zaten Risale-i Nur’un mesleği odur ki zihinlerde bir iz bırakmamak için sair ulemaya muhalif olarak, muarızların şüphelerini zikretmeden öyle bir cevap verir ki daha vehim ve vesveseye yer kalmaz. Eski Said bu tefsirde Risale-i Nur gibi, zihinleri bulandırmamak için yalnız belâgat noktasında lafzın delâletine ve işaratına ehemmiyet vermiş.",
+      "order_index": 1
+    }
+  ]
+}

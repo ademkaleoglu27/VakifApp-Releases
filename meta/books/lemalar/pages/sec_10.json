@@ -1,0 +1,25 @@
+{
+  "id": "sec_9",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Birinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Resul-i Ekrem aleyhissalâtü vesselâmın ümmetine karşı kemal-i şefkat ve merhametini ifade ediyor. Evet, rivayet-i sahiha ile mahşerin dehşetinden herkes hattâ enbiya dahi “nefsî, nefsî” dedikleri zaman, Resul-i Ekrem aleyhissalâtü vesselâm “ümmetî, ümmetî” diye re’fet ve şefkatini göstereceği gibi yeni dünyaya geldiği zaman ehl-i keşfin tasdikiyle validesi onun münâcatından “ümmetî, ümmetî” işitmiş.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bütün tarih-i hayatı ve neşrettiği şefkatkârane mekârim-i ahlâk, kemal-i şefkat ve re’fetini gösterdiği gibi; ümmetinin hadsiz salavatına hadsiz ihtiyaç göstermekle, ümmetinin bütün saadetleriyle kemal-i şefkatinden alâkadar olduğunu göstermekle hadsiz bir şefkatini göstermiş.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu derece şefkatli ve merhametli bir rehberin sünnet-i seniyesine müraat etmemek, ne derece nankörlük ve vicdansızlık olduğunu kıyas eyle.",
+      "order_index": 3
+    }
+  ]
+}

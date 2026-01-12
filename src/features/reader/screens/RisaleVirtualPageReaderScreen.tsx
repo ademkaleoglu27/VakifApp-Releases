@@ -40,6 +40,7 @@ import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
  * 7. Inline footnotes (collapsed, lazy fetch, fail-soft)
  * 8. TOC accessed via SectionList screen (not in reader)
  * 
+<<<<<<< Updated upstream
  * NEW IN V24.0 (Reading Progress - LOCKED):
  * - Book-based lastRead persistence (no cross-book bleed)
  * - Throttled writes (3s, only on page change)
@@ -50,6 +51,9 @@ import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
  * 
  * LOCKED: Do not modify Virtual Page, Hydration, Zoom, Footnote,
  *         or Reading Progress logic without extensive testing.
+=======
+ * LOCKED: Do not modify Virtual Page, Hydration, Zoom, or Footnote logic.
+>>>>>>> Stashed changes
  * ─────────────────────────────────────────────────────────────
  */
 

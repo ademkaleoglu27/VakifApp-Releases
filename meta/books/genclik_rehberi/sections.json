@@ -1,0 +1,93 @@
+[
+  {
+    "id": "intro",
+    "work_id": "genclik_rehberi",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "genclik_rehberi",
+    "title": "Birinci Söz",
+    "order_index": 2,
+    "type": "main"
+  },
+  {
+    "id": "sec_2",
+    "work_id": "genclik_rehberi",
+    "title": "Onuncu Söz’ün Mühim Bir Zeyli ve Lâhikasının Birinci Parçası",
+    "order_index": 3,
+    "type": "main"
+  },
+  {
+    "id": "sec_3",
+    "work_id": "genclik_rehberi",
+    "title": "Birinci Nükte: Muhabbet, çendan ihtiyarî değil. Fakat ihtiyar ile muhabbetin yüzü, bir mahbubdan diğer bir mahbuba dönebilir. Mesela, bir mahbubun çirkinliğini göstermekle veyahut asıl lâyık-ı muhabbet olan diğer bir mahbuba perde veya âyine olduğunu göstermekle muhabbetin yüzü, mecazî mahbubdan hakiki mahbuba çevrilebilir.",
+    "order_index": 4,
+    "type": "main"
+  },
+  {
+    "id": "sec_4",
+    "work_id": "genclik_rehberi",
+    "title": "İkinci Nükte: Ta’dad ettiğin sevdiklerini, sevme demiyoruz. Belki onları Cenab-ı Hakk’ın hesabına ve onun muhabbeti namına sev, deriz.",
+    "order_index": 5,
+    "type": "main"
+  },
+  {
+    "id": "sec_5",
+    "work_id": "genclik_rehberi",
+    "title": "Üçüncü Nükte: Cenab-ı Hakk’ın esmasına karşı olan muhabbetin tabakatı var: Sâbıkan beyan ettiğimiz gibi; bazen âsâra muhabbet suretiyle esmayı sever. Bazen esmayı, kemalât-ı İlahiyenin unvanları olduğu cihetle sever. Bazen insan, câmiiyet-i mahiyet cihetiyle hadsiz ihtiyacat noktasında esmaya muhtaç ve müştak olur ve o ihtiyaçla sever.",
+    "order_index": 6,
+    "type": "main"
+  },
+  {
+    "id": "sec_6",
+    "work_id": "genclik_rehberi",
+    "title": "Dördüncü Nükte:",
+    "order_index": 7,
+    "type": "main"
+  },
+  {
+    "id": "sec_7",
+    "work_id": "genclik_rehberi",
+    "title": "İkinci kısım; lisan ile kalp ile dua etmektir. Eli yetişmediği bir kısım metalibi istemektir. Bunun en mühim ciheti, en güzel gayesi, en tatlı meyvesi şudur ki: “Dua eden adam anlar ki birisi var; onun hatırat-ı kalbini işitir, her şeye eli yetişir, her bir arzusunu yerine getirebilir, aczine merhamet eder, fakrına meded eder.”",
+    "order_index": 8,
+    "type": "main"
+  },
+  {
+    "id": "sec_8",
+    "work_id": "genclik_rehberi",
+    "title": "Birinci Nükte",
+    "order_index": 9,
+    "type": "main"
+  },
+  {
+    "id": "sec_9",
+    "work_id": "genclik_rehberi",
+    "title": "İkinci Nükte",
+    "order_index": 10,
+    "type": "main"
+  },
+  {
+    "id": "sec_10",
+    "work_id": "genclik_rehberi",
+    "title": "Üçüncü Nükte",
+    "order_index": 11,
+    "type": "main"
+  },
+  {
+    "id": "sec_11",
+    "work_id": "genclik_rehberi",
+    "title": "Dördüncü Nükte",
+    "order_index": 12,
+    "type": "main"
+  },
+  {
+    "id": "sec_12",
+    "work_id": "genclik_rehberi",
+    "title": "Beşinci Nükte",
+    "order_index": 13,
+    "type": "main"
+  }
+]

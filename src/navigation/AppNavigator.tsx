@@ -58,7 +58,7 @@ import { RisaleSectionListScreen } from '@/features/library/screens/RisaleSectio
 import { HatimDuasiScreen } from '@/features/library/screens/HatimDuasiScreen';
 import { QuranPdfScreen } from '@/features/quran/screens/QuranPdfScreen';
 import { RisaleReaderAdapter } from '@/features/risale/screens/RisaleReaderAdapter';
-import { RisaleReaderScreen } from '@/features/library/screens/RisaleReaderScreen';
+// DELETED: RisaleReaderScreen (Legacy FlashList reader removed)
 import { RisaleSearchScreen } from '@/features/library/screens/RisaleSearchScreen';
 import { RisaleMyNotesScreen } from '@/features/library/screens/RisaleMyNotesScreen';
 import { ReadingHistoryScreen } from '@/features/risale/screens/ReadingHistoryScreen';
@@ -112,7 +112,7 @@ export type RootStackParamList = {
     RisalePdfReader: { bookId?: string; title: string; uri: string; assetSource?: any };
 
     RisaleSectionList: { workId: number; workTitle: string };
-    RisaleReader: { bookId: string; title: string; initialBlockIndex?: number };
+    // DELETED: RisaleReader route (Legacy FlashList reader removed)
 
 
     Cevsen: { initialPage?: number };
@@ -788,11 +788,7 @@ export const AppNavigator = () => {
                                     component={RisaleSectionListScreen}
                                     options={{ title: 'Bölümler', headerShown: true }}
                                 />
-                                <Stack.Screen
-                                    name="RisaleReader"
-                                    component={RisaleReaderScreen}
-                                    options={{ title: 'Risale Okuma', headerShown: false }}
-                                />
+                                {/* DELETED: RisaleReader Stack.Screen (Legacy FlashList reader removed) */}
 
                                 <Stack.Screen
                                     name="Cevsen"

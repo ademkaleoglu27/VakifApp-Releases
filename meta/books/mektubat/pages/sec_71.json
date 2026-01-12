@@ -1,0 +1,15 @@
+{
+  "id": "sec_70",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Üçüncü Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Dört nüktedir.",
+      "order_index": 1
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "sec_19",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "İkinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "İmam-ı Rabbanî Ahmed-i Farukî (ra) demiş ki: “Ben seyr-i ruhanîde kat’-ı meratib ederken, tabakat-ı evliya içinde en parlak en haşmetli en letafetli en emniyetli; sünnet-i seniyeye ittibaı, esas-ı tarîkat ittihaz edenleri gördüm. Hattâ o tabakanın âmî evliyaları, sair tabakatın has velilerinden daha muhteşem görünüyordu.” Evet, müceddid-i elf-i sânî İmam-ı Rabbanî (ra) hak söylüyor.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Sünnet-i seniyeyi esas tutan, Habibullah’ın zılli altında makam-ı mahbubiyete mazhardır.",
+      "order_index": 2
+    }
+  ]
+}

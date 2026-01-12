@@ -1,0 +1,15 @@
+{
+  "id": "intro",
+  "blocks": [
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 0
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَ بِهٖ نَسْتَعٖينُ",
+      "order_index": 1
+    }
+  ]
+}

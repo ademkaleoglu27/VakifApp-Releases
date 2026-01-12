@@ -39,6 +39,15 @@ export const RisaleHomeScreen = () => {
     }, [navigation, checkBooks]);
 
     const handleOpen = async (book: RisaleBook) => {
+        // Special case for Sözler to test Text Reader
+        if (book.id === 'sozler') {
+            navigation.navigate('RisaleSectionList', {
+                workId: book.id,
+                workTitle: book.title
+            });
+            return;
+        }
+
         if (!readyBooks[book.id]) {
             Alert.alert('Hazırlanıyor', 'Bu kitap henüz hazırlanmadı, lütfen bekleyin veya uygulamayı yeniden başlatın.');
             return;
@@ -51,19 +60,7 @@ export const RisaleHomeScreen = () => {
         });
     };
 
-    const handleContinueReading = async () => {
-        const lastId = await RisaleDownloadService.getLastReadBookId();
 
-        if (lastId) {
-            const book = RISALE_BOOKS.find(b => b.id === lastId);
-            if (book && readyBooks[book.id]) {
-                handleOpen(book);
-                return;
-            }
-        }
-
-        handleOpen(RISALE_BOOKS[0]);
-    };
 
     const renderItem = ({ item }: { item: RisaleBook }) => {
         const isReady = readyBooks[item.id];
@@ -138,27 +135,7 @@ export const RisaleHomeScreen = () => {
                         <Text style={styles.quoteSource}>- Bediüzzaman Said Nursi</Text>
                     </View>
 
-                    <TouchableOpacity
-                        style={styles.resumeButton}
-                        activeOpacity={0.9}
-                        onPress={handleContinueReading}
-                    >
-                        <LinearGradient
-                            colors={[theme.colors.secondary, '#b45309']}
-                            style={styles.resumeGradient}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                        >
-                            <View style={styles.resumeContent}>
-                                <Text style={styles.resumeTitle}>Kaldığım Yerden Devam Et</Text>
-                                <View style={styles.resumeSubtitleContainer}>
-                                    <Ionicons name="bookmark" size={14} color="rgba(255,255,255,0.9)" />
-                                    <Text style={styles.resumeSubtitle}>Son okunan kitaba git</Text>
-                                </View>
-                            </View>
-                            <Ionicons name="chevron-forward-circle" size={28} color="#fff" />
-                        </LinearGradient>
-                    </TouchableOpacity>
+
 
                     <FlatList
                         data={RISALE_BOOKS}

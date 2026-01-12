@@ -1,0 +1,15 @@
+{
+  "id": "sec_21",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "İkinci Nükte: Bazen olur ki iki adamın söyledikleri bir söz, bir kelâm mütefavit olur. Birisinin cehline, sathîliğine; ötekisinin ilmine, maharetine delâlet eder. Şöyle ki:",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir adam düşünmeden gayr-ı muntazam bir surette söyler; ötekisi o sözün evvel ve âhirine bakar, siyak ve sibakını düşünür ve o sözün başka sözler ile münasebetlerini tasavvur eder ve münasip bir mevkide, münbit bir yerde zer’ eder. İşte bu adamın şu tarz-ı hareketinden, derece-i ilim ve marifeti anlaşılır. Kur’an-ı Kerîm’in fenlerden bahsederken aldığı fezlekeler, bu kabîl kelâmlardandır.",
+      "order_index": 1
+    }
+  ]
+}

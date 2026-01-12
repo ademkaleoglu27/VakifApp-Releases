@@ -1,0 +1,540 @@
+{
+  "id": "sec_118",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "OTUZUNCU MEKTUP",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Matbu Arabî İşaratü’l-İ’caz tefsiridir.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "OTUZ BİRİNCİ MEKTUP",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Otuz bir Lem’a’dır.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "OTUZ İKİNCİ MEKTUP",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Kendi kendine manzum tarzını alan matbu “Lemaat” risalesidir. Aynı zamanda “Otuz İkinci Lem’a” olup Sözler mecmuasının âhirinde neşredilmiştir.",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "OTUZ ÜÇÜNCÜ MEKTUP",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "Marifet-i İlahiyeye pencereler açan “Otuz Üç Pencereli Risale” olup bir cihette “Otuz Üçüncü Söz” olduğundan Sözler mecmuasında neşredilmiş, buraya dercedilmemiştir.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "İŞARAT-I GAYBİYE HAKKINDA BİR TAKRİZ:",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "HAKİKAT ÇEKİRDEKLERİ:",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "MEDİNE-İ MÜNEVVERE’DE BULUNAN MÜHİM BİR ÂLİMİN RİSALE-İ NUR HAKKINDA YAZDIĞI BİR MANZUME:",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "ON İKİ SENE EVVEL YAZILMIŞ VE SİKKE-İ TASDİK-İ GAYBÎ MECMUASINDA DERCEDİLMİŞ MÜHİM BİR MEKTUPTAN BİR PARÇADIR:",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "FİHRİST:",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "HAKİKAT IŞIKLARI:",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "[1] Hâşiye: Asıl nüshasına göredir.",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "[2] Hâşiye: Asıl nüshasına göredir.",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "[3] Hâşiye: Bu Mektup’un mesailini bir derece ihsas etmek arzu edildiğinden fihristiyet ihtisarı muhafaza edilmedi, uzun oldu.",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "[4] Hâşiye: Asıl nüshasına göredir.",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "[5] Hâşiye: Bu risalenin, o mukaddes iki kelimenin i’cazî tevafuklarından bahsi ayn-ı hakikat olduğuna delil, o dördüncü risalede bütün o iki kelimenin tevafuk etmesidir. Her bir âyet ayrı ve satır başında yazılmasından, umum o iki mukaddes kelimeler tevafuk etmişlerdir.",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "[6] Hâşiye: Asıl nüshasına göredir.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikat Işıkları",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Herkes bilmez gökte ne var",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Görür onu göz sahibi",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Parıldıyor güneş kadar",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikati umman gibi",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "İster gönül elbet huzur",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "Âhir demde etmiş zuhur",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Âlemlere doğmuş o nur",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Gökten inen ferman gibi",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Ferdiyeti elhak ayân",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Odur gönüllere sultan",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "Var mı bilmem ulu bürhan",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu Bedîüzzaman gibi",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Lisanından saçılır nur",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Cinnî okur, insan okur",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Hûr-u cennet işte bu “Nur”",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Gönüllerde canan gibi",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "Âhir zaman esrarını",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "İhbar-ı gayb envarını",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Attı âlem ekdarını",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "Doğdu şems-i tâbân gibi",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "Semavattan rahmet indi",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Akan gözyaşları dindi",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "Küfr ü dalal yıldı, sindi",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Görünmeyen şeytan gibi",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Söndü hain faaliyet",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Yıkıldı o deccaliyet",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "Halâs buldu İslâmiyet",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "Tahta çıkan hakan gibi",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey yâreli şîr-i jiyan",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hâb-ı gafletten uyan",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "Âlemlere devr-i ümran",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Asr-ı nüzul-ü Furkan gibi",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "İklimlerde iman yeli",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Eser, gönüller neşeli",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Öpsem o gül kokan eli",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "O bülbül-ü handan gibi",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Âdemoğlu necat arar",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Hak daveti Nurlarda var",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey şehriyar-ı şehriyar",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "Sensin bize sultan gibi",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "Arşa çıkan feryadımız",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Alındı şimdi dâdımız",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "O sevgili üstadımız",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "Gönülde Süleyman gibi",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey ekmel-i âhir zaman",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Sensin mahbub-u Müstean",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Feda sana bu cism ü can",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Hak yolunda kurban gibi",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Said’i beklerdi yıllar",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "Sensin gönülde muntazar",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Peygamberim vermiş haber",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Olma bize pinhan gibi",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Perdelenmişse zuhurun",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "Gizlenmez haşmetli nurun",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "Gölgesi olmaz ki nurun",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "Firdevs’teki canan gibi",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey hatib-i devr-i zaman",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Sürur buldu kevn ü mekân",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "Seni bekler gizli ayân",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "Hep hastalar Lokman gibi",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur yolunun kurbanıyız",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Kehkeşan’ın sâmânıyız",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "O ateşin dumanıyız",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Ateş yanan külhan gibi",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "Rânâ rengin güle benzer",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Revh üfürür, kokun eser",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "Ufkumuzda oldun seher",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "Tam ağaran bir tan gibi",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey cilvesi zahir rahmet",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Bâri bizlere imdat et",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "Kulun olmak diler elbet",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "Bahçenizde fidan gibi",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "Pes gönlümüz hep daim pes",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey ağlayan, feryadı kes",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "Boş geçmesin hiçbir nefes",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "“Allah bes, gayrı heves.”",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Mehmed Kayalar",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 99
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 100
+    },
+    {
+      "type": "arabic_block",
+      "text": "يَا اَللّٰهُ يَا رَحْمٰنُ يَا رَحٖيمُ يَا فَرْدُ يَا حَىُّ يَا قَيُّومُ يَا حَكَمُ يَا عَدْلُ يَا قُدُّوسُ",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "İsm-i a’zamın hakkına ve Kur’an-ı Mu’cizü’l-Beyan’ın hürmetine ve Resul-i Ekrem aleyhissalâtü vesselâmın şerefine… Bu Mektubat’ı bastıranları ve mübarek yardımcılarını ve Risale-i Nur talebelerini cennetü’l-firdevste saadet-i ebediyeye mazhar eyle, âmin! Ve hizmet-i imaniye ve Kur’aniyede daima muvaffak eyle, âmin! Ve defter-i hasenatlarına Mektubat mecmuasının her bir harfine mukabil bin hasene yazdır, âmin! Ve Nurların neşrinde sebat ve devam ve ihlas ihsan eyle, âmin!",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "Yâ Erhame’r-râhimîn!.. Umum Risale-i Nur şakirdlerini iki cihanda mesud eyle, âmin! İnsî ve cinnî şeytanların şerlerinden muhafaza eyle, âmin! Ve bu âciz ve bîçare Said’in kusuratını affeyle, âmin!",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum Nur Şakirdleri namına",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 106
+    }
+  ]
+}

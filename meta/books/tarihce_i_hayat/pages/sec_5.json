@@ -1,0 +1,655 @@
+{
+  "id": "sec_4",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "İkinci Kısım",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Barla Hayatı",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un Zuhuru",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad Bedîüzzaman Said Nursî’nin Şarkî Anadolu’da dünyaya gelişinden itibaren geçirdiği hayat safhalarını buraya kadar birer birer gördük, temaşa ettik. Şimdi; geçen kırk elli senelik hayatının neticesi ve meyvesi hükmünde, tarihin pek ender kaydettiği cihan vüs’atindeki muazzam bir davaya giriyoruz. Bütün maddî ve manevî zulmetleri izale edip âlemi nuruyla ziyalandıracak olan Risale-i Nur meydana çıkıyor, dünya ilim ve irfan sahasına Türkiye’den bir güneş doğuyor!..",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Hazretlerinin Vilayat-ı Şarkiye’den Garbî Anadolu’ya Nefyedilmesi, Risale-i Nur’un Zuhuru, Telif ve Neşri",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Van’da mezkûr mağarada yaşamakta iken Şark’ta ihtilal ve isyan hareketleri oluyor. “Sizin nüfuzunuz kuvvetlidir.” diyerek yardım isteyen bir zatın mektubuna: “Türk milleti asırlardan beri İslâmiyet’e hizmet etmiş ve çok veliler yetiştirmiştir. Bunların torunlarına kılınç çekilmez, siz de çekmeyiniz; teşebbüsünüzden vazgeçiniz. Millet, irşad ve tenvir edilmelidir!” diye cevap gönderiyor. Fakat yine hükûmet, Bedîüzzaman’ı Garbî Anadolu’ya nefyediyor.",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "Van’da mağaradan çıkarılıp Anadolu’ya hareket etmek üzere jandarmalarla sevk edilirken, yollara dökülüp “Aman Efendi Hazretleri bizi bırakıp gitme. Müsaade buyur sizi göndermeyelim. Arzu ederseniz Arabistan’a götürelim.” diye yalvaran silahlı gruplara, ahaliye ve ileri gelen zatlara: “Ben Anadolu’ya gideceğim, onları istiyorum.” diyerek hepsini teskin ediyor.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela, Burdur vilayetine askerî muhafızlarla nefyediliyor. Burdur’da zulüm ve tarassudlar altında işkenceli bir esaret hayatı geçiriyor. Fakat aslâ boş durmuyor, on üç ders olan “Nur’un İlk Kapısı” kitabındaki hakikatleri bir kısım ehl-i imana ders verip gizli olarak kitap haline getiriyor. Bu hikmet cevherlerinin kıymetini takdir eden müştak ehl-i iman, el yazılarıyla bu kitabı çoğaltıyorlar. Nihayet “Burada Said Nursî boş durmuyor, dinî musahabelerde bulunuyor.” diye gizli din düşmanları tarafından rapor tanzim ettiriliyor ve burada da “Hücra bir köşede, mahrumiyetler, kimsesizlik ve gurbet hayatı içinde kendi kendine ölür gider.” düşüncesiyle dağlar arasında tenha bir yer olan Isparta vilayetine bağlı Barla nahiyesine gönderilmeye karar veriliyor.",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî Burdur’da iken bir gün, o zamanın Erkân-ı Harbiye-i Umumiye Reisi Mareşal Fevzi Çakmak Burdur’a geliyor. Vali, Mareşal’e: “Said Nursî hükûmete itaat etmiyor, gelenlere dinî dersler veriyor.” diye şekvada bulunuyor. Mareşal Fevzi Çakmak, Bedîüzzaman’ın ne kadar dâhî ve ne kadar manevî büyük ve müstakim bir zat olduğunu bildiği için diyor ki: “Bedîüzzaman’dan zarar gelmez, ilişmeyiniz. Hürmet ediniz.”",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Sürgün edildiği bütün yerlerde, Bedîüzzaman aleyhinde cebirle resmî kimseler vasıtasıyla dehşetli propagandalar yaptırılarak; ehl-i imanın, Üstad Bedîüzzaman’a yaklaşmamaları ve dinî derslerinden istifade etmemeleri için çok menfî gayretler sarf ediliyor. Fakat Üstadın imanî derslerinin nüfuz ve kıymeti, ahali arasında kalpten kalbe sirayet ediyor ve eserlerine olan aşk ve muhabbet, kalpleri istila ediyor.",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Barla",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Barla, ehl-i imanın manevî imdadına gönderilen Risale-i Nur Külliyatı’nın telif edilmeye başlandığı ilk merkezdir. Barla, millet-i İslâmiyenin hususan Anadolu halkının başına gelen dehşetli bir dalalet ve dinsizlik cereyanına karşı, Kur’an’dan gelen bir hidayet nurunun, bir saadet güneşinin tulû ettiği beldedir. Barla, rahmet-i İlahiyenin ve ihsan-ı Rabbanînin ve lütf-u Yezdanî’nin bu mübarek Anadolu hakkında, bu kahraman İslâm milletinin evlatları ve âlem-i İslâm hakkında, hayat ve mematlarının, ebedî saadetlerinin medarı olan eserlerin lemean ettiği bahtiyar yerdir.",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî, Barla nahiyesinde daimî ve çok şiddetli bir istibdat ve zulüm ve tarassud altında bulunduruluyordu. Barla’ya nefiy sebebi ise kalabalık şehirlerden uzaklaştırıp böyle hücra bir köye atılarak ruhunda mevcud hamiyet-i İslâmiyenin feveran etmesine mani olmak, onu konuşturmamak, söyletmemek; İslâmî, imanî eserler yazdırmamak, âtıl bir vaziyete düşürüp dinsizlerle mücahededen ve Kur’an’a hizmetten men’etmek idi.",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman ise bu planın tamamen aksine hareket etmekte muvaffak oldu; bir an bile boş durmadan, Barla gibi tenha bir yerde Kur’an ve iman hakikatlerini ders veren Risale-i Nur eserlerini telif ederek perde altında neşrini temin etti. Bu muvaffakıyet ve bu muzafferiyet ise çok muazzam bir galibiyet idi. Zira o pek dehşetli dinsizlik devrinde, hakiki bir tek dinî eser bile yazdırılmıyordu. Din adamları susturulup yok edilmeye çalışılıyordu. Dinsizler, Bedîüzzaman’ı yok edememişler, uyuşmuş kalp ve akılları ihtizaza getiren İslâmî ve imanî neşriyatına mani olamamışlardı. Bedîüzzaman’ın yaptığı bu dinî neşriyat, yirmi beş senelik eşedd-i zulüm ve istibdad-ı mutlak devrinde hiçbir zatın yapamadığı bir iş idi.",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman, Barla’ya 1926-1927 senelerinde nefyedilmiştir. Bu tarihler, Türkiye’de yirmi beş sene devam edecek bir istibdad-ı mutlakın icra-yı faaliyetinin ilk seneleri idi. Gizli dinsiz komiteleri “İslâmî şeairleri birer birer kaldırarak İslâm ruhunu yok etmek, Kur’an’ı toplatıp imha etmek” planlarını güdüyorlardı. Buna muvaffak olunamayacağını iblisane düşünerek “Otuz sene sonra gelecek neslin kendi eliyle Kur’an’ı imha etmesini intac edecek bir plan yapalım.” demişler ve bu planı tatbike koyulmuşlardı. İslâmiyet’i yok etmek için tarihte görülmemiş bir tahribat ve tecavüzat hüküm sürmüştür.",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, altı yüz sene belki Abbasîler zamanından beri yani bin seneden beri Kur’an-ı Hakîm’in bir bayraktarı olarak bütün cihana karşı meydan okuyan Türk milletini, bu vatan evlatlarını, İslâmiyet’ten uzaklaştırmak ve mahrum bırakmak için Müslümanlığa ait her türlü bağların koparılmasına çalışılıyor ve bilfiil de muvaffak olunuyordu. Bu vakıa cüz’î değil, küllî ve umumî idi. Milyonlarca insanın hususan gençlerin ve milyonlar masumların, talebelerin iman ve itikadlarına, dünyevî ve uhrevî felaketlerine taalluk eden çok geniş ve şümullü bir hâdise idi. Ve kıyamete kadar gelip geçecek Anadolu halkının ebedî hayatlarıyla alâkadardı.",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "O zaman ve o senelerde, bin yıllık parlak mazinin delâlet ve şehadetiyle, Kur’an’ın bayraktarı olarak en yüksek bir mevki-i muallâyı ihraz etmiş bulunan kahraman bir milletin hayatında, İslâmiyet ve Kur’an aleyhinde dehşetli tahavvüller ve tahripler yapılıyor ve cihanın en namdar ordusunun bin senelik cihad-ı diniye ile geçen parlak mazisi ve o mazide medfun muhterem ecdadı, yeni nesillere ve mektepli talebelere unutturulmaya çalışılıyor ve mazi ile irtibatları kesilerek “Muasır medeniyet seviyesine ulaşacağız, ulaştıracağız.” gibi maskeli ve sureta parlak kelâmlarla iğfalatta bulunularak, komünizm rejimine zemin hazırlanıyordu!",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "İslâmiyet’in hakikatinde mevcud maddî manevî en yüksek terakki ve medeniyet umdeleri yerine; dinsiz felsefenin bataklığındaki nursuz prensipler, edepsiz edib ve feylesofların fikir ve ideolojileri; gizli komünistler, farmasonlar, dinsizler tarafından telkin ediliyor ve çok geniş bir çapta tedris ve talime çalışılıyordu. Bilhassa İngiliz, Fransız gibi İslâm düşmanlarının İslâm âlemini maddeten ve manen yıpratmak, sömürmek emellerinin başında kahraman Türk milletinin dinî bağlardan uzaklaştırılması; örf âdet, an’ane ve ahlâk bakımından tamamen İslâmiyet’e zıt bir duruma getirilmek planları vardı ve bu planlar maalesef tatbik sahasına konmuştu.",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Bedîüzzaman Said Nursî’nin, Risale-i Nur’la Anadolu’daki hizmet-i imaniye ve Kur’aniyesine cansiperane çalışan bir fedai-yi İslâm olarak başladığı seneler ki zemin yüzünün görmediği pek dehşetli bir dinsizlik devrinin başlangıcı ve teessüs zamanı idi. Bunun için Bedîüzzaman’ın Risale-i Nur’la hizmetine nazar edildiği vakit, böyle dehşetli bir zamanı göz önünde bulundurmak icab eder. Zira tarihte emsali görülmemiş bu kadar ağır şerait tahtında yapılan zerre kadar hizmet, dağ gibi bir kıymet kazanabilir; ufacık bir hizmet, büyük bir değeri ve neticeyi haiz olabilir.",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Risale-i Nur, böyle dehşetli ve ehemmiyetli bir zamanın mahsulü ve neticesidir. Risale-i Nur’un müellifi, yirmi beş senelik din yıkıcılığının hükmettiği dehşetli bir devrin cihad-ı diniye meydanının en büyük kahramanı ve tâ kıyamete kadar Ümmet-i Muhammediyeyi (asm) dârü’s-selâma davet eden ve beşeriyete yol gösteren rehber-i ekmelidir. Ve hem Risale-i Nur, Kur’an’ın elmas bir kılıncıdır ki zaman ve zemin ve fiiliyat bunu kat’iyetle ispat etmiş ve gözlere göstermiştir.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte öyle elîm ve feci ve dehşetli bir devri ihdas eden dinsizlerin icraatı olan pek ağır şartlar dâhilinde Bedîüzzaman’ın inayet-i Hak’la telife muvaffak olduğu Risale-i Nur eserleri, dinsizliğin istilasına karşı, yıkılması gayr-ı kabil olan muazzam ve muhteşem bir set teşkil etmiştir. Risale-i Nur; maddiyyunluk, tabiiyyunluk gibi dine muarız felsefenin muhal, bâtıl ve mümteni olduğunu; cerh edilmez bürhanlarla, aklî, mantıkî delillerle ispat ederek en dinsiz feylesofları dahi ilzam etmiştir. Küfr-ü mutlakı mağlubiyete düçar etmiş, dinsizliğin istilasını durdurmuştur.",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Bedîüzzaman’a yapılan o tarihî zulüm ve işkence ve ihanetler altında feveran edip parlayan Risale-i Nur, bu zamanda ve istikbalde bir seyfü’l-İslâm’dır. Risale-i Nur ruhların sevgilisi, kalplerin mahbubu, âşıkların maşuku, canların cananı olmuş; icabında bu canan için canlar feda edilmiştir. Risale-i Nur, beşerin sertâcı ve halâskârı mevki-i muallâsında hizmet yapmış ve yapmaktadır. Risale-i Nur, Kur’an’ın son asırlarda beklenen bir mu’cize-i maneviyesi olarak tulû etmiş ve başta müellifi Bedîüzzaman Said Nursî olarak milyonlarla talebeleri ve kardeşleri, bu hakikat-i Kur’aniye etrafında pervaneler gibi dönerek onun nuruyla nurlanmışlar, ondaki Kur’an ve iman hakikatlerini massetmişler (emmişler), imanlarını kuvvetlendirmişler ve bu hakikat-i kübrayı bütün dünyaya ilan etmek ve ölünceye kadar onu okumak ve ona hizmet etmek gayesini azmetmişlerdir.",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Türk milletini ve bu vatan ahalisini ve âlem-i İslâm’ı ebede kadar şerefle yaşatacak ve mazide olduğu gibi istikbalde de tarihin altın sahifelerine, Kur’an ve İslâmiyet hizmetinde âlem-i İslâm’ın pişdarı ve namdar kumandanı olarak kaydettirecek medar-ı iftiharı Risale-i Nur’dur. Büyük bir vüs’at ve külliyeti taşıyan ve Anadolu’da ve İslâm âleminde zuhur edip her tarafta hüsn-ü kabule ve tesire mazhariyetle gittikçe inkişaf ve intişar eden bu eser; Kur’an’ın malıdır, âlem-i İslâm’ın ve ehl-i imanın malıdır ve bu vatan ahalisinin İslâmî bir medar-ı iftiharıdır. Bu memlekette hükmeden bir hükûmetin nokta-i istinadı hem aynı zamanda bütün dünyaya duyuracağı muazzam hakikatler manzumesidir ki inşâallah bir zaman gelip radyo ile bütün âlemlere ders verilecek ve ilan edilecektir.",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, dünya ilim ve irfan sahasına Türkiye’den bir güneş doğmuştur. Bu yeni doğan güneş, bin üç yüz yıl evvel âlem-i beşeriyete doğmuş olan güneşin bir in’ikasıdır ve o manevî güneşin her asırda parlayan lem’alarından birisidir ve beklenilen son mu’cize-i manevîsidir! Yalnız maneviyat sahasında değil, zahiren ve maddeten dahi tesirini göstermiştir.",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet Risale-i Nur, bütün dünya milletlerinin hayatlarını muhafaza ve müdafaa için sarıldıkları ve güvendikleri atom ve emsali bomba ve silahlarının fevkinde muazzam bir tesire sahiptir. Bunun böyle olduğunu, bir parça ilim ve basîret nazarıyla Nur Risalelerine bakanlar ve Risale-i Nur müellifi Bedîüzzaman Said Nursî’nin otuz seneden beri Anadolu’daki hizmet-i imaniyelerine dikkat edenler görür, anlar ve tasdik ederler. Hakikate nüfuz eden zatlar için Risale-i Nur’un tulûundan bugüne kadar geçen zaman içerisindeki yapılan hizmetin neticeleri, nihayet derecede muhteşem ve muazzamdır, milyarlar takdir ve tebrike lâyıktır.",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet Risale-i Nur, iman-ı tahkikîyi bu vatanda neşretmekle imanı kuvvetlendirip bu memleketteki dinsizlik ve imansızlık, dalalet ve sefahete karşı mukabele ve müsbet bir tarzda mücadele ederek bunları mağlup etmiştir. Büyük ve küllî ve umumî mücahede-i diniyesinde muzaffer olmuştur. Taife-i mücahidîn olan Nur talebeleri; a’zamî sadakat ve ittihattan neş’et eden azîm, manevî, makbul bir sır ile rahmet-i İlahiyenin celbine ve teveccühüne vesile olmuştur. Bu ihlaslı taife-i mücahidîn küçük bir çekirdek gibi dar bir dairede iken, o çekirdekte âlemi istila edecek bir Şecere-i Tûba’nın mahiyeti bulunduğu misillü; on dördüncü asr-ı Muhammedîde (aleyhissalâtü vesselâm) Kur’an’dan çıkan Risale-i Nur’un Anadolu’da tulû ve intişar etmesiyle, neticede neşv ü nema ederek âlem-i İslâm ve insaniyete kadar genişlemiş ve daha da genişleyecektir.",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Risale-i Nur hem fevkalâde ihlası ve hem yalnız tevhid ve iman akidelerinin hizmetini esas meslek ittihaz ederek bir kudsiyet kazanması ve mahiyetinde bütün hakaik-i Kur’aniye ve İslâmiye mevcud bulunarak her tarafı kaplayacak bir nur-u hakikat olması dolayısıyla, rahmet-i İlahiye canibinde bu millet-i İslâmiyeyi, maddî manevî felaket ve helâket tehlikelerinden, bir sedd-i Kur’anî ve nur-u imanî olarak muhafazaya vesile olmuştur.",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur, iman ve Kur’an muhaliflerine karşı mücadelesinde cebir ve münazaa yolunu değil, ikna ve ispat yolunu ihtiyar etmiştir.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur yüz otuz risalelerinde, doğrudan doğruya hakikatin berrak vechesini bütün vuzuh ve çıplaklığıyla göstermiştir. Din-i hak olan İslâmiyet’i ve âlem-i insaniyetin hidayet güneşi olan Kur’an’ın mu’cizeliğini, bütün dünya efkârı muvacehesinde ve bütün fikir ve felsefe sahasında cerh edilmez kat’î deliller ile göstermiştir. Ve mantıkî hüccetlerle ispat etmiştir ki yeryüzündeki bilumum kemalât ve medeniyet ve terakki umdeleri, semavî dinler ve peygamberler eliyle gelmiş ve bilhassa İslâmiyet’in zuhuruyla âlem-i insaniyet, İslâm âleminin taht-ı riyasetinde cehalet gayyasından kurtulmuş ve kurtulacaktır.",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Felsefe ve hikmetin içerisinde görünen fazilet, menfaat-i umumiye vesaire gibi insanî esaslar ise: Güneşin doğmasıyla ondan yayılan ve aydınlanan gece âleminin nurları gibi Nübüvvet güneşinin tulûu, beşeriyetin fikir ve kalplerinde akisler ve lem’alar husule getirmiş olmasındandır. Hakikatli felsefe ve hikmetin, fen ve sanatın üzerinde görünen bu ışıklar, Kur’an güneşinin ve Nübüvvet kandilinin âlem-i beşeriyete akislerinden ve cilvelerinden mütevelliddir.",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey âlem-i İslâm! Uyan, Kur’an’a sarıl; İslâmiyet’e maddî ve manevî bütün varlığınla müteveccih ol!",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve ey Kur’an’a bin yıllık tarihinin şehadetiyle hâdim olan ve İslâmiyet nurunun zemin yüzünde nâşiri bulunan yüksek ecdadın evladı! Kur’an’a yönel ve onu anlamaya, okumaya ve onu anlatacak, onun bu zamanda bir mu’cize-i maneviyesi olan Nur Risalelerini mütalaa etmeye çalış. Lisanın, Kur’an’ın âyetlerini âleme duyururken, hal ve etvar ve ahlâkın da onun manasını neşretsin; lisan-ı halin ile de Kur’an’ı oku. O zaman sen, dünyanın efendisi, âlemin reisi ve insaniyetin vasıta-i saadeti olursun!",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey asırlardan beri Kur’an’ın bayraktarlığı vazifesiyle cihanda en mukaddes ve muhterem bir mevki-i muallâyı ihraz etmiş olan ecdadın evlat ve torunları! Uyanınız! Âlem-i İslâm’ın fecr-i sadıkında gaflette bulunmak, kat’iyen akıl kârı değil! Yine âlem-i İslâm’ın intibahında rehber olmak, arkadaş, kardeş olmak için Kur’an’ın ve imanın nuruyla münevver olarak, İslâmiyet’in terbiyesiyle tekemmül edip hakiki medeniyet-i insaniye ve terakki olan medeniyet-i İslâmiyeye sarılmak ve onu, hal ve harekâtında kendine rehber eylemek lâzımdır.",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Avrupa ve Amerika’dan getirilen ve hakikatte yine İslâm’ın malı olan fen ve sanatı, nur-u tevhid içinde yoğurarak, Kur’an’ın bahsettiği tefekkür ve mana-yı harfî nazarıyla, yani onun sanatkârı ve ustası namıyla onlara bakmalı ve saadet-i ebediye ve sermediyeyi gösteren hakaik-i imaniye ve Kur’aniye mecmuası olan Nurlara doğru “İleri, arş!” demeli ve dedirmeliyiz.",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey eski çağların cihangir Asya ordularının kahraman askerlerinin torunları olan muhterem din kardeşlerim!",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Beş yüz senedir yattığınız yeter! Artık Kur’an’ın sabahında uyanınız. Yoksa Kur’an-ı Kerîm’in güneşinden gözlerinizi kapatarak gaflet sahrasında yatmakla, vahşet ve gaflet sizi yağma edip perişan edecektir.",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an’ın mecrasından ayrılarak birleşmeyen su damlaları gibi toprağa düşmeyiniz. Yoksa toprak gibi sefahet ve şehvet-i medeniye sizi emerek yutacaktır. Birleşen su damlaları gibi Kur’an-ı Kerîm’in saadet ve selâmet mecrasında ittihat ederek, sefahet ve rezalet-i medeniyeyi süpürüp bu vatana âb-ı hayat olan hakikat-i İslâmiye sularını akıtınız.",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "O hakikat-i İslâmiye suları ile bu topraklarda iman ziyası altında hakiki medeniyetin fen ve sanat çiçekleri açacak, bu vatan maddî ve manevî saadetler içinde gül ve gülistana dönecektir inşâallah.",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "Sadede dönüyoruz. Evet Bedîüzzaman Said Nursî, Barla’da ikamete memur edilip Risale-i Nur’u telif ettiği seneler, yukarıda bir nebze zikrettiğimiz gibi zerreyi dağ gibi kıymetlendiren ehemmiyetli seneler idi. Nasıl ki kışın dondurucu soğuğunda ve ağır şerait altında bir saatlik nöbet, bir sene ibadetten hayırlıdır; aynen öyle de o zaman-ı müthişede, değil yüz otuz risaleyi belki iman ve İslâmiyet’e dair hakiki bir tek risale yazabilmek dahi binler risale kıymet ve ehemmiyetinde idi.",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, dinsizliğin hüküm-ferma olduğu o dehşetli devirde, ehl-i din, terzil edilmeye çalışılıyordu. Hattâ Kur’an’ı dahi tamamen kaldırmak ve Rusya’daki gibi dinî akideleri tamamen imha etmek düşünülmüş fakat millet-i İslâmiyece bir aksü’l-ameli netice verebilmesi ihtimali ileri sürülünce bundan vazgeçilmiş, yalnız şu karar alınmıştı: “Mekteplerde yaptıracağımız yeni öğretim usûlleriyle yetişecek gençlik, Kur’an’ı ortadan kaldıracak ve bu suretle milletin İslâmiyet’le olan alâkası kesilecek!” Bütün bu dehşet-engiz planları çeviren o müthiş fitnenin menbaları, şimdiki dinî inkişafın muarızı ve düşmanları olan haricî dinsiz cereyanların reisleri ve adamları idi.",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Türk milleti içerisinde meydana getirilen o dehşetli hâdisatın içyüzünü, tafsilatını, istikbalin hakikat-perest tarihçilerine ve bunları şimdi Demokrat idaredeki serbestiyetle bir derece neşretmekte olan İslâm-Türk muharrirlerine havale ediyoruz.",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizim vazifemiz, yalnız ve yalnız hakaik-i imaniye ve Kur’aniye ile meşgul olmaktır. Biz yalnız ve yalnız iman ve İslâmiyet cereyanındayız.",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, o dalalet ve zındıkanın en azgın devirlerinde Bedîüzzaman Said Nursî, daimî nezaret ve tarassud altında ve böyle müthiş ve pek çok ağır şerait içerisinde idi. Nemrutların, Firavunların, Şeddadların ve Yezidlerin yapamadığı zulümlerin envaı Bedîüzzaman’a yapılıyordu. Ve yirmi beş sene böyle devam etti. O zaman âlem-i İslâm, maddeten fakirdi ve müstevlilerin esaretinde bulunuyordu. Bütün gizli fesat ve dinsizlik komiteleri hem Türkiye’de hem âlem-i İslâm’da müthiş faaliyetler yapıyor ve taraftarları onları destekliyor ve hepsi de İslâmiyet aleyhinde ittifak ediyorlardı.",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Risale-i Nur, asr-ı saadette İslâm’ın cihanı fetih anahtarları hükmünde olan Bedir, Uhud muharebelerinin ehemmiyeti nevinden bir kıymeti ihtiva eden bir zamanın mahsulüdür ki vesile olduğu hizmet-i imaniye ve îfasında bulunduğu manevî cihad-ı diniye, tarihte asr-ı saadetten maada hiçbir zamanda görülmemiş bir azamettedir.",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Eli kolu bağlı hükmünde olan Bedîüzzaman Said Nursî, öyle dehşetli bir esarette, nefiy ve inzivada telif ve neşrettiği yüz otuz parça Risale-i Nur eserleriyle, beliğ bir hatip olarak Anadolu mescidinde ve âlem-i İslâm camiinde konuşuyor, ehl-i İslâm’a Kur’an’dan aldığı dersini tekrar ediyor. Güya Bedîüzzaman Said Nursî, on dördüncü asr-ı Muhammedî’nin ve yirminci asr-ı miladînin minaresinin tepesinde durup muasırları olan ehl-i İslâm ve insaniyete bağırıyor ve bu asrın arkasında dizilmiş ve müstakbel sıralarında saf tutmuş olan nesl-i âti (Hâşiye[1]) ile bir mürşid-i a’zam, bir müceddid-i ekber olarak konuşuyor…",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un Telifi ve Neşri",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî Hazretleri öyle müşkül ve ağır vaziyetler altında Risale-i Nur Külliyatı’nı telif ediyor ki tarihte hiçbir ilim adamının karşılaşmadığı zorluklara maruz kalıyor. Fakat sönmeyen bir azim, irade ve hizmet aşkına mâlik olduğu için yılmadan, yıpranmadan, usanıp bıkmadan, bütün kuvvetini sarf ederek emsalsiz bir sabır ve tahammül ve feragat-i nefis ile bu millet ve memleketi komünizm ejderinden, mason âfatından, dinsizlikten muhafaza edecek –eden ve etmekte olan– ve âlem-i İslâm’ı ve beşeriyeti tenvir ve irşadda büyük bir rehber olan bu hârikulâde Risale-i Nur eserlerini meydana getiriyor. Yüz otuz parça olan Risale-i Nur Külliyatı’nın telifi, yirmi üç senede hitama eriyor.",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur Risaleleri, şiddetli ihtiyaç zamanında telif edildiğinden her yazılan risale, gayet şifalı bir tiryak ve ilaç hükmünü taşıyor ve öyle de tesir edip pek çok kimselerin manevî hastalıklarını tedavi ediyor. Risale-i Nur’u okuyan her bir kimse, güya o risale kendisi için yazılmış gibi bir halet-i ruhiye içinde kalarak büyük bir iştiyak ve şiddetli bir ihtiyaç hissederek mütalaa ediyor. Nihayet öyle eserler vücuda geliyor ki bu asır ve gelecek asırların bütün insanlarının imanî, İslâmî, fikrî, ruhî, kalbî, aklî ihtiyaçlarına tam cevap verecek ve kâfi gelecek Kur’anî hakikatler ihsan ediliyor.",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur, Kur’an-ı Hakîm’in hakiki bir tefsiridir. Âyetler, sırasıyla değil; devrin ihtiyacına cevap veren imanî hakikatleri mübeyyin âyetler tefsir edilmiştir.",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "Tefsir iki kısımdır: Biri, âyetin ibaresini ve lafzını tefsir eder; biri de âyetin mana ve hakikatlerini izah ile ispat eder. Risale-i Nur, bu ikinci kısım tefsirlerin en kuvvetlisi ve en kıymettarı ve en parlağı ve en mükemmeli olduğu, ehl-i tahkik ve tetkikten binlercesinin şehadetiyle ve tasdikiyle sabittir.",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un telifi ve neşriyatı, şimdiye kadar misli görülmemiş bir tarzdadır. Bedîüzzaman Said Nursî kendi eliyle risaleleri yazıp teksir edecek derecede bir yazıya mâlik değildir, yarım ümmidir. Bunun için kâtiplere süratle söyler ve süratle yazılır. Günde bir iki saat telifatla meşgul olarak on, on iki ve bir iki saatte yazılan hârika eserler vardır.",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad Bedîüzzaman’ın telif ettiği risaleleri, talebeler elden ele ulaştırmak suretiyle müteaddid nüshalar yazarlar, yazılan nüshaları müellifine getirirler. Müellif, müstensihlerin yanlışlarını düzeltir. Bu tashihatı yaparken eserin aslı ile karşılaştırmadan kontrol eder. Şimdi de yirmi beş otuz sene evvel telif ettiği bir eseri tashih ederken aslına bakmaz.",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Yazılan risaleleri etraf köylerden ve kazalardan gelenler, büyük bir merak ve iştiyakla alıp gidiyorlar ve el yazısıyla neşrediyorlardı.",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad Bedîüzzaman, Kur’an’dan başka hiçbir kitaba müracaat etmeden ve telifat zamanında yanında hiçbir kitap bulunmadan Nur Risalelerini telif etmiştir.",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Merhum Mehmed Âkif’in:",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Doğrudan doğruya Kur’an’dan alıp ilhamı",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "Asrın idrakine söyletmeliyiz İslâm’ı",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "beytiyle ifade ettiği idealini tahakkuk ettirmek, Bedîüzzaman’a müyesser olmuştur.",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un neşir keyfiyeti de tarihte hiçbir eserde görülmemiştir. Şöyle ki:",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an hattını muhafaza etmek hizmetiyle de muvazzaf olan Risale-i Nur’un, muhakkak Kur’an yazısıyla neşredilmesi lâzımdı. Eski yazı yasak edilmiş ve matbaaları kaldırılmıştı. Bedîüzzaman’ın parası, serveti yoktu; fakirdi, dünya metaıyla alâkası yoktu. Risaleleri el ile yazarak çoğaltanlar da ancak zarurî ihtiyaçlarını temin ediyorlardı. Risale-i Nur’u yazanlar, karakollara götürülüyor, işkence ve eziyetler yapılıyor, hapislere atılıyordu. Bedîüzzaman aleyhinde hükûmet eliyle yaptırılan propaganda ve tazyiklerle her tarafa dehşetler saçılıyor; ahali, Hazret-i Üstada yaklaşmaya, ondan din, iman dersi almaya cesareti kalmayacak derecede evhamlandırılıyordu. Vaktiyle de din adamlarının, hakikat-perestlerin, sırf dindar oldukları için darağaçlarında can vermeleri, bir korku ve yılgınlık havası meydana getirmişti. Hüküm sürmekte olan eşedd-i zulüm ve istibdad-ı mutlak içinde, ehl-i diyanet sükût-u mutlaka mahkûm edilmişti. Ne dinin hakikatlerinden bahseden hakiki bir risale neşrettiriliyor ve ne de o hakikatler millete ders verdiriliyordu. Bu suretle İslâmiyet, ruhsuz bir ceset haline getirilmeye çalışılıyor; din-i İslâm’ın mahiyeti ve esaslarını ders vermek, kat’iyen men’ediliyordu. (Hâşiye[2]).",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte başlangıçta pek azgın olan bu dinsizlik devri, Risale-i Nur’un umumiyet kesbeden neşriyatıyla yıkılmış; ehl-i imanın manevî ve maddî –bilhassa manevî– hayatına tatbik edilen istibdat zincirleri parçalanmıştır. Risale-i Nur, dinsizliğin belini kırmış ve temel taşlarını târumar etmiştir.",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, o zamanlar ki dinsizliğin mukabil cephesinde Risale-i Nur şimşekler gibi parlamış ve Kur’an-ı Hakîm’in bu nuru bütün satvet ve şevketiyle zuhur ederek perde altında neşrolunmuştur.",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’dan tahkikî iman dersi alan ve gittikçe ziyadeleşen Nur talebelerinin imanları inkişaf etmiş, imanî bir şehamet ve İslâmî bir cesarete sahip olmuşlardır. Nasıl ki cesur bir kumandan, yüzlerce askere lisan-ı haliyle cesaret verir ve nokta-i istinad olursa; aynen öyle de Risale-i Nur şahs-ı manevîsinin mümessili olan Bedîüzzaman Said Nursî Hazretleri başta olarak, tahkikî iman dersleriyle imanları kuvvetlenen yüz binlerce, şimdi milyonlarca Nur talebeleri, ehl-i imana bir nokta-i istinad ve bir hüsn-ü misal olmuşlardır. Nur talebelerinin bu iman kuvvetleri ve dinsizliğe karşı kahramanca mücadeleleri, halkın üzerinde çok tesir yapmış ve bir intibah (uyanıklık) husule getirmiştir. Böylelikle, milletin içindeki korku ve evhamları da Risale-i Nur’la izale etmişler, vatan ve millete umumî bir cesaret, ümit ve ferahlık husule getirip Müslümanları yeisten kurtarmışlardır.",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’u gaye-i hayat edinen bir Nur Talebesi, yüz adam kuvvetinde olduğu ve yüz nâsih kadar iman ve İslâmiyet’e hizmet ettiği, ehl-i hakikatçe müsellem ve musaddaktır. Nur talebeleri; dinsizliğin şaşaalı taarruzlarına, tantanalı yaygaralarına, zulümlerine, hapislerine; üstadları gibi kıymet vermeden, korkmadan, lüzumunda canlarını, mallarını, evlad ü iyallerini dahi çekinmeden Risale-i Nur’la iman ve İslâmiyet’e hizmet uğrunda feda etmişlerdir. Nur talebeleri, tek bir şeyi gaye edinmiştir: “İmanlarını kurtarmak niyetiyle Risale-i Nur’u okumak ve rıza-yı İlahî için iman ve İslâmiyet’e Risale-i Nur’la hizmet etmek.” Bu gayelerinde muvaffak olmak için her şeylerini bu hizmete hizmetkâr yapmışlardır.",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet Nur talebeleri, ümmet-i Muhammediyeyi sahil-i selâmete çıkaran bir sefine-i Rabbaniyenin hademeleri olduklarına inanmışlardır. Hayatta en büyük gayeleri; Kur’an ve imana hizmet ederek, ümmet-i Muhammed’in refah ve saadet içinde yaşamasına vesile olmaktır. Risale-i Nur’un el yazısıyla neşri senelerinde, evlerinden yedi sekiz sene çıkmadan Risale-i Nur’u yazıp neşredenler olmuştur. O zamanlar Isparta havalisinde erkek, kadın, genç ve ihtiyarlardan binlerce Nur talebesi hattâ Nur dershanesi olan Sav köyü bin kalemle, senelerce Nur Risalelerini yazıp çoğaltıyorlardı. (Risale-i Nur, telifinden yirmi sene sonra, teksir makinesi ile neşredilmiş ve otuz sene sonra da matbaalarda basılmaya başlanmıştır. İnşâallah bir zaman gelecek, Risale-i Nur Külliyatı altınla yazılacak ve radyo diliyle muhtelif lisanlarda okunacak ve zemin yüzünü geniş bir dershane-i Nuriyeye çevirecektir.)",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un neşrinde, mübarek hanımlar da ehemmiyetli fedakârlıklara mazhar olmuşlardır. Hattâ Hazret-i Üstada gelip “Üstadım! Ben efendimin göreceği dünyevî işleri de yapmaya çalışacağım; o senindir, Risale-i Nur’undur.” diyen ve erkeklerinin Risale-i Nur hizmetinde çalışmalarına daha fazla imkânlar veren kahraman hanımlar görülmüştür. Risale-i Nur’u yazan efendilerine geceleri lamba tutarak onların din, iman hizmetlerine canla başla iştirak etmişlerdir. Risale-i Nur’u hanımlar, kızlar elleriyle yazmışlar, göz nurları dökmüşler, mübarek kâtibeler olarak imana hizmet etmişlerdir.",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Hattâ öyle Nur Talebesi hanımlar vardır ki kendilerini son nefeste iman nuruyla hüsn-ü hâtimeye nâil edecek Nur Risalelerini hararetle okumuşlar ve diğer din kardeşleri olan hanımlara da okuyup tanıtmışlar; Nurları hanımlar içinde neşrederek çok hanımların Kur’an ve iman nurlarıyla nurlanmalarına vesile olup kahramanca hizmette bulunmuşlardır. Risale-i Nur’u okuyup okutmakla iman mertebelerinde terakki edip âdeta birer mürşid mertebesine yükselmişlerdir.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Hanımlar sırf Allah rızasını tahsil için safvet ve ihlasla, Risale-i Nur’daki parlak ve çok feyizli Kur’an nurlarına bağlanmış ve kalplerinde sönmez bir muhabbet ve sevgi besleyerek dünya ve âhirette bahtiyar olacak bir vaziyete kavuşmuşlardır. Risale-i Nur’un kıymet ve büyüklüğü, temiz kalplerine o kadar yerleşmiş ki onu beraberce okuyup dinledikçe içleri nurlarla, feyizlerle dolup taşmış, nurani gözyaşları dökerek cûş u hurûşa gelmişlerdir.",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Ne bahtiyardır o hanımlar ki Risale-i Nur’un bu mukaddes imanî hizmetinde çalıştıkları için onlar daima hayırla yâd edilecek, âhiretlerine nurlar gönderilecek, kabirleri cennet-misal pür-nur olacak ve âhirette de en yüksek mertebelere ulaşacaklardır inşâallah. En başta Bedîüzzaman Hazretlerinin dualarına dâhil olmakla beraber, Nur talebeleri mabeynindeki şirket-i maneviye sırrıyla defter-i hasenatlarına hayırlar kaydedilmektedir. Risale-i Nur’a samimi alâkaları, o fedakâr hanımları, milyonlarca Nur talebelerinin dualarına nâil etmektedir. Risale-i Nurları okuyup okutmakla büyük manevî kazançlara, yüksek derecelere erişmektedirler. İnşâallah ekseri hanımların böyle olmasını, rahmet-i İlahiyeden kuvvetle itikad ve ümit ve niyaz ediyoruz.",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Basîretli Nur nâşirleri; otuz beş sene evvel Risale-i Nur’daki yüksek hakikatleri görmüş, o kudsî dersleri almış ve o zamandan beri ihlas ve sadakatle gizli din düşmanlarına göğüs germiştir. Nur kahramanlarının haneleri müteaddid defalar arandığı ve kendileri defalarca hapislere atılarak orada şiddetli azaplar ve sıkıntılar çektirildiği halde, elmas kalemleriyle Risale-i Nur’un bu kadar senedir nâşirliğini yapmışlardır. İstedikleri takdirde dünya nimetleri kendilerine yâr olduğu halde; her türlü şahsî, dünyevî rütbelerden, varlıklardan feragatle ömürlerini Risale-i Nur’un hizmetine vakfetmişlerdir.",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "Acaba Risale-i Nur şakirdlerindeki bu cehd ve kuvvetin, bu feragat ve fedakârlığın ve bu derece sebat ve sadakatin sebebi nedir? Diye bir sual sorulursa bu sualin cevabı muhakkak ki şu olacaktır: Risale-i Nur’daki cerh edilmez yüksek hakikatler, iman hizmetinin yalnız ve yalnız rıza-yı İlahî için yapılması ve Bedîüzzaman Hazretlerinin a’zamî ihlasıdır.",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî Hazretleri, Barla’da sekiz sene kadar kalmıştır. Ekseri zamanlarını kırlarda, bağ ve bahçelerde geçiriyordu. İki üç saat kadar uzaklıktaki tenha dağlara veya bağlara çekilir, Nur Risalelerini telif eder; bir taraftan da telif ettiği risaleler Isparta ve havalisinde el yazısıyla istinsah edilip kendisine gönderildiğinde bunları tashih ederdi. Bir gün içinde hem tashihat yapar hem gidip gelme dört beş saat süren yerlere yaya olarak gider hem aynı günün üç dört saatini telifata hasreder ve hem de çok zaman yemeğini kendisi hazırlardı.",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "O zamanlarda kırk yerde risaleler, Risale-i Nur’a müştak ilk talebeler tarafından el yazısıyla çoğaltılıyordu. Üstad bu kitapları sırtına yüklenir; dağ, bağ veya kırlara kadar gider, orada tashihini yapar, evine gelirdi. Nefye mahkûm edilerek, zamanın en dehşetli zulmüne maruz bırakılmış ve kimse ile görüşmesine müsaade edilmemişti. Fakat o, bu yokluk içinde tükenmez bir varlığa kavuşmuştu. Çünkü o, âlem-i İslâm ve insaniyeti tenvir ve irşad edecek Kur’an’dan gelen iman hakikatlerini telif ediyor ve aynı zamanda neşrediyordu. Bütün meşgalesini, telif etmekte olduğu eserlere hasretmişti.",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir gün gelecek bu eserler Anadolu’ya yayılacak, âlem-i İslâm merkezlerine gidecek, ehl-i siyasetin nazar-ı dikkatini celbedecek ve o zaman, âlem-i İslâm’ın asırlardır bayraktarlığını yapmış bir millet içerisinde yerleştirilmek istenen dinsizlik, imansızlık ideolojilerini parçalayacak; son asırların dalalet tağutlarının şahs-ı manevîsinden ibaret olan ehl-i küfür, ehl-i sefahet ve ehl-i dalalet cereyanlarının bu vatanı istilasına set çekecek, istikbal nesillerinin ebedî kurtuluş ve saadetini temine medar olacaktır.",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte o, tarihin en muazzam bir hâdisesinin mebdeini izn-i İlahî ve tasarruf-u Rabbanî ile hazırladığı için böyle çok mukaddes bir manayı hâvi davanın hâmili bulunduğu itibarıyla dünyanın en mesudu, zamanın en bahtiyarı idi. Giyinişinde, gayesinde, idealinde zerre kadar değişiklik ve tezelzül olmamıştı. Bilakis hal-i âlemin itikadlarını düzeltecek, zulmeti izale edecek bir meşale-i hidayeti hâmil idi. Vazifesi ve hizmeti, bütün insanların iki cihana ait saadet ve refahını tazammun ettiği için bir cehd ve azim içinde bulunuyordu.",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın Barla’daki ikametgâhı, iki odadan ibaret bir evdir. Esasen müstakil bir evi ve yeryüzünde taht-ı tasarruf ve temellükünde bir karış yeri dahi yoktur. Barla’da sekiz sene müddetle ikamet ettiği ev, üç yüz elli milyon ehl-i İslâm’ın merkezi hükmünde ilk dershane-i Nuriyesidir. Bu dershane-i Nuriyenin altında, daimî akan bir çeşme vardır. Ve önünde, dershane-i Nuriyeye bitişik çok kalın ve üç sütun halinde semaya yükselen gayet muhteşem bir çınar ağacı vardır. Çınar ağacının dalları arasında bir kulübecik yapılmıştır. Burası, Hazret-i Üstadın bahar ve yaz mevsimlerindeki istirahati ve vazife-i tefekküriye ve ubudiyeti için en münasip bir menzildir.",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın sıddık hizmetkârları, talebeleri ve Barla ahalisi diyorlar ki: “Üstadı; geceleri, dershane-i Nuriyenin önündeki bir şecere-i mübareke olan çınar ağacının dalları arasında bulunan kulübecikte sabahlara kadar tesbihat ile ezkâr ile terennüm eder görürdük. Hele bahar ve yaz mevsimlerinde bu muhteşem ağacın binlerce dalları arasında şevk u cezbe içinde uçuşan kuşlar arasında Üstadın böyle sabahlara kadar çalışmasını görürdük de ne zaman uyur, ne zaman kalkar bilemezdik.”",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad çok hasta olur, çok vakitleri de hastalık ve sıkıntı ile geçerdi. Pek az yer, o da bir parça çorba gibi mahdud bir şeydi. Geceleri, Kur’an-ı Kerîm’den vird edindiği sureleri ve Resul-ü Ekrem aleyhissalâtü vesselâmın münâcat-ı meşhuresi olan Cevşenü’l-Kebir namındaki münâcatını ve Şah-ı Geylanî ve Şah-ı Nakşibend gibi eâzım-ı evliyanın münâcat ve hizblerini ve salavat-ı Nuriyeleri ve bilhassa Risale-i Nur’un menbaı olan “Hizbü’n-Nuriye”yi ve âyât-ı Kur’aniyenin lemaatı olan ve bir silsile-i tefekkür bulunan ve Yirmi Dokuzuncu Lem’a’da cem’edilen hizb ve münâcatları okur, bunları tamam edince de yine Risale-i Nur’la meşgul olurdu. Gündüzleri ise daima Risale-i Nur’un mütalaası ve tashihi ile meşgul olur; Risale-i Nur hizmetini her şeye tercih eder, Risale-i Nur’a ait yetişecek acele bir iş zamanında diğer meşguliyetlerini bırakır, evvela o işi tamamlardı.",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî, bahar mevsiminde menzilinin önündeki muhteşem çınar ağacının dalları arasındaki kulübeciğe çıkar, vazifesini orada îfa eder; Risale-i Nur’un hakikatlerini, menba ve maden-i hakikisi olan mele-i a’lâda tefeyyüz ve temaşa ve tefekkür ederdi. Üstadın, gerek شَجَرَةٌ مُبَارَكَةٌ sırrına mazhar olan bu çınar ağacı ve gerekse Çam Dağlarındaki o çok ünsiyet ettiği ağaçların ve dağların başındaki tefekkür ve hissiyatını ifade edebilmek acaba mümkün müdür? Aslâ mümkün değildir!",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "Cenab-ı Hak kemal-i rahmetiyle bu ferd-i ferîdi, kemalât-ı insaniyenin bütün envaını câmi’ bir istidatta yaratmış ve bu istidatların da a’zamî şekilde inkişafını irade etmiş ki bu müstesna zatı, İslâmiyet ağacının son asırlara uzanan ve binler dal budak salan Risale-i Nur şahs-ı manevîsi itibarıyla bütün hakaikte “üstad-ı küll” hükmüne getirmiş ve topyekûn İslâmiyet hakikatlerinin bir aks-i nurunu ve tecellisini Risale-i Nur şahs-ı manevîsinde dercederek, ehl-i hakikat ve kemali hayretle baktırmış ve böylece risalet-i Ahmediye ve hakikat-i Muhammediyenin câmi’ bir âyinesi olan Risale-i Nur ile Said Nursî, bir Said olarak çürümüş, erimiş fakat manen bütün âlem-i İslâm olarak tevellüd etmiş, beka bulmuştur. Ve tâ kıyamete kadar Risale-i Nur bâki kalacak ve daima tekemmül edecektir.",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "Hiç mümkün müdür ki sinek kanadının icadından lâkayt kalmayan ve o kanadın zerrelerinde pek çok hikmet ve maslahatları takip eden Sâni’-i Zülcelal, Risale-i Nur ile onun telif edildiği menzillerle ve Nur Müellifinin kudsî vazifelerini gördüğü yerlerle alâkadar olmasın ve öyle kudsî hizmetlere hâdim (hizmet eden) olan mekânlar ve dershane-i Nuriyeler ve şecere-i mübarek, rahmetin kasd-ı tahsisinden hariç kalsın? Kat’iyen mümkün değildir!",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî Hazretleri Barla’da iken yaz aylarında bazen Çam Dağı’na çıkar, bir müddet yalnız olarak orada kalırdı. Bulundukları dağ hayli yüksekti. Barla dershane-i Nuriyesinin önündeki çınar ağacının tepesindeki kulübeciği gibi Çam Dağı’nın en yüksek tepesinde olan iki büyük ağaç üzerinde dershane-i Nuriye manasında birer menzili vardı. Bu çam ve katran ağaçlarının tepelerinde, Risale-i Nur’la meşgul oluyordu. Hem ekser zamanlar, Barla’dan bu ormanlık havaliye gelip giderdi. Ve derdi ki: “Ben bu menzilleri, Yıldız Sarayı’na değişmem!”",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi sözü burada keserek, Üstadın Risale-i Nur’u telif ettiği mezkûr Çam Dağı’nda ve Barla nahiyesindeki hayatına ve Risale-i Nur’un mahiyetine ait risale ve mektuplardan birkaçını aşağıya dercediyoruz.",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 85
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 86
+    },
+    {
+      "type": "arabic_block",
+      "text": "سَلَامُ اللّٰهِ وَ رَحْمَتُهُ وَ بَرَكَاتُهُ عَلَيْكُمْ وَ عَلٰى اِخْوَانِكُمْ لَاسِيَّمَا … الخ",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz kardeşlerim!",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben şimdi Çam Dağı’nda, yüksek bir tepede, büyük bir çam ağacının tepesinde bir menzilde bulunuyorum. İnsten tevahhuş ve vuhuşa ünsiyet ettim. İnsanlarla sohbet arzu ettiğim vakit, hayalen sizleri yanımda bulur, bir hasbihal ederim, sizinle müteselli olurum. Bir mani olmazsa bir iki ay burada yalnız kalmak arzusundayım. Barla’ya dönsem arzunuz vechile sizden ziyade müştak olduğum şifahî bir musahabe çaresini arayacağız. Şimdi bu çam ağacında hatıra gelen iki üç hatırayı yazıyorum.",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Bir parça mahrem bir sırdır fakat senden sır saklanmaz. Şöyle ki:",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Ehl-i hakikatin bir kısmı nasıl ki ism-i Vedud’a mazhardırlar ve a’zamî bir mertebede o ismin cilveleriyle, mevcudatın pencereleriyle Vâcibü’l-vücud’a bakıyorlar. Öyle de şu hiç-ender hiç olan kardeşinize, yalnız hizmet-i Kur’an’a istihdamı hengâmında ve o hazine-i bînihayenin dellâlı olduğu bir vakitte, ism-i Rahîm ve ism-i Hakîm mazhariyetine medar bir vaziyet verilmiş. Bütün Sözler, o mazhariyetin cilveleridir. İnşâallah o Sözler وَمَنْ يُؤْتَ الْحِكْمَةَ فَقَدْ اُوتِىَ خَيْرًا كَثٖيرًا sırrına mazhardırlar.",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Tarîk-ı Nakşî hakkında denilen:",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "Der tarîk-ı Nakşibendî lâzım âmed çâr terk:",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "Terk-i dünya, terk-i ukba, terk-i hestî, terk-i terk",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "olan fıkra-i rânâ birden hatıra geldi. O hatıra ile beraber, birden şu fıkra tulû etti:",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "Der tarîk-ı acz-mendî lâzım âmed çâr çîz:",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakr-ı mutlak, acz-i mutlak, şükr-ü mutlak, şevk-i mutlak ey aziz!",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra senin yazdığın: “Bak kitab-ı kâinatın safha-i rengînine, ilâ âhir…” olan rengîn ve zengin şiir hatırıma geldi. O şiir ile semanın yüzündeki yıldızlara baktım. “Keşke şair olsaydım, bunu tekmil etseydim.” dedim. Halbuki şiir ve nazma istidadım yokken yine başladım fakat nazım ve şiir yapamadım, nasıl hutur etti ise öyle yazdım. Benim vârisim olan sen, istersen nazma çevir, tanzim et. İşte birden hatıra gelen şu:",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinle de yıldızları şu hutbe-i şirinine",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Name-i nurîn-i hikmet, bak ne takrir eylemiş.",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "Hep beraber nutka gelmiş, hak lisanıyla derler:",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir Kadîr-i Zülcelal’in haşmet-i sultanına",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer bürhan-ı nur-efşanız biz, vücud-u Sâni’a",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem vahdete hem kudrete şahitleriz biz.",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu zeminin yüzünü yaldızlayan",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "Nâzenin mu’cizatı çün melek seyranına.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu semanın arza bakan, cennete dikkat eden",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "Binler müdakkik gözleriz biz. (Hâşiye[3])",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Tûba-i hilkatten semavat şıkkına",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Hep Kehkeşan ağsanına",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir Cemil-i Zülcelal’in dest-i hikmetiyle takılmış",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "Pek güzel meyveleriz biz.",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu semavat ehline birer mescid-i seyyar,",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer hane-i devvar birer ulvi âşiyane",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer misbah-ı nevvar birer gemi-i cebbar",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer tayyareleriz biz.",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir Kadîr-i Zülkemal’in, bir Hakîm-i Zülcelal’in",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer mu’cize-i kudret birer hârika-i sanat-ı hâlıkane",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer nadire-i hikmet birer dâhiye-i hilkat",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "Birer nur âlemiyiz biz.",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "Böyle yüz bin dil ile yüz bin bürhan gösteririz,",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "İşittiririz insan olan insana.",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Kör olası dinsiz gözü, görmez oldu yüzümüzü,",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem işitmez sözümüzü, hak söyleyen âyetleriz biz.",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "Sikkemiz bir, turramız bir, Rabb’imize müsebbihiz, zikrederiz abîdane.",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Kehkeşan’ın halka-i kübrasına mensup birer meczuplarız biz.",
+      "order_index": 126
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 128
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 129
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "sec_33",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Birinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâlık-ı Rahîm, nev-i beşere verdiği nimetlerin mukabilinde şükür istiyor. İsraf ise şükre zıttır, nimete karşı hasaretli bir istihfaftır. İktisat ise nimete karşı ticaretli bir ihtiramdır.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, iktisat hem bir şükr-ü manevî hem nimetlerdeki rahmet-i İlahiyeye karşı bir hürmet hem kat’î bir surette sebeb-i bereket hem bedene perhiz gibi bir medar-ı sıhhat hem manevî dilencilik zilletinden kurtaracak bir sebeb-i izzet hem nimet içindeki lezzeti hissetmesine ve zahiren lezzetsiz görünen nimetlerdeki lezzeti tatmasına kuvvetli bir sebeptir. İsraf ise mezkûr hikmetlere muhalif olduğundan vahim neticeleri vardır.",
+      "order_index": 2
+    }
+  ]
+}

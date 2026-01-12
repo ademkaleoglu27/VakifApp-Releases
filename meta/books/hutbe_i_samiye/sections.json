@@ -1,0 +1,16 @@
+[
+  {
+    "id": "intro",
+    "work_id": "hutbe_i_samiye",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "hutbe_i_samiye",
+    "title": "İkinci Nükte: Bu medeniyet-i hazıranın hârikaları, beşere birer nimet-i Rabbaniye olmasından hakiki bir şükür ve menfaat-i beşerde istimali iktiza ettiği halde, şimdi görüyoruz ki ehemmiyetli bir kısım insanı tembelliğe ve sefahete sevk ve sa’yi ve çalışmayı bırakıp istirahat içinde hevesatı dinlemek meylini verdiği için sa’yin şevkini kırıyor. Ve kanaatsizlik ve iktisatsızlık yoluyla sefahete, israfa, zulme, harama sevk ediyor.",
+    "order_index": 2,
+    "type": "main"
+  }
+]

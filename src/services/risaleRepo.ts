@@ -1,6 +1,8 @@
 import { getDb } from './contentDb';
 import { RisaleWork, RisaleSection, RisaleChunk } from '@/types/risale';
 
+export { RisaleWork, RisaleSection, RisaleChunk };
+
 // ════════════════════════════════════════════════════════════════
 // LOAD & STABILIZE MODE
 // Set to true to only show Sözler (first 5 sections)

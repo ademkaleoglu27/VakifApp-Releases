@@ -1,0 +1,2565 @@
+{
+  "id": "sec_4",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Altıncı Söz’ün aldı bütün fiil ü sıfâtı",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Verdim de arındım ona hem zat u hayatı",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Müflis ve fakir bekliyordum şimdi kapında",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Tevhide eriştir beni, gel varını sun da",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben ben diye yazdımsa da sensin yine ol ben",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Hiçten ne çıkar hem bana benlik yine senden",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur aşkına, Hak aşkına, dost aşkına ey nur",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "Nurunla ve sırrınla bugün kıl bizi mesrur",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey nur-u Ezel’den gelen nur-u Muhammed (asm)",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey sırr-ı imandan gelen nur-u müebbed",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Binlerce yetimin duyulan âhını bir kes",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Sarsar o büyük arşı da vallah bu çıkan ses",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Vallah cemilsin, yeter artık bu celalin",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Göster bize ey nur-u Muhammed, bir kere cemalin",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Emmare olan nefsimizin emrine uyduk",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Mahbubuna uyduk, hepimiz ümmeti olduk",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "Ver bizlere sen nur ile îkan, yine ey nur-u Kur’an",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "Saç nurunu hem feyzini her an, yine ey nur-u iman",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "Hep isteğimiz aşk ile iman, yine ey nur-u İlahî",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "Rahm et bizi gark etmeye tufan, yine ey nur-u Rahmanî",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "Her yerde okunsun da bu Kur’an, yine ey nur-u Sübhanî",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Ağlatma yeter, et bizi handan, yine ey nur-u Rabbanî",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Sen nur-u Bedî’, nur-u Rahîm’sin bize lütfet",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Ol Ravza-i Pâk-i Ahmed’i (asm) göster bize himmet et",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Artık olalım hep ona kurban, yine ey nur-u Samedanî",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Tâ haşre kadar cennet-i canan, yine ey nur-u imanî",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "İslâm’a zafer ver, bizi kurtar, bizi güldür",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "A’damızı et hâk ile yeksan, yine ey nur-u Furkanî",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Her belde-i İslâm ile olsun bu yeşil yurt",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Ol Fahr-i Cihan, Âl-i Abâ hakkı için yâ Rab",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Hıfzet bizi âfat u beladan, yâ Nure’l-Envar, bihakkı ismike’n-Nur!",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Âciz, bîçare talebeniz",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "Hasan Feyzi (rahmetullahi aleyh)",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Gayet ehemmiyetli bir meseleyi –bundan evvel size icmalen beyan ettiğim meseleyi– tekrar size söylememe kuvvetli, manevî bir ihtar aldım. Şöyle ki:",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Perde altındaki düşmanımız münafıklar, şimdiye kadar yaptıkları gibi adliyeyi ve siyaset ve idareyi zahirî dinsizliğe âlet edip bize hücumları akîm kaldığı ve Risale-i Nur’un fütuhatına menfaati olan eski planlarını bırakıp daha münafıkane ve şeytanı da hayrette bırakacak bir plan çevirdiklerine dair buralarda emareleri göründü. O planların en mühim bir esası; has, sebatkâr kardeşlerimizi soğutmak, fütur vermek, mümkün ise Risale-i Nur’dan vazgeçirmektir.",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu noktada o kadar acib yalanları ve desiseleri istimal ediyorlar ki Isparta ve havalisi, Gül ve Nur Fabrikasının kahraman şakirdleri gibi çelik ve demir gibi bir sebat ve sadakat ve metanet lâzım ki dayanabilsin. Bazı da dost suretinde hulûl edip korkutmak mümkünse habbeyi kubbe edip evham veriyorlar. “Aman, aman Said’e yanaşmayınız! Hükûmet takip ediyor.” diye zayıfları vazgeçirmeye çalışıyorlar. Hattâ bazı genç talebelere, hevesatlarını tahrik için bazı genç kızları musallat ediyorlar. Hattâ Risale-i Nur erkânlarına karşı da benim şahsımın kusuratını, çürüklüğünü gösterip; zahiren dindar ehl-i bid’adan bazı şöhretli zatları gösterip “Biz de Müslüman’ız, din yalnız Said’in mesleğine mahsus değil.” deyip bize karşı perde altında cephe alan zındıklara ve anarşilik hesabına o safdil ehl-i diyanet ve hocaları âlet edip istimal ediyorlar. İnşâallah bunların bu planları da akîm kalacak. Böyle heriflere dersiniz:",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "“Biz, Risale-i Nur’un şakirdleriyiz. Said de bizim gibi bir şakirddir. Risale-i Nur’un menbaı, madeni, esası da Kur’an’dır. Yirmi senedir emsalsiz tetkikat ve takibatla beraber, kıymetini ve galebesini en muannid düşmana da ispat etmiştir. Onun tercümanı ve bir hizmetkârı olan Said ne halde olursa olsun hattâ Said de –El-iyazü billah– Risale-i Nur’un aleyhine dönse bizim sadakatimiz ve alâkamızı inşâallah sarsmayacak.” deyip o kapıyı kaparsınız.",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat mümkün olduğu kadar Risale-i Nur’la meşgul olmak, elinden gelirse yazmak ve mübalağalı propagandalara hiç ehemmiyet vermemek ve eskisi gibi tam ihtiyat etmek gerektir.",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlerimize birer birer selâm ve dua ediyoruz.",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu vatandaki milletin en büyük kuvveti olan âlem-i İslâm’ın teveccühünü ve hamiyetini ve uhuvvetini kırmak ve nefret verdirmek için siyaseti dinsizliğe âlet ederek, perde altında küfr-ü mutlakı yerleştirmek isteyenler, hükûmeti iğfal ve adliyeyi iki defadır şaşırtıp der: “Risale-i Nur şakirdleri, dini siyasete âlet eder; emniyete zarar vermek ihtimali var.”",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "Halbuki bu memlekete maddî ve manevî bereketi ve fevkalâde hizmeti ve umum âlem-i İslâm’a taalluk edecek hakaiki câmi’ olduğu, otuz üç âyât-ı Kur’aniyenin işaretiyle ve İmam-ı Ali’nin (ra) üç keramet-i gaybiyesiyle ve Gavs-ı A’zam’ın kat’î ihbarıyla tahakkuk etmiş olan Risale-i Nur’un siyasetle alâkası yoktur. Fakat küfr-ü mutlakı kırdığı için küfr-ü mutlakın altı olan anarşilik ve üstü olan istibdad-ı mutlakı esasıyla bozar, reddeder. Emniyeti ve asayişi ve hürriyeti ve adaleti temin eder. Risale-i Nur’a daha vatana, idareye zararı dokunmak bahanesiyle tecavüz edilmez. Daha kimseyi o bahane ile inandıramazlar.",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat cepheyi değiştirip din perdesi altında bazı safdil hocaları veya bid’a taraftarları veya enaniyetli sofi-meşreplileri, bazı kurnazlıklar ile Risale-i Nur’a karşı iki sene evvel İstanbul’da ve Denizli civarında olduğu gibi istimal etmeye münafıklar belki çabalayacaklar. İnşâallah muvaffak olamazlar.",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim!",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi tam tahakkuk etti ki resmen bana ihanet ve hakaret etmek, onunla teveccüh-ü âmmeyi hakkımda kırmak için gizli bir tedbir kurulmuş. Benim bütün dostlarımı –perde altında– soğutmak ve ürkütmeye çalışıyorlar. Halbuki Sikke-i Tasdik-i Gaybî onların bütün propagandalarını zîr ü zeber ediyor. Gerçi böyle dinsizlik hesabına bana olan hakaret, bir derece beni sıkıyor; Eski Said’den kalma bazı damarlarıma dokunuyor. Fakat Risale-i Nur’un hârika fütuhatı ve şakirdlerinin ehl-i hakikat nazarında ve ruhanî ve melaikeler yanında hürmet ve merhametle karşılanmaları, benim şahsıma gelen ihanet ve hakaretlerin sivrisinek kanadı kadar ehemmiyeti kalmaz.",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "O bedbaht ehl-i ihanet, dindarlık cihetiyle, ehl-i din ve ehl-i ulûm-u diniyenin hürmetini kırmak dine bir ihanet olduğu cihetinde, ruhanî ve melaikelerin ve ehl-i iman ve ehl-i hakikatin nazarında mel’un olduğu gibi; binden ancak bir iki serserinin veya zındığın âferinini kazanırlar.",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "O bedbahtlar bana hakaret etmekle, güya Risale-i Nur’un nüfuzunu kırıyor; şahsımı menba zannedip beni çürütmekle, Risale-i Nur sukut edecek gibi ahmakane bir zan ile şahsıma tecavüz oluyor.",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de derim: Ey bana dinsizlik hesabına ihanet ve hakaret eden bedbahtlar! Kat’iyen size haber veriyorum; yakında –tövbe etmemek şartıyla– hiç çare-i halâs yok ki ecel celladıyla sen, idam-ı ebedî ile ölüm darağacı ile asılacaksın! Şeraretli ruhun dahi ebedî bir haps-i münferidde mahkûm olmakla beraber, ehl-i iman ve ruhanîlerin nefret ve lanetini kazanacaksın! –Tövbe etmemek şartıyla– benim intikamım, senden pek muzaaf bir surette alınıyor bildiğimden hiddet değil hattâ sana acıyorum!",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma Risale-i Nur’un, senin gibi sinekler kadar ehemmiyeti olmayanların perde çekmesi, zerre kadar nüfuzunu kıramaz. Yüz binler adam onunla imanlarını kurtardıkları için ruh u canla hürmet ve perestiş ederler.",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Amma şahsımın teessürü ise kat’iyen size haber veriyorum ki bir iki dakika asabiyetle bir teessüratıma mukabil, birden öyle bir teselli buluyorum ki bin derece sizlerin hakaret ve ihaneti ziyadeleşse o teselliyi kıramaz.",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü Risale-i Nur’un keşf-i kat’îsiyle, dinsizlik hesabına bize hücum edenler, ebedî azaplar ve haps-i münferidde ve idam-ı ebedî ile ihanetini gördükleri gibi; Risale-i Nur’la imanını kurtaran şakirdleri, ölümle terhis tezkeresi ve saadet-i ebediye vesikasını alıp ebedî bir hürmet ve merhamet ve ikrama mazhar olacaklarını, feylesofları susturan binler hüccetlerle beyan etmişiz.",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bu Yeni Said, Eski Said gibi kendine hürmet ve teveccüh kazanmak ve şan ve şeref bulmak; kat’iyen aleyhindedir, kat’iyen kabul etmez. Onun için yirmi senedir inzivayı tercih etmiş.",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer asayiş ve idare hesabına nüfuzunu kırmak ve umumun nazarında çürütmek için yapıyorsanız pek büyük bir hata ediyorsunuz. İki sene üç mahkeme, yirmi senelik hayatımın yüz yirmi eserinde, yüz yirmi bin Risale-i Nur şakirdlerinden mûcib-i ihtilal ve medar-ı mes’uliyet ve vatan ve millet aleyhinde hiçbir şey bulmadıklarına beraetimizle ve Risale-i Nur eczalarının bütününü iade etmeleriyle gösterdiği cihetle, kat’iyen size beyan ediyorum ki:",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinsizlik hesabına bizi ezen sizler; vatan ve millet, asayiş ve idare aleyhinde ve anarşilik lehinde ve müthiş bir ecnebi hesabına beni sıkıştırıp bir sarsıntı çıkarıp o cereyanın müdahalesini istiyorsunuz. Onun için bütün ihanet ve hakaretlerinize beş para kıymet vermem; asayiş, idare lehinde, sabır ve tahammüle karar verdim.",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Elbette dünya daimî olmadığı gibi hâdisatı da fırtınalı, daima değişir. Birkaç saat cinayetlerle, dünyevî ve uhrevî binler zakkum ve azap neticeleri var. O zaman, faydasız “Yüz binler teessüf!” diyeceksiniz.",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben, resmî makamata ve bizimle tam alâkadar vazifedarlara yazdığım gibi sizin gibi bedbahtlara dahi derim: Biz, Risale-i Nur’la bu memleketin ve istikbalinin en büyük iki tehlikesini def’etmeye çalışıyoruz ve bilfiil çok emarelerle hattâ mahkemede de kısmen ispat etmişiz.",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci tehlike: Bu memlekette, hariçten kuvvetli bir surette girmeye çalışan anarşiliğe karşı set çekmek.",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Üç yüz elli milyon Müslümanların nefretlerini kardeşliğe çevirmekle, bu memleketin en büyük nokta-i istinadını temin etmektir.",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Afyon Emniyet Müdürüne derim ki:",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Müdür Bey! Dünyada, eski zamandan beri görülmemiş bu derece kanunsuz ve manasız ve maslahatsız tecavüzler bana geldiği halde neden aldırmıyorsunuz? Bir misali:",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "Camiye, hâlî zamanda, cemaat hayrına sahip olmak için, bazı bir iki adamdan başka kimseyi yanıma kabul etmediğim halde, resmen “Kat’iyen camiye gitmeyeceksiniz!” deyip bu gurbette, hastalık ve ihtiyarlık ve yoksulluk içinde bu ihanet hangi kanunladır? Hangi maslahat var? Haberim olmadan, caminin hâlî bir yerinde iki üç tahta, bir kilimle beni üşütmemek fikriyle bir zatın yaptığı iki kişilik bir settare yüzünden, ehemmiyetli bir mesele şeklinde hem bana hem umum halka manasız telaş vermek hangi kanunladır? Hangi maslahat var? Soruyorum.",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Bana bu ihanetleri yapanların hiçbir bahaneleri yoktur. Yalnız teveccüh-ü âmmeyi bahane edip: “Bu menfî adama neden hürmet ediyorsunuz?”",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de derim: Bütün dostlarım biliyorlar ki ben, şahsıma karşı hürmeti ve teveccüh-ü âmmeyi istemiyorum, reddediyorum. Benim hakkımda başkalarının hüsn-ü zannını kabul etmediğim halde, hangi kanun beni mes’ul eder ki ihtiyarım ve rızam haricinde, başkasının hüsn-ü zannıyla bana ihanet ediliyor.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Farz-ı muhal olarak bu teveccüh-ü âmme hakikat de olsa; vatana, millete faydası var, zararı olmaz. Hem eğer bir parçasını ben de kabul etsem bu ihtiyarlık, hastalık, yoksulluk ve soğuk bir oda içerisinde, dehşetli bir haps-i münferidde, zarurî hizmetlerimi görmek için bir iki insanın dostluğunu kabul etmekliğimde hangi fenalık var? Hangi kanun bunu men’eder? Bir iki işçi çocuktan başka benimle temas ettirmemek hangi kanunladır? O işçi çocuklar her vakit bulunmadığı için kendim işimi göremiyorum.",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu dehşetli vaziyeti elbette bu memlekette inzibat ve hükûmet ve idare adamları nazar-ı ehemmiyete almak borçlarıdır. Cidden alâkadar eder diye size beyan ediyorum. İnsaf ve vicdanınıza havale ediyorum.",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Emirdağı’nda bir tecrid-i mutlakta Said Nursî",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Cenab-ı Hakk’a hadsiz şükür olsun ki çoktan beri beklediğim bir ciddi yardım, Konya ulemasından görülmeye başladı.",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet Risale-i Nur, medreseden çıkmış, ilim içinde hakikate yol açmış. Hakiki sahipleri ve taraftarları medreseden çıkan hocalar olduğuna binaen, umum Anadolu’nun eskiden beri parlak ve faal bir medresesi Konya şehri olduğundan o mübarek medresenin şakirdleri kendi malları olan Risale-i Nur’a sahip çıkmaya ve sarılmaya başladığını Sabri’nin mektubundan anladım. Ve buraya, Konya’ya yakın geldiğime ruh u canımla memnun olup bana gelen bütün sıkıntılara sürur ile mukabele edip tahammül ediyorum.",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "Başta, çok mübarek tefsirin çok muhterem ve kıymettar sahibi olan Hoca Vehbi Efendi olarak, Risale-i Nur’u takdir edip alâkadarlık gösteren bütün Konya ve civarı ulemalarını, bütün kazançlarıma ve dualarıma şerik ettim. Ve has kardeşlerim dairesi içinde isimlerini bildiğim zatları, isimleriyle dua vaktinde yâd ediyorum.",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur şakirdlerindeki şirket-i maneviye itibarıyla, benim çok noksan kazancımdan hisse aldıkları gibi; bütün şakirdlerin bütün kazançlarından da hisseler almaya yol açıldığını, benim tarafımdan selâmımı hürmetlerimle onlara tebliğ ediniz.",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "Isparta kahramanları gibi Konya’nın mübarek âlimleri Risale-i Nur’a sahip çıktıklarından daha dünyaca, vazife-i Nuriyeye bir endişem kalmadı. O mübarek ve kuvvetli ellere Risale-i Nur’u emanet edip rahat-ı kalp ile kabrime gidebilirim.",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Elhak, az bir zamanda Risale-i Nur’a pek çok faydası dokunan ve on seneden beri Risale-i Nur’a çalışmış gibi haslar dairesinde bulunan Mustafa Osman’ın, Emirdağı’ndaki kardeşlerine, yangın münasebetiyle geçmiş olsun makamında nev-i beşer yangınını bahsedip güzel bir mektup yazmış. Onun mektubunun bir kısmını hem Lâhika’da hem Sikke-i Gaybiye’de kaydediyoruz, sonra suretini size göndereceğiz.",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Benim tarafımdan hem ona hem yanındakilere hem vasıta-i muhabere olduğu Kastamonu ve İnebolu’daki kardeşlerimize pek çok selâmlarla beraber; hattı güzel, vakti müsait olanlar, Isparta ve civarı gibi Asâ-yı Musa mecmuasını yazsalar çok münasip olur. Bu vazife-i Nuriye inşâallah matbaanın çok fevkinde iş görecek.",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Hâfız Emin’in Risale-i Nur’a çok hizmeti var. Onun kasabası olan Küre, geçen hâdiseden evvel Nuri, Hakkı, İhsan ve merhum Muallim Osman gibi zatların himmetiyle bir medrese-i Nuriye hükmüne geçip parlak bir surette Nur’a çalışıyordu. İnşâallah o kıymettar hizmeti, mümkün oldukça yine yapacak. Gerçi geçen musibette en ziyade onlar üzüldüler fakat ona mukabil Risale-i Nur’un geniş muzafferiyetinde o kasabanın ve o fedakâr kardeşlerimizin hisseleri çok ehemmiyetlidir.",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâfız Emin mektubunda diyor ki: “Ben mahkemeden kitaplarımı alamadım. Size gelmiş mi, gelmemiş mi?” diye benden soruyor. Siz ona selâmımla beraber yazınız ki: Seninki bana gelmediği gibi sana İstanbul’a gönderdiğim kitaplarımdan da hiçbirisi elime geçmedi. Ve bilhassa İstanbul’a gönderdiğim “büyük kitap” namında içinde yirmi risaleden ziyade bulunan mecmuayı çok araştırdımsa da bulamadım. Fakat madem Risale-i Nur kendi kendine intişar ediyor ve muhtaç olanlara kendini okutturuyor, Hâfız Emin’e ve bizlere sevap kazandırıyor. Hâfız Emin de benim gibi kitaplarının başka ellerde gezmesinden memnun olmalı.",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Küre’de erkek ve hanım ne kadar Risale-i Nur’la alâkadar varsa onlara selâm ediyorum. Eskisi gibi şimdi de Küre’ye bir medrese-i Nuriye nazarıyla bakıyorum. Hususan İhsan Abdurrahman’a selâm ediyorum, ne haldedir? İnşâallah eski parlak hizmeti devam ediyor. Tam bir Abdurrahman olduğunu ispat ettiği gibi devam edecek.",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlerimize birer birer selâm ve dua ediyoruz.",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "Hadsiz şükür olsun ki Risale-i Nur yerine beni sıkıyorlar, benimle meşgul oluyorlar. Hiç merak etmeyiniz عَسٰٓى اَنْ تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَكُمْ sırrıyla inşâallah bu yeni hâdisede dahi bir hayır olacak.",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâdise budur: Ceylan’ı ve iki arkadaşları –ki bana hizmet ediyorlardı– yanıma gelmelerini men’ettiler. Anahtarı onlardan aldılar, bekçilere verdiler. O bekçilerden birisi geliyor, su ve ekmek gibi işlerimi görüyor. Ben bunun sebebini bilemedim. Fakat bu kasabada bir parti münazaası var. Çocuğun bir amcası (Hâşiye[1]) bir taraftadır, onun muarızları yapıyor ihtimali var.",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem her tarafta Risale-i Nur’un fütuhatı ve hariçten gelen anarşistlik müdahalesi sebebiyet verdi zannederim. Ve Sandıklı’da elde edilen mektubatla, bir vasıta-i muhabere olması bahanesiyle bu sıkıntıyı verdiler.",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "Siz hiç telaş etmeyiniz, bunun da hiç ehemmiyeti yoktur. Siz, yine eski gibi bana yazarsınız. Fakat ben, kendim çok yazamıyorum. Güya beni, ihanet ve hakaretle çürütmekle Risale-i Nur’un fütuhatına set çekilecek. Divaneliklerinden, üflemekle milyonlar elektrik kuvvetinde bulunan Risale-i Nur gibi bir hakikat güneşi sönecek diye –ziyade sevabı bana kazandırmak için– beni fazla sıkıyorlar.",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "Medar-ı ibret ve dikkat bir tevafuktur ki dün, çocukla pederini zabıta celbedip ifadelerini aldığı aynı dakikada, ehemmiyetli bir vukuatı, telefon-u zabıta haber vererek bütün erkânı telaşa düşürttü. Mahall-i vak’aya gitmeye mecbur oldular. Manen onlara denildi: “Siz, sinek kanadı kadar zararı olmayanı bırakınız; kartallar belki ejderhalar gibi zararlara bakınız.”",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem camiden men’ hâdisesinin aynı vaktinde, men’e emir veren yeni kaymakam, Afyon’da ameliyata maruz kaldı. Lisan-ı haliyle ona denildi: “Ölüm var! Onun idamından kurtulmasına çalışanı tazyik değil belki çok takdir ve tahsin etmek gerektir.”",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeş ve hemşirelerime birer birer selâm ve dua ederim ve dualarını isterim.",
+      "order_index": 92
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşiniz Said Nursî",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve mübarek vârislerim ve emin vekillerim!",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Size kat’î haber veriyorum ki hakkımızda ve Risale-i Nur hizmetinde, inayet-i Rabbaniye ve tevfikat-ı Samedaniye devam ediyor. Zahiren çirkin perdeler altında, gayet güzel neticeler var. Bir zararımıza bedel, yüz menfaat bizlere ihsan ediliyor. Onun için geçici, muvakkat sıkıntılara ve sarsıntılara ehemmiyet vermemek lâzımdır.",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Mümkün olduğu kadar Asâ-yı Musa mecmuasını yazmakta fütur ve tevakkuf verilmesin. O kudsî birinci vazifenin pek çok ehemmiyeti var. Ve بِهِ الظُّلْمَةُ انْجَلَتْ onun hakkında İmam-ı Ali (ra) demiş.",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "Size iki Ali’nin on dört parça mübarek risalelerini tashih edip posta ile gönderdim. Burada hem beni hem talebeleri şevk ile tam çalıştırdılar. Kastamonu’da imdadıma geldikleri gibi burada dahi o iki kahraman yine imdadıma yetiştiler.",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Ben burada gerçi pek çok sıkılıyorum. Fakat sizlerin fütursuz çalışmanızı düşündükçe ve iştiyakla beklediğim mülayimane ve tesellikâr mektuplarınızı gördükçe o sıkıntılar gider, bazen sevinçlere inkılab ederler.",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "Benim mektuplarımı yazan, şimdilik yanıma gerçi gelemiyor fakat şahsî hizmetten başka, Risale-i Nur’a ait üç dört vazifesi var. Onları mükemmel yapıyor. Hem benim hususi işlerimi de kapıya gelip anlar, gider; onları da yapar.",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Sair yerlerdeki kardeşlerimiz Asâ-yı Musa yazmasına başlamışlar mı? Bu birinci vazifeyi eskiden yapan ve yanında mevcud bulunan zatlar, bir cilt içine alıp ikinci vazife-i imaniye olan Mu’cizatları zeylleriyle beraber tedarikine başlasınlar veyahut geri kalanlara yardım etsinler. Elinden geldiği kadar güzel ve tashihli yazılmalı.",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâmisen: Âlimlerden sonra muallimler dahi risaleye ihtiyaçlarını hissetmeye başladıklarına çok emareler var. Bir emare budur:",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "İstanbul’da din konferansında okumak niyetiyle Âyetü’l-Kübra Risalesi’ni istemeleridir.",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "[1] Hâşiye: Merhum Abdullah Çalışkan’dır. Demokrat Partiye, muhalefette iken intisap etmişti.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Re’fet Kardeş!",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "Sen de çok safalar geldin ve Risale-i Nur yazısı ile meşguliyetin beni cidden sevindirdi. Hulusi ve Sabri gibi senin de suallerinin Risale-i Nur’da ehemmiyetli neticeleri ve tatlı meyveleri var. Senin yanında bulunan ve risalelerde kaydedilmeyen ilmî parçaları münasip yerlerde veya Lâhika’da yazarsınız.",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim! Asâ-yı Musa mecmuasının yazmasında bir tedbir hatırıma geldi. Taksimü’l-a’mal ile beş altı zat, aynı kıtada her biri bir kısmını yazsın; daha çabuk ve daha kolay olur. Hem usandırmaz hem –büyüklüğü için– yazmak cesaretini kırmaz. Tahmin ederim ki bu çok ehemmiyetli vazife-i Nuriye tam ileri gitmemesi bu sebeptendir. Yazısı güzel olanlar, herhalde bu yeni tedbir ile o vazifeye çalışmalı.",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim! Çok dikkat ve ihtiyat ediniz. Sakın sakın hocalarla münakaşa etmeyiniz. Mümkün olduğu kadar musalahakârane davranınız, enaniyetlerine dokunmayınız, bid’at taraftarı da olsa ilişmeyiniz. Karşımızda dehşetli zındıka varken mübtedilerle uğraşıp onları dinsizlerin tarafına sevk etmemek gerektir.",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer size ilişmek için gönderilmiş hocalara rast gelseniz, mümkün olduğu kadar münazaa kapısını açmayınız. İlim kisvesiyle itirazları, münafıkların ellerinde bir senet olur. İstanbul’da ihtiyar hocanın hücumu ne kadar zarar verdiğini bilirsiniz. Elden geldiği kadar Risale-i Nur lehine çevirmeye çalışınız.",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlerime birer birer selâm…",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok aziz, sıddık, kahraman, bahtiyar Emirdağlı kardeşlerim!",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "Geçirdiğiniz çok büyük âfeti müş’ir, mübarek efendimiz hazretlerinin, çok ehemmiyetli ve çok kıymetli ve perde altında çok müjdeli lütufnamelerini aldık. Her birerlerinize, hususan bu yangında daha çok tehlike atlatan kardeşlerime, bura ve bu civar talebeleri namına büyük geçmiş olsun der ve bu vesile ile dehşetli küfr-ü mutlak yangınının mahallemizi sardığı ve kızıl kıvılcımlarının saçaklarımıza sıçramak üzere olduğu bir hengâmda, umum ehl-i iman ve hususan Nurcular namına, o maddî yangında çocuk Ceylan’ın ağlamakla meded istemesi gibi bir manevî Ceylan olarak, o büyük ve çok müşfik Üstada “Meded! Biz yanıyoruz, mahvolduk!” diye niyaz eylerim.",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu Emirdağ yangınında, günün en çok nüfuzuna sahip kızıl Rusya’dan çıkarak, kızıl ateşler ve kızıl kıvılcımlar saçan ve birer birer dünya şehrinin mahallelerini saran ve oraları yakıp kavuran, bazı yerlerde de nifak ve şikak ateşleri saçarak, kardeşine “Kardeşini öldür.” diye bağıran ve en nihayette âlem-i Hristiyaniyeti yakıp kavurup harman gibi savurduktan sonra âlem-i İslâm mahallesini saran ve evimizin saçaklarına kıvılcımları sıçrayan ve çok büyük ve çok dehşetli bir bela olan komünizm ve bu azîm yangında itfaiye vazifesini üzerine alan Risale-i Nur’a ve Risale-i Nur’un günün en büyük mutfîsi, en büyük tahassungâhı ve en büyük melcei ve penahı ve onun şahs-ı manevîsinin dualarının bârgâh-ı ehadiyette kabul olduğuna sarîh bir işaret var. Ve âdeta ona hücum edenlere ve etmek isteyenlere karanlık gecede kırmızı diliyle şöyle hitap ediyor:",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey Fahr-i Âlem’in gösterdiği doğru yoldan şaşanlar! Dünyanın fâni metalarıyla gururlanıp taşanlar ve ey dünyamıza zararı olur korkusu ile nur-u Kur’an’dan kaçanlar! Sizler, dünyanızın uçurumlara gittiği zannıyla, o bâki ve tatlı sandığınız fâni ve hakikatte çok acı lezzetlerinizin zeval bulmak, şedit ve elîm elem ve ızdıraplara tahavvül etmek üzere olduğunu tahmin ederek manasızca radyoların başına koşuyorsunuz. Bu koşmakta ve bu dedikoduları dinlemekte ne fayda var?",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Zeval bulucu lehviyat ve lezaizle körleşmiş, bakan gözleriniz artık yeter biraz hakikati görsün, sağırlaşmış duyan kulaklarınız, biraz hakikati duysun ki bu acib ve dehşetli ve hiç misli görülmemiş devirde, hususan ehl-i imanın çok sarsıntılar geçirdiği ve çok dehşetli düşmanlar karşısında bulunduğu ve küfr-ü mutlak ateşinin mahallemizi sardığı bir zamanda ancak ve ancak günümüzün en müstahkem, kavî, yıkılmaz, sarsılmaz tahkimatı olan Risale-i Nur’un nurani siperlerine iltica etmekle ve onun daire-i kudsiyesine dehalet etmekle kurtulacak ve imanınızı kurtararak, idam-ı ebedî zannettiğiniz ölümü, bir hayat-ı bâkiyeye tebdil edeceksiniz.",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve işte o Nur’un mübarek tercümanının ve mübarek şahs-ı manevîsinin اَجِرْنَا وَ اَجِرْ وَالِدَيْنَا وَ اَجِرْ طَلَبَةَ رَسَائِلِ النُّورِ وَوَالِدَيْهِمْ مِنَ النَّارِ ve emsali dualarının kabulüyle, şefaatiyle ve hürmetine, benim dehşetli fakat cehennem ateşi yanında hiç ehemmiyeti olmayan ateşimden, onun şakirdlerinin, hâdimlerinin ve risalelerinin muhafızı bulunan mağazaları nasıl âzad olmuş, kurtulmuş ise sizler de o mübarek şakirdler gibi o mübarek daire-i kudsiyeye dehalet ettiğinizde; dünyevî ve uhrevî dehşetli ateşlerden kurtulacak ve evlad ü iyalinizin bir nevi çobanı olmak hasebiyle, o sevgililerinizi de kurtaracaksınız. Ve her birerleriniz maddî ve manevî felâh ve saadete nâil olacaksınız.",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "Bakıp da görmeyen ve görüp de görmek istemediğinizden kapadığınız gözlerinizi açınız, görünüz ve azîm tehlikelerin çok yakın olduğunu ihsas ve telaş ve ızdırabınızı artırmaktan başka bir işe yaramayan dünya havadislerini veren radyo başına değil, ayaklarınızdaki bütün derman ve kuvvetinizle Risale-i Nur başına ve onun neticesi emniyet, selâmet ve saadet olan nurani dairesine koşunuz.",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizlere de: Ey Nurcular! Allah’ın sizlere ihsan ettiği ezelî lütfuna karşı secdeden başlarınızı kaldırmayınız. Gecenin soğuğuna aldırmayınız. Sizlere lütfunu hiçbir hususta esirgemeyen Rabb-i Rahîm’e, gecenin bu mübarek saatlerinde kalkarak vazife-i şükrü eda ediniz. Ve bazıların düştüğü, istikbali düşünmek derdiyle akl-ı maaşı sarsan hâdiseler karşısında titremeyiniz, korkmayınız; Nur’un kudsî kerameti ve imdadını müşahede ediniz. Dünya fânidir, binler sene yaşamak olsa bâki olan hayat-ı uhreviyenin yanında, hiç-ender hiç mesabesindedir. Fakat fâni olmakla beraber, bâki hayatın bâki meyvelerini verecek bir mezraasıdır. Fırtınaların şiddeti, havanın dehşeti sizleri sarsmasın, korkutmasın. Bu mübarek mezraaya en mübarek ve nurani ve verimli ve bereketli olan Nur tohumlarını ekiniz. Zira “Eken biçer.” atalarımızdan kalma mübarek bir sözdür.",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey Nurcular! Sizin hakiki vazifeniz, dünyaya bakmak değildir. Farz-ı muhal olarak dünyaya da bakılsa bakınız ve görünüz ve zuhuru muhtemel dehşetli yangınlar sebebiyle ve o yüzden karşılaşmanız ihtimali bulunan tehlikeler dolayısıyla kat’iyen sarsılmayınız, fütur getirmeyiniz. Çalışınız, çalışınız, çalışınız ve kat’iyen inanınız ki Nur’un şefaati, Nur’un duası, Nur’un himmeti sizleri kurtaracaktır. İşte bu davanın şahidi Emirdağlı Nurcuların dehşetli ateşten zararsız kurtulmalarıdır. Şimdiden umumunuza müjdeler olsun.",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşiniz Mustafa Osman",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "Vasiyetnamemdir",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve vârislerim!",
+      "order_index": 126
+    },
+    {
+      "type": "paragraph",
+      "text": "Ecel gizli olmasından vasiyetname yazmak sünnettir. Benim metrûkâtım ve Risale-i Nur’dan olan benim hususi kitaplarım ve güzel ciltlenmiş mecmualarım vesair şeylerimin bütününü, Gül ve Nur Fabrikalarının heyetine, başta Hüsrev ve Tahirî olarak o heyetten on iki (*[1]) kahraman kardeşlerime vasiyet ediyorum. Onlara bırakıyorum ki emr-i hak olan ecelim geldiği zaman, benim arkamda o metrûkâtım, benim bedelime o sadık ve mübarek ellerde hizmet-i Nuriye ve imaniyede çalışsın ve istimal edilsin.",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim! Bu vasiyetten telaş etmeyiniz. Ben, teessürattan ve dokuz defa zehirlenmekten, pek çok zayıf olmakla beraber; gizli münafıkların desiselerle müteaddid sû-i kasdları için bu vasiyeti yazdım. Merak etmeyiniz, inayet-i Rabbaniye ve hıfz-ı İlahî devam ediyor.",
+      "order_index": 128
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 129
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşiniz Said Nursî",
+      "order_index": 130
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 131
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve hizmet-i imaniyede azimkâr arkadaşlarım!",
+      "order_index": 132
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Birinci vazife-i Nuriye inşâallah matbaanın pek çok fevkinde iş görecek. Hem şimdi de şakirdlerine büyük sevaplar ve kuvvetli iman hizmetleri veriyor. Acaba bu vazife ileri gidiyor mu yoksa bu kışın ağır şeraitiyle geri mi kalıyor?",
+      "order_index": 133
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci vazife de; “Onuncu Söz” zeylleriyle beraber, iki Mu’cizat risaleleri ve zeyllerinin âhirinde bulunmak lâzımdır. Birinci vazifesini bitirenler, yine mevcudu varsa bir cilt içine almaya çalışsınlar yoksa tedarik etsinler. Çünkü âlem-i İslâm, şimdiki intibahı, vahdet-i İslâm’a çalışması, herhalde Risale-i Nur gibi eserleri arayacak ve büyük dairelerin geniş nazarlarına elbette büyük mecmualar lâzımdır.",
+      "order_index": 134
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Sizin bana yardımınız iki cihetle pek zahir ve pek büyüktür:",
+      "order_index": 135
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Sizin fütursuz hizmet-i Nuriyede çalışmanız, benim bütün musibetlerimi ve sıkıntılarımı hiçe indiriyor bilakis sürurlara kalbediyor.",
+      "order_index": 136
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Cihet: Kat’iyen biliniz ki duanız, onların ağır ve işkenceli zulümlerini, benim hakkımda inayetkâr, maslahattar merhametlere çevirmesine sebep olduğuna kat’iyen şüphem kalmadı. Ezcümle:",
+      "order_index": 137
+    },
+    {
+      "type": "paragraph",
+      "text": "Memurları ve halkları benden ürkütmeleri, beni büyük hatalardan ve tasannulardan ve ihlasa münafî haletlerden ve vaktimi zayi etmekten kurtarıp kader-i İlahî’nin hakkımda, zulm-ü beşerî içinde tam adaletini ve inayetini gösterdi. Buna kıyasen, başıma ne gelse altında bir rahmet var. Yalnız benim ile meşgul olmaları için on dirhem zarar, Risale-i Nur’un on bin lirasını kurtarıyor. Onun için siz hiç beni merak etmeyiniz. Hattâ bazen damarlarıma dokunduracak tarzdaki ihanetlerine karşı beddua etmek isterken, onların yakında ölüm idamıyla kabr-i haps-i münferidde azapları ve bu ihanetlerinin neticesinde bana ait maslahatları ve hizmetimize menfaatleri düşündükçe bedduadan vazgeçiyorum.",
+      "order_index": 138
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Her hafta bir iki mektubunuz bana hem şifa hem medar-ı teselli ve manevî bir sohbetle sizin ile görüşmeye vesile olmasından, kemal-i şevk ile postayı bekliyorum.",
+      "order_index": 139
+    },
+    {
+      "type": "paragraph",
+      "text": "Umumunuza birer birer selâm ve dua…",
+      "order_index": 140
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 141
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 142
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve hakikat yolunda hakperest arkadaşlarım!",
+      "order_index": 143
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu defa sizin beş altı mübarek mektuplarınıza yalnız bir tek müşevveş mektupla cevap vermemden gücenmeyiniz.",
+      "order_index": 144
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Halil İbrahim’in mektubu, şahsıma verdiği fevkalâde meziyetler için kabul etmemek mesleğimizce lâzım gelirken, iki manidar tevafuku bana hem kendini kabul ettirdi hem Lâhika’ya girdi. Fakat şahsıma ait kısmını bazen tayyettim ve bazısının üstünde “Risale-i Nur” kelimesini yazdım, ibaredeki suallerine cevap oldu.",
+      "order_index": 145
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci tevafuk: Hakkımda teveccüh-ü âmmeyi kırmak için bir yüzbaşı bana karşı beş vecihle kanunsuz hakaret ve ihanet ettiği aynı zamanda, belki aynı saatte, yüz tane böyle yüzbaşıdan ehl-i hakikat nazarında daha ehemmiyetli ve Risale-i Nur’un erkânından bir kardeşimiz, bu yeni mektubu, haddimden yüz derece ziyade ihtiram verip o gibi ihanetleri hiçe indirerek yazmış. Hem şakirdlerin erkân-ı mühimmesinden dört zat, aynı meseleye iştirak edip imza basmışlar. Ben de bu garib tevafukun hatırı için mesleğime muhalif olan senakârane mektubu kabul edip ta’dil ederek Lâhika’ya geçirdim ve size de müsveddesini gönderdim.",
+      "order_index": 146
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci tevafuk: Ben gece Asâ-yı Musa Risalesi’ni yazanları düşündüm ve yeni mektuplarda o noktada bahis aradım. Bu ağır kışta ve ara sıra bana münafıkların ilişmeleri, bunlara fütur vermek ihtimali var. Bu yazıcılara bir kamçı-yı teşvik lâzım. Nasıl ki Hasan Feyzi ve Halil İbrahim’in edibane iki tarifnameleri çokları yazıya şevk ile sevk ettiler diye bir teşvik vesilesini aradım; birden, sabahta benim ölümümü mevzu yapan ve şakirdleri korkutan ve sa’yde ve yazıda acele etmelerine medar o mektubu aldım, dedim: İbrahim Halil’in sadakati, keramet derecesine çıkmış.",
+      "order_index": 147
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Feyzi ve Emin’in mektubu, benim çok endişelerimi izale etti. Evet, bu iki kardeşimizin sadakatleri ve hizmetleri ve Risale-i Nur’a sahabetlerinin çok ehemmiyeti var. Ve hapishanede dokuz ayda, dokuz sene kadar kıymettar hizmet eden Hilmi ve Sadık ve İhsan ve Beşkardeş namında Risale-i Nur’a kalemiyle çok hizmet eden ihtiyar Tahsin gibi ve Feyzi ve Emin’in mektubunda işaret edilen umum o civarda çok alâkadar olduğum kardeşlerimin hizmet-i Nuriyede devamları, beni sürurla ağlattırdı.",
+      "order_index": 148
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat öz kardeşim Abdülmecid, beni çok merak ediyor; görüşemediğim buranın müftüsünden halimi anlamaya çalışıyor. Bundan sonra Feyzi ve Emin’in üçüncüsü Abdülmecid olsun. Safranbolu kahramanlarından aldıkları lüzumlu mektupları ona da göndersinler.",
+      "order_index": 149
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem benim tarafımdan ona yazsınlar ki: Eski Said’in birinci talebesi bulunduğun gibi Yeni Said’in dahi Hulusi ile beraber yine birinci safta talebelerisiniz.",
+      "order_index": 150
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem benim hakkımda musibet ve fena haberleri aldığı vakit, merhum pederim Mirza (rh) gibi olsun, merhume validem Nuriye (rh) gibi olmasın. Çünkü eski zamanda, dağdağalı hayatımda hakkımda acib havadisler peder ve valideme ihbar ediliyordu. “Sizin oğlunuz öldü veya vuruldu veya hapse girdi.” gibi fena haberleri babam işittikçe keyifleniyordu, gülüyordu. Derdi: “Mâşâallah, oğlum yine bir ehemmiyetli iş, bir kahramanlık göstermiştir ki herkes ondan bahsediyor.” Validem ise onun süruruna karşı şiddetle ağlıyordu. Sonra zaman, babamın haklı olduğunu çok defa gösteriyordu.",
+      "order_index": 151
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Lütfü’nün sebatkâr ve pek ciddi vârisi Abdullah Çavuş ve İslâmköylü merhum Hâfız Ali’nin şakird ve vârislerinden Mustafa’nın mektuplarını umum Nur Fabrikasının kahramanları hesabına kabul ettim. Cenab-ı Erhamü’r-Râhimîn’e hadsiz şükür olsun ki o köyleri de Sava ve Kuleönü gibi bir medrese-i nuriye hükmüne getirmiş.",
+      "order_index": 152
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 153
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 154
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin bu defa müteaddid mektuplarınıza, rahatsızlık mecburiyetiyle, bir tek mektupla iktifa ediyorum.",
+      "order_index": 155
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Risale-i Nur’un kahramanı Hüsrev, benim bedelime ölmek ve benim yerimde hasta olmak samimi ve ciddi istiyor. Ben de derim: Telif zamanı değil, şimdi neşir zamanıdır. Senin yazın, benim yazımdan ne derece ziyade ve neşre faydalı ise hayatın dahi hizmet-i Nuriyede benim bu azaplı hayatımdan o derece faydalıdır. Eğer benim elimden gelseydi hayatımdan ve sıhhatimden size memnuniyetle verirdim.",
+      "order_index": 156
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Şehit merhum Hâfız Ali’nin tam bir vârisi Hasan Feyzi’nin, Denizli hesabına ve o civarda ciddi kardeşlerimizin namına yazdığı parlak kaside ve dördüncü şehnamesi ve orada dahi şakirdlerin faaliyetle Nur’a çalışmaları; benim zehirli, şiddetli hastalığıma bir merhem oldu. Cenab-ı Erhamü’r-Râhimîn’e hadsiz şükür olsun, Denizli’yi ikinci bir Isparta ve büyük bir İslâmköyü yapıyor.",
+      "order_index": 157
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet hâkim-i âdil, Muharrem ve Feyzi ve Hâfız Mustafa, bir iki senede, yirmi sene kadar hizmet-i Nuriyeyi yaptılar; Nur’un şakirdlerini ebede kadar minnettar eylediler. Cenab-ı Hak onlardan ve beraberlerinde Nur’a hizmet edenlerden ebeden razı olsun, âmin!",
+      "order_index": 158
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Medrese-i Nuriyenin kahramanlarından ve Barlalı Marangoz Mustafa Çavuş ve Hâfız Mehmed’in tam vârisi Marangoz Ahmed’in Medrese-i Nuriye namına pek samimi ve hazîn taziyenamesi, beni sürurla ağlattırdı.",
+      "order_index": 159
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de derim: Madem o mübarek medresede küçük ve büyük çok Saidler var; ihtiyar, âciz, vazifesi bitmiş bir Said noksan olsa ehemmiyeti yok. Hayat-ı bâkiyede madem beraberiz, bir muvakkat müfarakat olsa da sizi müteessir etmesin.",
+      "order_index": 160
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Hâkim-i âdilden sonra en ziyade hakiki adalete çalışıp Risale-i Nur’un serbestiyetine hizmet eden م ح ر م en hâlis şakirdler içinde ve benim öz kardeşim ve birinci talebem Molla Mehmed ismiyle onun namı, dualarımda ve manevî kazançlarımda beraberdirler.",
+      "order_index": 161
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâmisen: Bu saatte Konyalı Sabri de –Halil İbrahim ve Hasan Feyzi tarzında vasiyetnamem münasebetiyle– kısa fakat güzel bir kaside yazmış, üstadına çok ziyade kıymet vermiş. Kendi hüsn-ü zannının parlak âyinesinde, bu bîçare kardeşine fevkalâde ehemmiyet vermiş. Ve oranın âlimleri pek ciddi Nur’a çalışmalarını yazıyor.",
+      "order_index": 162
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de derim: O üstad namı verdiği ve çok kıymet verdiği şahıs ise Risale-i Nur’un şahs-ı manevîsi olabilir. Ben de onun namına kabul ettim, Lâhika’ya geçirdim hem size de bir suretini gönderdim.",
+      "order_index": 163
+    },
+    {
+      "type": "paragraph",
+      "text": "Merak etmeyiniz, hastalığım gittikçe hafifleşiyor. Ispartalı Mustafa namında bir kardeşimizin samimi fakat garib bir mektubu içinde vardı. Bu zat hangi Mustafa’dır, bilemedim. Ona da çok selâm ederim. Acib rüyası hayırdır, şimdi tabir edemem.",
+      "order_index": 164
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeş ve hemşirelerimize birer birer selâm ve dua ederiz, makbul dualarını isteriz.",
+      "order_index": 165
+    },
+    {
+      "type": "paragraph",
+      "text": "Hasan Feyzi’nin güzel kasidesini, bazı kelimeleri ilâve ile Lâhika’ya geçirdik ve size de gönderdik.",
+      "order_index": 166
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 167
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 168
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok aziz, çok sıddık ve sadık kardeşlerim ve Risale-i Nur cihetinde emin ve hâlis vârislerim!",
+      "order_index": 169
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok manidar ve kuvvetli bir tevafuk ve şakirdlerin sadakatlerine delil, bir zahir keramet-i Nuriyeyi beyan etmeme bir ihtar aldım. Şöyle ki:",
+      "order_index": 170
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben vasiyetnamemi yazdığım aynı zamanda, gizli münafıklar, benim itimat ettiğim hizmetçilerimi zabıta tarafından yanıma gelmekten men’ettikleri aynı vakitte, fırsat bulup tanımadığım birisiyle, sâbık dokuz defadan daha tesirli bir zehir bana yutturdular.",
+      "order_index": 171
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem aynı zamanda, Tunuslu ve âlim kardeşlerimizden ve buraya kadar geçen sene beni görmek için gelip görüşmeden giden Hoca Haşmet, Yozgat’tan buraya yazıyor ki: “Said vefat etmiş, Risale-i Nur’un yüz otuz risalesi muhafaza edilsin. Tâ ki ileride tabedeceğiz.”",
+      "order_index": 172
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem aynı zamanda Halil İbrahim’in vefatım hakkında bir hazîn mersiye hükmündeki parlak mektubu, şakirdleri ağlattırdı.",
+      "order_index": 173
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bu zamana pek yakın Hüsrev’in kendi âdetine muhalif benim vefatıma dair bir iki mektubunda, iki üç gün ömür gibi tabirlerle ecelime işaretleri, bir parça beni müteessir etti. Acaba ben gidiyorum diye endişe ettim.",
+      "order_index": 174
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bu aynı hengâmlarda, en ziyade hayat-ı dünyeviyedeki vazifemi düşünüp vefatımdan sonra şakirdler bu dehşetli zamanda benim bedelime de o vazifeyi yapacaklar mı diye çok merak ederken; birden Denizli, Milas, Isparta, İnebolu, ümidimin yüz derece fevkinde ve öyle bir sahabetkârane ve iltizam-perverane o vazifeye koşup başkaları da ve muallim ve âlimleri koşturdular ki beni hayret hayret içinde bıraktılar.",
+      "order_index": 175
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Bu beş cihetteki tevafuk, zahir bir keramet-i Nuriyedir.",
+      "order_index": 176
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْحَمْدُ لِلّٰهِ هٰذَا مِنْ فَضْلِ رَبّٖى",
+      "order_index": 177
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim!",
+      "order_index": 178
+    },
+    {
+      "type": "paragraph",
+      "text": "Merak etmeyiniz, Cevşen ve Evrad-ı Bahaiye bu defa dahi o dehşetli zehirin tehlikesine galebe etti; tehlike devresi geçti fakat hastalık devam ediyor.",
+      "order_index": 179
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlerime birer birer selâm ve selâmetlerine dua edip şüphesiz makbul olan dualarını isterim. Ve İnebolu’da ve civarında hem çok hanımların hem küçük yavrularının Risale-i Nur’u yazmaya başlamalarını ve Kur’an dersini çok masumların almasını bütün ruh u canımla tebrik ederiz.",
+      "order_index": 180
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 181
+    },
+    {
+      "type": "paragraph",
+      "text": "Duanıza muhtaç kardeşiniz Said Nursî",
+      "order_index": 182
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 183
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim!",
+      "order_index": 184
+    },
+    {
+      "type": "paragraph",
+      "text": "Siz müteessir olmayınız hem merak etmeyiniz. Yalnız, dua ile bana yardım ediniz. Çünkü birkaç gündür sol kolum çok ağrıyor, gece rahatsız ediyor. Kimseyi yanıma bırakmadığımdan oda içindeki zarurî işlerimi zahmetle yapabilirim. Zannederim eskiden beri bende bulunan kulunç illetinin bir şubesidir ki buranın mizacıma çok dokunan maddî havası ve kışı, o insafsızların evhamı, tazyikatları ve manevî kışı, damarıma dokunur. Âdeta bir yarım nüzul isabeti gibi ızdırap çektim. Fakat lillahi’l-hamd sizin makbul dualarınız, o tehlikeyi de hafif bir surete çevirdi. İnşâallah o suret de geçer; çok sevaplı faydası, yerinde kalır.",
+      "order_index": 185
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim!",
+      "order_index": 186
+    },
+    {
+      "type": "paragraph",
+      "text": "Salahaddin’in yazısına göre, o havalide dahi Asâ-yı Musa mecmuası çok faaliyettedir, fütuhat yapıyor. Demek, o tarafta o çok ehemmiyetli vazife-i Nuriyeyi yapıyor. Yüz bin elhamdülillah, yazanlara da yüz mâşâallah, bârekellah!",
+      "order_index": 187
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 188
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 189
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Hadsiz şükür olsun ki Isparta, tam bir Medresetü’z-Zehra ve Camiü’l-Ezher olacağını ve olmaya başladığını, kahraman talebelerinin bu ağır şerait altında sarsılmadan faaliyetleri ispat ediyor. Diyanetçe ve Kur’an ve Risale-i Nur’a müştakane çalışmaları, hattâ Aliköyü’nde Alilerin gayretiyle çok çocukların talebeliğe girmeleri ve diğer bir köyün umum gençleri gecede Kur’an’a çalışmaları ve camiler cemaatle dolmaları, Nur şakirdlerinin çektikleri bütün sıkıntıları hiçe indiriyor.",
+      "order_index": 190
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Fevkalâde sadakat ve alâka taşıyan Halil İbrahim’in bu dördüncü şehnamesi, benim Nur’a hâdimliğim noktasında haddimin pek fevkindeki tarifnamesi gerçi çok güzeldir fakat Risale-i Nur’dan ziyade benim şahsıma baktığı cihetiyle, şimdilik size göndermedim, ta’dilden sonra gönderilecek. Hem ona hem onun rüfekalarına bilhassa selâm ederiz.",
+      "order_index": 191
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Siz bana karşı sû-i kasdlara merak etmeyiniz, belki bir cihette memnun olunuz ki Risale-i Nur ve şakirdleri yerinde, benim cüz’î ve vazifesi bitmiş olan şahsıma hücum ediyorlar, tazip ederler. Bugünlerde buranın büyük memurları, çekinmeyerek bazılara demiş: “Said’in vücudu ortadan kalkmalı.” İşte gizli düşmanlarım, bunun bu gibi fikirlerinden istifade ederek, mutemed hizmetçilerimi dağıtmakla fırsat bulup beni zehirlediler. Ve bu gibi memurlardan kuvvet alıyorlar. Fakat hıfz ve inayet-i İlahiye, bu sû-i kasdları da akîm bıraktı. İnşâallah daima inayet himayet edecek, bütün planlarını akîm bıraktı, bırakacak.",
+      "order_index": 192
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 193
+    },
+    {
+      "type": "paragraph",
+      "text": "Dâhiliye Vekili ile Hasbihalden Bir Parçadır",
+      "order_index": 194
+    },
+    {
+      "type": "paragraph",
+      "text": "Hiçbir tarihte ve zemin yüzünde emsali vuku bulmayan bir zulme ve on vecihle kanunsuz bir gadre ve tazyike hedef olmuşum. Şöyle ki:",
+      "order_index": 195
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem şiddetli sû-i kasd eseri olarak zehirlenmeden hasta hem gayet zayıf, yetmiş bir yaşında ihtiyar hem kimsesiz, acınacak bir gurbette hem sako hem fanila ve pabucunu satmakla maişetini temin eden fakirü’l-hal hem yirmi beş sene münzevi olmasından, binden ancak tam sadık bir adam ile görüşebilen bir merdüm-giriz, mütevahhiş hem yirmi sene hayatını ve eserlerini üç mahkeme ve Ankara Ehl-i Vukufu inceden inceye tetkikten sonra bi’l-ittifak beraetine ve eserleri vatana, millete zararsız olarak menfaatli olmasına karar verilmiş bir masum hem Eski Harb-i Umumî’de ehemmiyetli hizmet etmiş bir evlad-ı vatan hem şimdi bu milleti, bu vatanı anarşilikten ve ecnebi ifsadlarından kurtarmak için meydandaki tesirli âsârıyla bütün kuvvetiyle çalışan bir hamiyet-perver ve mahkemede yetmiş şahitle ispat edildiği gibi yirmi beş senede bir gazeteyi okumayan, merak etmeyen ve yedi sene harb-i umumîye bakmayan, sormayan, bilmeyen ve eserlerinde kuvvetli delillerle siyasetten bütün bütün alâkasını kestiğini ispat eden ve dünyanıza karışmadığını adliyeleriniz resmen itiraf ettiği bir zararsız adam hem âhiretine ve ihlasına zarar gelmemek için şiddetle teveccüh-ü âmmeden kaçan ve kardeşlerinin onun hakkındaki hüsn-ü zanlarından ve medihlerinden çekinen, beğenmeyen bu bîçare Said’e; başta Dâhiliye Vekili olan sen, Afyon Valisini ve Emirdağ Zabıtasını musallat edip her gün bir ay haps-i münferid azabını çektirmek ve tecrid-i mutlak içinde tek başıyla bir haps-i münferidde durmaya mecbur etmek, hangi maslahatınız iktiza eder? Hangi kanun bu dehşetli gadre müsaade eder diye hukuk-u umumiyeyi muhafaza eden adliyenin yüksek dairesi vasıtasıyla Dâhiliye Vekili’ne beyan ediyorum.",
+      "order_index": 196
+    },
+    {
+      "type": "paragraph",
+      "text": "Zulmen bütün hukuk-u medeniyeden ve insaniyeden ve yaşamak hakkından mahrum edilen Said Nursî",
+      "order_index": 197
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 198
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve benim hakkımda bu gurbette samimi akrabalarım Osman, Mehmed, Hasan Efendiler!",
+      "order_index": 199
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin hâlisane, bana ve Risale-i Nur’a karşı hiç unutulmayacak hizmetinize bir mükâfat-ı âcile olarak Hasan Feyzi ve sair talebelerin, Çalışkan Hanedanına karşı fevkalâde teveccühleri ve umum memlekette sizin şerefinizi neşretmeleri ve ehl-i hakikati size dost yapmakları cihetiyle; benden ziyade Risale-i Nur ve şakirdlerini himaye ve muhafaza etmek ve ehl-i siyasetin ve beni zehirleyen düşmanlarımın desiselerinden kurtarmak için gayet derecede bir ihtiyat, tam bir sadakat ve benim yerimde tam bir dikkat ile mükellefsiniz. Yoksa az bir hata, yalnız bana değil belki binler masum şakirdlere ve şimdi parlayan şerefinize dokunacak. Benim vaziyetim ve verilen sıkıntılar altı vecihle kanunsuz olmasından, ileride mes’uliyetten kurtarmak için insafsız ve kanunsuz beni tazip edenler, kendilerine bir bahane, bir vesile arıyorlar. Pek çok dikkatli olmanız lâzımdır.",
+      "order_index": 200
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 201
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 202
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Bir iki gün evvel hasbihalin bir parçası size gönderilmiş. Tâ siz onu esas tutup lüzum olduğu zaman ya istida veya o vekile ve mahkemeye vermek veya başka makamata o parça ile müracaat etmek ve kardeşlerimiz dahi o esas üzerine kendilerini münafıklara karşı müdafaa etmek için size gönderilmiş. Demek, şimdiye kadar bana garazla işkenceli sıkıntıları verdiren, en başta o imiş. Her ne ise… Siz meşveretle ne lâzımsa yaparsınız. Fakat ihtiyatla, telaşsız, velveleye vermemek lâzım.",
+      "order_index": 203
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Bu defa görüşmediğim buranın korkak müftüsü vasıtasıyla, Hulusi’nin Kars’tan bir mektubunu biraderzadem Nihad’ın mektubuyla aldım. Elhak o kardeşimiz, daima fevkalâde sadakatini ve Nurlara kuvvetli alâkasını muhafaza ediyor. Manidar bir tevafuktur ki bilmediğim halde, Nihad’ın orada bulunması ihtimaliyle, Sabri’ye ait fıkrada demiştim ki: Nihad Kars’ta ise Hulusi ile görüşür mealinde burada söylediğim ve sonra size yazdığım aynı zamanda, o ikisi şimdiye kadar sükût ettikleri halde, beraber bana mektup yazıyorlar.",
+      "order_index": 204
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Re’fet kardeşimizin kemal-i sadakat ve alâkasını ve Hulusi gibi Nurların bir kumandanı olduğunu gösteren mektubu, Hulusi’nin mektubunu aldığım zamanına tevafuku, latîf ve sürurlu oldu. O ikisi Lâhika’ya girsin. Ve Re’fet’in masumlara Kur’an okutması ve kendisi Lem’alar ile yazmak ve okumakla meşgul olması ve benim hastalığımın şifasına o masumlarla dua etmeleri, bir merhem gibi hastalığıma ferah ve hiffet verdi.",
+      "order_index": 205
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve râbian: Yazıda merhum Âsım’a benzeyen Yakub Cemal’in hayatta olduğunu ve hayatta ise Nurlar ile o güzel kalemi ile hizmet ediyor mu bilemediğim için çok defa hazînane ve müteessifane düşünüyordum. Hadsiz şükür olsun ki hem hayatta hem Nurlara hizmette hem sadakatte olduğunu gösteren bir mektubunu aldım “Elhamdülillah” dedim.",
+      "order_index": 206
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 207
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 208
+    },
+    {
+      "type": "paragraph",
+      "text": "Yüz defadan ziyade, gayet kıymetli bir hakikat-i imaniye bana görünüyor. Telif zamanı tamam olması hikmetiyle ne kadar çalıştım, o çok ehemmiyetli hakikati avlayamadım. Vâzıhen ifade ve ihsas etmek için bekledim, muvaffak olamadım. Şimdi gayet kısa bir işaretle, o çok geniş ve çok uzun hakikatten kısacık bahsedeceğim:",
+      "order_index": 209
+    },
+    {
+      "type": "paragraph",
+      "text": "اِنَّ اللّٰهَ خَلَقَ الْاِنْسَانَ عَلٰى صُورَةِ الرَّحْمٰنِ hadîsi hem cevamiü’l-kelimden hem müteşabih hadîslerdendir. Pek büyük ve küllî nüktesi, benim kalbime, Hülâsatü’l-Hülâsa ile Cevşenü’l-Kebir’i okuduğum vakit zahir oldu. Ben de o acib ve çok güzel nükteyi kaçırmamak için şifreler, işaretler nevinden Hülâsatü’l-Hülâsa’nın on yedinci mertebesi olan “Kur’an lisanıyla şehadet” ve on sekizinci mertebesi olan “kâinat lisanıyla şehadet” ortasında o şifreli işaretleri şöyle koydum:",
+      "order_index": 210
+    },
+    {
+      "type": "arabic_block",
+      "text": "لَا اِلٰهَ اِلَّا اللّٰهُ الْوَاجِبُ الْوُجُودِ الْوَاحِدُ الْاَحَدُ بِلِسَانِ الْحَقٖيقَةِ الْاِنْسَانِيَّةِ بِكَلِمَاتِ حَيَاتِهَا وَ حِسِّيَّاتِهَا وَ سَجِيَّاتِهَا وَ مِقْيَاسِيَّتِهَا وَ مِرْاٰتِيَّتِهَا وَ بِكَلِمَاتِ صِفَاتِهَا وَ اَخْلَاقِهَا وَ خِلَافَتِهَا وَ فِهْرِسْتِيَّتِهَا وَ اَنَانِيَّتِهَا وَ بِكَلِمَاتِ مَخْلُوقِيَّتِهَا الْجَامِعَةِ وَ عُبُودِيَّتِهَا الْمُتَنَوِّعَةِ وَ اِحْتِيَاجَاتِهَا الْكَثٖيرَةِ وَ فَقْرِهَا وَ عَجْزِهَا وَ نَقْصِهَا الْغَيْرِ الْمَحْدُودَةِ وَ اِسْتِعْدَادَاتِهَا الْغَيْرِ الْمَحْصُورَةِ",
+      "order_index": 211
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu kısa şifreyi, yine gayet muhtasar bir şifre ile tercüme ve izah edeceğim. Bunu Hülâsatü’l-Hülâsa’ya bir hâşiye yapınız.",
+      "order_index": 212
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet ben, Hülâsatü’l-Hülâsa’yı okuduğum zaman koca kâinat, nazarımda bir halka-i zikir oluyor. Fakat her nev’in lisanı çok geniş olmasından fikir yoluyla sıfât ve esma-i İlahiyeyi ilmelyakîn ile iz’an etmek için akıl çok çabalıyor, sonra tam görür. Hakikat-i insaniyeye baktığı vakit o câmi’ mikyasta, o küçük haritacıkta, o doğru numunecikte, o hassas mizancıkta, o enaniyet hassasiyetinde öyle kat’î ve şuhudî ve iz’anî bir vicdan, bir itminan, bir iman ile o sıfât ve esmayı tasdik eder. Hem çok kolay hem hazır yanındaki âyinesinde, hiç uzun bir seyahat-i fikriyeye muhtaç olmadan iman-ı tahkikîyi kazanır ve اِنَّ اللّٰهَ خَلَقَ الْاِنْسَانَ عَلٰى صُورَةِ الرَّحْمٰنِ hakiki bir manasını anlar. Çünkü Cenab-ı Hak hakkında suret muhal olmasından suretten murad sîrettir, ahlâk ve sıfâttır.",
+      "order_index": 213
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet nasıl ki ehl-i tarîkat, seyr-i enfüsî ve âfakî ile marifet-i İlahiyede iki yol ile gitmişler ve en kısa ve kolayı ve kuvvetli ve itminanlı yolunu enfüsîde yani kalbinde zikr-i hafiyy-i kalple bulmuşlar.",
+      "order_index": 214
+    },
+    {
+      "type": "paragraph",
+      "text": "Aynen öyle de yüksek ehl-i hakikat dahi marifet ve tasavvur değil belki ondan çok âlî ve kıymetli olan iman ve tasdikte, iki cadde ile hareket etmişler:",
+      "order_index": 215
+    },
+    {
+      "type": "paragraph",
+      "text": "Biri: Kitab-ı kâinatı mütalaa ile Âyetü’l-Kübra ve Hizbü’n-Nuriye ve Hülâsatü’l-Hülâsa gibi âfaka bakmaktır.",
+      "order_index": 216
+    },
+    {
+      "type": "paragraph",
+      "text": "Diğeri: Ve en kuvvetli ve hakkalyakîn derecesinde vicdanî ve hissî, bir derece şuhudî olan hakikat-i insaniye haritasını ve enaniyet-i beşeriye fihristesini ve mahiyet-i nefsiyesini mütalaa ile imanın şüphesiz ve vesvesesiz mertebesine çıkmaktır ki sırr-ı akrebiyete ve veraset-i nübüvvete bakar.",
+      "order_index": 217
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve enfüsî tefekkür-ü imanî hakikatinin bir parçası, Otuzuncu Söz’ün “ene ve enaniyet”te ve Otuz Üçüncü Mektup’un Hayat Penceresi’nde ve İnsan Penceresi’nde ve bazı parçaları da sair ecza-yı Nuriyede bir derece beyan edilmiş.",
+      "order_index": 218
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunu hem Lâhika’ya hem Sikke-i Gaybiye’ye hem Hülâsa’nın âhirine yazılsın.",
+      "order_index": 219
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 220
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 221
+    },
+    {
+      "type": "paragraph",
+      "text": "Halimin müsaadesizliği için müteaddid mektuplarınıza bir tek perişan mektubumla cevap verdiğimden gücenmeyiniz.",
+      "order_index": 222
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Gizli düşmanlarımız hükûmetin ehemmiyetli ve birkaç vazifedarlarını elde edip beni tazyikatla, Menemen ve Şeyh Said Hâdisesi gibi bir hâdise çıkarmak için bütün kuvvetiyle en hassas damarlarıma dokunduracak tarzda her desiseyi istimal ettiler. Gördüler ki Eski Said yok, yenisi ise her şeye tahammül ediyor, o planı sair sû-i kasdlara ezcümle zehir vermeye tebdil ettiler. Hıfz-ı İlahî onu da akîm bıraktı. Şimdi o münafıklar resmen hükûmetin nüfuzunu, benden halkları ürkütmek ve vazgeçirmek için burada dehşetli bir propaganda ile istimal ediyorlar. Fakat siz hiç telaş etmeyiniz. İnayet-i Rabbaniye devam eder. Gittikçe fütuhat-ı Nuriye tevessü ediyor.",
+      "order_index": 223
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Bu defa Hasan Feyzi’nin ve bir hafta evvel Halil İbrahim’in şahsıma karşı fevkalâde hüsn-ü zan ile mersiyeleri ve samimi ve hazîn vedanameleri, az ta’dil ile üç sebep için kabul edildi:",
+      "order_index": 224
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Onlar, şahsıma değil belki Kur’an ve imana ve Nurlara hâdimliğim ve o vazife-i kudsiyeye bakıp yazmışlar.",
+      "order_index": 225
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Onların ve onlar temsil ettikleri o civardaki hâlis kardeşlerimizin ve haddimin çok fevkindeki tarifatlarını, bir nevi samimi dua ve ulvi bir tefe’ül ve yüksek bir arzu-yu hayır ve istidatlarının ve itikadlarının ve Nurlara pek ciddi alâkalarının bir in’ikası olmasıdır.",
+      "order_index": 226
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncüsü: Ben onların nazarında Risale-i Nur ve şakirdlerdeki şahs-ı manevîsinin mümessili ve numunesi olmam cihetiyle, onların sebeb-i teşvikleri olan o hârika hüsn-ü zanlarını ve kuvve-i maneviyelerini kırmak, maslahat değildir. O ikisine ve arkadaşlarına hususan Ahmed Feyzi ve Denizli hapsindeki kardeşlerimize ve hakkımızda adalete çalışanlara binler selâm.",
+      "order_index": 227
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Çok defa benim sıkıntılarıma bir merhem hükmüne geçmiş ve yanımdaki sakladığım kahraman Hüsrev’in çok mektupları ve onların her birinden birer ehemmiyetli fıkrayı alıp mecmuunu Lâhika’ya geçirmek için zaman bulamıyorum. İnşâallah bir istirahat zamanında tetkik edeceğim.",
+      "order_index": 228
+    },
+    {
+      "type": "paragraph",
+      "text": "Ahmed Nazif’in İnebolu talebeleri namına yazdığı ve Halil İbrahim’in ağlatıcı mersiyesine iştiraklerini gösteren mektubu, benim o havalideki sebatkâr kardeşlerim hakkında endişelerimi izale eyledi. Cenab-ı Hak onlardan razı olsun.",
+      "order_index": 229
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Çoban İsa köyünde Ahmed’in mektubunda isimleri bulunan eski ve yeni kardeşlerimizin Risale-i Nur’a çalışmaları ve çocukları da Kur’an’a ve Nurlara çalıştırmaları, bu vakitte Nurlara büyük bir hizmettir. Cenab-ı Hak onları muvaffak eylesin, âmin!",
+      "order_index": 230
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâmisen: Münafık düşmanlarımın maddî ve manevî zehirlerine karşı gerçi Cevşen ve Evrad-ı Kudsiye-i Şah-ı Nakşibend beni ölüm tehlikesinden belki yirmi defa kudsiyetleriyle kurtardılar fakat maatteessüf âsabımda ve sinirlerimde ve hassasiyetimde, o zulümden öyle şiddetli bir teessür, bir heyecan, bir teellüm, bir teneffür gelmiş ki en samimi dostumu ve tam sadık bir kardeşimi bir saat yanımda tahammül edemiyorum, ruhum kaldırmıyor. Hattâ biri bana baksa da sıkılıyorum. Eskide bende biraz bulunan merdüm-girizlik hastalığı, o zalimlerin gaddarane sıkıntılarıyla ve tarassudlarıyla bende çok şiddetlenmiş. Güya ölmeden evvel hayat-ı içtimaiye cihetinde ölmüşüm ki bu hakikat ve bu sır için hakkımda, has kardeşlerim vefat mersiyelerini yazıyorlar.",
+      "order_index": 231
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem buranın havası, benim âsabıma pek çok dokunuyor. Bu kışın bir günü, Denizli hapsinin o geçirdiğimiz kış kadar bana ağır geliyor, beni üzüyor.",
+      "order_index": 232
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet nasıl göz, bir saçı kaldırmıyor; aynen öyle de şimdiki ruhum ve omuzum, bir saç kadar sıkletten, ağırlıktan müteessir olduğu halde, Risale-i Nur’un ve şakirdlerinin selâmetlerine, onların bedellerine ve yerlerinde dağ gibi ağır tazyikat ve sıkıntıları memnuniyetle o ruh, o omuz çeker, tahammül eder ve şâkirane sabreder diye size kat’iyen haber veriyorum.",
+      "order_index": 233
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat madem acz ve zaafım ve teessüratım çok ziyadedir; has kardeşlerim beni medihlerle yüklerimi ağırlaştırmaya bedel, dualarıyla ve şefkatleriyle ve himmetleriyle ve acımalarıyla yardım edip yükümü hafifleştirmek lâzımdır. İnayet-i Rabbaniyenin bir cilvesidir ki bu şiddetli merdüm-girizlik hastalığıyla, zalimlerin tecrid-i mutlaklarını hiçe indiriyor.. beni tazip etmiyor, bir cihette memnun ediyor.",
+      "order_index": 234
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 235
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık, faal kardeşlerim ve bu dehşetli asırda mükemmel tesellilerim ve vârislerim!",
+      "order_index": 236
+    },
+    {
+      "type": "paragraph",
+      "text": "Sizin fevkalâde sa’y ü gayretiniz Isparta ve civarını bir geniş Medresetü’z-Zehraya ve bir Camiü’l-Ezhere çevirdiğine bir delil de bu defa matbaacıları da hayrette bırakan yazdıklarınız Asâ-yı Musa mecmuasından yirmiden ziyade mükemmel tevafuklu nüshalarını bu yarım ümmi kardeşinize göndermenizdir. Cenab-ı Erhamü’r-Râhimîn sizlere ve yazanlara ve yardım edenlere her bir harfine mukabil bin rahmet eylesin ve binler meyve-i cennet ihsan etsin ve yüzer hasenat defter-i a’malinizde yazdırsın, âmin âmin âmin!",
+      "order_index": 237
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben onlara baktım, kalbime geldi ki: Bu kahramanların şimdi de bir mükâfatları yok mu?",
+      "order_index": 238
+    },
+    {
+      "type": "paragraph",
+      "text": "Birden ihtar edildi ki: Onlar, bu mecmuayı yazmakla feylesofları susturan, imana getiren kuvvetli bir ders-i imanîyi en evvel kendi kendine tam okuyorlar, manevî bir hazine kazanıyorlar. Hem onların nüshaları, pek çokların imanlarını kurtaracaklar veya imana gelecekler. Bir hadîste vardır ki: “Bir tek adam seninle imana gelse sahra dolusu kırmızı koyundan daha hayırlıdır.”",
+      "order_index": 239
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem onlar, bu mübarek kalemleriyle, eski zamanda İslâmiyet’in büyük mücahid kahramanlarının kılınçlarının kudsî hizmetlerini görüyorlar. Elbette istikbal, onları ve Nurcuları çok alkışlayacak.",
+      "order_index": 240
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Asâ-yı Musa mecmuasının başında, bu gelen ve çizgi ile işaret edilen fıkra yazılsa münasiptir. İsteyen, bu mektubun başındaki kısmını da beraber yazabilir.",
+      "order_index": 241
+    },
+    {
+      "type": "paragraph",
+      "text": "İmam-ı Ali (radıyallahu anh) “Celcelutiye”sinde pek kuvvetli ve sarahate yakın bir tarzda Risale-i Nur’dan ve ehemmiyetli risalelerinden aynı numara ile haber verdiğini, Yirmi Sekizinci Lem’a ile Sekizinci Şuâ tam ispat etmişler. İmam-ı Ali (radıyallahu anh) Risale-i Nur’un en son risalesini Celcelutiye’de وَ اسْمُ عَصَا مُوسٰى بِهِ الظُّلْمَةُ انْجَلَتْ fıkrasıyla haber veriyor.",
+      "order_index": 242
+    },
+    {
+      "type": "paragraph",
+      "text": "Biz bir iki sene evvel Âyetü’l-Kübra’yı en son zannetmiştik. Halbuki şimdi altmış dörtte telifçe Risale-i Nur’un tamam olması ve bu cümle-i Aleviyenin mealini yani karanlığı dağıtacak, asâ-yı Musa (aleyhisselâm) gibi ışık verecek, sihirleri iptal edecek bir risaleden haber vermesi ve bu mecmuanın “Meyve” kısmı bir müdafaa hükmüne geçip başımıza çöken dehşetli, zulümlü zulmetleri dağıttığı gibi “Hüccetler” kısmı da Nurlara karşı cephe alan felsefe karanlıklarını izale edip Ankara ehl-i vukufunu teslime ve tahsine mecbur etmesi ve istikbalde zulmetleri dağıtacak çok emareler bulunması ve asâ-yı Musa aleyhisselâmın bir taşta on iki çeşme akıtmasına ve on bir mu’cizeye medar olmasına mukabil ve müşabih bu son mecmua dahi “Meyve” on bir mesele-i nuraniyesi ve “Hüccetullahi’l-Bâliğa” kısmı on bir hüccet-i kātıası bulunması cihetinde bize kanaat verdi ki: İmam-ı Ali radıyallahu anh, o fıkra ile doğrudan doğruya bu Asâ-yı Musa ismindeki mecmuaya bakar ve ondan tahsinkârane haber verir.",
+      "order_index": 243
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Nur santralı ve Yirmi Yedinci Mektup’ta çok ehemmiyetli fıkraları bulunan Sabri’nin bu defaki mersiyesini Lâhika’ya geçirdik ve size de gönderdik. Ve çalışkan mübareklerden ve Nurların neşrine çok hizmet eden Hâfız Mustafa’nın yedi yaşında iken Altıncı Şuâ’yı ve bana bir mektup yazan tam mübarek, masum mahdumu; burada, masumlar içinde Nurlara bir iştiyak uyandıracak. Onun namı, Said Nurî olmalı; Nursî köydür, manasız olur. (Sin) olmasın, yalnız (ye) olsun tâ Nurlara alâkasını göstersin.",
+      "order_index": 244
+    },
+    {
+      "type": "paragraph",
+      "text": "Daha çok şeyler yazacaktım fakat başımda çok vazifeler ve işler bulunmasından kısa kesmeye mecbur oldum.",
+      "order_index": 245
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 246
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 247
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 248
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: İkinci vazife Mu’cizat mecmuasına birinci vazifeyi bitirenler başlamalarını müjde vermeniz, sizleri bu hizmet-i imaniyede bana hakiki kardeş veren Erhamü’r-Râhimîn, beni hadsiz şükre sevk eyledi. Hatt-ı Kur’anî lehinde birincisinin bir kerameti, merkezde hatt-ı Kur’anînin bir kursu açılması olduğu gibi; inşâallah ikincisi, daha mu’cizane bir keramet gösterecek.",
+      "order_index": 249
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Konyalı Sabri sizin vasıtanız ile benimle muhabere etse daha maslahattır ve münasiptir. Çünkü ekserce siz benim bedelime istediğini yapabilirsiniz. Mesela, tashihat için oradaki âlimler tam yardım edebildikleri için orada tashihat yapılsın, etsinler. Siz benim tashihimden geçmiş bazı nüshaları, onlara gönderirsiniz.",
+      "order_index": 250
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikaten tashih meselesi ehemmiyetlidir. Bazen bir harfin ve bir noktanın yanlışı, kıymetli bir manayı zayi eder. En evvel, yazanlar bir kere güzelce mukabele etsinler. Sonra tashihçi adamlara ve bana versinler. Mâşâallah, bu defa bana gelen Asâ-yı Musa mecmualarında hem yanlışlar azdır hem bir derece tashih edilmiş. Cenab-ı Hak hem yazanlardan hem tashihçilerden ebeden razı olsun, âmin!",
+      "order_index": 251
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Yozgat’ta oturan, Risale-i Nur’la alâkadar Tunuslu Hoca Haşmet, evvelce vefatımı, sonra hayatta olduğumu işitip buraya samimi iki mektup yazmış; ona benim tarafımdan selâm gönderiniz.",
+      "order_index": 252
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Rüşdü’nün çok defadır hususi selâm eden kahraman biraderi Burhan –eskiden beri– ümmiliğiyle beraber, Nurlara lüzumlu zamanlarda ehemmiyetli hizmetleri için onu da haslar sırasında her gün ismiyle kazançlarımızda hissedar ediyoruz.",
+      "order_index": 253
+    },
+    {
+      "type": "paragraph",
+      "text": "Manidar bir tevafuktur ki ben, Hüsrev’in ve Sabri’nin mektupları gelmemesinden gelen endişelerimi yazarken aynı zamanda me’mulümün haricinde en cem’iyetli ve bütün o endişelerimi izale eden müteaddid mektupları kapıya geldi.",
+      "order_index": 254
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlerime selâm…",
+      "order_index": 255
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 256
+    },
+    {
+      "type": "paragraph",
+      "text": "[1] * Kardeşim Abdülmecid, Zübeyr, Mustafa Sungur, Ceylan, Mehmed Kaya, Hüsnü, Bayram, Rüşdü, Abdullah, Ahmed Aytimur, Âtıf, Tillolu Said, Mustafa, Mustafa, Seyyid Salih.",
+      "order_index": 257
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim ve ebed ve hak yolunda hakikatli arkadaşlarım!",
+      "order_index": 258
+    },
+    {
+      "type": "paragraph",
+      "text": "Kastamonu efelerinden ve Nur’un kahramanlarından ve Safranbolu fedakârlarından size oradan buraya gelen hususi mektuplarına hususi cevap vermeye müstahak ve lâyıktırlar. Fakat halim ve vaktim müsaade etmediğinden vasıtanızla bir kısa cevap verdiğime gücenmesinler.",
+      "order_index": 259
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Hilmi, İhsan, Emin’in ve Taşköprülü Sadık Bey’in mektupları, beni çok mesrur eyledi. Hakikaten bu kardeşlerimiz, hapishanede dokuz ayda dokuz sene kadar hizmet-i Nuriyeyi yaparak Isparta kahramanlarıyla omuz omuza geldiler. Ben, onların hem istirahatime hem hapisteki arkadaşlarımızın ittifaklarına ve yeni Nurların hizmetine tam çalışmalarını hiçbir vakit unutmayacağım. Cenab-ı Hak onlardan ve sizden ebeden razı olsun. Ben hayalen, çok defa eski zamana ve Kastamonu’daki ve Barla’daki malûm yerlerime ve mesiregâhlarıma şevkle gidiyorum. Oralarda oturup ağlıyorum. O enislerimi hayalen görüyorum.",
+      "order_index": 260
+    },
+    {
+      "type": "paragraph",
+      "text": "Kahraman Sadık Bey’in kuvvetli ifadesine ve güzel yazısına benzeyen bir kısa mektupta, Safranbolu şakirdlerinin, Mustafa Osman’ın ve Hıfzı’nın selâmını da yazıyor. Şüphelendim, acaba Sadık oraya gelmiş, yoksa onlar oraya gitmişler veya başka Sadık namında bir kardeşimiz midir?",
+      "order_index": 261
+    },
+    {
+      "type": "paragraph",
+      "text": "Barla sıddıkları Nurların yazmasına tam çalışmaları, herkesten evvel onların vazifeleridir. Çünkü Barla, birinci medrese-i Nuriye şerefini kazanmasından, o mübarek medreseyi talebesiz bırakmak caiz değil. İnşâallah tekrar şenlenecek. Çalışanlara bârekellah deriz. Cenab-ı Hak tevfik versin, âmin!",
+      "order_index": 262
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Safranbolu’nun sadık şakirdlerinden Osman ve Ahmed’in iki mektupları, onların fevkalâde sadakat ve Nurlara alâkadarlıklarını gösteriyor. Mâşâallah, Osman az zamanda hem Kur’an’ı ders almış hem Nurları yazmış, şimdi de Asâ-yı Musa’yı yazıyor. Fedakâr Mustafa Osman ve Hıfzı’ya tam bir kardeş ve Ahmed dahi tam alâkadardır. Mektubunda imlası noksan olmasından dediğini bilemedim. Onlara, Safranbolu’da ve Kastamonu ve civarındaki kardeşlerime çok selâm ve dua ederiz, dualarını isteriz. Medresetü’z-Zehradaki Isparta ve civarı umum kardeşlerimize birer birer selâm ve selâmetlerine dua ederiz.",
+      "order_index": 263
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 264
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 265
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 266
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Bir iki hafta Hüsrev’in kalemiyle mektubunu almadığımdan ve Konya’ya gönderdiğim mecmuaların cevabı gelmediğinden ve bir vekil-i dâhiliye başta olarak, düşmanlarımız anarşistlerle beraber beni emsalsiz tazyiklerinden ve buradaki münafıklar bazı safdil dostlarımızdan hem Eskişehir’e hem Konya’ya kitaplar gönderdiğimi ve Asâ-yı Musa mecmualarını aldığımı haber almalarından endişeler ederken, birden hiç emsali görülmemiş bir buçuk metre kar ve dehşetli fırtına ve soğuk bu mevsimde gelmesi, bir hiddet, bir gazap; dört defa zelzeleler ve geçen sene yağmursuzluk gibi Risale-i Nur ve şakirdleriyle münasebettar olabilir diye sordum: Bu bela umumîdir, yoksa Afyon ve Eskişehir vilayetlerine mi mahsustur?",
+      "order_index": 267
+    },
+    {
+      "type": "paragraph",
+      "text": "Dediler ki: O iki vilayete mahsustur.",
+      "order_index": 268
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de Elhamdülillah dedim. Demek Risale-i Nur’a ve şakirdlerine umumî bir taarruz yoktur. Belki yalnız bana ve elimdeki Nurlara…",
+      "order_index": 269
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok güvendiğim Eskişehir, Denizli gibi bir Medrese-i Nuriye olacağını tahmin ettiğim halde, Denizli’den on derece noksan kalmasının sebebi; onları da Afyon ve Emirdağı gibi ürkütmektir. Her ne ise merak etmeyiniz; inşâallah bu hâdise-i cevviye, aynı İstanbul mekteplilerinin hâdisesi gibi gizli masonları, niyet ettikleri yeni bir taarruzdan vazgeçirdi. İnayet-i Rabbaniye himaye ediyor.",
+      "order_index": 270
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Bu defa yedi sekiz mektuplarınızı aldım. Hususi cevaplara halim, kalemim ve vaktim müsaade etmediğinden gücenmeyiniz. Mehmed Feyzi ve Emin’in mektuplarını, ilişmeden Lâhika’ya geçirdik. O ikisi, sekiz sene hususi hizmetimde bulunmaları cihetiyle, haddimden çok ziyade tavsifatlarını bir nevi manevî dua ve sebeb-i teşvik ve kanaat bir hüsn-ü zan ve tercüman-ı Nur haysiyetiyle Üstadlarına bir alâmet-i sadakat ve bir vesika-i itikad ve irtibattır diye ilişmedim.",
+      "order_index": 271
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve Feyzi’nin merhume validesinin Risale-i Nur dersleriyle güzel ve nurani vefatı; Nurların, şakirdlerine sekerat vaktinde ve sıkıntılı zamanlarında imdada yetişmesine bir parlak numune olarak Lâhika’ya girmesi münasiptir.",
+      "order_index": 272
+    },
+    {
+      "type": "paragraph",
+      "text": "Halil İbrahim’in bu defaki mektubunda kaza ve kader-i İlahî’den “Ne kadar? Nedendir?” diye çok suallerinin birden cevabı: Bizlere mücahidane çok hasenat kazandırmak ve Nurlara herkesin nazar-ı dikkatini celbetmekle umuma okutmaktır. Fakat bir derece kaza ve kadere itiraz manasını hayale getirdiği için şimdilik Lâhika ile tamimi münasip olmaz. Ve mektubun âhirindeki, Cevşenü’l-Kebir’den alınan fıkralar, dualar çok güzeldir.",
+      "order_index": 273
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Hüsrev’in mektubunda, Atabeyli Kötürüm Ali ve Eğirdirli Kâzım’ın Nurlara tam şevkle hizmetleri, hattâ ruhanîleri de onları tebrike ve tahsine sevk eder. Ve Aliköyü’nden bana mektup yazan on dört yaşındaki Mustafa Veysel, pederiyle hem Kur’an’a hem Nurlara hizmetleri ve üç Alilerin gayret ve himmetleriyle o köy masumları Risale-i Nur’a çalışmaları; değil yalnız beni belki umum Nur şakirdlerini tahsine ve şükre sevk eder.",
+      "order_index": 274
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Salahaddin –Abdurrahman– Feyzi’nin validesinin vefatı münasebetiyle yazdığı mektubun âhirindeki Feyzi’ye taziyesi ve hâşiyede benim ölümümü kabul etmemesi ve Gavs-ı A’zam’ın bir kısım himayeti Asâ-yı Musa Risalesi’ne geçmesi diye beni sürurla ağlattırdı ve Safranbolu kahramanları Mehmed Feyzi ve Emin’in şehnamelerine iştirakleri ve merkez-i hükûmette umumî bir Arabî hattı ve hurufu kursu açılması ve Asâ-yı Musa Risalesi’nin fütuhatına ve kerametine alâmet olmasını müjdelemeleri, pek büyük bir inşirah vermesiyle bu kışın bütün çektiğim sıkıntıları hiçe indirdi.",
+      "order_index": 275
+    },
+    {
+      "type": "paragraph",
+      "text": "Denizli fedakâr çalışkanlarından Tavaslı Molla Mehmed’in sureten kısa fakat manen uzun mektubunda, o dahi ölümüme razı olmuyor ve haddimden çok ziyade kıymet veriyor gördüm.",
+      "order_index": 276
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem ona hem hapiste görüştüğüm kardeşlerimize hem Hasan Feyzi ve Hâfız Mustafa ve arkadaşlarına binler selâm…",
+      "order_index": 277
+    },
+    {
+      "type": "paragraph",
+      "text": "Umum kardeşlere selâm eden, dualarınızın tiryak gibi tesirini gören kardeşiniz Said Nursî",
+      "order_index": 278
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 279
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 280
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Medrese-i Nuriyenin eski masumlarından Ahmed’in bu güzel ve hâlis fıkrasını umum Sava masumlarının ve kahramanlarının namına Lâhika’ya yazdık. Mâşâallah, Hacı Hâfız Mehmed’in tam ona benzer bir kıymetli hafidi olduğunu gösterdi.",
+      "order_index": 281
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Safranbolu’da Nur’un ehemmiyetli şakirdlerinden Hıfzı’nın iki masum mahdumları biri on, biri de sekiz yaşlarında Asâ-yı Musa mecmuasını yazdıkları ve bitmek üzere diye o masumlar bana bir mektup yazmaları, beni fevkalâde sevindirdi.",
+      "order_index": 282
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Bu kışta bana verilen elîm sıkıntıların bir sebebi: Selaniklilerin istibdad-ı mutlakları, serbest fırkalarla kırılmasına yardımım olmasın diye beni herkesten tecrit ettiler. Risale-i Nur; binlerle benim bedelime konuşuyor, küfr-ü irtidadı kırıyor, anarşiliği bozuyor.",
+      "order_index": 283
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 284
+    },
+    {
+      "type": "paragraph",
+      "text": "Dâhiliye Vekili Hilmi Uran Bey’e Merhum Salih Yeşil Tarafından Yazılan Mektubun Sureti",
+      "order_index": 285
+    },
+    {
+      "type": "paragraph",
+      "text": "Yazıları yanlış telakki ve tefsirlere uğratılmakla senelerden beri çember içinde yaşatılan ve safi, samimi bir insan ve Müslümanlıktan başka hiçbir maksadı bulunmayan Bedîüzzaman Molla Said nam masumun, ya bulunduğu yerde veya Ankara’ya nakil ile orada hayat ve huzurunun muhafazası için sırf insaniyet namına yazılmış olan bu mahrem ricanameyi bizzat okumak nezaketinde bulunur ve genç zamanında yaptığı, unutulan hizmetlerine mükâfaten ihtiyar halinde bu adamı serbest bir ölüm hayatına kavuşturmak lütfunu diriğ buyurmazsanız, zat-ı keremkârlarına en büyük hürmetlerimi sunar, minnettarınız olurum.",
+      "order_index": 286
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said kimdir?",
+      "order_index": 287
+    },
+    {
+      "type": "paragraph",
+      "text": "El-ân Afyon’un Emirdağı kazasında ikamete memur olan Molla Said, doğumundan itibaren Türk kardeşleri arasında yaşamış, Türk seciyesiyle perverde olmuş, Umumî Harp’te Kafkas’ın karlı dağlarında kahraman askerlerimiz arasında gönüllü alay kumandanı olarak mücahede ve irşad için dolaşıp büyük bir harp madalyası almış, Sarıkamış Taarruzu’nda, Bitlis’in sukutunda yaralı olduğu halde esir olup senelerce Rus garnizonlarında çile çekmiş, firar edip İstanbul’a gelerek ilmî kudretine binaen Dârülhikmeti’l-İslâmiye azalığında bulunmuş, Kuva-yı Milliye ihdasında halkı mücahedeye teşvik etmiş; Büyük Millet Meclisinin ilk senesinde Ankara’ya gelerek Hacı Bayram misafirhanesinde birçok mütereddid kimselere vatanın müdafaası lüzumunu anlatmak hizmetinde bulunmuş olan bu hakiki vatan-perver insanın, evvelce ibadete, imana, itikada müteallik yazdığı ve yazagelmekte olduğu eserleri, din ve dindarları sevmeyen bazı kimselerin, hususuyla Dâhiliye Vekaletinde bulunmuş olan menfaat-perest Şükrü Kaya’nın mezhep ve rejimine uygun gelmemekle, asılsız isnad ve uydurma raporlarla bu zavallı adam, yirmi küsur seneden beri hapis ve nefiy cezalarıyla perişan edilmiş ve iki sene evvelisi yine o yazıları bahanesiyle Kastamonu’daki çilehanesinden kollarına kelepçe vurularak kendisine selâm vermiş olan altmış altı adamla Denizli Cezaevine sevk ve on bir ay kadar hapsedildikten sonra, muzır telakki edilen o eserleri, evvela İstanbul Müftülüğünde bir heyet tarafından, bilâhare Ankara’da Diyanet Riyaseti ve Dil Tarih Enstitüsü azalarından mürekkep bir komisyon marifetiyle aylarca tetkik olunduktan sonra, bu eserlerin hiçbirisinde devletin siyasetini ve asayişi rencide edebilecek en ufacık bir şey görülmemekle, Molla Said ve Nur şakirdleri ve eserlerini okuyanlar, mahkeme kararıyla serbest bırakılmış ve Denizli’de oturmasına müsaade olunmuş iken maatteessüf bu ihtiyar adam, az zaman sonra Denizli’den Afyon’a ve oradan da Emirdağı kazasına teb’id ve herhangi bir Türk kardeşiyle dahi temastan men’edilmiş.",
+      "order_index": 288
+    },
+    {
+      "type": "paragraph",
+      "text": "Sayın beyim! Cumhuriyet serbestiyetinden, Teşkilat-ı Esasiye Kanunu’nun hürriyetinden mahrum kalan bu zavallı ihtiyar adam, her suretle himayeye lâyık, bakılmaya muhtaç, akraba ve taallukatı olmayıp sırf bir İslâm hükûmetin himayesine muhtaç bir İslâm mütefekkiridir. Şair-i meşhur Âkif Bey merhumun rivayetine nazaran, Mısır’ın en maruf ulemasından olan ve garbın müteaddid lisan ve felsefesine aşina bulunan üstad-ı a’zam Abdülaziz Çaviş’in yirmi küsur sene evvelisi “El-Ehram” ceridesindeki Said hakkında yazdığı “Fatînü’l-asır” başlıklı makalesini okuyan ve kendisiyle bizzat görüşen ilim adamları, bu zatın fıtraten ilmî kudretini ve İlahî mesleğini takdir edebilirler.",
+      "order_index": 289
+    },
+    {
+      "type": "paragraph",
+      "text": "Sayın beyim! Kürtlük sözüyle türlü hakarete hedef olan Molla Said, seciyeten takdire şâyan bir Türk âşığı ve İslâmiyet hâdimidir. (Hâşiye[1]) Bundan memleketimiz içtimaen zarar değil, manen fayda görecektir. Ben namus ve şerefim namına şehadet ederim ki Molla Said, kat’iyen temiz bir adamdır. Onun için sizin gibi milletin dâhilen idare ve mukadderatına el koyan dirayetli zatlardan insaniyet namına temenniyatım şudur:",
+      "order_index": 290
+    },
+    {
+      "type": "paragraph",
+      "text": "Yanlış anlayışlı jurnalcilerin sözleriyle hürriyet nimetinden, saf hava teneffüsünden, herhangi bir Türk kardeşiyle görüşmeden mahrum kalan bu adamı; hükûmetin adaleti, makamınızın ehemmiyeti namına ve adl ve ihsan kaziyesine tevfikan olsun, bu adam hakkında dahi adalet ve kendisiyle de hiç olmazsa bir defa olsun hüsn-ü niyetle görüştükten sonra onun hakkında ibka veya ifna kararını vermek lütfunda bulunursanız, elbette ehemmiyetli vazifenizi kanun dairesinde îfa etmiş olacağınızdan dolayı tarihçe-i hayatınıza takdire değer bir fasıl derc buyurmuş, adalet-perverliğinizi halka ve âcizleri gibi bacağı kesilmiş, köşede kalmış hür fikirli vak’a-nüvislere duyurmuş olursunuz efendim.",
+      "order_index": 291
+    },
+    {
+      "type": "paragraph",
+      "text": "Milliyetini, memleketini candan seven; teninde, kanında, Kürtlük, Arnavutluk, Boşnaklık kanı kokusu olmayan, Erzurum’un eski milletvekillerinden, bacağı kesik Yeşil oğlu Mehmed Salih",
+      "order_index": 292
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 293
+    },
+    {
+      "type": "paragraph",
+      "text": "Muhterem din kardeşim!",
+      "order_index": 294
+    },
+    {
+      "type": "paragraph",
+      "text": "Kırk gündür yatakta sizinle meşgulüm. Hayal ve mesmuuma nazaran, huzurunuzun muhtel olduğuna zâhibim. اَلْمُؤْمِنُ بَلَوِىٌّ Tahminen on gün kadar evvelsi, sokaklarda “Hâlis Afyon tereyağım var.” diyen birisini pencereden yanıma çağırıp biraz yağ aldım. Maksadım, sizi sormaktı. Afyon’dan Emirdağı kazasına sürüldüğünüzü, ahalinin sizinle görüşmesinin yasak olduğunu duyunca çok müteessir oldum.",
+      "order_index": 295
+    },
+    {
+      "type": "paragraph",
+      "text": "Muhterem din kardeşim! Bu mektubu size yazan, otuz bir sene evvelsi sizinle Erzurum’un Es’ad Paşa Medresesinde, Umumî Harp’te Kafkas’ın karlı dağlarında ve yirmi dört sene evvel de mebusluğum hengâmında Van Valisi Haydar Bey dostunuzla Millet Meclisi salonunda görüşen Erzurum’un esbak mebuslarından Yeşil oğlu Mehmed Salih’tir.",
+      "order_index": 296
+    },
+    {
+      "type": "paragraph",
+      "text": "Mehmed Salih (rh)",
+      "order_index": 297
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 298
+    },
+    {
+      "type": "paragraph",
+      "text": "Yeşil Salih’e Yazılan Mektuptur",
+      "order_index": 299
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz kardeşim Hasan Efendi!",
+      "order_index": 300
+    },
+    {
+      "type": "paragraph",
+      "text": "Sen benim tarafımdan kıymetli kardeşimiz Salih Efendi’ye yaz ki:",
+      "order_index": 301
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben ölünceye kadar onun bu insaniyetini unutmayacağım ve ona çok minnettarım ve çok selâm ve dua ederim. Fakat ben her sıkıntıya karşı tahammüle karar vermişim. Hem ben iyiliği o reislerden beklemiyorum.",
+      "order_index": 302
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 303
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 304
+    },
+    {
+      "type": "paragraph",
+      "text": "Bana gönderdiğiniz Asâ-yı Musa’dan bir nüsha, ciltsiz –yalnız sarı kâğıt cilt olmuş– Hüsrev’in yazısına bir parça benzer fakat üstünde Mustafa ismi var. O kimdir, hangi Mustafa’dır? Hem nüshanın üstünde “On üç yaşında Hatice, Ahmed’in kızı” yazılmış. Bu Ahmed, hangi Ahmed’dir? Hem ona hem kızına bin bârekellah. Bu yaşta bu koca kitabı hem dikkatli, tevafuklu hem güzel sıhhatli yazmak, masumların taifesinin bir kahramanlığıdır. Kim görüyor, mâşâallah der. Buradaki mektep görmüş hanımlarda bir şevk uyandıracak.",
+      "order_index": 305
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 306
+    },
+    {
+      "type": "paragraph",
+      "text": "Nazif kardeşimizin mektubu, ehemmiyetlidir. Hakikaten Amerika’da, siyasete âlet değil; belki dini, din için mutaassıbane iltizam edenler çok vardı. İnşâallah Asâ-yı Musa’yı alan, o dindarlardandır. Keçeli Salahaddin tam bir Abdurrahman’dır, kahramanlıkta babasından geri kalmak istemiyor. Bizi de ara sıra âdetimize muhalif olarak dünyaya baktırıyor. Eğer o Amerikalı ehemmiyetli âlim bütün Risale-i Nur’u istese ve neşrine söz verse sizin meşveretinizle bir mükemmel takım ona vereceğiz.",
+      "order_index": 307
+    },
+    {
+      "type": "paragraph",
+      "text": "Nazif’in mektubuyla beraber bir mütekaid efendinin vesveseye dair bir suali var. Eğer o adamın ciddi olarak Nurlara alâkası varsa böyle suallere hiç ihtiyacı olmaz. Hikmetü’l-İstiaze Lem’ası’nı ve Yirmi Dokuzuncu Söz’ün melaike ve ruhanîlerin vücudlarına dair kısmını okusun. Onun manasız ve yüz yerde cevabı bulunan vesvesesi ise zındık maddiyyunların şimdilik dehşetli vaziyetinden fırsat bulup bir aşılamalarıdır ki o adam, ondan müteessir olmuş, o suali sormuş. Ona selâm ederim. Risale-i Nur onun her müşkülünü halledebilir. Hâlisane, teslimkârane ona çalışsın, onu dinlesin.",
+      "order_index": 308
+    },
+    {
+      "type": "paragraph",
+      "text": "Medrese-i Nuriyenin eski ve yeni kahramanlarından Marangoz Ahmed’in mektubu, üç dört cihetten beni mesrur ve minnettar eyledi. O medresenin baş talebesi namını verdiği Ahmed ise hem şehit Hâfız Ali’nin vazifesini yaptığını hem Süleyman gibi kıymetli kardeşiyle ve küçük kerîmesiyle üç tane Asâ-yı Musa’yı yazmaları ve mübarek Hasan Dayı’nın hafidi olması, beni meraktan kurtardı hem çok memnun eyledi. Cenab-ı Hak ona şifa ve onlara muvaffakıyet ve saadet versin, âmin âmin!",
+      "order_index": 309
+    },
+    {
+      "type": "paragraph",
+      "text": "Merhum Hâfız Mehmed’in iki kardeşi o merhumun vazifesini yapmaları ve Mustafa’nın yazısı, Hüsrev’in tatlı hattına mutabık gelmesi, benim nazarımda, yeniden iki Hâfız Mehmed’i bulmuş kadar memnun oldum.",
+      "order_index": 310
+    },
+    {
+      "type": "paragraph",
+      "text": "Kahraman Marangoz’un gayretiyle Gökdereli hatip, Risale-i Nur’a üç oğluyla beraber talebe olup yazmaya başlamalarıyla hem onları hem marangozu hem köylerini tebrik ederiz. Ve Marangoz’un onlara söylediği manzumesini Lâhika’ya geçirdik.",
+      "order_index": 311
+    },
+    {
+      "type": "paragraph",
+      "text": "Atabeyli alîl (kötürüm) Ali Osman’ın yazdığı uzun mektubu ve Asâ-yı Musa Risalesi ve Nurların neşrinde cidden tesirli çalışması ve hizmet-i Nuriyede çok çalışkan Çilingir Ali ile ve dayısı Hasan’ın ona yardım etmesi ve mübarek hülyaları ve tevafukları bizleri ferahlandırdı. Eğirdir kasabasını bana ziyade sevdirdi. Cenab-ı Erhamü’r-Râhimîn onlardan razı olsun.",
+      "order_index": 312
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 313
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir Derece Mahremdir",
+      "order_index": 314
+    },
+    {
+      "type": "paragraph",
+      "text": "Geçen kışta bana karşı sû-i kasdların, inayet-i İlahiye ile ve duanızın yardımıyla gelen sabır ve tahammülüm neticesinde akîm kalan planı pek geniş bir tarzda olduğuna delil ise bu yakında Reisicumhur, Afyon’da demiş: “Bu vilayette din cihetinde bir karışıklık çıkacağını zannederdik.”",
+      "order_index": 315
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek, gizli komite beni sıkıştırmakla bir hâdise çıkarmak istiyordular. Bir ecnebi müdahalesi hesabına ve Müslümanlar ve vatan zararına, bütün bütün kanunsuz ve keyfî bir tarzda, damarıma şiddetle dokunan ihanetler ve sıkıntılarla tazipleri, onlara dünyada tam zarar, âhirette cehennem ve sakar ve bize, dünyada mükemmel sevap ve zafer ve âhirette inşâallah cennet ve âb-ı kevseri kazandırır.",
+      "order_index": 316
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek, bu gizli planı Heyet-i Vekile ve Reis hissetmiştiler ki buralarda umum memurlar, hattâ vali ve kaymakam, zabıta benimle görüşmekten kaçıyor ve ürküyordular. Ben de hayret ederdim. Fakat elimizde yalnız Nur bulunduğunu ve siyaset topuzu bulunmadığını, zerre kadar aklı bulunanlar anladılar. Garibdir ki en ziyade lehime çalışması lâzım olan bazı vazifedarlar, aleyhimde istimal ve istihdam edildi.",
+      "order_index": 317
+    },
+    {
+      "type": "paragraph",
+      "text": "Nurcular, çok ihtiyat ve dikkat ve temkinde bulunmaları lâzımdır. Çünkü manevî fırtınalar var, bazı dessas münafıklar her tarafa sokulur. İstibdad-ı mutlaka dinsizcesine taraftarken hürriyet fırkasına girer tâ onları bozsun ve esrarlarını bilsin, ifşa etsin.",
+      "order_index": 318
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Salahaddin’in, Asâ-yı Musa’yı Amerikalıya vermesi münasebetiyle deriz:",
+      "order_index": 319
+    },
+    {
+      "type": "paragraph",
+      "text": "“Misyonerler ve Hristiyan ruhanîleri hem Nurcular, çok dikkat etmeleri elzemdir. Çünkü her halde şimal cereyanı; İslâm ve İsevî dininin hücumuna karşı kendini müdafaa etmek fikriyle, İslâm ve misyonerlerin ittifaklarını bozmaya çalışacak. Tabaka-i avama müsaadekâr ve vücub-u zekât ve hurmet-i riba ile burjuvaları avamın yardımına davet etmesi ve zulümden çekmesi cihetinde Müslümanları aldatıp onlara bir imtiyaz verip bir kısmını kendi tarafına çekebilir.” Her ne ise… Bu defa sizin hatırınız için kaidemi bozdum, dünyaya baktım.",
+      "order_index": 320
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 321
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 322
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 323
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok ehemmiyetli mektuplarınıza bir tek muhtasar cevaba mecburiyetim var.",
+      "order_index": 324
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Sualleri çok nurlu hakikatlerin zuhuruna vesile olan Re’fet’in hem masumlara Kur’an ve Nurları ders vermesi hem kendisi Nur Lem’alarıyla meşgul olması hem tashihatta bana ve Hüsrev’e yardım etmesi hem İstanbul’da Asâ-yı Musa’nın insaflı âlimlerin ellerine geçmesine çalışması, çok şâyan-ı tebriktir. Ve yeni sualine şimdi cevap verilmez, daha zamanı gelmemiş.",
+      "order_index": 325
+    },
+    {
+      "type": "paragraph",
+      "text": "Kahraman Burhan’ın Serbest Fırkasının reisine verdiği cevap güzeldir. Evet Nurcular, siyasetlerle alâkaları olmaz. Yalnız iman hakikatleriyle bütün hayatları bağlıdır. Şimdiye kadar gizli komiteden, siyaseti dinsizliğe ve zındıkaya âlet edenler, istibdad-ı mutlakla Nurcuları ezdiler. İnşâallah bir sebep çıkar (Hâşiye[2]) o istibdadı kıracak, masum ve mazlum Nurcuları kurtaracak.",
+      "order_index": 326
+    },
+    {
+      "type": "paragraph",
+      "text": "Fakat çok dikkat ve ihtiyat lâzımdır. Risale-i Nur, dünyada her cereyanın fevkinde bulunması ve umumun malı olması cihetiyle, bir tarafa tabi ve dâhil olmaz. Belki mütecaviz dinsizlere karşı haklı tarafa yardımcı olur ve dost olur ve ihtiyat kuvveti hükmünde onlara bir nokta-i istinad olur. Fakat siyaset hesabına değil belki Nurların intişarı ve maslahatı hesabına bazı kardeşler, Nurlar namına değil belki kendi şahısları namına girebilir. Hususan mübarek Isparta’nın şimdiye kadar Nurlar medresesi olması ve muarızların dahi ona çok ilişmemesi noktasında, dâhilde tarafgirane vaziyet almamak, muterizlerin nedametine ve hakikate dönmelerine bir vesile olabilir. Siz daha iyi bilirsiniz.",
+      "order_index": 327
+    },
+    {
+      "type": "paragraph",
+      "text": "Salahaddin’in mektubu, birkaç cihette ehemmiyetlidir. Amerika âlimleri elbette Asâ-yı Musa Risalesi’ne lâkayt kalmayacaklar. Eğer dini, din için seven kısmının ellerine geçse fütuhat yapar. Yoksa bazı enaniyetli hocalarımız gibi kıskançlık damarıyla neşrine ve tervicine çalışmaları meşkuktur. Her ne ise… İnayet-i İlahiyeye havaledir.",
+      "order_index": 328
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 329
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 330
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Tahirî’nin İstanbul’a gitmesi, inşâallah hayırdır. Ve Hüsrev’in pek çok vazifelerini tamamen yapması, kanaatim geldi ki Barla’da bulunduğum zaman bütün yazanların tashihatını ve telif hizmetini yapmamda tahakkuk eden büyük inayet ve hârika muvaffakıyet aynen Hüsrev’de, yardımcılarında dahi numunesi var.",
+      "order_index": 331
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Tahirî’nin Denizli hapsinde unutulmaz hâlisane hizmeti ile ve Nurlara sarsılmaz sadakatiyle ve yanılmaz zekâvetiyle ve çekilmez bahadırlığıyla, daire-i Nur’da ehemmiyetli makamı için bütün bu defaki mektubunu Lâhika’ya geçirdik. Başta Nur’un şakirdlerinden validesi Zübeyde olarak akrabasına ve rüfekasına selâm ederim. Cenab-ı Hak onlardan ebeden razı olsun, âmin!",
+      "order_index": 332
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Nesli Kureyşîlerden Ahmed Kureyşî, muhterem pederiyle ve ammizadesi Ahmed ile Nurların has nâşir ve talebelerinden olması, o havali şakirdlerinin namına Nurlar hakkında güzel manzum fıkraları Lâhika’ya girdi. Cenab-ı Hak onları muvaffak eylesin, âmin!",
+      "order_index": 333
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: Eğirdir kasabasında, isimlerini yazmadığım gayet ehemmiyetli kardeşlerimiz var. Onlara ve Mehmed Sabri gibi büyük santrala istinaden ve Sabri’nin yazısına benzettiğim dikkatli ve güzel ifadeli bir mektubu çalışkan ve ciddi kardeşlerimizden Çilingir Ali’den aldım. Onun arzusuyla aynını Lâhika’ya geçirdik. Ona ve onu çalıştırana mâşâallah ve veffekakümullah deriz.",
+      "order_index": 334
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 335
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık, âlîcenab eski ve yeni kardeş Yeşil Salih!",
+      "order_index": 336
+    },
+    {
+      "type": "paragraph",
+      "text": "Benden, sergüzeşte-i hayatıma ait sorduğun maddelere gayet kısa ve mücmel işaret edilecek. Bir zaman sonra inşâallah başkalar izahla cevap verecekler. Fakat tarihe geçmek ve bu asır âlimlerinin içinde kendi âdi şahsımı nesl-i âtiye göstermek, bildirmek ne isterim ve ne de liyakatim var. Cenab-ı Hakk’a hadsiz şükür ederim ki beni bana beğendirmemiş, dehşetli kusurlarımı bana göstermiş.",
+      "order_index": 337
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem insanlara kendini bildirmek, bir şöhret-perestlik olmasından bir enaniyet, bir hodfüruşluk, bir riyakârlık ihtimali var. Bu ise bizim gibilere tam zarardır.",
+      "order_index": 338
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem ben, madem bu asırda maddeten ve manen münferid yaşamaya ve hayat-ı içtimaiyeden çekilmeye mecbur olmuşum; elbette hakkım yoktur ki hayat-ı içtimaiyeyi geçirenler içinde tarihe binip istikbaldekilere görüneyim.",
+      "order_index": 339
+    },
+    {
+      "type": "paragraph",
+      "text": "Yalnız bu cihet var ki Risale-i Nur, bu vatana ve bu millete pek büyük menfaati, mahkemelerin ve ehl-i vukufların müttefikan kararlarıyla tahakkuk etmiş. Bu nokta-i nazarda, benim ehemmiyetsiz, bîçare, perişan, çok kusurlu şahsiyetim değil belki yalnız Kur’an’ın malı ve meali olan Risale-i Nur namına, sizin suallerinize cevap için ben işaretler ederim, sonra da Risale-i Nur ve şakirdleri izahla cevap versinler.",
+      "order_index": 340
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Otuz sene evvelki hayatımın tarihçesini merhum Abdurrahman yazmış, tabedilmiş.",
+      "order_index": 341
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Risale-i Nur’un zuhur zamanının bir nevi tarihçesi Eskişehir hapsinin müdafaanamesiyle (Yirmi Yedinci Lem’a olmuş) ve Denizli hapsindeki Müdafaa Risaleleriyle (On Birinci ve On İkinci Şuâ) İhtiyarlar Lem’ası ve Âyet-i Hasbiye Risalesi ve On Altıncı Mektup’la Hücumat-ı Sitte ve İşarat-ı Selâse ve İşarat-ı Seb’a risaleleri gibi Nur eczaları, suallerinize tafsilen cevap vermek için mahkeme bana iade ettiği ve şimdi elimde bulunmayan risaleler, bir zaman elinize gelecek. İnşâallah sizi hiç unutmayacağım. Bu halimde bu alâkadarlığınız, benim çok ağır sıkıntılarımı hafifleştirdi. Allah senden razı olsun, âmin!",
+      "order_index": 342
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 343
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 344
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir bîçare vesveseli ve hassas ve dinsizlerle görüşen bir adam, meşhur dua-i Nebevî olan Cevşenü’l-Kebir hakkında ve akıl haricindeki sevap ve faziletine dair bir hadîsi görmüş, şüpheye düşmüş. Demiş: “Râvi, Ehl-i Beyt’in imamlarındandır. Halbuki hadsiz bir mübalağa görünüyor. Mesela, içinde der: Bu duaya Kur’an kadar sevap verilir. Hem göklerdeki büyük melaikeler, o dua sahibini gördükçe, kürsîlerinden inip ona pek büyük bir tevazu ile hürmet ederler. Bu ise aklın ve mantığın mikyaslarına gelmez.” diye Risale-i Nur’dan imdat istedi.",
+      "order_index": 345
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de Kur’an’dan ve Cevşen’den ve Nurlardan gayet kat’î ve tam akıl ve hikmete mutabık bir cevap verdim. Size gayet kısa bir icmalini beyan ediyorum. Şöyle ki ona dedim:",
+      "order_index": 346
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Yirmi Dördüncü Söz’ün Üçüncü Dal’ında on adet usûl var, böyle şüpheleri esasıyla keser, izale eder. Ona bak, cevabını al.",
+      "order_index": 347
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Her gün bütün ümmet kadar hasenat ona işlenen ve bütün ümmetin saadetlerine yardım eden ve ism-i a’zamın mazharı ve kâinatın çekirdek-i aslîsi hem en mükemmel ve câmi’ meyvesi olan Zat-ı Ahmediye (aleyhissalâtü vesselâm) o duanın kendi hakkında o azîm mertebesini görmüş, ona haber veren Cebrail aleyhisselâmdan işitmiş, başkalarını kendine kıyas etmiş veya edilmiş.",
+      "order_index": 348
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek, o pek fevkalâde ve acib sevap, Zat-ı Ahmediye’nin (asm) velayet-i kübrasından ona gelmiş. Küllî, umumî değil. Belki o duanın mahiyetinde böyle hârika bir kıymet var ve ism-i a’zam mazharı olan zatın tebaiyetiyle başkalara dahi o sevap mümkündür. Fakat gayet ehemmiyetli şartları var, yalnız okumak kâfi gelmez. Yoksa muvazene-i ahkâmı bozar, farzlara ilişir.",
+      "order_index": 349
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: O dua, nasıl ki Zat-ı Ahmediye’ye baktığı vakit mübalağadan münezzeh ve ayn-ı hakikat oluyor. Öyle de o duadaki yüzer esma-i hüsnanın hakikatlerine baktığı zaman, değil mübalağa belki onların nihayetsiz tecellilerinden gelmesi mümkün ve gelebilen feyizlerin nihayetsizliğini göstermek için pek az bir kısmını Muhbir-i Sadık (asm) haber vermiş ve teşvik için mübhem ve mutlak bırakmış. Sonra mürur-u zamanla o kaziye-i mümkine ve mutlaka, bilfiil vaki ve külliye telakki edilmiş.",
+      "order_index": 350
+    },
+    {
+      "type": "paragraph",
+      "text": "Râbian: “Yirminci Lem’a-i İhlas”ta bir adama beş yüz senelik bir genişlikte bir cennet verilmesine dair olan bir hâşiye var. Ona da bak, gör ki o koca cennetin verilmesi, bilmediğimiz tarzda bir mâlikiyet değil belki insan nasıl hususi hanesine çok cihetlerle mâliktir, sahiptir; öyle de zemin yüzündeki şeylere çok duygularıyla bir nevi mâliktir, tasarruf ve istifade edebilir.",
+      "order_index": 351
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem koca dünyayı, benim hanemdir, bana vermiş ve güneş lambamdır diyebilir. Demek bazı fevka’l-had, hârika ve akıl haricindeki bir kısım sevaplar, bu mezkûr hakikate bakar.",
+      "order_index": 352
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem İslâmiyet’te her sevabın, her fazilet-i a’malin en evvel mazharı ve bizlerin bir duada, bir zerre sevabımızda, o duada bir dağ kadar sevap ve feyzi kazanan Zat-ı Ahmediye (asm) hususi virdler ve dualar ve şeriat ve risalet cihetiyle değil belki velayet-i Ahmediye noktasında ve umumî olmayan derslerinde, kendine verilen en yüksek mertebeyi beyan eder. Kendine tam tebaiyet eden has vârislerini, o noktalara teşvik eder. وَالْعِلْمُ عِنْدَ اللّٰهِ لَا يَعْلَمُ الْغَيْبَ اِلَّا اللّٰهُ dedim.",
+      "order_index": 353
+    },
+    {
+      "type": "paragraph",
+      "text": "O vesvese edip şüphelere düşen adam, lillahi’l-hamd kurtuldu, tam kanaati geldi. Belki sizin bazılarınıza faydası var diye size de gönderdim.",
+      "order_index": 354
+    },
+    {
+      "type": "paragraph",
+      "text": "Umumunuza binler selâm…",
+      "order_index": 355
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 356
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu Fıkra Bir Derece Mahremdir, Yalnız Haslara Mahsustur",
+      "order_index": 357
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 358
+    },
+    {
+      "type": "paragraph",
+      "text": "Çok defa hatırıma geliyordu ki: Neden herkesten ziyade medreseden çıkanlar Risale-i Nur’a sarılmaları lâzım iken, en ziyade çekinen, onlardan resmî vazifeyi alanlardır?",
+      "order_index": 359
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi birden hatıra gelen cevabın biraz kısmını beyan etmek lâzım geldi.",
+      "order_index": 360
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Gizli münafıklar, aleyhimizde büyük makamlarda olanların bir kısmını istimal ederek resmî bir tarzda şiddetli propaganda etmelerinden, bütün resmî memurlar ürkmeye ve çekinmeye mecbur olmuşlar. Onlar içinde dahi enaniyetli ve evhamlı ve bid’aları kabul eden hocalar, daha ziyade çekinmeye başlamışlar; kendilerine bir özür, bir bahane aramışlar.",
+      "order_index": 361
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’dan “İşarat-ı Seb’a”nın bid’acılara şiddetli tokadı ve “Sekizinci ve On Sekizinci Lem’a”da İmam-ı Ali’nin (ra) “Ercuze”de, ulemaü’s-sû hakkında dehşetli tokadı ve bid’alara bir derece ve bir cihette müsait olan Vehhabîlik mezhebini perde altında kabul edenler “Yirmi Sekizinci Mektup”un Vehhabîler hakkındaki meselenin tokadı ve Kur’an tercümesini yapan ve Kur’an yerinde tercümesinin okunmasına cevaz gösterenlere Risale-i Nur’un şiddetli tokatları ve derd-i maişet zarureti ve mevki-i içtimaîde haysiyetini düşünmeleri sebebiyle hocalar hattâ İstanbul’un eskide dost hocaları kaçmaya ve az bir kısmı tenkide çalışmaya; hattâ Âl-i Beyt ve İmam-ı Ali’ye adâvetleri bulunan müfrit Vehhabîlik hesabına Risale-i Nur’un Âl-i Beyt ve İmam-ı Ali’nin bir manevî hediyesi ve eseri olmasından itiraz etmeye başlamışlar. Fakat biz İstanbul âlimlerinden kızmıyoruz belki bir cihette memnunuz. Çünkü başkalara nisbeten ilişmiyorlar.",
+      "order_index": 362
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem merhum Fetva Emini Ali Rıza ve merhum Ahmed Şiranî ve merhum Şevket Efendi ve merhum Mehmed Âkif gibi insaflı, Risale-i Nur’u fevkalâde takdir ve tahsin eden o muhterem ve merhum zatların hatırı için biz, İstanbul hocalarına dostuz, onlardan gücenmeyiz. İnşâallah bir zaman “Yirminci Lem’a-i İhlas” kendini onlara okutturacak, o eski dostları da yeni dostlar yapacak.",
+      "order_index": 363
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim! Herkes sizin gibi sebatkâr olamaz. Perde altında Nurcuların kuvve-i maneviyelerini kırmak için bazı hocalar vasıta oluyorlar, aldanmayınız ve sarsılmayınız. Ve onlarla münakaşa etmeyiniz, mümkün oldukça dostane muamele ediniz. Biz onlarla kardeşiz deyiniz ve bu pusuladaki noktaları unutmayınız tâ sizi aldatmasınlar.",
+      "order_index": 364
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 365
+    },
+    {
+      "type": "paragraph",
+      "text": "Hüsrev’in himmetiyle daireye giren ve Nur’un yeni şakirdlerinden bana mektup yazan Hatice ve Râbia, haslar içinde kabul edildiler. Ve çok alâkadar olduğum Barla’da hararetle Bahri ve evladı ve Eyyüb ve Ali ve Mehmed ve Süleymanların gayretleriyle Nurlar dersine çalışmaları, beni sevinçle ağlattırdı. Ben bütün Barla halkına, hususan Süleymanlar ve Bahri ve Mehmedler ve Mustafalar, eski zamanda Nurlara kıymettar hizmet eden Şamlı Hâfız Tevfik ve mübarek Hâfız Hâlid ve imam Hakkı Efendi ve Muhacir Hâfız Ahmed ve evladı ve ahfadı ve Şem’î ve bana çok hizmet eden Abdullah Çavuş ve oradaki komşularıma ricalen ve nisaen binler selâm ve dua ederim ve mübarek aylarda dualarını isterim.",
+      "order_index": 366
+    },
+    {
+      "type": "paragraph",
+      "text": "Bahri ve evlatları üç Asâ-yı Musa yazdıklarını şimdi haber aldım. Muhacir Hâfız Ahmed ile Barla’da kardeşlerimizin hesabına hem Kâzım’ın hem berber Mehmed’in ciddi hâlisane mektupları Lâhika’ya girmeye hak kazandılar ve Bahri’nin güzel manzumesi, küçük bir Medrese-i Nuriye hesabına tam girebilir.",
+      "order_index": 367
+    },
+    {
+      "type": "paragraph",
+      "text": "Medar-ı hayret bir latîf inayettir ki Büyük Mustafa’yı (rh) aynen merhum Abdurrahman gibi hem sadakatiyle hem kalemiyle hem iktidarıyla Nurlara hizmet edeceğini kalbime ihtar edilmesiyle o zamanda Abdurrahman’ın vefatını unutmaya çalıştım. Hakikaten Küçük Ali, o hatıra-i gaybiyeyi kalem cihetinde dahi tam tamına tasdik ettirdi. Kardeşinin kalemini kendisi aldı. Sarı bıçağı, elmas kılıncı yaptı. Demek o zaman, onu da mübarek Mustafa’nın ruhunda hissetmiştim.",
+      "order_index": 368
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Muhacir Hâfız Ahmed’i hem bana hem Nurlara alâka ve sadakat noktasında Nurların birinci talebesi ve fedakâr bir nâşiri kalben hissetmiştim. Halbuki kalemle hizmete muvaffak olamadı. Çok defa o gaybî hissimi tahattur ederdim. Sonra birden hem oğlu Kâzım hem damadı Bahri hem diğer damadı berber Mehmed ondan his ve ümit ettiğim metinane hizmeti fevkalâde bir alâka ve sadakatle tam tamına yerine getirmeye, çalışmaya başladılar. Hattâ hafideleri dahi masum şakirdler içine girmişler.",
+      "order_index": 369
+    },
+    {
+      "type": "paragraph",
+      "text": "Umuma selâm…",
+      "order_index": 370
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 371
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 372
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ",
+      "order_index": 373
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ",
+      "order_index": 374
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık, bahtiyar, vefakâr, faal, sebatkâr kardeşlerim!",
+      "order_index": 375
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Tekraren hem sizin receb-i şerifinizi ve Leyle-i Regaibinizi tebrik hem Safranbolulu kardeşlerimizin tebriklerine mukabeleten şuhur-u selâselerini ve dört leyali-i mübarekelerini ve Nurlarla gayet ciddi alâkalarını tebrik ederiz. Ve oranın şakirdleri namına yazılan tebrikname mektubunda benim pek çok kusurlu şahsıma verdikleri unvanları ve senaları, Halil İbrahim’in bazı mektupları gibi ta’dil ile Risale-i Nur’a çevirip Lâhika’ya girmesini istedim. Fakat şahsım pek sarîh bir tarzda mevzu yapıldığı için yakıştıramadım, şimdilik geri kaldı.",
+      "order_index": 376
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim! Kat’iyen biliniz: Şan ve şeref ve hodfüruşluk ve kendine güvenmek ve şahsımı beğendirmekten ürküyorum ve kaçıyorum ve şahsıma karşı medihlerden hoşlanmıyorum. Yalnız Risale-i Nur’a karşı sadakat ve kanaate bir emare olmak cihetiyle, bazı müfritane tabirleri, ya hatırları için veya hüsn-ü zanlarını kırmamak fikriyle kısmen ta’dil ile kabul ve sükût ederim. Fakat iki İhlas Lem’aları ve mesleğimizin “hıllet” ve “ihlas” ve “uhuvvet” esasları, bu tarz medihlere müsaade etmez. Hem bu benlik ve enaniyet asrında ve şöhret-perestlerin nazarında Nurların safiyetine ve hâlisiyetine zarar verebilir.",
+      "order_index": 377
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Hıfzı’nın iki masumunun yazdıkları Asâ-yı Musa ve Rehber ve Küçük Sözler bizi mesrur eyledi. Yüz mâşâallah! Böyle binler Nurcu masumlar, istikbali nurlandıracaklar.",
+      "order_index": 378
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 379
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 380
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ",
+      "order_index": 381
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ",
+      "order_index": 382
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 383
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu şuhur-u mübarekede, Nurcuların şirket-i maneviyesine inşâallah pek çok kudsî servet girecek. Her bir Nurcu, binler lisanla ve yüzer kalemle çalışacak gibi kâr kazanacak. Ve bu mübarek ve çok bereketli aylarda beş tarzda ibadet sayılabilen kalemle Zülfikar-ı Mu’cizat mecmuasına hizmet edenler, tam bahtiyardırlar. Fakat yazıdan ziyade, sıhhatine dikkat etmek lâzım ve elzemdir.",
+      "order_index": 384
+    },
+    {
+      "type": "paragraph",
+      "text": "Bugün de tatlı iki manidar tevafuku gördüm. Kanaatim geldi ki benim bugünlerde zahmetler içinde Asâ-yı Musa tashihinde sıkıntılarıma mukabil, inayet-i İlahiye ücretimi ve tayinatımı şirin bir surette veriyor.",
+      "order_index": 385
+    },
+    {
+      "type": "paragraph",
+      "text": "Birisi: Kahraman Tahirî’nin teberrük olarak getirdiği tatlı lokmalar, acib bir bereketle, her gün ikişer üçer yediğim halde bitmiyordu. Hayret ederdim. Bugün âdetimle iki alacaktım; baktım yalnız iki tane kalmış, iktisat için birisini aldım. Aynı saatte, Hıfzı’nın iki masum evladının, bir kutu içinde yazdıkları nüshalar altında şekerden, ekmekten, aynen Tahirî’nin lokmaları gibi hem onun miktarında elime verildi.",
+      "order_index": 386
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben bu tatlı tevafuktan zevk alırken, dünkü gün aynı saatte çok hararetim vardı, çok su içiyordum. Canım, üryani erik hoşafı istedi. Ben bilmiyordum, unutmuştum; şiddetli bir arzu ile hararetimi teskin edecek eskide alıştığım ve çok istimal ettiğim üryani erik, bir kutu içinde ve Âsiye’nin has arkadaşlarından Nurcu Şerife Hanım’ın şekeriyle elime verildi.",
+      "order_index": 387
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben de bu çok tatlı tevafukun hatırı için hem masumların hem onların teberrüklerini yüz misli kadar kabul ettim.",
+      "order_index": 388
+    },
+    {
+      "type": "paragraph",
+      "text": "Umumunuza binler selâm…",
+      "order_index": 389
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 390
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 391
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık, sarsılmaz, usanmaz, çekinmez, çekilmez kardeşlerim!",
+      "order_index": 392
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Bu yaz, derd-i maişet cihetiyle ve bu şuhur-u selâse ibadet haysiyetiyle bir derece Nurların kitabetine fütur verebilir diyenlere beyan ederiz ki: Bilakis, yazmaya şevk verir ve vermek gerektir. Çünkü Nur’un hizmeti hem maişet hem rahat-ı kalbe bereketleriyle yardım ettiği gibi; ibadet-i tefekkürî nevinden olması cihetiyle, mübarek ayların sevaplarına büyük yardımı olur.",
+      "order_index": 393
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Nur’un bir şakirdi bana dedi ki: Geçen sene daha Nurlar bize teslim olmadan ve hususi bir iade neticesinde burada rahmet dahi hususi bir derece tezahürüyle demiştin ki: “Ne vakit tam serbestiyetle Nurlar okunsa ve yazılsa ve bize iade edilse yağmurla rahmet tam olacak.” haber vermiştin. Hakikaten bu baharda hem Asâ-yı Musa her tarafta merakla yazılması ve okunması hem Zülfikar-ı Mu’cizat yazılmasına şevkle başlanması, bu emsalsiz rahmete bir vesile olduğuna kat’î kanaatim geliyor, dedi.",
+      "order_index": 394
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 395
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 396
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Hüsrev’le bir ruh iki ceset ve kendisi, bahadır biraderiyle Nur hizmetinde çok ehemmiyetli mevki alan kahraman Rüşdü’nün acib bir el makinesini Nurlar için celbine çalışması, ehemmiyetli bir fütuhat-ı Nuriyenin mukaddimesidir. İnşâallah yine Nurlar, Nurcuların lâyık elleriyle kalemleri gibi tab ve neşredilecek; yabani ve lâyık olmayanlara muhtaç olmayacak. Fakat her şeyden evvel sıhhatli ve yanlışsız ve güzel bir tarzda makine ile mümkün ise evvel eski harfle yazılsa sonra yeni harfle daha münasiptir. Sizlerin isabetli tedbirinize havale ediyoruz.",
+      "order_index": 397
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Konyalı Sabri’nin Re’fet’e yazdığı mektubunu gördüm, ondan bildim ki bu Sabri, öteki Sabri gibi gayet hâlis ve samimi ve çalışkan bir Nurcudur. Bin bârekellah hem ona hem onu teşvik ve teşci eden ve hocaların yüzlerini ak eden Konya âlimlerine. Başta müfessir mübarek Hoca Vehbi olarak onlara ve oradaki Nur şakirdlerine çok selâm ederiz ve bu mübarek şuhur-u selâsede dualarını isteriz.",
+      "order_index": 398
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 399
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 400
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 401
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 402
+    },
+    {
+      "type": "paragraph",
+      "text": "Sekiz sene çoluk ve çocuğuyla sadakatle bana hizmet eden ve evlat ve ahfad ve refika ve damatlarıyla Nurlara ciddi çalışan ve ders ve vaazlarını bütün Nurlardan veren ve vefatından on dakika evvel dünyaca en ehemmiyetli vasiyeti, kendinin Nur Risalelerini tekmil için Şamlı Hâfız’a rica eden, vefatından iki gün evvel bana mektup yazıp benim aynı vakitte Sava’yı Barla’ya tercih ederek Sava mezaristanında defnimi arzu ettiğimi sizlere yazdığımı sadakatin kerametiyle hissedip bana mukabele ve itiraz tarzında o mektubunda der: “Sen Barla’yı ikinci vatanımdır, dediğin halde neden ona gelmiyorsun, başka yerleri tercih edersin? İptida-i medrese-i Nuriye Barla’dır, senin mezarın orada olmalı.” diye bana ihtar etti.",
+      "order_index": 403
+    },
+    {
+      "type": "paragraph",
+      "text": "İki gün sonra –size yazdığım daha size yetişmeden– onun mektubunu hem Şamlı Hâfız ikinci sahifesinde yazdığı vefat haberini aldığım merhum Muhacir Hâfız Ahmed’in (rh) dünyadan göçmesi, aynen Abdurrahman gibi beni çok sarstı, ağlattırdı اِنَّا لِلّٰهِ وَاِنَّٓا اِلَيْهِ رَاجِعُونَ dedirtti. Binler rahmet onun ruhuna insin, âmin! Kabri de hanesi gibi Kur’an ve Nur’un bir menzili olsun, âmin!",
+      "order_index": 404
+    },
+    {
+      "type": "paragraph",
+      "text": "Şüphem kalmadı ki bu zahir sadakat kerameti, Nurcuların imanla kabre gireceklerini ispat ediyor ve hüsn-ü hâtimeye mazhardırlar. Benim tarafımdan onun akrabasını taziye ediniz ve ben bütün dualarımda onu hissedar ediyorum diye tebliğ ediniz.",
+      "order_index": 405
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Kardeşimiz Re’fet bana yazıyor ki: “İstanbul’da Nurlara çok ihtiyaç var ve ekmek gibi herkes muhtaçtır. Ve kardeşlerimizden ve Nurlarla çok alâkadar ve çok okumuş ve Nurcu olan Yeşil Şemseddin, Nur’un hakikatlerinden ders verdiğinden vaazında binlerle adam bulunur.",
+      "order_index": 406
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Re’fet der: “Bundan anlaşılıyor ki Risale-i Nur, bu millete her gün ekmek gibi lâzımdır.”",
+      "order_index": 407
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bir kısım Nurları, ehemmiyetli zatlara vermiş ve “Zülfikar-ı Mu’cizat”ın benim tashihimden geçmiş bir nüshasını istiyor.",
+      "order_index": 408
+    },
+    {
+      "type": "paragraph",
+      "text": "Umuma birer birer selâm ve dua ederiz ve dualarını isteriz.",
+      "order_index": 409
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 410
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 411
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 412
+    },
+    {
+      "type": "paragraph",
+      "text": "Hüsrev’i tashihte ve tevzide ve tedbirde ve muhaberede ve Nurların neşir ve yetiştirmesinde tebrik ve muvaffakıyetine dua ederiz. Bu ehemmiyetli vazifelerle beraber; yine o şirin ve parlak kaleminin yazılarını çok nüshalarda görüyoruz. Hem müstakil nüshaları da yazıyor, mektubundan anlıyorum.",
+      "order_index": 413
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi birden Sava medrese-i Nuriyenin Hacı Hâfız’ı ve merhum Hâfız Mehmed’i ve kardeşlerini ve Mehmedlerini ve Ahmedleri ve masum Nurcuları ve mübarek ihtiyar ve sair kahraman şakirdlerini düşündüm. Hayatım müddetince ona yakın olmak bütün canımla istedim ve vefattan sonra onların mezaristanında defnolmamı arzuladım.",
+      "order_index": 414
+    },
+    {
+      "type": "paragraph",
+      "text": "Birden ihtar edildi ki: “Gerçi Medresetü’z-Zehranın merkezi olan Isparta vilayetinde maddeten bulunmak çok cihetle faydalı, saadetlidir fakat Nur’un mesleği ve Nurcuların meşrebi cihetiyle daima berabersiniz. Zaman ve mekân, perde olamazlar. Şarkta, garpta, şimalde, cenupta, dünyada, berzahta bulunsanız manen bir mecliste beraber sayılırsınız. Onların manevî yardımları daima birbirine oluyor ve sana da gelir.” diye beni teskin etti.",
+      "order_index": 415
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben dedim: Madem şimdi her tarafta Nurlara kuvvetli ve kesretli eller sahip çıkıyorlar ve tam muhafaza ve neşrine çalışıyorlar, elbette ben bir parça istirahat etsem tembellik olmaz.",
+      "order_index": 416
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 417
+    },
+    {
+      "type": "paragraph",
+      "text": "[1] Hâşiye: Evet her biri yüze mukabil binler Türk gençleri, masumları, ihtiyarları Risale-i Nur’a şakird olmalarından bu acib asırda, Türk milletinin Devlet-i Abbasiye inkırazından İslâm yardımına koşmaları gibi bu şakirdler dahi aynen koştular. Değil yalnız Said belki bütün ehl-i hakikat tahsin eder, Türk’e dost olur.",
+      "order_index": 418
+    },
+    {
+      "type": "paragraph",
+      "text": "[2] Hâşiye: Demokrat çıktı, bir derece kırdı.",
+      "order_index": 419
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 420
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Geçen mübarek Leyle-i Beratınızı ve gelecek ramazan-ı şerifinizi tebrik ederiz. Bu sene Berat Gecesi, Nurcular hakkında çok bereketli ve kerametli olduğuna bir emaresini hayretle gördük. Şöyle ki:",
+      "order_index": 421
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben Berat Gecesinden az evvel Asâ-yı Musa tashihiyle meşgul iken bir güvercin pencereye geldi, bana baktı. Ben dedim: “Müjde mi getirdin?” İçeriye girdi, güya eskiden dost idik gibi hiç ürkmedi. Asâ-yı Musa (Hâşiye[1]) üstüne çıktı, üç saat oturdu; ekmek, pirinç verdim, yemedi tâ akşama kaldı, sonra gitti, tekrar geldi. Berat Gecesinde tâ sabaha kadar yanımda kaldı. Ben yatarken başıma geldi, Allah’a ısmarladık nevinden başımı okşadı, sonra çıktı gitti. İkinci gün, ben teessüf ederken yine geldi; bir gece daha kaldı. Demek bu mübarek kuş hem Asâ-yı Musa’yı hem beratımızı tebrik etmek istedi.",
+      "order_index": 422
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 423
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 424
+    },
+    {
+      "type": "paragraph",
+      "text": "Kastamonu Hüsrev’i ve Süleyman Rüşdü’sü olan Mehmed Feyzi ve Emin’in, Üstadlarının Kastamonu’daki hayatının bir tarihçesini, hüsn-ü zanla haddimden çok fazla senalarını tebdil etmeyerek kabulümün sebebi şudur ki:",
+      "order_index": 425
+    },
+    {
+      "type": "paragraph",
+      "text": "Bugünlerde Afyon’un büyük memuru, bir çavuşu bana ihanete vasıta yapıp güya teveccüh-ü âmmeyi hakkımda kırarak tâ bu vilayet, Denizli, Isparta gibi Nurlara tam sahip çıkmasın ve Nurlar parlamasın. Gerçi ben tahammül ettim fakat buranın yeni şakirdlerinin teessürlerinden müteessirdim. Düşünürken, Mehmed Feyzi’nin bu samimane ve âlimane, hürmetkârane mektubu, o herifin ve o âmirinin ihanetlerini yüzlerine vurup hiçe indirerek teessüratımı tam sildi, süpürdü. Binler derece o iki bedbahttan yüksek olan iki Nurcunun böyle medih ve hürmetleri, onların kanunsuz cebir ve ihanetlerinin aynı zamanda tam tamına tevafuku, Feyzi ve Emin’in sadakatlerinin bir kerameti olduğuna kanaat ettiğimdir.",
+      "order_index": 426
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 427
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşlerim!",
+      "order_index": 428
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdi tebeyyün etti ki: Beni karakola çağırmak, lüzumsuz bahanelerle beni hükûmete celbetmekte maksat, ihanet ve halkın nazarında ehemmiyetsizliğim ve bana müttehem vaziyeti vermek için idi. Şimdi tahammülüm kalmadı. Mümkün oldukça oraya beni çağırmamak lâzımdır. Ceza hâkimini görünüz. Bana bir dava vekili tarzında bir adamı bulunuz, benim bedelime lüzum olsa karakola gitsin. Yirmi beş sene münzevi bir adam, böyle ihanetkâr insanlarla görüşmek, işkenceli bir azaptır. Ben sekiz sene, Kastamonu’da bir tek defa valinin ısrarıyla yanına ve iki defa da polishaneye gittim. Burada sebepsiz on defadan geçti. Ben, daha gidemem. Hem doktordan bir rapor alınız yoksa bu şehre maddî ve manevî zarardır.",
+      "order_index": 429
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 430
+    },
+    {
+      "type": "paragraph",
+      "text": "Hüsrev’in müdafaatımda yazılan dört zelzele meselesini tasdik eden bu geceki şiddetli dört defa zelzele, bana ve Nurlara ve bu memlekete kat’î bir sû-i kasd eseri olarak hükûmet içinde hizmetçime bağırarak bana tahkirkârane ihanet ve şetmedip “Git ona söyle!” diyen ve kaymakamın emr-i cebrîsiyle “Hasta da olsa buraya getiriniz!” bekçilere ve jandarmalara emir veren ve Afyon’un perde altındaki büyük memura dayanan karakol çavuşu hem Nur şakirdlerinin şevklerine hem Nurların burada yazılmasına hem bana ehemmiyetli sıkıntı vermesinin aynı vakitte, böyle burada görülmeyen bu şiddetli zelzelenin gelmesi gösteriyor ki Risale-i Nur bir vesile-i def’-i beladır; tatile uğradıkça bela fırsat bulup gelir.",
+      "order_index": 431
+    },
+    {
+      "type": "paragraph",
+      "text": "Nurlara az zamanda çok hizmet eden Mustafa Osman’ın gayet tevazukârane ve mahviyetkârane mektubu, tam onun hâlisane sadakatini ve ihlasını ispat edip on beş senelik haslarla omuz omuza geldiğini gösterir. Zaten yazdığı Asâ-yı Musa mecmuası, kuvvetli bir delildir. İşte bu dakikada bunu yazarken yine hafif zelzele başladı.",
+      "order_index": 432
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 433
+    },
+    {
+      "type": "paragraph",
+      "text": "Emirdağı Zabıtasıyla Bir Hasbihal",
+      "order_index": 434
+    },
+    {
+      "type": "paragraph",
+      "text": "“Hem insaniyet namına istediğim bir hukukuma karşı yapılan, hayretimi mûcib acib bir muamelenin sebebi nedir?” diye bir sualim var.",
+      "order_index": 435
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Bir seneden beri sakladığım şekvamı vermedim. Şimdi zabıtanın vasıtasıyla Ankara makamatına vermek üzere, bir zata gönderdik. Dedim: Afyon Emniyet Müdürü insaflıdır. Ona da bir suret elden gönderdim. Ondan istirahatime dair bir eser beklerken bilakis beni sıkıştıran zatlara yazmış: “Bu güzel yazı onun değil, kim yazmışsa tahkik ediniz.”",
+      "order_index": 436
+    },
+    {
+      "type": "paragraph",
+      "text": "Acaba çok kuvvetli ve ayn-ı hakikat o şekvayı nazara almayıp lüzumsuz, ehemmiyetsiz, zararsız bir yazıyı merak etmek, benim istirahatimi bozmak; bin liraya ehemmiyet vermemek, beş paraya çok ehemmiyet vermek gibi olmaz mı? Yüz otuz risalelerden binler nüshaları ayrı ayrı yazılarla üç mahkeme inceden inceye tetkikten sonra ve onları yazanların mühim bir kısmı benimle beraber mahkemede bulunmaları ve zerre kadar medar-ı mes’uliyet olmadığı halde “Kim ona yazıyor diye tahkik ediniz.” demek yüzünden bir kanun, bir maslahat var mı? Bir bîçareyi bu bahane ile karakola çağırmak, endişe vermek ve bilhassa benim ihbarımla istemek ne lüzumu var? İşte ben size haber veriyorum: Eğer arzu etsem binler adam yazılarımı yazacaklar hem her tarafta millet ve vatan menfaatine yazıyorlar.",
+      "order_index": 437
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: İnsaniyet namına sizden isterim ki tâ bayrama kadar benim yüzümü dünyaya çevirmeyiniz. Ben sizi düşünmediğim gibi siz dahi beni unutunuz. Bu mübarek aylarda benim gibi dünyadan küsmüş bir bîçareyi, âhiret zararına gayet ehemmiyetsiz dünya işleriyle meşgul etmeye mecbur etmeyiniz.",
+      "order_index": 438
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 439
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu manidar yeni zelzeleyi merak ettim. Kalben dedim: Eğer sair yerlerde bu şiddetle olmuşsa herhalde Nur şakirdlerine dahi yine bir tecavüz var. “Yoksa benim yalnız mektubumla alâkadardır?” diye sordum. Dediler: Yalnız Ankara hafif, Afyon ve Eskişehir ve bu Emirdağı’nda ve en şiddetlisi bu kasabada olmuş. Fakat medar-ı hayrettir ki dört defa şiddetli olduğu halde, hiçbir zarar olmadı.",
+      "order_index": 440
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun bir hikmeti budur: Kat’î emir verilmiş ki “Said’i cebren hükûmete getiriniz!” Bekçiler ve bir onbaşı gelmişler. Kapımı kapamıştım, kilitlemiştim. Onlar demişler: “Biz istifa ederiz, onun kapısını kırmayacağız.” Dönmüşler, gitmişler.",
+      "order_index": 441
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek bu hususi zelzele, müdafaatımdaki zelzeleler gibi Risale-i Nur’la alâkadardır ki bu defa hususi kaldı hem şiddetiyle beraber zararsız geçti. Eğer Nur’un buradaki küçücük medresesinin kapısını kırsaydılar elbette tokat ciddi olacaktı, yalnız ihtar için olmayacaktı.",
+      "order_index": 442
+    },
+    {
+      "type": "paragraph",
+      "text": "Gerçi bu taarruz cüz’î ve hafif idi fakat ben gizlemem ki hiç bu defa gibi damarıma dokunmamıştı. Fakat Nur ve Nurcuların hatırı için hârika tahammül ettim. Çünkü o bedbaht, hükûmette, vazife sandalyesinde bana şetmedip hizmetçime der: “Git, ona söyle!” Hükûmetin nüfuzunu serseri şahsına mal ederek meydan okumuş ve Eski Said’in bende irsiyet kalan damarıma çok ilişti. Fakat fevkalâde ehemmiyetli olan sükûn ve temkin ve itidal-i dem ve sabır ve tahammülün kat’î lüzumu beni teskin etti.",
+      "order_index": 443
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Marangoz merhum Barlalı, hârika sadakatli Mustafa Çavuş’un tam yerine geçen Medrese-i Nuriyenin tam çalışkan kahramanlarından Marangoz Ahmed’in benim için Sava’nın Davraz Dağı’nda berzahî ve uhrevî bir menzil, bir mezar düşünmesi ve yazması, beni çok sevindirdi ve hazînane ağlattırdı.",
+      "order_index": 444
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 445
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 446
+    },
+    {
+      "type": "paragraph",
+      "text": "Tekrar mübarek ramazanınızı tebrik ederiz. İki kahraman kardeşin ve Mu’cizat-ı Ahmediye’de yedi çocuğun bir cihette bir sekizincisi hükmüne geçen Süleyman Rüşdü’nün mübarek kerîmesinin makine ile Zülfikar-ı Mu’cizat’a çalışmasını ve Hüsrev ve Tahirî’nin şirin ve dikkatli yazılarını teksir etmeye fedakârane deruhte etmelerini bütün ruh u canımızla onları tebrik ederek, şimdiye kadar pek fevkalâde Nurlara ettikleri kıymettar ve meyvedar sâbık hizmetlerine karşı, Risale-i Nur hesabına binler mâşâallah ve bârekellah ve veffekakümullah deriz. (Hâşiye[2])",
+      "order_index": 447
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 448
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık, fedakâr kardeşlerim!",
+      "order_index": 449
+    },
+    {
+      "type": "paragraph",
+      "text": "İnebolu kahramanlarının tebrik mektuplarında iki tevafuk ve iki kuşun garib ziyaretleri çok manidardır. Evet, benim bir tek mektubumu yazan bir tek adamın hükûmetçe araştırılması ve ehemmiyetle bakılması tazyiki zamanında, şahsımdan binler derece daha ziyade konuşan ve tesirli ders veren Risale-i Nur’un Zülfikar-ı Mu’cizat’ın bin nüshaları ve bin dille ve binler mektubatıyla şimdiye kadar çok rakipleri bulunan ve takip edilen ve mümaşata tenezzül edemeyen Ahmed Nazif’in kalemiyle serbest ve mümanaat görmeden yazılmasına; değil yalnız kuşlar belki melekler ve ruhanîlerden bir kısım, temessül edip bu hârika muvaffakıyeti tebrik etseler yine çok değil.",
+      "order_index": 450
+    },
+    {
+      "type": "paragraph",
+      "text": "Biz dahi o küçük Isparta kahramanlarına binler bârekellah ve mâşâallah ve veffekakümullah deriz. Bütün ruh u canımızla onları tebrik ederiz ve bu pek büyük vazifede ihtiyat ve dikkatin lüzumunu ihtar ederiz.",
+      "order_index": 451
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 452
+    },
+    {
+      "type": "paragraph",
+      "text": "İnebolu civarında bulunan ve Nurlara güzel kalemiyle çok hizmet eden kardeşlerimizden Mehmed Zekeriya’nın bir mektubunu aldım. Endişelerimi izale edip beni mesrur eyledi. Şimdi Nurların bir vazifesi olan, çocuklara Kur’an okutmak ve iman derslerini vermek hizmetiyle meşgul olduğunu yazıyor. Ona yazınız ki: Bu hizmetin, aynen eskide Nurlara çalışmanız gibi kıymetlidir.",
+      "order_index": 453
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem senin yazdığın kesretli risaleler, senin bedeline Nurların neşrine hizmet ederler. Merak etmesin; o, eski makamını muhafaza ediyor.",
+      "order_index": 454
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 455
+    },
+    {
+      "type": "paragraph",
+      "text": "Bugünlerde rahatsızlık için Evrad-ı Bahaiye’yi ezber değil, kitaba bakarak okudum. Âhirinde ihtitam-ı Bahaiye olan hâtimesini bilemediğimden eskiden beri okumuyordum. Haydi bu defa bunu da okuyayım dedim. Gördüm ki: Bir sahifede ve uzun altı buçuk satırında, on dokuz defa “nur, nur, nur” kelimeleri… Kat’î kanaatim geldi ki: Şah-ı Nakşibend, Gavs-ı A’zam gibi Risale-i Nur’u ve kudsî hizmetini keşfen müşahede edip tahsinkârane haber vererek ona işaretler ediyor. Ben de yalnız o altı satırı ve baştaki satırı ve âhirdeki satırı ile otuz senelik Bahaiye virdime, o meleklerin Nurların intişarına muavenetleri niyetiyle ilhak eyledim.",
+      "order_index": 456
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 457
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 458
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Isparta’nın acib yangınında musibetzedelerin elemlerine ben cidden iştirak ediyorum. Çünkü müteaddid vecihle ben Ispartalı olduğum gibi o mübarek şehir, taşıyla toprağıyla nazarımda çok ehemmiyeti var ve Nurların Camiü’l-Ezheri ve Medresetü’z-Zehrasının merkezi hükmündedir.",
+      "order_index": 459
+    },
+    {
+      "type": "paragraph",
+      "text": "Benim tarafımdan o musibetzedelere deyiniz ki: “Nass-ı hadîsle, böyle musibetlerde ehl-i imanın zayi olan malları tam sadaka hükmündedir. Hususan bu zamanda, yüz sadaka kadar o fâni malları, bâki ve daha çok ebedî mallara inkılab ederler. Onun için sabır içinde bir cihette şükretmek gerektir. İnşâallah dünyada dahi o keffaretü’z-zünub olan zayiatın yerine Erhamü’r-Râhimîn ihsan eder. Geçmiş olsun, başınız sağ olsun, faydasız merak etmeyiniz.” deyiniz.",
+      "order_index": 460
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Bu çeşit kazaların bir sebebi, beşerin çirkin bir hatası bulunmasından bu ramazan-ı şerifin hürmetini ve kıymetini muhafaza etmek ve Nurları himaye etmeye, her yerden ziyade Nurların menbaı ve medresesi olan Isparta borçludur ve vazifesidir. Ve sefahetlere karşı şeair-i İslâmiyeyi muhafaza etmekle mükelleftir.",
+      "order_index": 461
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 462
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem mesela لَوْلَاكَ لَوْلَاكَ لَمَا خَلَقْتُ الْاَفْلَاكَ beyanında “Bu hitap zahiren Hazret-i Peygamber aleyhissalâtü vesselâma müteveccih ise de zımnen hayata ve zevi’l-hayata râcidir.” fıkrası, ta’dile muhtaçtır. Çünkü küllî hakikat-i Muhammediye (asm) hem hayatın hayatı hem kâinatın hayatı hem ism-i a’zamın tecelli-i a’zamının mazharı ve bütün zîruhların nuru ve kâinatın çekirdek-i aslîsi ve gaye-i hilkati ve meyve-i ekmeli olmasından o hitap, doğrudan doğruya ona bakar. Sonra hayata ve şuura ve ubudiyete onun hesabına nazar eder.",
+      "order_index": 463
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem mesela, felsefeye temas eden bazı cümleler “Mürur-u zamanla kabuk bağlamış, sonra toprağa inkılab etmiş, sonra nebatat husule gelmiş, sonra hayvanat vücuda gelmiş.” gibi tabirler, icad ve hilkat-i İlahî noktasında felsefîdir ki Risale-i Nur’un sanat ve icad-ı İlahî cihetindeki beyanatına münasip düşmüyor.",
+      "order_index": 464
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşim Abdülmecid!",
+      "order_index": 465
+    },
+    {
+      "type": "paragraph",
+      "text": "Her ne ise bu küçücük kusurla beraber sen, haşir hakkında, Nur’un emsalsiz hüccetlerinden tam ve mükemmel bir ders alıp Eski Said’in mümtaz bir şakirdi olduğun gibi inşâallah Risale-i Nur’un dahi mükemmel bir şakirdi ve dikkatli bir muallimi olacağına kuvvetli bir hüccettir. Ben müsait bir vakitte bazı kelimeleri ya ıslah veya ta’dil ederek “Haşir Meselesine Bir İzahlı Hâşiye” namında Lâhika’ya dercetmek için senin gibi Nur’dan tam ders alanlara göndereceğim.",
+      "order_index": 466
+    },
+    {
+      "type": "paragraph",
+      "text": "Sen evlatlarınla beraber başta Fuad, her gün dualarımda ve manevî yanımda bulunuyorsunuz. Ve senin şimdi vazife-i resmiye cihetiyle çocuklara Kur’an-ı Azîmüşşan’ı okutmanı bütün ruh u canımla tebrik ediyorum. Bin bârekellah derim.",
+      "order_index": 467
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem civarınızda hem memlekette bütün dost ve akrabalara selâmımı tebliğ ediniz. Şimdi Zülfikar-ı Mu’cizat ve Asâ-yı Musa mecmuaları teksir makinesiyle iki merkezde tabedilmesinden, sen bütün kuvvetinle ve tashih cihetinde güzel kalemin ile ve dikkatli ilmin ile tam alâkadar ol.",
+      "order_index": 468
+    },
+    {
+      "type": "paragraph",
+      "text": "Kardeşiniz Said Nursî",
+      "order_index": 469
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 470
+    },
+    {
+      "type": "paragraph",
+      "text": "Re’fet ameliyat oldu mu? Ne haldedir? Merak ediyorum. Ona çok dua edildi. Savalı kahraman Ahmed’in kerîmesi Hatice’nin yazdığı Asâ-yı Musa mecmuasını kahraman Tahirî, İstanbul’da birisine emaneten bırakmış. O nüsha hanımları Nurculuğa teşvik ettiği için zayi olmasın. Muattal kalmışsa, lüzum kalmamışsa bana gönderilsin.",
+      "order_index": 471
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 472
+    },
+    {
+      "type": "paragraph",
+      "text": "Ramazanınızı, Leyle-i Kadrinizi hem bayramınızı tebrik ederim.",
+      "order_index": 473
+    },
+    {
+      "type": "paragraph",
+      "text": "Kastamonu’da iken nasıl her gün dualarımda ve manevî kazançlarımda Nur’un has şakirdlerinden Âsiye, Ulviye, Lütfiyeler, Zehralar, Şerifeler, Hacerler, Necmiyeler, Nimetler, Aliyeler hissedar olmak için manen yanımda bulunuyordular; aynen şimdi de öyledirler.",
+      "order_index": 474
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben sizleri unutmuyorum. Hattâ bugünlerde birden Ulviye, Lütfiye’yi merak ettim. İkinci gün, ikisinin de mektuplarını, hediyelerini aldım; bunların sadakatlerine bir emare oldu. Eskiden beri âdetim hediyeleri kabul etmemek ile beraber, sizin cübbe ve yeleğinizi bu geceki Leyle-i Kadirde giyip Âsiye ile beraber Kastamonu’daki bütün Nur şakirdleri namına kabul ettim. Fakat kaideme muhalif olmamak için ona mukabil, Emin’de bulunan risalelerimden Lütfiye, Ulviye istediklerini alsınlar veyahut benim hesabıma Mehmed Feyzi ve arkadaşları onların beğendiklerini yazsınlar.",
+      "order_index": 475
+    },
+    {
+      "type": "paragraph",
+      "text": "Benim yanıma çok defa gelen bu hemşirelerimin masum evlatları, Nur şakirdlerinden masumlar dairesinde dâhildirler ve çok defa hatırlıyorum.",
+      "order_index": 476
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 477
+    },
+    {
+      "type": "paragraph",
+      "text": "Hadsiz şükür ve hamd ü sena ediyorum ki sizlerin bu mektuplarınız hem Hüsrev ve arkadaşlarına ve makinelerine hem Nazif ve yardımcılarına ve makinesine ve bu kudsî yeni hizmette devam edebilmelerine ait sıkıcı çok endişelerimi izale ettiler. Binler elhamdülillah.",
+      "order_index": 478
+    },
+    {
+      "type": "paragraph",
+      "text": "Hattâ mektuplarınızı aldığımdan bir gün evvel, araba ile gezmeye çıkmıştım. Birden, Kur’an’ın medhine mazhar olan hüdhüd-ü Süleymanî kuşu bir müjde vermek istiyor gibi on beş dakika kadar yolumuzu takiben sağa ve sola ve yola konup uçup yine gelip; hiç bu acib tarzı görmediğimiz surette, kanaatim geldi ki yarın beni mesrur edecek bir haber alacağım. Beni gezdiren Nureddin’e dedim. O da benim gibi o kuşun o garib vaziyetinden hayret ediyordu. Birden, biz onun sırrını ifşa ettiğimizden kayboldu.",
+      "order_index": 479
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci gün hem tesellikâr Nazif’in mektubunu ve makinesinin yeni mahsulünü hem Abdurrahman Salahaddin’in medar-ı merak mektubunu ve bana şapka için Ankara’da sıkıntı veren Vali Nevzad’ın intiharıyla, kendi tokadını ve cezası kendi eliyle verilmesini ve Zülfikar hizmetine hiçbir taarruz olmadığını ve devam ettiğini hem Medresetü’z-Zehranın kahramanları hiç telaş etmeyerek Zülfikar’a devamlarını ve hakikat-i hali beyan etmelerini ve çok alâkadar olduğum Atabey kahramanlarının ve Lütfü vârislerinin ve büyük merhum Hâfız Ali’nin vekil ve vâris ve hizmet-i Nuriyede muktedir arkadaşlarının, Tahirî ve Abdullah Çavuş’un tebrik mektuplarını ve Aliköyü’nün imamı Ali’nin bu yeni taarruzda pek merdane ve Nur şakirdlerine lâyık bir tarzda ve hükûmette suallerine karşı manidar ve hakikatli cevaplarını aldım ve dedim: İşte hüdhüdün müjde sözü doğru çıktı.",
+      "order_index": 480
+    },
+    {
+      "type": "paragraph",
+      "text": "Nasıl ki Asâ-yı Musa risalesi tabiatta boğulanları dalaletten kurtarıyor ve bu zamanda herkese hususan şüpheye ve inkâra düşenlere lâzımdır ve tiryaktır; öyle de Zülfikar, ehl-i imana ve ehl-i ilme ve bilhassa hâfızlara elzemdir. Her bir hâfız-ı Kur’an, bu mecmuaya bu zamanda şiddetle ihtiyacı var. Kur’an’ın kırk vecihle i’cazını beyan eden bu eser, her hâfızın elinde bulunmalı.",
+      "order_index": 481
+    },
+    {
+      "type": "paragraph",
+      "text": "Şimdiye kadar hiçbir zaman tarih göstermiyor ki Risale-i Nur gibi pek çok taifelere ve mesleklere hücum eden, bu derece, pek az ve hafif tenkitle kurtulmuş olsun. Hattâ yüz derece daha az zahmetle, yüz derece kudsî hizmet ve mücahede mukabilinde, küçük ve muvakkat ve netice itibarıyla hayırlı bir iki hapis ve iki üç inayetli ve fütuhatlı musibet gördüler.",
+      "order_index": 482
+    },
+    {
+      "type": "paragraph",
+      "text": "Umuma binler selâm ve muvaffakıyetlerine dua…",
+      "order_index": 483
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 484
+    },
+    {
+      "type": "paragraph",
+      "text": "Kanaatim geliyor ki bu sıralarda biz Zülfikar’ı ve Asâ-yı Musa’yı pek çok teksir etmeye mecbur olduğumuz hengâmda ve temiz olmayan matbaacılar dahi çekinmeleri aynı zamanda bu acib makine kolayca elimize verilmesi, o iki mecmuanın makbuliyetine bir işaret-i gaybiye ve inayet-i İlahiyenin bir hârika ikramıdır ve Nurların kerametidir.",
+      "order_index": 485
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, bir âdi mektubum için “Kim yazmış?” diye sekiz defa bana resmen sıkıntı ve eziyet verildiği aynı zamanda, sekiz yüz sahifeyi bin beş yüz nüshaya ve bir milyon sahifelere çıkaran o makine, elbette gaybdan imdadımıza gelmiş Nurcu ve bin kalemli bir kâtiptir. Onun için bazı sahifeleri sönük çıksa zarar yoktur. Parlak kısmı, bize şimdilik yeter. İyi okunmayan kısmı ayrı yapılsın; sonra elmas kalemliler, her biri bir iki nüshayı ıslah etsin.",
+      "order_index": 486
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir zaman bir memlekete şimendifer geldiği vakit, arabacılar telaş edip dediler: “Bizim sanatımız bozuldu.” Halbuki şimendiferin gelmesiyle memlekette faaliyet çoğaldığından faytonculuğa iki kat ziyade ihtiyaç olmuş. İnşâallah onun gibi Nur yazıcıları değil tevakkuf belki daha ziyade yazı ile defter-i a’mallerine hasenat kaydedecekler.",
+      "order_index": 487
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 488
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben ehl-i siyasetin her nevi taziplerine karşı حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكٖيلُ deyip sabır ve tahammüle karar vermişim. Kâzım Karabekir ile eskiden münasebetim vardı. Acaba şimdi de o münasebetin sebebi olan merdane mesleğini muhafaza ediyor mu? Eğer eski gibi ise ve Nurlara zararı yoksa ve Nur’a faydası muhtemel ise ve dost ise benim selâmımı ona tebliğ edebilirsiniz. Fakat madem ehl-i siyaset, hayat-ı bâkiyesi için Risale-i Nur’a müracaata tenezzül etmiyor; o hayata nisbeten beş paralık olan bu hayat-ı fâniye için onlara müracaata ben de tenezzül etmem ve istirahatim için şekva ve rica etmem.",
+      "order_index": 489
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 490
+    },
+    {
+      "type": "paragraph",
+      "text": "Merhum Büyük Ali’nin tam vârisi ve tam bir sistemi ve merhum Abdurrahman’ın tam misli ve halefi ve mübareklerin pehlivanı ve kahramanı Küçük Ali’nin iki büyük ve pek güzel hediye-i Nuriyesini aldık. Fakat Zülfikar’ın âhirinde Hizb-i Nuriye’nin parçası yazılmamış; o parçayı da o hârika kalemiyle yazsın, bana göndersin.",
+      "order_index": 491
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 492
+    },
+    {
+      "type": "paragraph",
+      "text": "Hâşiye: Memleketimizde medrese talebelerinden birisi bir kitabı bitirse veya başlasa bir tatlı veya yemek meftuhane veya mahtumane diye vermek âdettir. Aynen bu kaideyi Kâtip Osman’ın üzümünde gördük. Onun yazdığı Asâ-yı Musa’nın tashihini bitirdiğim aynı vakitte mahtumanesi olarak bu üzümün gelmesi, tatlı bir latîfe ve şirin bir hatıra-i hayat-ı medresiye oldu.",
+      "order_index": 493
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur’da şefkat esas olmasından, hanımlar o cihette ileridir ve Nurlara ciddi yapışıyorlar. Ben “kardeşlerim” dediğim zaman, hanım hemşirelerimi kardeşler içinde kasdederim. Bütün mektuplarımda onlar dahi muhataplarımdır.",
+      "order_index": 494
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 495
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 496
+    },
+    {
+      "type": "paragraph",
+      "text": "Hiç merak etmeyiniz. Yalnız duanızı almak için şimdilik şiddetli ve sû-i kasd eseri olarak evvelce size yazdığım gibi hastalığımı beyan ediyorum. Fakat kat’iyen telaş etmeyiniz. Hadsiz şükür olsun ki hem evradıma hem vazife-i tashihe mani olmuyor. İnşâallah büyük bir sevap ve hayır var içinde. Ben kendim, bundan bir cihette memnunum; siz de hiç müteessir olmayınız. Zaten benim vazifem bitmek üzeredir.",
+      "order_index": 497
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur hususan mecmuaları, her bir nüshası, Said’e karşı hüsn-ü zannınızın fevkinde onun vazifesini görebilir ve görüyor. Ve Nur şakirdlerinin haslardan her bir fedakârı, o Said’in vazifesini mükemmel görebilir. İnşâallah ileride tam görecekler. Bir Said içinizde noksan olmakla, yüzer manevî Said olan mecmualar ve binler maddî Saidler, içinizde hâlis ve mükemmel o vazifeyi görebilirler ve görüyorlar.",
+      "order_index": 498
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hakikate binaen, benim şahsıma ve başıma gelen hâdiselere çok ehemmiyet vermeyiniz. Yalnız çok dua ediniz; zaaf ve ihtiyarlık ve ziyade teessüratıma, bence makbuliyetleri şüphesiz olan dualarınızla yardım ediniz.",
+      "order_index": 499
+    },
+    {
+      "type": "paragraph",
+      "text": "Kahraman Tahirî’nin Nurcu masume, merhume, mübarek Hicret’i dünyadan cennete hicret etmesi, hakikaten beni mahzun eyledi. Öyle bir Nur şakirdi ve masum taifesinin ehemmiyetli bir çalışkanı gitmesi, Nur hesabına da beni müteessir etti. İnşâallah onun yerine çoklar girecek, yerini boş bırakmayacaklar. Nasıl ki şimdiden Uşaklı küçücük Haydar meydana çıktı, hicret eden hemşiremin vazifesini göreceğim diye bizi mesrur eyledi. Cenab-ı Hak, Hicret’in peder ve validesine ve akrabasına sabr-ı cemil ihsan edip Hicret’i onlara şefaatçi eylesin ve o merhumeyi de merhume hemşirem Hanım’la cennette mesrur eylesin, âmin!",
+      "order_index": 500
+    },
+    {
+      "type": "paragraph",
+      "text": "Uşaklı Haydar’a benim tarafımdan onu tebrik ve Nur hizmetinde tevfikine dua ettiğimi ve Nur’un masumlar taifesi içinde dâhil olduğunu bildiriniz ve onun hocası İzzet’e de pek çok selâm ediyorum.",
+      "order_index": 501
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 502
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur şakirdleri, hiç siyasete karışmadılar, hiçbir partiye girmediler. Çünkü iman, mal-ı umumîdir. Her taifede muhtaçları ve sahipleri vardır. Tarafgirlik giremez. Yalnız küfre, zındıkaya, dalalete karşı cephe alır. Nur mesleğinde, mü’minlerin uhuvveti esastır.",
+      "order_index": 503
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 504
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşlerim!",
+      "order_index": 505
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir meseleyi, çoktan beri size söylemek lâzım iken unutmuştum. O da şudur: Mu’cizat-ı Kur’aniye Risalesi’ndeki ekser âyetler, her biri ya mülhidler tarafından medar-ı tenkit olmuş veya ehl-i fen tarafından itiraza uğramış veya cinnî, insî şeytanların vesvese ve şüphelerine maruz olmuş âyetlerdir.",
+      "order_index": 506
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Yirmi Beşinci Söz öyle bir tarzda o âyetlerin hakikatlerini ve nüktelerini beyan etmiş ki ehl-i ilhad ve fennin kusur zannettikleri noktalar, i’cazın lemaatı ve belâgat-ı Kur’aniyenin kemalâtının menşeleri olduğunu, ilmî kaideleri ile ispat edilmiş. Bulantı vermemek için onların şüpheleri zikredilmeyerek cevab-ı kat’î verilmiş. وَ الشَّمْسُ تَجْرٖى ۞ وَ الْجِبَالَ اَوْتَادًا gibi… Yalnız Yirminci Söz’ün Birinci Makam’ında üç dört âyette şüpheleri söylenmiş.",
+      "order_index": 507
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem o Mu’cizat-ı Kur’aniye Risalesi de gerçi gayet muhtasar, acele yazılmış ise de fakat ilm-i belâgat ve ulûm-u arabiye noktasında âlimlere hayret verecek derecede âlimane ve derin ve kuvvetli bir tarzda beyan edilmiş. Gerçi her bahsini, her ehl-i dikkat tam anlamaz, istifade etmez fakat o bahçede herkesin ehemmiyetli hissesi var. Pek acele ve müşevveş haletler içinde telif edildiğinden, ifade ve ibaresinde kusur var olması ile beraber ilim noktasında çok ehemmiyetli meselelerin hakikatini beyan etmiş.",
+      "order_index": 508
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 509
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem Risale-i Nur, makine ile taammüm etmeye başlamış ve madem felsefe ve hikmet-i cedideyi okuyan mektepliler ve muallimler çoklukla Risale-i Nur’a yapışıyorlar. Elbette bir hakikat beyan etmek lâzım geliyor. Şöyle ki:",
+      "order_index": 510
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un şiddetli tokat vurduğu ve hücum ettiği felsefe ise mutlak değildir, belki muzır kısmınadır. Çünkü felsefenin hayat-ı içtimaiye-i beşeriyeye ve ahlâk ve kemalât-ı insaniyeye ve sanatın terakkiyatına hizmet eden felsefe ve hikmet kısmı ise Kur’an ile barışıktır. Belki Kur’an’ın hikmetine hâdimdir, muaraza edemez. Bu kısma Risale-i Nur ilişmiyor.",
+      "order_index": 511
+    }
+  ]
+}

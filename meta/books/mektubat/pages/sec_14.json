@@ -1,0 +1,25 @@
+{
+  "id": "sec_13",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Birinci Nükteli İşaret",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu kâinatın sahip ve mutasarrıfı elbette bilerek yapıyor ve hikmetle tasarruf ediyor ve her tarafı görerek tedvir ediyor ve her şeyi bilerek, görerek terbiye ediyor ve her şeyde görünen hikmetleri, gayeleri, faydaları irade ederek tedvir ediyor.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem yapan bilir, elbette bilen konuşur. Madem konuşacak, elbette zîşuur ve zîfikir ve konuşmasını bilenlerle konuşacak. Madem zîfikirle konuşacak, elbette zîşuurun içinde en cem’iyetli ve şuuru küllî olan insan nev’i ile konuşacaktır. Madem insan nev’i ile konuşacak, elbette insanlar içinde kabil-i hitap ve mükemmel insan olanlarla konuşacak.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem en mükemmel ve istidadı en yüksek ve ahlâkı ulvi ve nev-i beşere mukteda olacak olanlarla konuşacaktır; elbette dost ve düşmanın ittifakıyla, en yüksek istidatta ve en âlî ahlâkta ve nev-i beşerin humsu ona iktida etmiş ve nısf-ı arz onun hükm-ü manevîsi altına girmiş ve istikbal onun getirdiği nurun ziyasıyla bin üç yüz sene ışıklanmış ve beşerin nurani kısmı ve ehl-i imanı, mütemadiyen günde beş defa onunla tecdid-i biat edip ona dua-yı rahmet ve saadet edip ona medih ve muhabbet etmiş olan Muhammed aleyhissalâtü vesselâm ile konuşacak ve konuşmuş ve resul yapacak ve yapmış ve sair nev-i beşere rehber yapacak ve yapmıştır.",
+      "order_index": 3
+    }
+  ]
+}

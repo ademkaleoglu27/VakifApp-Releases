@@ -1,0 +1,25 @@
+{
+  "id": "sec_3",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Üçüncü Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir iki Söz’de beyan ettiğimiz gibi: Her insan geçmiş hayatını düşünse kalbine ve lisanına ya “âh” veya “oh” gelir. Yani ya teessüf eder, ya “Elhamdülillah” der.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Teessüfü dedirten, eski zamanın lezaizinin zeval ve firakından neş’et eden manevî elemlerdir. Çünkü zeval-i lezzet elemdir. Bazen muvakkat bir lezzet, daimî elem verir. Düşünmek ise o elemi deşiyor, teessüf akıtıyor.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Eski hayatında geçirdiği muvakkat âlâmın zevalinden neş’et eden manevî ve daimî lezzet “Elhamdülillah” dedirtir. Bu fıtrî haletle beraber, musibetlerin neticesi olan sevap ve mükâfat-ı uhreviye ve kısa ömrü, musibet vasıtasıyla uzun bir ömür hükmüne geçmesini düşünse sabırdan ziyade, şükreder. اَلْحَمْدُ لِلّٰهِ عَلٰى كُلِّ حَالٍ سِوَى الْكُفْرِ وَ الضَّلَالِ demesi iktiza eder. Meşhur bir söz var ki: “Musibet zamanı uzundur.” Evet, musibet zamanı uzundur. Fakat örf-ü nâsta zannedildiği gibi sıkıntılı olduğundan uzun değil belki uzun bir ömür gibi hayatî neticeler verdiği için uzundur.",
+      "order_index": 3
+    }
+  ]
+}

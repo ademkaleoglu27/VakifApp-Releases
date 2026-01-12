@@ -1,0 +1,1215 @@
+{
+  "id": "sec_1",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Birinci Kısım",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "İlk Hayatı",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Said Nursî (Rumî 1293) tarihinde Bitlis vilayetine bağlı Hizan kazasının İsparit nahiyesinin Nurs köyünde doğmuştur. Babasının adı Mirza, anasının adı Nuriye’dir. Dokuz yaşına kadar peder ve validesinin yanında kaldı. O esnada bir halet-i ruhiye, tahsilde bulunan büyük biraderi Molla Abdullah’ın ilimden ne derece feyizyâb olduğunu tetkike sevk etti. Molla Abdullah’ın gittikçe tekâmül ederek köydeki okumamış arkadaşlarından okumakla tezahür eden meziyetini düşünüp hayran kaldı.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun üzerine ciddi bir şevk ile tahsili gözüne aldı ve bu niyetle nahiyeleri İsparit Ocağı dâhilinde bulunan Tağ köyünde Molla Mehmed Emin Efendi’nin medresesine gitti. Fakat fazla duramadı. Halet-i fıtriyeleri icabı, daima izzetini (Hâşiye[1]) koruması ve hattâ âmirane söylenen küçük bir söze dahi tahammül edememesi; medreseden ayrılmasına sebep oldu. Tekrar Nurs’a döndü. Nurs’ta ayrıca bir medrese olmadığından dersini büyük biraderinin haftada bir defa sılaya geldiği günlere hasrederdi.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir müddet sonra Pirmis karyesine, sonra Hizan Şeyhi’nin yaylasına gitti. Burada da tahakküme tahammülsüzlüğü, dört talebe ile geçinmemesine sebep oldu. Bu dört talebe birleşip kendisini daima taciz ettiklerinden bir gün Şeyh Seyyid Nur Muhammed Hazretlerinin huzuruna çıkıp izhar-ı acz ile arkadaşlarını şikayet etmeyerek şöyle dedi:",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "— Şeyh Efendi, bunlara söyleyiniz; benimle dövüştükleri vakit dördü birden olmasınlar, ikişer ikişer gelsinler.",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Seyyid Nur Muhammed, küçük Said’in bu mertliğinden hoşlanarak:",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "— Sen benim talebemsin, kimse sana ilişemez! Buyurdu.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hâdiseden sonra “Şeyh Talebesi” diye yâd edildi. Burada bir müddet kaldıktan sonra, biraderi Molla Abdullah ile beraber Nurşin köyüne geldiler. Yaz olması dolayısıyla, ahali ve talebelerle birlikte Şeyhan yaylasına gittiler. Orada biraderi Molla Abdullah ile bir gün dövüşmüş. Tağî Medresesi müderrisi Mehmed Emin Efendi, küçük Said’e:",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ne için kardeşinin emrinden çıkıyorsun? Diye işe karışmış.",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Bulundukları medrese meşhur şeyh Abdurrahman Hazretlerinin olması dolayısıyla, hocasına şu yolda cevap verir:",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendim, şu tekyede bulunmak hasebiyle, siz de benim gibi talebesiniz. Şu halde burada hocalık hakkınız yoktur! Diyerek gündüz vakti bile herkesin güçlükle geçebileceği cesîm bir ormandan geceleyin geçerek Nurşin’e gelir.",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Şarkî Anadolu’da medrese teşkilatındaki hususiyetlerden birisi şudur ki: İcazet almış bir âlim, istediği köyde hasbeten lillah bir medrese açar; medrese talebelerinin ihtiyacı, iktidarı olursa medrese sahibi tarafından, iktidarı yoksa halk tarafından temin edilir. Hoca meccanen ders verir, talebelerin iaşe ve levazımatını da halk deruhte ederdi. Bunların içinde yalnız Molla Said, hiçbir suretle zekât almıyordu. Zekât ve başkasının eser-i minneti olan bir parayı kat’iyen kabul etmiyordu. (Hâşiye[2])",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Nurşin’de bir müddet kaldıktan sonra Hizan’a döndü. Sonra medrese hayatını terk ederek pederinin yanına geldi ve bahara kadar evde kaldı. O sırada şöyle bir rüya görür:",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Kıyamet kopmuş, kâinat yeniden dirilmiş. Molla Said, Peygamber aleyhissalâtü vesselâmı nasıl ziyaret edebileceğini düşünür. Nihayet sırat köprüsünün başına gidip durmak hatırına gelir. “Herkes oradan geçer, ben de orada beklerim.” der ve sırat köprüsünün başına gider. Bütün peygamberan-ı izam hazeratını birer birer ziyaret eder, Peygamber Efendimizi de ziyarete mazhar olunca uyanır.",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Artık bu rüyadan aldığı feyiz, tahsil-i ilim için (Hâşiye[3]) büyük bir şevk uyandırır. Pederinden izin alarak tahsil yapmak üzere Arvas nahiyesine gider. Burada icra-yı tedris eden meşhur Molla Mehmed Emin Efendi kendisine ders vermeye tenezzül etmeyip talebelerinden birisine okutmasını tavsiye edince izzetine ağır gelir. Bir gün bu meşhur müderris camide ders okutmakta iken Molla Said itiraz ederek:",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendim, öyle değil!",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "Hitabında bulunur. Okutmasına tenezzül etmediğini hatırlatır. Orada bir müddet kaldıktan sonra, Mîr Hasan-ı Veli Medresesine gitti. Aşağı derecede okuyan yeni talebelere ehemmiyet verilmemek bu medresenin âdeti olduğunu anlayınca, sıra ile okunması icab eden yedi ders kitabını terk ederek sekizinci kitaptan okuduğunu söyledi.",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "Birkaç gün sonra Vastan kasabasına gitti ise de orada tebdil-i hava için ancak bir ay kadar kaldı, bilâhare Molla Mehmed isminde bir zatın refakatinde Erzurum vilayetine tabi Bayezid’e hareket etti. Hakiki tahsiline işte bu tarihte başlar.",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu zamana kadar hep “sarf ve nahiv” mebâdileriyle meşgul olmuştu ve İzhar’a kadar okumuştu. Bayezid’de Şeyh Mehmed Celalî Hazretlerinin nezdinde yaptığı bu hakiki ve ciddi tahsili, üç ay kadar devam etmiştir. Fakat pek garibdir. Zira Şarkî Anadolu usûl-ü tedrisiyle Molla Câmî’den nihayete kadar ikmal-i nüsah etti. Buna da her kitaptan bir veya iki ders, nihayet on ders tederrüs etmekle muvaffak oldu ve mütebâkisini terk eyledi. Hocası Şeyh Mehmed Celalî Hazretleri ne için böyle yaptığını sual edince Molla Said cevaben:",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bu kadar kitabı okuyup anlamaya muktedir değilim. Ancak bu kitaplar bir mücevherat kutusudur, anahtarı sizdedir. Yalnız sizden şu kutuların içinde ne bulunduğunu göstermenizin istirhamındayım. Yani bu kitapların neden bahsettiklerini anlayayım da bilâhare tabıma muvafık olanlara çalışırım, demiştir.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Maksadı ise esasen kendisinde fıtraten mevcud bulunan icad ve teceddüd fikrini medrese usûllerinde göstermek ve bir teceddüd vücuda getirmek (Hâşiye[4]) ve bir sürü hâşiye ve şerhlerle vakit zayi etmemekti. Bu suretle ale’l-usûl yirmi sene tahsili lâzım gelen ulûm ve fünunun zübde ve hülâsasını üç ayda tahsil ve ikmal etmiştir.",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun üzerine hocalarının hangi ilim tabına muvafık olduğu, sualine cevaben:",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bu ilimleri birbirinden tefrik edemiyorum. Ya hepsini biliyorum veyahut hiçbirisini bilmiyorum, der.",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Herhangi bir kitabı eline alırsa anlardı. Yirmi dört saat zarfında Cemu’l-Cevami’, Şerhü’l-Mevakıf, İbnü’l-Hacer gibi kitapların iki yüz sahifesini –kendi kendine anlamak şartıyla– mütalaa ederdi. O derece ilme dalmıştı ki hayat-ı zahirî ile hiç alâkadar görünmezdi. Hangi ilimden olursa olsun sorulan suale tereddütsüz derhal cevap verirdi.",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "O Zamanki Hayatına Kısa Bir Bakış",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Hükema-yı işrakiyyunun mesleklerine sülûk ederek zühd ve riyazete başladı. Hükema-yı işrakiyyun, tedric kanunu mûcibince vücudlarını riyazete alıştırmışlardı. O ise tedrice riayet etmeyerek birdenbire riyazete daldı. Gün geçtikçe vücudu tahammül etmeyerek zayıf düşmeye başladı. Üç günde bir parça ekmekle idare ediyordu. Ulema-yı işrakiyyunun “riyazetin küşayiş-i fikre hizmet ettiği” nazariyesi üzerine, onlar gibi yapacağım diye çalışıyordu.",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: İmam-ı Gazalî Hazretlerinin İhyaü’l-Ulûm’unda tasavvuf nokta-i nazarında دَعْ مَا يُرٖيبُكَ اِلٰى مَالَا يُرٖيبُكَ kaidesine ittibaen, ekmeği bile bir zaman terk edip ot ile idareye koyuldu.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâlisen: Nadir konuşuyordu. Kürtlerin edib dâhîlerinden Molla Ahmed Hanî Hazretlerinin, gündüzleyin bile havf ile girilen kubbe-i saadetine kapanır, bazen geceleyin de orada kalırdı. Bundan dolayı ahali, Bedîüzzaman’a: “Ahmed Hanî Hazretlerinin feyzine mazhar olmuştur.” diyordu. Bu hali, müşarün-ileyhin kerametine hamlederlerdi. O vakitlerde kendisi on üç on dört yaşlarında idi.",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra ulemadan mümtaz simalarla mülakat etmeye karar verdi ve Bağdat’a ziyaret kasdıyla hocasından izin istedi. Derviş kıyafetine girdi. Yolları takip etmeden dağlarda, ormanlarda gece dolaşarak Bağdat’a gitmek niyetinde iken Bitlis’e geldi. Bitlis’te Şeyh Mehmed Emin Efendi Hazretlerinin yanına giderek iki gün kadar dersinde bulundu. Şeyh Mehmed Emin Efendi, kendisine kisve-i ilmiyeye girmesini teklif etti. Molla Said cevaben:",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ben henüz sinn-i büluğa vâsıl olmadığımdan muhterem bir müderris kıyafetini kendime yakıştıramıyorum. Ve ben bir çocuk iken nasıl hoca olabilirim? Diyerek teklifini kabul etmemiştir.",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "Bundan sonra, Şirvan’daki biraderinin yanına gitti. Orada büyük kardeşiyle ilk görüşmede aralarında şöylece kısa bir muhavere cereyan etti.",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Abdullah: Sizden sonra ben Şerh-i Şemsî kitabını bitirdim, siz ne okuyorsunuz?",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman: Ben seksen kitap okudum.",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Abdullah: Ne demek?",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman: İkmal-i nüsah ettim ve sıranıza dâhil olmayan birçok kitapları da okudum.",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Abdullah: Öyle ise seni imtihan edeyim.",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman: Hazırım, ne sorarsanız sorunuz!",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Abdullah, biraderini imtihan eder. Kifayet-i ilmiyesini takdir ile sekiz ay evvel talebesi bulunan Molla Said’i kendisine üstad kabul etti ve talebelerinden gizli olarak küçük biraderinden ders almaya başladı. Ve bi’t-tabi, daha evvel okuttuğu kardeşini kendisine üstad yaptığını sezdirmiyordu. Nihayet talebeler, Molla Abdullah’ın Molla Said nezdinde ders okuduğunu kapıdan, anahtar deliğinden gizlice görünce taaccüb ederek sormuşlarsa da Molla Abdullah cevaben: “Nazar değmemek için ben ona ders veriyorum.” demiş ve talebelerini aldatmıştı.",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Abdullah’ın yanında bir müddet kaldıktan sonra Siirt’e gelir. Orada bulunan Molla Fethullah Efendi’nin medresesine gider. Molla Fethullah, Molla Said’e:",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "— Geçen sene Süyûtî okuyordunuz, bu sene Molla Câmî’yi mi okuyorsunuz?",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman: Evet, Câmî’yi bitirdim.",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Fethullah hangi kitabı sordu ise “Bitirdim.” cevabını alınca tahayyürde kaldı. Bu kadar kitabı bitirdiğini hem de az zamanda bitirdiğini aklına sığıştıramadı, taaccüb etti ve dedi:",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "— Geçen sene deli idin, bu senede mi delisin?",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman: İnsan başkasına karşı kesr-i nefis için hakikati ketmedebilir. Fakat babadan daha muhterem olan üstadına karşı hakikat-i mahzdan başka bir şey söyleyemez. Emrederseniz söylediğim kitaplardan beni imtihan ediniz, der.",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Fethullah hangi kitaptan sordu ise cevabını güzelce verir.",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun üzerine bu muhavereyi dinleyen ve bir sene evvel Said’in hocasının hocası bulunan Molla Ali-i Suran namındaki zat, kendilerinden ders almaya başladı.",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Fethullah: Pekâlâ, zekâda hârikasınız fakat hıfzınız nasıldır? Makamat-ı Harîriye’den birkaç satırını iki defa okumakla hıfzedebilir misiniz? Diyerek kitabı uzatır.",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said alarak bir yaprağını bir defa okumakla hıfzetti ve okudu.",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Fethullah: Zekâ ile hıfzın ifrat derecede bir kimsede tecemmuu nadirdir, diyerek hayrette kaldı.",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman orada iken Cemu’l-Cevami’ kitabını, günde bir iki saat iştigal etmek üzere bir haftada hıfzetti. Bunun üzerine Molla Fethullah şu kelâmı söyleyerek kitabın üzerine yazdı:",
+      "order_index": 51
+    },
+    {
+      "type": "arabic_block",
+      "text": "قَدْ جَمَعَ فٖى حِفْظِهٖ جَمْعُ الْجَوَامِعِ جَمٖيعَهُ فٖى جُمْعَةٍ",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hal Siirt’te şüyû’ bulmuş ve Molla Fethullah, ulemaya:",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bizim medreseye gayet genç bir talebe geldi. Her ne sual ettimse bilâ-tevakkuf cevap verdi. Bu yaşta zekâsına ve ilmine ve fazlına hayran kaldım, diyerek pek çok medheder. Bunun üzerine ulema bir yerde toplanarak Bedîüzzaman’ı davet ederler. Bedîüzzaman intihab ettikleri bütün suallerine bilâ-tereddüt cevap verirken Molla Fethullah’ın yüzüne bakıyordu. Sanki kitaba bakıyor gibi kendilerinden okuyarak cevap veriyordu. Bunu gören ulema, Bedîüzzaman’ın hârikulâde bir genç olduğuna hükmedip faziletini takdir ve sena ettiler. Bu hal etrafta işitilir. Ahali, kendisine veliyyullah derecesinde ihtiram eder ve o nazarla bakarlar.",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu vaziyet, ikinci derecede bulunan birtakım âlim ve talebelerin rekabetlerini arttırdı. Genç, tecrübesiz talebelerden bir kısmı, ilmen mağlup edemedikleri Bedîüzzaman’ı kavga yoluyla iskât etmek teşebbüsünde bulunmuşlarsa da meseleden haberdar olan Siirt ahalisi, kendisini kurtarmak için gelmişler. Ahali nazarında büyük mevkii olduğu için derhal muarızların ellerinden kurtarılmış ve bir odaya bırakılmış ise de Bedîüzzaman, mesleklerine olan fevkalâde muhabbetinden, muarızları bulunan talebe ve ehl-i ilmin cahillere hedef olmamasını temin için kendisi odadan çıkıp muarızları tarafından telef edilse bile ehl-i ilmin işine cahillerin karışmamasını müdafaa eder. Bu ihtilafı kaldırmak maksadıyla herhangi bir talebeye:",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "— Beni öldürünüz, ilmin haysiyetini muhafaza ediniz! Diyerek yüzünü çevirmiş ise de hiçbir talebe kendisine hücum etmemiş ve nihayet ihtilaf bertaraf edilmiştir. Siirt Mutasarrıfı, kendisini muhafaza etmek üzere yanına çağırdığı ve o talebeleri nefyedeceği haberini tebliğ etmeye gönderdiği jandarmaya karşı Bedîüzzaman:",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "— Biz talebeyiz, birbirimizle dövüşürüz, barışırız. Binaenaleyh mesleğimiz haricinde bulunan birisinin bize karışması muvafık olmadığından gelemeyeceğim ve hata da benimdir. Cevabında bulunarak jandarmaları reddetmiştir.",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu esnada on beş on altı yaşlarında bulunuyordu. Lâkin kuvve-i bedeniyece pek çevik ve metindi. “Saidü’l-Meşhur” lakabıyla yâd ediliyordu. Siirt’te kendisiyle mücadele etmek isteyen bütün arkadaşlarına karşı hazır bulunduğu ve aynı zamanda sorulacak bütün suallere cevap vereceğini, kimseye sual sormayacağını ilan etti.",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra tekrar Bitlis’e geldi. Bitlis’te bir iki şeyh hanedanının, âlim ve talebelerin arasında geçimsizlik olduğunu işitir. Fesadı netice veren sözlerin bilhassa gıybetin İslâmiyet’e yakışmadığını onlara ihtar edince Molla Said’i, Şeyh Emin Efendi’ye şikayet ederler. Şeyh Emin ise:",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "— Henüz çocuk olduğundan kabil-i hitap değildir, der.",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu söz Molla Said’e tebliğ edildiği anda, zaten bu gibi sözlere fıtraten tahammülsüz olduğundan Şeyh Emin Efendi’nin huzuruna çıkarak elini öper ve:",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendim, beni imtihan ediniz; kabil-i hitap olduğumu ispat etmek isterim, der.",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeyh Emin Efendi mütenevvi ilimlerden ve en müşkül meselelerden on altı sual tertip ederek sorar. Molla Said, suallerin umumuna cevap verdikten sonra, Kureyş Camii’ne gider, ahaliye vaaz ve nasihat etmeye başlar. Bunun üzerine Bitlis ahalisinin bir kısmı Molla Said’e, bir kısmı da Şeyh Emin Efendi’ye yardım etmek isterler. Bundan dolayı vali, büyük bir vukuata meydan vermemek için Bedîüzzaman’ı nefyeder.",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu defa da Şirvan’a gider. Zaten infirad eden böyle zatların muarızları pek çok bulunur. Bilhassa mücadele-i ilmiyede mağlup düşenlerden bazı zahir hocalar, Molla Said’i ahali nazarında küçük düşürmek için var kuvvetleriyle çalışıyorlardı. Her hususatını tecessüs ettirirlerdi. Bir gün nasılsa kazaen sabah namazını geçirmiş. Buna vâkıf olan hasımları “Molla Said, namazı terk etmiştir.” diyerek ahali arasında işaada bulundular. Molla Said’den soruldu ki:",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "— Niçin herkes bunu böyle söylüyor?",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said:",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "— Evet, esassız bir şey âlemin içinde çabuk yayılmaz. Hata bendedir. Onun için iki cezaya uğradım: Birisi Allah’ın itabı, diğeri nâsın ta’rizi. Bunun esas sebebi ise geceleyin âdet edindiğim vird-i şerifi terk ettiğimdir. İşte âlemin ruhu bu hakikate temas etmişse de tamamını kavrayamayarak ismini bilemeyip şu vechile hatayı isimlendirmişler, cevabını verir.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Şirvan’da bulunduğu sırada Siirt civarından birisi gelerek:",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "— Aman efendim, Siirt’e bir çocuk gelmiş, kendisi on dört on beş yaşında, umum ulemayı ilzam etti. Şunu ilzam etmek için sizi davete geldim, der.",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said de şu davete icabet ederek Siirt’e gitmek için hazırlanır. Yola düşerler, iki saat gittikten sonra, o küçük hocanın evsaf ve kıyafetini sorar. O adam:",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendim, ismini bilmiyorum fakat ilk gelişte derviş kıyafetinde olup omuzunda bir posteki vardı. Bilâhare talebe kıyafetine girdi ve umum ulemayı ilzam etti.",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunu dinlediğinde, kendisinden bahsettiğini ve bir sene evvelki kendi vukuatının şimdi civar köylerde şüyû’ bulduğunu anlayarak geriye döner, davete icabet etmez.",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Bilâhare Siirt’e bağlı Tillo kasabasına gitti. Meşhur bir türbeye kapandı. Orada hârika olarak Kamus-u Okyanus’u Babü’s-Sin’e kadar hıfzetti. Ne fikre binaen kamusu hıfzettiği sorulduğunda:",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "— Kamus her kelimenin kaç manaya geldiğini yazıyor. Ben de bunun aksine olarak her manaya kaç kelime kullanıldığını gösterir bir kamus vücuda getirmek merakına düştüm, cevabında bulundu. Mezkûr türbeye kapandığı vakit küçük biraderi Mehmed, yemeğini getiriyordu. Yemek içindeki taneleri kubbenin etrafında bulunan karıncalara vererek kendisi ekmeğini yemeğin suyuna batırarak kanaat ediyordu.",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "— Neden dolayı taneleri karıncalara veriyorsun? Denildiğinde:",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bunlarda hayat-ı içtimaiyeye mâlikiyet ve fevkalâde vazife-şinaslık ve çalışma bulunduğunu müşahede ettiğim için cumhuriyet-perverliklerine mükâfaten kendilerine muavenet etmek istiyorum, cevabında bulunmuştur. (Hâşiye[5])",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "Tillo’da iken bir gece Şeyh Abdülkadir-i Geylanî (ks) Hazretlerini rüyasında görür. Geylanî Hazretleri (ks) kendisine hitaben:",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "— Molla Said! Mîran aşireti reisi Mustafa Paşa’ya gidiniz ve kendisini tarîk-ı hidayete davet ediniz. Yaptığı zulümden vazgeçerek namaza ve emr-i marufa müdavim olmasını tavsiye ediniz. Aksi takdirde öldürünüz.",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said, bu rüyayı görür görmez, hemen tedarikini yaparak Mîran aşiretine doğru Tillo’dan hareket eder, doğruca Mustafa Paşa’nın çadırına girer. Paşa orada bulunmadığından biraz istirahat eder. Sonra Mustafa Paşa içeri girer. Orada hazır olanların hepsi kıyam ettikleri halde Molla Said yerinden bile kımıldanmaz. Paşa’nın nazar-ı dikkatini celbedince aşiret binbaşılarından Fettah Bey’den kim olduğunu sorar. Fettah Bey, meşhur Molla Said olduğunu bildirir. Halbuki Paşa, ulemadan hiç hoşlanmazdı. Şüphesiz bunun üzerine daha fazla kızmış ise de izhar etmemişti. Molla Said’e ne için buraya geldiğini sorunca, Molla Said cevaben:",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "— Seni hidayete getirmeye geldim. Ya zulmü terk edip namazını kılacaksın veyahut seni öldüreceğim! Demesinden paşa hiddetlenerek dışarı çıkar. Biraz dolaştıktan sonra yine çadıra girer ve Molla Said’e ne için geldiğini tekrar sorar. Molla Said:",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "— Sana söyledim ya, onun için geldim, der. Mustafa Paşa çadırın direğinde asılı bulunan Said’in kılıncına işaret ederek:",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bu pis kılınçla mı?",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman:",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "— Kılınç kesmez, el keser cevabında bulunur.",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Mustafa Paşa tekrar dışarıya çıkarak biraz gezindikten sonra içeriye girer. Bedîüzzaman’a:",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "— Benim Cezire’de çok âlimlerim var; eğer hepsini ilzam edebilirsen senin dediğini yaparım, eğer ilzam edemezsen seni Fırat Nehri’ne atarım.",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said:",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bütün ulemayı ilzam etmek benim haddim olmadığı gibi beni de nehre atmak senin haddin değildir. Fakat ulemaya cevap verince sizden bir şey isterim ki o da mavzer tüfeğidir. Şayet sözünde durmazsan seni onunla öldüreceğim, der.",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu muhavereden sonra Paşa ile birlikte atlarla Cezire’ye giderler. Yolda Paşa kat’iyen Molla Said’le konuşmaz. Bani Hanı dedikleri mevkiye gelince yorgunluğundan Molla Said orada biraz yatar; uykudan uyanır uyanmaz etrafında bütün Cezire âlimlerinin, kitapları ellerinde beklediklerini görür. Biraz görüştükten sonra çay ikram edilir. Cezire âlimleri Molla Said’in şöhretini işittikleri için mebhut ve hayran bir vaziyette çaylarını bile unutarak Molla Said’in sualine intizar etmekte idiler. Molla Said ise kendi çayını içtikten sonra dalgın dalgın karşısında bulunan bir iki âlimin çayını da içer, onlar fark edemezler. Mustafa Paşa, hocalara hitaben:",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ben okumuş değilim fakat Molla Said ile mücadelenizde mağlup olacağınızı şimdi anlıyorum. Zira bakıyorum ki siz düşünmekten çaylarınızı unuttuğunuz halde, Molla Said kendi çayını içtikten başka iki üç bardak da sizin çayınızı içti.",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun üzerine, biraz latîfe ettikten sonra Molla Said bu âlimlere karşı:",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendiler! Bendeniz vaad etmişim, hiç kimseye sual sormam. Binaenaleyh suallerinize muntazırım, der.",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hocalar kırk kadar sual sorarlar. Umumuna cevap verdikten sonra, her nasılsa Molla Said bir sualin cevabını yanlış söylediği halde karşısındakiler doğru telakki ederek tasdik etmişlerdi. Meclis dağılınca Molla Said hatırlar, hemen arkalarından koşarak:",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "— Affedersiniz, bir sualin cevabını yanlış söylediğim halde farkına varmadınız, diyerek cevabını tashih eder.",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "Hocalar dediler:",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "— İşte şimdi hakkıyla bizi tam ilzam ettiniz!",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra o hocalardan bir kısmı Molla Said’den ders almaya gelirler.",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Bundan sonra Mustafa Paşa, ahdettiği mavzer tüfeğini hediye eder ve namaz kılmaya başlar.",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said, ilimdeki emsalsiz, hârika istidadı derecesinde vücudca da gayet idmanlı ve kuvvetli idi. Güreş tutmaktan pek hoşlanırdı. Medreselerde bulunan umum talebelerle güreşirdi. Hiçbirisi güreşte bile onu mağlup edemezdi.",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Mustafa Paşa ile bir gün at yarışına çıkarlar. Fakat kasdî olarak Mustafa Paşa gayet serkeş ve talimsiz ve hiç binilmemiş bir at hazırlanmasını emreder. Molla Said’e binmek için verir. (Allahu a’lem attan düşüp ölmesini istemiş.) On altı yaşında bulunan Molla Said, serkeş atı biraz dolaştırdıktan sonra koşturmayı arzu eder. At, onun verdiği istikametten çıkarak başka bir istikamete doğru koşar. Var kuvvetiyle durdurmak ister ise de muvaffak olamaz. Nihayet çocukların bulunduğu yere gider. Cezire ağalarından birisinin oğlu yol üstünde iken hayvan iki ayağını kaldırıp çocuğun omuzları arasına vurunca çocuk yere düşerek hayvanın ayakları altında çırpınmaya başlar. Nihayet etraftan imdada ulaşırlar. Çocuğu hareketsiz ölü suretinde görünce Molla Said’i öldürmek isterler. Ağanın hizmetçileri hançerlerini çekince, Molla Said hemen rovelverine el atar ve adamlara hitaben:",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "— Hakikate bakılırsa çocuğu Allah öldürmüş, zahire bakılırsa at öldürmüş, sebebe bakılırsa Kel Mustafa öldürmüş çünkü bu atı bana o verdi. Durunuz, ben gelip çocuğa bakayım, ölmüş ise sonra muharebe edelim, diyerek attan inerek çocuğu kucaklar. Çocukta hareket görmeyince soğuk suyun içine batırıp çıkarır. Çocuk gülerek gözünü açar. Bunun üzerine bütün ahali mütehayyir kalırlar.",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu acib vak’a üzerine bir müddet Cezire’de kaldıktan sonra talebesi Molla Salih ile bedevî Arapların meskeni olan Biro’ya giderler. Orada biraz kalınca tekrar Mustafa Paşa’nın eskisi gibi zulme başladığını işitir, yanına gider ve ona nasihat eder, tehdit eder. Bir gün bir münakaşa arasında Mustafa Paşa’ya:",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "— Yine mi zulme başladın, seni Hak namına öldüreceğim! Tehdidinde bulunur. Paşa’nın kâtibi ortaya atılır.",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "O sırada Molla Said, Mustafa Paşa’yı zulmünden dolayı çok tahkir eder.",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Paşa bu tahkire tahammül edemeyerek, öldürmek için üzerine hücum eder fakat Mîran ağaları zapt ederler. Nihayet Mustafa Paşa’nın oğlu Abdülkerim, Molla Said’e yaklaşarak:",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "— Onun akidesi yanlıştır; rica ederim, şimdilik buradan başka yere teşrif ediniz, der.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Abdülkerim’in sözünü kırmaz, yalnız olarak bedevîlerin meskeni olan Biro Çölü’ne doğru hareket eder. Yolda bedevî eşkıyalarına tesadüf eder. Bedevîlerin silahları mızrak ve Molla Said’in silahı mavzer olduğundan eşkıyalara doğru kurşun atmaya başlar, eşkıyalar çekilirler. Yoluna devam ederken ikinci çeteye tesadüf eder. Bu defa eşkıyalar çok olduğundan etrafını çevirirler. Kendisini öldürecekleri sırada içlerinden birisi tanıyarak:",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ben bunu Mîran aşiretinin içinde gördüm. Bu meşhur bir adamdır, deyince derhal bedevîler çekilerek kusurlarının af buyurulmasını dilerler. Ve korkulu olan yerlerde kendilerine muhafızlık yapmak istemişlerse de Molla Said reddedip yalnız olarak yoluna devam eder.",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Birkaç gün sonra Mardin’e gelir. Mardin uleması muarazaya kalkışırlarsa da muvaffak olamazlar, evlatları yaşında olan genç Said’de hârika bir şekildeki ilmî kudreti görünce kendilerine üstad kabul ederler.",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu esnada, Mardin’e gelen iki talebeye tesadüf etti. Bunlardan birisi, Cemaleddin-i Efganî’ye mensup olup diğeri, tarîkat-ı Sünûsiyeden idi. Bunlar vasıtasıyla hem Cemaleddin-i Efganî’nin mesleğine hem de tarîk-ı Sünûsîye aşinalık peyda etti.",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said çok genç yaşta iken siyasî hayata atılır, vatan ve millete hizmete başlar. İlk hayat-ı siyasiyesi Mardin’de başlamıştır. Bunun üzerine bir mutasarrıfın pençe-i kahrıyla elleri bağlı, muhafız nezaretinde Bitlis’e nefyedildi. Jandarmalarla yolda giderken namaz vakti gelir. Namaz kılmak için kayıtların açılmasını jandarmalara ihtar eder. Jandarmalar kabul etmeyince demir kayıtları bir mendil gibi açarak önlerine atar. Jandarmalar, bu hali keramet addedip hayretler içinde kalırlar. Teslimiyetle, rica ve istirham ile:",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "— Biz şimdiye kadar muhafızınız idik, bundan sonra hizmetçiniziz! Derler. (*[6])",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "Bitlis’te iken bir gün kendilerine vali ile bir kısım memurların içki içtikleri ihbar olununca hiddetlenerek:",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bitlis gibi dindar bir memlekette hükûmeti temsil eden bir zatın irtikâb ettiği bu muameleyi kabul edemem! Diyerek içki meclisine gider. Evvela içki hakkında bir hadîs-i şerif okuduktan sonra pek acı sözler söyler, valinin vurdurmak için işaret etmesi ihtimaline binaen de bir elini rovelverinin bulunduğu yerde tutar. Fakat vali fevkalâde mütehammil ve hamiyetli bir zat olduğundan kat’iyen ses çıkarmaz. Oradan ayrılınca valinin yaveri genç Said’e:",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ne yaptınız? Söyledikleriniz, idamınızı mûcibdir, der.",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "Genç Said:",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "— İdam hayalime gelmedi, hapis ve nefiy zannederdim. Her ne ise bir münkeri def’etmek için ölürsem ne zararı var? Cevabında bulunur.",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Oradan avdetinden bir iki saat sonra, iki polis vasıtasıyla vali kendisini istetir. Valinin odasına girerken Vali, hürmet ve tazimle genç Said’i karşılayarak, elini öpmek ister. İltifatla yer göstererek:",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "— Herkesin bir üstadı vardır. Sen de benim üstadımsın, der.",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "Genç Said fıtraten, bir kanun altında yaşamayı ve harekâtının tahdid olunmasını sevmez. Her halinde, her hareketinde gayet serbest olmasını arzu eder ve daima “Ben, hürriyet ve serbestiyetimi hiçbir keyfî kanunla tahdid ettirmem.” derdi. Bunun içindir ki ilk İstanbul’a teşriflerinde yine her kayıttan uzak kalmakta ısrar etmiş ve hayatının bütün safhalarında bu vaziyet müşahede edilmiştir.",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "Ondaki bu serbestiyet ve hürriyet aşkı, hayatının yarısından sonra Avrupa’dan gelen müthiş bir dalalet ve zındıka taarruzuna karşı koymayı ve felsefe-i tabiiyeden doğan dehşetli bir istibdad-ı mutlakın hilaf-ı Kur’an prensiplerine boyun eğmemeyi, onlara itaat etmemeyi ve hakiki hürriyet-i meşrua olan İslâmî hürriyet ve medeniyete çalışmayı netice vermiştir.",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said, Bitlis’te iken on beş on altı yaşlarında idi. Henüz sinn-i büluğa vâsıl olmuştu. O zamana kadar bütün malûmatı sünuhat kabîlinden olduğu için uzun uzadıya mütalaaya lüzum görmezdi. Fakat o zaman sinn-i büluğa vâsıl olduğundan mı veyahut siyasete karıştığından mı her nedense eski sünuhat yavaş yavaş kaybolmaya başladı. Bunun üzerine her türlü fenne ait eserleri tetkike koyuldu. Bilhassa din-i İslâm’a vârid olan şek ve şüpheleri reddetmek için Metali ve Mevakıf nam eserler ile ulûm-u âliye (اٰليه) –sarf, nahiv, mantık vesaire– ve âliyeye (عاليه) –tefsir ve ilm-i kelâma– dair kırk kadar kitabı iki sene zarfında hıfzeyledi. Hattâ her gün okumak şartıyla, hıfzettiği kitapların üç ayda bir kere devrine muvaffak oluyordu. Molla Said’in iki mutezad hali vardı:",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Fikrinin münkeşif bulunduğu vakitler ki her ne eline alırsa onu anlamaması mümkün değildi.",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Fikrinin münkabız bulunduğu vakitler ki mütalaa değil, konuşmaktan bile hoşlanmazdı.",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said günde bir iki cüz okumak suretiyle Kur’an’ı hıfza başladı. Her gün iki cüz ezber etmekle, Kur’an’ın mühim bir kısmını hıfzına aldı fakat iki sünuhat ile tekmili müyesser olmadı:",
+      "order_index": 126
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi, Kur’an’ın çok süratle okunması bir hürmetsizlik olmasın diye; ikincisi, Kur’an hakaikinin hıfzının daha ziyade lüzumu var diye kalbine gelmiş. Onun için Kur’an hakaikinin anahtarı olacak ve şübehata karşı muhafaza ve mukabele edecek hikmet ve fünun-u İslâmiyeye dair kırk risaleyi iki senede hıfzına aldı. Her gün bir parça ezberden okumak suretiyle, hepsini üç ayda ancak devrediyordu.",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "Mirkat ismindeki kitabı, hâşiye ve şerh olmaksızın hıfzetmeye başladı. Bilâhare eline geçen mezkûr kitabın hâşiye ve şerhi ile kendi nokta-i nazarını karşılaştırmış, bütün meseleler muvafık olup ancak üç kelime tevafuk etmemiş. Bu tevcihleri de ulemanın tahsinine mazhar olarak kabul edilmiştir.",
+      "order_index": 128
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir gün Bitlis meşayihinden Şeyh Mehmed Küfrevî Hazretlerinin kendilerine beddua ettiğini birisi yalandan söyler. Bunun üzerine müşarün-ileyhi ziyarete gider. Şeyh Hazretleri Molla Said’e iltifat eder, teberrüken bir ders verir. İşte Molla Said’in en son aldığı ders bu olmuştur.",
+      "order_index": 129
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir gece Molla Said, rüyasında Şeyh Mehmed Küfrevî Hazretlerini görür. Kendisine hitaben:",
+      "order_index": 130
+    },
+    {
+      "type": "paragraph",
+      "text": "— Molla Said! Gel beni ziyaret et, gideceğim, demesi üzerine hemen gider; ziyaret eder. Ve şeyhin uçup gittiğini görünce uyanır. Saate bakar, saat gecenin yedisidir. Tekrar yatar. Sabahleyin Şeyh’in hanesinden matem seslerinin yükseldiğini işitir, oraya gider ve Şeyh Hazretlerinin gece saat yedide vefat ettiğini haber alır. اِنَّا لِلّٰهِ وَاِنَّٓا اِلَيْهِ رَاجِعُونَ ۞ رَحْمَةُ اللّٰهِ عَلَيْهِ اٰمٖينَ Mahzun olarak geriye döner.",
+      "order_index": 131
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said Şark’ın büyük ulema ve meşayihinden olan Seyyid Nur Mehmed, Şeyh Abdurrahman-ı Tağî, Şeyh Fehim ve Şeyh Mehmed Küfrevî gibi zevat-ı âliyenin her birisinden ilim ve irfan hususunda ayrı ayrı derslere nâil olduğundan, onları fevkalâde severdi. Ulemadan Şeyh Emin Efendi, Molla Fethullah ve Şeyh Fethullah Efendilere de ziyade muhabbeti vardı.",
+      "order_index": 132
+    },
+    {
+      "type": "paragraph",
+      "text": "Van’da maruf ulema bulunmadığından Hasan Paşa’nın daveti üzerine Molla Said Van’a gitti. Van’da on beş sene kalarak aşâirin irşadı için aralarında seyahatle tedris ve tederrüs vazifesiyle hayat geçirdi. Van’da bulunduğu müddet, Vali ve memurîn ile ihtilat ederek, bu asırda yalnız eski tarzdaki ilm-i kelâmın İslâm dini hakkındaki şek ve şüphelerin reddine kâfi olmadığına kanaat hasıl etmiş ve fünunun tahsiline lüzum görmüştür. (Hâşiye[7])",
+      "order_index": 133
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu kanaati hasıl ettiği o zamanda, ulûm-u müsbete denilen bütün fenleri tetebbua başlayarak pek kısa bir zamanda tarih, coğrafya, riyaziyat, jeoloji, fizik, kimya, astronomi, felsefe gibi ilimlerin esaslarını elde etmiştir. Bu ilimleri bir hocadan ders alarak değil, yalnız kendi mütalaası sayesinde hakkıyla anlamıştır.",
+      "order_index": 134
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela bir coğrafya muallimini, mübahaseye girişmeden evvel, yirmi dört saat içerisinde eline geçirdiği bir coğrafya kitabını hıfzetmek suretiyle, ertesi gün Van Valisi merhum Tahir Paşa’nın konağında onu ilzam eder. Ve yine aynı surette bir muaraza neticesinde beş gün zarfında kimya-yı gayr-ı uzvîyi (inorganik kimya) elde ederek, kimya muallimiyle muarazaya girişir ve onu da ilzam eder.",
+      "order_index": 135
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte pek genç yaşındaki mezkûr hârikulâdeliklere ve bahr-i umman halinde bir ilme mâlikiyetine şahit olan ehl-i ilim, Molla Said’e “Bedîüzzaman” lakabını vermiştir. Bedîüzzaman Van’da bulunduğu müddet zarfında, o zamana kadar edindiği fikir ve mütalaalar ve ilmî ve dinî tedris usûllerini görmek ile ve zamanın ihtiyac-ı zarurîlerini nazar-ı itibara almakla kendisine mahsus bir usûl-ü tedris icad eder. Bu da hakaik-i diniyeyi asrın fehmine uygun en yeni izah ve beyan tarzlarıyla ispat etmek suretiyle talebelerini tenvir etmektir.",
+      "order_index": 136
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said Van’da bulunduğu zamanlarda, bazı hususlarda o havalinin ulemasına muhalif bulunuyordu. (Hâşiye[8]) Bu hususlar şunlardır:",
+      "order_index": 137
+    },
+    {
+      "type": "paragraph",
+      "text": "1- Kat’iyen hiç kimseden hediye olarak para almamak ve maaş bile kabul etmemek. Evet, hayatta hiçbir maddî mülkiyeti olmayıp fakir ve kimsesiz ve daimî nefiy ve hapislerle çok sıkıntılı ve dehşetli musibetler içerisinde yaşadığı halde, kimseden para ve mukabelesiz hediye almadığı, bilmüşahede görülmüştür.",
+      "order_index": 138
+    },
+    {
+      "type": "paragraph",
+      "text": "2- Hiçbir âlimden sual sormamak. Yirmi sene zarfında, daima ancak sorulanlara cevap vermişti. Bu hususta kendileri derlerdi ki: “Ben ulemanın ilmini inkâr etmem binaenaleyh kendilerinden sual sormak fazladır. Benim ilmimden şüphe edenler varsa sorsunlar onlara cevap vereyim.”",
+      "order_index": 139
+    },
+    {
+      "type": "paragraph",
+      "text": "3- Yanında bulunan talebelerini aynı kendisi gibi zekât ve hediye almaktan men’etmek. Onları da yalnız rıza-yı İlahî için çalıştırırdı. Hattâ çok zamanlar, talebelerini kendi iaşe ederdi.",
+      "order_index": 140
+    },
+    {
+      "type": "paragraph",
+      "text": "4- Daima mücerred kalmak ve dünyada hiçbir şeyle alâka peyda etmemek. Bunun içindir ki: “Bütün malımı bir elimle kaldırıp götürebilmeliyim.” demiştir. Bu halin sebebi sorulunca “Bir zaman gelecek, herkes benim halime gıpta edecektir. Sâniyen, mal ve servet bana lezzet vermiyor, dünyaya ancak bir misafirhane nazarıyla bakıyorum.” derdi.",
+      "order_index": 141
+    },
+    {
+      "type": "paragraph",
+      "text": "Van’da bulunduğu vakit, merhum Vali Tahir Paşa, Avrupa kitaplarını tetebbu ederek kendisine sualler tertip edip sorardı. Bunların hiçbirisini görmediği ve Türkçeyi de yeni konuşmaya başladığı halde, cevabında tereddüt etmezdi. Bir gün kitapları görür ve Tahir Paşa’nın bunlardan sual tertip ettiğini anlayarak az bir zamanda kitapların muhtevasını elde eder.",
+      "order_index": 142
+    },
+    {
+      "type": "paragraph",
+      "text": "O zamanda en büyük gaye ve düşüncesi, Mısır’daki Camiü’l-Ezhere mukabil Bitlis ve Van’da “Medresetü’z-Zehra” isminde bir dârülfünun vücuda getirmekti. Bu teşebbüsünü kuvveden fiile çıkarmak niyetinde olup bunu tasarlıyordu.",
+      "order_index": 143
+    },
+    {
+      "type": "paragraph",
+      "text": "Van’da yaz zamanlarını, Başit ve Beytüşşebab namındaki yaylalarda geçiriyordu. Bir gün Tahir Paşa’ya, mezkûr dağların başında temmuzda bile buz bulunduğunu söyler. Tahir Paşa itiraz eder ve “Temmuzda kat’iyen oralarda buz bulunmaz.” iddiasında bulunur. Yaylada iken bir gün bunu hatırlayarak Tahir Paşa’ya yazdığı ilk Türkçe mektubunda der:",
+      "order_index": 144
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ey Paşa! Başit başında buz tuttu. Görmediğin şeyi inkâr etme. Her şey senin malûmatında münhasır değildir, vesselâm.",
+      "order_index": 145
+    },
+    {
+      "type": "paragraph",
+      "text": "Molla Said, aşiretler arasında olan herhangi bir geçimsizliği işitince hemen müdahale ederek irşad yoluyla her iki tarafı da derhal barıştırırdı. Hattâ hükûmetin bile barıştırmaktan âciz kaldığı Şeker Ağa ile Mîran Reisi Mustafa Paşa’yı barıştırdı. Ve Mustafa Paşa’ya:",
+      "order_index": 146
+    },
+    {
+      "type": "paragraph",
+      "text": "— Daha tövbe etmedin mi? Diye sorunca, Mustafa Paşa da cevaben:",
+      "order_index": 147
+    },
+    {
+      "type": "paragraph",
+      "text": "— Seyda! Ne söylerseniz sözünüzden çıkmam, demiştir.",
+      "order_index": 148
+    },
+    {
+      "type": "paragraph",
+      "text": "Mustafa Paşa, at ile para teberru etmek ister. Bedîüzzaman reddederek:",
+      "order_index": 149
+    },
+    {
+      "type": "paragraph",
+      "text": "— Şimdiye kadar kimseden para almadığımı işitmediniz mi? Bâhusus sizin gibi zalimden nasıl para alırım? Ve siz galiba tövbenizi bozdunuz, şu takdirde Cezire’ye ulaşamazsınız, demiştir.",
+      "order_index": 150
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve hakikaten Cezire’ye yetişmeden yolda öldüğünü haber alır.",
+      "order_index": 151
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman, riyaziyede hârikulâde bir sürat-i intikale mâlik idi. Herhangi bir müşkül meseleyi, zihnen hemen hallederdi. Hattâ cebir mukabele ilminde bir risale telif etmişti. Tahir Paşa nezdinde hesap meseleleri münakaşa mevzuu olduğunda hesaba dair hangi mesele bahsedilse başkaları ve en mahir kâtipler neticeyi bulamadan, Molla Said zihnen çıkarıyordu. Çok defalar böyle yarışlara girişir ve umumunda daima birinci gelirdi. Bir defasında şöyle bir sual sordular:",
+      "order_index": 152
+    },
+    {
+      "type": "paragraph",
+      "text": "— On beş müslim, on beş gayr-ı müslim farz edilerek birbiri ardına dizilince bunlara yapılacak her kurada gayr-ı müslime isabet etmesi matlubdur. Nasıl taksim edilir?",
+      "order_index": 153
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu suale cevaben:",
+      "order_index": 154
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bunların yüz yirmi dört vaziyet-i muhtemelesi vardır, diyerek yapar.",
+      "order_index": 155
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem de der:",
+      "order_index": 156
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bundan daha müşkülünü de kendim icad ederim. İki bin beş yüz vaziyet-i muhtemeleye göre yaparım.",
+      "order_index": 157
+    },
+    {
+      "type": "paragraph",
+      "text": "İki saat zarfında yüz adamdan elli adet gayr-ı müslimi o vaziyette taksim eder ki daima kurayı gayr-ı müslime düşürür. Ve hattâ beş yüz gayr-ı müslim olmakla iki yüz elli bin vaziyet-i muhtemele üzerine bir mesele çıkarttı ve Tahir Paşa’ya göstererek bir risale şeklinde yazdı (Hâşiye[9]).",
+      "order_index": 158
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Van’da bulunduğu zamanlarda, Vali Tahir Paşa ile bazı gazetelerden havadis okurdu. Bilhassa İslâmiyet’i alâkadar eden hususlara dikkat ederdi. Van’daki ikameti esnasında, âlem-i İslâm’ın vaziyetini bir derece öğrenmiş bulunuyordu. Bir gün Tahir Paşa bir gazetede şu müthiş haberi ona göstermişti. Haber şu idi:",
+      "order_index": 159
+    },
+    {
+      "type": "paragraph",
+      "text": "İngiliz Meclis-i Mebusanında Müstemlekat Nâzırı, elinde Kur’an-ı Kerîm’i göstererek söylediği bir nutukta:",
+      "order_index": 160
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu Kur’an, İslâmların elinde bulundukça biz onlara hâkim olamayız. Ne yapıp yapmalıyız, bu Kur’an’ı onların elinden kaldırmalıyız yahut Müslümanları Kur’an’dan soğutmalıyız, diye hitabede bulunmuş.",
+      "order_index": 161
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu müthiş haber, onda tarifin fevkinde bir tesir uyandırmıştı. İstidadı şimşek gibi alevli, duyguları ve bütün letaifi uyanık ve ilim, irfan, ihlas, cesaret ve şecaat gibi hârika inayet ve seciyelere mazhar olan Bedîüzzaman’ın, bu havadis üzerine: “Kur’an’ın sönmez ve söndürülmez manevî bir güneş hükmünde olduğunu, ben dünyaya ispat edeceğim ve göstereceğim!” diye kuvvetli bir niyet ruhunda uyanır ve bu sâikle çalışır. (Hâşiye[10])",
+      "order_index": 162
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman Şarkî Anadolu’da “Medresetü’z-Zehra” namında bir dârülfünun açmak, ya Van’da veyahut da Diyarbakır’da dârülfünun derecesinde bir medrese tesisine çalışmak için İstanbul’a geldi. İstanbul’a gelişini bir muharrir şöyle tasvir etmişti: “Şark’ın yalçın kayalıklarından bir ateşpare-i zekâ, İstanbul âfakında tulû etti.”",
+      "order_index": 163
+    },
+    {
+      "type": "paragraph",
+      "text": "İstanbul’a gelmeden evvel bir gün Tahir Paşa:",
+      "order_index": 164
+    },
+    {
+      "type": "paragraph",
+      "text": "— Şark ulemasını ilzam ediyorsun fakat İstanbul’a gidip o denizdeki büyük balıklara da meydan okuyabilecek misin? Demişti.",
+      "order_index": 165
+    },
+    {
+      "type": "paragraph",
+      "text": "İstanbul’a gelir gelmez ulemayı münazaraya davet etti. Bunun üzerine İstanbul’daki meşhur âlimler grup grup ziyarete gelip sualler soruyorlar ve o, hepsinin de cevaplarını sahih olarak veriyordu. Bundan maksadı, Şarkî Anadolu’daki ilim ve irfan faaliyetine nazar-ı dikkati celbetmekti. Yoksa Molla Said, kat’iyen hodfüruşluğu sevmezdi. Her türlü gösteriş ve âlâyişten müberra olarak hareket ederdi. İlim, cesaret, hâfıza ve zekâ itibarıyla pek hârika idi. Aynı derecede belki daha ziyade olarak hâlis ve muhlis idi. Tasannu ve tekellüften kat’iyen hoşlanmazdı. İstanbul’daki ikametgâhının kapısında şöyle bir levha asılı idi: “Burada her müşkül halledilir, her suale cevap verilir fakat sual sorulmaz.” (Hâşiye[11])",
+      "order_index": 166
+    },
+    {
+      "type": "paragraph",
+      "text": "İstanbul’da grup grup gelen ulemanın suallerini cevaplandırıyordu. Genç yaşında böyle bilâ-istisna bütün suallere cevap vermesi ve gayet mukni ve beliğ ifade ve hârika hal ve tavırlarıyla, ehl-i ilmi hayranlıkla takdire sevk ediyordu. Ve “Bedîüzzaman” unvanına bihakkın lâyık görüyorlar ve bu fevkalâde zatı, bir “nadire-i hilkat” olarak tavsif ediyorlardı.",
+      "order_index": 167
+    },
+    {
+      "type": "paragraph",
+      "text": "Hattâ bu zamanlarda Mısır Camiü’l-Ezher Üniversitesi reislerinden meşhur Şeyh Bahît Efendi İstanbul’a bir seyahat için geldiğinde; Kürdistan’ın sarp, yalçın kayaları arasından gelerek İstanbul’da bulunan Bedîüzzaman Said Nursî’yi ilzam edemeyen İstanbul uleması, Şeyh Bahît’ten bu genç hocanın ilzam edilmesini isterler. Şeyh Bahît de bu teklifi kabul ederek bir münazara zemini arar. Ve bir namaz vakti Ayasofya Camii’nden çıkıp çayhaneye oturulduğunda bunu fırsat telakki eden Şeyh Bahît Efendi, yanında ulema hazır bulunduğu halde Bedîüzzaman’a hitaben:",
+      "order_index": 168
+    },
+    {
+      "type": "arabic_block",
+      "text": "مَا تَقُولُ فٖى حَقِّ الْاَوْرُوبَائِيَّةِ وَ الْعُثْمَانِيَّةِ",
+      "order_index": 169
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani “Avrupa ve Osmanlılar hakkında ne diyorsunuz, fikriniz nedir?” der.",
+      "order_index": 170
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeyh Bahît Efendi’nin bu sualden maksadı, Bedîüzzaman’ın şek olmayan bir bahr-i umman gibi ilmini ve ateşpare-i zekâsını tecrübe etmek değil belki zaman-ı istikbale ait şiddet-i ihatasını ve idare-i âlemdeki siyasetini anlamak idi. Buna karşı Bedîüzzaman’ın verdiği cevap şu oldu:",
+      "order_index": 171
+    },
+    {
+      "type": "arabic_block",
+      "text": "اِنَّ الْاَوْرُوبَا حَامِلَةٌ بِالْاِسْلَامِيَّةِ فَسَتَلِدُ يَوْمًا مَا وَ اِنَّ الْعُثْمَانِيَّةَ حَامِلَةٌ بِالْاَوْرُوبَائِيَّةِ فَسَتَلِدُ يَوْمًا مَا",
+      "order_index": 172
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani “Avrupa, bir İslâm Devleti’ne hamiledir, günün birinde onu doğuracak. Osmanlılar da Avrupa ile hamiledir, o da onu doğuracak.”",
+      "order_index": 173
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu cevaba karşı Şeyh Bahît Hazretleri:",
+      "order_index": 174
+    },
+    {
+      "type": "paragraph",
+      "text": "— Bu gençle münazara edilmez. Ben de aynı kanaatteyim. Fakat bu kadar veciz ve beliğane bir tarzda ifade etmek ancak Bedîüzzaman’a hastır, (*[12]) demiştir.",
+      "order_index": 175
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman’ın İstanbul’da hayatı, bir derece siyasîdir. Siyaset yoluyla İslâmiyet’e hizmet edilecek diye kanaat besliyordu. Siyasî hayata karışması, İslâmiyet’e hizmet aşkının bir neticesi idi. Daima hürriyet taraftarı idi. Gördüğü haksızlıklardan dolayı Jön Türklere daima muhalefette bulunarak:",
+      "order_index": 176
+    },
+    {
+      "type": "paragraph",
+      "text": "— Siz dini incittiniz, gayretullaha dokundunuz, şeriatı tezyif ettiniz; neticesi vahim olacaktır diye izhar-ı muhalefetten çekinmiyordu.",
+      "order_index": 177
+    },
+    {
+      "type": "paragraph",
+      "text": "Hürriyet’ten sonra mücahid arkadaşlarıyla beraber İttihad-ı Muhammedî (asm) Cemiyeti’ni kurmuşlar, cemiyet pek kısa bir zamanda inkişafa başlamış hattâ Bedîüzzaman’ın bir makalesiyle Adapazarı ve İzmit havalisinde elli bin kişi cemiyete dâhil olmuştu.",
+      "order_index": 178
+    },
+    {
+      "type": "paragraph",
+      "text": "Hürriyeti sû-i tefsir etmemek ve meşrutiyeti meşrutiyet-i meşrua olarak kabul etmek lâzım geldiğini ileri sürerek bu hususta dinî gazetelerde makaleler neşrediyor ve hitabelerde bulunuyordu. Bu makale ve hitabeleri, emsalsiz denecek kadar beliğ ve mukni idi. Ehl-i ilim ve ehl-i siyaset, Said Nursî’nin bu yazılarından ve derslerinden çok istifade etmişlerdir. O zamandaki intibah-ı millîyi, Anadolu ve Asya’nın saadet-i dünyeviyesinin fecr-i sadıkı olarak müjde veriyor fakat elden kaçmaması için evamir-i şer’iyeyi çabuk imtisal etmenin zarurî olduğunu ileri sürüyordu. “Eğer meşrutiyeti, hürriyet-i şer’iye ile kabul etmezsek ve öyle tatbik edilmezse elimizden kaçacak, müstebit bir idareye yerini terk edecek.” diye ihtar ediyordu. O nutuk ve makalelerden numune olarak cüz’î bir kısmını buraya dercediyoruz:",
+      "order_index": 179
+    },
+    {
+      "type": "paragraph",
+      "text": "(Bedîüzzaman Said Nursî’nin ilan-ı Hürriyet’in üçüncü gününde irticalen söylediği ve sonra Selanik’te Hürriyet Meydanı’nda tekrar ettiği ve o zamanın gazetelerinin neşrettikleri nutkunun suretidir.)",
+      "order_index": 180
+    },
+    {
+      "type": "paragraph",
+      "text": "Hürriyet’e Hitap",
+      "order_index": 181
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey hürriyet-i şer’î! Öyle müthiş ve fakat güzel ve müjdeli bir sadâ ile çağırıyorsun ki benim gibi bir bedevîyi tabakat-ı gaflet altında yatmışken uyandırıyorsun. Sen olmasaydın ben ve umum millet, zindan-ı esarette kalacaktık. Seni ömr-ü ebedî ile tebşir ediyorum. Eğer aynü’l-hayat-ı şeriatı menba-ı hayat yapsan ve o cennette neşv ü nema bulsan bu millet-i mazlumenin de eski zamana nisbeten bin derece terakki edeceğini müjde veriyorum. Eğer hakkıyla seni rehber etse ve ağraz-ı şahsî ve fikr-i intikam ile sizi lekedar etmezse…",
+      "order_index": 182
+    },
+    {
+      "type": "paragraph",
+      "text": "Yâ Rab! Ne saadetli bir kıyamet ve ne güzel bir haşir ki ‌وَ الْبَعْثُ بَعْدَ الْمَوْتِ‌ hakikatinin küçük bir misalini bu zaman bize tasvir ediyor. Şöyle ki:",
+      "order_index": 183
+    },
+    {
+      "type": "paragraph",
+      "text": "Asya’nın ve Rumeli’nin köşelerinde medfun olan medeniyet-i kadîme hayata başlamış, menfaatini mazarrat-ı umumiyede arayan ve istibdadı arzu edenler يَا لَيْتَنٖى كُنْتُ تُرَابًا demeye başladılar. Yeni Hükûmet-i Meşrutamız mu’cize gibi doğduğu için inşâallah bir seneye kadar نُكَلِّمُ مَنْ كَانَ فِى الْمَهْدِ صَبِيًّا sırrına mazhar olacağız. Mütevekkilane, sabûrane tuttuğumuz otuz sene ramazan-ı sükûtun sevabıdır ki azapsız cennet-i terakki ve medeniyet kapılarını bize açmıştır. Hâkimiyet-i milliyenin beraat-i istihlali olan kanun-u şer’î, hâzin-i cennet gibi bizi duhûle davet ediyor.",
+      "order_index": 184
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey mazlum ihvan-ı vatan! Gidelim dâhil olalım.",
+      "order_index": 185
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci kapısı, şeriat dairesinde ittihad-ı kulûb",
+      "order_index": 186
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi, muhabbet-i milliye",
+      "order_index": 187
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncüsü, maarif",
+      "order_index": 188
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncüsü, sa’y-i insanî",
+      "order_index": 189
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşincisi, terk-i sefahettir.",
+      "order_index": 190
+    },
+    {
+      "type": "paragraph",
+      "text": "Ötekilerini sizin zihninize havale ediyorum.",
+      "order_index": 191
+    },
+    {
+      "type": "paragraph",
+      "text": "…",
+      "order_index": 192
+    },
+    {
+      "type": "paragraph",
+      "text": "Sakın ey ihvan-ı vatan! Sefahetlerle ve dinde lâübaliliklerle tekrar öldürmeyiniz. Ve bütün efkâr-ı fâsideye ve ahlâk-ı rezileye ve desais-i şeytaniyeye ve tabasbusata karşı; şeriat-ı garra üzerine müesses olan kanun-u esasî Azrail hükmüne geçti, onları öldürdü. Sakın ey ihvan-ı vatan! İsrafat ve hilaf-ı şeriat ve lezaiz-i nâmeşrua ile tekrar ihya etmeyiniz!",
+      "order_index": 193
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek şimdiye kadar mezarda idik, çürüyorduk. Şimdi bu ittihad-ı millet ve meşrutiyet ile rahm-ı madere geçtik, neşv ü nema bulacağız. Yüz bu kadar sene geri kaldığımız mesafe-i terakkiden inşâallah mu’cize-i Peygamberî ile şimendifer-i kanun-u şer’iye-i esasiyeye amelen ve burak-ı meşveret-i şer’iyeye fikren bineceğiz. Bu vahşet-engiz sahra-yı kebiri kısa zamanda tayyetmekle beraber, milel-i mütemeddine ile omuz omuza müsabaka edeceğiz. Zira onlar kâh öküz arabasına binmişler, yola gitmişler. Biz birdenbire şimendifer ve balon gibi mebâdiye bineceğiz, geçeceğiz. Belki câmi’-i ahlâk-ı hasene olan hakikat-i İslâmiyenin ve istidad-ı fıtrînin ve feyz-i imanın ve şiddet-i açlığın hazma verdiği teshil yardımıyla fersah fersah geçeceğiz. Nasıl ki vaktiyle geçmiştik.",
+      "order_index": 194
+    },
+    {
+      "type": "paragraph",
+      "text": "Talebeliğin bana verdiği vazife ile ve hürriyetin ferman-ı mezuniyetiyle ihtar ediyorum ki:",
+      "order_index": 195
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey ebna-yı vatan! Hürriyeti sû-i tefsir etmeyiniz tâ elimizden kaçmasın. Ve müteaffin olan eski esareti başka kapta bize içirmekle bizi boğmasın. (Hâşiye[13]) Zira hürriyet, müraat-ı ahkâm ve âdab-ı şeriat ve ahlâk-ı hasene ile tahakkuk eder ve neşv ü nema bulur.",
+      "order_index": 196
+    },
+    {
+      "type": "paragraph",
+      "text": "…",
+      "order_index": 197
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman",
+      "order_index": 198
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 199
+    },
+    {
+      "type": "paragraph",
+      "text": "Yaşasın Şeriat-ı Ahmedî (asm)",
+      "order_index": 200
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinî Ceride: 77",
+      "order_index": 201
+    },
+    {
+      "type": "paragraph",
+      "text": "5 Mart 1325 (18 Mart 1909)",
+      "order_index": 202
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeriat-ı garra, kelâm-ı ezelîden geldiğinden ebede gidecektir. Nefs-i emmarenin istibdad-ı rezilesinden selâmetimiz, İslâmiyet’e istinad iledir. O hablü’l-metine temessük iledir. Ve haklı hürriyetten hakkıyla istifade etmek, imandan istimdad iledir. Zira Sâni’-i âlem’e hakkıyla abd ve hizmetkâr olanın, halka ubudiyete tenezzül etmemesi gerektir. Herkes kendi âleminde bir kumandan olduğundan âlem-i asgarında cihad-ı ekber ile mükelleftir. Ve ahlâk-ı Ahmediye ile tahalluk ve Sünnet-i Nebeviyeyi ihya ile muvazzaftır.",
+      "order_index": 203
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey evliya-i umûr! Tevfik isterseniz kavanin-i âdetullaha tevfik-i hareket ediniz. Yoksa tevfiksizlik ile cevab-ı red alacaksınız. Zira maruf umum enbiyanın memalik-i İslâmiye ve Osmaniye’den zuhuru, kader-i İlahînin bir işaret ve remzidir ki bu memleket insanlarının makine-i tekemmülatının buharı diyanettir. Ve bu Asya ve Afrika tarlasının ve Rumeli bostanının çiçekleri, ziya-yı İslâmiyet’le neşv ü nema bulacaktır. Dünya için din feda olunmaz. Gebermiş istibdadı muhafaza için vaktiyle mesail-i şeriat rüşvet verilirdi. Dinin meseleleri terk ve feda edilmesinden zarardan başka ne faydası görüldü? Milletin kalp hastalığı zaaf-ı diyanettir. Bunu takviye ile sıhhat bulabilir.",
+      "order_index": 204
+    },
+    {
+      "type": "paragraph",
+      "text": "Bizim cemaatimizin meşrebi: Muhabbete muhabbet ve husumete husumettir. Yani beyne’l-İslâm muhabbete imdat ve husumet askerini bozmaktır. Mesleğimiz ise ahlâk-ı Ahmediye ile tahalluk ve Sünnet-i Peygamberîyi ihya etmektir. Ve rehberimiz şeriat-ı garra ve kılıncımız da berahin-i kātıa ve maksadımız i’lâ-i kelimetullahtır.",
+      "order_index": 205
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman",
+      "order_index": 206
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 207
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakikat",
+      "order_index": 208
+    },
+    {
+      "type": "paragraph",
+      "text": "Dinî Ceride: 70",
+      "order_index": 209
+    },
+    {
+      "type": "paragraph",
+      "text": "26 Şubat 1324 (Mart 1909)",
+      "order_index": 210
+    },
+    {
+      "type": "paragraph",
+      "text": "Biz Kalû Belâ’dan Cemiyet-i Muhammedî’de Dâhiliz",
+      "order_index": 211
+    },
+    {
+      "type": "paragraph",
+      "text": "Cihetü’l-vahdet-i ittihadımız tevhiddir. Peyman ve yeminimiz imandır. Mademki muvahhidiz, müttehidiz. Her bir mü’min i’lâ-i kelimetullah ile mükelleftir. Bu zamanda en büyük sebebi, maddeten terakki etmektir. Zira ecnebiler fünun ve sanayi silahıyla bizi istibdad-ı manevîleri altında eziyorlar. Biz de fen ve sanat silahıyla i’lâ-i kelimetullahın en müthiş düşmanı olan cehil ve fakr ve ihtilaf-ı efkâra cihad edeceğiz. Amma cihad-ı haricîyi şeriat-ı garranın berahin-i kātıasının elmas kılınçlarına havale edeceğiz. Zira medenilere galebe çalmak ikna iledir, söz anlamayan vahşiler gibi icbar ile değildir. Biz muhabbet fedaileriyiz, husumete vaktimiz yoktur.",
+      "order_index": 212
+    },
+    {
+      "type": "paragraph",
+      "text": "Meşrutiyet ki adalet ve meşveret ve kanunda inhisar-ı kuvvetten ibarettir. On üç asır evvel şeriat-ı garra teessüs ettiğinden ahkâmda Avrupa’ya dilencilik etmek, din-i İslâm’a büyük bir cinayettir. Ve şimale müteveccihen namaz kılmak gibidir.",
+      "order_index": 213
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuvvet kanunda olmalı. Yoksa istibdat tevzi olunmuş olur. اِنَّ اللّٰهَ هُوَ الْقَوِىُّ الْمَتٖينُ hâkim hâkim ve âmir-i vicdanî olmalı. O da marifet-i tam ve medeniyet-i âmm veyahut din-i İslâm namıyla olmalı. Yoksa istibdat daima hüküm-ferma olacaktır. İttifak hüdadadır, heva ve heveste değil. İnsanlar hür oldular amma yine abdullahtırlar. Her şey hür oldu. Başkasının kusuru, insanın kusuruna senet ve özür olamaz. Yeis, mani-i herkemaldir. “Neme lâzım, başkası düşünsün.” istibdadın yadigârıdır…",
+      "order_index": 214
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman",
+      "order_index": 215
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 216
+    },
+    {
+      "type": "paragraph",
+      "text": "İstanbul Hahambaşısı Yahudi Karasso ile Bedîüzzaman arasında Selanik’te cereyan eden bir konuşma sırasında, Karasso konuşmayı yarıda bırakarak dışarıya fırlamış ve arkadaşlarına “Eğer yanında biraz daha kalsaydım az kalsın beni de Müslüman edecek idi.” diyerek mağlubiyetini hayret ve telaşla izhar etmiştir. Karasso ki Osmanlı İmparatorluğunu parçalamak için sinsi ve tertipli bir şekilde çalışan gizli bir teşkilata mensup olup ortada fevkalâde bir rol oynuyordu. Karasso’nun Bedîüzzaman’ı ziyaret etmekten maksadı, onu kendi fikrine çevirmek ve meş’um gayesine âlet etmek idi. Fakat heyhat!..",
+      "order_index": 217
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 218
+    },
+    {
+      "type": "paragraph",
+      "text": "Nihayet menhus 31 Mart Hâdisesi meydana gelir. Şeriat isteyen ve o hâdisede ismi karışan on beş kadar hoca idam edilir. Bedîüzzaman, onlar mahkeme binasının bahçesinde asılı durdukları ve kendisi de pencereden onları gördüğü bir halde muhakeme olunur. Mahkeme reisi Hurşid Paşa sorar:",
+      "order_index": 219
+    },
+    {
+      "type": "paragraph",
+      "text": "— Sen de şeriat istemişsin?",
+      "order_index": 220
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman cevap verir:",
+      "order_index": 221
+    },
+    {
+      "type": "paragraph",
+      "text": "— Şeriatın bir hakikatine, bin ruhum olsa feda etmeye hazırım! Zira şeriat, sebeb-i saadet ve adalet-i mahz ve fazilettir. Fakat ihtilalcilerin isteyişi gibi değil.",
+      "order_index": 222
+    },
+    {
+      "type": "paragraph",
+      "text": "Bedîüzzaman’ın Divan-ı Harpteki bu kahramanca müdafaası, o zaman iki defa tabedilip neşredilmiştir. O dehşetli mahkemeden idamını beklerken beraet etmiş ve mahkemeye teşekkür etmeyerek, yolda Bayezid’den tâ Sultanahmed’e kadar arkasında kalabalık bir halk kitlesi mevcud olduğu halde: “Zalimler için yaşasın cehennem! Zalimler için yaşasın cehennem!” nidalarıyla ilerlemiştir.",
+      "order_index": 223
+    },
+    {
+      "type": "paragraph",
+      "text": "Divan-ı Harpteki müdafaasının bir kısmı bu Tarihçe-i Hayat’ta yazılmıştır. Tâ ki 31 Mart Hâdisesi’nin içyüzü ve Bedîüzzaman’ın kahramanca müdafaası bir derece anlaşılabilsin.",
+      "order_index": 224
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 225
+    },
+    {
+      "type": "paragraph",
+      "text": "İki Mekteb-i Musibet Şehadetnamesi yahut Divan-ı Harb-i Örfî ve Said Nursî adlı eserden parçalar:",
+      "order_index": 226
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 227
+    },
+    {
+      "type": "paragraph",
+      "text": "MUKADDİME: Vaktâ ki hürriyet divanelikle yâd olunurdu, zayıf istibdat tımarhaneyi bana mektep eyledi.",
+      "order_index": 228
+    },
+    {
+      "type": "paragraph",
+      "text": "Vaktâ ki itidal, istikamet; irtica ile iltibas olundu; meşrutiyette şiddetli istibdat, hapishaneyi mektep eyledi.",
+      "order_index": 229
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey şehadetnamemi temaşa eden zevat! Lütfen ruh ve hayalinizi misafireten, yeni medeniyete karışmış asabî bir bedevî talebenin hal-i ihtilalde olan ceset ve dimağına gönderiniz. Tâ tahtie ile hataya düşmeyiniz. 31 Mart Hâdisesi’nde Divan-ı Harb-i Örfîde dedim ki:",
+      "order_index": 230
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ben talebeyim, onun için her şeyi mizan-ı şeriatla muvazene ediyorum. Ben milliyetimizi yalnız İslâmiyet biliyorum. Onun için her şeyi de İslâmiyet nokta-i nazarından muhakeme ediyorum.",
+      "order_index": 231
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben hapishane denilen âlem-i berzahın kapısında dururken ve darağacı denilen istasyonda âhirete giden şimendiferi beklerken, cemiyet-i beşeriyenin gaddarane hallerini tenkit ederek; değil yalnız sizlere belki bu zamandaki nev-i benî-beşere îrad ettiğim bir nutuktur. Onun için يَوْمَ تُبْلَى السَّرَٓائِرُ sırrınca kabr-i kalpten hakaik çıplak çıktı. Nâmahrem olan kimseler nazar etmesin. Âhirete kemal-i iştiyakla müheyyayım, bu asılanlarla beraber gitmeye hazırım. Nasıl ki bir bedevî garaib-perest, İstanbul’un acayip ve mehasinini işitmiş fakat görmemiş, nasıl kemal-i hâhişle görmeyi arzu eder; ben de ma’rez-i acayip ve garaib olan âlem-i âhireti o hâhişle görmek istiyorum. Şimdi de öyleyim. Beni oraya nefyetmek, bana ceza değil; sizin elinizden gelirse beni vicdanen tazip ediniz! Ve illâ başka suretle azap, azap değil, benim için bir şandır!",
+      "order_index": 232
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu hükûmet, zaman-ı istibdatta akla husumet ediyordu; şimdi de hayata adâvet ediyor. Eğer hükûmet böyle olursa yaşasın cünun, yaşasın mevt!.. Zalimler için de yaşasın cehennem!.. Ben zaten bir zemin istiyordum ki efkârımı onda beyan edeyim. Şimdi bu Divan-ı Harb-i Örfî iyi bir zemin oldu.",
+      "order_index": 233
+    },
+    {
+      "type": "paragraph",
+      "text": "Bidayetlerde herkesten sual olunduğu gibi Divan-ı Harpte bana da sual ettiler: “Sen de şeriat istemişsin?”",
+      "order_index": 234
+    },
+    {
+      "type": "paragraph",
+      "text": "Dedim: Şeriatın bir hakikatine, bin ruhum olsa feda etmeye hazırım! Zira şeriat, sebeb-i saadet ve adalet-i mahz ve fazilettir. Fakat ihtilalcilerin isteyişi gibi değil.",
+      "order_index": 235
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem de dediler: İttihad-ı Muhammediye’ye (asm) dâhil misin?",
+      "order_index": 236
+    },
+    {
+      "type": "paragraph",
+      "text": "Dedim: Maaliftihar! En küçük efradındanım. Fakat benim tarif ettiğim vechile… O ittihattan olmayan, dinsizlerden başka kimdir? Bana gösterin.",
+      "order_index": 237
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte o nutku şimdi neşrediyorum. Tâ ki Meşrutiyet’i lekeden ve ehl-i şeriatı meyusiyetten ve ehl-i asrı tarih nazarında cehil ve cünundan ve hakikati evham ve şüpheden kurtarayım. İşte başlıyorum:",
+      "order_index": 238
+    },
+    {
+      "type": "paragraph",
+      "text": "Dedim: Ey Paşalar, Zabitler! Hapsimi iktiza eden cinayetlerin icmali:",
+      "order_index": 239
+    },
+    {
+      "type": "arabic_block",
+      "text": "اِذَا مَحَاسِنِى اللَّاتٖى اَدِلُّ بِهَا …… كَانَتْ ذُنُوبٖى فَقُلْ لٖى كَيْفَ اَعْتَذِرُ",
+      "order_index": 240
+    },
+    {
+      "type": "paragraph",
+      "text": "Yani medar-ı iftiharım olan mehasinim, şimdi günah sayılıyor. Artık nasıl i’tizar edeyim, mütehayyirim.",
+      "order_index": 241
+    }
+  ]
+}

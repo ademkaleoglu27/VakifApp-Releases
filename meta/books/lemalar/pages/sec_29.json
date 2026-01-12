@@ -1,0 +1,820 @@
+{
+  "id": "sec_28",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "On Birinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Üç meseledir.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Mesele: Resul-i Ekrem aleyhissalâtü vesselâmın sünnet-i seniyesinin menbaı üçtür: Akvali, ef’ali, ahvalidir. Bu üç kısım dahi üç kısımdır: Feraiz, nevafil, âdât-ı hasenesidir.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Farz ve vâcib kısmında ittibaa mecburiyet var; terkinde, azap ve ikab vardır. Herkes ona ittibaa mükelleftir.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Nevafil kısmında, emr-i istihbabî ile yine ehl-i iman mükelleftir. Fakat terkinde azap ve ikab yoktur. Fiilinde ve ittibaında azîm sevaplar var ve tağyir ve tebdili bid’a ve dalalettir ve büyük hatadır.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Âdât-ı seniyesi ve harekât-ı müstahsenesi ise hikmeten, maslahaten, hayat-ı şahsiye ve neviye ve içtimaiye itibarıyla onu taklit ve ittiba etmek, gayet müstahsendir. Çünkü her bir hareket-i âdiyesinde, çok menfaat-i hayatiye bulunduğu gibi mutabaat etmekle o âdab ve âdetler, ibadet hükmüne geçer.",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, madem dost ve düşmanın ittifakıyla, Zat-ı Ahmediye (asm) mehasin-i ahlâkın en yüksek mertebelerine mazhardır. Ve madem bi’l-ittifak nev-i beşer içinde en meşhur ve mümtaz bir şahsiyettir. Ve madem binler mu’cizatın delâletiyle ve teşkil ettiği âlem-i İslâmiyet’in ve kemalâtının şehadetiyle ve mübelliğ ve tercüman olduğu Kur’an-ı Hakîm’in hakaikinin tasdikiyle, en mükemmel bir insan-ı kâmil ve bir mürşid-i ekmeldir. Ve madem semere-i ittibaıyla milyonlar ehl-i kemal, meratib-i kemalâtta terakki edip saadet-i dâreyne vâsıl olmuşlardır. Elbette o zatın sünneti, harekâtı, iktida edilecek en güzel numunelerdir ve takip edilecek en sağlam rehberlerdir ve düstur ittihaz edilecek en muhkem kanunlardır. Bahtiyar odur ki bu ittiba-ı sünnette hissesi ziyade ola.",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "Sünnete ittiba etmeyen, tembellik eder ise hasaret-i azîme; ehemmiyetsiz görür ise cinayet-i azîme; tekzibini işmam eden tenkit ise dalalet-i azîmedir.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Mesele: Cenab-ı Hak Kur’an-ı Hakîm’de: وَاِنَّكَ لَعَلٰى خُلُقٍ عَظٖيمٍ ferman eder. Rivayat-ı sahiha ile Hazret-i Âişe-i Sıddıka (r.anha) gibi sahabe-i güzin, Hazret-i Peygamber aleyhissalâtü vesselâmı tarif ettikleri zaman “Hulukuhu’l-Kur’an” diye tarif ediyorlardı. Yani Kur’an’ın beyan ettiği mehasin-i ahlâkın misali, Muhammed aleyhissalâtü vesselâmdır. Ve o mehasini en ziyade imtisal eden ve fıtraten o mehasin üstünde yaratılan odur.",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte böyle bir zatın ef’al, ahval, akval ve harekâtının her birisi, nev-i beşere birer model hükmüne geçmeye lâyık iken, ona iman eden ve ümmetinden olan gafillerin, (sünnetine ehemmiyet vermeyen veyahut tağyir etmek isteyen) ne kadar bedbaht olduğunu divaneler de anlar.",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncü Mesele: Resul-i Ekrem aleyhissalâtü vesselâm, hilkaten en mutedil bir vaziyette ve en mükemmel bir surette halk edildiğinden, harekât ve sekenatı, itidal ve istikamet üzerine gitmiştir. Siyer-i seniyesi, kat’î bir surette gösterir ki her hareketinde istikamet ve itidal üzere gitmiş, ifrat ve tefritten içtinab etmiştir. Evet, Resul-i Ekrem aleyhissalâtü vesselâm فَاسْتَقِمْ كَمَٓا اُمِرْتَ emrini tamamıyla imtisal ettiği için bütün ef’al ve akval ve ahvalinde istikamet, kat’î bir surette görünüyor.",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, kuvve-i akliyenin fesat ve zulmeti hükmündeki ifrat ve tefriti olan gabavet ve cerbezeden müberra olarak, hadd-i vasat ve medar-ı istikamet olan hikmet noktasında kuvve-i akliyesi daima hareket ettiği gibi…",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuvve-i gazabiyenin fesadı ve ifrat ve tefriti olan korkaklık ve tehevvürden münezzeh olarak, kuvve-i gazabiyenin medar-ı istikameti ve hadd-i vasatı olan şecaat-i kudsiye ile kuvve-i gazabiyesi hareket etmekle beraber…",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuvve-i şeheviyenin fesadı ve ifrat ve tefriti olan humud ve fücurdan musaffâ olarak, o kuvvenin medar-ı istikameti olan iffette, kuvve-i şeheviyesi daima iffeti, a’zamî masumiyet derecesinde rehber ittihaz etmiştir. Ve hâkeza…",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Bütün sünen-i seniyesinde, ahval-i fıtriyesinde ve ahkâm-ı şer’iyesinde, hadd-i istikameti ihtiyar edip zulüm ve zulümat olan ifrat ve tefritten, israf ve tebzirden içtinab etmiştir. Hattâ tekellümünde ve ekl ve şürbünde, iktisadı rehber ve israftan kat’iyen içtinab etmiştir. Bu hakikatin tafsilatına dair binler cilt kitap telif edilmiştir. اَلْعَارِفُ تَكْفٖيهِ الْاِشَارَةُ sırrınca, bu denizden bu katre ile iktifa edip kıssayı kısa keseriz.",
+      "order_index": 14
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَللّٰهُمَّ صَلِّ عَلٰى جَامِعِ مَكَارِمِ الْاَخْلَاقِ وَ مَظْهَرِ سِرِّ (وَ اِنَّكَ لَعَلٰى خُلُقٍ عَظٖيمٍ) اَلَّذٖى قَالَ : مَنْ تَمَسَّكَ بِسُنَّتٖى عِنْدَ فَسَادِ اُمَّتٖى فَلَهُ اَجْرُ مِاَةِ شَهٖيدٍ",
+      "order_index": 15
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْحَمْدُ لِلّٰهِ الَّذٖى هَدٰينَا لِهٰذَا وَ مَا كُنَّا لِنَهْتَدِىَ لَوْ لَٓا اَنْ هَدٰينَا اللّٰهُ لَقَدْ جَٓائَتْ رُسُلُ رَبِّنَا بِالْحَقِّ",
+      "order_index": 16
+    },
+    {
+      "type": "arabic_block",
+      "text": "سُبْحَانَكَ لَا عِلْمَ لَنَٓا اِلَّا مَا عَلَّمْتَنَٓا اِنَّكَ اَنْتَ الْعَلٖيمُ الْحَكٖيمُ",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "On İkinci Lem’a",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "Re’fet Bey’in iki cüz’î suali münasebetiyle, iki nükte-i Kur’aniyenin beyanına dairdir.",
+      "order_index": 20
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 21
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَ عَلٰى اِخْوَانِكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz, sıddık kardeşim Re’fet Bey! Senin bu müsaadesiz zamanımda suallerin, beni müşkül bir mevkide bulunduruyor. Bu defaki iki sualin çendan cüz’îdir. Fakat iki nükte-i Kur’aniyeye münasebettar olduklarından ve küre-i arza dair sualiniz, coğrafya ve kozmoğrafyanın yedi kat zemin ve yedi tabaka semavata tenkitlerine temas ettiğinden, bana ehemmiyetli geldi. Onun için sualin cüz’iyetine bakmayarak ilmî ve küllî bir surette, iki âyet-i kerîmeye dair iki nükte icmalen beyan edilecek. Sen de cüz’î sualine karşı ondan hisse alırsın.",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "BİRİNCİ NÜKTE: İki noktadır.",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Nokta:",
+      "order_index": 25
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَكَاَيِّنْ مِنْ دَٓابَّةٍ لَا تَحْمِلُ رِزْقَهَا اَللّٰهُ يَرْزُقُهَا وَاِيَّاكُمْ ۞ اِنَّ اللّٰهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتٖينُ",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "âyetlerinin sırrınca rızık, doğrudan doğruya Kadîr-i Zülcelal’in elindedir ve hazine-i rahmetinden çıkar. Her bir zîhayatın rızkı, taahhüd-ü Rabbanîsi altında olduğundan açlıktan ölmek, olmamak lâzım gelir. Halbuki zahiren açlıktan ve rızıksızlıktan ölenler çok görünüyor. Şu hakikatin ve şu sırrın halli şudur ki:",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Taahhüd-ü Rabbanî hakikattir. Rızıksızlık yüzünden ölenler yoktur. Çünkü o Hakîm-i Zülcelal, zîhayatın bedenine gönderdiği rızkın bir kısmını ihtiyat için şahm ve içyağı suretinde iddihar eder. Hattâ bedenin her hüceyresine gönderdiği rızkın bir kısmını, yine o hüceyrenin bir köşesinde iddihar eder. İstikbalde hariçten rızık gelmediği zaman, sarf edilmek üzere bir ihtiyat zahîresi hükmünde bulundurur.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu iddihar edilmiş ihtiyat rızık bitmeden evvel ölüyorlar. Demek o ölmek, rızıksızlıktan değildir. Belki sû-i ihtiyardan tevellüd eden bir âdet ve o sû-i ihtiyardan ve âdetin terkinden neş’et eden bir marazla ölüyorlar.",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, zîhayatın bedeninde şahm suretinde iddihar edilen rızk-ı fıtrî, hadd-i vasat olarak kırk gün mükemmelen devam eder. Hattâ bir marazın veya bir istiğrak-ı ruhanî neticesinde iki kırkı geçer. Hattâ bir adam, şedit bir inat yüzünden Londra Mahpushanesinde yetmiş gün sıhhat ve selâmetle, hiçbir şey yemeden hayatı devam ettiğini, on üç –şimdi otuz dokuz– sene evvel gazeteler yazmışlar.",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem kırk günden yetmiş seksen güne kadar rızk-ı fıtrî devam ediyor ve madem Rezzak ismi, gayet geniş bir surette rûy-i zeminde cilvesi görünüyor ve madem hiç ümit edilmediği bir tarzda, memeden ve odundan rızıklar akıyor, baş gösteriyor. Eğer pür-şer beşer, sû-i ihtiyarıyla müdahale edip karışmazsa her halde rızk-ı fıtrî bitmeden evvel, o zîhayatın imdadına o isim yetişiyor, açlıkla ölüme yol vermiyor.",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "Öyle ise açlıktan ölenler, eğer kırk günden evvel ölseler kat’iyen rızıksızlıktan değildir. Belki “Terkü’l-âdât mine’l-mühlikât” sırrıyla, sû-i ihtiyardan gelen bir âdet ve terk-i âdetten neş’et eden bir illetten, bir marazdan ileri gelmiştir. Öyle ise açlıktan ölmek olmaz, denilebilir.",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, bilmüşahede görünüyor ki rızık, iktidar ve ihtiyar ile makûsen mütenasiptir. Mesela, daha dünyaya gelmeden evvel bir yavru, rahm-ı maderde ihtiyar ve iktidardan bütün bütün mahrum olduğu bir zamanda, ağzını kımıldatacak kadar muhtaç olmayacak bir surette rızkı veriliyor.",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra dünyaya geldiği vakit, iktidar ve ihtiyar yok fakat bir derece istidadı ve bi’l-kuvve bir hissi olduğundan, yalnız ağzını yapıştırmak kadar bir harekete ihtiyaç ile en mükemmel ve en mugaddi ve hazmı en kolay ve en latîf bir surette ve en acib bir fıtratta, memeler musluğundan ağzına veriliyor.",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra iktidar ve ihtiyara bir derece alâka peyda ettikçe, o kolay ve güzel rızık, bir derece, çocuğa karşı nazlanmaya başlar. O memeler çeşmeleri kesilir, başka yerlerden rızkı gönderilir. Fakat iktidar ve ihtiyarı, rızkı takip etmeye müsait olmadığı için Rezzak-ı Kerîm peder ve validesinin şefkat ve merhametlerini, iktidar ve ihtiyarına yardımcı gönderiyor.",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Her ne vakit iktidar ve ihtiyar tekemmül eder, o vakit rızkı ona koşmaz ve koşturulmaz. Rızık yerinde durur. Der: “Gel beni ara ve bul ve al!”",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek rızık, iktidar ve ihtiyar ile makûsen mütenasiptir. Hattâ çok risalelerde beyan etmişiz ki en ihtiyarsız ve iktidarsız hayvanlar, daha iyi yaşıyorlar, daha iyi besleniyorlar.",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Nokta: İmkânın envaı var. İmkân-ı aklî, imkân-ı örfî, imkân-ı âdi gibi kısımları vardır. Bir hâdise, eğer imkân-ı aklî dairesinde olmazsa reddedilir, imkân-ı örfî dairesinde olmazsa dahi mu’cize olur fakat kolayca keramet olamaz. Eğer örfen ve kaideten naziri bulunmazsa şuhud derecesinde bir bürhan-ı kat’î ile ancak kabul edilir.",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırra binaen kırk gün ekmek yemeyen Seyyid Ahmed-i Bedevî’nin hârikulâde halleri, imkân-ı örfî dairesindedir. Hem keramet olur hem hârikulâde bir âdeti de olabilir. Evet, Seyyid Ahmed-i Bedevî’nin (ks) acib ve istiğrakkârane hallerde bulunduğu, tevatür derecesinde naklediliyor. Kırk günde bir defa yemek yemesi, vaki olmuştur. Fakat her vakit öyle değil. Keramet nevinden bazı defa olmuştur. Bir ihtimal var ki halet-i istiğrakıyesi, yemeye ihtiyaç görmediği için ona nisbeten âdet hükmüne girmiştir. Seyyid Ahmed-i Bedevî (ks) nevinden çok evliyalardan bu tarz hârikalar mevsukan rivayet edilmiş.",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem Birinci Nokta’da ispat ettiğimiz gibi müddehar rızık, kırk günden fazla devam eder ve o miktar yememek, âdeten mümkündür ve mevsukan hârika adamlardan o hal rivayet edilmiştir. Elbette inkâr edilmeyecektir.",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "İKİNCİ SUAL münasebetiyle iki mesele-i mühimme beyan edilecek. Çünkü coğrafya ve kozmoğrafya fenlerinin kısacık kanunlarıyla ve daracık düsturlarıyla ve küçücük mizanlarıyla Kur’an’ın semavatına çıkamadıklarından ve âyâtın yıldızlarındaki yedi kat manaları keşfedemediklerinden âyeti tenkit, belki inkârına divanecesine çalışmışlar.",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Mesele-i Mühimme: Semavat gibi arzın da yedi tabaka olmasına dairdir. Şu mesele, yeni zamanın feylesoflarına hakikatsiz görünüyor. Onların arza ve semavata dair olan fenleri kabul etmiyor. Bunu vasıta ederek bazı hakaik-i Kur’aniyeye itiraz ediyorlar. Buna dair muhtasaran birkaç işaret yazacağız.",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "Birincisi: Evvela, âyetin manası ayrıdır ve o manaların efradı ve mâsadakları ayrıdır. İşte o küllî mananın müteaddid efradından bir ferdi bulunmazsa o mana inkâr edilmez. Semavatın yedi tabakasına ve arzın yedi katına dair mana-yı küllîsinin çok efradından yedi mâsadak zahiren görünüyor.",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen, âyetin sarahatinde “yedi kat arz” dememiş. اَللّٰهُ الَّذٖى خَلَقَ سَبْعَ سَمٰوَاتٍ وَمِنَ الْاَرْضِ مِثْلَهُنَّ … اِلٰى اٰخِرِ âyetin zahiri diyor ki: “Arzı da o seb’a semavat gibi halk etmiş ve mahlukatına mesken ittihaz etmiş.” Yedi tabaka olarak halk ettim, demiyor. Misliyet ise mahlukıyet ve mahlukata meskeniyet cihetiyle bir teşbihtir.",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Küre-i arz her ne kadar semavata nisbeten çok küçüktür fakat hadsiz masnuat-ı İlahiyenin meşheri, mazharı, mahşeri, merkezi hükmünde olduğundan kalp, cesede mukabil geldiği gibi küre-i arz dahi koca hadsiz semavata karşı bir kalp ve manevî bir merkez hükmünde olarak mukabil gelir. Onun için:",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Zeminin küçük mikyasta eskiden beri yedi (*[1]) iklimi",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "hem Avrupa, Afrika, Okyanusya, iki Asya, iki Amerika namlarıyla maruf yedi kıtası",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "hem denizle beraber şark, garp, şimal, cenup, bu yüzdeki ve Yeni Dünya yüzündeki malûm yedi kıtası",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "hem merkezinden tâ kışr-ı zahirîye kadar hikmeten, fennen sabit olan muttasıl ve mütenevvi yedi tabakası",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "hem zîhayat için medar-ı hayat olmuş yetmiş basit ve cüz’î unsurları tazammun edip ve “yedi kat” tabir edilen meşhur yedi nevi küllî unsuru",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "hem dört unsur denilen su, hava, nâr, toprak (türab) ile beraber, “mevalid-i selâse” denilen maadin, nebatat ve hayvanatın yedi tabakaları ve yedi kat âlemleri",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "hem cin ve ifrit ve sair muhtelif zîşuur ve zîhayat mahlukların âlemleri ve meskenleri olduğu, çok kesretli ehl-i keşif ve ashab-ı şuhudun şehadetiyle sabit yedi kat arzın âlemleri",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "hem küre-i arzımıza benzeyen yedi küre-i uhra dahi bulunmasına, zîhayata makarr ve mesken olmasına işareten yedi tabaka yani yedi küre-i arziye bulunmasına işareten küre-i arz dahi yedi tabaka âyât-ı Kur’aniyeden fehmedilmiştir.",
+      "order_index": 53
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte yedi nevi ile yedi tarzda, arzın yedi tabakası mevcud olduğu tahakkuk ediyor. Sekizincisi olan âhirki mana, başka nokta-i nazarda ehemmiyetlidir; o yedide dâhil değildir.",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncüsü: Madem Hakîm-i Mutlak israf etmiyor, abes şeyleri yaratmıyor. Ve madem mahlukatın vücudları, zîşuur içindir ve zîşuurla kemalini bulur ve zîşuurla şenlenir ve zîşuurla abesiyetten kurtulur. Ve madem bilmüşahede o Hakîm-i Mutlak, o Kadîr-i Zülcelal, hava unsurunu, su âlemini, toprak tabakasını hadsiz zîhayatlarla şenlendiriyor. Ve madem hava ve su, hayvanatın cevelanına mani olmadığı gibi toprak, taş gibi kesif maddeler, elektrik ve röntgen gibi maddelerin seyrine mani olmuyorlar.",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Elbette o Hakîm-i Zülkemal, o Sâni’-i Bîzeval, küre-i arzımızın merkezinden tut, tâ meskenimiz ve merkezimiz olan bu kışr-ı zahirîye kadar birbirine muttasıl yedi küllî tabakayı ve geniş meydanlarını ve âlemlerini ve mağaralarını boş ve hâlî bırakmaz. Elbette onları şenlendirmiş. O âlemlerin şenlenmesine münasip ve muvafık zîşuur mahlukları halk edip orada iskân etmiştir. O zîşuur mahluklar, mademki melaike ecnasından ve ruhanî envalarından olmak lâzım gelir. Elbette en kesif ve en sert tabaka, onlara nisbeten, balığa nisbeten deniz ve kuşa nisbeten hava gibidir. Hattâ zeminin merkezindeki müthiş ateş dahi o zîşuur mahluklara nisbeti, bizlere nisbeten güneşin harareti gibi olmak iktiza eder. O zîşuur ruhanîler nurdan oldukları için nâr onlara nur gibi olur.",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncüsü: On Sekizinci Mektup’ta tabakat-ı arzın acayibine dair ehl-i keşfin tavr-ı akıl haricinde beyan ettikleri tasvirata dair bir temsil zikredilmiştir. Hülâsası şudur ki: Küre-i arz, âlem-i şehadette bir çekirdektir; âlem-i misaliye ve berzahiyede bir büyük ağaç gibi semavata omuz omuza vuracak bir azamettedir. Ehl-i keşfin küre-i arzda ifritlere mahsus tabakasını bin senelik bir mesafe görmeleri, âlem-i şehadete ait küre-i arzın çekirdeğinde değil belki âlem-i misalîdeki dallarının ve tabakalarının tezahürüdür.",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem küre-i arzın zahiren ehemmiyetsiz bir tabakasının böyle başka âlemde azametli tezahüratı var; elbette yedi kat semavata mukabil yedi kat denilebilir ve mezkûr noktaları ihtar için îcaz ile i’cazkârane bir tarzda âyât-ı Kur’aniye, semavatın yedi tabakasına karşı bu küçücük arzı mukabil göstermekle işaret ediyor.",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Mesele-i Mühimme’dir:",
+      "order_index": 59
+    },
+    {
+      "type": "arabic_block",
+      "text": "تُسَبِّحُ لَهُ السَّمٰوَاتُ السَّبْعُ وَالْاَرْضُ وَمَنْ فٖيهِنَّ … اِلٰى اٰخِرِ",
+      "order_index": 60
+    },
+    {
+      "type": "arabic_block",
+      "text": "ثُمَّ اسْتَوٰٓى اِلَى السَّمَٓاءِ فَسَوّٰيهُنَّ سَبْعَ سَمٰوَاتٍ وَهُوَ بِكُلِّ شَىْءٍ عَلٖيمٌ",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu âyet-i kerîme gibi müteaddid âyetler, semavatı yedi sema olarak beyan ediyor. İşaratü’l-İ’caz tefsirinde Eski Harb-i Umumî’nin birinci senesinde cephe-i harpte ihtisar mecburiyetiyle gayet mücmel beyan ettiğimiz o meselenin yalnız bir hülâsasını yazmak münasiptir. Şöyle ki:",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Eski hikmet, semavatı dokuz tasavvur edip lisan-ı şer’îde, arş ve Kürsî yedi semavat ile beraber kabul edip acib bir suretle semavatı tasvir etmiştiler. O eski hikmetin dâhî hükemasının şaşaalı ifadeleri, nev-i beşeri çok asırlar müddetince tahakkümleri altında tutmuşlar. Hattâ çok ehl-i tefsir, âyâtın zahirlerini onların mezhebine göre tevfik etmeye mecbur kalmışlar. O suretle Kur’an-ı Hakîm’in i’cazına bir derece perde çekilmişti.",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve hikmet-i cedide namı verilen yeni felsefe ise eski felsefenin mürur ve ubûra ve hark ve iltiyama kabil olmayan semavat hakkındaki ifratına mukabil tefrit edip, semavatın vücudunu âdeta inkâr ediyorlar. Evvelkiler ifrat, sonrakiler tefrit edip hakikati tamamıyla gösterememişler.",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an-ı Hakîm’in hikmet-i kudsiyesi ise o ifrat ve tefriti bırakıp hadd-i vasatı ihtiyar edip der ki Sâni’-i Zülcelal, yedi kat semavatı halk etmiştir. Hareket eden yıldızlar ise balıklar gibi sema içinde gezerler ve tesbih ederler. Hadîste اَلسَّمَاءُ مَوْجٌ مَكْفُوفٌ denilmiş. Yani “Sema, emvacı karar-dâde olmuş bir denizdir.”",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu hakikat-i Kur’aniyeyi yedi kaide ve yedi vecih mana ile gayet muhtasar bir surette ispat edeceğiz.",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Kaide: Fennen ve hikmeten sabittir ki bu haddi yok feza-yı âlem, nihayetsiz bir boşluk değil belki “esîr” dedikleri madde ile doludur.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Fennen ve aklen, belki müşahedeten sabittir ki ecram-ı ulviyenin cazibe ve dâfia gibi kanunlarının rabıtası ve ziya ve hararet ve elektrik gibi maddelerdeki kuvvetlerin nâşiri ve nâkili, o fezayı dolduran bir madde mevcuddur.",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncüsü: Madde-i esîriye, esîr kalmakla beraber, sair maddeler gibi muhtelif teşekkülata ve ayrı ayrı suretlerde bulunduğu tecrübeten sabittir. Evet nasıl ki buhar, su, buz gibi havaî, mayi, camid üç nevi eşya, aynı maddeden oluyor. Öyle de madde-i esîriyeden dahi yedi nevi tabakat olmasına hiçbir mani-i aklî olmadığı gibi hiçbir itiraza medar olmaz.",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncüsü: Ecram-ı ulviyeye dikkat edilse görünüyor ki o ulvi âlemlerin tabakatında muhalefet var. Mesela, Nehrü’s-Sema ve Kehkeşan namıyla maruf, Türkçe “Samanyolu” tabir olunan bulut şeklindeki daire-i azîmenin bulunduğu tabaka, elbette sevabit yıldızların tabakasına benzemiyor. Güya tabaka-i sevabit yıldızları, yaz meyveleri gibi yetişmiş, ermişler. Ve o Kehkeşan’daki bulut şeklinde görülen hadsiz yıldızlar ise yeniden yeniye çıkıp ermeye başlıyorlar. Tabaka-i sevabit dahi sadık bir hads ile manzume-i şemsiyenin tabakasına muhalefeti görünüyor. Ve hâkeza yedi manzumat ve yedi tabaka, birbirine muhalif bulunması, his ve hads ile derk olunur.",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşincisi: Hadsen ve hissen ve istikraen ve tecrübeten sabit olmuştur ki bir maddede tanzim ve teşkil düşse ve o maddeden başka masnuat yapılsa elbette muhtelif tabaka ve şekillerde olur.",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, elmas madeninde teşkilat başladığı vakit, o maddeden hem ramad yani hem kül hem kömür hem elmas nevileri tevellüd ediyor. Hem mesela ateş, teşekküle başladığı vakit hem alev hem duman hem kor tabakalarına ayrılıyor. Hem mesela müvellidü’l-mâ, müvellidü’l-humuza ile mezcedildiği vakit, o mezcden hem su hem buz hem buhar gibi tabakalar teşekkül ediyor.",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek anlaşılıyor ki bir madde-i vâhidde teşkilat düşse tabakata ayrılıyor. Öyle ise madde-i esîriyede kudret-i Fâtıra teşkilata başladığı için elbette ayrı ayrı tabaka olarak فَسَوّٰيهُنَّ سَبْعَ سَمٰوَاتٍ sırrıyla yedi nevi semavatı ondan halk etmiştir.",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Altıncısı: Şu mezkûr emareler, bizzarure semavatın hem vücuduna hem taaddüdüne delâlet ederler. Madem kat’iyen semavat müteaddiddir ve Muhbir-i Sadık, Kur’an-ı Mu’cizü’l-Beyan’ın lisanıyla yedidir der; elbette yedidir.",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "Yedincisi: Yedi, yetmiş, yedi yüz gibi tabirat, üslub-u Arabîde kesreti ifade ettiği için o küllî yedi tabaka çok kesretli tabakaları hâvi olabilir.",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Kadîr-i Zülcelal, esîr maddesinden yedi kat semavatı halk edip tesviye ederek, gayet dakik ve acib bir nizam ile tanzim etmiş ve yıldızları içinde zer’edip ekmiştir. Madem Kur’an-ı Mu’cizü’l-Beyan, umum ins ve cinnin umum tabakalarına karşı konuşan bir hutbe-i ezeliyedir. Elbette nev-i beşerin her bir tabakası, her bir âyât-ı Kur’aniyeden hissesini alacak ve âyât-ı Kur’aniye, her tabakanın fehmini tatmin edecek surette ayrı ayrı ve müteaddid manaları zımnen ve işareten bulunacaktır. Evet, hitabat-ı Kur’aniyenin vüs’ati ve maânî ve işaratındaki genişliği ve en âmî bir avamdan en has bir havassa kadar derecat-ı fehimlerini müraat ve mümaşat etmesi gösterir ki her bir âyetin her bir tabakaya bir vechi var, bakıyor.",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırra binaen “yedi semavat” mana-yı küllîsinde yedi tabaka-i beşeriye, muhtelif yedi kat manayı fehmetmişler. Şöyle ki: فَسَوّٰيهُنَّ سَبْعَ سَمٰوَاتٍ âyetinde, kısa nazarlı ve dar fikirli bir tabaka-i insaniye, hava-yı nesîmînin tabakatını fehmeder.",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve kozmoğrafya ile sersemleşmiş diğer bir tabaka-i insaniye dahi elsine-i enamda seb’a-i seyyare ile meşhur yıldızları ve medarlarını fehmeder.",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Daha bir kısım insanlar küremize benzer zevi’l-hayatın makarrı olmuş semavî yedi küre-i âheri fehmeder.",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "Diğer bir taife-i beşeriye, manzume-i şemsiyenin yedi tabakaya ayrılmasını hem manzume-i şemsiyemizle beraber yedi manzumat-ı şümusiyeyi fehmeder.",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "Daha diğer bir taife-i beşeriye, madde-i esîriyenin teşekkülatı yedi tabakaya ayrılmasını fehmeder.",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "Daha geniş fikirli bir tabaka-i beşeriye, yıldızlarla yaldızlanıp bütün görünen gökleri bir sema sayıp, onu bu dünyanın semasıdır diyerek, bundan başka altı tabaka-i semavat var olduğunu fehmeder.",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve nev-i beşerin yedinci tabakası ve en yüksek taifesi ise semavat-ı seb’ayı, âlem-i şehadete münhasır görmüyor. Belki avâlim-i uhreviye ve gaybiye ve dünyeviye ve misaliyenin birer muhit zarfı ve ihatalı birer sakfı olan yedi semavatın var olduğunu fehmeder.",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve hâkeza bu âyetin külliyetinde mezkûr yedi kat tabakanın yedi kat manaları gibi daha çok cüz’î manaları vardır. Herkes fehmine göre hissesini alır ve o maide-i semaviyeden herkes rızkını bulur.",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem o âyetin böyle pek çok sadık mâsadakları var. Şimdiki akılsız feylesofların ve serseri kozmoğrafyalarının, inkâr-ı semavat bahanesiyle böyle âyete taarruz etmesi, haylaz ahmak çocukların semavattaki yıldızlara bir yıldızı düşürmek niyetiyle taş atmasına benzer. Çünkü âyetin mana-yı küllîsinden bir tek mâsadak sadıksa, o küllî mana sadık ve hak olur. Hattâ vakide bulunmayan fakat umumun lisanında mütedavil bulunan bir ferdi, umumun efkârını müraat için o küllîde dâhil olabilir. Halbuki, hak ve hakiki çok efradını gördük.",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "Ve şimdi bu insafsız ve haksız coğrafyaya ve sersem ve sermest ve sarhoş kozmoğrafyaya bak! Nasıl bu iki fen hata ederek, hak ve hakikat ve sadık olan küllî manadan gözlerini yumup ve çok sadık olan mâsadakları görmeyerek; hayalî bir acib ferdi, mana-yı âyet tevehhüm ederek âyete taş attılar; kendi başlarını kırdılar, imanlarını uçurdular!",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl: Kıraât-ı seb’a, vücuh-u seb’a ve mu’cizat-ı seb’a ve hakaik-i seb’a ve erkân-ı seb’a üzerine nâzil olan Kur’an semasının o yedişer tabakalarına, cin ve şeyatîn hükmündeki itikadsız maddî fikirler çıkamadıklarından âyâtın nücumunda ne var ne yok bilmeyip yalan ve yanlış haber verirler. Ve onların başlarına o âyâtın nücumundan mezkûr tahkikat gibi şahaplar inerler ve onları yakarlar.",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, cin fikirli feylesofların felsefesiyle o semavat-ı Kur’aniyeye çıkılmaz. Belki âyâtın yıldızlarına, hikmet-i hakikiyenin mi’racıyla ve iman ve İslâmiyet’in kanatlarıyla çıkılabilir.",
+      "order_index": 88
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَللّٰهُمَّ صَلِّ عَلٰى شَمْسِ سَمَاءِ الرِّسَالَةِ وَ قَمَرِ فَلَكِ النُّبُوَّةِ وَ عَلٰى اٰلِهٖ وَ صَحْبِهٖ نُجُومِ الْهُدٰى لِمَنِ اهْتَدٰى",
+      "order_index": 89
+    },
+    {
+      "type": "arabic_block",
+      "text": "سُبْحَانَكَ لَا عِلْمَ لَنَٓا اِلَّا مَا عَلَّمْتَنَٓا اِنَّكَ اَنْتَ الْعَلٖيمُ الْحَكٖيمُ",
+      "order_index": 90
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَللّٰهُمَّ يَا رَبَّ السَّمٰوَاتِ وَ الْاَرْضِ زَيِّنْ قُلُوبَ كَاتِبِ هٰذِهِ الرِّسَالَةِ وَ رُفَقَائِهٖ بِنُجُومِ حَقَائِقِ الْقُرْاٰنِ وَ الْاٖيمَانِ اٰمٖينَ",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "[1] * Seb’a ile beraber yedi kelimesi yedi kere tevafuku pek güzel düşmüş.",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "On Üçüncü Lem’a",
+      "order_index": 94
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَعُوذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجٖيمِ sırrına dairdir.",
+      "order_index": 95
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 96
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَقُلْ رَبِّ اَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطٖينِ ۞ وَاَعُوذُ بِكَ رَبِّ اَنْ يَحْضُرُونِ",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeytandan istiaze sırrına dairdir. On üç işaret yazılacak. O işaretlerin bir kısmı, müteferrik bir surette Yirmi Altıncı Söz gibi bir kısım risalelerde beyan ve ispat edildiğinden burada yalnız icmalen bahsedilecek.",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci İşaret",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Şeytanların kâinatta icad cihetinde hiçbir medhalleri olmadığı hem Cenab-ı Hak rahmet ve inayetiyle ehl-i hakka taraftar olduğu hem hak ve hakikatin cazibedar güzellikleri ve mehasinleri ehl-i hakka müeyyid ve müşevvik bulunduğu hem dalaletin müstekreh çirkinlikleri ehl-i dalaleti tenfir ettikleri halde, hizbü’ş-şeytanın çok defa galebe etmesinin hikmeti nedir? Ve ehl-i hak, her vakit şeytanın şerrinden Cenab-ı Hakk’a sığınmasının sırrı nedir?",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Hikmeti ve sırrı şudur ki: Ekseriyet-i mutlaka ile dalalet ve şer, menfîdir ve tahriptir ve ademîdir ve bozmaktır. Ve ekseriyet-i mutlaka ile hidayet ve hayır, müsbettir ve vücudîdir ve imar ve tamirdir.",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Herkesçe malûmdur ki yirmi adamın yirmi günde yaptığı bir binayı, bir adam, bir günde tahrip eder. Evet, bütün aza-yı esasiyenin ve şerait-i hayatiyenin vücuduyla vücudu devam eden hayat-ı insan, Hâlık-ı Zülcelal’in kudretine mahsus olduğu halde; bir zalim, bir uzvu kesmesiyle, hayata nisbeten ademî olan mevte o insanı mazhar eder. Onun için “Et-tahribü eshel” durub-u emsal hükmüne geçmiş.",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırdandır ki ehl-i dalalet, hakikaten zayıf bir kuvvet ile pek kuvvetli ehl-i hakka bazen galip oluyor. Fakat ehl-i hakkın öyle muhkem bir kalesi var ki onda tahassun ettikleri vakit, o müthiş düşmanlar yanaşamazlar, bir halt edemezler. Eğer muvakkat bir zarar verseler وَالْعَاقِبَةُ لِلْمُتَّقٖينَ sırrıyla ebedî bir sevap ve menfaatle o zarar telafi edilir. O kale-i metin, o hısn-ı hasîn ise şeriat-ı Muhammediye (asm) ve sünnet-i Ahmediyedir (asm).",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci İşaret",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Şerr-i mahz olan şeytanların icadı ve ehl-i imana taslitleri ve onların yüzünden çok insanlar küfre girip cehenneme girmeleri, gayet müthiş ve çirkin görünüyor. Acaba Cemil-i Ale’l-ıtlak ve Rahîm-i Mutlak ve Rahman-ı Bi’l-Hakk’ın rahmet ve cemali, bu hadsiz çirkinliğin ve dehşetli musibetin husulüne nasıl müsaade ediyor ve nasıl cevaz gösteriyor?",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu meseleyi çoklar sormuşlar ve çokların hatırına geliyor.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Şeytanın vücudunda cüz’î şerler ile beraber birçok makasıd-ı hayriye-i külliye ve kemalât-ı insaniye vardır. Evet, bir çekirdekten koca bir ağaca kadar ne kadar mertebeler var, mahiyet-i insaniyedeki istidatta dahi ondan daha ziyade meratib var. Belki zerreden şemse kadar dereceleri var. Bu istidadatın inkişafatı, elbette bir hareket ister, bir muamele iktiza eder. Ve o muameledeki terakki zembereğinin hareketi, mücahede ile olur. O mücahede ise şeytanların ve muzır şeylerin vücuduyla olur. Yoksa melaikeler gibi insanların da makamı sabit kalırdı. O halde insan nevinde, binler enva hükmünde sınıflar bulunmayacak. Bir şerr-i cüz’î gelmemek için bin hayrı terk etmek, hikmet ve adalete münafîdir.",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "Çendan şeytan yüzünden ekser insanlar dalalete giderler. Fakat ehemmiyet ve kıymet, ekseriyetle keyfiyete bakar, kemiyete az bakar veya bakmaz. Nasıl ki bin ve on çekirdeği bulunan bir zat, o çekirdekleri toprak altında bir muamele-i kimyeviyeye mazhar etse ondan on tanesi ağaç olmuş, bini bozulmuş. O on ağaç olmuş çekirdeklerin o adama verdiği menfaat, elbette bin bozulmuş çekirdeğin verdiği zararı hiçe indirir.",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Öyle de nefs ve şeytanlara karşı mücahede ile yıldızlar gibi nev-i insanı şereflendiren ve tenvir eden on insan-ı kâmil yüzünden o nev’e gelen menfaat ve şeref ve kıymet, elbette haşerat nevinden sayılacak derecede süflî ehl-i dalaletin küfre girmesiyle insan nevine vereceği zararı hiçe indirip göze göstermediği için rahmet ve hikmet ve adalet-i İlahiye, şeytanın vücuduna müsaade edip tasallutlarına meydan vermiş.",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey ehl-i iman! Bu müthiş düşmanlarınıza karşı zırhınız, Kur’an tezgâhında yapılan takvadır. Ve siperiniz, Resul-i Ekrem aleyhissalâtü vesselâmın sünnet-i seniyesidir. Ve silahınız, istiaze ve istiğfar ve hıfz-ı İlahiyeye ilticadır.",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncü İşaret",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Kur’an-ı Hakîm’de ehl-i dalalete karşı azîm şekvaları ve kesretli tahşidatı ve çok şiddetli tehdidatı, aklın zahirine göre adaletli ve münasebetli belâgatına ve üslubundaki itidaline ve istikametine münasip düşmüyor. Âdeta âciz bir adama karşı, orduları tahşid ediyor. Ve onun cüz’î bir hareketi için binler cinayet etmiş gibi tehdit ediyor. Ve müflis ve mülkte hiç hissesi olmadığı halde, mütecaviz bir şerik gibi mevki verip ondan şekva ediyor. Bunun sırrı ve hikmeti nedir?",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Onun sır ve hikmeti şudur ki şeytanlar ve şeytanlara uyanlar, dalalete sülûk ettikleri için küçük bir hareketle çok tahribat yapabilirler. Ve çok mahlukatın hukukuna, az bir fiil ile çok hasaret veriyorlar.",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "Nasıl ki bir sultanın büyük bir ticaret gemisinde bir adam az bir hareketle, belki küçük bir vazifeyi terk etmekle, o gemi ile alâkadar bütün vazifedarların semere-i sa’ylerinin ve netice-i amellerinin mahvına ve iptaline sebebiyet verdiği için o geminin sahib-i zîşanı, o âsiden, o gemi ile alâkadar olan bütün raiyetinin hesabına azîm şikayetler edip dehşetli tehdit ediyor ve onun o cüz’î hareketini değil belki o hareketin müthiş neticelerini nazara alarak ve o sahib-i zîşanın zatına değil belki raiyetinin hukuku namına dehşetli bir cezaya çarpar.",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "Öyle de Sultan-ı ezel ve ebed dahi küre-i arz gemisinde ehl-i hidayetle beraber bulunan ehl-i dalalet olan hizbü’ş-şeytanın zahiren cüz’î hatîatlarıyla ve isyanlarıyla pek çok mahlukatın hukukuna tecavüz ettikleri ve mevcudatın vezaif-i âliyelerinin neticelerinin iptal etmesine sebebiyet verdikleri için onlardan azîm şikayet ve dehşetli tehdidat ve tahribatlarına karşı mühim tahşidat etmek, ayn-ı belâgat içinde mahz-ı hikmettir ve gayet münasip ve muvafıktır. Ve mutabık-ı mukteza-yı haldir ki belâgatın tarifidir ve esasıdır ve israf-ı kelâm olan mübalağadan münezzehtir. Malûmdur ki böyle az bir hareketle çok tahribat yapan dehşetli düşmanlara karşı gayet metin bir kaleye iltica etmeyen, çok perişan olur.",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ey ehl-i iman! O çelik ve semavî kale, Kur’an’dır. İçine gir, kurtul.",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncü İşaret",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Adem şerr-i mahz ve vücud hayr-ı mahz olduğunu, ehl-i tahkik ve ashab-ı keşif ittifak etmişler. Evet, ekseriyet-i mutlaka ile hayır ve mehasin ve kemalât, vücuda istinad eder ve ona râci olur. Sureten menfî ve ademî de olsa, esası sübutîdir ve vücudîdir. Dalalet ve şer ve musibetler ve masiyetler ve belalar gibi bütün çirkinliklerin esası, mâyesi; ademdir, nefiydir. Onlardaki fenalık ve çirkinlik, ademden geliyor. Çendan suret-i zahirîde müsbet ve vücudî de görünseler, esası ademdir, nefiydir. Hem bilmüşahede sabittir ki bina gibi bir şeyin vücudu, bütün eczasının mevcudiyetiyle takarrur eder. Halbuki onun harabiyeti ve ademi ve inhidamı, bir rüknün ademiyle hasıl olur.",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem vücud, her halde mevcud bir illet ister. Muhakkak bir sebebe istinad eder. Adem ise ademî şeylere istinad edebilir. Ademî bir şey, ma’dum bir şeye illet olur.",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu iki kaideye binaendir ki: Şeytan-ı ins ve cinnin kâinattaki müthiş âsâr-ı tahripkâraneleri ve enva-ı küfür ve dalalet ve şer ve mehaliki yaptıkları halde, zerre miktar icada ve hilkate müdahaleleri olmadığı gibi mülk-ü İlahîde bir hisse-i iştirakleri olamıyor. Ve bir iktidar ve bir kudretle o işleri yapmıyorlar, belki çok işlerinde iktidar ve fiil değil belki terk ve atalettir. Hayrı yaptırmamakla, şerleri yapıyorlar. Yani şerler oluyorlar. Çünkü mehalik ve şer, tahribat nevinden olduğu için illetleri, mevcud bir iktidar ve fâil bir icad olmak lâzım değildir. Belki bir emr-i ademî ile ve bir şartın bozulmasıyla koca bir tahribat olur.",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sır, Mecusilerde inkişaf etmediği içindir ki kâinatta “Yezdan” namıyla bir hâlık-ı hayır, diğeri “Ehriman” namıyla bir hâlık-ı şer itikad etmişlerdir. Halbuki onların Ehriman dedikleri mevhum ilah-ı şer, bir cüz-i ihtiyarıyla ve icadsız bir kesble şerlere sebebiyet veren malûm şeytandır.",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ey ehl-i iman! Şeytanların bu müthiş tahribatına karşı en mühim silahınız ve cihazat-ı tamiriyeniz, istiğfardır ve “Eûzü billah” demekle Cenab-ı Hakk’a ilticadır. Ve kaleniz sünnet-i seniyedir.",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Beşinci İşaret",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "Cenab-ı Hak, kütüb-ü semaviyede beşere karşı cennet gibi azîm mükâfatı ve cehennem gibi dehşetli mücazatı göstermekle beraber çok irşad, ikaz, ihtar, tehdit ve teşvik ettiği halde; ehl-i iman, bu kadar esbab-ı hidayet ve istikamet varken hizbü’ş-şeytanın mükâfatsız çirkin zayıf desiselerine karşı mağlup olmaları, bir zaman beni çok düşündürüyordu. Acaba iman varken, Cenab-ı Hakk’ın o kadar şiddetli tehdidatına ehemmiyet vermemek nasıl oluyor? Nasıl iman gitmiyor? اِنَّ كَيْدَ الشَّيْطَانِ كَانَ ضَعٖيفًا sırrıyla şeytanın gayet zayıf desiselerine kapılıp Allah’a isyan ediyor.",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "Hattâ benim arkadaşlarımdan bazıları, yüz hakikat dersini kalben tasdik ile beraber benden işittiği ve bana karşı da fazla hüsn-ü zannı ve irtibatı varken, kalpsiz ve bozuk bir adamın ehemmiyetsiz ve riyakârane iltifatına kapıldı, onun lehinde benim aleyhimde bir vaziyete geldi. “Fesübhanallah” dedim, insanda bu derece sukut olabilir mi? Ne kadar hakikatsiz bir insan idi diye o bîçareyi gıybet ettim, günaha girdim.",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra sâbık işaretlerdeki hakikat inkişaf etti, karanlıklı çok noktaları aydınlattı. O nur ile lillahi’l-hamd hem Kur’an-ı Hakîm’in azîm tergibat ve teşvikatı tam yerinde olduğunu hem ehl-i imanın desais-i şeytaniyeye kapılmaları, imansızlıktan ve imanın zayıflığınden olmadığını hem günah-ı kebairi işleyen küfre girmediğini hem Mutezile mezhebi ve bir kısım Hariciye mezhebi “Günah-ı kebairi irtikâb eden kâfir olur veya iman ve küfür ortasında kalır.” diye hükümlerinde hata ettiklerini hem benim o bîçare arkadaşım da yüz ders-i hakikati bir herifin iltifatına feda etmesi, düşündüğüm gibi çok sukut ve dehşetli alçaklık olmadığını anladım. Cenab-ı Hakk’a şükrettim, o vartadan kurtuldum.",
+      "order_index": 126
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü sâbıkan dediğimiz gibi şeytan cüz’î bir emr-i ademî ile insanı mühim tehlikelere atar. Hem insandaki nefis ise şeytanı her vakit dinler. Kuvve-i şeheviye ve gazabiye ise şeytan desiselerine hem kābile hem nâkile iki cihaz hükmündedirler.",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bunun içindir ki Cenab-ı Hakk’ın “Gafur” “Rahîm” gibi iki ismi, tecelli-i a’zamla ehl-i imana teveccüh ediyor. Ve Kur’an-ı Hakîm’de peygamberlere en mühim ihsanı, mağfiret olduğunu gösteriyor ve onları, istiğfar etmeye davet ediyor. بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ kelime-i kudsiyesini her sure başında tekrar ile ve her mübarek işlerde zikrine emretmesiyle, kâinatı ihata eden rahmet-i vâsiasını melce ve tahassungâh gösteriyor ve فَاسْتَعِذْ emriyle اَعُوذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجٖيمِ‌ kelimesini siper yapıyor.",
+      "order_index": 128
+    },
+    {
+      "type": "paragraph",
+      "text": "Altıncı İşaret",
+      "order_index": 129
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeytanın en tehlikeli bir desisesi şudur ki: Bazı hassas ve safi-kalp insanlara tahayyül-ü küfrîyi, tasdik-i küfürle iltibas ettiriyor. Tasavvur-u dalaleti, dalaletin tasdiki suretinde gösteriyor. Ve mukaddes zatlar ve münezzeh şeyler hakkında gayet çirkin hatıraları hayaline gösteriyor. Ve imkân-ı zatîyi, imkân-ı aklî şeklinde gösterip imandaki yakînine münafî bir şek tarzını veriyor. Ve o vakit o bîçare hassas adam, kendini dalalet ve küfür içine düştüğünü tevehhüm edip imandaki yakîninin zâil olduğunu zanneder, yeise düşer, o yeisle şeytana maskara olur. Şeytan hem yeisini hem o zayıf damarını hem o iltibasını çok işlettirir, ya divane olur yahut “herçi bâd âbâd” der, dalalete gider.",
+      "order_index": 130
+    },
+    {
+      "type": "paragraph",
+      "text": "Şeytanın bu desisesinin mahiyeti ne kadar esassız olduğunu, bazı risalelerde beyan ettiğimiz gibi burada icmalen bahsedeceğiz. Şöyle ki: Nasıl ki âyinede yılanın sureti ısırmaz ve ateşin misali yandırmaz ve murdarın aksi, telvis etmez. Öyle de hayal veya fikir âyinesinde küfriyatın ve şirkin akisleri ve dalaletin gölgeleri ve şetimli çirkin sözlerin hayalleri, itikadı bozmaz, imanı tağyir etmez, hürmetli edebi kırmaz.",
+      "order_index": 131
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü meşhur kaidedir ki: Tahayyül-ü şetim, şetim olmadığı gibi tahayyül-ü küfür dahi küfür değil ve tasavvur-u dalalet de dalalet değil.",
+      "order_index": 132
+    },
+    {
+      "type": "paragraph",
+      "text": "İmandaki şek meselesi ise imkân-ı zatîden gelen ihtimaller, o yakîne münafî değil ve o yakîni bozmaz. İlm-i usûl-ü dinde kavaid-i mukarreredendir ki:",
+      "order_index": 133
+    },
+    {
+      "type": "arabic_block",
+      "text": "اِنَّ الْاِمْكَانَ الذَّاتِىَّ لَا يُنَافِى الْيَقٖينَ الْعِلْمِىَّ",
+      "order_index": 134
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, Barla Denizi su olarak yerinde bulunduğuna yakînimiz var. Halbuki zatında mümkündür ki o deniz, bu dakikada batmış olsun ve batması mümkinattandır. Bu imkân-ı zatî, madem bir emareden neş’et etmiyor, zihnî bir imkân olamaz ki şek olsun.",
+      "order_index": 135
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü yine ilm-i usûl-ü dinde bir kaide-i mukarreredir ki: لَا عِبْرَةَ لِلْاِحْتِمَالِ الْغَيْرِ النَّاشِىءِ عَنْ دَلٖيلٍ Yani “Bir emareden gelmeyen bir ihtimal-i zatî ise bir imkân-ı zihnî olmaz ki şüphe verip ehemmiyeti olsun.” İşte bu desise-i şeytaniyeye maruz olan bîçare adam, hakaik-i imaniyeye yakînini, böyle zatî imkânlar ile kaybediyor zanneder.",
+      "order_index": 136
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, Hazret-i Peygamber aleyhissalâtü vesselâm hakkında beşeriyet itibarıyla çok imkân-ı zatiye hatırına geliyor ki imanın cezim ve yakînine zarar vermez. Fakat o, zarar verdi zanneder, zarara düşer.",
+      "order_index": 137
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem bazen şeytan, kalp üstündeki lümmesi cihetinde Cenab-ı Hak hakkında fena sözler söyler. O adam zanneder ki onun kalbi bozulmuş ki böyle söylüyor. Titriyor. Halbuki onun titremesi ve korkması ve adem-i rızası delildir ki o sözler, kalbinden gelmiyor, belki lümme-i şeytaniyeden geliyor veya şeytan tarafından ihtar ve tahayyül ediliyor.",
+      "order_index": 138
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem insanın letaifi içinde teşhis edemediğim bir iki latîfe var ki ihtiyar ve iradeyi dinlemezler belki de mes’uliyet altına da giremezler. Bazen o latîfeler hükmediyorlar, hakkı dinlemiyorlar, yanlış şeylere giriyorlar. O vakit şeytan o adama telkin eder ki: “Senin istidadın hakka ve imana muvafık değil ki böyle ihtiyarsız bâtıl şeylere giriyorsun. Demek senin kaderin, seni şakavete mahkûm etmiştir.” O bîçare adam, yeise düşüp, helâkete gider.",
+      "order_index": 139
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte şeytanın evvelki desiselerine karşı mü’minin tahassungâhı: Muhakkikîn-i asfiyanın düsturlarıyla hudutları taayyün eden hakaik-i imaniye ve muhkemat-ı Kur’aniyedir. Ve âhirdeki desiselerine karşı, istiaze ile ehemmiyet vermemektir. Çünkü ehemmiyet verdikçe, nazar-ı dikkati celbettirip büyür, şişer. Mü’minin böyle manevî yaralarına tiryak ve merhem, sünnet-i seniyedir.",
+      "order_index": 140
+    },
+    {
+      "type": "paragraph",
+      "text": "Yedinci İşaret",
+      "order_index": 141
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Mutezile imamları, şerrin icadını şer telakki ettikleri için küfür ve dalaletin hilkatini Allah’a vermiyorlar. Güya onunla Allah’ı takdis ediyorlar. “Beşer kendi ef’alinin hâlıkıdır.” diye dalalete gidiyorlar.",
+      "order_index": 142
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem derler: “Bir günah-ı kebireyi işleyen bir mü’minin imanı gider. Çünkü Cenab-ı Hakk’a itikad ve cehennemi tasdik etmek, öyle günahı işlemekle kabil-i tevfik olamaz. Çünkü dünyada gayet cüz’î bir hapis korkusuyla kendini hilaf-ı kanun her şeyden muhafaza eden adam, ebedî bir azab-ı cehennemi ve Hâlık’ın gazabını nazar-ı ehemmiyete almayacak derecede büyük günahları işlerse, elbette imansızlığa delâlet eder.”",
+      "order_index": 143
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap:",
+      "order_index": 144
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci şıkkın cevabı şudur ki Kader Risalesi’nde izah edildiği gibi: Halk-ı şer, şer değil; belki kesb-i şer, şerdir. Çünkü halk ve icad, umum neticelere bakar. Bir şerrin vücudu, çok hayırlı neticelere mukaddime olduğu için o şerrin icadı, neticeler itibarıyla hayır olur, hayır hükmüne geçer.",
+      "order_index": 145
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, ateşin yüz hayırlı neticeleri var. Fakat bazı insanlar sû-i ihtiyarıyla ateşi kendilerine şer yapmakla “Ateşin icadı şerdir.” diyemezler.",
+      "order_index": 146
+    },
+    {
+      "type": "paragraph",
+      "text": "Öyle de şeytanların icadı, terakkiyat-ı insaniye gibi çok hikmetli neticeleri olmakla beraber, sû-i ihtiyarıyla ve yanlış kesbiyle şeytanlara mağlup olmakla, “Şeytanın hilkati şerdir.” diyemez. Belki o, kendi kesbiyle kendine şer yaptı. Evet, kesb ise mübaşeret-i cüz’iye olduğu için hususi bir netice-i şerriyenin mazharı olur; o kesb-i şer, şer olur. Fakat icad, umum neticelere baktığı için icad-ı şer, şer değil belki hayırdır.",
+      "order_index": 147
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Mutezile bu sırrı anlamadıkları için “Halk-ı şer şerdir ve çirkinin icadı çirkindir.” diye Cenab-ı Hakk’ı takdis için şerrin icadını ona vermemişler, dalalete düşmüşler. وَ بِالْقَدَرِ خَيْرِهٖ وَ شَرِّهٖ olan bir rükn-ü imanîyi tevil etmişler.",
+      "order_index": 148
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci şık ki “Günah-ı kebireyi işleyen, nasıl mü’min kalabilir?” diye suallerine cevap ise:",
+      "order_index": 149
+    },
+    {
+      "type": "paragraph",
+      "text": "Evvela: Sâbık işaretlerde onların hatası kat’î bir surette anlaşılmıştır ki tekrara hâcet kalmamıştır.",
+      "order_index": 150
+    },
+    {
+      "type": "paragraph",
+      "text": "Sâniyen: Nefs-i insaniye, muaccel ve hazır bir dirhem lezzeti; müeccel, gaib bir batman lezzete tercih ettiği gibi hazır bir tokat korkusundan, ileride bir sene azaptan daha ziyade çekinir. Hem insanda hissiyat galip olsa aklın muhakemesini dinlemez. Heves ve vehmi hükmedip en az ve ehemmiyetsiz bir lezzet-i hazırayı, ileride gayet büyük bir mükâfata tercih eder. Ve az bir hazır sıkıntıdan, ileride büyük bir azab-ı müecceleden ziyade çekinir. Çünkü tevehhüm ve heves ve his, ileriyi görmüyor belki inkâr ediyorlar. Nefis dahi yardım etse mahall-i iman olan kalp ve akıl susarlar, mağlup oluyorlar.",
+      "order_index": 151
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu halde kebairi işlemek, imansızlıktan gelmiyor, belki his ve hevesin ve vehmin galebesiyle akıl ve kalbin mağlubiyetinden ileri gelir.",
+      "order_index": 152
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem sâbık işaretlerde anlaşıldığı gibi fenalık ve hevesat yolu, tahribat olduğu için gayet kolaydır. Şeytan-ı ins ve cinnî çabuk insanları o yola sevk ediyor. Gayet cây-ı hayret bir haldir ki: Âlem-i bekanın nass-ı hadîsle sinek kanadı kadar bir nuru, ebedî olduğu için bir insanın müddet-i ömründe dünyadan aldığı lezzet ve nimete mukabil geldiği halde; bazı bîçare insanlar, bir sinek kanadı kadar bu fâni dünyanın lezzetini, o bâki âlemin, bu fâni dünyasına değer lezzetlerine tercih edip şeytanın arkasında gider.",
+      "order_index": 153
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırlar içindir ki Kur’an-ı Hakîm, mü’minleri pek çok tekrar ve ısrar ile tehdit ve teşvik ile günahtan zecir ve hayra sevk ediyor.",
+      "order_index": 154
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir zaman Kur’an-ı Hakîm’in bu tekrar ile şiddetli irşadatı bana bu fikri verdi ki bu kadar mütemadî ihtarlar ve ikazlar, mü’min insanları sebatsız ve hakikatsiz gösteriyorlar. İnsanın şerefine yakışmayacak bir vaziyet veriyorlar. Çünkü bir memur, âmirinden aldığı bir tek emri itaatine kâfi iken, aynı emri on defa söylese o memur cidden gücenecek. Beni ittiham ediyorsun, ben hain değilim, der. Halbuki en hâlis mü’minlere Kur’an-ı Hakîm musırrane mükerrer emrediyor.",
+      "order_index": 155
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu fikir benim zihnimi kurcaladığı bir zamanda iki üç sadık arkadaşlarım vardı. Onları şeytan-ı insînin desiselerine kapılmamak için pek çok defa ihtar ve ikaz ediyordum. “Bizi ittiham ediyorsun.” diye gücenmiyorlardı. Fakat ben kalben diyordum ki: “Bu mütemadiyen ihtarlarımla bunları gücendiriyorum, sadakatsizlikle ve sebatsızlıkla ittiham ediyorum.”",
+      "order_index": 156
+    },
+    {
+      "type": "paragraph",
+      "text": "Sonra birden sâbık işaretlerde izah ve ispat edilen hakikat inkişaf etti. O vakit o hakikatle hem Kur’an-ı Hakîm’in tam mutabık-ı mukteza-yı hal ve yerinde ve israfsız ve hikmetli ve ittihamsız bir surette ısrar ve tekraratı yaptığını ve ayn-ı hikmet ve mahz-ı belâgat olduğunu bildim. Ve o sadık arkadaşlarımın gücenmediklerinin sırrını anladım.",
+      "order_index": 157
+    },
+    {
+      "type": "paragraph",
+      "text": "O hakikatin hülâsası şudur ki şeytanlar, tahribat cihetinde sevk ettikleri için az bir amel ile çok şerleri yaparlar. Onun için tarîk-ı hakta ve hidayette gidenler, pek çok ihtiyat ve şiddetli sakınmaya ve mükerrer ihtarata ve kesretli muavenete muhtaç olduklarındandır ki Cenab-ı Hak, o tekrarat cihetinde bin bir ismi ile ehl-i imana muavenetini takdim ediyor ve binler merhamet ellerini imdadına uzatıyor. Şerefini kırmıyor, belki vikaye ediyor. İnsanın kıymetini küçük düşürtmüyor, belki şeytanın şerrini büyük gösteriyor.",
+      "order_index": 158
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ey ehl-i hak ve ehl-i hidayet! Şeytan-ı ins ve cinnînin mezkûr desiselerinden kurtulmak çaresi: Ehl-i Sünnet ve Cemaat olan ehl-i hak mezhebini karargâh yap ve Kur’an-ı Mu’cizü’l-Beyan’ın muhkemat kalesine gir ve sünnet-i seniyeyi rehber yap, selâmeti bul!..",
+      "order_index": 159
+    },
+    {
+      "type": "paragraph",
+      "text": "Sekizinci İşaret",
+      "order_index": 160
+    },
+    {
+      "type": "paragraph",
+      "text": "Sual: Sâbık işaretlerde ispat ettiniz ki dalalet yolu, kolay ve tahrip ve tecavüz olduğu için çoklar o yola sülûk ediyorlar. Halbuki sair risalelerde kat’î deliller ile ispat etmişsiniz ki küfür ve dalalet yolu o kadar müşkülatlı ve suubetlidir ki hiç kimse ona girmemek gerekti ve kabil-i sülûk değil. Ve iman ve hidayet yolu o kadar kolay ve zahirdir ki herkes ona girmeli idi.",
+      "order_index": 161
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Küfür ve dalalet iki kısımdır. Bir kısmı amelî ve fer’î olmakla beraber, iman hükümlerini nefyetmek ve inkâr etmektir ki bu tarz dalalet kolaydır. Hakkı kabul etmemektir, bir terktir, bir ademdir, bir adem-i kabuldür. İşte bu kısımdır ki risalelerde kolay gösterilmiş.",
+      "order_index": 162
+    }
+  ]
+}

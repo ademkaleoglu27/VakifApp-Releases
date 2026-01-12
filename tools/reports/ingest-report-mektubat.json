@@ -1,0 +1,25 @@
+{
+  "workId": "mektubat",
+  "title": "Mektubat",
+  "status": "ready",
+  "mergedPartsCount": 39,
+  "totalSections": 119,
+  "totalBlocks": 4469,
+  "arabicBlockCount": 386,
+  "validationSummary": {
+    "critical": 0,
+    "warning": 0
+  },
+  "sampleSections": {
+    "first3": [
+      "Giriş",
+      "Birinci Mektup",
+      "İkinci Mektup"
+    ],
+    "last3": [
+      "Sekizinci Kısım Olan Rumuzat-ı Semaniye",
+      "Dokuzuncu Kısım Olan Dokuzuncu Risale",
+      "OTUZUNCU MEKTUP"
+    ]
+  }
+}
