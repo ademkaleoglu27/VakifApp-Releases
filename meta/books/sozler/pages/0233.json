@@ -10,7 +10,7 @@
     "segments": [
         {
             "segmentId": "sozler-0233-header",
-            "type": "heading",
+            "type": "paragraph",
             "text": "Bundan yirmi beş sene kadar evvel İstanbul Boğazı’ndaki Yuşa Tepesi’nde, dünyanın terkine karar verdiğim bir zamanda, bir kısım mühim dostlarım beni dünyaya, eski vaziyetime döndürmek için yanıma geldiler. Dedim: “Yarına kadar beni bırakınız, istihare edeyim.” Sabahleyin kalbime bu iki levha hutur etti. Şiire benzer fakat şiir değiller. O mübarek hatıranın hatırı için ilişmedim. Geldiği gibi muhafaza edildi.",
             "lang": "tr"
         },
@@ -22,8 +22,8 @@
         },
         {
             "segmentId": "sozler-0233-002",
-            "type": "paragraph",
-            "text": "Birinci Levha",
+            "type": "heading",
+            "text": "BİRİNCİ LEVHA",
             "lang": "tr"
         },
         {
@@ -34,26 +34,69 @@
         },
         {
             "segmentId": "sozler-0233-004",
-            "type": "paragraph",
-            "text": "Beni dünyaya çağırma   Ona geldim fena gördüm.",
-            "lang": "tr"
-        },
-        {
-            "segmentId": "sozler-0233-005",
-            "type": "paragraph",
-            "text": "Demâ gaflet hicab oldu  Ve nur-u Hak nihan gördüm.",
-            "lang": "tr"
-        },
-        {
-            "segmentId": "sozler-0233-006",
-            "type": "paragraph",
-            "text": "Bütün eşya-yı mevcudat            Birer fâni muzır gördüm.",
-            "lang": "tr"
-        },
-        {
-            "segmentId": "sozler-0233-007",
-            "type": "paragraph",
-            "text": "Vücud desen onu giydim           Âh ademdi çok bela gördüm.",
+            "type": "poetry",
+            "lines": [
+                {
+                    "text": "Beni dünyaya çağırma"
+                },
+                {
+                    "text": "Ona geldim fena gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Demâ gaflet hicab oldu"
+                },
+                {
+                    "text": "Ve nur-u Hak nihan gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Bütün eşya-yı mevcudat"
+                },
+                {
+                    "text": "Birer fâni muzır gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Vücud desen onu giydim"
+                },
+                {
+                    "text": "Âh ademdi çok bela gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Hayat desen onu tattım"
+                },
+                {
+                    "text": "Azap-ender azap gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Akıl ayn-ı ikab oldu"
+                },
+                {
+                    "text": "Bekayı bir bela gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Ömür ayn-ı heva oldu"
+                },
+                {
+                    "text": "Kemal ayn-ı heba gördüm."
+                }
+            ],
             "lang": "tr"
         }
     ]

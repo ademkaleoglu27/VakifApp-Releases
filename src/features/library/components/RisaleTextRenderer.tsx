@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useMemo } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
+import { PoetryBlock } from '@/features/reader/components/blocks/PoetryBlock';
 
 /**
  * RisaleTextRenderer (Golden Standard V20.0 - LOCKED)
@@ -27,6 +28,8 @@ type Props = {
     onWordLongPress?: (word: string) => void;
     arabicColor?: string; // default RNK kırmızısı
     interactiveEnabled?: boolean; // Scroll Optimization: Disable interactions during scroll
+    variant?: 'paragraph' | 'poetry'; // Diamond Standard V23.4
+    poetryLines?: any[]; // For poetry variant
 };
 
 const RNK_ARABIC = "#B3261E";
@@ -106,7 +109,14 @@ export const RisaleTextRenderer = memo((props: Props) => {
         onWordPress,
         arabicColor = RNK_ARABIC,
         interactiveEnabled = true, // Default enabled
+        variant,
+        poetryLines
     } = props;
+
+    // Diamond Standard Poetry Mode
+    if (variant === 'poetry' && poetryLines && poetryLines.length > 0) {
+        return <PoetryBlock lines={poetryLines} fontSize={fontSize} color={color} />;
+    }
 
     const isAndroid = Platform.OS === "android";
     const alignBody = isAndroid ? "left" : "justify";
