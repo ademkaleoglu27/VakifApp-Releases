@@ -14,10 +14,6 @@ type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS';
 export const AboutScreen = (props: any) => {
     const [activeTab, setActiveTab] = useState<TabType>('GENERAL');
 
-    // 5x Tap Detection Refs
-    const lastTapTime = React.useRef(0);
-    const tapCount = React.useRef(0);
-
     const renderTabButton = (id: TabType, label: string, icon: keyof typeof Ionicons.glyphMap) => (
         <TouchableOpacity
             style={[styles.tabBtn, activeTab === id && styles.tabBtnActive]}
@@ -51,34 +47,7 @@ export const AboutScreen = (props: any) => {
                     </Text>
                 </View>
 
-                <TouchableOpacity
-                    onLongPress={() => {
-                        // @ts-ignore
-                        props.navigation?.navigate('RisaleSectionList', { workId: 'sozler', workTitle: 'Sözler (Native Test)' }) || console.log("No nav");
-                    }}
-                    delayLongPress={1000}
-                    onPress={() => {
-                        // 5x Tap Detection for VP Test
-                        const now = Date.now();
-                        const TIME_WINDOW = 1200; // 1.2s window
-
-                        if (now - lastTapTime.current > TIME_WINDOW) {
-                            tapCount.current = 1;
-                        } else {
-                            tapCount.current += 1;
-                        }
-                        lastTapTime.current = now;
-
-                        if (tapCount.current === 5) {
-                            tapCount.current = 0;
-                            // @ts-ignore
-                            props.navigation?.navigate('ReaderDevMenu');
-                        }
-                    }}
-                    activeOpacity={0.8}
-                >
-                    <Text style={styles.versionText}>Sürüm: v2.0 Premium (Dev)</Text>
-                </TouchableOpacity>
+                <Text style={styles.versionText}>Sürüm: v2.0 Premium</Text>
             </View>
         </ScrollView>
     );

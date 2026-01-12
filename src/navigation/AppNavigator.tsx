@@ -10,8 +10,7 @@ import { theme } from '@/config/theme';
 import { getEnabledBooks } from '@/config/booksRegistry';
 import * as Notifications from 'expo-notifications';
 
-// Debug & VP Test Screens
-import { ReaderDevMenuScreen } from '@/features/debug/screens/ReaderDevMenuScreen';
+// VP Reader Screens (Production)
 import { RisaleVirtualPageSectionList } from '@/features/reader/screens/RisaleVirtualPageSectionList';
 import { RisaleVirtualPageReaderScreen } from '@/features/reader/screens/RisaleVirtualPageReaderScreen';
 
@@ -41,6 +40,7 @@ import { ContactsScreen } from '@/features/mesveret/screens/ContactsScreen';
 import { ReadingTrackingScreen } from '@/features/tracking/screens/ReadingTrackingScreen';
 import { AgendaScreen } from '@/features/agenda/screens/AgendaScreen';
 import { AboutScreen } from '@/features/dashboard/screens/AboutScreen';
+import { LoginScreen } from '@/features/auth/screens/LoginScreen';
 
 // Quran Screens
 import { QuranHomeScreen } from '@/features/library/screens/QuranHomeScreen';
@@ -66,7 +66,6 @@ import { DictionaryScreen } from '@/features/library/screens/DictionaryScreen';
 import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandingScreen';
 import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
 import { DuaPdfReaderScreen } from '@/features/library/screens/DuaPdfReaderScreen';
-import { DevReaderIsolationScreen } from '@/features/risale/screens/DevReaderIsolationScreen';
 
 
 import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
@@ -91,8 +90,7 @@ export type RootStackParamList = {
     ReadingTracking: undefined;
     Agenda: undefined;
 
-    // Debug & Test
-    ReaderDevMenu: undefined;
+    // VP Reader
     RisaleVirtualPageSectionList: { workId: string; workTitle: string };
     RisaleVirtualPageReader: { bookId: string; sectionId: string; sectionTitle: string; workTitle: string };
 
@@ -132,7 +130,6 @@ export type RootStackParamList = {
     DuaPdfReader: { title: string; pdfSource: any };
     HatimDuasi: undefined;
     QuranPdfReader: { page: number };
-    DevReaderIsolation: undefined;
 };
 
 export type MainTabParamList = {
@@ -728,12 +725,7 @@ export const AppNavigator = () => {
                                     options={{ title: 'Ajanda', headerShown: false }}
                                 />
 
-                                {/* Debug & VP Test Screens */}
-                                <Stack.Screen
-                                    name="ReaderDevMenu"
-                                    component={ReaderDevMenuScreen}
-                                    options={{ title: 'Geliştirici Menüsü', headerShown: false }}
-                                />
+                                {/* VP Reader Screens */}
                                 <Stack.Screen
                                     name="RisaleVirtualPageSectionList"
                                     component={RisaleVirtualPageSectionList}
@@ -830,11 +822,6 @@ export const AppNavigator = () => {
                                     name="DualarLanding"
                                     component={DualarLandingScreen}
                                     options={{ title: 'Dualar', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="DevReaderIsolation"
-                                    component={DevReaderIsolationScreen}
-                                    options={{ headerShown: false }}
                                 />
                                 <Stack.Screen
                                     name="DuaPdfReader"
