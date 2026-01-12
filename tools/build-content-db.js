@@ -80,7 +80,7 @@ async function build() {
 
     const insertWork = db.prepare('INSERT INTO works (id, title, order_index, category) VALUES (?, ?, ?, ?)');
     const insertSection = db.prepare('INSERT INTO sections (id, work_id, title, order_index, type, parent_id) VALUES (?, ?, ?, ?, ?, ?)');
-    const insertParagraph = db.prepare('INSERT INTO paragraphs (id, section_id, text, order_index, is_arabic, page_no) VALUES (?, ?, ?, ?, ?, ?)');
+    const insertParagraph = db.prepare('INSERT INTO paragraphs (id, section_id, text, order_index, is_arabic, page_no, type, meta_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 
     const booksDir = path.join(__dirname, '..', 'meta', 'books');
 
@@ -93,12 +93,24 @@ async function build() {
             for (const bookFolder of bookFolders) {
                 const bookPath = path.join(booksDir, bookFolder);
                 const sectionsPath = path.join(bookPath, 'sections.json');
-                if (!fs.existsSync(sectionsPath)) continue;
+                const bookJsonPath = path.join(bookPath, 'book.json');
 
+                if (!fs.existsSync(sectionsPath) || !fs.existsSync(bookJsonPath)) {
+                    console.warn(`⚠️  Skipping ${bookFolder}: Missing sections.json or book.json`);
+                    continue;
+                }
+
+                const bookMeta = JSON.parse(fs.readFileSync(bookJsonPath, 'utf-8'));
                 const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf-8'));
-                const workId = 'sozler'; // Matching app code
-                const workTitle = 'Sözler';
-                const category = 'Ana Kitaplar';
+
+                const workId = bookMeta.bookId;
+                const workTitle = bookMeta.title;
+                const category = bookMeta.category || 'Ana Kitaplar';
+
+                if (!workId || !workTitle) {
+                    console.error(`❌ Skipping ${bookFolder}: Missing bookId or title in book.json`);
+                    continue;
+                }
 
                 insertWork.run(workId, workTitle, workOrder, category);
                 console.log(`   📘 Processing Work: ${workTitle} (ID: ${workId})`);
@@ -126,10 +138,14 @@ async function build() {
                             for (const seg of pageData.segments) {
                                 const paragraphId = seg.segmentId || `p-${paragraphCounter}`;
                                 const sectionId = pageData.sectionId;
-                                const text = Array.isArray(seg.text) ? seg.text.join('\n') : seg.text;
-                                const isArabic = (seg.lang === 'ar') ? 1 : 0;
+                                const text = Array.isArray(seg.text) ? seg.text.join('\n') : (seg.text || '');
+                                const isArabic = (seg.lang === 'ar' || seg.type === 'arabicBlock') ? 1 : 0;
+                                const type = seg.type || 'paragraph';
 
-                                insertParagraph.run(paragraphId, sectionId, text, paragraphCounter, isArabic, pageIndex);
+                                // Store full segment as meta (for poetry lines, footnotes, etc.)
+                                const meta = JSON.stringify(seg);
+
+                                insertParagraph.run(paragraphId, sectionId, text, paragraphCounter, isArabic, pageIndex, type, meta);
                                 paragraphCounter++;
                             }
                         }

@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS paragraphs (
     order_index INTEGER NOT NULL DEFAULT 0,
     is_arabic INTEGER DEFAULT 0,
     page_no INTEGER,
+    type TEXT DEFAULT 'paragraph',
+    meta_json TEXT,
     FOREIGN KEY(section_id) REFERENCES sections(id)
 );
 

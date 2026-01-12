@@ -89,6 +89,8 @@ const PageItem = React.memo(({ item, fontSize, onWordPress }: {
                             text={chunk.text_tr ?? ''}
                             fontSize={fontSize}
                             interactiveEnabled={isInteractive}
+                            variant={chunk.type === 'poetry' ? 'poetry' : undefined}
+                            poetryLines={chunk.meta?.lines}
                             onWordPress={isInteractive ?
                                 (w, py, prev, next) => onWordPress(w, chunk.id, py, prev, next)
                                 : undefined

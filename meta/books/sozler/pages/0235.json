@@ -10,25 +10,32 @@
     "segments": [
         {
             "segmentId": "sozler-0235-001",
-            "type": "paragraph",
-            "text": "Ulûm evhama kalboldu  Hikemde bin sekam gördüm.",
+            "type": "heading",
+            "text": "Birinci Levha",
             "lang": "tr"
         },
         {
             "segmentId": "sozler-0235-002",
-            "type": "paragraph",
-            "text": "Lezzet ayn-ı elem oldu   Vücudda bin adem gördüm.",
-            "lang": "tr"
-        },
-        {
-            "segmentId": "sozler-0235-003",
-            "type": "paragraph",
-            "text": "Habib desen onu buldum           Âh firakta çok elem gördüm.",
+            "type": "poetry",
+            "lines": [
+                {
+                    "text": "Ulûm evhama kalboldu",
+                    "sideText": "Hikemde bin sekam gördüm."
+                },
+                {
+                    "text": "Lezzet ayn-ı elem oldu",
+                    "sideText": "Vücudda bin adem gördüm."
+                },
+                {
+                    "text": "Habib desen onu buldum",
+                    "sideText": "Âh firakta çok elem gördüm."
+                }
+            ],
             "lang": "tr"
         },
         {
             "segmentId": "sozler-0235-004",
-            "type": "paragraph",
+            "type": "heading",
             "text": "İkinci Levha",
             "lang": "tr"
         },
@@ -40,14 +47,65 @@
         },
         {
             "segmentId": "sozler-0235-006",
-            "type": "paragraph",
-            "text": "Demâ gaflet zeval buldu            Ve nur-u Hak ayân gördüm.",
-            "lang": "tr"
-        },
-        {
-            "segmentId": "sozler-0235-007",
-            "type": "paragraph",
-            "text": "Vücud bürhan-ı Zat oldu           Hayat mir’at-ı Hak’tır gör.",
+            "type": "poetry",
+            "lines": [
+                {
+                    "text": "Demâ gaflet zeval buldu",
+                    "sideText": "Ve"
+                },
+                {
+                    "text": "nur-u Hak ayân gördüm."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Vücud bürhan-ı Zat oldu"
+                },
+                {
+                    "text": "Hayat mir’at-ı Hak’tır gör."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Akıl miftah-ı kenz oldu",
+                    "sideText": "Fena"
+                },
+                {
+                    "text": "bab-ı bekadır gör."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Kemalin lem’ası söndü",
+                    "sideText": "Fakat"
+                },
+                {
+                    "text": "şems-i Cemal var gör."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Zeval ayn-ı visal oldu",
+                    "sideText": "Elem"
+                },
+                {
+                    "text": "ayn-ı lezzettir gör."
+                },
+                {
+                    "text": " "
+                },
+                {
+                    "text": "Ömür nefs-i amel oldu",
+                    "sideText": "Ebed"
+                },
+                {
+                    "text": "ayn-ı ömürdür gör."
+                }
+            ],
             "lang": "tr"
         }
     ]

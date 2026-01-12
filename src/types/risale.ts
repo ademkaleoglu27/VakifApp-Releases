@@ -21,6 +21,8 @@ export interface RisaleChunk {
     chunk_no: number;
     text_tr: string;
     page_no?: number;
+    type?: string;
+    meta?: any;
 }
 
 export interface ReadingLog {

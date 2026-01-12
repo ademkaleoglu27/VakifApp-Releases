@@ -40,8 +40,39 @@
         },
         {
             "segmentId": "sozler-0239-006",
-            "type": "paragraph",
-            "text": "“Fâniyim, fâni olanı istemem. Âcizim, âciz olanı istemem. Ruhumu Rahman’a teslim eyledim, gayr istemem. İsterim fakat bir yâr-ı bâki isterim. Zerreyim fakat bir şems-i sermed isterim. Hiç-ender hiçim fakat bu mevcudatı umumen isterim.”",
+            "type": "poetry",
+            "lines": [
+                {
+                    "text": "Fâniyim, fâni olanı istemem.",
+                    "bold": true,
+                    "textAlign": "left"
+                },
+                {
+                    "text": "Âcizim, âciz olanı istemem.",
+                    "bold": true,
+                    "textAlign": "left"
+                },
+                {
+                    "text": "Ruhumu Rahman’a teslim eyledim, gayr istemem.",
+                    "bold": true,
+                    "textAlign": "left"
+                },
+                {
+                    "text": "İsterim fakat bir yâr-ı bâki isterim.",
+                    "bold": true,
+                    "textAlign": "left"
+                },
+                {
+                    "text": "Zerreyim fakat bir şems-i sermed isterim.",
+                    "bold": true,
+                    "textAlign": "left"
+                },
+                {
+                    "text": "Hiç-ender hiçim fakat bu mevcudatı umumen isterim.",
+                    "bold": true,
+                    "textAlign": "left"
+                }
+            ],
             "lang": "tr"
         }
     ]

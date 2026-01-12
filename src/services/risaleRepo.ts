@@ -26,14 +26,16 @@ export const getChunksBySection = async (sectionId: string): Promise<RisaleChunk
         [sectionId]
     );
     if (results && results.length > 0) {
-        console.log("DEBUG RAW DB ROW:", JSON.stringify(results[0], null, 2));
+        // console.log("DEBUG RAW DB ROW:", JSON.stringify(results[0], null, 2));
     }
     return results.map(r => ({
         id: r.order_index,
         section_id: r.section_id,
         chunk_no: r.order_index,
         text_tr: r.text,
-        page_no: r.page_no || 0
+        page_no: r.page_no || 0,
+        type: r.type || 'paragraph',
+        meta: r.meta_json ? JSON.parse(r.meta_json) : undefined
     }));
 };
 
