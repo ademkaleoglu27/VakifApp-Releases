@@ -1,0 +1,35 @@
+# EAS Ignore
+node_modules/
+.git/
+.expo/
+android/
+ios/
+dist/
+web-build/
+
+# Large Test Exports
+test-export*/
+
+# Design Assets
+buyuk-*/
+kucuk-*/
+*.psd
+*.pdf
+
+# Audio
+audio_release_bundle/
+
+# Tools & Scripts
+tools/
+scripts/
+
+# Temp & Source Data
+temp_*/
+assets/risale_json/
+corpus_input.txt
+db_lugat.sql
+meta/
+migrations/
+supabase/
+*.zip
+*.tar.gz
