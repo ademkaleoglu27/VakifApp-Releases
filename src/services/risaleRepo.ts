@@ -319,6 +319,70 @@ export const buildReadingStream = async (workId: string): Promise<StreamItem[]> 
 };
 
 /**
+ * Build reading stream using Canonical Book ID (World Standard).
+ */
+export const buildReadingStreamByBookId = async (bookId: string): Promise<StreamItem[]> => {
+    const db = getDb();
+    const stream: StreamItem[] = [];
+    let globalOrderIndex = 0;
+    let globalPageOrdinal = 0;
+
+    // 1. Fetch sections by book_id
+    const sections = await db.getAllAsync<any>(
+        'SELECT * FROM sections WHERE book_id = ? AND type != ? ORDER BY order_index ASC',
+        [bookId, 'footnote']
+    );
+
+    // 2. Build stream
+    for (const section of sections) {
+        const sectionId = section.id; // Internal ID for linking paragraphs
+        const sectionTitle = section.title;
+        const isMain = section.type === 'main' || !section.parent_id;
+
+        stream.push({
+            type: isMain ? 'section_header' : 'sub_header',
+            id: `header-${sectionId}`,
+            sectionId,
+            sectionUid: section.section_uid,
+            title: sectionTitle,
+            orderIndex: globalOrderIndex++
+        });
+
+        const paragraphs = await db.getAllAsync<any>(
+            'SELECT * FROM paragraphs WHERE section_id = ? ORDER BY order_index ASC',
+            [sectionId]
+        );
+
+        const CHUNKS_PER_PAGE = 7;
+        const chunks: RisaleChunk[] = paragraphs.map((p: any) => ({
+            id: p.order_index,
+            section_id: p.section_id,
+            chunk_no: p.order_index,
+            text_tr: p.text,
+            page_no: p.page_no || 0
+        }));
+
+        for (let i = 0; i < chunks.length; i += CHUNKS_PER_PAGE) {
+            const pageChunks = chunks.slice(i, i + CHUNKS_PER_PAGE);
+            const pageIndex = Math.floor(i / CHUNKS_PER_PAGE);
+            globalPageOrdinal++;
+
+            stream.push({
+                type: 'page',
+                id: `page-${sectionId}-${pageIndex}`,
+                sectionId,
+                chunks: pageChunks,
+                orderIndex: globalOrderIndex++,
+                globalPageOrdinal
+            });
+        }
+    }
+
+    console.log(`[Stream] Built ${stream.length} items for bookId ${bookId}`);
+    return stream;
+};
+
+/**
  * Build a section-only reading stream (V25.6)
  * Optimized for TOC navigation to avoid scroll jumps.
  * Calculates global page ordinal but only loads the target section.

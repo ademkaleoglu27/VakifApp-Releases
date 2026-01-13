@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, runOnJS, withTiming } from 'react-native-reanimated';
 
-import { buildReadingStream, buildSectionReadingStream, buildTocIndexMap, getNextSection, StreamItem } from '@/services/risaleRepo';
+import { buildReadingStream, buildReadingStreamByBookId, buildSectionReadingStream, buildTocIndexMap, getNextSection, StreamItem } from '@/services/risaleRepo';
 import { readingProgressStore } from '@/services/readingProgressStore';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { ENABLE_RESUME_LAST_READ } from '@/config/features';
@@ -26,7 +26,7 @@ import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
 // TOC removed from reader - now accessed via SectionList screen
 
 /**
- * RisaleVirtualPageReaderScreen (Diamond Standard V24.0 - LOCKED)
+ * RisaleVirtualPageReaderScreen (GOLD STANDARD V25.8 - LOCKED)
  * ─────────────────────────────────────────────────────────────
  * CONTINUOUS READING STREAM IMPLEMENTATION + PROGRESS PERSISTENCE
  * 
@@ -35,25 +35,19 @@ import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
  * 2. Book-like section headers (decorative dividers)
  * 3. Dynamic header (current section + position counter)
  * 4. Progressive Hydration (only visible page interactive)
- * 5. Lugat integration with controlled toggle
+ * 5. Lugat integration (Double-tap tolerance + No-Flash scroll)
  * 6. Pinch-to-zoom preserved
  * 7. Inline footnotes (collapsed, lazy fetch, fail-soft)
- * 8. TOC accessed via SectionList screen (not in reader)
+ * 8. TOC accessed via SectionList screen (workId + bookId passed)
  * 
-<<<<<<< Updated upstream
- * NEW IN V24.0 (Reading Progress - LOCKED):
- * - Book-based lastRead persistence (no cross-book bleed)
- * - Throttled writes (3s, only on page change)
- * - Gated restore with initialPositionLoaded flag
- * - AppState background + unmount flush
- * - "Yeniden Başla" menu action
- * - Navigation via initialLocation param from Contents
+ * NEW IN V25.8 (Interactive Refinements):
+ * - No-Flash Scroll: Text remains visible during scroll start
+ * - Double-Tap Lugat: 250ms tolerance for touch responsiveness
+ * - Fail-Safe Loading: 2s timeout for empty streams
+ * - Identity Bridge: Canonical risale.* ID support
  * 
  * LOCKED: Do not modify Virtual Page, Hydration, Zoom, Footnote,
- *         or Reading Progress logic without extensive testing.
-=======
- * LOCKED: Do not modify Virtual Page, Hydration, Zoom, or Footnote logic.
->>>>>>> Stashed changes
+ *         or Reading Progress logic. This is the template for all books.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -170,9 +164,11 @@ export const RisaleVirtualPageReaderScreen = () => {
     // TODO: Move this mapping to ContentResolver in V27.1
     const getInternalWorkId = (id: string | undefined) => {
         if (id === 'risale.sozler@diyanet.tr') return 'sozler';
+        if (id === 'risale.mektubat@diyanet.tr') return 'mektubat';
+        if (id === 'risale.lemalar@diyanet.tr') return 'lemalar';
 
         // Legacy fallback supported via bridge logic above, but if we have a raw bookId that isn't mapped:
-        if (id && !id.startsWith('risale.') && id !== 'sozler') {
+        if (id && !id.startsWith('risale.') && id !== 'sozler' && id !== 'mektubat' && id !== 'lemalar') {
             // If strict mode, block. If bridge mode, maybe allow? 
             // Current strict rule:
             console.warn('[Reader] Legacy workId usage:', id);
@@ -180,7 +176,7 @@ export const RisaleVirtualPageReaderScreen = () => {
         return id || 'sozler';
     };
 
-    const effectiveWorkId = getInternalWorkId(bookId || legacyWorkId);
+    const effectiveWorkId = getInternalWorkId(legacyWorkId ?? bookId);
 
     // Safety Check
     if (effectiveWorkId === 'LOCKED_INVALID_ID') {
@@ -260,15 +256,65 @@ export const RisaleVirtualPageReaderScreen = () => {
     }, [effectiveWorkId, route.params?.sectionId, isSectionMode]);
 
     // Fetch Stream (Full Book or Section Only)
-    const { data: stream, isLoading } = useQuery({
+    const { data: stream, isLoading, isError, error: queryError } = useQuery({
         queryKey: ['readingStream', effectiveWorkId, isSectionMode ? route.params.sectionId : 'full'],
         queryFn: async () => {
+            // Guard: If DB corrupted, this might throw.
+            if (!effectiveWorkId || effectiveWorkId === 'LOCKED_INVALID_ID') {
+                throw new Error('INVALID_WORK_ID');
+            }
+
+            // V27: Support Canonical Book ID
+            const isCanonical = effectiveWorkId.startsWith('risale.');
+
             if (isSectionMode && route.params.sectionId) {
+                // Section Stream currently relies on WORK ID internally for efficient scan?
+                // Actually buildSectionReadingStream uses DB query on work_id OR book_id?
+                // Let's check logic: buildSectionReadingStream(workId, ...).
+                // We should assume for now section stream needs workId for legacy compatibility
+                // unless we update it too. But for "Mektubat reader hang", usually full stream is used if mode is default.
+                // Wait, Mektubat via TOC uses 'mode: section'.
+                // So we MUST update `buildSectionReadingStream` or pass legacy ID.
                 return buildSectionReadingStream(effectiveWorkId, route.params.sectionId);
+            }
+
+            if (isCanonical) {
+                return buildReadingStreamByBookId(effectiveWorkId);
             }
             return buildReadingStream(effectiveWorkId);
         },
+        retry: 0 // Fail fast
     });
+
+    // V27: Content Guard
+    useEffect(() => {
+        if (!effectiveWorkId || effectiveWorkId === 'LOCKED_INVALID_ID') {
+            navigation.reset({
+                index: 0,
+                routes: [{
+                    name: 'ContentIntegrity',
+                    params: {
+                        errorCode: 'ERR_NAV_INVALID_ID',
+                        details: { bookId, legacyWorkId }
+                    }
+                } as any],
+            });
+            return;
+        }
+
+        if (isError) {
+            navigation.reset({
+                index: 0,
+                routes: [{
+                    name: 'ContentIntegrity',
+                    params: {
+                        errorCode: 'ERR_STREAM_LOAD_FAILED',
+                        details: { error: (queryError as Error)?.message }
+                    }
+                } as any],
+            });
+        }
+    }, [effectiveWorkId, isError, queryError, navigation]);
 
     // TOC Index Map - kept for initial scroll to section
     const tocIndexMap = useMemo(() => {
@@ -360,6 +406,24 @@ export const RisaleVirtualPageReaderScreen = () => {
     // V25.3: Fail-safe timeout - never stay stuck on loading
     useEffect(() => {
         if (isReadyToRender || targetError) return; // Already done
+
+        // 🔴 FAIL-SAFE: Empty stream detection
+        if (!isLoading && (!stream || stream.length === 0)) {
+            const t = setTimeout(() => {
+                navigation.reset({
+                    index: 0,
+                    routes: [{
+                        name: 'ContentIntegrity',
+                        params: {
+                            errorCode: 'ERR_EMPTY_STREAM',
+                            details: { bookId, legacyWorkId, sectionId }
+                        }
+                    } as any]
+                });
+            }, 2000);
+            return () => clearTimeout(t);
+        }
+
         if (!stream || stream.length === 0) return; // Stream not ready yet
 
         // Set 3 second timeout for fail-safe
@@ -380,7 +444,7 @@ export const RisaleVirtualPageReaderScreen = () => {
                 clearTimeout(timeoutRef.current);
             }
         };
-    }, [stream, isReadyToRender, targetError]);
+    }, [stream, isReadyToRender, targetError, isLoading, bookId, legacyWorkId, sectionId, navigation]);
 
     // Restore position when stream is ready AND initial position has been determined
     useEffect(() => {
@@ -599,11 +663,32 @@ export const RisaleVirtualPageReaderScreen = () => {
         readingProgressStore.saveNow(effectiveWorkId, data);
     }, [stream, effectiveWorkId]);
 
-    // Word Click (preserved) - with lugatPrefLoaded guard
+    // V25.8: Double-tap tolerance for Lugat interactions
+    const lastWordTapRef = useRef<{ w: string; ts: number } | null>(null);
+
+    // Word Click (preserved) - with lugatPrefLoaded guard + double-tap tolerance
     const handleWordClick = useCallback((word: string, chunkId: number, pageY: number) => {
         if (isScrollingRef.current) return;
         if (!lugatPrefLoaded) return; // Guard: don't process until pref loaded
         if (!lugatEnabledRef.current) return;
+
+        const w = (word || '').trim();
+        if (w.length < 2) return;
+
+        const now = Date.now();
+        const last = lastWordTapRef.current;
+
+        // Double-tap tolerance: If same word tapped within 250ms, force open
+        // This mitigates issues where single taps are dropped due to hydration logic
+        if (last && last.w === w && (now - last.ts) < 250) {
+            lugatRef.current?.open(w, chunkId, pageY);
+            lastWordTapRef.current = null;
+            return;
+        }
+
+        lastWordTapRef.current = { w, ts: now };
+
+        // Standard single tap attempt
         lugatRef.current?.open(word, chunkId, pageY);
     }, [lugatPrefLoaded]);
 
@@ -611,7 +696,7 @@ export const RisaleVirtualPageReaderScreen = () => {
     const onScrollBegin = useCallback(() => {
         isScrollingRef.current = true;
         lugatRef.current?.close();
-        setHydratedItemId(null);
+        // NO-FLASH: Removed setHydratedItemId(null) to keep text visible during scroll start
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     }, []);
 
@@ -624,7 +709,7 @@ export const RisaleVirtualPageReaderScreen = () => {
                     setHydratedItemId(stream[currentItemRef.current].id);
                 }
             });
-        }, 250);
+        }, 120); // Faster re-hydration (was 250ms)
     }, [stream]);
 
     // Pinch Gesture (preserved)

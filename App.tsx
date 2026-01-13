@@ -10,6 +10,7 @@ import { initDb as initOfflineDb } from '@/services/db/sqlite';
 import { View, ActivityIndicator, Text } from 'react-native';
 import { NotificationProvider } from '@/context/NotificationsContext';
 import { useFonts } from 'expo-font';
+import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 
 // Google Fonts Imports
 import {
@@ -62,31 +63,57 @@ export default function App() {
     ScheherazadeNewBold: ScheherazadeNew_700Bold,
   });
 
+  const initAppData = async () => {
+    try {
+      setDbError(null);
+      await ensureContentDbReady();
+      // Risale Assets Initialization
+      await RisaleAssets.init();
+      // Initialize Offline Database (Supabase Mirror)
+      await initOfflineDb();
+      setIsDbReady(true);
+    } catch (error) {
+      setDbError((error as Error).message);
+    }
+  };
+
   useEffect(() => {
-    const initDb = async () => {
-      try {
-        await ensureContentDbReady();
-        // Risale Assets Initialization
-        await RisaleAssets.init();
-        // Initialize Offline Database (Supabase Mirror)
-        await initOfflineDb();
-        setIsDbReady(true);
-      } catch (error) {
-        setDbError((error as Error).message);
-      }
-    };
-    initDb();
+    initAppData();
   }, []);
 
   // Block rendering until both fonts and DB are ready
   if (!fontsLoaded || !isDbReady) {
+    if (dbError) {
+      let errorData = { code: 'STARTUP_FAIL', details: dbError };
+      try {
+        const parsed = JSON.parse(dbError);
+        if (parsed && parsed.code) {
+          errorData = parsed;
+        }
+      } catch (e) {
+        // Not a JSON error, keep as string
+      }
+
+      // Import inline or at top (better at top, but for replace_file I'll use require if import is hard to inject at top without reading whole file)
+      // I'll add the import at the top in a separate tool call to be safe, or assume I can't.
+      // Actually I should allow the tool to handle imports by using multi_replace or just assume I'll add it.
+      // For this specific replacement, I will assume I added the import.
+
+      return (
+        <ContentIntegrityScreen
+          errorCode={errorData.code}
+          details={errorData.details || errorData}
+          onRetry={initAppData}
+        />
+      );
+    }
+
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FDF6E3' }}>
         <ActivityIndicator size="large" color="#10b981" />
         <Text style={{ marginTop: 16, color: '#64748b', fontFamily: 'serif' }}>
           {!fontsLoaded ? 'Yazı tipleri yükleniyor...' : 'Kütüphane ve Risaleler Hazırlanıyor...'}
         </Text>
-        {dbError && <Text style={{ marginTop: 16, color: '#ef4444' }}>Hata: {dbError}</Text>}
       </View>
     );
   }

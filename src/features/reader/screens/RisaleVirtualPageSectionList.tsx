@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { getSectionsByWork, getSectionsByBookId, buildReadingStream, buildSectionPageMap, SectionPageMapping } from '@/services/risaleRepo';
+import { getSectionsByWork, getSectionsByBookId, buildReadingStream, buildReadingStreamByBookId, buildSectionPageMap, SectionPageMapping } from '@/services/risaleRepo';
 import { RisaleSection } from '@/types/risale';
 import { readingProgressStore, BookLastRead } from '@/services/readingProgressStore';
 import { RisaleUserDb, RisaleBookmark } from '@/services/risaleUserDb';
@@ -80,21 +80,28 @@ export const RisaleVirtualPageSectionList = () => {
     const { data: sections, isLoading } = useQuery({
         queryKey: ['sections', canUseBookId ? bookId : workId],
         queryFn: async () => {
+            let res: RisaleSection[] = [];
+            // Strategy: Try Book ID first (World Standard)
             if (canUseBookId) {
-                return getSectionsByBookId(bookId!);
+                res = await getSectionsByBookId(bookId!);
             }
-            if (workId) {
-                return getSectionsByWork(workId);
+            // Fallback: If empty, try Work ID (Legacy)
+            if ((!res || res.length === 0) && workId) {
+                console.warn('[VP-TOC] Fallback to workId fetch for:', workId);
+                res = await getSectionsByWork(workId);
             }
-            return [];
+            return res || [];
         },
         enabled: !!(bookId || workId)
     });
 
     // Fetch stream for sectionPageMap (V25.1 deterministic target)
     const { data: stream } = useQuery({
-        queryKey: ['readingStream', workId], // Stream builder still uses legacy workId for now
-        queryFn: () => buildReadingStream(workId),
+        queryKey: ['readingStream', canUseBookId ? bookId : workId],
+        queryFn: () => {
+            if (canUseBookId) return buildReadingStreamByBookId(bookId!);
+            return buildReadingStream(workId);
+        },
     });
 
     // Build section-to-page mapping for deterministic TOC navigation
@@ -119,13 +126,30 @@ export const RisaleVirtualPageSectionList = () => {
         }
 
         for (const section of sections) {
-            if (!section.parent_id && section.type === 'main') {
+            // RELAXED FILTER: Allow 'main' OR 'chapter' (for Mektubat) OR any if parent is null
+            // Standard: parent_id is null/empty for roots
+            if (!section.parent_id && (section.type === 'main' || section.type === 'chapter')) {
                 mainSections.push({
                     main: section,
                     children: childMap.get(section.id) || []
                 });
             }
         }
+
+        // FALLBACK: If standard grouping found nothing but we have sections, 
+        // it means either types are wrong or hierarchy is flat without expected types.
+        if (mainSections.length === 0 && sections.length > 0) {
+            console.warn('[VP-TOC] Grouping fallback: showing all root-like items');
+            for (const section of sections) {
+                if (!section.parent_id) {
+                    mainSections.push({
+                        main: section,
+                        children: childMap.get(section.id) || []
+                    });
+                }
+            }
+        }
+
         return mainSections;
     }, [sections]);
 
@@ -145,6 +169,10 @@ export const RisaleVirtualPageSectionList = () => {
         if (!targetId) {
             console.error('[TOC] GÜVENLİK KİLİDİ: section_uid eksik', section.id, section.title);
             // KİLİTLENDİ: Hata koruması, UID olmadan navigasyona izin verme
+            navigation.navigate('ContentIntegrity', {
+                errorCode: 'ERR_UID_MISSING_TOC',
+                details: { section: section.title, id: section.id }
+            });
             return;
         }
 
@@ -157,6 +185,7 @@ export const RisaleVirtualPageSectionList = () => {
 
         navigation.navigate('RisaleVirtualPageReader', {
             bookId: bookId,
+            workId: workId, // 🔴 ZORUNLU – legacy internal ID
             sectionId: targetId,
             mode: 'section',
             source: 'toc',

@@ -63,6 +63,8 @@ import { CevsenLandingScreen } from '@/features/library/screens/CevsenLandingScr
 import { DictionaryScreen } from '@/features/library/screens/DictionaryScreen';
 import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandingScreen';
 import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
+import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
+import { ContentHealthDebugScreen } from '@/screens/ContentHealthDebugScreen';
 
 
 import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
@@ -146,6 +148,12 @@ export type RootStackParamList = {
     // Dualar
     DualarLanding: undefined;
     HatimDuasi: undefined;
+    ContentIntegrity: {
+        errorCode: string;
+        details?: any;
+        onRetry?: () => void;
+    };
+    ContentHealthDebug: undefined;
 };
 
 export type MainTabParamList = {
@@ -448,12 +456,15 @@ const CustomDrawerContent = React.memo((props: any) => {
                             {/* Profile & Settings */}
                             <View style={drawerStyles.divider} />
 
-                            <DrawerItem
-                                label="Ayarlar"
-                                icon="settings-outline"
-                                onPress={() => { }}
-                                color="#334155"
-                            />
+                            {/* Geliştirici Kontrol - Only in DEV */}
+                            {__DEV__ && (
+                                <DrawerItem
+                                    label="Geliştirici Kontrol"
+                                    icon="settings-outline"
+                                    onPress={() => navigate('ContentHealthDebug')}
+                                    color="#334155"
+                                />
+                            )}
 
                             {/* Rehber & Hakkında */}
                             <DrawerItem
@@ -678,8 +689,9 @@ export const AppNavigator = () => {
     React.useEffect(() => {
         if (isAuthenticated && user?.name) {
             const setupNotifications = async () => {
-                const hasPermission = await notificationService.registerForPushNotificationsAsync();
-                if (hasPermission) {
+                // Returns undefined if permission not granted or setup failed gracefully
+                const token = await notificationService.registerForPushNotificationsAsync();
+                if (token) {
                     await notificationService.scheduleDailyReminder(user.name);
                 }
             };
@@ -792,6 +804,13 @@ export const AppNavigator = () => {
                                     component={DualarLandingScreen}
                                     options={{ title: 'Dualar', headerShown: false }}
                                 />
+                                {__DEV__ && (
+                                    <Stack.Screen
+                                        name="ContentHealthDebug"
+                                        component={ContentHealthDebugScreen}
+                                        options={{ title: 'Geliştirici Kontrol', headerShown: true }}
+                                    />
+                                )}
 
                                 {/* Risale Library V1 */}
                                 <Stack.Screen name="LibraryDetail" component={LibraryDetailScreen} options={{ headerShown: false }} />
@@ -799,8 +818,14 @@ export const AppNavigator = () => {
                                 <Stack.Screen
                                     name="HatimDuasi"
                                     component={HatimDuasiScreen}
-                                    options={{ headerShown: false }}
+                                    options={{ title: 'Hatim Duası', headerShown: false }}
                                 />
+                                <Stack.Screen
+                                    name="ContentIntegrity"
+                                    component={ContentIntegrityScreen}
+                                    options={{ headerShown: false, gestureEnabled: false }}
+                                />
+
 
                                 <Stack.Screen
                                     name="RisaleSearch"

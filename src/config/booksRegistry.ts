@@ -14,6 +14,7 @@ export interface BookEntry {
     title: string;       // Display title (e.g., 'Sözler')
     icon: string;        // Ionicons name
     enabled: boolean;    // Show in menu?
+    bookId?: string;     // Canonical Book ID for DB queries
 }
 
 /**
@@ -26,20 +27,24 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         title: 'Sözler',
         icon: 'book-outline',
         enabled: true,
+        bookId: 'risale.sozler@diyanet.tr'
     },
     // Future books (disabled until data is ready):
-    // {
-    //     id: 'mektubat',
-    //     title: 'Mektubat',
-    //     icon: 'mail-outline',
-    //     enabled: false,
-    // },
-    // {
-    //     id: 'lemalar',
-    //     title: "Lem'alar",
-    //     icon: 'flash-outline',
-    //     enabled: false,
-    // },
+    {
+        id: 'mektubat',
+        title: 'Mektubat',
+        icon: 'mail-open-outline',
+        enabled: true,
+        bookId: 'risale.mektubat@diyanet.tr'
+    },
+    {
+        id: 'lemalar',
+        title: 'Lemalar',
+        icon: 'flash-outline',
+        enabled: false,
+        // Gold Standard: Canonical ID required
+        bookId: 'risale.lemalar@diyanet.tr',
+    },
     // {
     //     id: 'sualar',
     //     title: "Şualar",

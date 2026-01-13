@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { theme } from '@/config/theme';
 import { Ionicons } from '@expo/vector-icons';
 import { getWork } from '@/data/libraryRegistry';
+import { getBookById } from '@/config/booksRegistry';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export const WorkDetailScreen = () => {
@@ -12,6 +13,7 @@ export const WorkDetailScreen = () => {
     const { workId } = route.params;
 
     const work = getWork(workId);
+    const bookRegistryEntry = getBookById(workId);
 
     if (!work) {
         return (
@@ -23,27 +25,15 @@ export const WorkDetailScreen = () => {
 
     const handleRead = () => {
         // LOCKED: Use mode='section' standard
-        // For 'sozler', first section is 'soz-001' (Standardizing usually). 
-        // Ideally we resolve first section from DB or hardcode for V1.
-        // For now, assuming user will use TOC or we just open 1. Soz.
-        // Let's use 'sozler_1' if widely known, or just open TOC if unsure.
-        // Better: Open Section List directly if "Oku" is ambiguous, or open first section.
-        // RisaleVirtualPageReader requires specific sectionId.
-
-        // Strategy: Open SectionList (TOC) for now to be safe, 
-        // OR open First Section (Birinci Söz).
-
-        // Let's navigate to TOC for "İçindekiler" and maybe hardcode First Section for "Oku"
-        navigation.navigate('RisaleVirtualPageSectionList', {
-            workId: work.workId,
-            workTitle: work.title
-        });
+        handleToc();
     };
 
     const handleToc = () => {
         navigation.navigate('RisaleVirtualPageSectionList', {
             workId: work.workId,
-            workTitle: work.title
+            workTitle: work.title,
+            bookId: bookRegistryEntry?.bookId, // Pass canonical bookId
+            version: 'v1'
         });
     };
 

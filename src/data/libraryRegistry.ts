@@ -33,8 +33,8 @@ export const RISALE_LIBRARY: Library = {
             workId: 'mektubat',
             libraryId: 'risale_nur',
             title: 'Mektubat',
-            description: 'Çeşitli suallere cevaplar ve İslam hakikatleri.',
-            status: 'coming_soon',
+            description: 'Mektubat (154 bölüm)',
+            status: 'ready',
             orderIndex: 2,
         },
         {
@@ -42,7 +42,7 @@ export const RISALE_LIBRARY: Library = {
             libraryId: 'risale_nur',
             title: 'Lem\'alar',
             description: 'Tasavvufi ve imani bahislerin derinlemesine izahı.',
-            status: 'coming_soon',
+            status: 'ready',
             orderIndex: 3,
         },
         {

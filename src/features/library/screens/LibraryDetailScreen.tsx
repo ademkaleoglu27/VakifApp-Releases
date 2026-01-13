@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { theme } from '@/config/theme';
 import { Ionicons } from '@expo/vector-icons';
 import { getLibrary, Work } from '@/data/libraryRegistry';
+import { getEnabledBooks } from '@/config/booksRegistry'; // Debug import
 import { LinearGradient } from 'expo-linear-gradient';
 
 export const LibraryDetailScreen = () => {
@@ -11,15 +12,20 @@ export const LibraryDetailScreen = () => {
     const route = useRoute<any>();
     const { libraryId } = route.params;
 
+    if (__DEV__) {
+        console.log("[Library] enabled works", getEnabledBooks());
+    }
+
     let library = getLibrary(libraryId);
 
-    if (library && libraryId === 'risale_nur') {
-        // HARD LOCKDOWN: Only show Sözler
-        library = {
-            ...library,
-            works: library.works.filter(w => w.workId === 'sozler')
-        };
-    }
+    // if (library && libraryId === 'risale_nur') {
+    //     // HARD LOCKDOWN: Only show Sözler
+    //     library = {
+    //         ...library,
+    //         // Allow all enabled works
+    //         // works: library.works.filter(w => w.workId === 'sozler')
+    //     };
+    // }
 
     if (!library) {
         return (

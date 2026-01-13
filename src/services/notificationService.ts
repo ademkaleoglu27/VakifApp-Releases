@@ -8,47 +8,60 @@ export const notificationService = {
     registerForPushNotificationsAsync: async (): Promise<string | undefined> => {
         let token;
 
-        if (Platform.OS === 'android') {
-            await Notifications.setNotificationChannelAsync('default', {
-                name: 'default',
-                importance: Notifications.AndroidImportance.MAX,
-                vibrationPattern: [0, 250, 250, 250],
-                lightColor: '#FF231F7C',
-            });
-        }
-
-        if (Device.isDevice) {
-            const { status: existingStatus } = await Notifications.getPermissionsAsync();
-            let finalStatus = existingStatus;
-
-            if (existingStatus !== 'granted') {
-                const { status } = await Notifications.requestPermissionsAsync();
-                finalStatus = status;
+        // GRACEFUL DEGRADE: If Firebase is not initialized (e.g. dev client without google-services.json),
+        // capturing the token might fail with "Default FirebaseApp is not initialized".
+        // Prod Setup Note: Ensure google-services.json is present and EAS build includes it.
+        try {
+            if (Platform.OS === 'android') {
+                await Notifications.setNotificationChannelAsync('default', {
+                    name: 'default',
+                    importance: Notifications.AndroidImportance.MAX,
+                    vibrationPattern: [0, 250, 250, 250],
+                    lightColor: '#FF231F7C',
+                });
             }
 
-            if (finalStatus !== 'granted') {
-                alert('Failed to get push token for push notification!');
-                return;
+            if (Device.isDevice) {
+                const { status: existingStatus } = await Notifications.getPermissionsAsync();
+                let finalStatus = existingStatus;
+
+                if (existingStatus !== 'granted') {
+                    const { status } = await Notifications.requestPermissionsAsync();
+                    finalStatus = status;
+                }
+
+                if (finalStatus !== 'granted') {
+                    console.log('Failed to get push token for push notification!');
+                    return undefined;
+                }
+
+                // Try to get Device Push Token (FCM)
+                // This will fail if Firebase is not correctly configured in native code
+                try {
+                    const tokenData = await Notifications.getDevicePushTokenAsync();
+                    token = tokenData.data;
+                } catch (e) {
+                    console.warn("[Notification] FCM token fetch failed (Dev mode?):", e);
+                    // attempt fallback or just proceed without token
+                    // const expoToken = await Notifications.getExpoPushTokenAsync();
+                    // token = expoToken.data;
+                    return undefined;
+                }
+            } else {
+                console.log('Must use physical device for Push Notifications');
+                return undefined;
             }
 
-            try {
-                const tokenData = await Notifications.getDevicePushTokenAsync();
-                token = tokenData.data;
-            } catch (e) {
-                console.warn("Error getting Device Push Token", e);
-                const expoToken = await Notifications.getExpoPushTokenAsync();
-                token = expoToken.data;
-
+            if (token) {
+                await notificationService.syncToken(token);
+                return token;
             }
-        } else {
 
+        } catch (error) {
+            console.warn('[Notification] Push setup failed gracefully:', error);
+            return undefined;
         }
-
-        if (token) {
-            await notificationService.syncToken(token);
-        }
-
-        return token;
+        return undefined;
     },
 
     syncToken: async (token: string) => {
