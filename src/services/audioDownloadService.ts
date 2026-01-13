@@ -7,7 +7,8 @@ const AUDIO_DIR = `${FileSystem.documentDirectory}audio/`;
 // BASE URL for GitHub Releases or any other host
 // The user will need to update this URL after creating the release.
 // We can use a placeholder for now or a configurable constant.
-export const AUDIO_BASE_URL = 'https://github.com/ademkaleoglu27/VakifApp-Assets/releases/download/v1.0-audio/';
+export const AUDIO_BASE_URL = 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/v1.0-audio/';
+
 
 export const AudioDownloadService = {
 

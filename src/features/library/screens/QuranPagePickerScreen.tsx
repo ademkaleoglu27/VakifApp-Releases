@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard, StatusBar, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Q_TOTAL_PAGES } from '@/config/quranMaps';
 import { theme } from '@/config/theme';
@@ -12,12 +12,18 @@ export const QuranPagePickerScreen = () => {
     const insets = useSafeAreaInsets();
     const [inputPage, setInputPage] = useState('');
 
+    // PDF Reader removed
     const handleGo = () => {
         const page = parseInt(inputPage, 10);
         if (page > 0 && page <= Q_TOTAL_PAGES) {
-            navigation.navigate('QuranPdfReader', { page });
+            Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
             Keyboard.dismiss();
         }
+    };
+
+    // PDF Reader removed - show alert for shortcuts
+    const handleShortcut = (page: number) => {
+        Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
     };
 
     const ranges = [1, 100, 200, 300, 400, 500, 600];
@@ -80,7 +86,7 @@ export const QuranPagePickerScreen = () => {
                         <TouchableOpacity
                             key={r}
                             style={styles.shortcutBtn}
-                            onPress={() => navigation.navigate('QuranPdfReader', { page: r })}
+                            onPress={() => handleShortcut(r)}
                         >
                             <Text style={styles.shortcutText}>{r}</Text>
                         </TouchableOpacity>

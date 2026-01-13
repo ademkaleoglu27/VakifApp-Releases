@@ -52,13 +52,9 @@ import { LibraryDetailScreen } from '@/features/library/screens/LibraryDetailScr
 import { WorkDetailScreen } from '@/features/library/screens/WorkDetailScreen';
 
 // Risale Screens
-import { RisaleHomeScreen } from '@/features/risale/screens/RisaleHomeScreen';
-import { RisalePdfReaderScreen } from '@/features/library/screens/RisalePdfReaderScreen';
-import { RisaleSectionListScreen } from '@/features/library/screens/RisaleSectionListScreen';
+// import { RisaleHomeScreen } from '@/features/risale/screens/RisaleHomeScreen'; // REMOVED
+
 import { HatimDuasiScreen } from '@/features/library/screens/HatimDuasiScreen';
-import { QuranPdfScreen } from '@/features/quran/screens/QuranPdfScreen';
-import { RisaleReaderAdapter } from '@/features/risale/screens/RisaleReaderAdapter';
-// DELETED: RisaleReaderScreen (Legacy FlashList reader removed)
 import { RisaleSearchScreen } from '@/features/library/screens/RisaleSearchScreen';
 import { RisaleMyNotesScreen } from '@/features/library/screens/RisaleMyNotesScreen';
 import { ReadingHistoryScreen } from '@/features/risale/screens/ReadingHistoryScreen';
@@ -67,7 +63,6 @@ import { CevsenLandingScreen } from '@/features/library/screens/CevsenLandingScr
 import { DictionaryScreen } from '@/features/library/screens/DictionaryScreen';
 import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandingScreen';
 import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
-import { DuaPdfReaderScreen } from '@/features/library/screens/DuaPdfReaderScreen';
 
 
 import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
@@ -94,7 +89,17 @@ export type RootStackParamList = {
 
     // VP Reader
     RisaleVirtualPageSectionList: { workId: string; workTitle: string };
-    RisaleVirtualPageReader: { bookId: string; sectionId: string; sectionTitle: string; workTitle: string };
+    RisaleVirtualPageReader: {
+        bookId: string;
+        sectionId?: string;
+        sectionTitle?: string;
+        workTitle?: string;
+        mode?: 'target' | 'resume' | 'section';
+        source?: 'toc' | 'resume';
+        targetLocation?: any;
+        resumeLocation?: any;
+        initialLocation?: any;
+    };
 
     // Library Screens
     QuranSurahList: undefined;
@@ -108,11 +113,7 @@ export type RootStackParamList = {
     QuranJuzPicker: undefined;
 
     // Risale Screens
-    RisaleHome: undefined;
-    RisalePdfReader: { bookId?: string; title: string; uri: string; assetSource?: any };
 
-    RisaleSectionList: { workId: number; workTitle: string };
-    // DELETED: RisaleReader route (Legacy FlashList reader removed)
 
 
     Cevsen: { initialPage?: number };
@@ -129,13 +130,11 @@ export type RootStackParamList = {
 
     // Tesbihat
     TesbihatLanding: undefined;
-    TesbihatPlayer: { title: string; tracks: any[]; pdfSource?: any };
+    TesbihatPlayer: { title: string; tracks: any[] };
 
     // Dualar
     DualarLanding: undefined;
-    DuaPdfReader: { title: string; pdfSource: any };
     HatimDuasi: undefined;
-    QuranPdfReader: { page: number };
 };
 
 export type MainTabParamList = {
@@ -746,49 +745,11 @@ export const AppNavigator = () => {
                                     options={{ title: 'Sureler', headerShown: false }}
                                 />
 
-                                {/* Risale Screens */}
-                                <Stack.Screen
-                                    name="RisaleHome"
-                                    component={RisaleHomeScreen}
-                                    options={{ title: 'Risale-i Nur Külliyatı', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="RisalePdfReader"
-                                    component={RisalePdfReaderScreen}
-                                    options={{ title: 'Okuma', headerShown: true }}
-                                />
-                                <Stack.Screen
-                                    name="QuranHomeScreen"
-                                    component={QuranHomeScreen}
-                                    options={{ title: 'Kuran-ı Kerim', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="QuranPdfReader"
-                                    component={QuranPdfScreen}
-                                    options={{ title: 'Kuran-ı Kerim', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="QuranPageReader"
-                                    component={QuranPageReaderScreen}
-                                    options={{ title: 'Mushaf', headerShown: true }}
-                                />
-                                <Stack.Screen
-                                    name="QuranPagePicker"
-                                    component={QuranPagePickerScreen}
-                                    options={{ title: 'Sayfaya Git', headerShown: false, presentation: 'modal' }}
-                                />
-                                <Stack.Screen
-                                    name="QuranJuzPicker"
-                                    component={QuranJuzPickerScreen}
-                                    options={{ title: 'Cüz Seç', headerShown: false }}
-                                />
+                                {/* Risale Screens: Legacy routes removed. Entry via Library -> WorkDetail -> VP Reader */}
+                                {/* DELETED: RisaleHome */}
 
-                                <Stack.Screen
-                                    name="RisaleSectionList"
-                                    component={RisaleSectionListScreen}
-                                    options={{ title: 'Bölümler', headerShown: true }}
-                                />
-                                {/* DELETED: RisaleReader Stack.Screen (Legacy FlashList reader removed) */}
+                                {/* DELETED: Legacy PDF Reader */}
+                                {/* DELETED: Legacy FlashList Reader */}
 
                                 <Stack.Screen
                                     name="Cevsen"
@@ -820,11 +781,7 @@ export const AppNavigator = () => {
                                     component={DualarLandingScreen}
                                     options={{ title: 'Dualar', headerShown: false }}
                                 />
-                                <Stack.Screen
-                                    name="DuaPdfReader"
-                                    component={DuaPdfReaderScreen}
-                                    options={{ title: 'Dua', headerShown: false }}
-                                />
+
                                 {/* Risale Library V1 */}
                                 <Stack.Screen name="LibraryDetail" component={LibraryDetailScreen} options={{ headerShown: false }} />
                                 <Stack.Screen name="WorkDetail" component={WorkDetailScreen} options={{ headerShown: false }} />

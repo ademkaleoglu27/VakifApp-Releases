@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Q_TOTAL_JUZ, Q_JUZ_MAP } from '@/config/quranMaps';
 import { theme } from '@/config/theme';
@@ -16,8 +16,9 @@ export const QuranJuzPickerScreen = () => {
         page: Q_JUZ_MAP[i + 1]
     }));
 
+    // PDF Reader removed
     const handlePress = (page: number) => {
-        navigation.navigate('QuranPdfReader', { page });
+        Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
     };
 
     return (

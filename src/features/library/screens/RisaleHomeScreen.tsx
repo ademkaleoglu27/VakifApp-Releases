@@ -39,51 +39,41 @@ export const RisaleHomeScreen = () => {
     }, [navigation, checkBooks]);
 
     const handleOpen = async (book: RisaleBook) => {
-        // Special case for Sözler to test Text Reader
+        // Special case for Sözler to use VP Reader
         if (book.id === 'sozler') {
-            navigation.navigate('RisaleSectionList', {
+            navigation.navigate('RisaleVirtualPageSectionList', {
                 workId: book.id,
                 workTitle: book.title
             });
             return;
         }
 
-        if (!readyBooks[book.id]) {
-            Alert.alert('Hazırlanıyor', 'Bu kitap henüz hazırlanmadı, lütfen bekleyin veya uygulamayı yeniden başlatın.');
-            return;
-        }
-
-        navigation.navigate('RisalePdfReader', {
-            bookId: book.id,
-            title: book.title,
-            uri: getRisaleLocalPath(book.fileName)
-        });
+        // DEPRECATED: Legacy reader removed
+        // Now showing deprecation alert
+        Alert.alert(
+            'Okuyucu Kullanılamıyor',
+            'Bu okuyucu devre dışı bırakılmıştır. Şu an yalnızca "Sözler" kitabı Virtual Page Reader ile okunabilir. Diğer kitaplar yakında eklenecektir.',
+            [{ text: 'Tamam' }]
+        );
     };
 
 
 
     const renderItem = ({ item }: { item: RisaleBook }) => {
-        const isReady = readyBooks[item.id];
-
+        // PDF Status check removed - hard redirect in handleOpen
         return (
             <TouchableOpacity
                 style={styles.bookCard}
                 onPress={() => handleOpen(item)}
             >
-                <View style={[styles.bookIconContainer, isReady ? styles.iconReady : styles.iconMissing]}>
-                    <Ionicons
-                        name="book"
-                        size={20}
-                        color={isReady ? "#fff" : "#999"}
-                    />
+                <View style={styles.bookIconContainer}>
+                    <Ionicons name="book" size={20} color="#999" />
                 </View>
                 <View style={styles.bookInfo}>
                     <Text style={styles.bookTitle}>{item.title}</Text>
-                    <Text style={styles.bookStatus}>
-                        {isReady ? "Okumaya Hazır" : "Hazırlanıyor..."}
-                    </Text>
+                    <Text style={styles.bookStatus}>Tap key to open</Text>
                 </View>
-                {isReady && <Ionicons name="chevron-forward" size={16} color="#ccc" />}
+                <Ionicons name="chevron-forward" size={16} color="#ccc" />
             </TouchableOpacity>
         );
     };
@@ -107,13 +97,6 @@ export const RisaleHomeScreen = () => {
                 {/* Header Section */}
                 <View style={styles.header}>
 
-
-                    {/* <TouchableOpacity
-                        style={styles.card}
-                        onPress={() => navigation.navigate('RisaleSectionList', { workId: 1, workTitle: 'Sölzer PDF' })}
-                    >
-                        <Ionicons name="arrow-back" size={28} color="#fff" />
-                    </TouchableOpacity> */}
 
                     <View style={styles.headerTopContent}>
                         <View style={styles.iconContainer}>

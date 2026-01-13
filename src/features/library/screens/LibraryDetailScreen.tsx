@@ -11,7 +11,15 @@ export const LibraryDetailScreen = () => {
     const route = useRoute<any>();
     const { libraryId } = route.params;
 
-    const library = getLibrary(libraryId);
+    let library = getLibrary(libraryId);
+
+    if (library && libraryId === 'risale_nur') {
+        // HARD LOCKDOWN: Only show Sözler
+        library = {
+            ...library,
+            works: library.works.filter(w => w.workId === 'sozler')
+        };
+    }
 
     if (!library) {
         return (

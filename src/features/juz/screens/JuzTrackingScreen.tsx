@@ -98,7 +98,7 @@ export const JuzTrackingScreen = () => {
                         text: 'Okumaya Git',
                         onPress: () => {
                             const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                            navigation.navigate('QuranPdfReader', { page: startPage });
+                            Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
                         }
                     }
                 ]
@@ -300,7 +300,7 @@ export const JuzTrackingScreen = () => {
                                 if (selectedPart) {
                                     setManageModalVisible(false);
                                     const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                                    navigation.navigate('QuranPdfReader', { page: startPage });
+                                    Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
                                 }
                             }}
                         >

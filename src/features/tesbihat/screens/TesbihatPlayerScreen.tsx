@@ -146,15 +146,14 @@ export const TesbihatPlayerScreen = () => {
                             fileExists ? 'Cihazda Mevcut' : 'İndirilmemiş (Bulutta)'}
                     </Text>
 
-                    {/* Read Button */}
+                    {/* Read Button - DEPRECATED: Legacy Reader removed */}
                     {route.params.pdfSource && (
                         <TouchableOpacity
                             style={styles.readButton}
-                            onPress={() => navigation.navigate('RisalePdfReader', {
-                                title: title + ' Okuma',
-                                uri: '',
-                                assetSource: route.params.pdfSource
-                            })}
+                            onPress={() => Alert.alert(
+                                'Okuyucu Kullanılamıyor',
+                                'Bu okuyucu devre dışı bırakılmıştır. Lütfen ana menüden Kütüphane → Risale-i Nur → Sözler akışını kullanın.'
+                            )}
                         >
                             <Ionicons name="book-outline" size={20} color={theme.colors.primary} />
                             <Text style={styles.readButtonText}>Metni Oku</Text>

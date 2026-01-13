@@ -31,7 +31,13 @@ export const RisaleWorkListScreen = () => {
     const renderItem = ({ item }: { item: RisaleWork }) => (
         <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate('RisaleSectionList', { workId: item.id, workTitle: item.title })}
+            onPress={() => {
+                if (item.id === 'sozler') {
+                    navigation.navigate('RisaleVirtualPageSectionList', { workId: item.id, workTitle: item.title });
+                } else {
+                    alert('Bu kitap henüz eklenmemiştir.');
+                }
+            }}
         >
             <View style={styles.iconPlaceholder} />
             <View style={styles.info}>

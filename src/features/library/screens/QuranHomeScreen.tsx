@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Platform, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@/config/theme';
 import { Ionicons } from '@expo/vector-icons';
@@ -24,13 +24,13 @@ export const QuranHomeScreen = () => {
         return unsubscribe;
     }, [navigation]);
 
+    // PDF Reader removed - show alert
     const handleContinue = () => {
-        if (lastPage) {
-            navigation.navigate('QuranPdfReader', { page: lastPage });
-        } else {
-            // Default to page 1 if no history
-            navigation.navigate('QuranPdfReader', { page: 1 });
-        }
+        Alert.alert(
+            'Özellik Geçici Olarak Devre Dışı',
+            'Kuran PDF okuyucu yakında yeniden eklenecektir.',
+            [{ text: 'Tamam' }]
+        );
     };
 
     return (

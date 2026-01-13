@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, StatusBar, Platform } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, StatusBar, Platform, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { QURAN_SURAHS, SurahIndexItem } from '@/data/quranMushafIndex';
 import { theme } from '@/config/theme';
@@ -21,8 +21,9 @@ export const QuranSurahListScreen = () => {
         );
     }, [search]);
 
+    // PDF Reader removed
     const handlePress = (item: SurahIndexItem) => {
-        navigation.navigate('QuranPdfReader', { page: item.page });
+        Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
     };
 
     const renderItem = ({ item }: { item: SurahIndexItem }) => (

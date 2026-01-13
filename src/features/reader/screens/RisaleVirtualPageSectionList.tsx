@@ -18,7 +18,22 @@ interface GroupedSection {
 export const RisaleVirtualPageSectionList = () => {
     const route = useRoute<any>();
     const navigation = useNavigation<any>();
-    const { workId, workTitle } = route.params;
+    const { workId, workTitle: rawWorkTitle } = route.params;
+
+    // Provenance Audit: Fix bad encoding titles
+    const workTitle = useMemo(() => {
+        const map: Record<string, string> = {
+            'S├Âzler': 'Sözler',
+            'MÃ¼nazarat': 'Münazarat',
+            'Åualar': 'Şualar',
+            'Lem\'alar': 'Lemalar', // standardize
+        };
+        const fixed = map[rawWorkTitle] || rawWorkTitle;
+        if (fixed !== rawWorkTitle) {
+            console.warn('ENCODING_FIX_APPLIED', rawWorkTitle, '->', fixed);
+        }
+        return fixed;
+    }, [rawWorkTitle]);
 
     const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
 

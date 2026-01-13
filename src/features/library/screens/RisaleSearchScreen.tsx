@@ -8,7 +8,8 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     Keyboard,
-    SafeAreaView
+    SafeAreaView,
+    Alert
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -53,13 +54,12 @@ export const RisaleSearchScreen = () => {
     const handleResultPress = useCallback((item: RisaleSearchResult) => {
         Keyboard.dismiss();
 
-        // Direct navigation with sectionId - NO blank page
-        navigation.navigate('RisaleReader', {
-            sectionId: item.sectionId,
-            sectionTitle: item.sectionTitle,
-            workTitle: item.workTitle,
-            initialBlockIndex: item.chunkIndex
-        });
+        // DEPRECATED: Legacy route removed
+        Alert.alert(
+            'Okuyucu Kullanılamıyor',
+            'Bu okuyucu devre dışı bırakılmıştır. Lütfen ana menüden Kütüphane → Risale-i Nur → Sözler akışını kullanın.',
+            [{ text: 'Tamam' }]
+        );
     }, [navigation]);
 
     const highlightQuery = (text: string, q: string) => {

@@ -145,10 +145,8 @@ export const DualarLandingScreen = () => {
                     }
 
                     if (item.pdfSource) {
-                        navigation.navigate('DuaPdfReader', {
-                            title: item.title,
-                            pdfSource: item.pdfSource
-                        });
+                        // PDF Reader removed
+                        Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Dua PDF okuyucu yakında yeniden eklenecektir.');
                     }
                 }}
             >

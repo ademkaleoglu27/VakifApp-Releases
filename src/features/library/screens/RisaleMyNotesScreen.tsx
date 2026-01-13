@@ -41,16 +41,12 @@ export const RisaleMyNotesScreen = () => {
     };
 
     const handlePress = (bookId: string, pageNumber: number) => {
-        // Resolve URI
-        const uri = `${FileSystem.documentDirectory}risale/${bookId}.pdf`;
-        const title = getBookTitle(bookId);
-
-        navigation.navigate('RisalePdfReader', {
-            bookId,
-            title,
-            uri,
-            initialPage: pageNumber
-        });
+        // DEPRECATED: Legacy PDF route removed
+        Alert.alert(
+            'Okuyucu Kullanılamıyor',
+            'Bu okuyucu devre dışı bırakılmıştır. Lütfen ana menüden Kütüphane → Risale-i Nur → Sözler akışını kullanın.',
+            [{ text: 'Tamam' }]
+        );
     };
 
     const handleDeleteNote = async (id: string) => {

@@ -39,15 +39,12 @@ export const DecisionLinkedReadings = ({ decisionId }: { decisionId: string }) =
     };
 
     const handlePressLink = (item: RisaleDecisionLink) => {
-        const uri = `${FileSystem.documentDirectory}risale/${item.book_id}.pdf`;
-        const book = RISALE_BOOKS.find(b => b.id === item.book_id);
-
-        navigation.navigate('RisalePdfReader', {
-            bookId: item.book_id,
-            title: book?.title || item.book_id,
-            uri: uri,
-            initialPage: item.page_number
-        });
+        // DEPRECATED: PDF route removed
+        Alert.alert(
+            'Okuyucu Kullanılamıyor',
+            'Bu okuyucu devre dışı bırakılmıştır. Lütfen ana menüden Kütüphane → Risale-i Nur → Sözler akışını kullanın.',
+            [{ text: 'Tamam' }]
+        );
     };
 
     const getBookTitle = (id: string) => RISALE_BOOKS.find(b => b.id === id)?.title || id;
