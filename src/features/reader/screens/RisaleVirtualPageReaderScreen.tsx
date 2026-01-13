@@ -166,6 +166,15 @@ export const RisaleVirtualPageReaderScreen = () => {
         if (id === 'risale.sozler@diyanet.tr') return 'sozler';
         if (id === 'risale.mektubat@diyanet.tr') return 'mektubat';
         if (id === 'risale.lemalar@diyanet.tr') return 'lemalar';
+        if (id === 'risale.sualar@diyanet.tr') return 'sualar';
+        if (id === 'risale.asayi_musa@diyanet.tr') return 'asayi_musa';
+        if (id === 'risale.isaratul_icaz@diyanet.tr') return 'isaratul_icaz';
+        if (id === 'risale.mesnevi_nuriye@diyanet.tr') return 'mesnevi_nuriye';
+        if (id === 'risale.sikke_i_tasdik_i_gaybi@diyanet.tr') return 'sikke_i_tasdik_i_gaybi';
+        if (id === 'risale.barla_lahikasi@diyanet.tr') return 'barla_lahikasi';
+        if (id === 'risale.kastamonu_lahikasi@diyanet.tr') return 'kastamonu_lahikasi';
+        if (id === 'risale.emirdag_lahikasi@diyanet.tr') return 'emirdag_lahikasi';
+        if (id === 'risale.tarihce_i_hayat@diyanet.tr') return 'tarihce_i_hayat';
 
         // Legacy fallback supported via bridge logic above, but if we have a raw bookId that isn't mapped:
         if (id && !id.startsWith('risale.') && id !== 'sozler' && id !== 'mektubat' && id !== 'lemalar') {
