@@ -1,0 +1,11 @@
+{
+    "books": [
+        {
+            "id": "risale.sozler@diyanet.tr",
+            "path": "data/sources/sozler_raw.json",
+            "version": "1.0.0",
+            "title": "Sözler",
+            "enabled": true
+        }
+    ]
+}

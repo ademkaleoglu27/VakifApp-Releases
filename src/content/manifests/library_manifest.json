@@ -1,0 +1,25 @@
+{
+    "schemaVersion": "1.0",
+    "lastUpdated": "2026-01-13T09:00:00Z",
+    "collections": [
+        {
+            "id": "risale-i-nur",
+            "title": "Risale-i Nur Külliyatı",
+            "author": "Bediüzzaman Said Nursi",
+            "publisher": "Diyanet İşleri Başkanlığı",
+            "books": [
+                {
+                    "bookId": "risale.sozler@diyanet.tr",
+                    "title": "Sözler",
+                    "version": "1.0.0",
+                    "manifestUrl": "content/manifests/risale/risale.sozler@diyanet.tr.json",
+                    "coverImage": "assets/covers/sozler.jpg",
+                    "tags": [
+                        "temel",
+                        "iman"
+                    ]
+                }
+            ]
+        }
+    ]
+}

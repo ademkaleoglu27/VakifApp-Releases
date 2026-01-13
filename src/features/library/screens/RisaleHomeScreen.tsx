@@ -42,19 +42,19 @@ export const RisaleHomeScreen = () => {
         // Special case for Sözler to use VP Reader
         if (book.id === 'sozler') {
             navigation.navigate('RisaleVirtualPageSectionList', {
-                workId: book.id,
-                workTitle: book.title
+                bookId: 'risale.sozler@diyanet.tr',
+                version: '1.0.0',
+                workId: 'sozler', // Legacy Bridge
+                workTitle: 'Sözler'
             });
-            return;
+        } else {
+            // ... existing alert code
+            Alert.alert(
+                "Yakında",
+                "Bu kitap henüz yeni altyapıya taşınmadı. Şu an sadece Sözler açık.",
+                [{ text: "Tamam" }]
+            );
         }
-
-        // DEPRECATED: Legacy reader removed
-        // Now showing deprecation alert
-        Alert.alert(
-            'Okuyucu Kullanılamıyor',
-            'Bu okuyucu devre dışı bırakılmıştır. Şu an yalnızca "Sözler" kitabı Virtual Page Reader ile okunabilir. Diğer kitaplar yakında eklenecektir.',
-            [{ text: 'Tamam' }]
-        );
     };
 
 

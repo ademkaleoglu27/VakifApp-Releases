@@ -87,18 +87,29 @@ export type RootStackParamList = {
     ReadingTracking: undefined;
     Agenda: undefined;
 
-    // VP Reader
-    RisaleVirtualPageSectionList: { workId: string; workTitle: string };
+    // VP Reader (World Standard)
+    RisaleVirtualPageSectionList: {
+        bookId?: string;
+        version?: string;
+        workId?: string; // Legacy Bridge 
+        workTitle?: string; // Legacy Bridge 
+    };
     RisaleVirtualPageReader: {
-        bookId: string;
-        sectionId?: string;
-        sectionTitle?: string;
+        bookId?: string;
+        version?: string;
+        workId?: string; // Legacy Bridge
         workTitle?: string;
-        mode?: 'target' | 'resume' | 'section';
+        sectionId?: string; // UID or ID
+
+        // Optional navigation context
         source?: 'toc' | 'resume';
-        targetLocation?: any;
-        resumeLocation?: any;
-        initialLocation?: any;
+        mode?: 'section' | 'resume';
+
+        // Resume coordinates (for 'resume' mode)
+        resumeLocation?: {
+            streamIndex: number;
+            sectionId?: string;
+        };
     };
 
     // Library Screens

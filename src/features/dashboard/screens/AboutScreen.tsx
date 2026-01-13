@@ -9,7 +9,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS';
+type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS' | 'PROVENANCE';
 
 export const AboutScreen = (props: any) => {
     const [activeTab, setActiveTab] = useState<TabType>('GENERAL');
@@ -141,6 +141,36 @@ export const AboutScreen = (props: any) => {
         </ScrollView>
     );
 
+    const renderProvenance = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <View style={styles.card}>
+                <Text style={styles.sectionTitle}>Veri Kaynağı & Sürüm</Text>
+                <Text style={styles.paragraph}>
+                    Bu uygulama, doğrulanmış ve "World-Standard" formatında paketlenmiş Risale-i Nur külliyatını kullanır.
+                </Text>
+
+                <View style={[styles.infoBox, { flexDirection: 'row', alignItems: 'center', gap: 12 }]}>
+                    <Ionicons name="cube-outline" size={24} color="#64748B" />
+                    <View>
+                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Library Manifest</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 12, color: '#475569' }}>v1.0.0 (Global Registry)</Text>
+                    </View>
+                </View>
+
+                <View style={[styles.infoBox, { flexDirection: 'row', alignItems: 'center', gap: 12 }]}>
+                    <Ionicons name="book-outline" size={24} color="#64748B" />
+                    <View>
+                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Aktif Kitap (Development)</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 12, color: '#475569' }}>risale.sozler@diyanet.tr</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 10, color: '#94A3B8' }}>v1 (2025-01-13)</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.versionText}>App Build: v2.0 Premium (27)</Text>
+            </View>
+        </ScrollView>
+    );
+
     return (
         <View style={styles.container}>
             <PremiumHeader title="Rehber & Hakkında" backButton={true} />
@@ -150,6 +180,7 @@ export const AboutScreen = (props: any) => {
                 {renderTabButton('GUIDE', 'Rehber', 'book')}
                 {renderTabButton('ROLES', 'Yetkiler', 'shield-checkmark')}
                 {renderTabButton('CREDITS', 'Kaynaklar', 'link')}
+                {renderTabButton('PROVENANCE', 'Veri', 'server')}
             </View>
 
             <View style={styles.contentContainer}>
@@ -157,6 +188,7 @@ export const AboutScreen = (props: any) => {
                 {activeTab === 'GUIDE' && renderGuide()}
                 {activeTab === 'ROLES' && renderRoles()}
                 {activeTab === 'CREDITS' && renderCredits()}
+                {activeTab === 'PROVENANCE' && renderProvenance()}
             </View>
         </View>
     );

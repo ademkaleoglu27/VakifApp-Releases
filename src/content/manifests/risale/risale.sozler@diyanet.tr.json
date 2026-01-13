@@ -1,0 +1,13 @@
+{
+    "bookId": "risale.sozler@diyanet.tr",
+    "title": "Sözler",
+    "author": "Bediüzzaman Said Nursi",
+    "version": "1.0.0",
+    "schemaVersion": "1.0",
+    "source": {
+        "type": "database",
+        "table": "sections",
+        "keyColumn": "section_uid"
+    },
+    "sections": []
+}

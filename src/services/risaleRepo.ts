@@ -49,7 +49,62 @@ export const getSectionById = async (sectionId: string): Promise<RisaleSection |
         id: r.id,
         work_id: r.work_id,
         title: r.title,
-        order_no: r.order_index
+        order_no: r.order_index,
+        book_id: r.book_id,
+        section_uid: r.section_uid,
+        version: r.version
+    };
+};
+
+export const getSectionsByBookId = async (bookId: string, version?: string): Promise<RisaleSection[]> => {
+    const db = getDb();
+
+    let sql = 'SELECT * FROM sections WHERE book_id = ? AND type != ?';
+    let params: any[] = [bookId, 'footnote'];
+
+    if (version) {
+        sql += ' AND (version = ? OR version IS NULL)';
+        params.push(version);
+    }
+
+    sql += ' ORDER BY order_index ASC';
+
+    const results = await db.getAllAsync<any>(sql, params);
+    return results.map(r => ({
+        id: r.id, // Legacy ID currently still primary key, but section_uid is the logical key
+        work_id: r.work_id,
+        title: r.title,
+        order_no: r.order_index,
+        section_index: r.order_index,
+        type: r.type || 'main',
+        parent_id: r.parent_id,
+        book_id: r.book_id,
+        section_uid: r.section_uid,
+        version: r.version
+    }));
+};
+
+export const getSectionByUid = async (bookId: string, sectionUid: string, version?: string): Promise<RisaleSection | null> => {
+    const db = getDb();
+
+    let sql = 'SELECT * FROM sections WHERE book_id = ? AND section_uid = ?';
+    let params: any[] = [bookId, sectionUid];
+
+    if (version) {
+        sql += ' AND (version = ? OR version IS NULL)';
+        params.push(version);
+    }
+
+    const r = await db.getFirstAsync<any>(sql, params);
+    if (!r) return null;
+    return {
+        id: r.id,
+        work_id: r.work_id,
+        title: r.title,
+        order_no: r.order_index,
+        book_id: r.book_id,
+        section_uid: r.section_uid,
+        version: r.version
     };
 };
 
@@ -71,7 +126,10 @@ export const getSectionsByWork = async (workId: string): Promise<RisaleSection[]
         order_no: r.order_index,
         section_index: r.order_index,
         type: r.type || 'main',
-        parent_id: r.parent_id
+        parent_id: r.parent_id,
+        book_id: r.book_id,
+        section_uid: r.section_uid,
+        version: r.version
     }));
 };
 
@@ -79,18 +137,22 @@ export const getNextSection = async (workId: string, currentSectionId: string): 
     const db = getDb();
 
     // 1. Get current section's order index
-    const current = await db.getFirstAsync<any>('SELECT order_index FROM sections WHERE id = ?', [currentSectionId]);
+    const current = await db.getFirstAsync<any>(
+        'SELECT order_index FROM sections WHERE id = ? OR section_uid = ?',
+        [currentSectionId, currentSectionId]
+    );
     if (!current) return null;
 
     // 2. Find the immediate next section (main or sub, but not footnote)
     // We strictly use order_index > current.order_index to find the next one.
     const next = await db.getFirstAsync<any>(
-        'SELECT id, title FROM sections WHERE work_id = ? AND order_index > ? AND type != ? ORDER BY order_index ASC LIMIT 1',
+        'SELECT id, title, section_uid FROM sections WHERE work_id = ? AND order_index > ? AND type != ? ORDER BY order_index ASC LIMIT 1',
         [workId, current.order_index, 'footnote']
     );
 
     if (!next) return null;
-    return { id: next.id, title: next.title };
+    // V2: Return UID as ID if available to ensure forward navigation uses world standard
+    return { id: next.section_uid || next.id, title: next.title };
 };
 
 export const getAllWorks = async (): Promise<RisaleWork[]> => {
@@ -181,6 +243,7 @@ export interface StreamItem {
     type: StreamItemType;
     id: string;
     sectionId: string;
+    sectionUid?: string; // V2 Identity
     title?: string;
     chunks?: RisaleChunk[];
     orderIndex: number;
@@ -214,6 +277,7 @@ export const buildReadingStream = async (workId: string): Promise<StreamItem[]> 
             type: isMain ? 'section_header' : 'sub_header',
             id: `header-${sectionId}`,
             sectionId,
+            sectionUid: section.section_uid,
             title: sectionTitle,
             orderIndex: globalOrderIndex++
         });
@@ -267,13 +331,14 @@ export const buildSectionReadingStream = async (workId: string, targetSectionId:
 
     // 1. Fetch all sections order (lightweight)
     const sections = await db.getAllAsync<any>(
-        'SELECT id, title, type FROM sections WHERE work_id = ? AND type != ? ORDER BY order_index ASC',
+        'SELECT id, title, type, section_uid FROM sections WHERE work_id = ? AND type != ? ORDER BY order_index ASC',
         [workId, 'footnote']
     );
 
     // 2. Iterate sections until we find target
     for (const section of sections) {
         const sectionId = section.id;
+        const sectionUid = section.section_uid;
 
         // Count pages efficiently
         const paragraphCount = (await db.getFirstAsync<any>(
@@ -284,7 +349,7 @@ export const buildSectionReadingStream = async (workId: string, targetSectionId:
         const CHUNKS_PER_PAGE = 7;
         const pageCount = Math.ceil(paragraphCount / CHUNKS_PER_PAGE);
 
-        if (sectionId === targetSectionId) {
+        if (sectionId === targetSectionId || sectionUid === targetSectionId) {
             // THIS IS THE TARGET SECTION - BUILD IT FULLY
             // Add section header
             stream.push({
@@ -346,6 +411,9 @@ export const buildTocIndexMap = (stream: StreamItem[]): Map<string, number> => {
     stream.forEach((item, idx) => {
         if (item.type === 'section_header' || item.type === 'sub_header') {
             map.set(item.sectionId, idx);
+            if (item.sectionUid) {
+                map.set(item.sectionUid, idx);
+            }
         }
     });
     return map;
@@ -362,7 +430,7 @@ export interface SectionPageMapping {
 
 /**
  * Build section-to-first-page mapping for deterministic TOC navigation.
- * Returns map from sectionId to its first page info.
+ * Returns map from sectionId (and sectionUid) to its first page info.
  */
 export const buildSectionPageMap = (stream: StreamItem[]): Map<string, SectionPageMapping> => {
     const map = new Map<string, SectionPageMapping>();
@@ -372,11 +440,15 @@ export const buildSectionPageMap = (stream: StreamItem[]): Map<string, SectionPa
         // Only track first page for each section
         if (item.type === 'page' && !seenSections.has(item.sectionId)) {
             seenSections.add(item.sectionId);
-            map.set(item.sectionId, {
+            const info = {
                 sectionId: item.sectionId,
                 firstPageIndex: idx,
                 firstGlobalPageOrdinal: item.globalPageOrdinal || 1,
-            });
+            };
+            map.set(item.sectionId, info);
+            if (item.sectionUid) {
+                map.set(item.sectionUid, info);
+            }
         }
     });
 

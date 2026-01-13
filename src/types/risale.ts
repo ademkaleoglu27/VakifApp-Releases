@@ -13,6 +13,9 @@ export interface RisaleSection {
     section_index?: number;
     type?: string;
     parent_id?: string | null;
+    book_id?: string;
+    section_uid?: string; // Deterministic UID
+    version?: string;
 }
 
 export interface RisaleChunk {

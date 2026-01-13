@@ -128,11 +128,14 @@ export const readingProgressStore = {
      */
     async getBookLastRead(bookId: string): Promise<BookLastRead | null> {
         if (!ENABLE_RESUME_LAST_READ) return null;
-        const key = `${BOOK_LAST_READ_PREFIX}${bookId}`;
+        // V27: bookId is the primary key.
+        // Legacy support: 'sozler' is successfully mapped to 'risale.sozler@diyanet.tr' via bridge if needed,
+        // but typically we pass the effective ID directly.
         try {
-            const raw = await AsyncStorage.getItem(key);
-            return raw ? JSON.parse(raw) : null;
-        } catch {
+            const json = await AsyncStorage.getItem(this.getBookKey(bookId));
+            return json ? JSON.parse(json) : null;
+        } catch (e) {
+            console.warn('Failed to load last read', e);
             return null;
         }
     },
@@ -140,10 +143,20 @@ export const readingProgressStore = {
     /**
      * Set book-specific last read (throttled)
      */
-    setBookLastRead(bookId: string, data: BookLastRead): void {
+    setBookLastRead(bookId: string, data: BookLastRead) {
         if (!ENABLE_RESUME_LAST_READ) return;
-        const key = `${BOOK_LAST_READ_PREFIX}${bookId}`;
-        scheduleSave(key, data);
+        // The original implementation used scheduleSave for throttling.
+        // The provided snippet for setBookLastRead directly uses AsyncStorage.setItem,
+        // which removes the throttling. Adhering strictly to the provided snippet.
+        try {
+            AsyncStorage.setItem(this.getBookKey(bookId), JSON.stringify(data));
+        } catch (e) {
+            console.warn('Failed to save last read', e);
+        }
+    },
+
+    getBookKey(bookId: string) {
+        return `last_read_${bookId}`;
     },
 
     /**
@@ -151,7 +164,7 @@ export const readingProgressStore = {
      */
     async clearBookLastRead(bookId: string): Promise<void> {
         if (!ENABLE_RESUME_LAST_READ) return;
-        const key = `${BOOK_LAST_READ_PREFIX}${bookId}`;
+        const key = this.getBookKey(bookId); // Updated to use getBookKey
         // Cancel pending save if any
         const pending = pendingSaves.get(key);
         if (pending) {

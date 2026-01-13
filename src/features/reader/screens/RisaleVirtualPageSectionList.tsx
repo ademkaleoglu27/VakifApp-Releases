@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { getSectionsByWork, buildReadingStream, buildSectionPageMap, SectionPageMapping } from '@/services/risaleRepo';
+import { getSectionsByWork, getSectionsByBookId, buildReadingStream, buildSectionPageMap, SectionPageMapping } from '@/services/risaleRepo';
 import { RisaleSection } from '@/types/risale';
 import { readingProgressStore, BookLastRead } from '@/services/readingProgressStore';
 import { RisaleUserDb, RisaleBookmark } from '@/services/risaleUserDb';
@@ -18,19 +18,51 @@ interface GroupedSection {
 export const RisaleVirtualPageSectionList = () => {
     const route = useRoute<any>();
     const navigation = useNavigation<any>();
-    const { workId, workTitle: rawWorkTitle } = route.params;
+
+    // World Standard & Legacy Bridge Param Normalization
+    const {
+        bookId: pBookId,
+        version,
+        workId: pWorkId, // Legacy parameter
+        workTitle: pWorkTitle
+    } = route.params ?? {};
+
+    // 1. Resolve Work Identity (Legacy Bridge)
+    const bookId = pBookId ?? (pWorkId === 'sozler' ? 'risale.sozler@diyanet.tr' : undefined);
+    // Legacy support: if we have bookId 'risale.sozler...', map back to 'sozler' for old functions
+    const workId = pWorkId ?? (bookId === 'risale.sozler@diyanet.tr' ? 'sozler' : undefined);
+
+    // 2. Fail Fast - Data Integrity Check
+    useEffect(() => {
+        if (!bookId && !workId) {
+            console.error('[VP-TOC] Critical: Missing identity params', route.params);
+            // In dev/prod we should alert or go back
+        }
+    }, [bookId, workId]);
+
+    if (!bookId && !workId) {
+        return (
+            <View style={[styles.container, styles.center]}>
+                <Text style={{ color: 'red' }}>Error: Missing Book ID</Text>
+            </View>
+        );
+    }
+
+    // 3. Resolve Title
+    const rawWorkTitle = pWorkTitle || (workId === 'sozler' ? 'Sözler' : bookId);
 
     // Provenance Audit: Fix bad encoding titles
     const workTitle = useMemo(() => {
         const map: Record<string, string> = {
             'S├Âzler': 'Sözler',
             'MÃ¼nazarat': 'Münazarat',
-            'Åualar': 'Şualar',
-            'Lem\'alar': 'Lemalar', // standardize
+            'Åžualar': 'Şualar',
+            'Lem\'alar': 'Lemalar',
         };
-        const fixed = map[rawWorkTitle] || rawWorkTitle;
-        if (fixed !== rawWorkTitle) {
-            console.warn('ENCODING_FIX_APPLIED', rawWorkTitle, '->', fixed);
+        const activeTitle = rawWorkTitle || '';
+        const fixed = map[activeTitle] || activeTitle;
+        if (fixed !== activeTitle) {
+            console.warn('ENCODING_FIX_APPLIED', activeTitle, '->', fixed);
         }
         return fixed;
     }, [rawWorkTitle]);
@@ -41,14 +73,27 @@ export const RisaleVirtualPageSectionList = () => {
     const [lastRead, setLastRead] = useState<BookLastRead | null>(null);
     const [bookmarks, setBookmarks] = useState<RisaleBookmark[]>([]);
 
+    // Fetch sections from the database
+    // V2: Prefer bookId if available (World Standard)
+    const canUseBookId = bookId && bookId.startsWith('risale.');
+
     const { data: sections, isLoading } = useQuery({
-        queryKey: ['sections', workId],
-        queryFn: () => getSectionsByWork(workId),
+        queryKey: ['sections', canUseBookId ? bookId : workId],
+        queryFn: async () => {
+            if (canUseBookId) {
+                return getSectionsByBookId(bookId!);
+            }
+            if (workId) {
+                return getSectionsByWork(workId);
+            }
+            return [];
+        },
+        enabled: !!(bookId || workId)
     });
 
     // Fetch stream for sectionPageMap (V25.1 deterministic target)
     const { data: stream } = useQuery({
-        queryKey: ['readingStream', workId],
+        queryKey: ['readingStream', workId], // Stream builder still uses legacy workId for now
         queryFn: () => buildReadingStream(workId),
     });
 
@@ -61,11 +106,9 @@ export const RisaleVirtualPageSectionList = () => {
     // Group sections by parent
     const groupedSections = useMemo(() => {
         if (!sections) return [];
-
         const mainSections: GroupedSection[] = [];
         const childMap = new Map<string, RisaleSection[]>();
 
-        // First pass: collect children
         for (const section of sections) {
             if (section.parent_id) {
                 if (!childMap.has(section.parent_id)) {
@@ -75,7 +118,6 @@ export const RisaleVirtualPageSectionList = () => {
             }
         }
 
-        // Second pass: build grouped structure
         for (const section of sections) {
             if (!section.parent_id && section.type === 'main') {
                 mainSections.push({
@@ -84,40 +126,42 @@ export const RisaleVirtualPageSectionList = () => {
                 });
             }
         }
-
         return mainSections;
     }, [sections]);
 
     const toggleExpand = (sectionId: string) => {
         setExpandedSections(prev => {
             const newSet = new Set(prev);
-            if (newSet.has(sectionId)) {
-                newSet.delete(sectionId);
-            } else {
-                newSet.add(sectionId);
-            }
+            if (newSet.has(sectionId)) newSet.delete(sectionId);
+            else newSet.add(sectionId);
             return newSet;
         });
     };
 
-    const navigateToSection = (section: RisaleSection) => {
-        // V25.2: Deterministic target with firstPageIndex - use navigate (not push)
-        const pageInfo = sectionPageMap.get(section.id);
+    const handleSectionPress = (section: RisaleSection) => {
+        // V2 Kimlik: Katı UID Kullanımı (KİLİTLİ)
+        const targetId = section.section_uid;
 
-        // If pageInfo not ready yet, wait - don't navigate with undefined firstPageIndex
-        if (!pageInfo) {
-            console.warn('[TOC] V25.2: sectionPageMap not ready for section', section.id);
+        if (!targetId) {
+            console.error('[TOC] GÜVENLİK KİLİDİ: section_uid eksik', section.id, section.title);
+            // KİLİTLENDİ: Hata koruması, UID olmadan navigasyona izin verme
             return;
         }
 
-        // V25.6: Section-Only Mode (Guaranteed Navigation)
+        const pageInfo = sectionPageMap.get(targetId);
+
+        if (!pageInfo) {
+            console.warn('[TOC] sectionPageMap henüz hazır değil, yine de açılıyor:', targetId);
+            // Fallback: Reader will load section stream and start at 0
+        }
+
         navigation.navigate('RisaleVirtualPageReader', {
-            bookId: workId,
+            bookId: bookId,
+            sectionId: targetId,
             mode: 'section',
             source: 'toc',
-            sectionId: section.id,
-            sectionTitle: section.title,
-            workTitle: workTitle,
+            version: version,
+            initialLocation: pageInfo ? { streamIndex: pageInfo.firstPageIndex } : undefined
         });
     };
 
@@ -129,7 +173,6 @@ export const RisaleVirtualPageSectionList = () => {
                     const savedLastRead = await readingProgressStore.getBookLastRead(workId);
                     setLastRead(savedLastRead);
                 }
-
                 const savedBookmarks = await RisaleUserDb.getBookmarks(workId);
                 setBookmarks(savedBookmarks);
             } catch (e) {
@@ -139,34 +182,27 @@ export const RisaleVirtualPageSectionList = () => {
         loadProgressAndBookmarks();
     }, [workId]);
 
-    // Navigate to continue reading position
-    // Navigate to continue reading position
     const handleContinueReading = () => {
         if (!lastRead) return;
-
-        // V25.3: Resume Mode - use navigate and send explicit resume params
         navigation.navigate('RisaleVirtualPageReader', {
-            bookId: workId,
+            bookId: bookId,
             mode: 'resume',
             source: 'resume',
             resumeLocation: {
                 streamIndex: lastRead.streamIndex,
                 sectionId: lastRead.sectionId,
             },
-            workTitle: workTitle,
+            version: version
         });
     };
 
-    // Navigate to bookmark position
     const handleBookmarkPress = (bookmark: RisaleBookmark) => {
-        // Bookmarks currently store page_number which maps to stream index
-        // For VP reader, we use page_number as stream index approximation
         navigation.navigate('RisaleVirtualPageReader', {
-            bookId: workId,
-            workTitle: workTitle,
+            bookId: bookId,
             initialLocation: {
                 streamIndex: bookmark.page_number,
             },
+            version: version
         });
     };
 
@@ -247,7 +283,7 @@ export const RisaleVirtualPageSectionList = () => {
                             {/* Main Section */}
                             <TouchableOpacity
                                 style={styles.item}
-                                onPress={() => navigateToSection(group.main)}
+                                onPress={() => handleSectionPress(group.main)}
                                 onLongPress={() => hasChildren && toggleExpand(group.main.id)}
                             >
                                 <View style={styles.itemIcon}>
@@ -281,7 +317,7 @@ export const RisaleVirtualPageSectionList = () => {
                                 <TouchableOpacity
                                     key={child.id}
                                     style={styles.subItem}
-                                    onPress={() => navigateToSection(child)}
+                                    onPress={() => handleSectionPress(child)}
                                 >
                                     <View style={styles.subItemIcon}>
                                         <Ionicons name="remove-outline" size={14} color="#94A3B8" />

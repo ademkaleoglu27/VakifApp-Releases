@@ -145,8 +145,51 @@ const SectionHeader = React.memo(({ item, isMain }: { item: StreamItem, isMain: 
 export const RisaleVirtualPageReaderScreen = () => {
     const route = useRoute<any>();
     const navigation = useNavigation();
-    const { bookId, workId, sectionId: startSectionId, workTitle } = route.params;
-    const effectiveWorkId = bookId || workId || 'sozler';
+
+    // V27: World Standard Params & Bridge
+    const {
+        bookId: pBookId,
+        sectionId,
+        version,
+        workTitle,
+        workId: pWorkId // Legacy
+    } = route.params ?? {};
+
+    // 1. Resolve Identities
+    const bookId = pBookId ?? (pWorkId === 'sozler' ? 'risale.sozler@diyanet.tr' : undefined);
+    const legacyWorkId = pWorkId ?? (bookId === 'risale.sozler@diyanet.tr' ? 'sozler' : undefined);
+
+    useEffect(() => {
+        console.log('[VP-Reader open]', { bookId, legacyWorkId, sectionId });
+        if (!bookId && !legacyWorkId) {
+            console.error('[Reader] Critical: Missing identity params');
+        }
+    }, []);
+
+    // Content Bridge: Map global bookId to legacy internal ID for Repo/DB
+    // TODO: Move this mapping to ContentResolver in V27.1
+    const getInternalWorkId = (id: string | undefined) => {
+        if (id === 'risale.sozler@diyanet.tr') return 'sozler';
+
+        // Legacy fallback supported via bridge logic above, but if we have a raw bookId that isn't mapped:
+        if (id && !id.startsWith('risale.') && id !== 'sozler') {
+            // If strict mode, block. If bridge mode, maybe allow? 
+            // Current strict rule:
+            console.warn('[Reader] Legacy workId usage:', id);
+        }
+        return id || 'sozler';
+    };
+
+    const effectiveWorkId = getInternalWorkId(bookId || legacyWorkId);
+
+    // Safety Check
+    if (effectiveWorkId === 'LOCKED_INVALID_ID') {
+        // In a real app we might show an error screen here, 
+        // but for now we let it fail or return null render if logic permits.
+        // The query hooks will won't run or will fail gracefully with invalid ID.
+    }
+    // Use effectiveWorkId for Repo/DB calls
+    // Use bookId for ProgressStore/UserDb (Future: migrate store to use bookId too)
     const windowWidth = Dimensions.get('window').width;
 
     const [fontSize, setFontSize] = useState(18);
@@ -268,8 +311,12 @@ export const RisaleVirtualPageReaderScreen = () => {
             }
 
             // Priority 2: Explicit section navigation from Contents (sectionId)
-            if (startSectionId) {
-                // Will be handled after stream loads via tocIndexMap
+            // If mode is 'section', we load a partial stream for this section.
+            // Index 0 of that stream is inherently the start of the section.
+            if (sectionId) {
+                // FALLBACK: If TOC didn't pass initialLocation (map wasn't ready),
+                // default to 0 (start of section stream)
+                setInitialTarget({ streamIndex: 0, sectionId });
                 setInitialPositionLoaded(true);
                 return;
             }
@@ -282,7 +329,7 @@ export const RisaleVirtualPageReaderScreen = () => {
             setInitialPositionLoaded(true);
         };
         loadInitialPosition();
-    }, [effectiveWorkId, route.params?.initialLocation?.streamIndex, startSectionId]);
+    }, [effectiveWorkId, route.params?.initialLocation?.streamIndex, sectionId]);
 
 
     // V25.1: Scroll retry state
@@ -721,7 +768,7 @@ export const RisaleVirtualPageReaderScreen = () => {
                             elevation: 2,
                         }}
                         onPress={() => {
-                            navigation.replace('RisaleVirtualPageReader', {
+                            (navigation as any).replace('RisaleVirtualPageReader', {
                                 bookId: effectiveWorkId,
                                 mode: 'section',
                                 source: 'toc',
@@ -825,6 +872,7 @@ export const RisaleVirtualPageReaderScreen = () => {
                                 data={stream}
                                 renderItem={renderItem}
                                 keyExtractor={(item) => item.id}
+                                // @ts-ignore
                                 estimatedItemSize={200}
                                 overrideItemLayout={(layout: any, item) => {
                                     layout.size = getItemSize(item);
