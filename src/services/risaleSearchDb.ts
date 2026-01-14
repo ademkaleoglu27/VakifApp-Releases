@@ -49,12 +49,17 @@ export const RisaleSearchDb = {
 
         try {
             // Read Meta from assets
-            const metaPath = RisaleAssets.getJsonPath('risale.meta.json');
-            const metaStr = await FileSystem.readAsStringAsync(metaPath);
-            const meta = JSON.parse(metaStr);
+            // const metaPath = RisaleAssets.getJsonPath('risale.meta.json');
+            // const metaStr = await FileSystem.readAsStringAsync(metaPath);
+            // const meta = JSON.parse(metaStr);
+            const meta: { books: string[] } = { books: [] };
 
             await this.db.execAsync('BEGIN TRANSACTION');
 
+            // Disable JSON indexing for build safety.
+            // TODO: Migrate to using DB FTS.
+            console.log('[RisaleSearchDb] JSON Indexing Disabled for Build Safety.');
+            /*
             for (const bookSlugg of meta.books) {
                 // e.g. "sozler.json"
                 try {
@@ -87,6 +92,7 @@ export const RisaleSearchDb = {
                     console.error(`Failed to index ${bookSlugg}`, e);
                 }
             }
+            */
 
             await this.db.execAsync('COMMIT');
             console.log('Search Indexing Complete.');
