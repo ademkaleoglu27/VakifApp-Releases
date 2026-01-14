@@ -15,6 +15,7 @@ buyuk-*/
 kucuk-*/
 *.psd
 *.pdf
+!assets/dualar/*.pdf
 
 # Audio
 audio_release_bundle/

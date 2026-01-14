@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Asset } from 'expo-asset';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform, ActivityIndicator, Alert } from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { useNavigation } from '@react-navigation/native';
@@ -54,7 +55,8 @@ const DUA_CATEGORIES: DuaCategory[] = [
         icon: 'restaurant-outline',
         color: '#10b981',
         duaCount: 1,
-        pdfSource: require('../../../../assets/dualar/yemek_duasi.pdf'),
+        // pdfSource removed to avoid static require error. 
+        // We will load it via expo-asset if needed.
     },
 ];
 
@@ -144,8 +146,30 @@ export const DualarLandingScreen = () => {
                         return;
                     }
 
-                    if (item.pdfSource) {
-                        // PDF Reader removed
+                    if (item.id === 'yemek') {
+                        // Safe Load Pattern
+                        const loadAndOpenPdf = async () => {
+                            try {
+                                // Dynamic require via expo-asset
+                                const asset = Asset.fromModule(require('../../../../assets/dualar/yemek_duasi.pdf'));
+                                await asset.downloadAsync();
+
+                                if (asset.localUri || asset.uri) {
+                                    // Normally verify file exists or open reader
+                                    // For now, keep disabled but prove resolution works
+                                    Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Dua PDF okuyucu yakında yeniden eklenecektir.');
+                                } else {
+                                    throw new Error('Uri not resolved');
+                                }
+                            } catch (error) {
+                                console.error('PDF Load Error:', error);
+                                Alert.alert('Hata', 'Dosya yüklenemedi. Bağlantınızı kontrol edin.');
+                            }
+                        };
+
+                        loadAndOpenPdf();
+                    } else if (item.pdfSource) {
+                        // Legacy fallback
                         Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Dua PDF okuyucu yakında yeniden eklenecektir.');
                     }
                 }}
