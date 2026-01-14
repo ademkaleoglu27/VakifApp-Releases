@@ -1,4 +1,4 @@
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { getDb, getLastSyncedAt, setLastSyncedAt } from '@/services/db/sqlite';
 import { NetInfoState, useNetInfo } from '@react-native-community/netinfo'; // Or simple check
 
@@ -31,6 +31,9 @@ export const syncService = {
         try {
             const lastSyncedAt = await getLastSyncedAt();
             const db = await getDb();
+
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Sync failed: Supabase client not initialized.');
 
             // A. Decisions
             let queryD = supabase.from('decisions').select('*');
@@ -200,6 +203,12 @@ export const syncService = {
     pushChanges: async () => {
         const db = await getDb();
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) {
+                console.warn('Push skipped: Supabase client missing.');
+                return;
+            }
+
             // Read Outbox
             const pendingParams = await db.getAllAsync<{ id: number, type: string, payload: string }>('SELECT * FROM outbox ORDER BY id ASC');
 

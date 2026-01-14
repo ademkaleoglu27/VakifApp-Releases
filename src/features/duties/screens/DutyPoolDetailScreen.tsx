@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, Modal, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '@/navigation/AppNavigator';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,6 +26,12 @@ export const DutyPoolDetailScreen = () => {
 
     const fetchMembers = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         // Using a join to get profile info
         const { data, error } = await supabase
             .from('rotation_pool_members')
@@ -46,6 +52,9 @@ export const DutyPoolDetailScreen = () => {
     };
 
     const fetchAllUsers = async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         // For the picker
         const { data } = await supabase.from('profiles').select('*').order('display_name');
         if (data) setAllUsers(data);
@@ -78,6 +87,9 @@ export const DutyPoolDetailScreen = () => {
             { pool_id: poolId, user_id: otherItem.user_id, sort_order: currentItem.sort_order }
         ];
 
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         for (const update of updates) {
             const { error } = await supabase
                 .from('rotation_pool_members')
@@ -98,6 +110,9 @@ export const DutyPoolDetailScreen = () => {
                     text: 'Sil',
                     style: 'destructive',
                     onPress: async () => {
+                        const supabase = getSupabaseClient();
+                        if (!supabase) return;
+
                         const { error } = await supabase
                             .from('rotation_pool_members')
                             .delete()
@@ -113,6 +128,9 @@ export const DutyPoolDetailScreen = () => {
     };
 
     const addMember = async (userId: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const maxSortOrder = members.length > 0 ? Math.max(...members.map(m => m.sort_order)) : 0;
 
         const { error } = await supabase.from('rotation_pool_members').insert({

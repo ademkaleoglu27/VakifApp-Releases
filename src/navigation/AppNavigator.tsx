@@ -65,6 +65,7 @@ import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandi
 import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 import { ContentHealthDebugScreen } from '@/screens/ContentHealthDebugScreen';
+import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 
 
 import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
@@ -154,6 +155,7 @@ export type RootStackParamList = {
         onRetry?: () => void;
     };
     ContentHealthDebug: undefined;
+    DeveloperTools: undefined;
 };
 
 export type MainTabParamList = {
@@ -459,10 +461,10 @@ const CustomDrawerContent = React.memo((props: any) => {
                             {/* Geliştirici Kontrol - Only in DEV */}
                             {__DEV__ && (
                                 <DrawerItem
-                                    label="Geliştirici Kontrol"
-                                    icon="settings-outline"
-                                    onPress={() => navigate('ContentHealthDebug')}
-                                    color="#334155"
+                                    label="Developer Tools"
+                                    icon="construct-outline"
+                                    onPress={() => navigate('DeveloperTools')}
+                                    color="#b45309"
                                 />
                             )}
 
@@ -805,11 +807,18 @@ export const AppNavigator = () => {
                                     options={{ title: 'Dualar', headerShown: false }}
                                 />
                                 {__DEV__ && (
-                                    <Stack.Screen
-                                        name="ContentHealthDebug"
-                                        component={ContentHealthDebugScreen}
-                                        options={{ title: 'Geliştirici Kontrol', headerShown: true }}
-                                    />
+                                    <>
+                                        <Stack.Screen
+                                            name="ContentHealthDebug"
+                                            component={ContentHealthDebugScreen}
+                                            options={{ title: 'Geliştirici Kontrol', headerShown: true }}
+                                        />
+                                        <Stack.Screen
+                                            name="DeveloperTools"
+                                            component={DeveloperToolsScreen}
+                                            options={{ title: 'Geliştirici Araçları', headerShown: false }}
+                                        />
+                                    </>
                                 )}
 
                                 {/* Risale Library V1 */}

@@ -11,6 +11,7 @@ import { View, ActivityIndicator, Text } from 'react-native';
 import { NotificationProvider } from '@/context/NotificationsContext';
 import { useFonts } from 'expo-font';
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
+import { Env } from '@/config/env';
 
 // Google Fonts Imports
 import {
@@ -66,6 +67,16 @@ export default function App() {
   const initAppData = async () => {
     try {
       setDbError(null);
+
+      // 1. Critical Config Check
+      if (!Env.isValid) {
+        const missing = Env.getMissingKeys().join(', ');
+        throw new Error(JSON.stringify({
+          code: 'ERR_CONFIG_MISSING',
+          details: `Missing Environment Variables: ${missing}\nPlease configure them in EAS Secrets or .env file.`
+        }));
+      }
+
       await ensureContentDbReady();
       // Risale Assets Initialization
       await RisaleAssets.init();

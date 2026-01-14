@@ -15,3 +15,19 @@
 - [ ] `git tag -a golden-vXXX -m "..."` oluşturulmuş.
 - [ ] `backup/golden-vXXX` branch'i oluşturulmuş.
 - [ ] Remote push yapılmış.
+
+## EAS PRODUCTION ENVIRONMENT VARIABLES (CRITICAL)
+
+EAS Dashboard üzerinde (Project -> Environment Variables -> Production) aşağıdaki değişkenlerin tanımlı olması **ZORUNLUDUR**:
+
+| Variable Name | Type | Value (Örnek/Referans) |
+| :--- | :--- | :--- |
+| `EXPO_PUBLIC_SUPABASE_URL` | Plain Text | `https://xyz.supabase.co` |
+| `EXPO_PUBLIC_SUPABASE_ANON_KEY` | Sensitive | `eyJhb...` |
+
+**Not:** Bu değişkenler eksikse build **crash etmez** (safe-mode aktiftir), ancak uygulama açılışta "Configuration Error" ekranı gösterir ve çalışmaz.
+
+### Safe Build & Runtime Garantisi
+- `src/config/env.ts` ile runtime kontrolü yapılır.
+- Build sırasında (bundling) env eksik olsa bile dummy değerler ile bundle başarılı olur.
+- App açılışta `Env.isValid` kontrolü yapar. Başarısız ise kullanıcıya net hata gösterilir.

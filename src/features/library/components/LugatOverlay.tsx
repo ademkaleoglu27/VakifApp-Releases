@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle, forwardRef } from 'react';
+import React, { useState, useImperativeHandle, forwardRef, useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { LugatInlineCard } from './LugatInlineCard';
 import { LugatService } from '../../../services/lugatService';
@@ -6,42 +6,42 @@ import { LugatService } from '../../../services/lugatService';
 export interface LugatControlRef {
     open: (word: string, chunkId: number, pageY: number, prev?: string, next?: string) => void;
     close: () => void;
-}
-
-export interface LugatControlRef {
-    open: (word: string, chunkId: number, pageY: number, prev?: string, next?: string) => void;
-    close: () => void;
+    getCardHeight?: () => number;
 }
 
 export const LugatOverlay = forwardRef<LugatControlRef>((_, ref) => {
     const [visible, setVisible] = useState(false);
-    const [entry, setEntry] = useState<any>(null); // Using any temporarily to avoid tight coupling if type not exported
+    const [entry, setEntry] = useState<any>(null);
     const [y, setY] = useState(0);
+    const cardHeightRef = useRef(260); // Default estimate
 
     useImperativeHandle(ref, () => ({
         open: async (clickedWord: string, chunkId: number, pageY: number, prev?: string, next?: string) => {
-
-            // Perform Multi-Word Smart Lookup
             const result = await LugatService.resolveMultiWordKey(clickedWord, prev, next);
 
             if (result) {
-                // Open only if found (or if we want to show 'not found' we'd pass a dummy entry)
                 setEntry(result);
                 setY(pageY);
                 setVisible(true);
             }
-            // else: silently ignore click if no definition found? 
-            // Or show toast? For now, silence is standard for "Reader" (no distraction)
         },
         close: () => {
             setVisible(false);
-        }
+        },
+        getCardHeight: () => cardHeightRef.current
     }));
 
     if (!visible || !entry) return null;
 
     return (
-        <View style={[styles.container, { top: y + 20 }]}>
+        <View
+            style={[styles.container, { top: y }]}
+            onLayout={(e) => {
+                if (e.nativeEvent.layout.height > 50) {
+                    cardHeightRef.current = e.nativeEvent.layout.height;
+                }
+            }}
+        >
             <LugatInlineCard
                 entry={entry}
                 onClose={() => setVisible(false)}

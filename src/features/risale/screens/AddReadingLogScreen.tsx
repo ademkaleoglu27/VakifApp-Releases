@@ -6,7 +6,7 @@ import { useAuthStore } from '@/store/authStore';
 import { Ionicons } from '@expo/vector-icons';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { PageStepper } from '@/components/PageStepper';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 
 interface ReadingEntry {
     readingLog: any;
@@ -38,6 +38,9 @@ export const AddReadingLogScreen = () => {
 
     const loadContacts = async () => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) return;
+
             const { data, error } = await supabase
                 .from('profiles')
                 .select('*')

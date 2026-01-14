@@ -25,6 +25,9 @@ type Props = {
     color?: string;
     isAfterSual?: boolean; // Premium V20: Previous chunk was standalone "Sual:"
     onWordPress?: (word: string, pageY: number, prev?: string, next?: string) => void;
+    // World Standard Interaction V27
+    onTokenTap?: (token: any) => void;
+    onTokenLongPress?: (token: any) => void;
     onWordLongPress?: (word: string) => void;
     arabicColor?: string; // default RNK kırmızısı
     interactiveEnabled?: boolean; // Scroll Optimization: Disable interactions during scroll
@@ -107,6 +110,8 @@ export const RisaleTextRenderer = memo((props: Props) => {
         color = "#000",
         isAfterSual = false,
         onWordPress,
+        onTokenTap,
+        onTokenLongPress,
         arabicColor = RNK_ARABIC,
         interactiveEnabled = true, // Default enabled
         variant,
@@ -141,18 +146,29 @@ export const RisaleTextRenderer = memo((props: Props) => {
     }, [text]);
 
     // Word press handler - Now captures coordinates and context (Smart Span)
-    const handlePress = useCallback((w: string, pageY: number, prev?: string, next?: string) => {
-        if (!onWordPress || !interactiveEnabled) return;
-        // Normalize: remove punctuation
-        const clean = w.replace(/[.,;:!?(){}[\]"']/g, "").toLowerCase();
+    const handlePress = useCallback((type: 'tap' | 'long', w: string, pageY: number, index: number, prev?: string, next?: string) => {
+        if (!interactiveEnabled) return;
 
-        // Context cleaning (basic)
-        const cleanPrev = prev ? prev.replace(/[.,;:!?(){}[\]"']/g, "").toLowerCase() : undefined;
-        const cleanNext = next ? next.replace(/[.,;:!?(){}[\]"']/g, "").toLowerCase() : undefined;
+        // Normalize: remove punctuation BUT keep apostrophes for phrase lookup
+        // Old: w.replace(/[.,;:!?(){}[\]"']/g, "")
+        // New: keep ' and ’
+        const clean = w.replace(/[.,;:!?(){}[\]"]/g, "").toLowerCase();
 
         // Pass coordinates and context up
-        onWordPress(clean, pageY, cleanPrev, cleanNext);
-    }, [onWordPress, interactiveEnabled]);
+        if (type === 'tap') {
+            if (onTokenTap) {
+                onTokenTap({ rawToken: w, normalizedToken: clean, pageY, index, context: { prev, next } });
+            } else if (onWordPress) {
+                // Legacy Fallback
+                onWordPress(clean, pageY, prev, next);
+            }
+        } else {
+            // Long Press
+            if (onTokenLongPress) {
+                onTokenLongPress({ rawToken: w, normalizedToken: clean, pageY, index, context: { prev, next } });
+            }
+        }
+    }, [onWordPress, onTokenTap, onTokenLongPress, interactiveEnabled]);
 
     // ─────────────────────────────────────────────────────────────
     // SEMANTIC DETECTORS
@@ -239,7 +255,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                     <Text
                         key={`${keyPrefix}-ey-${eyIdx}`}
                         style={styles.eyAddress}
-                        onPress={interactiveEnabled ? (e) => handlePress(chunk, e.nativeEvent.pageY) : undefined}
+                        onPress={interactiveEnabled ? (e) => handlePress('tap', chunk, e.nativeEvent.pageY, eyIdx) : undefined}
                     >
                         {chunk}
                     </Text>
@@ -258,14 +274,14 @@ export const RisaleTextRenderer = memo((props: Props) => {
                         <Text
                             key={`${keyPrefix}-sacred-${eyIdx}-${i}`}
                             style={{ fontWeight: '700', color: '#000' }}
-                            onPress={interactiveEnabled ? (e) => handlePress(part, e.nativeEvent.pageY) : undefined}
+                            onPress={interactiveEnabled ? (e) => handlePress('tap', part, e.nativeEvent.pageY, i) : undefined}
                         >
                             {part}
                         </Text>
                     );
                 }
                 // Normal text part -> split by words for Lugat if needed
-                if (onWordPress) {
+                if (onWordPress || onTokenTap) {
                     const words = part.split(/(\s+|[.,;!?]+)/);
                     return words.map((w, wIdx) => {
                         const cleanW = w.trim();
@@ -295,7 +311,8 @@ export const RisaleTextRenderer = memo((props: Props) => {
                             return (
                                 <Text
                                     key={`${keyPrefix}-tr-${i}-${wIdx}`}
-                                    onPress={interactiveEnabled ? (e) => handlePress(cleanW, e.nativeEvent.pageY, prevWord, nextWord) : undefined}
+                                    onPress={interactiveEnabled ? (e) => handlePress('tap', cleanW, e.nativeEvent.pageY, wIdx, prevWord, nextWord) : undefined}
+                                    onLongPress={interactiveEnabled ? (e) => handlePress('long', cleanW, e.nativeEvent.pageY, wIdx, prevWord, nextWord) : undefined}
                                     suppressHighlighting={false}
                                     style={{
                                         // Slightly larger touch area
@@ -312,7 +329,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                 return <Text key={`${keyPrefix}-tr-${eyIdx}-${i}`}>{part}</Text>;
             });
         });
-    }, [color, onWordPress, handlePress, interactiveEnabled]);
+    }, [color, onWordPress, onTokenTap, onTokenLongPress, handlePress, interactiveEnabled]);
 
     // ─────────────────────────────────────────────────────────────
     // SEGMENTED RENDERER (Flow Control)

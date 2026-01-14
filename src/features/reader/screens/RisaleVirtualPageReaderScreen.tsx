@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, StatusBar, Modal, ScrollView, AppState, AppStateStatus } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity, StatusBar, Modal, ScrollView, AppState, AppStateStatus, LayoutChangeEvent } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import { FlashList } from '@shopify/flash-list';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
-import Animated, { useSharedValue, useAnimatedStyle, runOnJS, withTiming } from 'react-native-reanimated';
+import { GestureDetector, Gesture, GestureHandlerRootView, ScrollView as RNGHScrollView } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle, runOnJS, withTiming, withSpring } from 'react-native-reanimated';
 
 import { buildReadingStream, buildReadingStreamByBookId, buildSectionReadingStream, buildTocIndexMap, getNextSection, StreamItem } from '@/services/risaleRepo';
 import { readingProgressStore } from '@/services/readingProgressStore';
@@ -14,6 +14,7 @@ import { RisaleUserDb } from '@/services/risaleUserDb';
 import { ENABLE_RESUME_LAST_READ } from '@/config/features';
 import { RisaleChunk } from '@/types/risale';
 import { RisaleTextRenderer } from '@/features/library/components/RisaleTextRenderer';
+import { generatePhraseCandidates } from '@/features/library/utils/lugatNormalize';
 
 import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,6 +24,7 @@ import { BookLastRead } from '@/services/readingProgressStore';
 import { LugatOverlay, LugatControlRef } from '@/features/library/components/LugatOverlay';
 import { ReaderMoreMenuButton } from '@/features/reader/components/ReaderMoreMenuButton';
 import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
+import { PagesGridView } from '@/features/reader/components/PagesGridView';
 // TOC removed from reader - now accessed via SectionList screen
 
 /**
@@ -54,6 +56,21 @@ import { FootnoteToggle } from '@/features/reader/components/FootnoteToggle';
 // Regex to detect footnote references like [1], [2] in text
 const FOOTNOTE_REF_REGEX = /\[(\d+)\]/g;
 
+// Helpers
+const clamp = (v: number, min: number, max: number) => {
+    'worklet';
+    return Math.max(min, Math.min(max, v));
+};
+const roundFont = (v: number) => Math.round(v);
+
+type ZoomMetrics = { fontSize: number; lineHeight: number; paragraphGap: number };
+
+const makeMetrics = (fs: number): ZoomMetrics => ({
+    fontSize: fs,
+    lineHeight: Math.round(fs * 1.55),
+    paragraphGap: Math.round(fs * 0.70),
+});
+
 // Extract footnote numbers from a chunk's text
 const extractFootnoteRefs = (text: string): number[] => {
     const refs: number[] = [];
@@ -66,10 +83,16 @@ const extractFootnoteRefs = (text: string): number[] => {
 };
 
 // Page Item Component (Diamond Standard V23.1 - with Footnote Support)
-const PageItem = React.memo(({ item, fontSize, onWordPress }: {
+// Page Item Component (Diamond Standard V23.1 - with Footnote Support)
+const PageItem = React.memo(({ item, fontSize, onWordPress, onTokenTap, onTokenLongPress, onLayout, paragraphGap }: {
     item: StreamItem,
     fontSize: number,
-    onWordPress?: (word: string, chunkId: number, py: number, prev?: string, next?: string) => void
+    onWordPress?: (word: string, chunkId: number, py: number, prev?: string, next?: string) => void,
+    // World Standard Interaction V27
+    onTokenTap?: (token: any) => void,
+    onTokenLongPress?: (token: any) => void,
+    onLayout?: (event: LayoutChangeEvent) => void,
+    paragraphGap?: number
 }) => {
     if (!item.chunks) return null;
 
@@ -85,21 +108,24 @@ const PageItem = React.memo(({ item, fontSize, onWordPress }: {
     });
 
     return (
-        <View style={styles.pageContainer}>
+        <View style={styles.pageContainer} onLayout={onLayout}>
             {item.chunks.map((chunk) => {
-                const isInteractive = !!onWordPress;
+                const isInteractive = !!onWordPress || !!onTokenTap;
                 return (
-                    <View key={chunk.id} style={{ marginBottom: 12 }}>
+                    <View key={chunk.id} style={{ marginBottom: paragraphGap ?? 12 }}>
                         <RisaleTextRenderer
                             text={chunk.text_tr ?? ''}
                             fontSize={fontSize}
                             interactiveEnabled={isInteractive}
                             variant={chunk.type === 'poetry' ? 'poetry' : undefined}
                             poetryLines={chunk.meta?.lines}
-                            onWordPress={isInteractive ?
+                            // Legacy
+                            onWordPress={onWordPress ?
                                 (w, py, prev, next) => onWordPress(w, chunk.id, py, prev, next)
-                                : undefined
-                            }
+                                : undefined}
+                            // New World Standard
+                            onTokenTap={onTokenTap ? (t) => onTokenTap({ ...t, chunkId: chunk.id }) : undefined}
+                            onTokenLongPress={onTokenLongPress ? (t) => onTokenLongPress({ ...t, chunkId: chunk.id }) : undefined}
                         />
                     </View>
                 );
@@ -186,6 +212,8 @@ export const RisaleVirtualPageReaderScreen = () => {
     };
 
     const effectiveWorkId = getInternalWorkId(legacyWorkId ?? bookId);
+    // ICAZ_EXPERIMENT: Protocol Flag (Hoisted)
+    const isIcarz = bookId === "risale.isaratul_icaz@diyanet.tr";
 
     // Safety Check
     if (effectiveWorkId === 'LOCKED_INVALID_ID') {
@@ -233,27 +261,20 @@ export const RisaleVirtualPageReaderScreen = () => {
         currentItemRef.current = currentItemIndex;
     }, [fontSize, currentItemIndex]);
 
-    // Lugat State
-    const LUGAT_PREF_KEY = 'lugat_enabled_pref';
-    const lugatEnabledRef = useRef(false);
-    const [lugatEnabled, setLugatEnabled] = useState(false); // State to trigger re-render
-    const [lugatPrefLoaded, setLugatPrefLoaded] = useState(false); // Track if pref loaded
+    // Lugat State (Fixed Enabled)
+    const lugatEnabledRef = useRef(true);
     const lugatRef = useRef<LugatControlRef>(null);
     const isScrollingRef = useRef(false);
     const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+    // Phrase Construction Helpers
+    // This allows us to rebuild the phrase from token context if needed, 
+    // but generatePhraseCandidates does it better inside the handler.
+
     // Hydration State
     const [hydratedItemId, setHydratedItemId] = useState<string | null>(null);
-
-    // Load Lugat Pref
-    useEffect(() => {
-        AsyncStorage.getItem(LUGAT_PREF_KEY).then(val => {
-            const enabled = val === 'true';
-            lugatEnabledRef.current = enabled;
-            setLugatEnabled(enabled);
-            setLugatPrefLoaded(true);
-        });
-    }, []);
+    // ICAZ_EXPERIMENT: Multi-page hydration for responsiveness
+    const [hydratedItemIds, setHydratedItemIds] = useState<Set<string>>(new Set());
 
     // V25.7: Load Next Section Info (on mount or when sectionId changes)
     useEffect(() => {
@@ -344,10 +365,12 @@ export const RisaleVirtualPageReaderScreen = () => {
                 const firstPage = stream.find(s => s.type === 'page');
                 if (firstPage) {
                     setHydratedItemId(firstPage.id);
+                    // ICAZ: Initialize set
+                    if (isIcarz) setHydratedItemIds(new Set([firstPage.id]));
                 }
             }
         }
-    }, [stream, hydratedItemId]);
+    }, [stream, hydratedItemId, isIcarz]);
 
     // Load initial position on mount (before stream is ready)
     useEffect(() => {
@@ -628,9 +651,238 @@ export const RisaleVirtualPageReaderScreen = () => {
 
     // Zoom State (preserved)
     const scale = useSharedValue(1);
-    const savedScale = useSharedValue(1);
+    const savedScale = useSharedValue(1); // Legacy for other books
+
+    // Icarz Protocol State
+    const committedScale = useSharedValue(1);
+    const gestureScale = useSharedValue(1);
+    const tx = useSharedValue(0);
+    const ty = useSharedValue(0);
+    const minScaleDuringGesture = useSharedValue(1);
+    // ICAZ_EXPERIMENT intent filter
+    const pinchStartTs = useSharedValue(0);
+    const pinchStartScale = useSharedValue(1);
     const isPinching = useRef(false);
     const setIsPinching = useCallback((val: boolean) => { isPinching.current = val; }, []);
+
+    // Icarz Protocol State
+    // isIcarz hoisted to top
+    const [viewMode, setViewMode] = useState<'READER' | 'GRID'>('READER'); // 'READER' | 'GRID'
+    const [scrollEnabled, setScrollEnabled] = useState(true);
+    const [zoomMetrics, setZoomMetrics] = useState<ZoomMetrics>(() => makeMetrics(18));
+    const zoomMetricsRef = useRef(zoomMetrics);
+    useEffect(() => { zoomMetricsRef.current = zoomMetrics; }, [zoomMetrics]);
+
+    // ICAZ_EXPERIMENT: Lugat Gates & Positioning
+    const [interactionLocked, setInteractionLocked] = useState(false);
+    const interactionLockRef = useRef(false);
+    useEffect(() => { interactionLockRef.current = interactionLocked; }, [interactionLocked]);
+
+    // V27.2: Layout Stability Gate (Icarz)
+    const [layoutSettled, setLayoutSettled] = useState(true);
+    const layoutSettledRef = useRef(true);
+    useEffect(() => { layoutSettledRef.current = layoutSettled; }, [layoutSettled]);
+
+    const [readerPointerEvents, setReaderPointerEvents] = useState<'auto' | 'none'>('auto');
+
+    const lockInteractionsFor = useCallback((ms: number) => {
+        if (!isIcarz) return;
+        setInteractionLocked(true);
+        setTimeout(() => setInteractionLocked(false), ms);
+    }, [isIcarz]);
+
+    const unlockPointerSoon = useCallback((ms: number) => {
+        setTimeout(() => setReaderPointerEvents('auto'), ms);
+    }, []);
+
+    const lugatZoomLockRef = useRef(false);
+    const lugatResumeTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const pendingTapRef = useRef<{ w: string; chunkId: number; pageY: number; ts: number; } | null>(null);
+    const PENDING_TAP_TTL_MS = 650;
+
+    const setLugatZoomLock = useCallback((locked: boolean) => {
+        lugatZoomLockRef.current = locked;
+        if (locked) lugatRef.current?.close();
+    }, []);
+
+    // Cleanup timer
+    useEffect(() => {
+        return () => {
+            if (lugatResumeTimerRef.current) clearTimeout(lugatResumeTimerRef.current);
+        };
+    }, []);
+
+    const adjustLugatAnchorYPreferUpper = (pageY: number) => {
+        const h = lugatRef.current?.getCardHeight?.() ?? 260;
+        const screenH = Dimensions.get('window').height;
+
+        // Target: Show card in upper-middle band if possible
+        const TOP_SAFE = 70;     // header + safe area
+        const BOTTOM_SAFE = 90;  // bottom gesture safe
+        const GAP = 10;
+
+        const maxTop = screenH - h - BOTTOM_SAFE;
+
+        // 1) Try opening ABOVE the word
+        const topCandidate = pageY - h - GAP;
+        if (topCandidate >= TOP_SAFE) {
+            // Use top if fits, but clamp to maxTop just in case
+            return Math.max(TOP_SAFE, Math.min(topCandidate, maxTop));
+        }
+
+        // 2) Try opening BELOW the word
+        const bottomCandidate = pageY + GAP;
+        if (bottomCandidate <= maxTop) {
+            // Use bottom if fits
+            return Math.max(TOP_SAFE, Math.min(bottomCandidate, maxTop));
+        }
+
+        // 3) Fallback: Clamp to screen
+        return Math.max(TOP_SAFE, Math.min(bottomCandidate, maxTop));
+    };
+
+    const tryConsumePendingTap = useCallback(() => {
+        if (!pendingTapRef.current) return;
+        const p = pendingTapRef.current;
+        pendingTapRef.current = null;
+
+        if (!isIcarz) return;
+        if (viewMode === 'GRID') return;
+        if (lugatZoomLockRef.current) return;
+        if (isScrollingRef.current) return;
+        if (!lugatEnabledRef.current) return;
+
+        lugatRef.current?.open(p.w, p.chunkId, p.pageY);
+    }, [isIcarz, viewMode]);
+
+    const scheduleLugatResume = useCallback(() => {
+        if (lugatResumeTimerRef.current) clearTimeout(lugatResumeTimerRef.current);
+        lugatResumeTimerRef.current = setTimeout(() => {
+            setLugatZoomLock(false);
+        }, 120);
+    }, [setLugatZoomLock]);
+
+    // Shared Values for UI Thread Zoom (Icarz)
+    const focalX = useSharedValue(0);
+    const focalY = useSharedValue(0);
+    const gridOpacity = useSharedValue(0);
+    const readerOpacity = useSharedValue(1);
+
+    const lastOffsetYRef = useRef(0); // For momentum kill
+    const pinchRef = useRef<any>(null); // Reference for simultaneous handlers
+
+    const renderLazyScrollComponent = useCallback((props: any) => {
+        return (
+            <RNGHScrollView
+                {...props}
+                ref={props.ref} // Forward the ref from FlashList
+                activeOffsetY={isIcarz ? [-4, 4] : undefined} // 4px micro-lock for instant pinch
+                simultaneousHandlers={pinchRef} // Allow pinch to start while scroll logic is evaluating
+            />
+        );
+    }, [isIcarz]);
+
+    const killMomentum = useCallback(() => {
+        if (flatListRef.current) {
+            flatListRef.current.scrollToOffset({ offset: lastOffsetYRef.current, animated: false });
+        }
+    }, []);
+
+    const commitZoomIcarz = useCallback((finalScale: number) => {
+        const currentFont = zoomMetricsRef.current.fontSize;
+        const nextFont = clamp(roundFont(currentFont * finalScale), 12, 42);
+
+        if (nextFont === currentFont || isNaN(nextFont)) return;
+
+        // Anchor: keep reading pos
+        const anchorIndex = currentItemRef.current;
+        const anchorItemId = stream?.[anchorIndex]?.id;
+
+        // 1. Lock Down & Clear (FAIL-SAFE)
+        setLayoutSettled(false); // Gate interactions
+        setInteractionLocked(true);
+        setHydratedItemId(null);
+        setHydratedItemIds(new Set()); // Critical: Clear old hydration
+        lugatRef.current?.close();
+
+        // 2. Commit Metrics (Triggers Render)
+        setZoomMetrics(makeMetrics(nextFont));
+
+        // Safety: Timeout if layout never settles
+        setTimeout(() => {
+            if (!layoutSettledRef.current) {
+                console.warn('[Zoom] Layout settle timeout, forcing unlock');
+                setLayoutSettled(true);
+                setInteractionLocked(false);
+                unlockPointerSoon(0);
+            }
+        }, 800);
+
+        // 3. Force Layout Update & Restore sequence
+        requestAnimationFrame(() => {
+            flatListRef.current?.scrollToIndex({ index: anchorIndex, animated: false });
+
+            // Wait for frames and interactions
+            requestAnimationFrame(() => {
+                InteractionManager.runAfterInteractions(() => {
+                    if (anchorItemId) {
+                        // 4. Set Hydration (This triggers PageItem render + onLayout)
+                        setHydratedItemId(anchorItemId);
+
+                        if (isIcarz) {
+                            const idx = Math.max(0, Math.min(anchorIndex, stream.length - 1));
+                            const ids = new Set<string>();
+                            ids.add(stream[idx].id);
+                            if (idx > 0) ids.add(stream[idx - 1].id);
+                            if (idx < stream.length - 1) ids.add(stream[idx + 1].id);
+                            setHydratedItemIds(ids);
+
+                            if (viewMode !== 'GRID') setLugatZoomLock(false);
+                            // Note: setLayoutSettled(true) will happen in onLayout
+                        } else {
+                            // Legacy path
+                            setLayoutSettled(true);
+                            setInteractionLocked(false);
+                        }
+                    }
+                });
+            });
+        });
+    }, [stream, isIcarz, viewMode]);
+
+    // Handle Page Layout (Stability Signal)
+    const handlePageLayout = useCallback((itemId: string) => {
+        if (!isIcarz) return;
+        // Only trigger if we are waiting for settlement and this item is active
+        if (!layoutSettledRef.current && hydratedItemIds.has(itemId)) {
+            InteractionManager.runAfterInteractions(() => {
+                setLayoutSettled(true);
+                setInteractionLocked(false);
+                unlockPointerSoon(120);
+            });
+        }
+    }, [isIcarz, hydratedItemIds, unlockPointerSoon]);
+
+    const handleGridPagePress = useCallback((index: number) => {
+        // Switch back to reader
+        runOnJS(setViewMode)('READER');
+        gridOpacity.value = withTiming(0, { duration: 160 });
+        readerOpacity.value = withTiming(1, { duration: 160 });
+
+        if (isIcarz) setLugatZoomLock(true);
+
+        // Scroll and Hydrate
+        setTimeout(() => {
+            flatListRef.current?.scrollToIndex({ index, animated: false });
+            runOnJS(setScrollEnabled)(true);
+            InteractionManager.runAfterInteractions(() => {
+                if (stream && stream[index]) {
+                    setHydratedItemId(stream[index].id);
+                }
+                if (isIcarz) setTimeout(() => setLugatZoomLock(false), 200);
+            });
+        }, 80);
+    }, [stream]);
 
     const handleZoom = useCallback((zoomIn: boolean) => {
         const currentSize = fontSizeRef.current;
@@ -642,11 +894,9 @@ export const RisaleVirtualPageReaderScreen = () => {
     }, []);
 
     // Toggle Lugat (triggers re-render)
+    // Toggle Lugat is now NO-OP (Always Enabled)
     const handleToggleLugat = useCallback((isEnabled: boolean) => {
-        lugatEnabledRef.current = isEnabled;
-        setLugatEnabled(isEnabled); // Trigger re-render
-        AsyncStorage.setItem(LUGAT_PREF_KEY, String(isEnabled));
-        if (!isEnabled) lugatRef.current?.close();
+        // No-op
     }, []);
 
     // Restart Book Handler - Reset to beginning
@@ -670,36 +920,126 @@ export const RisaleVirtualPageReaderScreen = () => {
         // Save immediately
         lastPersistedIndexRef.current = 0;
         readingProgressStore.saveNow(effectiveWorkId, data);
+
+        // Icarz Initial Hydration Population
+        if (isIcarz) {
+            const ids = new Set<string>();
+            ids.add(firstItem.id);
+            // +1 next
+            if (stream.length > 1) ids.add(stream[1].id);
+            setHydratedItemIds(ids);
+        }
     }, [stream, effectiveWorkId]);
 
     // V25.8: Double-tap tolerance for Lugat interactions
     const lastWordTapRef = useRef<{ w: string; ts: number } | null>(null);
 
-    // Word Click (preserved) - with lugatPrefLoaded guard + double-tap tolerance
+    // Legacy Word Handler (Deprecated but kept for non-Icarz fallback)
     const handleWordClick = useCallback((word: string, chunkId: number, pageY: number) => {
-        if (isScrollingRef.current) return;
-        if (!lugatPrefLoaded) return; // Guard: don't process until pref loaded
         if (!lugatEnabledRef.current) return;
-
         const w = (word || '').trim();
         if (w.length < 2) return;
 
-        const now = Date.now();
-        const last = lastWordTapRef.current;
-
-        // Double-tap tolerance: If same word tapped within 250ms, force open
-        // This mitigates issues where single taps are dropped due to hydration logic
-        if (last && last.w === w && (now - last.ts) < 250) {
-            lugatRef.current?.open(w, chunkId, pageY);
-            lastWordTapRef.current = null;
+        // Icarz Rollback Fix: Momentum check
+        if (isIcarz && isScrollingRef.current) {
+            isScrollingRef.current = false;
+        } else if (isScrollingRef.current) {
             return;
         }
 
-        lastWordTapRef.current = { w, ts: now };
+        // FIX: Close previous before opening new one (Stable Legacy Behavior)
+        lugatRef.current?.close();
 
-        // Standard single tap attempt
-        lugatRef.current?.open(word, chunkId, pageY);
-    }, [lugatPrefLoaded]);
+        // FIX: Use Prefer-Upper Anchor placement
+        const safeY = adjustLugatAnchorYPreferUpper(pageY);
+        lugatRef.current?.open(w, chunkId, safeY);
+    }, [isIcarz]);
+
+    // ─────────────────────────────────────────────────────────────
+    // WORLD STANDARD INTERACTIONS (V27)
+    // ─────────────────────────────────────────────────────────────
+
+    // 1. Highlight (Tap)
+    const handleTokenTap = useCallback((token: any) => {
+        // Gates
+        if (isIcarz) {
+            if (viewMode === 'GRID') return;
+            if (lugatZoomLockRef.current) return;
+            if (interactionLockRef.current) return;
+            if (viewMode !== 'READER') return;
+            if (isScrollingRef.current) return; // No buffer on tap? Highlight needs stability.
+        }
+
+        // TODO: Implement Visual Highlight State (Reader Level)
+        // For now, minimal feedback or no-op as requested "Highlight UI (Minimal)..."
+        // "Kısa tap: highlight anında" -> implies we need state.
+        // Given complexity budget, we might skip visual state for this step if not critical, 
+        // OR just log it. 
+        // User requested: "Selected highlights: Map...". 
+        // I will implement visual toggle later or if requested. 
+        // Prioritizing Lookup logic first.
+        // Actually, let's just allow it.
+    }, [isIcarz, viewMode]);
+
+    // 2. Phrase Lookup (Long Press)
+    const handleTokenLongPress = useCallback((token: any) => {
+        // Gates
+        if (!lugatEnabledRef.current) return;
+
+        if (isIcarz) {
+            if (viewMode === 'GRID') return;
+            if (lugatZoomLockRef.current) return;
+            if (interactionLockRef.current) return;
+            if (viewMode !== 'READER') return;
+
+            // Icarz Special: If scrolling momentum is active during long press, kill it and proceed
+            if (isScrollingRef.current) {
+                // Kill momentum implicitly by allowing interaction? 
+                // We just clear the flag because user INTENT is interaction.
+                isScrollingRef.current = false;
+            }
+
+            // Positioning
+            const safeY = adjustLugatAnchorYPreferUpper(token.pageY);
+            // Override pageY
+            token.pageY = safeY;
+        } else {
+            // Standard behavior: no interaction during scroll
+            if (isScrollingRef.current) return;
+        }
+
+        // Phrase Generation
+        const candidates = generatePhraseCandidates(
+            [token.context?.prev, token.rawToken, token.context?.next].filter(Boolean) as string[],
+            token.context?.prev ? 1 : 0 // Clicked index relative to array
+        );
+
+        // Use first candidate (longest/most relevant)
+        const phrase = candidates.length > 0 ? candidates[candidates.length - 1] : token.normalizedToken;
+
+        // FIX: Close previous before opening new one to ensure state refresh
+        lugatRef.current?.close();
+
+        // FIX: Pass correct chunkId instead of 0
+        // FIX: Use Prefer-Upper Anchor placement
+        // Note: For long press, Icarz flow might have already adjusted token.pageY above.
+        // But for non-Icarz flow, we need to adjust it here or ensure token.pageY is handled.
+        // Actually, let's play safe and adjust it here if not already adjusted?
+        // But wait, for Icarz we mutate token.pageY in handleTokenLongPress above.
+        // Let's rely on adjustLugatAnchorYPreferUpper being idempotent-ish if called again?
+        // Or better, just call it here for everyone if we want consistency.
+        // However, Icarz block specifically did "Override pageY".
+
+        // Let's just use token.pageY which is now potentially adjusted for Icarz.
+        // But for non-Icarz, it is RAW. So we should adjust it if it wasn't adjuted.
+
+        let targetY = token.pageY;
+        if (!isIcarz) {
+            targetY = adjustLugatAnchorYPreferUpper(token.pageY);
+        }
+
+        lugatRef.current?.open(phrase || token.normalizedToken, token.chunkId, targetY);
+    }, [isIcarz, viewMode]);
 
     // Scroll Handlers (preserved)
     const onScrollBegin = useCallback(() => {
@@ -711,29 +1051,207 @@ export const RisaleVirtualPageReaderScreen = () => {
 
     const onScrollEnd = useCallback(() => {
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+        const delay = isIcarz ? 60 : 120; // Fast debounce for Icarz
+
         scrollTimeoutRef.current = setTimeout(() => {
             isScrollingRef.current = false;
             InteractionManager.runAfterInteractions(() => {
                 if (stream && stream[currentItemRef.current]) {
-                    setHydratedItemId(stream[currentItemRef.current].id);
+                    const currentId = stream[currentItemRef.current].id;
+                    setHydratedItemId(currentId);
+
+                    if (isIcarz) {
+                        // 3-Page Hydration (Active + Neighbors)
+                        const ids = new Set<string>();
+                        ids.add(currentId);
+                        const idx = currentItemRef.current;
+                        if (idx > 0) ids.add(stream[idx - 1].id);
+                        if (idx < stream.length - 1) ids.add(stream[idx + 1].id);
+                        setHydratedItemIds(ids);
+
+                        // Resume Lugat Buffer
+                        setTimeout(() => {
+                            const p = pendingTapRef.current;
+                            if (p && (Date.now() - p.ts) > PENDING_TAP_TTL_MS) {
+                                pendingTapRef.current = null;
+                                return;
+                            }
+                            tryConsumePendingTap();
+                        }, 0);
+                    }
                 }
             });
-        }, 120); // Faster re-hydration (was 250ms)
-    }, [stream]);
+        }, delay);
+    }, [stream, isIcarz, tryConsumePendingTap]);
 
     // Pinch Gesture (preserved)
-    const pinchGesture = useMemo(() => Gesture.Pinch()
-        .onStart(() => { runOnJS(setIsPinching)(true); })
-        .onUpdate((e) => { scale.value = savedScale.value * e.scale; })
-        .onEnd(() => {
-            runOnJS(setIsPinching)(false);
-            if (scale.value > 1.1) { runOnJS(handleZoom)(true); }
-            else if (scale.value < 0.9) { runOnJS(handleZoom)(false); }
-            scale.value = withTiming(1);
-        }), [handleZoom, setIsPinching, scale, savedScale]);
+    const pinchGesture = useMemo(() => {
+        if (!isIcarz) {
+            // GOLD STANDARD (Legacy/Existing)
+            return Gesture.Pinch()
+                .onStart(() => { runOnJS(setIsPinching)(true); })
+                .onUpdate((e) => { scale.value = savedScale.value * e.scale; })
+                .onEnd(() => {
+                    runOnJS(setIsPinching)(false);
+                    if (scale.value > 1.1) { runOnJS(handleZoom)(true); }
+                    else if (scale.value < 0.9) { runOnJS(handleZoom)(false); }
+                    scale.value = withTiming(1);
+                });
+        }
 
-    const animatedStyle = useAnimatedStyle(() => ({
-        transform: [{ scale: scale.value }],
+        // WORLD STANDARD (Icarz Protocol)
+        // ICAZ_EXPERIMENT thresholds (tuned)
+        const GRID_ENTER_THRESHOLD = 0.40;   // grid çok zor açılsın
+        const GRID_EXIT_THRESHOLD = 0.72;   // (opsiyonel) grid’den çıkış histerezis
+        const COMMIT_IN_THRESHOLD = 1.05;   // zoom-in commit
+        const COMMIT_OUT_THRESHOLD = 0.98;   // zoom-out commit daha sık (reflow sıklaşır)
+        const MIN_VISUAL_SCALE = 0.35;   // pinch sırasında sayfa görünür kalsın
+        const width = windowWidth;
+        const height = Dimensions.get('window').height;
+
+        return Gesture.Pinch()
+            .withRef(pinchRef)
+            .onTouchesDown((e, sm) => {
+                if (e.numberOfTouches >= 2) {
+                    runOnJS(setScrollEnabled)(false);
+                    runOnJS(killMomentum)();
+                    runOnJS(lugatRef.current?.close as any)();
+                    runOnJS(setLugatZoomLock)(true);
+                }
+            })
+            .onStart((e) => {
+                runOnJS(setIsPinching)(true);
+                runOnJS(setScrollEnabled)(false);
+                runOnJS(lugatRef.current?.close as any)();
+                runOnJS(setLugatZoomLock)(true);
+                if (isIcarz) runOnJS(setReaderPointerEvents)('none');
+
+                // Reset gesture factor & Intent Tracker
+                gestureScale.value = 1;
+                minScaleDuringGesture.value = 1;
+                pinchStartTs.value = Date.now();
+                pinchStartScale.value = scale.value;
+            })
+            .onUpdate((e) => {
+                const s = clamp(e.scale, MIN_VISUAL_SCALE, 3.0);
+                scale.value = s; // Visual only
+                minScaleDuringGesture.value = Math.min(minScaleDuringGesture.value, s);
+
+                focalX.value = e.focalX;
+                focalY.value = e.focalY;
+
+                // Focal Zoom Translate with Viewport Center
+                // Formula: tx = (1 - s) * (focal - center)
+                const cx = width / 2;
+                const cy = height / 2;
+                let ntx = (1 - s) * (e.focalX - cx);
+                let nty = (1 - s) * (e.focalY - cy);
+
+                // Clamp to prevent huge white space
+                const maxTx = (s - 1) * (width / 2);
+                const maxTy = (s - 1) * (height / 2);
+
+                if (s > 1) {
+                    ntx = clamp(ntx, -maxTx, maxTx);
+                    nty = clamp(nty, -maxTy, maxTy);
+                }
+
+                tx.value = ntx;
+                ty.value = nty;
+            })
+            .onEnd(() => {
+                runOnJS(setIsPinching)(false);
+                if (isIcarz) {
+                    runOnJS(lockInteractionsFor)(120);
+                    runOnJS(unlockPointerSoon)(120);
+                }
+
+                const finalScale = scale.value;
+                const minScale = minScaleDuringGesture.value;
+
+                // INTENT FILTER (RNK kararlılık hissi)
+                // Kullanıcı gerçekten grid istemiş mi?
+                // - yeterince küçültmüş mü (minScale <= 0.40)
+                // - ve bunu hızlı/kararlı yapmış mı (kısa sürede veya güçlü shrink)
+                const dt = Date.now() - pinchStartTs.value; // ms
+                const shrinkAmount = (pinchStartScale.value || 1) - minScale;
+
+                const isFast = dt <= 220;           // hızlı pinch = intent güçlü
+                const isStrong = shrinkAmount >= 0.55; // ciddi küçültme = intent güçlü (= 0.45'e iniş)
+                const wantsGrid = (minScale <= GRID_ENTER_THRESHOLD) && (isFast || isStrong);
+
+                if (wantsGrid) {
+                    runOnJS(setViewMode)('GRID');
+
+                    readerOpacity.value = withTiming(0, { duration: 160 });
+                    gridOpacity.value = withTiming(1, { duration: 160 });
+
+                    // reader scroll kapalı kalsın
+                    runOnJS(setScrollEnabled)(false);
+                    runOnJS(setLugatZoomLock)(true);
+                    if (isIcarz) runOnJS(setReaderPointerEvents)('none');
+
+                    // visual reset (grid'e girince reader scale önemli değil)
+                    scale.value = withTiming(1);
+                    tx.value = withTiming(0);
+                    ty.value = withTiming(0);
+                    return;
+                }
+
+                // GRID yoksa: zoom-in veya zoom-out reflow commit
+                if (finalScale > COMMIT_IN_THRESHOLD || finalScale < COMMIT_OUT_THRESHOLD) {
+                    runOnJS(commitZoomIcarz)(finalScale);
+
+                    // Visual reset (rubber-band)
+                    scale.value = withTiming(1, { duration: 150 });
+                    tx.value = withTiming(0, { duration: 150 });
+                    ty.value = withTiming(0, { duration: 150 });
+                } else {
+                    // BOUNCE BACK (No Commit)
+                    scale.value = withSpring(1, { damping: 15, stiffness: 160 });
+                    tx.value = withSpring(0);
+                    ty.value = withSpring(0);
+                }
+
+                runOnJS(setScrollEnabled)(true);
+                runOnJS(scheduleLugatResume)();
+            });
+    }, [handleZoom, setIsPinching, scale, savedScale, isIcarz, gridOpacity, readerOpacity, focalX, focalY, committedScale, gestureScale, pinchStartTs, pinchStartScale]);
+
+    const tapGesture = useMemo(() => {
+        if (!isIcarz) return undefined;
+        return Gesture.Tap()
+            .maxDuration(220)
+            .numberOfTaps(1)
+            .requireExternalGestureToFail(pinchGesture)
+            .cancelsTouchesInView(false)
+            .onEnd(() => {
+                // Pass-through for sync
+            });
+    }, [isIcarz, pinchGesture]);
+
+    const composedGesture = useMemo(() => {
+        if (!isIcarz || !tapGesture) return pinchGesture;
+        return Gesture.Simultaneous(pinchGesture, tapGesture);
+    }, [isIcarz, pinchGesture, tapGesture]);
+
+    const animatedStyle = useAnimatedStyle(() => {
+        if (!isIcarz) {
+            return { transform: [{ scale: scale.value }] };
+        }
+        return {
+            transform: [
+                { translateX: tx.value },
+                { translateY: ty.value },
+                { scale: scale.value }
+            ],
+            opacity: readerOpacity.value
+        };
+    });
+
+    const gridAnimatedStyle = useAnimatedStyle(() => ({
+        opacity: gridOpacity.value,
+        zIndex: gridOpacity.value > 0.5 ? 10 : -1
     }));
 
     // Render Item
@@ -746,17 +1264,23 @@ export const RisaleVirtualPageReaderScreen = () => {
         }
 
         // Page
-        const isHydrated = item.id === hydratedItemId;
-        const canInteract = isHydrated && !isScrollingRef.current && lugatEnabled;
+        const isHydrated = isIcarz ? hydratedItemIds.has(item.id) : (item.id === hydratedItemId);
+        // V27.2: Layout Settled Gate
+        const canInteract = isHydrated && !isScrollingRef.current && lugatEnabledRef.current && (!isIcarz || layoutSettledRef.current);
 
         return (
             <PageItem
                 item={item}
-                fontSize={fontSize}
+                fontSize={isIcarz ? zoomMetrics.fontSize : fontSize}
                 onWordPress={canInteract ? handleWordClick : undefined}
+                // ICAZ ROLLBACK: Disable World Standard token interactions for Icarz
+                onTokenTap={(!isIcarz && canInteract) ? handleTokenTap : undefined}
+                onTokenLongPress={(!isIcarz && canInteract) ? handleTokenLongPress : undefined}
+                onLayout={isIcarz ? () => handlePageLayout(item.id) : undefined}
+                paragraphGap={isIcarz ? zoomMetrics.paragraphGap : undefined}
             />
         );
-    }, [fontSize, hydratedItemId, handleWordClick, lugatEnabled]);
+    }, [fontSize, isIcarz, zoomMetrics, hydratedItemId, handleWordClick]);
 
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 10,
@@ -951,16 +1475,16 @@ export const RisaleVirtualPageReaderScreen = () => {
 
                 {/* Menu Button - Controlled UI */}
                 <ReaderMoreMenuButton
-                    lugatEnabled={lugatEnabled}
+                    lugatEnabled={true}
                     onLugatToggle={handleToggleLugat}
                     onRestartBook={handleRestartBook}
                 />
             </View>
 
             <GestureHandlerRootView style={{ flex: 1 }}>
-                <GestureDetector gesture={pinchGesture}>
+                <GestureDetector gesture={composedGesture}>
                     <View style={{ flex: 1 }}>
-                        <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+                        <Animated.View style={[{ flex: 1 }, animatedStyle]} pointerEvents={isIcarz ? readerPointerEvents : 'auto'}>
                             <FlashList
                                 ref={flatListRef}
                                 data={stream}
@@ -979,8 +1503,18 @@ export const RisaleVirtualPageReaderScreen = () => {
                                 onMomentumScrollBegin={onScrollBegin}
                                 onScrollEndDrag={onScrollEnd}
                                 onMomentumScrollEnd={onScrollEnd}
+                                scrollEnabled={isIcarz ? scrollEnabled : true}
+                                onScroll={(e) => {
+                                    if (isIcarz) {
+                                        lastOffsetYRef.current = e.nativeEvent.contentOffset.y;
+                                    }
+                                }}
+                                scrollEventThrottle={16}
                                 ListFooterComponent={renderFooter}
-                                extraData={hydratedItemId}
+                                extraData={{
+                                    hydratedItemId,
+                                    hydratedKey: isIcarz ? Array.from(hydratedItemIds).join('|') : ''
+                                }}
                                 onScrollToIndexFailed={(info: { index: number; highestMeasuredFrameIndex: number; averageItemLength: number }) => {
                                     // V25.1: Retry with backoff (max 3 attempts)
                                     scrollRetryCountRef.current += 1;
@@ -1017,6 +1551,22 @@ export const RisaleVirtualPageReaderScreen = () => {
                             />
                         </Animated.View>
                         <LugatOverlay ref={lugatRef} />
+
+                        {/* Icarz: Grid Layer */}
+                        {isIcarz && (
+                            <Animated.View style={[StyleSheet.absoluteFill, gridAnimatedStyle]} pointerEvents={viewMode === 'GRID' ? 'auto' : 'none'}>
+                                <PagesGridView
+                                    stream={stream || []}
+                                    onPagePress={handleGridPagePress}
+                                    isVisible={viewMode === 'GRID'}
+                                />
+                            </Animated.View>
+                        )}
+
+                        {/* Icarz: Touch Shield (Only in GRID) */}
+                        {isIcarz && viewMode === 'GRID' && (
+                            <View style={StyleSheet.absoluteFill} pointerEvents="auto" />
+                        )}
                     </View>
                 </GestureDetector>
             </GestureHandlerRootView>

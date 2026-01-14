@@ -1,5 +1,5 @@
 import { User, Role } from '@/types/auth';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { Alert } from 'react-native';
 
 // Removed MOCK_USER and WAIT_TIME
@@ -7,6 +7,9 @@ import { Alert } from 'react-native';
 export const authService = {
     register: async (email: string, password: string, name: string): Promise<{ user: User; token: string }> => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase client not initialized (Env invalid).');
+
             // 1. Sign up with Supabase
             const { data: authData, error: authError } = await supabase.auth.signUp({
                 email,
@@ -82,6 +85,9 @@ export const authService = {
 
     login: async (email: string, password: string): Promise<{ user: User; token: string }> => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase client not initialized.');
+
             // 1. Sign in with Supabase
             const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
                 email,
@@ -127,11 +133,16 @@ export const authService = {
     },
 
     logout: async (): Promise<void> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return; // already out effectively
         const { error } = await supabase.auth.signOut();
         if (error) throw error;
     },
 
     getUser: async (): Promise<User | null> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return null;
+
         const { data: { session } } = await supabase.auth.getSession();
         if (!session?.user) return null;
 

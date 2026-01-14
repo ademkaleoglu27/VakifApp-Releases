@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, StyleSheet, StatusBar, Platform } from 'react-native';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { DutyAssignment } from '@/types/duty';
 import { format } from 'date-fns';
 import { tr } from 'date-fns/locale';
@@ -19,6 +19,12 @@ export const DutyDashboardScreen = () => {
 
     const fetchDuties = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
@@ -44,6 +50,9 @@ export const DutyDashboardScreen = () => {
 
     const handleAction = async (id: string, action: 'ACCEPT' | 'PASS') => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
             const { data, error } = await supabase.functions.invoke('respond_assignment', {
                 body: { assignment_id: id, action }
             });
@@ -68,6 +77,9 @@ export const DutyDashboardScreen = () => {
                     style: 'destructive',
                     onPress: async () => {
                         try {
+                            const supabase = getSupabaseClient();
+                            if (!supabase) return;
+
                             const { error } = await supabase.from('duty_assignments').delete().eq('id', id);
                             if (error) throw error;
                             Alert.alert('Başarılı', 'Görev silindi.');

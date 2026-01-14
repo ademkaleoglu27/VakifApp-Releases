@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
 import * as Notifications from 'expo-notifications';
 import { notificationService } from '@/services/notificationService';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { Subscription } from 'expo-notifications';
 import { useAuthStore } from '@/store/authStore';
 
@@ -71,25 +71,30 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
         });
 
         // 4. Realtime Subscription
-        const channel = supabase
-            .channel('public:notifications')
-            .on(
-                'postgres_changes',
-                {
-                    event: 'INSERT',
-                    schema: 'public',
-                    table: 'notifications',
-                },
-                (payload) => {
-                    refreshNotifications();
-                }
-            )
-            .subscribe();
+        const supabase = getSupabaseClient();
+        let channel: any = null;
+
+        if (supabase) {
+            channel = supabase
+                .channel('public:notifications')
+                .on(
+                    'postgres_changes',
+                    {
+                        event: 'INSERT',
+                        schema: 'public',
+                        table: 'notifications',
+                    },
+                    (payload) => {
+                        refreshNotifications();
+                    }
+                )
+                .subscribe();
+        }
 
         return () => {
             if (notificationListener.current) Notifications.removeNotificationSubscription(notificationListener.current);
             if (responseListener.current) Notifications.removeNotificationSubscription(responseListener.current);
-            supabase.removeChannel(channel);
+            if (supabase && channel) supabase.removeChannel(channel);
         };
     }, []);
 

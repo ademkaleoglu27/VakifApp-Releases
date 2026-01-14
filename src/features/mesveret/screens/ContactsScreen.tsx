@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert, Linking, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { theme } from '@/config/theme';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { requireFeature } from '@/utils/guard';
@@ -49,6 +49,9 @@ export const ContactsScreen = () => {
     const fetchProfiles = async () => {
         setLoading(true);
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
             const { data, error } = await supabase
                 .from('profiles')
                 .select('*')
@@ -84,6 +87,9 @@ export const ContactsScreen = () => {
 
         setLoading(true);
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
             // 1. Update Basic Info (Name, Phone)
             const { error: basicError } = await supabase
                 .from('profiles')

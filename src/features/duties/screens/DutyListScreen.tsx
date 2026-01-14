@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Modal, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { theme } from '@/config/theme';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { useNavigation } from '@react-navigation/native';
@@ -28,6 +28,12 @@ export const DutyListScreen = () => {
 
     const fetchPools = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         const { data, error } = await supabase
             .from('rotation_pools')
             .select('*')
@@ -40,6 +46,9 @@ export const DutyListScreen = () => {
     };
 
     const fetchTypes = async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const { data } = await supabase.from('duty_types').select('*');
         if (data) {
             setDutyTypes(data);
@@ -76,6 +85,12 @@ export const DutyListScreen = () => {
 
         const daysStr = selectedDays.join(',');
         const cron = `0 ${selectedHour} * * ${daysStr}`;
+
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            alert('Supabase unavailable');
+            return;
+        }
 
         const { error } = await supabase.from('rotation_pools').insert({
             name: newName,
@@ -115,6 +130,12 @@ export const DutyListScreen = () => {
                     style: 'destructive',
                     onPress: async () => {
                         setLoading(true);
+                        const supabase = getSupabaseClient();
+                        if (!supabase) {
+                            setLoading(false);
+                            return;
+                        }
+
                         // Cascade delete manually just in case
                         await supabase.from('duty_assignments').delete().eq('pool_id', id);
                         await supabase.from('rotation_pool_members').delete().eq('pool_id', id);

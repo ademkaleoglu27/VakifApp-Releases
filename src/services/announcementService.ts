@@ -1,8 +1,11 @@
 import { Announcement } from '@/types/announcement';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 
 export const announcementService = {
     getAnnouncements: async (userRole: string = 'sohbet_member'): Promise<Announcement[]> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return [];
+
         let query = supabase
             .from('announcements')
             .select('*')
@@ -37,6 +40,9 @@ export const announcementService = {
     },
 
     addAnnouncement: async (title: string, content: string, priority: 'normal' | 'high', location?: string, targetRole: string = 'all') => {
+        const supabase = getSupabaseClient();
+        if (!supabase) throw new Error('Supabase unavailable');
+
         // 1. Insert into Database
         const { error } = await supabase.from('announcements').insert({
             title,
@@ -77,6 +83,9 @@ export const announcementService = {
     },
 
     deleteAnnouncement: async (id: string): Promise<void> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) throw new Error('Supabase unavailable');
+
         const { error } = await supabase.from('announcements').delete().eq('id', id);
         if (error) throw error;
     },
