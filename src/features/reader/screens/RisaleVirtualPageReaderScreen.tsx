@@ -11,10 +11,11 @@ import Animated, { useSharedValue, useAnimatedStyle, runOnJS, withTiming, withSp
 import { buildReadingStream, buildReadingStreamByBookId, buildSectionReadingStream, buildTocIndexMap, getNextSection, StreamItem } from '@/services/risaleRepo';
 import { readingProgressStore } from '@/services/readingProgressStore';
 import { RisaleUserDb } from '@/services/risaleUserDb';
-import { ENABLE_RESUME_LAST_READ } from '@/config/features';
+import { ENABLE_RESUME_LAST_READ, ENABLE_ICARZ_PROTOCOL_FOR_ALL_BOOKS } from '@/config/features';
 import { RisaleChunk } from '@/types/risale';
 import { RisaleTextRenderer } from '@/features/library/components/RisaleTextRenderer';
 import { generatePhraseCandidates } from '@/features/library/utils/lugatNormalize';
+import { patchIsaratBlocks } from '@/features/reader/utils/patchIsaratBlocks';
 
 import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -84,7 +85,7 @@ const extractFootnoteRefs = (text: string): number[] => {
 
 // Page Item Component (Diamond Standard V23.1 - with Footnote Support)
 // Page Item Component (Diamond Standard V23.1 - with Footnote Support)
-const PageItem = React.memo(({ item, fontSize, onWordPress, onTokenTap, onTokenLongPress, onLayout, paragraphGap }: {
+const PageItem = React.memo(({ item, fontSize, onWordPress, onTokenTap, onTokenLongPress, onLayout, paragraphGap, bookId }: {
     item: StreamItem,
     fontSize: number,
     onWordPress?: (word: string, chunkId: number, py: number, prev?: string, next?: string) => void,
@@ -92,7 +93,8 @@ const PageItem = React.memo(({ item, fontSize, onWordPress, onTokenTap, onTokenL
     onTokenTap?: (token: any) => void,
     onTokenLongPress?: (token: any) => void,
     onLayout?: (event: LayoutChangeEvent) => void,
-    paragraphGap?: number
+    paragraphGap?: number,
+    bookId?: string
 }) => {
     if (!item.chunks) return null;
 
@@ -119,6 +121,7 @@ const PageItem = React.memo(({ item, fontSize, onWordPress, onTokenTap, onTokenL
                             interactiveEnabled={isInteractive}
                             variant={chunk.type === 'poetry' ? 'poetry' : undefined}
                             poetryLines={chunk.meta?.lines}
+                            bookId={bookId}
                             // Legacy
                             onWordPress={onWordPress ?
                                 (w, py, prev, next) => onWordPress(w, chunk.id, py, prev, next)
@@ -213,7 +216,8 @@ export const RisaleVirtualPageReaderScreen = () => {
 
     const effectiveWorkId = getInternalWorkId(legacyWorkId ?? bookId);
     // ICAZ_EXPERIMENT: Protocol Flag (Hoisted)
-    const isIcarz = bookId === "risale.isaratul_icaz@diyanet.tr";
+    // V27.3: Generalized Icarz Protocol (Gold Standard) to all books
+    const isIcarz = ENABLE_ICARZ_PROTOCOL_FOR_ALL_BOOKS || bookId === "risale.isaratul_icaz@diyanet.tr";
 
     // Safety Check
     if (effectiveWorkId === 'LOCKED_INVALID_ID') {
@@ -308,10 +312,30 @@ export const RisaleVirtualPageReaderScreen = () => {
                 return buildSectionReadingStream(effectiveWorkId, route.params.sectionId);
             }
 
+            let rawStream: StreamItem[];
             if (isCanonical) {
-                return buildReadingStreamByBookId(effectiveWorkId);
+                rawStream = await buildReadingStreamByBookId(effectiveWorkId);
+            } else {
+                rawStream = await buildReadingStream(effectiveWorkId);
             }
-            return buildReadingStream(effectiveWorkId);
+
+            // V27.5: Ezcumle Chunk Merge Patch (Icarz)
+            // Patch chunks block-by-block before they enter the reader state
+            if (bookId === 'risale.isaratul_icaz@diyanet.tr' && rawStream) {
+                const finalStream = rawStream.map((item, index) => {
+                    if (item.chunks) {
+                        const patchedChunks = patchIsaratBlocks(bookId, item.chunks);
+
+                        return {
+                            ...item,
+                            chunks: patchedChunks
+                        };
+                    }
+                    return item;
+                });
+                return finalStream;
+            }
+            return rawStream;
         },
         retry: 0 // Fail fast
     });
@@ -1278,9 +1302,10 @@ export const RisaleVirtualPageReaderScreen = () => {
                 onTokenLongPress={(!isIcarz && canInteract) ? handleTokenLongPress : undefined}
                 onLayout={isIcarz ? () => handlePageLayout(item.id) : undefined}
                 paragraphGap={isIcarz ? zoomMetrics.paragraphGap : undefined}
+                bookId={bookId}
             />
         );
-    }, [fontSize, isIcarz, zoomMetrics, hydratedItemId, handleWordClick]);
+    }, [fontSize, isIcarz, zoomMetrics, hydratedItemId, handleWordClick, bookId]);
 
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 10,

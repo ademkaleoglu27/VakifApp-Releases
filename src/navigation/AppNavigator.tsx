@@ -12,7 +12,8 @@ import * as Notifications from 'expo-notifications';
 
 // VP Reader Screens (Production)
 import { RisaleVirtualPageSectionList } from '@/features/reader/screens/RisaleVirtualPageSectionList';
-import { RisaleVirtualPageReaderScreen } from '@/features/reader/screens/RisaleVirtualPageReaderScreen';
+// Single entry point for all reader navigation (P6: handles native/legacy routing)
+import { RisaleReaderEntry } from '@/features/reader/screens/RisaleReaderEntry';
 
 
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
@@ -758,7 +759,7 @@ export const AppNavigator = () => {
                                 />
                                 <Stack.Screen
                                     name="RisaleVirtualPageReader"
-                                    component={RisaleVirtualPageReaderScreen}
+                                    component={RisaleReaderEntry}
                                     options={{ title: 'Okuma (VP)', headerShown: false }}
                                 />
 

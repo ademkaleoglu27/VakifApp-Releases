@@ -33,6 +33,7 @@ type Props = {
     interactiveEnabled?: boolean; // Scroll Optimization: Disable interactions during scroll
     variant?: 'paragraph' | 'poetry'; // Diamond Standard V23.4
     poetryLines?: any[]; // For poetry variant
+    bookId?: string;
 };
 
 const RNK_ARABIC = "#B3261E";
@@ -115,7 +116,8 @@ export const RisaleTextRenderer = memo((props: Props) => {
         arabicColor = RNK_ARABIC,
         interactiveEnabled = true, // Default enabled
         variant,
-        poetryLines
+        poetryLines,
+        bookId
     } = props;
 
     // Diamond Standard Poetry Mode
@@ -380,6 +382,9 @@ export const RisaleTextRenderer = memo((props: Props) => {
                     });
                 } else {
                     // INLINE
+                    // FIX: Icarz Android Clipping (Golden Standard V27.4)
+                    const enableFix = Platform.OS === 'android' && bookId === 'risale.isaratul_icaz@diyanet.tr';
+
                     segments.push({
                         type: 'inline',
                         key,
@@ -388,6 +393,7 @@ export const RisaleTextRenderer = memo((props: Props) => {
                                 fontSize: arabicInlineSize,
                                 lineHeight: arabicInlineSize * 2.2,
                                 color: arabicColor,
+                                ...(enableFix ? { includeFontPadding: true } : {})
                             }]}>
                                 {content}
                             </Text>
