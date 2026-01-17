@@ -42,25 +42,140 @@ export const NativeReaderDebugHUD: React.FC<DebugHUDProps> = ({ state }) => {
     }
 
     // Main tab content
-    const MainTab = () => (
-        <>
-            <Row label="Gesture" value={state.gestureMode} color={getGestureColor(state.gestureMode)} />
-            <Row label="Pointers" value={`${state.pointerCount}`} />
-            <Row label="ZoomPreset" value={state.zoomPresetId} />
-            <Row label="OverlayScale" value={state.overlayScale.toFixed(3)} color={state.overlayScale !== 1 ? '#fbbf24' : undefined} />
-            <Row label="CommittedScale" value={state.committedScale.toFixed(3)} />
-            <Row label="CommitMs" value={`${state.commitDurationMs}ms`} color={state.commitDurationMs > 300 ? '#ef4444' : '#10b981'} />
-            <Row label="Scroll" value={state.scrollState} />
-            <Row label="OffsetY" value={`${state.offsetY.toFixed(0)}`} />
-            <Row label="VelocityY" value={`${state.scrollVelocityY.toFixed(1)}`} />
-            <Row label="Layout#" value={`${state.layoutVersion}`} />
-            <Row label="Events" value={`${state.eventCount}`} />
-            <Row label="LastEvent" value={state.lastEventType} />
-            {state.eventMismatchFlag && (
-                <Row label="⚠️ MISMATCH" value="true" color="#ef4444" />
-            )}
-        </>
-    );
+    const MainTab = () => {
+        // Helper for CLIP severity color
+        const getClipColor = (severity: string): string => {
+            switch (severity) {
+                case 'CONFIRMED': return '#ef4444';
+                case 'SUSPECT': return '#f59e0b';
+                default: return '#10b981';
+            }
+        };
+
+        const clipDiag = state.clipDiag;
+        const clipBgColor = clipDiag?.severity === 'CONFIRMED' ? '#7f1d1d' :
+            clipDiag?.severity === 'SUSPECT' ? '#713f12' : undefined;
+
+        return (
+            <>
+                {/* CLIP GUARD PANEL - Top of Main Tab */}
+                {clipDiag && clipDiag.severity !== 'NONE' && (
+                    <View style={{
+                        backgroundColor: clipBgColor,
+                        marginBottom: 4,
+                        padding: 2,
+                        borderRadius: 2,
+                    }}>
+                        <Text style={styles.clipRow}>
+                            CLIP: {clipDiag.severity}  Δ{clipDiag.deltaPx}px  LH:{clipDiag.lineHeightPx}px
+                        </Text>
+                        <Text style={styles.clipRow}>
+                            MX:{clipDiag.measuredMaxRunPx}px  Fix:{clipDiag.clipFixEnabled ? 'ON' : 'OFF'}
+                        </Text>
+                        {clipDiag.expansionTotalPx > 0 && (
+                            <Text style={[styles.clipRow, { color: '#10b981' }]}>
+                                Expand: +{clipDiag.expansionTotalPx}px ({clipDiag.expansionTopPx}+{clipDiag.expansionBottomPx})
+                            </Text>
+                        )}
+                        {clipDiag.finalMeasuredHeight > 0 && (
+                            <Text style={styles.clipRow}>
+                                H: {clipDiag.baseMeasuredHeight}→{clipDiag.finalMeasuredHeight}px
+                            </Text>
+                        )}
+                    </View>
+                )}
+                <Row label="CLIP" value={clipDiag?.severity ?? 'N/A'}
+                    color={getClipColor(clipDiag?.severity ?? 'NONE')} />
+                <Row label="Fix" value={clipDiag?.clipFixEnabled ? 'ON' : 'OFF'}
+                    color={clipDiag?.clipFixEnabled ? '#10b981' : '#64748b'} />
+                <Row label="Mode" value={clipDiag?.clipLineMetricsMode ?? 'NONE'} color="#60a5fa" />
+                {clipDiag?.expansionTotalPx > 0 && (
+                    <Row label="Expand" value={`+${clipDiag.expansionTotalPx}px`} color="#10b981" />
+                )}
+
+                {/* CONTINUITY GUARD PANEL */}
+                <View style={{ height: 1, backgroundColor: '#334155', marginVertical: 4 }} />
+                {state.continuityDiag && (
+                    <>
+                        <Row label="CONTINUITY"
+                            value={state.continuityDiag.status}
+                            color={state.continuityDiag.status === 'OK' ? '#10b981' :
+                                state.continuityDiag.status === 'GAP' ? '#ef4444' : '#f59e0b'} />
+                        <Row label="Covered"
+                            value={`${state.continuityDiag.coveredStart}→${state.continuityDiag.coveredEnd}`} />
+                        <Row label="Chunks"
+                            value={`${state.continuityDiag.chunkCountVisible}/${state.continuityDiag.chunkCountTotal}`} />
+                        {state.continuityDiag.gapCount > 0 && (
+                            <View style={{ backgroundColor: '#7f1d1d', padding: 2, marginTop: 2 }}>
+                                <Text style={[styles.clipRow, { color: '#fca5a5' }]}>
+                                    ⚠️ GAP: {state.continuityDiag.firstGapStart}→{state.continuityDiag.firstGapEnd} ({state.continuityDiag.maxGapSize} chars)
+                                </Text>
+                            </View>
+                        )}
+                    </>
+                )}
+
+                {/* LAYOUT DIAG PANEL - Task 1 */}
+                <View style={{ height: 1, backgroundColor: '#334155', marginVertical: 4 }} />
+                {state.layoutDiag && (
+                    <View>
+                        <Row label="LAYOUT DIAG"
+                            value={state.layoutDiag.offsetGapDetected || state.layoutDiag.heightDeltaDetected || (state.layoutDiag.mapMismatchPx && state.layoutDiag.mapMismatchPx > 2) ? "ISSUES" : "OK"}
+                            color={state.layoutDiag.offsetGapDetected || state.layoutDiag.heightDeltaDetected || (state.layoutDiag.mapMismatchPx && state.layoutDiag.mapMismatchPx > 2) ? "#ef4444" : "#10b981"}
+                        />
+                        <Row label="Mismatch" value={`${state.layoutDiag.mapMismatchPx ?? 0}px`}
+                            color={(state.layoutDiag.mapMismatchPx ?? 0) > 2 ? '#ef4444' : '#94a3b8'} />
+                        <Row label="ContentH" value={`${state.layoutDiag.finalContentHeight ?? 0}`} />
+
+                        {state.layoutDiag.offsetGapDetected && (
+                            <Text style={[styles.clipRow, { color: '#ef4444' }]}>
+                                ⚠️ OFFSET GAP DETECTED
+                            </Text>
+                        )}
+                        {state.layoutDiag.heightDeltaDetected && (
+                            <Text style={[styles.clipRow, { color: '#ef4444' }]}>
+                                ⚠️ HEIGHT DELTA DETECTED
+                            </Text>
+                        )}
+                        {state.layoutDiag.items && state.layoutDiag.items.length > 0 && state.layoutDiag.items.slice(0, 3).map((item, idx) => (
+                            <View key={idx} style={{ marginTop: 2, paddingLeft: 4, borderLeftWidth: 1, borderLeftColor: '#334155' }}>
+                                <Text style={styles.clipRow}>
+                                    #{item.chunkIndex} GAP:{item.offsetGap} ΔH:{item.heightDelta}
+                                </Text>
+                                <Text style={[styles.clipRow, { fontSize: 8, color: '#94a3b8' }]}>
+                                    M:{item.measuredHeight} L:{item.layoutHeight} [{item.flags}]
+                                </Text>
+                            </View>
+                        ))}
+                    </View>
+                )}
+
+                <Row label="Gesture" value={state.gestureMode} color={getGestureColor(state.gestureMode)} />
+
+                <View style={{ height: 1, backgroundColor: '#334155', marginVertical: 4 }} />
+                <Row label="GATE" value={state.lugatGate} color={state.lugatGate === 'OPEN' ? '#10b981' : '#ef4444'} />
+                <Row label="Reason" value={state.lastGateReason} />
+                <Row label="Settle" value={state.lugatGate === 'CLOSED' ? `${Math.max(0, state.settleUntilMs - Date.now())}ms` : '-'} />
+                <Row label="Rejects" value={`${state.gateRejectCount}`} color={state.gateRejectCount > 0 ? '#fbbf24' : undefined} />
+                <View style={{ height: 1, backgroundColor: '#334155', marginVertical: 4 }} />
+
+                <Row label="Pointers" value={`${state.pointerCount}`} />
+                <Row label="ZoomPreset" value={state.zoomPresetId} />
+                <Row label="OverlayScale" value={state.overlayScale.toFixed(3)} color={state.overlayScale !== 1 ? '#fbbf24' : undefined} />
+                <Row label="CommittedScale" value={state.committedScale.toFixed(3)} />
+                <Row label="CommitMs" value={`${state.commitDurationMs}ms`} color={state.commitDurationMs > 300 ? '#ef4444' : '#10b981'} />
+                <Row label="Scroll" value={state.scrollState} />
+                <Row label="OffsetY" value={`${state.offsetY.toFixed(0)}`} />
+                <Row label="VelocityY" value={`${state.scrollVelocityY.toFixed(1)}`} />
+                <Row label="Layout#" value={`${state.layoutVersion}`} />
+                <Row label="Events" value={`${state.eventCount}`} />
+                <Row label="LastEvent" value={state.lastEventType} />
+                {state.eventMismatchFlag && (
+                    <Row label="⚠️ MISMATCH" value="true" color="#ef4444" />
+                )}
+            </>
+        );
+    };
 
     // Word tap tab content
     const TapTab = () => {
@@ -89,9 +204,32 @@ export const NativeReaderDebugHUD: React.FC<DebugHUDProps> = ({ state }) => {
     const MetricsTab = () => {
         const tm = state.textMetrics;
         const pm = state.popupMetrics;
+        const dm = state.debugMetrics;
+
         return (
             <>
-                <Text style={styles.sectionTitle}>Text Metrics</Text>
+                {dm && (
+                    <>
+                        <Text style={styles.sectionTitle}>Diagnose ({state.zoomPresetId})</Text>
+                        <Row label="Font / Line" value={`${dm.fontSize.toFixed(1)} / ${dm.computedLineHeightPx}`} />
+                        <Row label="PaintHeight" value={`${dm.totalPaintHeightPx}`}
+                            color={dm.totalPaintHeightPx > dm.computedLineHeightPx ? '#ef4444' : undefined} />
+                        <Row label="ArabicH" value={`${dm.measuredArabicHeightPx}`} />
+                        <Row label="Ascent/Descent" value={`${dm.nativeAscent.toFixed(1)} / ${dm.nativeDescent.toFixed(1)}`} />
+                        <Row label="Word" value={dm.measuredArabicWord} />
+
+                        {dm.clipRisk && (
+                            <View style={{ backgroundColor: '#7f1d1d', marginTop: 4, padding: 2 }}>
+                                <Text style={{ color: '#fff', fontSize: 10, fontWeight: 'bold', textAlign: 'center' }}>
+                                    ⚠️ CLIP RISK DETECTED
+                                </Text>
+                            </View>
+                        )}
+                        <View style={{ height: 1, backgroundColor: '#334155', marginVertical: 6 }} />
+                    </>
+                )}
+
+                <Text style={styles.sectionTitle}>RN Text Metrics</Text>
                 <Row label="BaseFontSize" value={`${tm.baseFontSize}`} />
                 <Row label="AppliedFont" value={`${tm.appliedFontSize}`} />
                 <Row label="LineHeight" value={`${tm.appliedLineHeight}`} />
@@ -296,6 +434,13 @@ const styles = StyleSheet.create({
     errorText: {
         color: '#fff',
         fontSize: 8,
+    },
+    clipRow: {
+        color: '#fff',
+        fontSize: 8,
+        fontFamily: Platform.OS === 'android' ? 'monospace' : 'Courier',
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
 });
 

@@ -110,14 +110,96 @@ class DictionaryDb {
         }
     }
 
-    async searchDefinition(word: string): Promise<DictionaryEntry | null> {
-        // 1. Try Exact Match First (Solves "Hakim" -> "Hakimi" issue)
-        const exact = await this.searchExact(word);
-        if (exact) return exact;
+    // --- HELPER: Normalization ---
+    normalize(text: string): string {
+        if (!text) return "";
+        let s = text.toLocaleLowerCase('tr-TR');
 
-        // 2. Fallback to Prefix Search
-        const results = await this.search(word);
-        return results.length > 0 ? results[0] : null;
+        // Remove Punctuation
+        s = s.replace(/[.,;!?:"'“”(){}\[\]\-\/\\\\]/g, ' ');
+
+        // Replacements
+        s = s.replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u');
+        s = s.replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c');
+        s = s.replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ı/g, 'i');
+        // Hamza/Apostrophe removal
+        s = s.replace(/[’'ʿʾ]/g, '');
+
+        // Whitespace cleanup
+        s = s.replace(/\s+/g, ' ').trim();
+        return s;
+    }
+
+    // --- MAIN SEARCH: Flexible ---
+    async searchFlexible(query: string): Promise<{ best: DictionaryEntry | null, candidates: DictionaryEntry[] }> {
+        if (!this.initialized) await this.init();
+        if (!this.db) return { best: null, candidates: [] };
+
+        const qNorm = this.normalize(query);
+        if (qNorm.length < 2) return { best: null, candidates: [] };
+
+        try {
+            // 1. EXACT Match (Normalized)
+            // Note: We assume the DB has a normalized-ish 'word_plain' or similar, 
+            // but if not, we rely on LIKE being somewhat permissive or the data being clean.
+            // Our DB schema: word (osm), word_plain (tr), definition.
+
+            // Try explicit exact on word_plain
+            const exact = await this.db.getFirstAsync<DictionaryEntry>(
+                `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
+                 FROM dictionary 
+                 WHERE lower(word_plain) = ?`, // OR word LIKE ? can be added
+                [qNorm]
+            );
+
+            if (exact) {
+                return { best: exact, candidates: [] };
+            }
+
+            // 2. PREFIX Match (Starts with...)
+            const prefixMatches = await this.db.getAllAsync<DictionaryEntry>(
+                `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
+                 FROM dictionary 
+                 WHERE word_plain LIKE ? 
+                 ORDER BY length(word_plain) ASC 
+                 LIMIT 20`,
+                [`${qNorm}%`]
+            );
+
+            // 3. CONTAINS Match (If prefix yields few results, maybe expand? or just combine?)
+            // Let's get contains as well to be safe, especially if prefix is empty.
+            let containsMatches: DictionaryEntry[] = [];
+
+            if (prefixMatches.length < 5) {
+                containsMatches = await this.db.getAllAsync<DictionaryEntry>(
+                    `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
+                     FROM dictionary 
+                     WHERE word_plain LIKE ? AND word_plain NOT LIKE ?
+                     ORDER BY length(word_plain) ASC 
+                     LIMIT 20`,
+                    [`%${qNorm}%`, `${qNorm}%`] // Exclude those already found in prefix
+                );
+            }
+
+            // Combine
+            const allCandidates = [...prefixMatches, ...containsMatches];
+
+            // If we found candidates but no exact, return best as null (to trigger list UI)
+            // OR if there is a very strong first candidate (short length diff), maybe auto-select?
+            // For now, let the UI decide.
+
+            return { best: null, candidates: allCandidates };
+
+        } catch (error) {
+            console.error("Flexible search error", error);
+            return { best: null, candidates: [] };
+        }
+    }
+
+    async searchDefinition(word: string): Promise<DictionaryEntry | null> {
+        // Fallback or deprecated wrapper
+        const { best, candidates } = await this.searchFlexible(word);
+        return best || (candidates.length > 0 ? candidates[0] : null);
     }
 }
 

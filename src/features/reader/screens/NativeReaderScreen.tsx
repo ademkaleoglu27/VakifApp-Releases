@@ -24,6 +24,7 @@ import {
     createZoomCommitUpdate,
     createScrollUpdate,
     createGestureStateUpdate,
+    createMetricsUpdate,
     createErrorUpdate,
     type ReaderDebugState
 } from '../debug/ReaderDebugStore';
@@ -106,17 +107,62 @@ export const NativeReaderScreen = () => {
     // ═══════════════════════════════════════════════════════════════
 
     const handleWordTap = useCallback((event: WordTapEvent) => {
-        console.log('[NativeReader] WordTap:', {
-            word: event.wordRaw,
-            normalized: event.wordNormalized,
-            offset: event.startOffset,
+        // HAYRAT GATE: Check if interactive
+        // We use a ref based check for immediate blocking if needed, but here we can check state
+        // However, state inside callback might be stale if not careful.
+        // Actually, let's use the functional update to check and increment reject count if needed.
+        // BEWARE: This callback depends on [] so it captures initial state? 
+        // No, we are using setDebugState(updater).
+        // But we want to prevent side effects (popup opening).
+
+        // For strict gating, we need access to the latest state or a ref.
+        // Let's rely on the native side guard for the critical "during scroll" events.
+        // But for the "settling" phase (JS only), we need to check here.
+
+        setDebugState(prev => {
+            if (prev.lugatGate === 'CLOSED') {
+                console.log('[NativeReader] WordTap BLOCKED (Gate Closed:', prev.lastGateReason, ')');
+                return {
+                    ...prev,
+                    gateRejectCount: prev.gateRejectCount + 1,
+                    lastWordTap: {
+                        ...event,
+                        hitTestSource: 'stale_fallback' // Mark as ignored/stale
+                    } as any // Cast to keep types happy quickly
+                };
+            }
+
+            // If OPEN, proceed to update tap info
+            console.log('[NativeReader] WordTap Allowed:', event.wordRaw);
+
+            // TODO: Open lugat overlay here (Trigger external action)
+
+            return createWordTapUpdate(event)(prev);
         });
-
-        // Update Debug HUD via store updater
-        setDebugState(createWordTapUpdate(event));
-
-        // TODO: Open lugat overlay
     }, []);
+
+    // ═══════════════════════════════════════════════════════════════
+    // HAYRAT GATE TICKER
+    // ═══════════════════════════════════════════════════════════════
+    useEffect(() => {
+        if (debugState.lugatGate === 'CLOSED') {
+            // Check frequently if we can open
+            const timer = setInterval(() => {
+                setDebugState(prev => {
+                    const now = Date.now();
+                    if (prev.lugatGate === 'CLOSED' && now >= prev.settleUntilMs) {
+                        const isSafe = prev.scrollState === 'IDLE' &&
+                            prev.gestureMode !== 'PINCH_ACTIVE';
+                        if (isSafe) {
+                            return { ...prev, lugatGate: 'OPEN', lastGateReason: 'NONE' };
+                        }
+                    }
+                    return prev;
+                });
+            }, 50);
+            return () => clearInterval(timer);
+        }
+    }, [debugState.lugatGate]);
 
     const handleZoomCommit = useCallback((event: ZoomCommitEvent) => {
         console.log('[NativeReader] ZoomCommit:', {
@@ -170,6 +216,11 @@ export const NativeReaderScreen = () => {
         setDebugState(createGestureStateUpdate(event));
     }, []);
 
+    // Handle debug metrics event
+    const handleDebugMetrics = useCallback((event: any) => {
+        setDebugState(createMetricsUpdate(event));
+    }, []);
+
     // If native not available, return null (triggers legacy reader in RisaleReaderEntry)
     if (!nativeStatus.ok) {
         console.log(`[NativeReaderScreen] Native not available: ${nativeStatus.reason}`);
@@ -212,6 +263,7 @@ export const NativeReaderScreen = () => {
                 onSelectionChange={handleSelectionChange}
                 onError={handleError}
                 onAnchorUpdate={handleAnchorUpdate}
+                onDebugMetrics={handleDebugMetrics}
             />
 
             {/* PHASE 3: Selected word overlay with rect highlight */}

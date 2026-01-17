@@ -61,6 +61,8 @@ interface NativeReaderViewProps {
     onAnchorUpdate?: (event: NativeSyntheticEvent<AnchorEvent>) => void;
     onMarkerTap?: (event: NativeSyntheticEvent<MarkerTapEvent>) => void;
     onError?: (event: NativeSyntheticEvent<ErrorEvent>) => void;
+    onGestureState?: (event: NativeSyntheticEvent<any>) => void;
+    onDebugMetrics?: (event: NativeSyntheticEvent<any>) => void;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -96,6 +98,8 @@ export interface NativeReaderViewPublicProps {
     onAnchorUpdate?: (event: AnchorEvent) => void;
     onMarkerTap?: (event: MarkerTapEvent) => void;
     onError?: (event: ErrorEvent) => void;
+    onGestureState?: (event: any) => void;
+    onDebugMetrics?: (event: any) => void;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -193,6 +197,14 @@ export const NativeReaderView = forwardRef<NativeReaderViewRef, NativeReaderView
             props.onError?.(e.nativeEvent);
         }, [props.onError]);
 
+        const handleGestureState = useCallback((e: NativeSyntheticEvent<any>) => {
+            props.onGestureState?.(e.nativeEvent);
+        }, [props.onGestureState]);
+
+        const handleDebugMetrics = useCallback((e: NativeSyntheticEvent<any>) => {
+            props.onDebugMetrics?.(e.nativeEvent);
+        }, [props.onDebugMetrics]);
+
         // Fallback if not available
         if (!NativeReaderViewNative) {
             // Return null - caller should handle fallback to legacy reader
@@ -216,6 +228,8 @@ export const NativeReaderView = forwardRef<NativeReaderViewRef, NativeReaderView
                 onAnchorUpdate={handleAnchorUpdate}
                 onMarkerTap={handleMarkerTap}
                 onError={handleError}
+                onGestureState={handleGestureState}
+                onDebugMetrics={handleDebugMetrics}
             />
         );
     }

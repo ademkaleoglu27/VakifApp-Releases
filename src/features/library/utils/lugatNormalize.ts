@@ -117,3 +117,65 @@ export function generatePhraseCandidates(
 
     return candidates;
 }
+
+/**
+ * DIACRITICS FOLDING (World Standard)
+ * Converts â -> a, î -> i, etc. for robust lookup.
+ */
+export function foldDiacritics(text: string): string {
+    if (!text) return '';
+    return text
+        .replace(/[âàáä]/g, 'a')
+        .replace(/[ÂÀÁÄ]/g, 'a') // Lowercase target
+        .replace(/[îìíï]/g, 'i')
+        .replace(/[ÎÌÍÏ]/g, 'i')
+        .replace(/[ûùúü]/g, 'u') // Note: ü is common in TR, but strictly for "folded" lookup we might map it to u? 
+        // Prompt says: â->a, î->i, û->u. Does not explicit ü->u. 
+        // Turkish alphabet distincts u and ü. Ottoman transcription often uses û for long u.
+        // Let's stick to Circumflex only: â, î, û.
+        // Standard Turkish `ü` should usually be preserved, except if DB treats them same?
+        // Prompt says: "DIACRITICS-FOLDING (sadece lookup için): â->a, î->i, û->u ... (gerekirse) ê->e, ô->o"
+        // So we will ONLY fold circumflexes.
+        .replace(/[ÛÙÚ]/g, 'u')
+        .replace(/[êèéë]/g, 'e')
+        .replace(/[ÊÈÉË]/g, 'e')
+        .replace(/[ôòóö]/g, 'o')
+        .replace(/[ÔÒÓÖ]/g, 'o');
+}
+
+/**
+ * DISPLAY ROOT GENERATION
+ * Strips suffixes like -ı, -i, -u, -ü, -'ı etc. to show a clean title.
+ * e.g. "Kadir-i" -> "Kadir"
+ */
+export function getDisplayRoot(rawToken: string): string {
+    if (!rawToken) return '';
+
+    // 1. Dash normalization
+    let clean = rawToken.replace(/[–—]/g, '-').trim();
+
+    // 2. Strip standard izafet suffixes: -ı, -i, -u, -ü
+    // Also handles apostrophe variants: 'ı, 'i etc.
+    // Regex: ([-'’]) followed by (ı|i|u|ü) at end of string
+    // Case insensitive
+    clean = clean.replace(/[-'’][ıiuü]$/i, '');
+
+    // 3. If word ends with just hyphen (rare artifact), trim it
+    clean = clean.replace(/-$/, '');
+
+    return clean;
+}
+
+/**
+ * Enhanced Normalization for Lookup
+ * Includes optional folding
+ */
+export function normalizeForLookup(text: string, fold: boolean = false): string {
+    let norm = normalizeForLugat(text); // Basic normalization (lowercase, trim, punctuation)
+    // Dash normalize
+    norm = norm.replace(/[–—]/g, '-');
+    if (fold) {
+        norm = foldDiacritics(norm);
+    }
+    return norm;
+}

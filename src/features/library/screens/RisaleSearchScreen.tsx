@@ -12,13 +12,14 @@ import {
     Alert
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { searchParagraphs, RisaleSearchResult } from '@/services/risaleRepo';
 import { theme } from '@/config/theme';
 
 export const RisaleSearchScreen = () => {
     const navigation = useNavigation<any>();
-    const [query, setQuery] = useState('');
+    const route = useRoute<any>();
+    const [query, setQuery] = useState(route.params?.initialQuery || '');
     const [results, setResults] = useState<RisaleSearchResult[]>([]);
     const [loading, setLoading] = useState(false);
     const [searched, setSearched] = useState(false);

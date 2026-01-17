@@ -10,6 +10,8 @@ import { theme } from '@/config/theme';
 import { getEnabledBooks } from '@/config/booksRegistry';
 import * as Notifications from 'expo-notifications';
 
+import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
+import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderScreen';
 // VP Reader Screens (Production)
 import { RisaleVirtualPageSectionList } from '@/features/reader/screens/RisaleVirtualPageSectionList';
 // Single entry point for all reader navigation (P6: handles native/legacy routing)
@@ -156,6 +158,10 @@ export type RootStackParamList = {
         onRetry?: () => void;
     };
     ContentHealthDebug: undefined;
+    RisaleHtmlReaderHome: undefined;
+    RisaleHtmlReader: { assetPath: string; title: string };
+
+    // Debug / Dev
     DeveloperTools: undefined;
 };
 
@@ -880,6 +886,8 @@ export const AppNavigator = () => {
                                 options={{ headerShown: false }}
                             />
                         )}
+                        <Stack.Screen name="RisaleHtmlReaderHome" component={RisaleHtmlReaderHomeScreen} />
+                        <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
                     </Stack.Navigator>
                     <MiniPlayer />
                 </View>

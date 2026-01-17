@@ -152,6 +152,31 @@ export interface ErrorEvent {
     fatal: boolean;
 }
 
+export interface DebugMetricsEvent {
+    fontSize: number;
+    lineSpacingMultiplier: number;
+    arabicPadding: number;
+    nativeAscent: number;
+    nativeDescent: number;
+    nativeTop: number;
+    nativeBottom: number;
+    computedLineHeightPx: number;
+    measuredArabicWord: string;
+    measuredArabicHeightPx: number;
+    totalPaintHeightPx: number;
+    clipRisk: boolean;
+    // CLIP DIAGNOSTIC fields
+    presetId: string;
+    lineHeightPx: number;
+    measuredMaxRunPx: number;
+    deltaPx: number;
+    clipDiagSeverity: string; // 'NONE' | 'SUSPECT' | 'CONFIRMED'
+    // CLIP GUARD fields
+    clipFixApplied: boolean;
+    clipPadTopPx: number;
+    clipPadBottomPx: number;
+}
+
 // ═══════════════════════════════════════════════════════════════
 // EVENT UNION
 // ═══════════════════════════════════════════════════════════════
@@ -163,7 +188,8 @@ export type ReaderEventType =
     | 'onScrollPosition'
     | 'onAnchorUpdate'
     | 'onMarkerTap'
-    | 'onError';
+    | 'onError'
+    | 'onDebugMetrics'; // DIAGNOSTIC
 
 export interface ReaderEventMap {
     onWordTap: WordTapEvent;
@@ -173,4 +199,5 @@ export interface ReaderEventMap {
     onAnchorUpdate: AnchorEvent;
     onMarkerTap: MarkerTapEvent;
     onError: ErrorEvent;
+    onDebugMetrics: DebugMetricsEvent;
 }

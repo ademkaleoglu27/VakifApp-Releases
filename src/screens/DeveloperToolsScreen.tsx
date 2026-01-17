@@ -89,6 +89,13 @@ export const DeveloperToolsScreen = () => {
                         onPress={() => navigation.navigate('ContentIntegrity', { errorCode: 'MANUAL_CHECK' })}
                         color="#0891b2"
                     />
+
+                    <DebugButton
+                        label="HTML Reader Pilot (Sözler 1-8)"
+                        icon="logo-html5"
+                        onPress={() => navigation.navigate('RisaleHtmlReaderHome')}
+                        color="#eab308"
+                    />
                 </View>
 
                 <View style={styles.section}>
