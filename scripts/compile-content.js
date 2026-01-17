@@ -8,53 +8,42 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// --- CONSTANTS ---
-const OUTPUT_DIR = path.join(__dirname, '../android/app/src/main/assets/risale_html_pilot/01_sozler');
-
-// Base URL for Raw Markdown Source
-const BASE_URL = "https://raw.githubusercontent.com/alitekdemir/Risale-i-Nur-Diyanet/master/obsidian-markdown/01%20Sözler/";
-
-// File List
-const FILES = [
-    "01 Birinci Söz.md",
-    "02 İkinci Söz.md",
-    "03 Üçüncü Söz.md",
-    "04 Dördüncü Söz.md",
-    "05 Beşinci Söz.md",
-    "06 Altıncı Söz.md",
-    "07 Yedinci Söz.md",
-    "08 Sekizinci Söz.md",
-    "09 Dokuzuncu Söz.md",
-    "10 Onuncu Söz.md",
-    "11 On Birinci Söz.md",
-    "12 On İkinci Söz.md",
-    "13 On Üçüncü Söz.md",
-    "14 On Dördüncü Söz.md",
-    "15 On Beşinci Söz.md",
-    "16 On Altıncı Söz.md",
-    "17 On Yedinci Söz.md",
-    "18 On Sekizinci Söz.md",
-    "19 On Dokuzuncu Söz.md",
-    "20 Yirminci Söz.md",
-    "21 Yirmi Birinci Söz.md",
-    "22 Yirmi İkinci Söz.md",
-    "23 Yirmi Üçüncü Söz.md",
-    "24 Yirmi Dördüncü Söz.md",
-    "25 Yirmi Beşinci Söz.md",
-    "26 Yirmi Altıncı Söz.md",
-    "27 Yirmi Yedinci Söz.md",
-    "28 Yirmi Sekizinci Söz.md",
-    "29 Yirmi Dokuzuncu Söz.md",
-    "30 Otuzuncu Söz.md",
-    "31 Otuz Birinci Söz.md",
-    "32 Otuz İkinci Söz.md",
-    "33 Otuz Üçüncü Söz.md"
+// --- CONFIGURATION ---
+const BOOKS = [
+    {
+        id: "risale.sozler@diyanet.tr",
+        folderName: "01_sozler",
+        remoteFolder: "01%20Sözler",
+        title: "Sözler",
+        files: [
+            "01 Birinci Söz.md", "02 İkinci Söz.md", "03 Üçüncü Söz.md", "04 Dördüncü Söz.md", "05 Beşinci Söz.md",
+            "06 Altıncı Söz.md", "07 Yedinci Söz.md", "08 Sekizinci Söz.md", "09 Dokuzuncu Söz.md", "10 Onuncu Söz.md",
+            "11 On Birinci Söz.md", "12 On İkinci Söz.md", "13 On Üçüncü Söz.md", "14 On Dördüncü Söz.md", "15 On Beşinci Söz.md",
+            "16 On Altıncı Söz.md", "17 On Yedinci Söz.md", "18 On Sekizinci Söz.md", "19 On Dokuzuncu Söz.md", "20 Yirminci Söz.md",
+            "21 Yirmi Birinci Söz.md", "22 Yirmi İkinci Söz.md", "23 Yirmi Üçüncü Söz.md", "24 Yirmi Dördüncü Söz.md", "25 Yirmi Beşinci Söz.md",
+            "26 Yirmi Altıncı Söz.md", "27 Yirmi Yedinci Söz.md", "28 Yirmi Sekizinci Söz.md", "29 Yirmi Dokuzuncu Söz.md", "30 Otuzuncu Söz.md",
+            "31 Otuz Birinci Söz.md", "32 Otuz İkinci Söz.md", "33 Otuz Üçüncü Söz.md",
+            "34 Lemaat (Sözler).md", "35 Konferans (Sözler).md", "36 Fihrist (Sözler).md"
+        ]
+    },
+    {
+        id: "risale.mektubat@diyanet.tr",
+        folderName: "02_mektubat",
+        remoteFolder: "02%20Mektubat",
+        title: "Mektubat",
+        files: [
+            "01 Birinci Mektup.md", "02 İkinci Mektup.md", "03 Üçüncü Mektup.md", "04 Dördüncü Mektup.md", "05 Beşinci Mektup.md",
+            "06 Altıncı Mektup.md", "07 Yedinci Mektup.md", "08 Sekizinci Mektup.md", "09 Dokuzuncu Mektup.md", "10 Onuncu Mektup.md",
+            "11 On Birinci Mektup.md", "12 On İkinci Mektup.md", "13 On Üçüncü Mektup.md", "14 On Dördüncü Mektup.md", "15 On Beşinci Mektup.md",
+            "16 On Altıncı Mektup.md", "17 On Yedinci Mektup.md", "18 On Sekizinci Mektup.md", "19 On Dokuzuncu Mektup.md", "20 Yirminci Mektup.md",
+            "21 Yirmi Birinci Mektup.md", "22 Yirmi İkinci Mektup.md", "23 Yirmi Üçüncü Mektup.md", "24 Yirmi Dördüncü Mektup.md", "25 Yirmi Beşinci Mektup.md",
+            "26 Yirmi Altıncı Mektup.md", "27 Yirmi Yedinci Mektup.md", "28 Yirmi Sekizinci Mektup.md", "29 Yirmi Dokuzuncu Mektup.md", "30 Otuzuncu Mektup.md",
+            "31 Otuz Birinci Mektup.md", "32 Otuz İkinci Mektup.md", "33 Otuz Üçüncü Mektup.md"
+        ]
+    }
 ];
 
-// Ensure output dir exists
-if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-}
+const BASE_URL_ROOT = "https://raw.githubusercontent.com/alitekdemir/Risale-i-Nur-Diyanet/master/obsidian-markdown/";
 
 // --- FONT LOADING ---
 function getFontBase64() {
@@ -62,7 +51,6 @@ function getFontBase64() {
         const fontPath = path.join(__dirname, '../src/features/reader/html_pilot/ScheherazadeNewBase64.ts');
         if (fs.existsSync(fontPath)) {
             const content = fs.readFileSync(fontPath, 'utf8');
-            // Extract the string inside quotes: export const SCHEHERAZADE_BASE64 = "..."
             const match = content.match(/export const SCHEHERAZADE_BASE64 = "(.*?)";/s);
             if (match && match[1]) {
                 return match[1];
@@ -75,9 +63,6 @@ function getFontBase64() {
 }
 
 // --- CSS TEMPLATE (CANONICAL) ---
-// Note: We use the font-family but assume the specific font file/resource is managed by the App/WebView
-// or we rely on system fonts as fallback if the specific one isn't injected.
-// UPDATE: We now EMBED the font directly if available.
 const CANONICAL_CSS = (fontBase64) => `
 <style>
   ${fontBase64 ? `
@@ -162,7 +147,6 @@ const CANONICAL_CSS = (fontBase64) => `
   h3, .heading-3 { font-size: clamp(19px, 1.1rem, 21px); }
   
   /* PARAGRAPHS & BODY TEXT */
-  /* CRITICAL: DISABLING JUSTIFY TO FIX SPACING RIVERS */
   .paragraph, p, .entry-content, #content, body {
     text-align: start !important;
     word-spacing: normal !important;
@@ -212,7 +196,7 @@ const CANONICAL_CSS = (fontBase64) => `
       padding-left: 12px;
   }
 
-  /* PRE TAGS (Fix for poetry overflow) */
+  /* PRE TAGS */
   pre {
       white-space: pre-wrap !important;
       overflow-wrap: break-word !important;
@@ -262,16 +246,13 @@ const CANONICAL_JS = `
     let scrollTimer;
     let selectionTimeout;
 
-    // Send Message to RN
     function send(type, payload={}) {
         if (window.ReactNativeWebView) {
             window.ReactNativeWebView.postMessage(JSON.stringify({ type, ...payload }));
         }
     }
 
-    // 1. Initial Ready
     document.addEventListener("DOMContentLoaded", function() {
-        // Find existing footnotes?
         send("READER_READY", { 
             title: document.title,
             hasHandlers: true
@@ -279,7 +260,6 @@ const CANONICAL_JS = `
         reportMetrics();
     });
 
-    // 2. Metrics & Page Count
     function reportMetrics() {
         const scrollTop = window.scrollY;
         const viewportHeight = window.innerHeight;
@@ -304,13 +284,11 @@ const CANONICAL_JS = `
     });
     window.addEventListener('resize', reportMetrics);
 
-    // 3. Selection Handling
     function reportSelection() {
         const sel = window.getSelection();
         const text = sel ? sel.toString().trim() : "";
         if (!text) return;
         
-        // Simple Rect for popup positioning
         let rect = { x: 0, y: 0, width: 0, height: 0 };
         if (sel.rangeCount > 0) {
             const range = sel.getRangeAt(0);
@@ -335,8 +313,6 @@ const CANONICAL_JS = `
         selectionTimeout = setTimeout(reportSelection, 300); 
     });
 
-    // 4. Footnote Handling
-    // Instead of inline onclick, we delegate event
     document.addEventListener('click', function(e) {
         const closestMarker = e.target.closest('.fn-marker');
         if (closestMarker) {
@@ -345,7 +321,6 @@ const CANONICAL_JS = `
             const fnId = closestMarker.getAttribute('data-fn-id');
             const contentDiv = document.querySelector('#footnotes [data-fn-id="' + fnId + '"]');
             if (contentDiv) {
-                // We send the CONTENT directly to RN
                 send("FOOTNOTE_CONTENT", { text: contentDiv.innerHTML });
             } else {
                 send("CONSOLE", { msg: "Footnote content not found for " + fnId });
@@ -359,54 +334,33 @@ const CANONICAL_JS = `
 
 // --- HELPER: DETECT ARABIC ---
 function isArabicBlock(text) {
-    // If text has significant Arabic characters and length
     const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g;
     const matches = text.match(arabicRegex);
     if (!matches) return false;
-
     const arabicCount = matches.length;
     const totalCount = text.replace(/\s/g, '').length;
-
-    // Heuristic: > 50% Arabic characters means it's an Arabic block
     return (arabicCount / totalCount) > 0.5;
 }
 
 // --- CONVERTER FUNCTION ---
-// --- CONVERTER FUNCTION ---
 function normalizeAndConvert(markdown, index, fontBase64, startPage = 1) {
-
     let htmlLines = [];
-
-    // 1. STRIP FRONT MATTER (YAML)
     let content = markdown.replace(/^---\n[\s\S]*?\n---\n/, '');
-
-    // 2. NORMALIZE HEADINGS (Fix ##### leaks)
-    // Replace 4, 5, 6 hashs with h3 (or h3 equivalent)
-    // Replace 3 hashes with h3
-    // Replace 2 hashes with h2
-    // Replace 1 hash with h1
-    // We do this by iterating lines for safer control
 
     let footnotes = {};
     const lines = content.split('\n');
     let blocks = [];
+    let currentBuffer = [];
 
-    let currentBuffer = []; // To accumulate paragraph text for correct wrapping
-
-    // Page Counting State
     let charAccumulator = 0;
     const PAGE_THRESHOLD = 1500;
-
-    // Always start with 1 page (the initial page)
     let localPageCount = 1;
 
-    // Inject INITIAL Marker for the very first page of this section
     blocks.push({ type: 'page_marker', num: startPage });
 
     function flushBuffer() {
         if (currentBuffer.length === 0) return;
 
-        // NORMALIZE: Join with single space
         let fullText = currentBuffer.join(' ').trim();
         fullText = fullText.replace(/[\u00A0\u202F]/g, ' ').replace(/\s+/g, ' ');
 
@@ -415,15 +369,12 @@ function normalizeAndConvert(markdown, index, fontBase64, startPage = 1) {
             charAccumulator += len;
 
             if (charAccumulator >= PAGE_THRESHOLD) {
-                // New Page Loop
                 localPageCount++;
                 const newPageNum = startPage + localPageCount - 1;
-
                 blocks.push({ type: 'page_marker', num: newPageNum });
                 charAccumulator = 0;
             }
 
-            // Check if it's an Arabic Block
             if (isArabicBlock(fullText)) {
                 blocks.push({ type: 'arabic', text: fullText });
             } else {
@@ -433,101 +384,73 @@ function normalizeAndConvert(markdown, index, fontBase64, startPage = 1) {
         currentBuffer = [];
     }
 
-    // A simpler line-by-line + buffer approach
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i].trim();
-
-        // Skip empty lines (triggers flush)
         if (!line) {
             flushBuffer();
             continue;
         }
 
-        // HEADING DETECTION
-        // Regex for Markdown Heading
         let hMatch = line.match(/^(#{1,6})\s+(.*)/);
         if (hMatch) {
             flushBuffer();
             const level = hMatch[1].length;
             const text = hMatch[2];
-            // Normalize level: 1->h1, 2->h2, 3+->h3
             let finalLevel = level;
             if (level > 3) finalLevel = 3;
-
             blocks.push({ type: 'h' + finalLevel, text: text });
             continue;
         }
 
-        // FOOTNOTE DEFINITION: [^ref]: ...
-        // We capture these and DO NOT output them in flow.
         let fnDefMatch = line.match(/^\[\^{1,2}(.*?)\]:\s*(.*)/);
         if (fnDefMatch) {
-            flushBuffer(); // Footnote def usually ends a paragraph
+            flushBuffer();
             const id = fnDefMatch[1];
             const val = fnDefMatch[2];
             footnotes[id] = val;
             continue;
         }
 
-        // BLOCKQUOTE
         if (line.startsWith('>')) {
             flushBuffer();
             blocks.push({ type: 'quote', text: line.replace(/^>\s*/, '') });
             continue;
         }
 
-        // DIVIDER (*** or ---)
         if (/^(\*{3,}|-{3,})$/.test(line)) {
             flushBuffer();
             blocks.push({ type: 'hr' });
             continue;
         }
-
-        // If none of the above, it's text context.
-        // Add to buffer.
         currentBuffer.push(line);
     }
-    flushBuffer(); // Final flush
+    flushBuffer();
 
-    // --- HTML GENERATION ---
     htmlLines.push(`<!DOCTYPE html>`);
     htmlLines.push(`<html lang="tr">`);
-    htmlLines.push(`<head>`); // HEAD START
+    htmlLines.push(`<head>`);
     htmlLines.push(`<meta charset="utf-8">`);
     htmlLines.push(`<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />`);
     htmlLines.push(CANONICAL_CSS(fontBase64));
     htmlLines.push(CANONICAL_JS);
-    htmlLines.push(`</head>`); // HEAD END
+    htmlLines.push(`</head>`);
     htmlLines.push(`<body>`);
 
-    // Special Title for First File
     if (index === 1) {
-        htmlLines.push(`<h1 class="heading-1">Birinci Söz</h1>`);
+        htmlLines.push(`<h1 class="heading-1">${blocks.find(b => b.type.startsWith('h'))?.text || "Bölüm"}</h1>`);
     }
 
-    // PROCESS BLOCKS
     blocks.forEach(blk => {
         let txt = blk.text || "";
-
-        // INLINE NORMALIZATION
-        // 1. Bold: **text** -> <strong>text</strong>
         txt = txt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        // 2. Italic: *text* -> <em>text</em>
         txt = txt.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-        // 3. Footnote Refs: [^id]
-        // Convert to <a ...>★</a>
         txt = txt.replace(/\[\^{1,2}(.*?)\]/g, (match, id) => {
-            // Check if valid? (Optional: warnings if missing)
             if (!footnotes[id]) {
                 console.warn(`[WARN] Missing footnote def for [^${id}] in File ${index}`);
             }
             return `<button class="fn-marker" data-fn-id="${id}">★</button>`;
         });
 
-        // 4. Semantic Labels (Sual:, Elhasıl:, etc.)
-        // Simple regex: Start of line or sentence, Word followed by colon
-        // Ensure bolding for common Risale markers
         const LABELS = ["İhtar:", "Sual:", "Elhasıl:", "Netice:", "Ezcümle:", "Tenbih:"];
         LABELS.forEach(lbl => {
             if (txt.includes(lbl)) {
@@ -535,114 +458,157 @@ function normalizeAndConvert(markdown, index, fontBase64, startPage = 1) {
             }
         });
 
-        // RENDER BLOCK
-        if (blk.type === 'h1') {
-            htmlLines.push(`<h1>${txt}</h1>`);
-        } else if (blk.type === 'h2') {
-            htmlLines.push(`<h2>${txt}</h2>`);
-        } else if (blk.type === 'h3') {
-            htmlLines.push(`<h3>${txt}</h3>`);
-        } else if (blk.type === 'hr') {
-            htmlLines.push(`<hr class="divider" />`);
-        } else if (blk.type === 'quote') {
-            htmlLines.push(`<blockquote>${txt}</blockquote>`);
-        } else if (blk.type === 'arabic') {
-            htmlLines.push(`<div class="arabic-block" dir="rtl">${txt}</div>`);
-        } else if (blk.type === 'page_marker') {
-            htmlLines.push(`<div class="page-marker-wrap"><span class="page-marker" data-page="${blk.num}">${blk.num}</span></div>`);
-        } else {
-            // Default Paragraph
-            htmlLines.push(`<p class="paragraph">${txt}</p>`);
-        }
+        if (blk.type === 'h1') htmlLines.push(`<h1>${txt}</h1>`);
+        else if (blk.type === 'h2') htmlLines.push(`<h2>${txt}</h2>`);
+        else if (blk.type === 'h3') htmlLines.push(`<h3>${txt}</h3>`);
+        else if (blk.type === 'hr') htmlLines.push(`<hr class="divider" />`);
+        else if (blk.type === 'quote') htmlLines.push(`<blockquote>${txt}</blockquote>`);
+        else if (blk.type === 'arabic') htmlLines.push(`<div class="arabic-block" dir="rtl">${txt}</div>`);
+        else if (blk.type === 'page_marker') htmlLines.push(`<div class="page-marker-wrap"><span class="page-marker" data-page="${blk.num}">${blk.num}</span></div>`);
+        else htmlLines.push(`<p class="paragraph">${txt}</p>`);
     });
 
-    // APPEND HIDDEN FOOTNOTES
-    // We store them as standard HTML elements so we can query them easily
     htmlLines.push(`<div id="footnotes" style="display:none;">`);
     for (const [id, content] of Object.entries(footnotes)) {
         htmlLines.push(`<div data-fn-id="${id}">${content}</div>`);
     }
     htmlLines.push(`</div>`);
-
     htmlLines.push(`</body>`);
     htmlLines.push(`</html>`);
 
     return {
         html: htmlLines.join('\n'),
-        pageCount: (localPageCount > 0 ? localPageCount : 1) // Ensure at least 1 page
+        pageCount: (localPageCount > 0 ? localPageCount : 1)
     };
 }
 
-
 // --- MAIN EXECUTION ---
 async function run() {
-    const fontBase64 = getFontBase64();
     console.log("Starting Content Pipeline (Canonical Wrapper)...");
+    const fontBase64 = getFontBase64();
+    let allManifests = [];
 
-    let globalPageOffset = 0;
-    let manifestSections = [];
+    for (const book of BOOKS) {
+        console.log(`\n📚 Processing Book: ${book.title} (${book.id})`);
 
-    for (let i = 0; i < FILES.length; i++) {
-        const file = FILES[i];
-        const index = i + 1;
-
-        // Construct Fetch URL
-        const encodedName = encodeURIComponent(file).replace(/'/g, '%27');
-        const url = BASE_URL + encodedName;
-
-        console.log(`[${index}] Downloading: ${file}`);
-
-        try {
-            const rawData = await download(url);
-            if (rawData) {
-                // Calculate start page for this file
-                // If it's the first file, start at 1. Correct?
-                // Request says: "10 page ise 2. soz 11'den baslasin"
-                // So startPage = globalPageOffset + 1
-                const currentStartPage = globalPageOffset + 1;
-
-                const { html, pageCount } = normalizeAndConvert(rawData, index, fontBase64, currentStartPage);
-
-                // Save
-                const destName = `01_${String(index).padStart(2, '0')}.html`;
-                const destPath = path.join(OUTPUT_DIR, destName);
-                fs.writeFileSync(destPath, html, 'utf8');
-                console.log(`  -> Saved: ${destName} (${html.length} bytes) | Pages: ${currentStartPage}-${currentStartPage + pageCount - 1} (${pageCount})`);
-
-                // Update Manifest
-                manifestSections.push({
-                    index: index,
-                    file: destName,
-                    title: file.replace('.md', ''), // Simple title ext.
-                    startPage: currentStartPage,
-                    pageCount: pageCount
-                });
-
-                // Advance Global Offset
-                globalPageOffset += pageCount;
-
-                // Dev Checks (omitted for brevity)
-            }
-        } catch (e) {
-            console.error(`  [ERR] Failed ${file}:`, e.message);
+        const outputDir = path.join(__dirname, '../android/app/src/main/assets/risale_html_pilot', book.folderName);
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
         }
 
-        // Throttling just in case
-        await new Promise(r => setTimeout(r, 50));
+        let globalPageOffset = 0;
+        let manifestSections = [];
+
+        for (let i = 0; i < book.files.length; i++) {
+            const file = book.files[i];
+            const index = i + 1;
+
+            const encodedFolder = book.remoteFolder;
+            const encodedName = encodeURIComponent(file).replace(/'/g, '%27');
+            const url = `${BASE_URL_ROOT}${encodedFolder}/${encodedName}`;
+
+            console.log(`  [${index}] Downloading: ${file}`);
+
+            try {
+                const rawData = await download(url);
+                if (rawData) {
+                    const currentStartPage = globalPageOffset + 1;
+                    const { html, pageCount } = normalizeAndConvert(rawData, index, fontBase64, currentStartPage);
+
+                    const fileIndexStr = String(index).padStart(2, '0');
+                    const destName = `${book.folderName.split('_')[0]}_${fileIndexStr}.html`; // 01_01.html or 02_01.html
+
+                    const destPath = path.join(outputDir, destName);
+                    fs.writeFileSync(destPath, html, 'utf8');
+
+                    const sectionId = `${book.id}:html_${fileIndexStr}`;
+
+                    manifestSections.push({
+                        sectionId: sectionId,
+                        index: index,
+                        file: destName,
+                        title: `${String(index - 1).padStart(2, '0')} ${file.replace('.md', '')}`,
+                        startPage: currentStartPage,
+                        pageCount: pageCount
+                    });
+
+                    globalPageOffset += pageCount;
+                }
+            } catch (e) {
+                console.error(`    [ERR] Failed ${file}: ${e.message}`);
+            }
+            await new Promise(r => setTimeout(r, 20));
+        }
+
+        const manifestPath = path.join(outputDir, 'manifest.json');
+        const manifestData = {
+            bookId: book.id,
+            title: book.title,
+            lang: "tr",
+            readerContractVersion: "HTML_READER_CONTRACT_v1",
+            contentRevision: `2026-01-18-html-golden-${book.folderName}`,
+            isGolden: true,
+            allowAutoRewrite: false,
+            totalGlobalPages: globalPageOffset,
+            threshold: 1500,
+            sections: manifestSections
+        };
+        fs.writeFileSync(manifestPath, JSON.stringify(manifestData, null, 2), 'utf8');
+        console.log(`  -> Generated Manifest: ${manifestPath} (Pages: ${globalPageOffset})`);
+
+        manifestData.folderName = book.folderName;
+        allManifests.push(manifestData);
     }
 
-    // WRITE MANIFEST
-    const manifestPath = path.join(OUTPUT_DIR, 'manifest.json');
-    const manifestData = {
-        bookId: "01_sozler",
-        threshold: 1500,
-        totalGlobalPages: globalPageOffset,
-        sections: manifestSections
-    };
-    fs.writeFileSync(manifestPath, JSON.stringify(manifestData, null, 2), 'utf8');
-    console.log(`  -> Generated Manifest: manifest.json (Total Pages: ${globalPageOffset})`);
+    generateTsManifest(allManifests);
+    console.log("\nPipeline Complete.");
+}
 
-    console.log("Pipeline Complete.");
+function generateTsManifest(manifests) {
+    const tsPath = path.join(__dirname, '../src/features/reader/html/htmlManifest.generated.ts');
+    let tsContent = `// AUTO-GENERATED BY compile-content.js
+// DO NOT EDIT MANUALLY
+
+export type HtmlChapter = {
+    id: string;
+    title: string;
+    assetPath: string;
+    pageCount: number;
+    startPage: number;
+};
+
+export type HtmlBook = {
+    id: string;
+    title: string;
+    chapters: HtmlChapter[];
+};
+
+export const HTML_BOOKS: Record<string, HtmlBook> = {
+`;
+
+    manifests.forEach(m => {
+        tsContent += `    "${m.bookId}": {\n`;
+        tsContent += `        id: "${m.bookId}",\n`;
+        tsContent += `        title: "${m.title}",\n`;
+        tsContent += `        chapters: [\n`;
+        m.sections.forEach(s => {
+            const assetPath = `risale_html_pilot/${m.folderName}/${s.file}`;
+            tsContent += `            {\n`;
+            tsContent += `                id: "${s.sectionId}",\n`;
+            tsContent += `                title: "${s.title}",\n`;
+            tsContent += `                assetPath: "${assetPath}",\n`;
+            tsContent += `                pageCount: ${s.pageCount},\n`;
+            tsContent += `                startPage: ${s.startPage},\n`;
+            tsContent += `            },\n`;
+        });
+        tsContent += `        ]\n`;
+        tsContent += `    },\n`;
+    });
+
+    tsContent += `};\n`;
+
+    fs.writeFileSync(tsPath, tsContent, 'utf8');
+    console.log(`  -> Generated TS Manifest: ${tsPath}`);
 }
 
 function download(url) {

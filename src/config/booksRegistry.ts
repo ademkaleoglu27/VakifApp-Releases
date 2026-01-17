@@ -15,6 +15,8 @@ export interface BookEntry {
     icon: string;        // Ionicons name
     enabled: boolean;    // Show in menu?
     bookId?: string;     // Canonical Book ID for DB queries
+    readerType?: 'html'; // 'html' or undefined (legacy)
+    manifestAssetPath?: string; // Path to manifest.json relative to android_asset
 }
 
 /**
@@ -35,7 +37,9 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         title: 'Mektubat',
         icon: 'mail-open-outline',
         enabled: true,
-        bookId: 'risale.mektubat@diyanet.tr'
+        bookId: 'risale.mektubat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/02_mektubat/manifest.json'
     },
     {
         id: 'lemalar',

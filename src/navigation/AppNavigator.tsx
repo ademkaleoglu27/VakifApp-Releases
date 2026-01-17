@@ -12,15 +12,13 @@ import * as Notifications from 'expo-notifications';
 
 import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
 import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderScreen';
-// VP Reader Screens (Production)
-import { RisaleVirtualPageSectionList } from '@/features/reader/screens/RisaleVirtualPageSectionList';
-// Single entry point for all reader navigation (P6: handles native/legacy routing)
-import { RisaleReaderEntry } from '@/features/reader/screens/RisaleReaderEntry';
+// VP Reader Screens (Production) REMOVED
+// Single entry point for all reader navigation (P6: handles native/legacy routing) REMOVED
 
 
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
-import { AddReadingLogScreen } from '@/features/risale/screens/AddReadingLogScreen';
+// AddReadingLogScreen REMOVED
 import { AnnouncementsScreen } from '@/features/announcements/screens/AnnouncementsScreen';
 import { DecisionsScreen } from '@/features/mesveret/screens/DecisionsScreen';
 import { AccountingScreen } from '@/features/accounting/screens/AccountingScreen';
@@ -36,7 +34,6 @@ import { AudioProvider } from '@/context/AudioContext';
 import { MiniPlayer } from '@/components/MiniPlayer';
 
 // Phase 2 Screen Imports
-import { LibraryScreen } from '@/features/library/screens/LibraryScreen';
 import { CouncilScreen } from '@/features/council/screens/CouncilScreen';
 import { ContactsScreen } from '@/features/mesveret/screens/ContactsScreen';
 // import { AssignmentListScreen } from '@/features/assignments/screens/AssignmentListScreen'; // Replaced
@@ -45,33 +42,20 @@ import { AgendaScreen } from '@/features/agenda/screens/AgendaScreen';
 import { AboutScreen } from '@/features/dashboard/screens/AboutScreen';
 import { LoginScreen } from '@/features/auth/screens/LoginScreen';
 
-// Quran Screens
-import { QuranHomeScreen } from '@/features/library/screens/QuranHomeScreen';
-import { QuranPageReaderScreen } from '@/features/library/screens/QuranPageReaderScreen';
-import { QuranSurahListScreen } from '@/features/library/screens/QuranSurahListScreen';
-import { QuranPagePickerScreen } from '@/features/library/screens/QuranPagePickerScreen';
-import { QuranJuzPickerScreen } from '@/features/library/screens/QuranJuzPickerScreen';
-import { LibraryDetailScreen } from '@/features/library/screens/LibraryDetailScreen';
-import { WorkDetailScreen } from '@/features/library/screens/WorkDetailScreen';
+// Quran Screens REMOVED
+
+// Risale Screens REMOVED (Legacy)
 
 // Risale Screens
 // import { RisaleHomeScreen } from '@/features/risale/screens/RisaleHomeScreen'; // REMOVED
 
-import { HatimDuasiScreen } from '@/features/library/screens/HatimDuasiScreen';
-import { RisaleSearchScreen } from '@/features/library/screens/RisaleSearchScreen';
-import { RisaleMyNotesScreen } from '@/features/library/screens/RisaleMyNotesScreen';
-import { ReadingHistoryScreen } from '@/features/risale/screens/ReadingHistoryScreen';
-import { CevsenScreen } from '@/features/library/screens/CevsenScreen';
-import { CevsenLandingScreen } from '@/features/library/screens/CevsenLandingScreen';
-import { DictionaryScreen } from '@/features/library/screens/DictionaryScreen';
-import { TesbihatLandingScreen } from '@/features/tesbihat/screens/TesbihatLandingScreen';
-import { DualarLandingScreen } from '@/features/library/screens/DualarLandingScreen';
+// Risale Features Imports REMOVED
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 import { ContentHealthDebugScreen } from '@/screens/ContentHealthDebugScreen';
 import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 
 
-import { TesbihatPlayerScreen } from '@/features/tesbihat/screens/TesbihatPlayerScreen';
+// TesbihatPlayerScreen REMOVED
 
 
 if (Platform.OS === 'android') {
@@ -93,39 +77,18 @@ export type RootStackParamList = {
     ReadingTracking: undefined;
     Agenda: undefined;
 
-    // VP Reader (World Standard)
-    RisaleVirtualPageSectionList: {
-        bookId?: string;
-        version?: string;
-        workId?: string; // Legacy Bridge 
-        workTitle?: string; // Legacy Bridge 
-    };
-    RisaleVirtualPageReader: {
-        bookId?: string;
-        version?: string;
-        workId?: string; // Legacy Bridge
-        workTitle?: string;
-        sectionId?: string; // UID or ID
-
-        // Optional navigation context
-        source?: 'toc' | 'resume';
-        mode?: 'section' | 'resume';
-
-        // Resume coordinates (for 'resume' mode)
-        resumeLocation?: {
-            streamIndex: number;
-            sectionId?: string;
-        };
-    };
+    // VP Reader (Legacy REMOVED)
+    // RisaleVirtualPageSectionList: ...
+    // RisaleVirtualPageReader: ...
 
     // Library Screens
     QuranSurahList: undefined;
     QuranHomeScreen: undefined;
     QuranPageReader: { page: number };
 
-    // Risale Library V1
-    LibraryDetail: { libraryId: string };
-    WorkDetail: { workId: string };
+    // Risale Library V1 (Legacy REMOVED)
+    // LibraryDetail: { libraryId: string };
+    // WorkDetail: { workId: string };
     QuranPagePicker: undefined;
     QuranJuzPicker: undefined;
 
@@ -145,9 +108,7 @@ export type RootStackParamList = {
     DutyList: undefined;
     DutyPoolDetail: { poolId: string; poolName: string };
 
-    // Tesbihat
-    TesbihatLanding: undefined;
-    TesbihatPlayer: { title: string; tracks: any[] };
+    // Tesbihat REMOVED
 
     // Dualar
     DualarLanding: undefined;
@@ -174,15 +135,15 @@ export type MainTabParamList = {
 
 export type DrawerParamList = {
     MainTabs: undefined;
-    Library: undefined;
-    Cevsen: undefined;
-    Lugat: undefined;
+    // Library: undefined; // REMOVED
+    // Cevsen: undefined; // REMOVED
+    // Lugat: undefined; // REMOVED
     CouncilMeşveret: undefined;
     CouncilSohbet: undefined;
     Assignments: undefined;
     ReadingTracking: undefined;
     Agenda: undefined;
-    Tesbihat: undefined;
+    // Tesbihat: undefined; // REMOVED
     About: undefined;
 };
 
@@ -227,7 +188,7 @@ const MainTabs = () => {
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Ana Sayfa' }} />
             <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz Takibi' }} />
-            <Tab.Screen name="Readings" component={AddReadingLogScreen} options={{ title: 'Günlük Okuma' }} />
+            {/* Readings Tab REMOVED */}
             <Tab.Screen name="Duyurular" component={AnnouncementsScreen} options={{ title: 'Duyurular' }} />
         </Tab.Navigator>
     );
@@ -317,70 +278,22 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 color="#334155"
                             />
 
-                            {/* Kütüphane Accordion */}
-                            <TouchableOpacity style={drawerStyles.accordionHeader} onPress={() => {
-                                LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-                                setIsLibraryExpanded(!isLibraryExpanded);
-                            }} activeOpacity={0.7}>
-                                <View style={drawerStyles.row}>
-                                    <Ionicons name="library-outline" size={24} color="#334155" />
-                                    <Text style={drawerStyles.accordionLabel}>Kütüphane</Text>
-                                </View>
-                                <Ionicons
-                                    name={isLibraryExpanded ? "chevron-up" : "chevron-down"}
-                                    size={20}
-                                    color="#94a3b8"
-                                />
-                            </TouchableOpacity>
-
-                            {isLibraryExpanded && (
-                                <View style={drawerStyles.accordionBody}>
-                                    <DrawerItem
-                                        label="Kuran-ı Kerim"
-                                        icon="book-outline"
-                                        onPress={() => navigate('QuranHomeScreen')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-
-                                    {/* Risale-i Nur Library V1 Link */}
-                                    <DrawerItem
-                                        label="Risale-i Nur"
-                                        icon="library-outline"
-                                        onPress={() => navigate('LibraryDetail', { libraryId: 'risale_nur' })}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-                                    <DrawerItem
-                                        label="Cevşen"
-                                        icon="shield-checkmark-outline"
-                                        onPress={() => navigate('CevsenLanding')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-                                    <DrawerItem
-                                        label="Lügat"
-                                        icon="search-outline"
-                                        onPress={() => navigate('Lugat')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-                                    <DrawerItem
-                                        label="Tesbihat"
-                                        icon="musical-notes-outline"
-                                        onPress={() => navigate('TesbihatLanding')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-                                    <DrawerItem
-                                        label="Dualar"
-                                        icon="hand-left-outline"
-                                        onPress={() => navigate('DualarLanding')}
-                                        isSubItem
-                                        color="#334155"
-                                    />
-                                </View>
-                            )}
+                            {/* Kütüphane REMOVED */}
+                            {/* (Cevsen, Lugat, Tesbihat, Dualar moved out of Library Accordion if needed, or just hidden as requested?)
+                                 User said: "Sadece sol menüdeki “Kütüphane” akışını... kaldır."
+                                 and "Cevşen, Lügat, Tesbihat" are sub-items.
+                                 If I remove the accordion, I remove access to them too unless I move them top level?
+                                 User request: "Library akışını (Risale-i Nur kitap listesi...) tamamen kaldır."
+                                 "Sol menüde görünen... külliyat alanı... kaldır."
+                                 It implies removing the 'Library' group.
+                                 However, 'Cevşen', 'Tesbihat' might be considered separate features?
+                                 User said: "Library home, LibraryScreen... kaldır."
+                                 DrawerItem label="Risale-i Nur" implies the specific book list.
+                                 Let's check if the user wants strictly NO Library group.
+                                 "Kütüphane (Library) entry’sini kaldır." -> Yes.
+                                 "Bu akışlara giden tüm navigate() çağrılarını kaldır"
+                                 So I will remove the entire accordion.
+                              */}
 
                             {/* Meşveret Accordion */}
                             {requireFeature('MESVERET_SCREEN') && (
@@ -531,7 +444,7 @@ const DrawerNavigator = () => {
             }}
         >
             <Drawer.Screen name="MainTabs" component={MainTabs} />
-            <Drawer.Screen name="Library" component={LibraryScreen} />
+            {/* Library Screen Removed */}
             <Drawer.Screen name="CouncilMeşveret" component={CouncilScreen} />
             <Drawer.Screen name="CouncilSohbet" component={CouncilScreen} />
             <Drawer.Screen name="Assignments" component={DutyDashboardScreen} />
@@ -721,11 +634,7 @@ export const AppNavigator = () => {
                                     component={JuzTrackingScreen}
                                     options={{ title: 'Cüz Takibi', headerShown: false }}
                                 />
-                                <Stack.Screen
-                                    name="AddReadingLog"
-                                    component={AddReadingLogScreen}
-                                    options={{ title: 'Okuma Ekle', headerShown: false }}
-                                />
+                                {/* AddReadingLog REMOVED */}
                                 <Stack.Screen
                                     name="Announcements"
                                     component={AnnouncementsScreen}
@@ -757,62 +666,10 @@ export const AppNavigator = () => {
                                     options={{ title: 'Ajanda', headerShown: false }}
                                 />
 
-                                {/* VP Reader Screens */}
-                                <Stack.Screen
-                                    name="RisaleVirtualPageSectionList"
-                                    component={RisaleVirtualPageSectionList}
-                                    options={{ title: 'Bölümler (VP)', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="RisaleVirtualPageReader"
-                                    component={RisaleReaderEntry}
-                                    options={{ title: 'Okuma (VP)', headerShown: false }}
-                                />
+                                {/* Risale-i Nur Library Routes REMOVED */}
+                                {/* Legacy Reader Routes REMOVED */}
 
-                                {/* Library Screens */}
-                                {/* QuranReader removed */}
-                                <Stack.Screen
-                                    name="QuranSurahList"
-                                    component={QuranSurahListScreen}
-                                    options={{ title: 'Sureler', headerShown: false }}
-                                />
-
-                                {/* Risale Screens: Legacy routes removed. Entry via Library -> WorkDetail -> VP Reader */}
-                                {/* DELETED: RisaleHome */}
-
-                                {/* DELETED: Legacy PDF Reader */}
-                                {/* DELETED: Legacy FlashList Reader */}
-
-                                <Stack.Screen
-                                    name="Cevsen"
-                                    component={CevsenScreen}
-                                    options={{ title: 'Cevşen', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="CevsenLanding"
-                                    component={CevsenLandingScreen}
-                                    options={{ title: 'Cevşen', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="Lugat"
-                                    component={DictionaryScreen}
-                                    options={{ title: 'Lügat', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="TesbihatLanding"
-                                    component={TesbihatLandingScreen}
-                                    options={{ title: 'Tesbihatlar', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="TesbihatPlayer"
-                                    component={TesbihatPlayerScreen}
-                                    options={{ title: 'Tesbihat Çalar', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="DualarLanding"
-                                    component={DualarLandingScreen}
-                                    options={{ title: 'Dualar', headerShown: false }}
-                                />
+                                {/* Secondary Features (Cevsen, Lugat, Tesbihat, Dualar) REMOVED */}
                                 {__DEV__ && (
                                     <>
                                         <Stack.Screen
@@ -828,14 +685,9 @@ export const AppNavigator = () => {
                                     </>
                                 )}
 
-                                {/* Risale Library V1 */}
-                                <Stack.Screen name="LibraryDetail" component={LibraryDetailScreen} options={{ headerShown: false }} />
-                                <Stack.Screen name="WorkDetail" component={WorkDetailScreen} options={{ headerShown: false }} />
-                                <Stack.Screen
-                                    name="HatimDuasi"
-                                    component={HatimDuasiScreen}
-                                    options={{ title: 'Hatim Duası', headerShown: false }}
-                                />
+                                {/* Risale Library V1 REMOVED */}
+                                {/* LibraryDetail, WorkDetail, HatimDuasi REMOVED */}
+
                                 <Stack.Screen
                                     name="ContentIntegrity"
                                     component={ContentIntegrityScreen}
@@ -843,26 +695,10 @@ export const AppNavigator = () => {
                                 />
 
 
-                                <Stack.Screen
-                                    name="RisaleSearch"
-                                    component={RisaleSearchScreen}
-                                    options={{ title: 'Arama', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="RisaleMyNotes"
-                                    component={RisaleMyNotesScreen}
-                                    options={{ title: 'Notlarım', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="ReadingHistory"
-                                    component={ReadingHistoryScreen}
-                                    options={{ title: 'Okuma Geçmişi', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="Notifications"
-                                    component={NotificationsScreen}
-                                    options={{ title: 'Bildirimler', headerShown: false }}
-                                />
+                                {/* Risale Features (Search, Notes, History) REMOVED */}
+
+
+
                                 <Stack.Screen
                                     name="DutyDashboard"
                                     component={DutyDashboardScreen}

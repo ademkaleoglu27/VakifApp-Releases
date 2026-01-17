@@ -91,8 +91,8 @@ export const DeveloperToolsScreen = () => {
                     />
 
                     <DebugButton
-                        label="HTML Reader Pilot (Sözler 1-8)"
-                        icon="logo-html5"
+                        label="HTML Reader Pilot (Library)"
+                        icon="library-outline"
                         onPress={() => navigation.navigate('RisaleHtmlReaderHome')}
                         color="#eab308"
                     />
