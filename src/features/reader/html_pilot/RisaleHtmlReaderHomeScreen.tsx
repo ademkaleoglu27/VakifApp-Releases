@@ -24,7 +24,7 @@ export const RisaleHtmlReaderHomeScreen = () => {
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.subtitle}>{item.chapters.length} Bölüm • HTML Pilot</Text>
+                <Text style={styles.subtitle}>{item.chapters.length} Bölüm</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
         </TouchableOpacity>
@@ -53,7 +53,7 @@ export const RisaleHtmlReaderHomeScreen = () => {
         </TouchableOpacity>
     );
 
-    const title = selectedBook ? selectedBook.title : "HTML Reader Pilot";
+    const title = selectedBook ? selectedBook.title : "Risale-i Nur Külliyatı";
 
     // GROUPING LOGIC
     const sections = React.useMemo(() => {
@@ -84,14 +84,14 @@ export const RisaleHtmlReaderHomeScreen = () => {
                 <Text style={styles.headerTitle}>{title}</Text>
             </View>
 
-            <View style={styles.infoBox}>
-                <Ionicons name="flask-outline" size={20} color="#b45309" />
-                <Text style={styles.infoText}>
-                    {selectedBook
-                        ? `${selectedBook.title} kitabı görüntüleniyor. Gerçek HTML işleme kullanılmaktadır.`
-                        : "Test etmek istediğiniz kitabı seçin. Bu modül deneyseldir (V2)."}
-                </Text>
-            </View>
+            {selectedBook && (
+                <View style={styles.infoBox}>
+                    <Ionicons name="book-outline" size={20} color={theme.colors.primary} />
+                    <Text style={styles.infoText}>
+                        {selectedBook.title} • {selectedBook.chapters.length} Bölüm
+                    </Text>
+                </View>
+            )}
 
             {selectedBook ? (
                 <FlatList

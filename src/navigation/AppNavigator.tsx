@@ -12,13 +12,14 @@ import * as Notifications from 'expo-notifications';
 
 import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
 import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderScreen';
+import { LibraryHomeScreen } from '@/features/library/screens/LibraryHomeScreen';
 // VP Reader Screens (Production) REMOVED
 // Single entry point for all reader navigation (P6: handles native/legacy routing) REMOVED
 
 
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
-// AddReadingLogScreen REMOVED
+import { AddReadingLogScreen } from '@/features/juz/screens/AddReadingLogScreen';
 import { AnnouncementsScreen } from '@/features/announcements/screens/AnnouncementsScreen';
 import { DecisionsScreen } from '@/features/mesveret/screens/DecisionsScreen';
 import { AccountingScreen } from '@/features/accounting/screens/AccountingScreen';
@@ -122,14 +123,15 @@ export type RootStackParamList = {
     RisaleHtmlReaderHome: undefined;
     RisaleHtmlReader: { assetPath: string; title: string };
 
-    // Debug / Dev
     DeveloperTools: undefined;
+    LibraryHome: undefined;
 };
 
 export type MainTabParamList = {
     Home: undefined;
     JuzTracking: undefined;
     Readings: undefined;
+    AddReading: undefined;
     Duyurular: undefined;
 };
 
@@ -162,7 +164,8 @@ const MainTabs = () => {
                     let iconName: keyof typeof Ionicons.glyphMap = 'home';
                     if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
                     else if (route.name === 'JuzTracking') iconName = focused ? 'book' : 'book-outline';
-                    else if (route.name === 'Readings') iconName = focused ? 'add-circle' : 'add-circle-outline';
+                    else if (route.name === 'Readings') iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+                    else if (route.name === 'AddReading') iconName = focused ? 'add-circle' : 'add-circle-outline';
                     else if (route.name === 'Duyurular') iconName = focused ? 'megaphone' : 'megaphone-outline';
 
                     return <Ionicons name={iconName} size={size} color={color} />;
@@ -188,7 +191,7 @@ const MainTabs = () => {
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Ana Sayfa' }} />
             <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz Takibi' }} />
-            {/* Readings Tab REMOVED */}
+            <Tab.Screen name="AddReading" component={AddReadingLogScreen} options={{ title: 'Okuma Ekle' }} />
             <Tab.Screen name="Duyurular" component={AnnouncementsScreen} options={{ title: 'Duyurular' }} />
         </Tab.Navigator>
     );
@@ -293,7 +296,21 @@ const CustomDrawerContent = React.memo((props: any) => {
                                  "Kütüphane (Library) entry’sini kaldır." -> Yes.
                                  "Bu akışlara giden tüm navigate() çağrılarını kaldır"
                                  So I will remove the entire accordion.
-                              */}
+                            {/* Kütüphane - NEW */}
+                            <DrawerItem
+                                label="Kütüphane"
+                                icon="library-outline"
+                                onPress={() => navigate('LibraryHome')}
+                                color="#334155"
+                            />
+
+                            {/* Okuma Takibi */}
+                            <DrawerItem
+                                label="Okuma Takibi"
+                                icon="stats-chart-outline"
+                                onPress={() => navigate('ReadingTracking')}
+                                color="#334155"
+                            />
 
                             {/* Meşveret Accordion */}
                             {requireFeature('MESVERET_SCREEN') && (
@@ -349,13 +366,6 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 />
                             )}
 
-                            {/* Okuma Takibi */}
-                            <DrawerItem
-                                label="Okuma Takibi"
-                                icon="stats-chart-outline"
-                                onPress={() => navigate('ReadingTracking')}
-                                color="#334155"
-                            />
 
                             {/* Ajanda */}
                             <DrawerItem
@@ -724,6 +734,8 @@ export const AppNavigator = () => {
                         )}
                         <Stack.Screen name="RisaleHtmlReaderHome" component={RisaleHtmlReaderHomeScreen} />
                         <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
+                        <Stack.Screen name="LibraryHome" component={LibraryHomeScreen} />
+                        <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
                     </Stack.Navigator>
                     <MiniPlayer />
                 </View>
