@@ -5,13 +5,16 @@ import {
     TouchableOpacity,
     Text,
     Platform,
-    Dimensions,
     Share,
     Clipboard,
     ActivityIndicator,
     StatusBar,
     Modal,
-    ScrollView
+    ScrollView,
+    FlatList,
+    Image,
+    InteractionManager,
+    Dimensions
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useRoute, useNavigation } from '@react-navigation/native';
@@ -19,11 +22,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { dictionaryDb, DictionaryEntry } from '@/services/dictionaryDb';
 import { SCHEHERAZADE_BASE64 } from './ScheherazadeNewBase64';
+import { HTML_BOOKS } from '@/features/reader/html/htmlManifest.generated';
 
 // --- CSS CONFIGURATION (STRICT) ---
 const getHtmlCss = () => `
 <style>
   /* 1. FONTS */
+
   @font-face {
     font-family: 'ScheherazadeNew';
     src: url(data:font/ttf;base64,${SCHEHERAZADE_BASE64}) format("truetype");
@@ -52,12 +57,6 @@ const getHtmlCss = () => `
     -webkit-user-select: text;
     user-select: text;
     -webkit-touch-callout: default;
-  }
-
-  /* OVERVIEW MODE */
-  body.mode-overview {
-    -webkit-user-select: none !important;
-    user-select: none !important;
   }
 
   ::selection {
@@ -156,6 +155,7 @@ const getHtmlCss = () => `
 `;
 
 // --- JS CONTROLLER ---
+// --- JS CONTROLLER ---
 const INJECTED_JS = `
 (function() {
     // STATE
@@ -167,17 +167,12 @@ const INJECTED_JS = `
     }
 
     // 2. FONTS READY
-    // Check if fonts are ready. If not, wait.
     function checkFonts() {
         document.fonts.ready.then(function() {
             send("FONTS_READY");
-            // Small delay to ensure layout is final
             setTimeout(reportMetrics, 200);
         });
     }
-    
-    // If ScheherazadeNew specifically is loading, we might want to wait for it?
-    // document.fonts.ready handles all pending fonts.
     checkFonts();
     
     // DEBUG: Check Font
@@ -189,31 +184,31 @@ const INJECTED_JS = `
         }
     }, 2000);
 
-    // 3. METRICS (Logic Pagination)
+    // 3. METRICS
     function reportMetrics() {
         const scrollTop = window.scrollY;
         const viewportHeight = window.innerHeight;
         const contentHeight = document.body.scrollHeight;
         
-        // Logical Page: 1 viewport = 1 page
-        // Avoid division by zero
         if(viewportHeight < 10) return;
 
         const currentPage = Math.floor(scrollTop / viewportHeight) + 1;
         const totalPages = Math.ceil(contentHeight / viewportHeight);
+        const isAtEnd = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
 
         send("METRICS", { 
             scrollTop, 
             viewportHeight, 
             contentHeight, 
             currentPage, 
-            totalPages 
+            totalPages,
+            isAtEnd 
         });
     }
 
     window.addEventListener('scroll', function() {
         clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(reportMetrics, 100); // Throttle 100ms
+        scrollTimer = setTimeout(reportMetrics, 100); 
     });
     
     window.addEventListener('resize', reportMetrics);
@@ -223,7 +218,6 @@ const INJECTED_JS = `
     function reportSelection() {
         const sel = window.getSelection();
         const text = sel ? sel.toString().trim() : "";
-        
         send("SELECTION", { text });
     }
 
@@ -231,66 +225,40 @@ const INJECTED_JS = `
         clearTimeout(selectionTimeout);
         selectionTimeout = setTimeout(reportSelection, 250); 
     });
-    
-    // 5. MODE HANDLING
-    window.setMode = function(mode) {
-        if(mode === 'overview') {
-            document.body.classList.add('mode-overview');
-             window.getSelection().removeAllRanges();
-        } else {
-            document.body.classList.remove('mode-overview');
-        }
-    }
 
-    // 6. AUTO-TAG ARABIC BLOCKS (PoC Heuristic)
-    // HTML content doesn't have classes, so we detect them at runtime.
+    // 5. AUTO-TAG ARABIC BLOCKS
     function tagArabicBlocks() {
         const els = document.querySelectorAll('p, h3, h4'); 
-        // Range includes basic Arabic, Supplement, Extended A
         const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
 
         els.forEach(el => {
             const text = el.textContent.trim();
             if (!text) return;
             
-            // Heuristic: Count Arabic characters vs Total non-whitespace
             const arabicChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g) || []).length;
             const totalChars = text.replace(/\s/g, '').length;
             
             if (totalChars > 0) {
                 const ratio = arabicChars / totalChars;
-                // If > 60% Arabic, treat as a block.
-                // This handles purely Arabic lines (Ayats) while skipping Turkish lines with inline quotes.
                 if (ratio > 0.6) {
                     el.classList.add('arabic-block');
-                    el.dir = 'rtl'; // Ensure RTL
+                    el.dir = 'rtl'; 
                 }
             }
         });
     }
+    tagArabicBlocks();
 
-    // 7. FOOTNOTE LISTENER (Delegated)
+    // 6. FOOTNOTE LISTENER (Simple Click)
     document.addEventListener('click', function(e) {
-        // Handle Footnote Marker Click
-        // Use closest to handle clicks on the star icon vs anchor
         const target = e.target;
         const marker = target.closest && target.closest('.fn-marker');
         
         if (marker) {
-            e.preventDefault();
-            e.stopPropagation();
             const id = marker.getAttribute('data-fn-id');
-            
-            // Retrieve content from hidden store
-            const contentEl = document.querySelector('#footnotes [data-fn-id="' + id + '"]');
-            const content = contentEl ? contentEl.innerHTML : "İçerik bulunamadı.";
-            
-            send("FOOTNOTE_CONTENT", { text: content });
+            send("FOOTNOTE", { id });
         }
     });
-
-    // Run immediately
-    tagArabicBlocks();
 
 })();
 true;
@@ -299,12 +267,13 @@ true;
 export const RisaleHtmlReaderScreen = () => {
     const route = useRoute<any>();
     const navigation = useNavigation<any>();
-    const { assetPath, title } = route.params;
+    const { assetPath, title, bookId, chapterId } = route.params;
     const webViewRef = useRef<WebView>(null);
 
     // State
     const [fontsReady, setFontsReady] = useState(false);
-    const [pageInfo, setPageInfo] = useState({ current: 1, total: 1 });
+    const [pageInfo, setPageInfo] = useState({ current: 1, total: 1, isAtEnd: false });
+
     const [selectedText, setSelectedText] = useState("");
 
     // Dictionary State
@@ -339,18 +308,25 @@ export const RisaleHtmlReaderScreen = () => {
             const data = JSON.parse(event.nativeEvent.data);
 
             switch (data.type) {
+                case 'LOG':
+                    console.log('[WebView Log]', data.message);
+                    break;
                 case 'FONTS_READY':
-                    // ... existing
                     console.log('WebView Fonts Ready');
                     setFontsReady(true);
                     break;
                 case 'METRICS':
-                    if (fontsReady) {
-                        setPageInfo({
-                            current: Math.max(1, data.currentPage || 1),
-                            total: Math.max(1, data.totalPages || 1)
-                        });
-                    }
+                    // Calculate Current Page (Simple Viewport Math)
+                    const viewportH = data.viewportHeight || Dimensions.get('window').height;
+                    const scrollTop = data.scrollTop || 0;
+                    const computedPage = Math.ceil((scrollTop + 10) / viewportH);
+                    const newTotal = Math.max(1, data.totalPages || 1);
+
+                    setPageInfo({
+                        current: computedPage,
+                        total: newTotal,
+                        isAtEnd: !!data.isAtEnd
+                    });
                     break;
                 case 'SELECTION':
                     setSelectedText(data.text || "");
@@ -359,28 +335,7 @@ export const RisaleHtmlReaderScreen = () => {
                     console.log('[WebView]', data.msg);
                     break;
                 case 'FOOTNOTE':
-                    // JS sends {type:'FOOTNOTE', id:'1'}
-                    // We need to fetch the content. The content is embedded in window.FOOTNOTES
-                    // But wait, the JS doesn't send the text, it sends the ID.
-                    // We can either:
-                    // 1. Send the full text from JS (easier).
-                    // 2. Query JS for the text (async).
-                    // Let's update the script to send CONTENT instead of ID, or send ID and we look it up if we had strict data.
-                    // Since we generated the HTML, we put window.FOOTNOTES in it.
-                    // Let's assume the JS handler sends the content or we inject a helper to send content.
-                    // UPDATE: The compile script sends: onclick="window.ReactNativeWebView.postMessage(JSON.stringify({type:'FOOTNOTE', id:'${id}'}))"
-                    // The JS context has `window.FOOTNOTES`. So it's better if the JS looks it up before sending.
-                    // I will inject a helper `sendFootnote(id)` in INJECTED_JS to do the lookup.
-                    // But I can't change the HTML invalidation easily now.
-                    // BETTER: Update INJECTED_JS to listen to a specific "requestFootnote" or just handle logic in JS if possible.
-                    // SIMPLEST: The HTML onclick can be updated in the compiler.
-                    // BUT for now, let's fetch it from the webview.
-
-                    // Actually, if I modify INJECTED_JS I can add a helper `window.getFootnote(id)` matching the HTML interaction?
-                    // The HTML is strictly: onclick="postMessage...".
-                    // The WebView message is received here.
-                    // We don't have the text here.
-                    // I must execute JS to get the text.
+                    // Fetch content by ID
                     webViewRef.current?.injectJavaScript(`
                         (function(){
                             const text = window.FOOTNOTES["${data.id}"];
@@ -397,27 +352,63 @@ export const RisaleHtmlReaderScreen = () => {
         } catch (e) { }
     };
 
-    // ... existing handles ...
+    // NEXT SECTION LOGIC
+    const getNextChapter = () => {
+        if (!bookId || !chapterId) return null;
+        const book = HTML_BOOKS[bookId];
+        if (!book) return null;
+        const index = book.chapters.findIndex(c => c.id === chapterId);
+        if (index === -1 || index === book.chapters.length - 1) return null;
+        return book.chapters[index + 1];
+    };
+
+    const nextChapter = getNextChapter();
+    // Use isAtEnd flag for reliable detection (with buffer)
+    const showNextButton = nextChapter && pageInfo.isAtEnd;
+
+    const handleNextSection = () => {
+        if (nextChapter) {
+            navigation.replace('RisaleHtmlReader', {
+                assetPath: nextChapter.assetPath,
+                title: nextChapter.title,
+                bookId: bookId,
+                chapterId: nextChapter.id
+            });
+        }
+    };
 
     return (
         <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-            {/* ... existing header & webview ... */}
-            <WebView
-                ref={webViewRef}
-                source={{ uri: `file:///android_asset/${assetPath}` }}
-                originWhitelist={['*']}
-                allowFileAccess={true}
-                allowUniversalAccessFromFileURLs={true}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
-                scalesPageToFit={false}
-                setBuiltInZoomControls={true}
-                setDisplayZoomControls={false}
-                onMessage={handleMessage}
-                injectedJavaScriptBeforeContentLoaded={injectCss}
-                injectedJavaScript={INJECTED_JS}
-                style={{ flex: 1, backgroundColor: '#efe7d1' }}
-            />
+            {/* Header (Simplified) */}
+            <View style={{ height: 0 }} />
+
+            {/* CARD READER WRAPPER -> Reverted to standard */}
+            <View style={{ flex: 1 }}>
+                <WebView
+                    ref={webViewRef}
+                    source={{ uri: `file:///android_asset/${assetPath}` }}
+                    originWhitelist={['*']}
+                    allowFileAccess={true}
+                    allowUniversalAccessFromFileURLs={true}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    scalesPageToFit={false}
+                    setBuiltInZoomControls={true}
+                    setDisplayZoomControls={false}
+                    onMessage={handleMessage}
+                    injectedJavaScriptBeforeContentLoaded={injectCss}
+                    injectedJavaScript={INJECTED_JS}
+                    style={{ flex: 1, backgroundColor: '#efe7d1' }}
+                />
+            </View>
+
+            {/* NEXT SECTION BUTTON */}
+            {showNextButton && (
+                <TouchableOpacity style={styles.nextSectionBtn} onPress={handleNextSection}>
+                    <Text style={styles.nextSectionText}>Sonraki Bölüm</Text>
+                    <Ionicons name="arrow-forward" size={18} color="#fff" />
+                </TouchableOpacity>
+            )}
 
             {/* SELECTION ACTION BAR */}
             {selectedText.length > 0 && (
@@ -570,7 +561,24 @@ export const RisaleHtmlReaderScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
+    container: {
+        flex: 1,
+        backgroundColor: '#0B0F14' // Dark Reference BG
+    },
+    // Card Wrapper for WebView
+    webViewWrapper: {
+        flex: 1,
+        marginVertical: 10,
+        marginHorizontal: 12,
+        borderRadius: 16,
+        overflow: 'hidden',
+        backgroundColor: '#efe7d1', // Match paper color
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
     header: {
         flexDirection: 'row', alignItems: 'center', height: 50,
         borderBottomWidth: 1, borderColor: '#e2e8f0', backgroundColor: '#f8fafc',
@@ -653,5 +661,28 @@ const styles = StyleSheet.create({
     candTr: { fontSize: 16, color: '#334155', fontWeight: '500' },
 
     // Footnote
-    footNoteText: { fontSize: 18, color: '#334155', lineHeight: 28, fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }
+    footNoteText: { fontSize: 18, color: '#334155', lineHeight: 28, fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' },
+
+    // Page Info Bubble (Reading Mode)
+    // pageLabel: { marginTop: 8, color: '#000', fontSize: 12, fontWeight: 'bold' }, // Moved to PageThumbnail footer
+
+    // Next Section Button
+    nextSectionBtn: {
+        position: 'absolute',
+        bottom: 30,
+        right: 20,
+        backgroundColor: '#1e293b',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 16,
+        borderRadius: 24,
+        elevation: 6,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        zIndex: 1000
+    },
+    nextSectionText: { color: '#fff', fontWeight: 'bold', marginRight: 8, fontSize: 14 }
 });

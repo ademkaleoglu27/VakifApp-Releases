@@ -48,6 +48,8 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         enabled: true,
         // Gold Standard: Canonical ID required
         bookId: 'risale.lemalar@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/03_lemalar/manifest.json'
     },
     {
         id: 'sualar',
@@ -55,6 +57,98 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         icon: 'sunny-outline',
         enabled: true,
         bookId: 'risale.sualar@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/04_sualar/manifest.json'
+    },
+    {
+        id: 'tarihce',
+        title: 'Tarihçe-i Hayat',
+        icon: 'book-outline', // Updated icon
+        enabled: true,
+        bookId: 'risale.tarihce@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/05_tarihce/manifest.json'
+    },
+    {
+        id: 'mesnevi',
+        title: 'Mesnevî-i Nuriye',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.mesnevi@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/06_mesnevi/manifest.json'
+    },
+    {
+        id: 'isarat',
+        title: 'İşaratü\'l-i\'caz',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.isarat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/07_isarat/manifest.json'
+    },
+    {
+        id: 'sikke',
+        title: 'Sikke-i Tasdik-i Gaybî',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.sikke@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/08_sikke/manifest.json'
+    },
+    {
+        id: 'barla',
+        title: 'Barla Lâhikası',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.barla@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/09_barla/manifest.json'
+    },
+    {
+        id: 'kastamonu',
+        title: 'Kastamonu Lâhikası',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.kastamonu@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/10_kastamonu/manifest.json'
+    },
+    {
+        id: 'emirdag1',
+        title: 'Emirdağ Lâhikası 1',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.emirdag1@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/11_emirdag1/manifest.json'
+    },
+    {
+        id: 'emirdag2',
+        title: 'Emirdağ Lâhikası 2',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.emirdag2@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/12_emirdag2/manifest.json'
+    },
+    {
+        id: 'asayi',
+        title: 'Asâ-yı Musa',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.asayi@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/13_asayi/manifest.json'
+    },
+    {
+        id: 'muhakemat',
+        title: 'Muhakemat',
+        icon: 'book-outline',
+        enabled: true,
+        bookId: 'risale.muhakemat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/14_muhakemat/manifest.json'
     },
     {
         id: 'asayi_musa',

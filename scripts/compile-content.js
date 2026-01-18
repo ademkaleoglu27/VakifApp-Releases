@@ -40,6 +40,172 @@ const BOOKS = [
             "26 Yirmi Altıncı Mektup.md", "27 Yirmi Yedinci Mektup.md", "28 Yirmi Sekizinci Mektup.md", "29 Yirmi Dokuzuncu Mektup.md", "30 Otuzuncu Mektup.md",
             "31 Otuz Birinci Mektup.md", "32 Otuz İkinci Mektup.md", "33 Otuz Üçüncü Mektup.md"
         ]
+    },
+    {
+        id: "risale.lemalar@diyanet.tr",
+        folderName: "03_lemalar",
+        remoteFolder: "03 Lem'alar",
+        title: "Lemalar",
+        files: [
+            "01 Birinci Lem’a.md", "02 İkinci Lem’a.md", "03 Üçüncü Lem’a.md", "04 Dördüncü Lem’a.md", "05 Beşinci Lem’a.md",
+            "06 Altıncı Lem’a.md", "07 Yedinci Lem’a.md", "08 Sekizinci Lem’a.md", "09 Dokuzuncu Lem’a.md", "10 Onuncu Lem’a.md",
+            "11 On Birinci Lem’a.md", "12 On İkinci Lem’a.md", "13 On Üçüncü Lem’a.md", "14 On Dördüncü Lem’a.md", "15 On Beşinci Lem’a.md",
+            "16 On Altıncı Lem’a.md", "17 On Yedinci Lem’a.md", "18 On Sekizinci Lem’a.md", "19 On Dokuzuncu Lem’a.md", "20 Yirminci Lem’a.md",
+            "21 Yirmi Birinci Lem’a.md", "22 Yirmi İkinci Lem’a.md", "23 Yirmi Üçüncü Lem’a.md", "24 Yirmi Dördüncü Lem’a.md", "25 Yirmi Beşinci Lem’a.md",
+            "26 Yirmi Altıncı Lem’a.md", "27 Yirmi Yedinci Lem’a.md", "28 Yirmi Sekizinci Lem’a.md", "29 Yirmi Dokuzuncu Lem’a.md", "30 Otuzuncu Lem’a.md",
+            "31 Otuz Birinci Lem’a.md", "32 Otuz İkinci Lem’a.md", "33 Otuz Üçüncü Lem’a.md"
+        ]
+    },
+    {
+        id: "risale.sualar@diyanet.tr",
+        folderName: "04_sualar",
+        remoteFolder: "04 Şuâlar",
+        title: "Şualar",
+        files: [
+            "01 Birinci Şuâ.md", "02 İkinci Şuâ.md", "03 Üçüncü Şuâ.md",
+            "04 Dördüncü Şuâ.md", "05 Beşinci Şuâ.md", "06 Altıncı Şuâ.md",
+            "07 Yedinci Şuâ.md", "08 Sekizinci Şuâ.md", "09 Dokuzuncu Şuâ.md",
+            "10 On Birinci Şuâ.md", "11 On İkinci Şuâ.md", "12 On Üçüncü Şuâ.md",
+            "13 On Dördüncü Şuâ.md", "14 On Beşinci Şuâ.md",
+            "15 Yirmi Dokuzuncu Lem’a’dan İkinci Bab.md",
+            "16 Eddâî.md", "17 Dua (Şuâlar).md"
+        ]
+    },
+    {
+        id: "risale.tarihce@diyanet.tr",
+        folderName: "05_tarihce",
+        remoteFolder: "05 Tarihçe-i Hayat",
+        title: "Tarihçe-i Hayat",
+        files: [
+            "00 TARİHÇE-İ HAYAT.md", "01 Ön söz.md", "02 İlk Hayatı.md", "03 Barla Hayatı.md",
+            "04 Eskişehir Hayatı.md", "05 Kastamonu Hayatı.md", "06 Denizli Hayatı.md",
+            "07 Emirdağ Hayatı.md", "08 Afyon Hayatı.md", "09 Isparta Hayatı.md",
+            "10 Hariç Memleketler.md", "11 Bedîüzzaman ve Risale-i Nur.md", "12 Dua (Tarihçe-i Hayatı).md"
+        ]
+    },
+    {
+        id: "risale.mesnevi@diyanet.tr",
+        folderName: "06_mesnevi",
+        remoteFolder: "06 Mesnevî-i Nuriye",
+        title: "Mesnevî-i Nuriye",
+        files: [
+            "00 MESNEVÎ-İ NURİYE.md", "01 İ’tizar.md", "02 Mukaddime.md", "03 Lem’alar Risalesi.md",
+            "04 Reşhalar.md", "05 Lâsiyyemalar.md", "06 Katre.md", "07 Hubab.md",
+            "08 Habbe.md", "09 Zühre.md", "10 Zerre.md", "11 Şemme Risalesi.md",
+            "12 Onuncu Risale.md", "13 Şule.md", "14 Nokta.md", "15 Münderecat Hakkında.md",
+            "16 Fihrist (Mesnevî).md"
+        ]
+    },
+    {
+        id: "risale.isarat@diyanet.tr",
+        folderName: "07_isarat",
+        remoteFolder: "07 İşaratü'l-i'caz",
+        title: "İşaratü'l-i'caz",
+        files: [
+            "00 İŞARATÜ’L-İ’CAZ.md", "01 Tenbih.md", "02 İfadetü’l-Meram.md", "03 Kur’an’ın Tarifi.md",
+            "04 Fatiha Suresi.md", "05 Bakara Suresi 1- 2- 3. âyetler.md", "06 Bakara Suresi 4-5. âyetler.md",
+            "07 Bakara Suresi 6. âyet.md", "08 Bakara Suresi 7. âyet.md", "09 Bakara Suresi 8. âyet.md",
+            "10 Bakara Suresi 9-10. âyetler.md", "11 Bakara Suresi 11-12. âyetler.md", "12 Bakara Suresi 13. âyet.md",
+            "13 Bakara Suresi 14-15. âyetler.md", "14 Bakara Suresi 16. âyet.md", "15 Bakara Suresi 17-18-19-20. âyetler.md",
+            "16 Bakara Suresi 21-22. âyetler.md", "17 Bakara Suresi 23-24. âyetler.md", "18 Bakara Suresi 25. âyet.md",
+            "19 Bakara Suresi 26-27. âyetler.md", "20 Bakara Suresi 28. âyet.md", "21 Bakara Suresi 29. âyet.md",
+            "22 Bakara Suresi 30. âyet.md", "23 Bakara Suresi 31-32-33. âyetler.md",
+            "24 Ecnebi Feylesofların Kur’an Hakkındaki Beyanatları.md", "25 Mehmed Kayalar’ın Bir Müdafaası.md",
+            "26 Dua (İşaratü’l-İ’caz).md", "27 Fihrist (İşaratü’l-İ’caz).md"
+        ]
+    },
+    {
+        id: "risale.sikke@diyanet.tr",
+        folderName: "08_sikke",
+        remoteFolder: "08 Sikke-i Tasdik-i Gaybî",
+        title: "Sikke-i Tasdik-i Gaybî",
+        files: [
+            "00 SİKKE-İ TASDİK-İ GAYBÎ.md", "01 Parlak Fıkralar ve Güzel Mektuplar 1.md",
+            "02 Birinci Şuâ.md", "03 Sekizinci Şuâ.md", "04 On Sekizinci Lem’a.md",
+            "05 Yirmi Sekizinci Lem’a.md", "06 Sekizinci Lem’a.md", "07 Parlak Fıkralar ve Güzel Mektuplar 2.md",
+            "08 Dua (Sikke-i Tasdik-i Gaybî).md"
+        ]
+    },
+    {
+        id: "risale.barla@diyanet.tr",
+        folderName: "09_barla",
+        remoteFolder: "09 Barla Lâhikası",
+        title: "Barla Lâhikası",
+        files: [
+            "00 BARLA LÂHİKASI.md", "01 Barla Lâhikası - Takdim.md", "02 Barla Lâhikası - Yedinci Risale.md",
+            "03 Barla Lâhikası s.21-39.md", "04 Barla Lâhikası s.40-58.md", "05 Barla Lâhikası s.59-80.md",
+            "06 Barla Lâhikası s.80-102.md", "07 Barla Lâhikası s.103-121.md", "08 Barla Lâhikası s.121-146.md",
+            "09 Barla Lâhikası s.146-159.md", "10 Barla Lâhikası s.160-180.md", "11 Barla Lâhikası s.181-201.md",
+            "12 Barla Lâhikası s.202-221.md", "13 Barla Lâhikası s.221-240.md", "14 Barla Lâhikası s.241-261.md",
+            "15 Barla Lâhikası s.262-280.md", "16 Barla Lâhikası s.280-299.md", "17 Barla Lâhikası s.300-321.md",
+            "18 Barla Lâhikası s.321-340.md", "19 Barla Lâhikası s.340-362.md", "20 Barla Lâhikası s.363-392.md"
+        ]
+    },
+    {
+        id: "risale.kastamonu@diyanet.tr",
+        folderName: "10_kastamonu",
+        remoteFolder: "10 Kastamonu Lâhikası",
+        title: "Kastamonu Lâhikası",
+        files: [
+            "00 KASTAMONU LÂHİKASI.md", "01 Kastamonu Lâhikası - Takdim.md", "02 Kastamonu Lâhikası s.10-30.md",
+            "03 Kastamonu Lâhikası s.30-51.md", "04 Kastamonu Lâhikası s.52-69.md", "05 Kastamonu Lâhikası s.70-91.md",
+            "06 Kastamonu Lâhikası s.91-109.md", "07 Kastamonu Lâhikası s.110-129.md", "08 Kastamonu Lâhikası s.130-149.md",
+            "09 Kastamonu Lâhikası s.150-166 (Lemaat’tan).md", "10 Kastamonu Lâhikası s.167-189.md",
+            "11 Kastamonu Lâhikası s.190-210.md", "12 Kastamonu Lâhikası s.211-230.md", "13 Kastamonu Lâhikası s.231-255.md"
+        ]
+    },
+    {
+        id: "risale.emirdag1@diyanet.tr",
+        folderName: "11_emirdag1",
+        remoteFolder: "11 Emirdağ Lâhikası 1",
+        title: "Emirdağ Lâhikası 1",
+        files: [
+            "00 EMİRDAĞ LÂHİKASI - I.md", "01 Emirdağ Lâhikası - I - Takdim.md", "02 Emirdağ Lâhikası - I s.10-31.md",
+            "03 Emirdağ Lâhikası - I s.31-50.md", "04 Emirdağ Lâhikası - I s.50-69.md", "05 Emirdağ Lâhikası - I s.70-90.md",
+            "06 Emirdağ Lâhikası - I s.90-110.md", "07 Emirdağ Lâhikası - I s.110-130.md", "08 Emirdağ Lâhikası - I s.131-150.md",
+            "09 Emirdağ Lâhikası - I s.150-170.md", "10 Emirdağ Lâhikası - I s.170-190.md", "11 Emirdağ Lâhikası - I s.190-211.md",
+            "12 Emirdağ Lâhikası - I s.212-230.md", "13 Emirdağ Lâhikası - I s.230-251.md", "14 Emirdağ Lâhikası - I s.251-270.md",
+            "15 Emirdağ Lâhikası - I s.271-288.md"
+        ]
+    },
+    {
+        id: "risale.emirdag2@diyanet.tr",
+        folderName: "12_emirdag2",
+        remoteFolder: "12 Emirdağ Lâhikası 2",
+        title: "Emirdağ Lâhikası 2",
+        files: [
+            "00 EMİRDAĞ LÂHİKASI - II.md", "01 Emirdağ Lâhikası - II s.6-26.md", "02 Emirdağ Lâhikası - II s.27-50.md",
+            "03 Emirdağ Lâhikası - II s.51-70.md", "04 Emirdağ Lâhikası - II s.70-90.md", "05 Emirdağ Lâhikası - II s.91-109.md",
+            "06 Emirdağ Lâhikası - II s.110-128.md", "07 Emirdağ Lâhikası - II s.129-148.md", "08 Emirdağ Lâhikası - II s.149-170.md",
+            "09 Emirdağ Lâhikası - II s.171-189.md", "10 Emirdağ Lâhikası - II s.190-210.md", "11 Emirdağ Lâhikası - II s.210-229.md",
+            "12 Emirdağ Lâhikası - II s.230-247.md"
+        ]
+    },
+    {
+        id: "risale.asayi@diyanet.tr",
+        folderName: "13_asayi",
+        remoteFolder: "13 Asâ-yı Musa",
+        title: "Asâ-yı Musa",
+        files: [
+            "000 ASÂ-YI MUSA.md", "100 Asâ-yı Musa’dan Birinci Kısım.md", "101 Birinci Mesele.md", "102 İkinci Mesele.md",
+            "103 Üçüncü Mesele.md", "104 Dördüncü Mesele.md", "105 Beşinci Mesele.md", "106 Altıncı Mesele.md",
+            "107 Yedinci Mesele.md", "108 Sekizinci Mesele.md", "109 Dokuzuncu Mesele.md", "110 Onuncu Mesele.md",
+            "111 On Birinci Mesele.md", "200 Asâ-yı Musa’dan İkinci Kısım.md", "201 Birinci Hüccet-i İmaniye.md",
+            "202 İkinci Hüccet-i İmaniye.md", "203 Üçüncü Hüccet-i İmaniye.md", "204 Dördüncü Hüccet-i İmaniye.md",
+            "205 Beşinci Hüccet-i İmaniye.md", "206 Altıncı Hüccet-i İmaniye.md", "207 Yedinci Hüccet-i İmaniye.md",
+            "208 Sekizinci Hüccet-i İmaniye.md", "209 Dokuzuncu Hüccet-i İmaniye.md", "210 Onuncu Hüccet-i İmaniye.md",
+            "211 On Birinci Hüccet-i İmaniye.md", "212 Fihrist (Asâ-yı Musa).md"
+        ]
+    },
+    {
+        id: "risale.muhakemat@diyanet.tr",
+        folderName: "14_muhakemat",
+        remoteFolder: "14 Muhakemat",
+        title: "Muhakemat",
+        files: [
+            "00 MUHAKEMAT.md", "00 Mukaddeme.md", "01 Birinci Makale.md", "02 İkinci Makale.md",
+            "03 Üçüncü Makale.md", "04 Fihrist (Muhakemat).md", "05 Takriz.md"
+        ]
     }
 ];
 
@@ -478,7 +644,8 @@ function normalizeAndConvert(markdown, index, fontBase64, startPage = 1) {
 
     return {
         html: htmlLines.join('\n'),
-        pageCount: (localPageCount > 0 ? localPageCount : 1)
+        pageCount: (localPageCount > 0 ? localPageCount : 1),
+        blocks: blocks
     };
 }
 
@@ -498,6 +665,7 @@ async function run() {
 
         let globalPageOffset = 0;
         let manifestSections = [];
+        let allBookBlocks = [];
 
         for (let i = 0; i < book.files.length; i++) {
             const file = book.files[i];
@@ -513,13 +681,32 @@ async function run() {
                 const rawData = await download(url);
                 if (rawData) {
                     const currentStartPage = globalPageOffset + 1;
-                    const { html, pageCount } = normalizeAndConvert(rawData, index, fontBase64, currentStartPage);
+                    const { html, pageCount, blocks } = normalizeAndConvert(rawData, index, fontBase64, currentStartPage);
 
                     const fileIndexStr = String(index).padStart(2, '0');
                     const destName = `${book.folderName.split('_')[0]}_${fileIndexStr}.html`; // 01_01.html or 02_01.html
 
                     const destPath = path.join(outputDir, destName);
                     fs.writeFileSync(destPath, html, 'utf8');
+
+                    // Collect blocks for JSON DB
+                    // Add section markers if needed? The blocks already have 'type'.
+                    // We might need to inject a 'section' block at the start if it wasn't there?
+                    // The 'normalizeAndConvert' doesn't explicitly add a 'section' type block for the file itself.
+                    // But 'ingest-lemalar.js' expects: "if (block.type === 'section')".
+                    // Does 'blocks' contain 'section'?
+                    // Looking at 'normalizeAndConvert' logic:
+                    // It pushes 'h1', 'p', 'arabic', etc.
+                    // It does NOT push 'section'.
+                    // So we must wrap or inject a section block here.
+
+                    allBookBlocks.push({
+                        type: 'section',
+                        title: blocks.find(b => b.type.startsWith('h'))?.text || file.replace('.md', ''),
+                        order_index: index
+                    });
+
+                    allBookBlocks.push(...blocks);
 
                     const sectionId = `${book.id}:html_${fileIndexStr}`;
 
@@ -555,6 +742,16 @@ async function run() {
         };
         fs.writeFileSync(manifestPath, JSON.stringify(manifestData, null, 2), 'utf8');
         console.log(`  -> Generated Manifest: ${manifestPath} (Pages: ${globalPageOffset})`);
+
+        // SAVE JSON DATABASE
+        const jsonSlug = book.folderName.split('_')[1]; // e.g. sualar
+        const jsonPath = path.join(__dirname, `../assets/risale_json/${jsonSlug}.json`);
+        // Ensure dir exists
+        const jsonDir = path.dirname(jsonPath);
+        if (!fs.existsSync(jsonDir)) fs.mkdirSync(jsonDir, { recursive: true });
+
+        fs.writeFileSync(jsonPath, JSON.stringify({ blocks: allBookBlocks }, null, 2), 'utf8');
+        console.log(`  -> Generated JSON DB: ${jsonPath} (Blocks: ${allBookBlocks.length})`);
 
         manifestData.folderName = book.folderName;
         allManifests.push(manifestData);

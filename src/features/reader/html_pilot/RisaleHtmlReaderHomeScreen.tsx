@@ -34,7 +34,12 @@ export const RisaleHtmlReaderHomeScreen = () => {
     const renderChapterItem = ({ item }: { item: HtmlChapter }) => (
         <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate('RisaleHtmlReader', { assetPath: item.assetPath, title: item.title })}
+            onPress={() => navigation.navigate('RisaleHtmlReader', {
+                assetPath: item.assetPath,
+                title: item.title,
+                bookId: selectedBook?.id,
+                chapterId: item.id
+            })}
         >
             <View style={styles.iconContainer}>
                 {/* Extract number if possible, or show index */}
