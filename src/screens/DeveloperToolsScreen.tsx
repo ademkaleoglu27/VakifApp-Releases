@@ -1,13 +1,49 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, DevSettings, NativeModules, Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, DevSettings, NativeModules, Platform, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { theme } from '@/config/theme';
+import { DevGate } from '@/utils/DevGate';
 
 export const DeveloperToolsScreen = () => {
     const navigation = useNavigation<any>();
+    const [isChecking, setIsChecking] = useState(true);
+    const [isAuthorized, setIsAuthorized] = useState(false);
+
+    // Route guard: check DevTools access on mount
+    useEffect(() => {
+        const checkAccess = async () => {
+            const enabled = await DevGate.getEnabled();
+            if (!enabled) {
+                Alert.alert(
+                    'Erişim Reddedildi',
+                    'Developer Tools erişimi etkin değil.',
+                    [{ text: 'Tamam', onPress: () => navigation.goBack() }]
+                );
+                return;
+            }
+            setIsAuthorized(true);
+            setIsChecking(false);
+        };
+        checkAccess();
+    }, [navigation]);
+
+    // Show loading while checking
+    if (isChecking) {
+        return (
+            <SafeAreaView style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+                <ActivityIndicator size="large" color={theme.colors.primary} />
+                <Text style={{ marginTop: 12, color: '#64748b' }}>Yetki kontrol ediliyor...</Text>
+            </SafeAreaView>
+        );
+    }
+
+    // Don't render if not authorized
+    if (!isAuthorized) {
+        return null;
+    }
 
     const openDevMenu = () => {
         try {

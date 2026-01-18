@@ -388,16 +388,6 @@ const CustomDrawerContent = React.memo((props: any) => {
                             {/* Profile & Settings */}
                             <View style={drawerStyles.divider} />
 
-                            {/* Geliştirici Kontrol - Only in DEV */}
-                            {__DEV__ && (
-                                <DrawerItem
-                                    label="Developer Tools"
-                                    icon="construct-outline"
-                                    onPress={() => navigate('DeveloperTools')}
-                                    color="#b45309"
-                                />
-                            )}
-
                             {/* Rehber & Hakkında */}
                             <DrawerItem
                                 label="Rehber & Hakkında"

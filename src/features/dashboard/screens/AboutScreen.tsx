@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image, LayoutAnimation, Platform, UIManager } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image, LayoutAnimation, Platform, UIManager, Modal, TextInput, Alert } from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { theme } from '@/config/theme';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { DevGate } from '@/utils/DevGate';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -11,8 +13,67 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS' | 'PROVENANCE';
 
+const TAP_THRESHOLD = 7;
+const TAP_TIMEOUT_MS = 2000;
+
 export const AboutScreen = (props: any) => {
+    const navigation = useNavigation<any>();
     const [activeTab, setActiveTab] = useState<TabType>('GENERAL');
+
+    // DevTools unlock state
+    const [devToolsEnabled, setDevToolsEnabled] = useState(false);
+    const [tapCount, setTapCount] = useState(0);
+    const [showPinModal, setShowPinModal] = useState(false);
+    const [pinInput, setPinInput] = useState('');
+    const tapTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Load DevTools state on mount
+    useEffect(() => {
+        DevGate.getEnabled().then(setDevToolsEnabled);
+    }, []);
+
+    // Handle version tap for secret unlock
+    const handleVersionTap = () => {
+        // Clear existing timer
+        if (tapTimerRef.current) {
+            clearTimeout(tapTimerRef.current);
+        }
+
+        const newCount = tapCount + 1;
+        setTapCount(newCount);
+
+        if (newCount >= TAP_THRESHOLD) {
+            setTapCount(0);
+            setShowPinModal(true);
+            return;
+        }
+
+        // Reset after timeout
+        tapTimerRef.current = setTimeout(() => {
+            setTapCount(0);
+        }, TAP_TIMEOUT_MS);
+    };
+
+    // Handle PIN submission
+    const handlePinSubmit = async () => {
+        if (DevGate.verifyPin(pinInput)) {
+            await DevGate.setEnabled(true);
+            setDevToolsEnabled(true);
+            setShowPinModal(false);
+            setPinInput('');
+            Alert.alert('Başarılı', 'Developer Tools etkinleştirildi.');
+        } else {
+            Alert.alert('Hata', 'Yanlış PIN.');
+            setPinInput('');
+        }
+    };
+
+    // Handle DevTools disable
+    const handleDisableDevTools = async () => {
+        await DevGate.setEnabled(false);
+        setDevToolsEnabled(false);
+        Alert.alert('Kapatıldı', 'Developer Tools devre dışı bırakıldı.');
+    };
 
     const renderTabButton = (id: TabType, label: string, icon: keyof typeof Ionicons.glyphMap) => (
         <TouchableOpacity
@@ -47,7 +108,31 @@ export const AboutScreen = (props: any) => {
                     </Text>
                 </View>
 
-                <Text style={styles.versionText}>Sürüm: v2.0 Premium</Text>
+                {/* Version - tappable for secret unlock */}
+                <TouchableOpacity onPress={handleVersionTap} activeOpacity={0.8}>
+                    <Text style={styles.versionText}>Sürüm: v2.0 Premium (build 27)</Text>
+                </TouchableOpacity>
+
+                {/* DevTools buttons - only visible when enabled */}
+                {devToolsEnabled && (
+                    <View style={styles.devToolsContainer}>
+                        <TouchableOpacity
+                            style={styles.devToolsButton}
+                            onPress={() => navigation.navigate('DeveloperTools')}
+                        >
+                            <Ionicons name="construct" size={20} color="#fff" />
+                            <Text style={styles.devToolsButtonText}>Developer Tools'a Git</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.devToolsCloseButton}
+                            onPress={handleDisableDevTools}
+                        >
+                            <Ionicons name="close-circle-outline" size={18} color="#ef4444" />
+                            <Text style={styles.devToolsCloseText}>DevTools'u Kapat</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
             </View>
         </ScrollView>
     );
@@ -160,7 +245,7 @@ export const AboutScreen = (props: any) => {
                 <View style={[styles.infoBox, { flexDirection: 'row', alignItems: 'center', gap: 12 }]}>
                     <Ionicons name="book-outline" size={24} color="#64748B" />
                     <View>
-                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Aktif Kitap (Development)</Text>
+                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Aktif Kitap</Text>
                         <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 12, color: '#475569' }}>risale.sozler@diyanet.tr</Text>
                         <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 10, color: '#94A3B8' }}>v1 (2025-01-13)</Text>
                     </View>
@@ -190,6 +275,51 @@ export const AboutScreen = (props: any) => {
                 {activeTab === 'CREDITS' && renderCredits()}
                 {activeTab === 'PROVENANCE' && renderProvenance()}
             </View>
+
+            {/* PIN Modal */}
+            <Modal
+                visible={showPinModal}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setShowPinModal(false)}
+            >
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Developer Erişimi</Text>
+                        <Text style={styles.modalSubtitle}>PIN kodunu girin</Text>
+
+                        <TextInput
+                            style={styles.pinInput}
+                            secureTextEntry
+                            keyboardType="number-pad"
+                            maxLength={4}
+                            value={pinInput}
+                            onChangeText={setPinInput}
+                            placeholder="****"
+                            placeholderTextColor="#94a3b8"
+                        />
+
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity
+                                style={styles.modalCancelBtn}
+                                onPress={() => {
+                                    setShowPinModal(false);
+                                    setPinInput('');
+                                }}
+                            >
+                                <Text style={styles.modalCancelText}>Vazgeç</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.modalConfirmBtn}
+                                onPress={handlePinSubmit}
+                            >
+                                <Text style={styles.modalConfirmText}>Aç</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 };
@@ -323,6 +453,103 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#94A3B8',
         marginTop: 32
+    },
+
+    // DevTools styles
+    devToolsContainer: {
+        marginTop: 24,
+        gap: 12
+    },
+    devToolsButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        backgroundColor: '#b45309',
+        paddingVertical: 14,
+        borderRadius: 12
+    },
+    devToolsButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+    devToolsCloseButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+        paddingVertical: 10
+    },
+    devToolsCloseText: {
+        color: '#ef4444',
+        fontSize: 13,
+        fontWeight: '500'
+    },
+
+    // Modal styles
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 24
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 24,
+        width: '100%',
+        maxWidth: 320,
+        alignItems: 'center'
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1e293b',
+        marginBottom: 4
+    },
+    modalSubtitle: {
+        fontSize: 14,
+        color: '#64748b',
+        marginBottom: 20
+    },
+    pinInput: {
+        width: 120,
+        height: 50,
+        borderWidth: 2,
+        borderColor: '#e2e8f0',
+        borderRadius: 12,
+        fontSize: 24,
+        textAlign: 'center',
+        letterSpacing: 8,
+        marginBottom: 24
+    },
+    modalButtons: {
+        flexDirection: 'row',
+        gap: 12
+    },
+    modalCancelBtn: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 10,
+        backgroundColor: '#f1f5f9',
+        alignItems: 'center'
+    },
+    modalCancelText: {
+        color: '#64748b',
+        fontWeight: '600'
+    },
+    modalConfirmBtn: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 10,
+        backgroundColor: '#b45309',
+        alignItems: 'center'
+    },
+    modalConfirmText: {
+        color: '#fff',
+        fontWeight: 'bold'
     },
 
     // Guide Styles
