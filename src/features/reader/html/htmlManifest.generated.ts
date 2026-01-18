@@ -12,6 +12,7 @@ export type HtmlChapter = {
 export type HtmlBook = {
     id: string;
     title: string;
+    category: string;
     chapters: HtmlChapter[];
 };
 
@@ -19,6 +20,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.sozler@diyanet.tr": {
         id: "risale.sozler@diyanet.tr",
         title: "Sözler",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.sozler@diyanet.tr:html_01",
@@ -277,6 +279,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.mektubat@diyanet.tr": {
         id: "risale.mektubat@diyanet.tr",
         title: "Mektubat",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.mektubat@diyanet.tr:html_01",
@@ -514,6 +517,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.lemalar@diyanet.tr": {
         id: "risale.lemalar@diyanet.tr",
         title: "Lemalar",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.lemalar@diyanet.tr:html_01",
@@ -751,6 +755,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.sualar@diyanet.tr": {
         id: "risale.sualar@diyanet.tr",
         title: "Şualar",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.sualar@diyanet.tr:html_01",
@@ -876,6 +881,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.tarihce@diyanet.tr": {
         id: "risale.tarihce@diyanet.tr",
         title: "Tarihçe-i Hayat",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.tarihce@diyanet.tr:html_01",
@@ -973,6 +979,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.mesnevi@diyanet.tr": {
         id: "risale.mesnevi@diyanet.tr",
         title: "Mesnevî-i Nuriye",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.mesnevi@diyanet.tr:html_01",
@@ -1098,6 +1105,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.isarat@diyanet.tr": {
         id: "risale.isarat@diyanet.tr",
         title: "İşaratü'l-i'caz",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.isarat@diyanet.tr:html_01",
@@ -1300,6 +1308,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.sikke@diyanet.tr": {
         id: "risale.sikke@diyanet.tr",
         title: "Sikke-i Tasdik-i Gaybî",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.sikke@diyanet.tr:html_01",
@@ -1369,6 +1378,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.barla@diyanet.tr": {
         id: "risale.barla@diyanet.tr",
         title: "Barla Lâhikası",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.barla@diyanet.tr:html_01",
@@ -1522,6 +1532,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.kastamonu@diyanet.tr": {
         id: "risale.kastamonu@diyanet.tr",
         title: "Kastamonu Lâhikası",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.kastamonu@diyanet.tr:html_01",
@@ -1626,6 +1637,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.emirdag1@diyanet.tr": {
         id: "risale.emirdag1@diyanet.tr",
         title: "Emirdağ Lâhikası 1",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.emirdag1@diyanet.tr:html_01",
@@ -1744,6 +1756,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.emirdag2@diyanet.tr": {
         id: "risale.emirdag2@diyanet.tr",
         title: "Emirdağ Lâhikası 2",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.emirdag2@diyanet.tr:html_01",
@@ -1841,6 +1854,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.asayi@diyanet.tr": {
         id: "risale.asayi@diyanet.tr",
         title: "Asâ-yı Musa",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.asayi@diyanet.tr:html_01",
@@ -2029,6 +2043,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
     "risale.muhakemat@diyanet.tr": {
         id: "risale.muhakemat@diyanet.tr",
         title: "Muhakemat",
+        category: "Büyük Kitaplar",
         chapters: [
             {
                 id: "risale.muhakemat@diyanet.tr:html_01",

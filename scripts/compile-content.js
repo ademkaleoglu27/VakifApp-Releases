@@ -12,6 +12,7 @@ const path = require('path');
 const BOOKS = [
     {
         id: "risale.sozler@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "01_sozler",
         remoteFolder: "01%20Sözler",
         title: "Sözler",
@@ -28,6 +29,7 @@ const BOOKS = [
     },
     {
         id: "risale.mektubat@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "02_mektubat",
         remoteFolder: "02%20Mektubat",
         title: "Mektubat",
@@ -43,6 +45,7 @@ const BOOKS = [
     },
     {
         id: "risale.lemalar@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "03_lemalar",
         remoteFolder: "03 Lem'alar",
         title: "Lemalar",
@@ -58,6 +61,7 @@ const BOOKS = [
     },
     {
         id: "risale.sualar@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "04_sualar",
         remoteFolder: "04 Şuâlar",
         title: "Şualar",
@@ -73,6 +77,7 @@ const BOOKS = [
     },
     {
         id: "risale.tarihce@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "05_tarihce",
         remoteFolder: "05 Tarihçe-i Hayat",
         title: "Tarihçe-i Hayat",
@@ -85,6 +90,7 @@ const BOOKS = [
     },
     {
         id: "risale.mesnevi@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "06_mesnevi",
         remoteFolder: "06 Mesnevî-i Nuriye",
         title: "Mesnevî-i Nuriye",
@@ -98,6 +104,7 @@ const BOOKS = [
     },
     {
         id: "risale.isarat@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "07_isarat",
         remoteFolder: "07 İşaratü'l-i'caz",
         title: "İşaratü'l-i'caz",
@@ -116,6 +123,7 @@ const BOOKS = [
     },
     {
         id: "risale.sikke@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "08_sikke",
         remoteFolder: "08 Sikke-i Tasdik-i Gaybî",
         title: "Sikke-i Tasdik-i Gaybî",
@@ -128,6 +136,7 @@ const BOOKS = [
     },
     {
         id: "risale.barla@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "09_barla",
         remoteFolder: "09 Barla Lâhikası",
         title: "Barla Lâhikası",
@@ -143,6 +152,7 @@ const BOOKS = [
     },
     {
         id: "risale.kastamonu@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "10_kastamonu",
         remoteFolder: "10 Kastamonu Lâhikası",
         title: "Kastamonu Lâhikası",
@@ -156,6 +166,7 @@ const BOOKS = [
     },
     {
         id: "risale.emirdag1@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "11_emirdag1",
         remoteFolder: "11 Emirdağ Lâhikası 1",
         title: "Emirdağ Lâhikası 1",
@@ -170,6 +181,7 @@ const BOOKS = [
     },
     {
         id: "risale.emirdag2@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "12_emirdag2",
         remoteFolder: "12 Emirdağ Lâhikası 2",
         title: "Emirdağ Lâhikası 2",
@@ -183,6 +195,7 @@ const BOOKS = [
     },
     {
         id: "risale.asayi@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "13_asayi",
         remoteFolder: "13 Asâ-yı Musa",
         title: "Asâ-yı Musa",
@@ -199,6 +212,7 @@ const BOOKS = [
     },
     {
         id: "risale.muhakemat@diyanet.tr",
+        category: "Büyük Kitaplar",
         folderName: "14_muhakemat",
         remoteFolder: "14 Muhakemat",
         title: "Muhakemat",
@@ -754,6 +768,7 @@ async function run() {
         console.log(`  -> Generated JSON DB: ${jsonPath} (Blocks: ${allBookBlocks.length})`);
 
         manifestData.folderName = book.folderName;
+        manifestData.category = book.category;
         allManifests.push(manifestData);
     }
 
@@ -777,6 +792,7 @@ export type HtmlChapter = {
 export type HtmlBook = {
     id: string;
     title: string;
+    category: string;
     chapters: HtmlChapter[];
 };
 
@@ -787,6 +803,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
         tsContent += `    "${m.bookId}": {\n`;
         tsContent += `        id: "${m.bookId}",\n`;
         tsContent += `        title: "${m.title}",\n`;
+        tsContent += `        category: "${m.category || 'Genel'}",\n`;
         tsContent += `        chapters: [\n`;
         m.sections.forEach(s => {
             const assetPath = `risale_html_pilot/${m.folderName}/${s.file}`;

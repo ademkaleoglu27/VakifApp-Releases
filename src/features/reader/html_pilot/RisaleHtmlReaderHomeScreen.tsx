@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, FlatList } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, FlatList, SectionList } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -54,8 +54,26 @@ export const RisaleHtmlReaderHomeScreen = () => {
     );
 
     const title = selectedBook ? selectedBook.title : "HTML Reader Pilot";
-    const data = selectedBook ? selectedBook.chapters : Object.values(HTML_BOOKS);
-    const renderItem = selectedBook ? renderChapterItem : renderBookItem;
+
+    // GROUPING LOGIC
+    const sections = React.useMemo(() => {
+        if (selectedBook) return [];
+        const books = Object.values(HTML_BOOKS);
+        const grouped: Record<string, HtmlBook[]> = {};
+
+        books.forEach(book => {
+            const cat = book.category || 'Genel';
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(book);
+        });
+
+        // Optional: Sort categories if needed, or rely on insertion order?
+        // JS object order is usually insertion order for string keys.
+        return Object.entries(grouped).map(([title, data]) => ({
+            title,
+            data
+        }));
+    }, [selectedBook]);
 
     return (
         <SafeAreaView style={styles.container} edges={['top']}>
@@ -75,12 +93,27 @@ export const RisaleHtmlReaderHomeScreen = () => {
                 </Text>
             </View>
 
-            <FlatList
-                data={data}
-                renderItem={renderItem as any}
-                keyExtractor={(item: any) => item.id}
-                contentContainerStyle={styles.listContent}
-            />
+            {selectedBook ? (
+                <FlatList
+                    data={selectedBook.chapters}
+                    renderItem={renderChapterItem as any}
+                    keyExtractor={(item: any) => item.id}
+                    contentContainerStyle={styles.listContent}
+                />
+            ) : (
+                <SectionList
+                    sections={sections}
+                    renderItem={renderBookItem as any}
+                    renderSectionHeader={({ section: { title } }) => (
+                        <View style={styles.sectionHeader}>
+                            <Text style={styles.sectionHeaderText}>{title}</Text>
+                        </View>
+                    )}
+                    keyExtractor={(item) => item.id}
+                    contentContainerStyle={styles.listContent}
+                    stickySectionHeadersEnabled={false}
+                />
+            )}
         </SafeAreaView>
     );
 };
@@ -98,5 +131,7 @@ const styles = StyleSheet.create({
     indexText: { fontSize: 16, fontWeight: 'bold', color: theme.colors.primary },
     textContainer: { flex: 1 },
     title: { fontSize: 16, fontWeight: '600', color: '#334155', marginBottom: 4 },
+    sectionHeader: { marginTop: 24, marginBottom: 12, paddingHorizontal: 4 },
+    sectionHeaderText: { fontSize: 18, fontWeight: '800', color: '#1e293b', letterSpacing: -0.5 },
     subtitle: { fontSize: 13, color: '#64748b' },
 });
