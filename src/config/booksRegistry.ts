@@ -206,6 +206,97 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         enabled: true,
         bookId: 'risale.tarihce_i_hayat@diyanet.tr',
     },
+    // --- KÜÇÜK KİTAPLAR ---
+    {
+        id: 'sunuhat',
+        title: 'Sünuhat',
+        icon: 'sunny-outline',
+        enabled: true,
+        bookId: 'risale.sunuhat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/15_sunuhat/manifest.json'
+    },
+    {
+        id: 'isarat_k',
+        title: 'İşarat',
+        icon: 'flash-outline',
+        enabled: true,
+        bookId: 'risale.isarat_k@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/16_isarat_k/manifest.json'
+    },
+    {
+        id: 'tuluat',
+        title: 'Tulûat',
+        icon: 'bulb-outline',
+        enabled: true,
+        bookId: 'risale.tuluat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/17_tuluat/manifest.json'
+    },
+    {
+        id: 'nurcesmesi',
+        title: 'Nur Çeşmesi',
+        icon: 'water-outline',
+        enabled: true,
+        bookId: 'risale.nurcesmesi@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/19_nurcesmesi/manifest.json'
+    },
+    {
+        id: 'divaniharbi',
+        title: 'Divan-ı Harb-i Örfî',
+        icon: 'shield-outline',
+        enabled: true,
+        bookId: 'risale.divaniharbi@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/20_divaniharbi/manifest.json'
+    },
+    {
+        id: 'hutbe',
+        title: 'Hutbe-i Şamiye',
+        icon: 'megaphone-outline',
+        enabled: true,
+        bookId: 'risale.hutbe@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/21_hutbe/manifest.json'
+    },
+    {
+        id: 'munazarat',
+        title: 'Münazarat',
+        icon: 'chatbubbles-outline',
+        enabled: true,
+        bookId: 'risale.munazarat@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/22_munazarat/manifest.json'
+    },
+    {
+        id: 'genclik',
+        title: 'Gençlik Rehberi',
+        icon: 'people-outline',
+        enabled: true,
+        bookId: 'risale.genclik@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/23_genclik/manifest.json'
+    },
+    {
+        id: 'hanimlar',
+        title: 'Hanımlar Rehberi',
+        icon: 'flower-outline',
+        enabled: true,
+        bookId: 'risale.hanimlar@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/24_hanimlar/manifest.json'
+    },
+    {
+        id: 'konferans',
+        title: 'Konferans',
+        icon: 'mic-outline',
+        enabled: true,
+        bookId: 'risale.konferans@diyanet.tr',
+        readerType: 'html',
+        manifestAssetPath: 'risale_html_pilot/25_konferans/manifest.json'
+    },
 ];
 
 /**

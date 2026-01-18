@@ -6,11 +6,18 @@ const DB_PATH = path.join(__dirname, '../assets/risale.db');
 const db = new Database(DB_PATH);
 
 const TARGET_BOOKS = [
-    { slug: 'kastamonu', id: 'risale.kastamonu@diyanet.tr', title: 'Kastamonu Lâhikası', order: 9, json: 'kastamonu.json' },
-    { slug: 'emirdag1', id: 'risale.emirdag1@diyanet.tr', title: 'Emirdağ Lâhikası 1', order: 10, json: 'emirdag1.json' },
-    { slug: 'emirdag2', id: 'risale.emirdag2@diyanet.tr', title: 'Emirdağ Lâhikası 2', order: 11, json: 'emirdag2.json' },
-    { slug: 'asayi', id: 'risale.asayi@diyanet.tr', title: 'Asâ-yı Musa', order: 12, json: 'asayi.json' },
-    { slug: 'muhakemat', id: 'risale.muhakemat@diyanet.tr', title: 'Muhakemat', order: 13, json: 'muhakemat.json' }
+    { slug: 'sunuhat', id: 'risale.sunuhat@diyanet.tr', title: 'Sünuhat', order: 14, json: 'sunuhat.json' },
+    { slug: 'isarat_k', id: 'risale.isarat_k@diyanet.tr', title: 'İşarat', order: 15, json: 'isarat_k.json' },
+    { slug: 'tuluat', id: 'risale.tuluat@diyanet.tr', title: 'Tulûat', order: 16, json: 'tuluat.json' },
+    { slug: 'nurunilkkapisi', id: 'risale.nurunilkkapisi@diyanet.tr', title: "Nur'un İlk Kapısı", order: 17, json: 'nurunilkkapisi.json' },
+    { slug: 'nurcesmesi', id: 'risale.nurcesmesi@diyanet.tr', title: 'Nur Çeşmesi', order: 18, json: 'nurcesmesi.json' },
+    { slug: 'divaniharbi', id: 'risale.divaniharbi@diyanet.tr', title: 'Divan-ı Harb-i Örfî', order: 19, json: 'divaniharbi.json' },
+    { slug: 'hutbe', id: 'risale.hutbe@diyanet.tr', title: 'Hutbe-i Şamiye', order: 20, json: 'hutbe.json' },
+    { slug: 'munazarat', id: 'risale.munazarat@diyanet.tr', title: 'Münazarat', order: 21, json: 'munazarat.json' },
+    { slug: 'genclik', id: 'risale.genclik@diyanet.tr', title: 'Gençlik Rehberi', order: 22, json: 'genclik.json' },
+    { slug: 'hanimlar', id: 'risale.hanimlar@diyanet.tr', title: 'Hanımlar Rehberi', order: 23, json: 'hanimlar.json' },
+    { slug: 'konferans', id: 'risale.konferans@diyanet.tr', title: 'Konferans', order: 24, json: 'konferans.json' },
+    { slug: 'tilsimlar', id: 'risale.tilsimlar@diyanet.tr', title: 'Tılsımlar', order: 25, json: 'tilsimlar.json' }
 ];
 
 function runBatchvIngest() {

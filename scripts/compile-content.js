@@ -220,6 +220,87 @@ const BOOKS = [
             "00 MUHAKEMAT.md", "00 Mukaddeme.md", "01 Birinci Makale.md", "02 İkinci Makale.md",
             "03 Üçüncü Makale.md", "04 Fihrist (Muhakemat).md", "05 Takriz.md"
         ]
+    },
+    // --- KÜÇÜK KİTAPLAR ---
+    {
+        id: "risale.sunuhat@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "15_sunuhat",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Sünuhat",
+        files: ["01 SÜNUHAT.md"]
+    },
+    {
+        id: "risale.isarat_k@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "16_isarat_k",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "İşarat",
+        files: ["02 İŞARAT.md"]
+    },
+    {
+        id: "risale.tuluat@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "17_tuluat",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Tulûat",
+        files: ["03 TULÛAT.md"]
+    },
+    {
+        id: "risale.nurcesmesi@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "19_nurcesmesi",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Nur Çeşmesi",
+        files: ["05 NUR ÇEŞMESİ.md"]
+    },
+    {
+        id: "risale.divaniharbi@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "20_divaniharbi",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Divan-ı Harb-i Örfî",
+        files: ["06 DİVAN-I HARB-İ ÖRFÎ.md"]
+    },
+    {
+        id: "risale.hutbe@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "21_hutbe",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Hutbe-i Şamiye",
+        files: ["07 HUTBE-İ ŞAMİYE.md"]
+    },
+    {
+        id: "risale.munazarat@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "22_munazarat",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Münazarat",
+        files: ["08 MÜNAZARAT.md"]
+    },
+    {
+        id: "risale.genclik@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "23_genclik",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Gençlik Rehberi",
+        files: ["09 GENÇLİK REHBERİ.md"]
+    },
+    {
+        id: "risale.hanimlar@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "24_hanimlar",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Hanımlar Rehberi",
+        files: ["10 HANIMLAR REHBERİ.md"]
+    },
+    {
+        id: "risale.konferans@diyanet.tr",
+        category: "Küçük Kitaplar",
+        folderName: "25_konferans",
+        remoteFolder: "15 Küçük Kitaplar",
+        title: "Konferans",
+        files: ["11 KONFERANS.md"]
     }
 ];
 

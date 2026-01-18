@@ -2096,4 +2096,165 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
             },
         ]
     },
+    "risale.sunuhat@diyanet.tr": {
+        id: "risale.sunuhat@diyanet.tr",
+        title: "Sünuhat",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.sunuhat@diyanet.tr:html_01",
+                title: "00 01 SÜNUHAT",
+                assetPath: "risale_html_pilot/15_sunuhat/15_01.html",
+                pageCount: 36,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.isarat_k@diyanet.tr": {
+        id: "risale.isarat_k@diyanet.tr",
+        title: "İşarat",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.isarat_k@diyanet.tr:html_01",
+                title: "00 02 İŞARAT",
+                assetPath: "risale_html_pilot/16_isarat_k/16_01.html",
+                pageCount: 8,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.tuluat@diyanet.tr": {
+        id: "risale.tuluat@diyanet.tr",
+        title: "Tulûat",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.tuluat@diyanet.tr:html_01",
+                title: "00 03 TULÛAT",
+                assetPath: "risale_html_pilot/17_tuluat/17_01.html",
+                pageCount: 13,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.nurunilkkapisi@diyanet.tr": {
+        id: "risale.nurunilkkapisi@diyanet.tr",
+        title: "Nur'un İlk Kapısı",
+        category: "Küçük Kitaplar",
+        chapters: [
+        ]
+    },
+    "risale.nurcesmesi@diyanet.tr": {
+        id: "risale.nurcesmesi@diyanet.tr",
+        title: "Nur Çeşmesi",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.nurcesmesi@diyanet.tr:html_01",
+                title: "00 05 NUR ÇEŞMESİ",
+                assetPath: "risale_html_pilot/19_nurcesmesi/19_01.html",
+                pageCount: 142,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.divaniharbi@diyanet.tr": {
+        id: "risale.divaniharbi@diyanet.tr",
+        title: "Divan-ı Harb-i Örfî",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.divaniharbi@diyanet.tr:html_01",
+                title: "00 06 DİVAN-I HARB-İ ÖRFÎ",
+                assetPath: "risale_html_pilot/20_divaniharbi/20_01.html",
+                pageCount: 43,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.hutbe@diyanet.tr": {
+        id: "risale.hutbe@diyanet.tr",
+        title: "Hutbe-i Şamiye",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.hutbe@diyanet.tr:html_01",
+                title: "00 07 HUTBE-İ ŞAMİYE",
+                assetPath: "risale_html_pilot/21_hutbe/21_01.html",
+                pageCount: 83,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.munazarat@diyanet.tr": {
+        id: "risale.munazarat@diyanet.tr",
+        title: "Münazarat",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.munazarat@diyanet.tr:html_01",
+                title: "00 08 MÜNAZARAT",
+                assetPath: "risale_html_pilot/22_munazarat/22_01.html",
+                pageCount: 63,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.genclik@diyanet.tr": {
+        id: "risale.genclik@diyanet.tr",
+        title: "Gençlik Rehberi",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.genclik@diyanet.tr:html_01",
+                title: "00 09 GENÇLİK REHBERİ",
+                assetPath: "risale_html_pilot/23_genclik/23_01.html",
+                pageCount: 137,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.hanimlar@diyanet.tr": {
+        id: "risale.hanimlar@diyanet.tr",
+        title: "Hanımlar Rehberi",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.hanimlar@diyanet.tr:html_01",
+                title: "00 10 HANIMLAR REHBERİ",
+                assetPath: "risale_html_pilot/24_hanimlar/24_01.html",
+                pageCount: 88,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.konferans@diyanet.tr": {
+        id: "risale.konferans@diyanet.tr",
+        title: "Konferans",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.konferans@diyanet.tr:html_01",
+                title: "00 11 KONFERANS",
+                assetPath: "risale_html_pilot/25_konferans/25_01.html",
+                pageCount: 96,
+                startPage: 1,
+            },
+        ]
+    },
+    "risale.tilsimlar@diyanet.tr": {
+        id: "risale.tilsimlar@diyanet.tr",
+        title: "Tılsımlar",
+        category: "Küçük Kitaplar",
+        chapters: [
+            {
+                id: "risale.tilsimlar@diyanet.tr:html_01",
+                title: "00 12 Tılsımlar",
+                assetPath: "risale_html_pilot/26_tilsimlar/26_01.html",
+                pageCount: 1,
+                startPage: 1,
+            },
+        ]
+    },
 };
