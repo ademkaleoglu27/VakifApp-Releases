@@ -69,10 +69,13 @@ export const LibraryHomeScreen: React.FC = () => {
             return;
         }
 
-        // Track recent read
+        // Get actual bookId from openAction params (not the prefixed item.id)
+        const actualBookId = item.openAction.params?.bookId || item.id;
+
+        // Track recent read with correct bookId
         addRecentRead({
             id: item.id,
-            bookId: item.id,
+            bookId: actualBookId,
             title: item.title,
             cover: typeof item.cover === 'string' ? item.cover : undefined
         });
@@ -181,7 +184,7 @@ export const LibraryHomeScreen: React.FC = () => {
                                         data={recentItems.slice(0, 5)}
                                         horizontal
                                         showsHorizontalScrollIndicator={false}
-                                        keyExtractor={(item) => `recent-${item.id}`}
+                                        keyExtractor={(item, index) => `recent-${item.id}-${index}`}
                                         contentContainerStyle={styles.recentList}
                                         renderItem={({ item, index }) => (
                                             <BookCard
