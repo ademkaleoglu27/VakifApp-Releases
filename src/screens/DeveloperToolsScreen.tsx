@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { theme } from '@/config/theme';
 import { DevGate } from '@/utils/DevGate';
+import { checkConfigIntegrity } from '@/services/ConfigIntegrityChecker';
 
 export const DeveloperToolsScreen = () => {
     const navigation = useNavigation<any>();
@@ -122,7 +123,10 @@ export const DeveloperToolsScreen = () => {
                     <DebugButton
                         label="Generate Integrity Report"
                         icon="document-text-outline"
-                        onPress={() => navigation.navigate('ContentIntegrity', { errorCode: 'MANUAL_CHECK' })}
+                        onPress={() => {
+                            checkConfigIntegrity();
+                            Alert.alert('Report Generated', 'Check console for integrity report.');
+                        }}
                         color="#0891b2"
                     />
 

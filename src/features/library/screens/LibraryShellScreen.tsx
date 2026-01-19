@@ -15,7 +15,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, StyleSheet, Modal, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Modal, Text, TouchableOpacity, ActivityIndicator, InteractionManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { theme } from '@/config/theme';
@@ -71,23 +71,31 @@ export const LibraryShellScreen: React.FC = () => {
     }, []);
 
     const initializeContentStatus = async () => {
-        try {
-            // Clean any leftover staging directories
-            await ContentPackService.cleanAllStaging();
+        // Defer heavy work until after transitions/interactions
+        InteractionManager.runAfterInteractions(async () => {
+            try {
+                // Clean any leftover staging directories
+                await ContentPackService.cleanAllStaging();
 
-            // Preload content status for all books
-            const books = getEnabledBooks();
-            const statuses: Record<string, ContentStatus> = {};
+                // Preload content status for all books (with concurrency limit)
+                const books = getEnabledBooks();
+                const statuses: Record<string, ContentStatus> = {};
 
-            for (const book of books) {
-                const resolution = await ContentPackResolver.resolve(book.id);
-                statuses[book.id] = resolution.status;
+                // Simple batch processing (max 3 concurrent)
+                const BATCH_SIZE = 3;
+                for (let i = 0; i < books.length; i += BATCH_SIZE) {
+                    const batch = books.slice(i, i + BATCH_SIZE);
+                    await Promise.all(batch.map(async (book) => {
+                        const resolution = await ContentPackResolver.resolve(book.id);
+                        statuses[book.id] = resolution.status;
+                    }));
+                }
+
+                setContentStatusCache(statuses);
+            } catch (e) {
+                console.warn('[LibraryShell] Failed to initialize content status');
             }
-
-            setContentStatusCache(statuses);
-        } catch (e) {
-            console.warn('[LibraryShell] Failed to initialize content status');
-        }
+        });
     };
 
     // Handle download request (called when user tries to open downloadable book)
