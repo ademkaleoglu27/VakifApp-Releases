@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 import { HTML_BOOKS, HtmlBook, HtmlChapter } from '@/features/reader/html/htmlManifest.generated';
+import { canonicalizeBookId } from '@/services/bookId';
+import { CONTENT_PACK_CONFIG } from '@/config/booksRegistry';
 
 export const RisaleHtmlReaderHomeScreen = () => {
     const navigation = useNavigation<any>();
@@ -14,21 +16,38 @@ export const RisaleHtmlReaderHomeScreen = () => {
     const selectedBook = bookId ? HTML_BOOKS[bookId] : null;
 
     // RENDER: BOOK LIST (If no book selected)
-    const renderBookItem = ({ item }: { item: HtmlBook }) => (
-        <TouchableOpacity
-            style={styles.card}
-            onPress={() => navigation.push('RisaleHtmlReaderHome', { bookId: item.id })}
-        >
-            <View style={[styles.iconContainer, { backgroundColor: '#e0f2fe' }]}>
-                <Ionicons name="book" size={24} color={theme.colors.primary} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.subtitle}>{item.chapters.length} Bölüm</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
-        </TouchableOpacity>
-    );
+    const renderBookItem = ({ item }: { item: HtmlBook }) => {
+        const canonicalId = canonicalizeBookId(item.id);
+        const config = CONTENT_PACK_CONFIG[canonicalId];
+        const isConfigured = !!config;
+
+        return (
+            <TouchableOpacity
+                style={[styles.card, !isConfigured && styles.disabledCard]}
+                onPress={() => {
+                    if (isConfigured) {
+                        navigation.push('RisaleHtmlReaderHome', { bookId: item.id });
+                    }
+                }}
+                disabled={!isConfigured}
+            >
+                <View style={[styles.iconContainer, { backgroundColor: isConfigured ? '#e0f2fe' : '#f1f5f9' }]}>
+                    <Ionicons name="book" size={24} color={isConfigured ? theme.colors.primary : '#94a3b8'} />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={[styles.title, !isConfigured && styles.disabledText]}>{item.title}</Text>
+                    {isConfigured ? (
+                        <Text style={styles.subtitle}>{item.chapters.length} Bölüm</Text>
+                    ) : (
+                        <View style={styles.badgeContainer}>
+                            <Text style={styles.badgeText}>Dev Disabled / Config Missing</Text>
+                        </View>
+                    )}
+                </View>
+                {isConfigured && <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />}
+            </TouchableOpacity>
+        );
+    };
 
     // RENDER: CHAPTER LIST (If book selected)
     const renderChapterItem = ({ item }: { item: HtmlChapter }) => (
@@ -134,4 +153,8 @@ const styles = StyleSheet.create({
     sectionHeader: { marginTop: 24, marginBottom: 12, paddingHorizontal: 4 },
     sectionHeaderText: { fontSize: 18, fontWeight: '800', color: '#1e293b', letterSpacing: -0.5 },
     subtitle: { fontSize: 13, color: '#64748b' },
+    disabledCard: { opacity: 0.7, backgroundColor: '#f8fafc', borderColor: '#e2e8f0' },
+    disabledText: { color: '#94a3b8' },
+    badgeContainer: { backgroundColor: '#fef2f2', alignSelf: 'flex-start', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, borderWidth: 1, borderColor: '#fecaca', marginTop: 2 },
+    badgeText: { fontSize: 10, color: '#ef4444', fontWeight: 'bold' }
 });

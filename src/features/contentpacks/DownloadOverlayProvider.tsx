@@ -52,8 +52,9 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
     const [visible, setVisible] = useState(false);
     const [title, setTitle] = useState('');
     const [progress, setProgress] = useState(0);
-    const [status, setStatus] = useState<'idle' | 'downloading' | 'verifying' | 'installing' | 'completed' | 'failed'>('idle');
+    const [status, setStatus] = useState<'idle' | 'downloading' | 'verifying' | 'extracting' | 'installing' | 'completed' | 'failed'>('idle');
     const [error, setError] = useState<string | null>(null);
+    const [errorCode, setErrorCode] = useState<string | null>(null);
 
     // Promise resolver for async flow
     const [resolver, setResolver] = useState<((value: boolean) => void) | null>(null);
@@ -80,6 +81,7 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
                 setProgress(p.percentage);
                 setStatus(p.status as typeof status);
                 if (p.error) setError(p.error);
+                if (p.errorCode) setErrorCode(p.errorCode);
 
                 // Auto-close on success
                 if (p.status === 'completed') {
@@ -102,11 +104,13 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
             setProgress(0);
             setStatus('downloading');
             setError(null);
+            setErrorCode(null);
 
             ContentPackService.downloadPack(currentArgs.bookId, currentArgs.downloadUrl, (p) => {
                 setProgress(p.percentage);
                 setStatus(p.status as typeof status);
                 if (p.error) setError(p.error);
+                if (p.errorCode) setErrorCode(p.errorCode);
 
                 if (p.status === 'completed') {
                     setTimeout(() => {
@@ -166,6 +170,14 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
                             </>
                         )}
 
+                        {/* Extracting */}
+                        {status === 'extracting' && (
+                            <>
+                                <ActivityIndicator size="large" color={theme.colors.primary} />
+                                <Text style={styles.statusText}>Dosyalar açılıyor...</Text>
+                            </>
+                        )}
+
                         {/* Installing */}
                         {status === 'installing' && (
                             <>
@@ -186,7 +198,9 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
                         {status === 'failed' && (
                             <>
                                 <Ionicons name="alert-circle" size={64} color="#EF4444" />
-                                <Text style={styles.errorText}>{error || 'İndirme başarısız'}</Text>
+                                <Text style={styles.errorTitle}>İndirme başarısız</Text>
+                                {errorCode && <Text style={styles.errorCode}>Hata: {errorCode}</Text>}
+                                <Text style={styles.errorText}>{error || 'Bilinmeyen hata'}</Text>
                                 <View style={styles.buttonRow}>
                                     <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
                                         <Ionicons name="refresh" size={20} color="#FFF" />
@@ -200,7 +214,7 @@ export const DownloadOverlayProvider: React.FC<React.PropsWithChildren> = ({ chi
                         )}
 
                         {/* Cancel link during download */}
-                        {(status === 'downloading' || status === 'verifying' || status === 'installing') && (
+                        {(status === 'downloading' || status === 'verifying' || status === 'extracting' || status === 'installing') && (
                             <TouchableOpacity style={styles.cancelLink} onPress={handleClose}>
                                 <Text style={styles.cancelLinkText}>İptal</Text>
                             </TouchableOpacity>
@@ -269,11 +283,27 @@ const styles = StyleSheet.create({
         color: theme.colors.success,
         marginTop: 12
     },
-    errorText: {
-        fontSize: 14,
+    errorTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
         color: '#EF4444',
+        marginTop: 12
+    },
+    errorCode: {
+        fontSize: 12,
+        fontFamily: 'monospace',
+        color: '#94A3B8',
+        marginTop: 4,
+        backgroundColor: '#F1F5F9',
+        paddingHorizontal: 8,
+        paddingVertical: 2,
+        borderRadius: 4
+    },
+    errorText: {
+        fontSize: 13,
+        color: '#64748B',
         textAlign: 'center',
-        marginTop: 12,
+        marginTop: 8,
         marginBottom: 16
     },
     buttonRow: {

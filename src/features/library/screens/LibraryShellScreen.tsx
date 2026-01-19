@@ -64,6 +64,12 @@ export const LibraryShellScreen: React.FC = () => {
         }, [])
     );
 
+    // Run config integrity check on component mount
+    useEffect(() => {
+        // Integrity check removed from auto-run to avoid LogBox noise. 
+        // Can be run manually from Dev Menu if needed.
+    }, []);
+
     const initializeContentStatus = async () => {
         try {
             // Clean any leftover staging directories
