@@ -13,6 +13,8 @@ import * as Notifications from 'expo-notifications';
 import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
 import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderScreen';
 import { LibraryShellScreen } from '@/features/library/screens/LibraryShellScreen';
+import { DownloadOverlayProvider } from '@/features/contentpacks/DownloadOverlayProvider';
+import { RisaleHtmlReaderHomeGated } from '@/features/contentpacks/RisaleHtmlReaderHomeGated';
 // VP Reader Screens (Production) REMOVED
 // Single entry point for all reader navigation (P6: handles native/legacy routing) REMOVED
 
@@ -634,125 +636,127 @@ export const AppNavigator = () => {
     }, [isAuthenticated, user?.name]);
 
     return (
-        <AudioProvider>
-            <NavigationContainer ref={navigationRef}>
-                <View style={{ flex: 1 }}>
-                    <Stack.Navigator screenOptions={{ headerShown: false }}>
-                        {isAuthenticated ? (
-                            <>
-                                <Stack.Screen name="DrawerRoot" component={DrawerNavigator} />
-                                <Stack.Screen
-                                    name="JuzTracking"
-                                    component={JuzTrackingScreen}
-                                    options={{ title: 'Cüz Takibi', headerShown: false }}
-                                />
-                                {/* AddReadingLog REMOVED */}
-                                <Stack.Screen
-                                    name="Announcements"
-                                    component={AnnouncementsScreen}
-                                    options={{ title: 'Duyurular', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="Decisions"
-                                    component={DecisionsScreen}
-                                    options={{ title: 'Meşveret Kararları', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="Contacts"
-                                    component={ContactsScreen}
-                                    options={{ title: 'Heyetler', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="Accounting"
-                                    component={AccountingScreen}
-                                    options={{ title: 'Muhasebe', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="AddTransaction"
-                                    component={AddTransactionScreen}
-                                    options={{ title: 'İşlem Ekle', headerShown: true }}
-                                />
-                                <Stack.Screen
-                                    name="Agenda"
-                                    component={AgendaScreen}
-                                    options={{ title: 'Ajanda', headerShown: false }}
-                                />
+        <DownloadOverlayProvider>
+            <AudioProvider>
+                <NavigationContainer ref={navigationRef}>
+                    <View style={{ flex: 1 }}>
+                        <Stack.Navigator screenOptions={{ headerShown: false }}>
+                            {isAuthenticated ? (
+                                <>
+                                    <Stack.Screen name="DrawerRoot" component={DrawerNavigator} />
+                                    <Stack.Screen
+                                        name="JuzTracking"
+                                        component={JuzTrackingScreen}
+                                        options={{ title: 'Cüz Takibi', headerShown: false }}
+                                    />
+                                    {/* AddReadingLog REMOVED */}
+                                    <Stack.Screen
+                                        name="Announcements"
+                                        component={AnnouncementsScreen}
+                                        options={{ title: 'Duyurular', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="Decisions"
+                                        component={DecisionsScreen}
+                                        options={{ title: 'Meşveret Kararları', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="Contacts"
+                                        component={ContactsScreen}
+                                        options={{ title: 'Heyetler', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="Accounting"
+                                        component={AccountingScreen}
+                                        options={{ title: 'Muhasebe', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="AddTransaction"
+                                        component={AddTransactionScreen}
+                                        options={{ title: 'İşlem Ekle', headerShown: true }}
+                                    />
+                                    <Stack.Screen
+                                        name="Agenda"
+                                        component={AgendaScreen}
+                                        options={{ title: 'Ajanda', headerShown: false }}
+                                    />
 
-                                {/* Risale-i Nur Library Routes REMOVED */}
-                                {/* Legacy Reader Routes REMOVED */}
+                                    {/* Risale-i Nur Library Routes REMOVED */}
+                                    {/* Legacy Reader Routes REMOVED */}
 
-                                {/* Secondary Features (Cevsen, Lugat, Tesbihat, Dualar) REMOVED */}
-                                {__DEV__ && (
-                                    <>
-                                        <Stack.Screen
-                                            name="ContentHealthDebug"
-                                            component={ContentHealthDebugScreen}
-                                            options={{ title: 'Geliştirici Kontrol', headerShown: true }}
-                                        />
-                                        <Stack.Screen
-                                            name="DeveloperTools"
-                                            component={DeveloperToolsScreen}
-                                            options={{ title: 'Geliştirici Araçları', headerShown: false }}
-                                        />
-                                    </>
-                                )}
+                                    {/* Secondary Features (Cevsen, Lugat, Tesbihat, Dualar) REMOVED */}
+                                    {__DEV__ && (
+                                        <>
+                                            <Stack.Screen
+                                                name="ContentHealthDebug"
+                                                component={ContentHealthDebugScreen}
+                                                options={{ title: 'Geliştirici Kontrol', headerShown: true }}
+                                            />
+                                            <Stack.Screen
+                                                name="DeveloperTools"
+                                                component={DeveloperToolsScreen}
+                                                options={{ title: 'Geliştirici Araçları', headerShown: false }}
+                                            />
+                                        </>
+                                    )}
 
-                                {/* Risale Library V1 REMOVED */}
-                                {/* LibraryDetail, WorkDetail, HatimDuasi REMOVED */}
+                                    {/* Risale Library V1 REMOVED */}
+                                    {/* LibraryDetail, WorkDetail, HatimDuasi REMOVED */}
 
-                                <Stack.Screen
-                                    name="ContentIntegrity"
-                                    component={ContentIntegrityScreen}
-                                    options={{ headerShown: false, gestureEnabled: false }}
-                                />
-
-
-                                {/* Risale Features (Search, Notes, History) REMOVED */}
+                                    <Stack.Screen
+                                        name="ContentIntegrity"
+                                        component={ContentIntegrityScreen}
+                                        options={{ headerShown: false, gestureEnabled: false }}
+                                    />
 
 
+                                    {/* Risale Features (Search, Notes, History) REMOVED */}
 
-                                <Stack.Screen
-                                    name="DutyDashboard"
-                                    component={DutyDashboardScreen}
-                                    options={{ title: 'Nöbet & Görevler', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="DutyList"
-                                    component={DutyListScreen}
-                                    options={{ title: 'Nöbet Listeleri', headerShown: false }}
-                                />
-                                <Stack.Screen
-                                    name="DutyPoolDetail"
-                                    component={DutyPoolDetailScreen}
-                                    options={{ title: 'Liste Düzenle', headerShown: false }}
-                                />
-                            </>
-                        ) : (
-                            <Stack.Screen
-                                name="Login"
-                                component={LoginScreen}
-                                options={{ headerShown: false }}
-                            />
-                        )}
-                        <Stack.Screen name="RisaleHtmlReaderHome" component={RisaleHtmlReaderHomeScreen} />
-                        <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
-                        <Stack.Screen name="LibraryHome" component={LibraryShellScreen} />
-                        <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
-                        {/* Tesbihat */}
-                        <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
 
-                        {/* Kuran (New Native Reader) */}
-                        {/* Kuran (Native PDF Module) */}
-                        <Stack.Screen name="QuranDownloaderScreen" component={QuranDownloaderScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name="QuranMenuScreen" component={QuranMenuScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name="QuranReaderScreen" component={QuranPdfScreen} options={{ headerShown: false }} />
 
-                        <Stack.Screen name="JuzSelectionScreen" component={JuzSelectionScreen} />
-                        <Stack.Screen name="QuranLegacyReaderScreen" component={QuranReaderScreen} />
-                    </Stack.Navigator>
-                    <MiniPlayer />
-                </View>
-            </NavigationContainer>
-        </AudioProvider>
+                                    <Stack.Screen
+                                        name="DutyDashboard"
+                                        component={DutyDashboardScreen}
+                                        options={{ title: 'Nöbet & Görevler', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="DutyList"
+                                        component={DutyListScreen}
+                                        options={{ title: 'Nöbet Listeleri', headerShown: false }}
+                                    />
+                                    <Stack.Screen
+                                        name="DutyPoolDetail"
+                                        component={DutyPoolDetailScreen}
+                                        options={{ title: 'Liste Düzenle', headerShown: false }}
+                                    />
+                                </>
+                            ) : (
+                                <Stack.Screen
+                                    name="Login"
+                                    component={LoginScreen}
+                                    options={{ headerShown: false }}
+                                />
+                            )}
+                            <Stack.Screen name="RisaleHtmlReaderHome" component={RisaleHtmlReaderHomeGated} />
+                            <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
+                            <Stack.Screen name="LibraryHome" component={LibraryShellScreen} />
+                            <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
+                            {/* Tesbihat */}
+                            <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
+
+                            {/* Kuran (New Native Reader) */}
+                            {/* Kuran (Native PDF Module) */}
+                            <Stack.Screen name="QuranDownloaderScreen" component={QuranDownloaderScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="QuranMenuScreen" component={QuranMenuScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="QuranReaderScreen" component={QuranPdfScreen} options={{ headerShown: false }} />
+
+                            <Stack.Screen name="JuzSelectionScreen" component={JuzSelectionScreen} />
+                            <Stack.Screen name="QuranLegacyReaderScreen" component={QuranReaderScreen} />
+                        </Stack.Navigator>
+                        <MiniPlayer />
+                    </View>
+                </NavigationContainer>
+            </AudioProvider>
+        </DownloadOverlayProvider>
     );
 };
