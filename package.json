@@ -10,7 +10,8 @@
     "meta:validate": "node scripts/validate-meta.mjs",
     "meta:check": "node scripts/check-integrity.mjs",
     "meta:ci": "node scripts/validate-meta.mjs && node scripts/check-integrity.mjs",
-    "contract:check": "node scripts/library_contract_guard.js"
+    "contract:check": "node scripts/library_contract_guard.js",
+    "packs:build": "node scripts/build_content_packs.js"
   },
   "dependencies": {
     "@expo-google-fonts/amiri": "^0.4.1",
@@ -69,6 +70,7 @@
     "@types/react": "~18.3.12",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
+    "archiver": "^7.0.1",
     "axios": "^1.13.2",
     "better-sqlite3": "^12.5.0",
     "pdf.js-extract": "^0.2.1",
