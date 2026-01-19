@@ -1,5 +1,6 @@
 // LibraryCatalog.ts - Single source of truth for library items
 import { ImageSourcePropType } from 'react-native';
+import { libraryRegistry, ShelfKey } from '../LibraryRegistry';
 
 export type LibraryItemKind = 'quran' | 'cevsen' | 'lugat' | 'big' | 'small' | 'html_dev' | 'other';
 export type LibraryItemStatus = 'ready' | 'preparing' | 'disabled';
@@ -25,17 +26,17 @@ export interface Shelf {
     style?: 'hero' | 'standard';
 }
 
-// Static catalog items (Kur'an, Cevşen, Lugat, etc.)
+// Static catalog items (Kur'an, Cevşen, Lugat, etc.) - Legacy until fully migrated to Registry
 const STATIC_ITEMS: LibraryItem[] = [
     {
-        id: 'quran-kerim',
+        id: 'quran.pdf@vakifapp',
         title: "Kur'an-ı Kerim",
-        subtitle: 'Diyanet Meali',
+        subtitle: 'Diyanet PDF',
         kind: 'quran',
-        status: 'preparing',
+        status: 'ready',
         openAction: {
             type: 'route',
-            routeName: 'QuranHomeScreen',
+            routeName: 'QuranDownloaderScreen', // The Gatekeeper
             params: {}
         }
     },
@@ -87,60 +88,53 @@ const STATIC_ITEMS: LibraryItem[] = [
     }
 ];
 
-// Mutable catalog that gets populated with adapters
-let _catalogItems: LibraryItem[] = [...STATIC_ITEMS];
+// Mutable storage for search-only items (chapters, etc.)
+let _extraSearchItems: LibraryItem[] = [];
+
+// Initialize Registry
+libraryRegistry.init();
 
 export const LibraryCatalog = {
     /**
-     * Register additional items (from adapters)
-     */
-    registerItems(items: LibraryItem[]) {
-        // Filter duplicates by id
-        const existingIds = new Set(_catalogItems.map(i => i.id));
-        const newItems = items.filter(i => !existingIds.has(i.id));
-        _catalogItems = [..._catalogItems, ...newItems];
-    },
-
-    /**
-     * Get all items
+     * Get all items (Merging Legacy Static + Registry Items)
+     * Note: This does NOT include _extraSearchItems (chapters) to keep shelves clean
      */
     getAllItems(): LibraryItem[] {
-        return _catalogItems;
-    },
-
-    /**
-     * Get items by kind
-     */
-    getItemsByKind(kind: LibraryItemKind): LibraryItem[] {
-        return _catalogItems.filter(item => item.kind === kind);
+        const registryBooks = libraryRegistry.getAllBooks();
+        const registryItems = registryBooks.map(book => this._mapRecordToItem(book));
+        return [...STATIC_ITEMS, ...registryItems];
     },
 
     /**
      * Get shelves for a specific tab
      */
     getShelves(tab: 'quran_evrad' | 'big' | 'small'): Shelf[] {
-        // Filter out chapter items (they start with 'chapter-')
-        const bookItems = _catalogItems.filter(i => !i.id.startsWith('chapter-'));
-
         switch (tab) {
             case 'quran_evrad':
                 return [
                     {
                         id: 'quran-hero',
                         title: '',
-                        items: bookItems.filter(i => i.kind === 'quran'),
+                        items: STATIC_ITEMS.filter(i => i.kind === 'quran'),
                         style: 'hero'
                     },
                     {
                         id: 'cevsen-shelf',
                         title: 'Cevşen',
-                        items: bookItems.filter(i => i.kind === 'cevsen'),
+                        items: STATIC_ITEMS.filter(i => i.kind === 'cevsen'),
+                        style: 'standard'
+                    },
+                    {
+                        id: 'faydali-shelf',
+                        title: 'Faydalı Kitaplar',
+                        // Map 'FAYDALI' books from Registry
+                        items: libraryRegistry.getBooksByShelf('FAYDALI').map(b => this._mapRecordToItem(b, 'cevsen')), // using 'cevsen' kind for similar styling
                         style: 'standard'
                     },
                     {
                         id: 'lugat-shelf',
                         title: 'Lügat',
-                        items: bookItems.filter(i => i.kind === 'lugat'),
+                        items: STATIC_ITEMS.filter(i => i.kind === 'lugat'),
                         style: 'standard'
                     }
                 ];
@@ -149,7 +143,7 @@ export const LibraryCatalog = {
                     {
                         id: 'big-books',
                         title: 'Büyük Kitaplar',
-                        items: bookItems.filter(i => i.kind === 'big'),
+                        items: libraryRegistry.getBooksByShelf('BIG').map(b => this._mapRecordToItem(b, 'big')),
                         style: 'standard'
                     }
                 ];
@@ -158,7 +152,7 @@ export const LibraryCatalog = {
                     {
                         id: 'small-books',
                         title: 'Küçük Kitaplar',
-                        items: bookItems.filter(i => i.kind === 'small'),
+                        items: libraryRegistry.getBooksByShelf('SMALL').map(b => this._mapRecordToItem(b, 'small')),
                         style: 'standard'
                     }
                 ];
@@ -168,41 +162,55 @@ export const LibraryCatalog = {
     },
 
     /**
-     * Search items by title (books and chapters) - Turkish locale aware
+     * Search items by title
      */
     search(query: string): LibraryItem[] {
         const q = query.toLocaleLowerCase('tr-TR').trim();
         if (!q || q.length < 2) return [];
 
-        const results = _catalogItems.filter(item => {
+        const allItems = [...this.getAllItems(), ..._extraSearchItems];
+
+        const results = allItems.filter(item => {
             const titleLower = item.title.toLocaleLowerCase('tr-TR');
             const subtitleLower = item.subtitle?.toLocaleLowerCase('tr-TR') || '';
             return titleLower.includes(q) || subtitleLower.includes(q);
         });
 
-        // Sort: books first, then chapters; limit to 30 results
-        return results
-            .sort((a, b) => {
-                const aIsBook = a.id.startsWith('html-');
-                const bIsBook = b.id.startsWith('html-');
-                if (aIsBook && !bIsBook) return -1;
-                if (!aIsBook && bIsBook) return 1;
-                return 0;
-            })
-            .slice(0, 30);
+        return results.slice(0, 30);
     },
 
     /**
-     * Get item by ID
+     * Helper to map Registry Record to UI Item
      */
-    getItemById(id: string): LibraryItem | undefined {
-        return _catalogItems.find(item => item.id === id);
+    _mapRecordToItem(record: any, forceKind?: LibraryItemKind): LibraryItem {
+        return {
+            id: record.bookId, // Use bookId as the UI ID
+            title: record.title,
+            subtitle: '', // TODO: Add subtitle if available in record
+            kind: forceKind || (record.shelfKey === 'BIG' ? 'big' : 'small'),
+            status: 'ready',
+            openAction: {
+                type: 'route',
+                routeName: record.bookId === 'evrad.tesbihat' ? 'TesbihatScreen' : 'RisaleHtmlReaderHome',
+                params: {
+                    bookId: record.bookId,
+                    title: record.title
+                }
+            }
+        };
     },
 
-    /**
-     * Debug: get catalog size
-     */
-    getSize(): number {
-        return _catalogItems.length;
+    // Compatibility methods for old adapters if needed
+    registerItems(items: LibraryItem[]) {
+        // Only accept "chapter" items or items that are NOT books managed by registry
+        // This keeps the search index populated with chapters
+        const extraItems = items.filter(i => i.id.startsWith('chapter-'));
+
+        if (extraItems.length > 0) {
+            const existingIds = new Set(_extraSearchItems.map(i => i.id));
+            const newItems = extraItems.filter(i => !existingIds.has(i.id));
+            _extraSearchItems = [..._extraSearchItems, ...newItems];
+            console.log(`[LibraryCatalog] Registered ${newItems.length} extra search items (chapters).`);
+        }
     }
 };

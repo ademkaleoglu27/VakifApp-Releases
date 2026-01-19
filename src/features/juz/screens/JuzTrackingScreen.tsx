@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert, StatusBar, ActivityIndicator, Image } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -36,6 +36,13 @@ export const JuzTrackingScreen = () => {
             loadHatimData();
         }, [])
     );
+
+    // Reload data immediately when any action is performed (assign, release, toggle)
+    useEffect(() => {
+        if (refreshTrigger > 0) {
+            loadHatimData();
+        }
+    }, [refreshTrigger]);
 
     const loadHatimData = async () => {
         setLoading(true);
@@ -98,7 +105,7 @@ export const JuzTrackingScreen = () => {
                         text: 'Okumaya Git',
                         onPress: () => {
                             const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                            Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
+                            navigation.navigate('QuranReaderScreen', { page: startPage });
                         }
                     }
                 ]
@@ -300,7 +307,7 @@ export const JuzTrackingScreen = () => {
                                 if (selectedPart) {
                                     setManageModalVisible(false);
                                     const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                                    Alert.alert('Özellik Geçici Olarak Devre Dışı', 'Kuran PDF okuyucu yakında yeniden eklenecektir.');
+                                    navigation.navigate('QuranReaderScreen', { page: startPage });
                                 }
                             }}
                         >

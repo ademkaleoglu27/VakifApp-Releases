@@ -57,6 +57,12 @@ import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 
 
 // TesbihatPlayerScreen REMOVED
+import { TesbihatScreen } from '@/features/evrad/screens/TesbihatScreen';
+import { JuzSelectionScreen } from '@/features/quran/screens/JuzSelectionScreen';
+import { QuranReaderScreen } from '@/features/quran/screens/QuranReaderScreen';
+import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloaderScreen';
+import { QuranMenuScreen } from '@/features/quran-pdf/screens/QuranMenuScreen';
+import { QuranReaderScreen as QuranPdfScreen } from '@/features/quran-pdf/screens/QuranReaderScreen';
 
 
 if (Platform.OS === 'android') {
@@ -125,6 +131,12 @@ export type RootStackParamList = {
 
     DeveloperTools: undefined;
     LibraryHome: undefined;
+    TesbihatScreen: undefined;
+    JuzSelectionScreen: undefined;
+    QuranDownloaderScreen: undefined;
+    QuranMenuScreen: undefined;
+    QuranReaderScreen: { page: number };
+    QuranLegacyReaderScreen: { initialPage: number; juzNumber: number };
 };
 
 export type MainTabParamList = {
@@ -726,6 +738,17 @@ export const AppNavigator = () => {
                         <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
                         <Stack.Screen name="LibraryHome" component={LibraryHomeScreen} />
                         <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
+                        {/* Tesbihat */}
+                        <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
+
+                        {/* Kuran (New Native Reader) */}
+                        {/* Kuran (Native PDF Module) */}
+                        <Stack.Screen name="QuranDownloaderScreen" component={QuranDownloaderScreen} options={{ headerShown: false }} />
+                        <Stack.Screen name="QuranMenuScreen" component={QuranMenuScreen} options={{ headerShown: false }} />
+                        <Stack.Screen name="QuranReaderScreen" component={QuranPdfScreen} options={{ headerShown: false }} />
+
+                        <Stack.Screen name="JuzSelectionScreen" component={JuzSelectionScreen} />
+                        <Stack.Screen name="QuranLegacyReaderScreen" component={QuranReaderScreen} />
                     </Stack.Navigator>
                     <MiniPlayer />
                 </View>
