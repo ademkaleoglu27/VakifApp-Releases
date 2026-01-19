@@ -22,7 +22,13 @@ export interface BookEntry {
 /**
  * Registry of available books.
  * Add new books here as they become available.
+ * 
+ * ⚠️ LIBRARY_CONTRACT v1.1: Books within FROZEN_BLOCK are protected.
+ * To modify FROZEN entries, you must include CONTRACT_EXCEPTION_TOKEN in commit message.
+ * New books can be added AFTER FROZEN_BLOCK_END.
  */
+
+// FROZEN_BLOCK_START - Do NOT modify entries below without CONTRACT_EXCEPTION_TOKEN
 export const BOOKS_REGISTRY: BookEntry[] = [
     {
         id: 'sozler',
@@ -298,6 +304,19 @@ export const BOOKS_REGISTRY: BookEntry[] = [
         manifestAssetPath: 'risale_html_pilot/25_konferans/manifest.json'
     },
 ];
+// FROZEN_BLOCK_END - New books can be added below this line
+
+// ═══════════════════════════════════════════════════════════════════════════
+// NEW BOOKS (Outside FROZEN block - can be freely modified)
+// ═══════════════════════════════════════════════════════════════════════════
+// Add new book entries here. Example:
+// BOOKS_REGISTRY.push({
+//     id: 'cevsen',
+//     title: 'Cevşen',
+//     icon: 'moon-outline',
+//     enabled: true,
+//     bookId: 'dua.cevsen@vakifapp'
+// });
 
 /**
  * Get enabled books for menu display.

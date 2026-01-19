@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "meta:validate": "node scripts/validate-meta.mjs",
     "meta:check": "node scripts/check-integrity.mjs",
-    "meta:ci": "node scripts/validate-meta.mjs && node scripts/check-integrity.mjs"
+    "meta:ci": "node scripts/validate-meta.mjs && node scripts/check-integrity.mjs",
+    "contract:check": "node scripts/library_contract_guard.js"
   },
   "dependencies": {
     "@expo-google-fonts/amiri": "^0.4.1",
