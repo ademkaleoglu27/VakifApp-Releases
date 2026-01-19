@@ -12,7 +12,7 @@ import * as Notifications from 'expo-notifications';
 
 import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
 import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderScreen';
-import { LibraryHomeScreen } from '@/features/library/screens/LibraryHomeScreen';
+import { LibraryShellScreen } from '@/features/library/screens/LibraryShellScreen';
 // VP Reader Screens (Production) REMOVED
 // Single entry point for all reader navigation (P6: handles native/legacy routing) REMOVED
 
@@ -736,7 +736,7 @@ export const AppNavigator = () => {
                         )}
                         <Stack.Screen name="RisaleHtmlReaderHome" component={RisaleHtmlReaderHomeScreen} />
                         <Stack.Screen name="RisaleHtmlReader" component={RisaleHtmlReaderScreen} />
-                        <Stack.Screen name="LibraryHome" component={LibraryHomeScreen} />
+                        <Stack.Screen name="LibraryHome" component={LibraryShellScreen} />
                         <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
                         {/* Tesbihat */}
                         <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
