@@ -5,10 +5,11 @@ import * as FileSystem from 'expo-file-system';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 
-// Verified Diyanet Official Link
-const PDF_URL = 'https://dijital.diyanet.gov.tr/File/Download?path=kurani_kerim_bilgisayar_hatli.pdf&id=428';
+// GitHub Release Link (v1.0.0)
+const PDF_URL = 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/v1.0.0/kuran_v2_lite.pdf';
 const LOCAL_DIR = `${FileSystem.documentDirectory}quran/`;
-const LOCAL_FILE = `${LOCAL_DIR}quran.pdf`;
+const LOCAL_FILE = `${LOCAL_DIR}kuran_v2_lite.pdf`;
+const LEGACY_FILE = `${LOCAL_DIR}quran.pdf`;
 
 export const QuranDownloaderScreen = () => {
     const navigation = useNavigation<any>();
@@ -24,6 +25,17 @@ export const QuranDownloaderScreen = () => {
             const dirInfo = await FileSystem.getInfoAsync(LOCAL_DIR);
             if (!dirInfo.exists) {
                 await FileSystem.makeDirectoryAsync(LOCAL_DIR, { intermediates: true });
+            }
+
+            // Cleanup legacy file if exists
+            const legacyInfo = await FileSystem.getInfoAsync(LEGACY_FILE);
+            if (legacyInfo.exists) {
+                try {
+                    await FileSystem.deleteAsync(LEGACY_FILE, { idempotent: true });
+                    console.log('Legacy quran.pdf deleted.');
+                } catch (e) {
+                    console.warn('Failed to delete legacy file');
+                }
             }
 
             const fileInfo = await FileSystem.getInfoAsync(LOCAL_FILE);
@@ -119,7 +131,7 @@ export const QuranDownloaderScreen = () => {
                 <Ionicons name="book-outline" size={100} color={theme.colors.primary} />
                 <Text style={styles.title}>Kur'an-ı Kerim</Text>
                 <Text style={styles.subtitle}>
-                    Okumaya başlamak için Mushaf dosyasını indirmeniz gerekmektedir. (~100 MB)
+                    Okumaya başlamak için Mushaf dosyasını indirmeniz gerekmektedir. (~22 MB)
                 </Text>
 
                 {status === 'downloading' ? (

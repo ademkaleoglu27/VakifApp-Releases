@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LOCAL_FILE = `${FileSystem.documentDirectory}quran/quran.pdf`;
+const LOCAL_FILE = `${FileSystem.documentDirectory}quran/kuran_v2_lite.pdf`;
 const STORAGE_KEY = '@quran_last_page';
 const PAGE_OFFSET = 1; // +1 to account for the Cover Page
 const { width, height } = Dimensions.get('window');
