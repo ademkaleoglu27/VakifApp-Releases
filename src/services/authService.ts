@@ -31,7 +31,7 @@ export const authService = {
                 .upsert({
                     id: authData.user.id,
                     display_name: name,
-                    role: 'sohbet_member' // Default role
+                    role: 'guest' // Default role for new registrations
                 });
 
             if (profileError) {
@@ -39,36 +39,15 @@ export const authService = {
                 // Continue, as user exists in Auth
             }
 
-            // 3. Create Contact for Leaderboard Linking
-            // We need to add this user to 'contacts' table too so they can be tracked in 'Weekly Reading'
-            // We'll use a server-side function ideally, but here we can try client-side if policy allows.
-            // If fail, we just log.
-            try {
-                // Check if contact exists? Unlikely for new user.
-                const { error: contactError } = await supabase
-                    .from('contacts')
-                    .insert({
-                        // using user id as contact id if possible, otherwise UUID
-                        // BUT contact IDs are usually UUIDs. 
-                        // Ideally we link contact -> user_id, but schema might not have it.
-                        // For now, insert Name/Surname.
-                        name: name,
-                        surname: '', // Or split name
-                        phone: '',
-                        group_type: 'SOHBET'
-                    });
-
-                if (contactError) console.warn('Contact auto-create failed:', contactError);
-            } catch (e) {
-                console.warn('Contact create exception', e);
-            }
+            // REMOVED: contacts insert - handled by RisaleUserDb.createContactForUser
+            // This prevents NULL vakif_id issues with multi-tenant RLS
 
             const user: User = {
                 id: authData.user.id,
                 email: authData.user.email || email,
                 name: name,
-                role: 'sohbet_member',
-                group: 'SOHBET HEYETİ',
+                role: 'guest',
+                group: 'MİSAFİR',
                 avatarUrl: 'https://i.pravatar.cc/150?u=' + authData.user.id,
             };
 

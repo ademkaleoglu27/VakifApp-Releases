@@ -296,19 +296,20 @@ export const syncService = {
                     await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
 
                 } catch (pushError: any) {
-                    // Check if this is an auto-removable error
-                    const isAutoRemovable = pushError?.code?.startsWith('PGR') ||
-                        pushError?.code === '23503' ||
-                        pushError?.code === '22P02' ||
-                        pushError?.code === '23505';
+                    // SAFE auto-removal: only format/duplicate errors (idempotent)
+                    // DO NOT auto-remove on permission/RLS errors (data loss risk)
+                    const errorCode = pushError?.code;
+                    const isFormatError = errorCode === '22P02'; // invalid format
+                    const isDuplicateError = errorCode === '23505'; // unique violation (already exists)
+                    // Note: 23503 (foreign key) should retry, not auto-remove
+                    // Note: PGR* (RLS/permission) should NOT auto-remove
 
-                    if (isAutoRemovable) {
-                        // Use warn instead of error to prevent red error popup
-                        console.warn('Auto-removing item from outbox:', item.id, pushError?.code);
+                    if (isFormatError || isDuplicateError) {
+                        console.warn('[SyncService] Auto-removing item (safe error):', item.id, errorCode);
                         await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
                     } else {
-                        // Real error - log it and stop
-                        console.error('Push failed for item', item.id, pushError);
+                        // Real error - log it and stop processing (retry later)
+                        console.error('[SyncService] Push failed for item', item.id, '- will retry:', pushError);
                         break;
                     }
                 }
