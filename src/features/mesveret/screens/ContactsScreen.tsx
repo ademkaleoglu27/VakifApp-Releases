@@ -10,7 +10,7 @@ import { useAuthStore } from '@/store/authStore';
 import * as Contacts from 'expo-contacts';
 
 // Types
-type Role = 'mesveret_admin' | 'sohbet_member' | 'accountant';
+import { Role } from '@/types/auth';
 
 interface Profile {
     id: string;
@@ -24,7 +24,7 @@ export const ContactsScreen = () => {
     if (!requireFeature('MESVERET_SCREEN')) return <NoAccess />;
 
     const { user } = useAuthStore();
-    const isAdmin = user?.role === 'mesveret_admin';
+    const isAdmin = user?.role === 'mesveret_admin' || user?.role === 'platform_admin';
 
     const [activeTab, setActiveTab] = useState<Role>('mesveret_admin');
     const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -377,6 +377,8 @@ const styles = StyleSheet.create({
     badge_mesveret_admin: { backgroundColor: '#FEF3C7' },
     badge_accountant: { backgroundColor: '#DBEAFE' },
     badge_sohbet_member: { backgroundColor: '#F3F4F6' },
+    badge_guest: { backgroundColor: '#F3F4F6' },
+    badge_platform_admin: { backgroundColor: '#D1FAE5' },
     badgeText: { fontSize: 10, fontWeight: 'bold', color: '#4B5563' },
 
     emptyContainer: { alignItems: 'center', marginTop: 60, gap: 12 },

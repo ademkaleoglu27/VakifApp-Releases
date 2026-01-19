@@ -58,6 +58,38 @@ export const AddReadingLogScreen = () => {
                 date: new Date().toISOString()
             });
 
+            // DETERMINISTIC FIX: Link to contact_readings via user_id (not name-matching)
+            // This ensures leaderboard/stats work correctly
+            try {
+                // Try user_id first (deterministic, requires SQL migration)
+                let contact = await RisaleUserDb.getContactByUserId(user.id);
+
+                // Fallback to name-matching for pre-migration data
+                if (!contact) {
+                    contact = await RisaleUserDb.getContactByName(user.name);
+                }
+
+                // AUTO-CREATE: If no contact exists, create one for this user
+                if (!contact) {
+                    console.log('[ReadingLog] No contact found, auto-creating for user:', user.id);
+                    const contactId = await RisaleUserDb.createContactForUser({
+                        userId: user.id,
+                        name: user.name || 'Kullanıcı',
+                        surname: '',
+                        phone: '',
+                        groupType: 'SOHBET'
+                    });
+                    contact = { id: contactId };
+                }
+
+                if (contact) {
+                    await RisaleUserDb.addContactReading(contact.id, parseInt(pages));
+                    console.log('[ReadingLog] Contact reading added for contact:', contact.id);
+                }
+            } catch (linkError) {
+                console.warn('Contact reading link failed (non-critical):', linkError);
+            }
+
             Alert.alert(
                 'Başarılı! 🎉',
                 `${pages} sayfa okuma eklendi. Tebrikler!`,

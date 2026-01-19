@@ -69,6 +69,16 @@ export const initDb = async () => {
         await db.execAsync('ALTER TABLE hatims ADD COLUMN type TEXT;');
     } catch (e) { /* Column likely exists */ }
 
+    // SCHEMA MIGRATION: contacts.user_id for deterministic reading tracking
+    try {
+        await db.execAsync('ALTER TABLE contacts ADD COLUMN user_id TEXT;');
+    } catch (e) { /* Column likely exists */ }
+
+    // SCHEMA MIGRATION: contacts.vakif_id for multi-tenant
+    try {
+        await db.execAsync('ALTER TABLE contacts ADD COLUMN vakif_id TEXT;');
+    } catch (e) { /* Column likely exists */ }
+
 
     // 3. Outbox Table (For Offline Writes)
     // type: 'INSERT_DECISION', 'UPDATE_DECISION', 'INSERT_TRANSACTION', etc.

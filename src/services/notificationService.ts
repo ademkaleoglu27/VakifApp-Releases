@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { getSupabaseClient } from './supabaseClient';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
@@ -65,6 +65,11 @@ export const notificationService = {
     },
 
     syncToken: async (token: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            console.warn('[Notification] Token sync skipped: Supabase unavailable');
+            return;
+        }
         const { data, error } = await supabase.functions.invoke('register_push_token', {
             body: {
                 token: token,
@@ -78,6 +83,9 @@ export const notificationService = {
     },
 
     getNotifications: async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return [];
+
         const { data, error } = await supabase
             .from('notifications')
             .select('*')
@@ -88,6 +96,9 @@ export const notificationService = {
     },
 
     markAsRead: async (id: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const { error } = await supabase
             .from('notifications')
             .update({ is_read: true })

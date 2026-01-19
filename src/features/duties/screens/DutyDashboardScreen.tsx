@@ -80,9 +80,28 @@ export const DutyDashboardScreen = () => {
                             const supabase = getSupabaseClient();
                             if (!supabase) return;
 
-                            const { error } = await supabase.from('duty_assignments').delete().eq('id', id);
-                            if (error) throw error;
+                            // OPTIMISTIC UPDATE: Remove from UI immediately
+                            setMyDuties(prev => prev.filter(d => d.id !== id));
+
+                            // Perform actual delete
+                            const { error, count } = await supabase
+                                .from('duty_assignments')
+                                .delete()
+                                .eq('id', id)
+                                .select();
+
+                            // DEBUG: Log delete result
+                            console.log('[DutyDelete] id:', id, 'error:', error, 'deleted count:', count);
+
+                            if (error) {
+                                // Revert optimistic update on error
+                                console.error('[DutyDelete] Failed, refetching:', error);
+                                fetchDuties();
+                                throw error;
+                            }
+
                             Alert.alert('Başarılı', 'Görev silindi.');
+                            // Refresh to ensure sync (already optimistically updated)
                             fetchDuties();
                         } catch (e: any) {
                             Alert.alert('Hata', 'Silme işlemi başarısız: ' + e.message);

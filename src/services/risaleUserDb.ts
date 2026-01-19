@@ -180,6 +180,36 @@ export const RisaleUserDb = {
         return newId;
     },
 
+    // AUTO-CREATE contact for reading tracking (no permission needed - self registration)
+    async createContactForUser(params: {
+        userId: string;
+        name: string;
+        surname: string;
+        phone: string;
+        groupType: string;
+    }): Promise<string> {
+        const db = await getDb();
+        const newId = generateUUID();
+        await db.runAsync(
+            'INSERT INTO contacts (id, name, surname, phone, group_type, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [newId, params.name, params.surname, params.phone, params.groupType, params.userId, new Date().toISOString()]
+        );
+
+        // Sync Hook
+        await addToOutbox('INSERT_CONTACT', {
+            id: newId,
+            name: params.name,
+            surname: params.surname,
+            phone: params.phone,
+            group_type: params.groupType,
+            user_id: params.userId,
+            created_at: new Date().toISOString()
+        });
+
+        console.log('[RisaleUserDb] Created contact for user:', params.userId, 'contactId:', newId);
+        return newId;
+    },
+
     async getContacts(group?: 'MESVERET' | 'SOHBET'): Promise<any[]> {
         assertFeature('MESVERET_SCREEN');
         const db = await getDb();
@@ -189,17 +219,19 @@ export const RisaleUserDb = {
         return await db.getAllAsync('SELECT * FROM contacts ORDER BY name ASC');
     },
 
-    // New: Safe lookup for linking readings without full permission
-    async getContactByName(name: string): Promise<any | null> {
-        // No assertFeature needed here as it's a specific lookup for self
+    // DETERMINISTIC: Lookup contact by user_id (not name-matching)
+    // Requires contacts.user_id column from SQL migration
+    async getContactByUserId(userId: string): Promise<any | null> {
         const db = await getDb();
-        // Try exact match first
-        let contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name = ?', [name]);
+        const contact = await db.getFirstAsync('SELECT * FROM contacts WHERE user_id = ?', [userId]);
+        return contact || null;
+    },
 
+    // DEPRECATED: Keep for backward compatibility but prefer getContactByUserId
+    async getContactByName(name: string): Promise<any | null> {
+        const db = await getDb();
+        let contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name = ?', [name]);
         if (!contact) {
-            // Try fuzzy match or name+surname
-            // Since we store name and surname separately, and user.name might be combined
-            // We just try to see if any contact with name match exists
             contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name LIKE ? OR (name || " " || surname) = ?', [`%${name}%`, name]);
         }
         return contact || null;

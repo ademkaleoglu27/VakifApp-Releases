@@ -110,7 +110,19 @@ export const authService = {
 
             // Map Supabase User to App User
             const role: Role = (profileData?.role as Role) || 'sohbet_member';
-            const group = role === 'mesveret_admin' || role === 'accountant' ? 'MEŞVERET HEYETİ' : 'SOHBET HEYETİ';
+            const group = (role === 'mesveret_admin' || role === 'accountant' || role === 'platform_admin')
+                ? 'MEŞVERET HEYETİ'
+                : 'SOHBET HEYETİ';
+
+            // MULTI-TENANT: Set Global Vakif Context
+            if (profileData?.vakif_id) {
+                // We'd ideally fetch vakif name too, but for now ID is enough for logic
+                require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                    id: profileData.vakif_id,
+                    name: 'Vakfım',
+                    slug: 'current-vakif'
+                });
+            }
 
             const user: User = {
                 id: authData.user.id,
@@ -133,8 +145,12 @@ export const authService = {
     },
 
     logout: async (): Promise<void> => {
+        // Clear Vakif Context
+        require('@/store/vakifStore').useVakifStore.getState().clear();
+
         const supabase = getSupabaseClient();
         if (!supabase) return; // already out effectively
+
         const { error } = await supabase.auth.signOut();
         if (error) throw error;
     },

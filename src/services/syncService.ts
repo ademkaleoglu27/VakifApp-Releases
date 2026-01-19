@@ -215,6 +215,15 @@ export const syncService = {
             for (const item of pendingParams) {
                 const payload = JSON.parse(item.payload);
 
+                // MULTI-TENANT: Inject vakif_id for inserts if not present
+                // This ensures offline changes are scoped to the current tenant
+                if (item.type.startsWith('INSERT_')) {
+                    const currentVakifId = require('@/store/vakifStore').getCurrentVakifId();
+                    if (currentVakifId && !payload.vakif_id) {
+                        payload.vakif_id = currentVakifId;
+                    }
+                }
+
                 try {
                     let error = null;
 

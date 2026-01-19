@@ -7,15 +7,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { theme } from '@/config/theme';
 import { DevGate } from '@/utils/DevGate';
 import { checkConfigIntegrity } from '@/services/ConfigIntegrityChecker';
+import { useAuthStore } from '@/store/authStore';
 
 export const DeveloperToolsScreen = () => {
     const navigation = useNavigation<any>();
+    const { user } = useAuthStore();
     const [isChecking, setIsChecking] = useState(true);
     const [isAuthorized, setIsAuthorized] = useState(false);
 
     // Route guard: check DevTools access on mount
     useEffect(() => {
         const checkAccess = async () => {
+            // Platform admins always have access
+            if (user?.role === 'platform_admin') {
+                setIsAuthorized(true);
+                setIsChecking(false);
+                return;
+            }
+
+            // For others, check DevGate PIN
             const enabled = await DevGate.getEnabled();
             if (!enabled) {
                 Alert.alert(
@@ -29,7 +39,7 @@ export const DeveloperToolsScreen = () => {
             setIsChecking(false);
         };
         checkAccess();
-    }, [navigation]);
+    }, [navigation, user]);
 
     // Show loading while checking
     if (isChecking) {

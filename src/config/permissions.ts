@@ -1,5 +1,5 @@
-// Role Definitions
-export type Role = 'mesveret_admin' | 'sohbet_member' | 'accountant';
+// Role Definitions - must match types/auth.ts
+export type Role = 'guest' | 'sohbet_member' | 'accountant' | 'mesveret_admin' | 'platform_admin';
 
 // Feature/Permission Keys
 export type PermissionKey =
@@ -12,10 +12,24 @@ export type PermissionKey =
     | 'LIBRARY_SCREEN'
     | 'ANNOUNCEMENTS_SCREEN'
     | 'JUZ_SCREEN'
-    | 'PROFILE_SCREEN';
+    | 'PROFILE_SCREEN'
+    | 'DEVELOPER_TOOLS';        // Developer Tools access
 
 export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
-    // 1. Accounting Admin (Full Accounting Access + Mesveret Access)
+    // Guest (Unauthenticated / No vakif)
+    guest: [
+        'LIBRARY_SCREEN'
+    ],
+
+    // Sohbet Member (Limited)
+    sohbet_member: [
+        'LIBRARY_SCREEN',
+        'ANNOUNCEMENTS_SCREEN',
+        'JUZ_SCREEN',
+        'PROFILE_SCREEN'
+    ],
+
+    // Accounting Admin (Full Accounting Access + Mesveret Access)
     accountant: [
         'MESVERET_SCREEN',
         'VIEW_COUNCIL_DECISIONS',
@@ -29,7 +43,7 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'PROFILE_SCREEN'
     ],
 
-    // 2. Mesveret Admin (Full Access including Accounting now)
+    // Mesveret Admin (Full Access including Accounting now)
     mesveret_admin: [
         'MESVERET_SCREEN',
         'VIEW_COUNCIL_DECISIONS',
@@ -43,12 +57,19 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'PROFILE_SCREEN'
     ],
 
-    // 3. Sohbet Member (Limited)
-    sohbet_member: [
+    // Platform Admin (Superuser - Access Everything)
+    platform_admin: [
+        'MESVERET_SCREEN',
+        'VIEW_COUNCIL_DECISIONS',
+        'ACCOUNTING_SCREEN',
+        'MANAGE_ACCOUNTING',
+        'VIEW_ACCOUNTING_DETAILS',
+        'MANAGE_AGENDA',
         'LIBRARY_SCREEN',
         'ANNOUNCEMENTS_SCREEN',
         'JUZ_SCREEN',
-        'PROFILE_SCREEN'
+        'PROFILE_SCREEN',
+        'DEVELOPER_TOOLS' // Exclusive to this role
     ]
 };
 
