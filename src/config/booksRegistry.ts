@@ -307,16 +307,178 @@ export const BOOKS_REGISTRY: BookEntry[] = [
 // FROZEN_BLOCK_END - New books can be added below this line
 
 // ═══════════════════════════════════════════════════════════════════════════
-// NEW BOOKS (Outside FROZEN block - can be freely modified)
+// CONTENT PACK CONFIGURATION (Outside FROZEN block - Library Contract v1.1)
 // ═══════════════════════════════════════════════════════════════════════════
-// Add new book entries here. Example:
-// BOOKS_REGISTRY.push({
-//     id: 'cevsen',
-//     title: 'Cevşen',
-//     icon: 'moon-outline',
-//     enabled: true,
-//     bookId: 'dua.cevsen@vakifapp'
-// });
+
+/**
+ * Content pack configuration for bundled vs downloadable content.
+ * - bundled: Content is included in APK (only Sözler)
+ * - downloadable: Content must be downloaded before reading
+ */
+export interface ContentPackConfig {
+    contentMode: 'bundled' | 'downloadable';
+    contentPackId?: string;          // For downloadable packs
+    estimatedSizeMb?: number;        // Download size in MB
+    downloadUrl?: string;            // Remote URL for content pack
+    bundledAssetPath?: string;       // For bundled content
+}
+
+/**
+ * Content pack configuration for all books.
+ * Sözler is bundled, all others are downloadable.
+ */
+export const CONTENT_PACK_CONFIG: Record<string, ContentPackConfig> = {
+    // ═══════════════════════════════════════════════════════════════════════
+    // BUNDLED (Included in APK)
+    // ═══════════════════════════════════════════════════════════════════════
+    'sozler': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/01_sozler'
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // DOWNLOADABLE (Must be downloaded)
+    // ═══════════════════════════════════════════════════════════════════════
+    'mektubat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.mektubat.v1',
+        estimatedSizeMb: 2.8,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/mektubat.zip'
+    },
+    'lemalar': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.lemalar.v1',
+        estimatedSizeMb: 2.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/lemalar.zip'
+    },
+    'sualar': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.sualar.v1',
+        estimatedSizeMb: 3.1,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/sualar.zip'
+    },
+    'tarihce': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.tarihce.v1',
+        estimatedSizeMb: 2.0,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/tarihce.zip'
+    },
+    'mesnevi': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.mesnevi.v1',
+        estimatedSizeMb: 1.5,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/mesnevi.zip'
+    },
+    'isarat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.isarat.v1',
+        estimatedSizeMb: 1.8,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/isarat.zip'
+    },
+    'sikke': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.sikke.v1',
+        estimatedSizeMb: 1.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/sikke.zip'
+    },
+    'barla': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.barla.v1',
+        estimatedSizeMb: 1.6,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/barla.zip'
+    },
+    'kastamonu': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.kastamonu.v1',
+        estimatedSizeMb: 1.4,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/kastamonu.zip'
+    },
+    'emirdag1': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.emirdag1.v1',
+        estimatedSizeMb: 1.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/emirdag1.zip'
+    },
+    'emirdag2': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.emirdag2.v1',
+        estimatedSizeMb: 1.1,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/emirdag2.zip'
+    },
+    'asayi': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.asayi.v1',
+        estimatedSizeMb: 1.0,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/asayi.zip'
+    },
+    'muhakemat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.muhakemat.v1',
+        estimatedSizeMb: 0.8,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/muhakemat.zip'
+    },
+    // Küçük Kitaplar
+    'sunuhat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.sunuhat.v1',
+        estimatedSizeMb: 0.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/sunuhat.zip'
+    },
+    'isarat_k': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.isarat_k.v1',
+        estimatedSizeMb: 0.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/isarat_k.zip'
+    },
+    'tuluat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.tuluat.v1',
+        estimatedSizeMb: 0.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/tuluat.zip'
+    },
+    'nurcesmesi': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.nurcesmesi.v1',
+        estimatedSizeMb: 0.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/nurcesmesi.zip'
+    },
+    'divaniharbi': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.divaniharbi.v1',
+        estimatedSizeMb: 0.4,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/divaniharbi.zip'
+    },
+    'hutbe': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.hutbe.v1',
+        estimatedSizeMb: 0.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/hutbe.zip'
+    },
+    'munazarat': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.munazarat.v1',
+        estimatedSizeMb: 0.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/munazarat.zip'
+    },
+    'genclik': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.genclik.v1',
+        estimatedSizeMb: 0.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/genclik.zip'
+    },
+    'hanimlar': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.hanimlar.v1',
+        estimatedSizeMb: 0.2,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/hanimlar.zip'
+    },
+    'konferans': {
+        contentMode: 'downloadable',
+        contentPackId: 'risale.konferans.v1',
+        estimatedSizeMb: 0.3,
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs/konferans.zip'
+    },
+};
 
 /**
  * Get enabled books for menu display.
@@ -331,3 +493,4 @@ export const getEnabledBooks = (): BookEntry[] => {
 export const getBookById = (id: string): BookEntry | undefined => {
     return BOOKS_REGISTRY.find(book => book.id === id);
 };
+

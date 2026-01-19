@@ -34,3 +34,35 @@ migrations/
 supabase/
 *.zip
 *.tar.gz
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DOWNLOADABLE CONTENT - Excluded from APK (Library Contract v1.1)
+# Only Sözler (01_sozler) is bundled
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Büyük Kitaplar (Downloadable)
+assets/risale_html_pilot/02_mektubat/
+assets/risale_html_pilot/03_lemalar/
+assets/risale_html_pilot/04_sualar/
+assets/risale_html_pilot/05_tarihce/
+assets/risale_html_pilot/06_mesnevi/
+assets/risale_html_pilot/07_isarat/
+assets/risale_html_pilot/08_sikke/
+assets/risale_html_pilot/09_barla/
+assets/risale_html_pilot/10_kastamonu/
+assets/risale_html_pilot/11_emirdag1/
+assets/risale_html_pilot/12_emirdag2/
+assets/risale_html_pilot/13_asayi/
+assets/risale_html_pilot/14_muhakemat/
+
+# Küçük Kitaplar (Downloadable)
+assets/risale_html_pilot/15_sunuhat/
+assets/risale_html_pilot/16_isarat_k/
+assets/risale_html_pilot/17_tuluat/
+assets/risale_html_pilot/19_nurcesmesi/
+assets/risale_html_pilot/20_divaniharbi/
+assets/risale_html_pilot/21_hutbe/
+assets/risale_html_pilot/22_munazarat/
+assets/risale_html_pilot/23_genclik/
+assets/risale_html_pilot/24_hanimlar/
+assets/risale_html_pilot/25_konferans/
