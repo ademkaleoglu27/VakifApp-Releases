@@ -67,19 +67,10 @@ export const HomeScreen = () => {
     };
 
     const loadLeaderboard = async () => {
-        // Don't show full loading spinner for refresh to keep UI smooth
-        // setIsLoading(true); 
-
-        // Cleanup is expensive, maybe move to App init or occasional background task?
-        // for now, just removing the await to let it run parallel if needed, or removing entirely if redundant.
-        // await RisaleUserDb.cleanupDummies(); 
-
-        const startDate = getLastMondayNoon();
-        console.log('Fetching leaderboard since:', startDate);
-
-        // Pass the start date to filter by week
-        let data = await RisaleUserDb.getLeaderboard(startDate);
-        setLeaderboard(data);
+        // Use Centralized Service
+        const data = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('WEEKLY', false);
+        // Take top 10 for Home Screen
+        setLeaderboard(data.slice(0, 10));
         setIsLoading(false);
     };
 
@@ -174,7 +165,7 @@ export const HomeScreen = () => {
                 </View>
 
                 <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{item.name}</Text>
-                <Text style={styles.podiumPages}>{item.total_pages} sayfa</Text>
+                <Text style={styles.podiumPages}>{item.totalPages} sayfa</Text>
 
                 {/* The Physical Podium Step */}
                 <LinearGradient
@@ -209,7 +200,7 @@ export const HomeScreen = () => {
                 </View>
                 <Text style={styles.compactName}>{item.name} {item.surname}</Text>
                 <View style={{ flex: 1 }} />
-                <Text style={styles.compactPages}>{item.total_pages} Sayfa</Text>
+                <Text style={styles.compactPages}>{item.totalPages} Sayfa</Text>
             </View>
         );
     };

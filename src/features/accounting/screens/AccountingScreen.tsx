@@ -128,26 +128,36 @@ export const AccountingScreen = () => {
                     </View>
                 </View>
 
-                <View style={styles.listHeader}>
-                    <Text style={styles.sectionTitle}>Son İşlemler</Text>
-                </View>
-
-                <FlatList
-                    data={filteredTransactions}
-                    keyExtractor={(item, index) => item.id || `transaction-${index}`}
-                    renderItem={({ item }) => (
-                        <TransactionCard
-                            transaction={item}
-                            onDelete={canManage ? () => handleDelete(item.id) : undefined}
-                        />
-                    )}
-                    contentContainerStyle={styles.list}
-                    ListEmptyComponent={
-                        <View style={styles.emptyContainer}>
-                            <Text style={styles.emptyText}>Bu ay için işlem bulunamadı.</Text>
+                {/* List and FAB are restricted to authorized roles (Accounting/Admin) */}
+                {canViewDetails ? (
+                    <>
+                        <View style={styles.listHeader}>
+                            <Text style={styles.sectionTitle}>Son İşlemler</Text>
                         </View>
-                    }
-                />
+
+                        <FlatList
+                            data={filteredTransactions}
+                            keyExtractor={(item, index) => item.id || `transaction-${index}`}
+                            renderItem={({ item }) => (
+                                <TransactionCard
+                                    transaction={item}
+                                    onDelete={canManage ? () => handleDelete(item.id) : undefined}
+                                />
+                            )}
+                            contentContainerStyle={styles.list}
+                            ListEmptyComponent={
+                                <View style={styles.emptyContainer}>
+                                    <Text style={styles.emptyText}>Bu ay için işlem bulunamadı.</Text>
+                                </View>
+                            }
+                        />
+                    </>
+                ) : (
+                    <View style={styles.emptyContainer}>
+                        <Ionicons name="lock-closed-outline" size={48} color={theme.colors.onSurfaceVariant} style={{ opacity: 0.5, marginBottom: 12 }} />
+                        <Text style={styles.emptyText}>Detaylı işlem listesi sadece muhasebe yetkilisine açıktır.</Text>
+                    </View>
+                )}
             </View>
 
             {canManage && (

@@ -21,19 +21,30 @@ export const ReadingTrackingScreen = () => {
 
     const loadData = async () => {
         setLoading(true);
-        setData([]); // Clear old data to prevent flashing
+        setData([]);
         try {
             let result = [];
-            if (activeTab === 'WEEKLY') {
-                result = await RisaleUserDb.getReadingStats('weekly');
-            } else if (activeTab === 'MONTHLY') {
-                result = await RisaleUserDb.getReadingStats('monthly');
-            } else if (activeTab === 'YEARLY') {
-                result = await RisaleUserDb.getReadingStats('yearly');
-            } else {
-                result = await RisaleUserDb.getInactiveUsers(21); // 3 weeks
+
+            // Map Tab to Service Range
+            let range: any = activeTab; // 'WEEKLY' | 'MONTHLY' | 'YEARLY'
+            let includeZero = false;
+
+            if (activeTab === 'ALERTS') {
+                range = 'WEEKLY'; // Default attention span
+                includeZero = true; // Fetch everyone including zeros
             }
-            setData(result || []);
+
+            // Fetch from Central Service: Single Source of Truth
+            const stats = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard(range, includeZero);
+
+            if (activeTab === 'ALERTS') {
+                // Filter for ZERO reading
+                result = stats.filter((s: any) => !s.hasReading);
+            } else {
+                result = stats;
+            }
+
+            setData(result);
         } catch (e) {
             console.error(e);
             Alert.alert('Hata', 'Veriler yüklenemedi.');
@@ -53,27 +64,26 @@ export const ReadingTrackingScreen = () => {
     };
 
     const renderItem = ({ item }: { item: any }) => {
-        const nameInitial = item.name ? item.name[0] : '?';
-        const surnameInitial = item.surname ? item.surname[0] : '';
-        const displayName = `${item.name || ''} ${item.surname || ''}`.trim() || 'İsimsiz';
+        const displayName = item.displayName || 'İsimsiz';
+        const initials = item.initials || '?';
 
         return (
             <View style={styles.card}>
                 <View style={styles.avatar}>
-                    <Text style={styles.avatarText}>{nameInitial}{surnameInitial}</Text>
+                    <Text style={styles.avatarText}>{initials}</Text>
                 </View>
 
                 <View style={styles.info}>
                     <Text style={styles.name}>{displayName}</Text>
                     {activeTab !== 'ALERTS' ? (
-                        <Text style={styles.stats}>{item.total_pages || 0} Sayfa</Text>
+                        <Text style={styles.stats}>{item.totalPages || 0} Sayfa</Text>
                     ) : (
                         <Text style={styles.alertText}>
                             {(() => {
-                                if (!item.last_reading_date) return 'Hiç okuma kaydı yok';
+                                if (!item.lastReadingDate) return 'Hiç okuma kaydı yok';
 
                                 const now = new Date();
-                                const last = new Date(item.last_reading_date);
+                                const last = new Date(item.lastReadingDate);
                                 const diffTime = Math.abs(now.getTime() - last.getTime());
                                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 

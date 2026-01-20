@@ -24,11 +24,14 @@ export const AddReadingLogScreen = () => {
 
     const loadTodayReading = async () => {
         try {
-            const stats = await RisaleUserDb.getReadingStats('weekly');
-            // Find current user's reading
-            const myStats = stats.find((s: any) => s.user_id === user?.id);
+            // Use Centralized Service for Source of Truth Consistency
+            const stats = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('WEEKLY', false);
+
+            // Find current user's entry (matches by user_id or name via aggregation)
+            const myStats = stats.find((s: any) => s.id === user?.id || s.displayName === user?.name);
+
             if (myStats) {
-                setTodayReading(myStats.total_pages || 0);
+                setTodayReading(myStats.totalPages || 0);
             }
         } catch (error) {
             console.error('Failed to load today reading:', error);

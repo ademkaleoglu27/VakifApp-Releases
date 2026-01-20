@@ -31,92 +31,143 @@ export const syncService = {
         try {
             const lastSyncedAt = await getLastSyncedAt();
             const db = await getDb();
+            let skippedCount = 0;
 
             const supabase = getSupabaseClient();
             if (!supabase) throw new Error('Sync failed: Supabase client not initialized.');
 
             // A. Decisions
             let queryD = supabase.from('decisions').select('*');
-            if (lastSyncedAt) queryD = queryD.gt('created_at', lastSyncedAt); // Should rely on updated_at if available
+            if (lastSyncedAt) queryD = queryD.gt('created_at', lastSyncedAt);
 
             const { data: decisions, error: errD } = await queryD;
             if (errD) throw errD;
 
             if (decisions && decisions.length > 0) {
                 for (const d of decisions as Decision[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO decisions (id, title, summary, date, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-                        [d.id, d.title, d.summary, d.date, d.created_by, d.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO decisions (id, title, summary, date, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
+                            [d.id, d.title || 'Adsız Karar', d.summary, d.date || new Date().toISOString(), d.created_by, d.created_at]
+                        );
+                    } catch (rowError) {
+                        console.warn('[Sync] Skip Decision row:', d.id, rowError);
+                        skippedCount++;
+                    }
                 }
             }
 
-            // B. Transactions
-            let queryT = supabase.from('transactions').select('*');
-            if (lastSyncedAt) queryT = queryT.gt('created_at', lastSyncedAt);
+            // B. Transactions (Role-Based Access Control)
+            let userRole: string | undefined;
+            try {
+                userRole = require('@/store/authStore').useAuthStore.getState().user?.role;
+            } catch (e) { console.warn('Auth store access failed', e); }
 
-            const { data: transactions, error: errT } = await queryT;
-            if (errT) throw errT;
+            const canViewDetails = userRole ? require('@/config/permissions').canAccess(userRole, 'VIEW_ACCOUNTING_DETAILS') : false;
 
-            if (transactions && transactions.length > 0) {
-                for (const t of transactions as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO transactions (id, type, amount, currency, category, date, description, payment_method, contact_id, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                        [t.id, t.type, t.amount, t.currency, t.category, t.date, t.description, t.payment_method, t.contact_id, t.created_by, t.created_at]
-                    );
+            if (!canViewDetails) {
+                // RESTRICTED VIEW: Do not fetch transaction details.
+                // TODO: Fetch Summary RPC when available on server.
+                // await supabase.rpc('get_finance_summary', ...);
+                console.log('[Sync] Restricted user (Meşveret): Skipping detailed transaction pull for privacy.');
+            } else {
+                let queryT = supabase.from('transactions').select('*');
+                if (lastSyncedAt) queryT = queryT.gt('created_at', lastSyncedAt);
+
+                const { data: transactions, error: errT } = await queryT;
+                if (errT) throw errT;
+
+                if (transactions && transactions.length > 0) {
+                    for (const t of transactions as any[]) {
+                        try {
+                            // SANITIZE: Prevent NOT NULL crashes
+                            if (t.amount === undefined || t.amount === null) {
+                                console.warn('[Sync] Skip Transaction (Missing Amount):', t.id);
+                                skippedCount++;
+                                continue;
+                            }
+                            if (!t.type) {
+                                console.warn('[Sync] Skip Transaction (Missing Type):', t.id);
+                                skippedCount++;
+                                continue;
+                            }
+
+                            // Robust Date Fallback
+                            const safeDate = t.date
+                                ? t.date
+                                : (t.created_at ? t.created_at.slice(0, 10) : new Date().toISOString().slice(0, 10));
+
+                            await db.runAsync(
+                                `INSERT OR REPLACE INTO transactions (id, type, amount, currency, category, date, description, payment_method, contact_id, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                [
+                                    t.id,
+                                    t.type,
+                                    t.amount,
+                                    t.currency || 'TRY',
+                                    t.category || 'Genel',
+                                    safeDate,
+                                    t.description,
+                                    t.payment_method || 'CASH',
+                                    t.contact_id,
+                                    t.created_by,
+                                    t.created_at
+                                ]
+                            );
+                        } catch (rowError) {
+                            console.warn('[Sync] Skip Transaction row:', t.id, rowError);
+                            skippedCount++;
+                        }
+                    }
                 }
             }
 
             // C. Hatims
             let queryH = supabase.from('hatims').select('*');
             if (lastSyncedAt) queryH = queryH.gt('created_at', lastSyncedAt);
-
             const { data: hatims, error: errH } = await queryH;
             if (errH) throw errH;
-
             if (hatims && hatims.length > 0) {
                 for (const h of hatims as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO hatims (id, title, target_date, status, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-                        [h.id, h.title, h.target_date, h.status, h.created_by, h.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO hatims (id, title, target_date, status, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
+                            [h.id, h.title, h.target_date, h.status, h.created_by, h.created_at]
+                        );
+                    } catch (e) { console.warn('Skip Hatim:', h.id); }
                 }
             }
 
             // D. Hatim Parts
             let queryHP = supabase.from('hatim_parts').select('*');
             if (lastSyncedAt) queryHP = queryHP.gt('updated_at', lastSyncedAt);
-
             const { data: parts, error: errHP } = await queryHP;
             if (errHP) throw errHP;
-
             if (parts && parts.length > 0) {
                 for (const p of parts as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO hatim_parts (id, hatim_id, juz_number, status, assigned_to_name, assigned_to_id, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                        [p.id, p.hatim_id, p.juz_number, p.status, p.assigned_to_name, p.assigned_to_id, p.updated_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO hatim_parts (id, hatim_id, juz_number, status, assigned_to_name, assigned_to_id, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [p.id, p.hatim_id, p.juz_number, p.status, p.assigned_to_name, p.assigned_to_id, p.updated_at]
+                        );
+                    } catch (e) { console.warn('Skip HatimPart:', p.id); }
                 }
             }
 
             // E. Reading Logs
             let queryRL = supabase.from('reading_logs').select('*');
             if (lastSyncedAt) queryRL = queryRL.gt('created_at', lastSyncedAt);
-
             const { data: logs, error: errRL } = await queryRL;
             if (errRL) throw errRL;
-
             if (logs && logs.length > 0) {
                 for (const l of logs as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                        [l.id, l.user_id, l.book_id, l.pages_read, l.duration_minutes, l.date, l.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [l.id, l.user_id, l.book_id, l.pages_read, l.duration_minutes, l.date, l.created_at]
+                        );
+                    } catch (e) { console.warn('Skip ReadingLog:', l.id); }
                 }
             }
-
-            // Update Sync Timestamp
-            await setLastSyncedAt(new Date().toISOString());
 
             // F. Contacts
             let queryC = supabase.from('contacts').select('*');
@@ -125,10 +176,12 @@ export const syncService = {
             if (errC) throw errC;
             if (contacts && contacts.length > 0) {
                 for (const c of contacts as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO contacts (id, name, surname, phone, address, group_type, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                        [c.id, c.name, c.surname, c.phone, c.address, c.group_type, c.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO contacts (id, name, surname, phone, address, group_type, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [c.id, c.name, c.surname, c.phone, c.address, c.group_type, c.created_at]
+                        );
+                    } catch (e) { console.warn('Skip Contact:', c.id); }
                 }
             }
 
@@ -139,10 +192,12 @@ export const syncService = {
             if (errCR) throw errCR;
             if (readings && readings.length > 0) {
                 for (const r of readings as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO contact_readings (id, contact_id, pages_read, date, created_at) VALUES (?, ?, ?, ?, ?)`,
-                        [r.id, r.contact_id, r.pages_read, r.date, r.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO contact_readings (id, contact_id, pages_read, date, created_at) VALUES (?, ?, ?, ?, ?)`,
+                            [r.id, r.contact_id, r.pages_read, r.date, r.created_at]
+                        );
+                    } catch (e) { console.warn('Skip ContactReading:', r.id); }
                 }
             }
 
@@ -153,28 +208,28 @@ export const syncService = {
             if (errA) throw errA;
             if (assignments && assignments.length > 0) {
                 for (const a of assignments as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO assignments (id, title, description, assigned_to_id, due_date, is_completed, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                        [a.id, a.title, a.description, a.assigned_to_id, a.due_date, a.is_completed, a.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO assignments (id, title, description, assigned_to_id, due_date, is_completed, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [a.id, a.title, a.description, a.assigned_to_id, a.due_date, a.is_completed, a.created_at]
+                        );
+                    } catch (e) { console.warn('Skip Assignment:', a.id); }
                 }
             }
 
-            // I. Announcements - MOVED TO CLOUD ONLY (Skipping Sync)
-            // AnnouncementService now fetches directly from Supabase.
-            // Leaving this empty to prevent schema mismatch errors with old SQLite table.
-
-            // J. Decision Links
+            // I. Decision Links
             let queryDL = supabase.from('risale_decision_links').select('*');
             if (lastSyncedAt) queryDL = queryDL.gt('created_at', lastSyncedAt);
             const { data: links, error: errDL } = await queryDL;
             if (errDL) throw errDL;
             if (links && links.length > 0) {
                 for (const l of links as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO risale_decision_links (id, decision_id, book_id, page_number, note, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-                        [l.id, l.decision_id, l.book_id, l.page_number, l.note, l.created_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO risale_decision_links (id, decision_id, book_id, page_number, note, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
+                            [l.id, l.decision_id, l.book_id, l.page_number, l.note, l.created_at]
+                        );
+                    } catch (e) { console.warn('Skip Link:', l.id); }
                 }
             }
 
@@ -185,13 +240,21 @@ export const syncService = {
             if (errRN) throw errRN;
             if (notes && notes.length > 0) {
                 for (const n of notes as any[]) {
-                    await db.runAsync(
-                        `INSERT OR REPLACE INTO risale_notes (id, book_id, page_number, content, color, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                        [n.id, n.book_id, n.page_number, n.content, n.color, n.created_at, n.updated_at]
-                    );
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO risale_notes (id, book_id, page_number, content, color, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [n.id, n.book_id, n.page_number, n.content, n.color, n.created_at, n.updated_at]
+                        );
+                    } catch (e) { console.warn('Skip Note:', n.id); }
                 }
             }
 
+            // Update Sync Timestamp - ONLY AFTER ALL SUCCESS
+            await setLastSyncedAt(new Date().toISOString());
+
+            if (skippedCount > 0) {
+                console.warn(`[SyncService] Completed with ${skippedCount} skipped rows.`);
+            }
 
         } catch (error) {
             console.error('Pull failed:', error);
@@ -209,18 +272,41 @@ export const syncService = {
                 return;
             }
 
+            // Get Current Tenant ID (Safe Access)
+            let currentVakifId: string | null = null;
+            try {
+                // Dynamic require to ensure store is initialized
+                const vakifStore = require('@/store/vakifStore');
+                // Prefer direct state access if available, fallback to helper
+                if (vakifStore.useVakifStore) {
+                    currentVakifId = vakifStore.useVakifStore.getState().currentVakif?.id || null;
+                } else if (vakifStore.getCurrentVakifId) {
+                    currentVakifId = vakifStore.getCurrentVakifId();
+                }
+            } catch (e) {
+                console.warn('[SyncService] Failed to get vakif context:', e);
+            }
+
             // Read Outbox
             const pendingParams = await db.getAllAsync<{ id: number, type: string, payload: string }>('SELECT * FROM outbox ORDER BY id ASC');
 
             for (const item of pendingParams) {
                 const payload = JSON.parse(item.payload);
 
-                // MULTI-TENANT: Inject vakif_id for inserts if not present
-                // This ensures offline changes are scoped to the current tenant
-                if (item.type.startsWith('INSERT_')) {
-                    const currentVakifId = require('@/store/vakifStore').getCurrentVakifId();
-                    if (currentVakifId && !payload.vakif_id) {
+                // --- 1. ROBUST VAKIF_ID INJECTION ---
+                const isTenantScoped = item.type.startsWith('INSERT_') && item.type !== 'INSERT_READING_LOG';
+
+                if (isTenantScoped) {
+                    if (!payload.vakif_id && currentVakifId) {
                         payload.vakif_id = currentVakifId;
+                    }
+
+                    // CRITICAL: If still missing vakif_id, we CANNOT send this to Supabase (23502).
+                    // We must remove it to unblock the queue.
+                    if (!payload.vakif_id) {
+                        console.warn(`[SyncService] Safe Logic: Removing item ${item.type} (ID: ${item.id}) - Missing vakif_id context.`);
+                        await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
+                        continue; // Process next item
                     }
                 }
 
@@ -263,8 +349,8 @@ export const syncService = {
                         const { error: err } = await supabase.from('risale_decision_links').insert(payload);
                         error = err;
                     }
-                    // ... (previous handlers)
 
+                    // Deletions 
                     else if (item.type === 'DELETE_TRANSACTION') {
                         const { error: err } = await supabase.from('transactions').delete().eq('id', payload.id);
                         error = err;
@@ -288,35 +374,35 @@ export const syncService = {
                         error = err;
                     }
 
-                    // Add other types here
-
                     if (error) throw error;
 
                     // If success, remove from outbox
                     await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
 
                 } catch (pushError: any) {
-                    // SAFE auto-removal: only format/duplicate errors (idempotent)
-                    // DO NOT auto-remove on permission/RLS errors (data loss risk)
-                    const errorCode = pushError?.code;
-                    const isFormatError = errorCode === '22P02'; // invalid format
-                    const isDuplicateError = errorCode === '23505'; // unique violation (already exists)
-                    // Note: 23503 (foreign key) should retry, not auto-remove
-                    // Note: PGR* (RLS/permission) should NOT auto-remove
 
-                    if (isFormatError || isDuplicateError) {
-                        console.warn('[SyncService] Auto-removing item (safe error):', item.id, errorCode);
+                    // --- 2. ROBUST ERROR PARSING & SAFE REMOVAL ---
+                    const errorCode = String(pushError?.code ?? pushError?.error?.code ?? '');
+
+                    const isFormatError = errorCode === '22P02';
+                    const isDuplicateError = errorCode === '23505';
+                    const isNotNullError = errorCode === '23502'; // Missing Required Field
+                    const isForeignKeyError = errorCode === '23503'; // Orphaned data
+
+                    if (isFormatError || isDuplicateError || isNotNullError || isForeignKeyError) {
+                        console.warn(`[SyncService] Auto-removing fatal item (Code: ${errorCode}):`, item.id);
                         await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
                     } else {
-                        // Real error - log it and stop processing (retry later)
-                        console.error('[SyncService] Push failed for item', item.id, '- will retry:', pushError);
-                        break;
+                        // Regular network/server error - Retry silently or with warning
+                        // Downgrading to WARN to stop LogBox spam
+                        console.warn(`[SyncService] Push retry pending for item ${item.id}:`, pushError?.message || pushError);
+                        break; // Stop queue processing, retry later
                     }
                 }
             }
 
         } catch (error) {
-            console.error('Push loop failed:', error);
+            console.error('Push loop critical failure:', error);
         }
     },
 

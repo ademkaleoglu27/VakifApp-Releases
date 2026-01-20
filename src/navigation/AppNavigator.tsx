@@ -15,9 +15,10 @@ import { RisaleHtmlReaderScreen } from '@/features/reader/html_pilot/RisaleHtmlR
 import { LibraryShellScreen } from '@/features/library/screens/LibraryShellScreen';
 import { DownloadOverlayProvider } from '@/features/contentpacks/DownloadOverlayProvider';
 import { RisaleHtmlReaderHomeGated } from '@/features/contentpacks/RisaleHtmlReaderHomeGated';
-// VP Reader Screens (Production) REMOVED
-// Single entry point for all reader navigation (P6: handles native/legacy routing) REMOVED
 
+// Onboarding features
+import { OnboardingOverlay } from '@/features/onboarding/OnboardingOverlay';
+import { MenuIntroOverlay } from '@/features/onboarding/MenuIntroOverlay';
 
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
@@ -96,8 +97,8 @@ export type RootStackParamList = {
     QuranPageReader: { page: number };
 
     // Risale Library V1 (Legacy REMOVED)
-    // LibraryDetail: { libraryId: string };
-    // WorkDetail: { workId: string };
+    // LibraryDetail: {libraryId: string };
+    // WorkDetail: {workId: string };
     QuranPagePicker: undefined;
     QuranJuzPicker: undefined;
 
@@ -228,6 +229,9 @@ const CustomDrawerContent = React.memo((props: any) => {
     const [isCouncilExpanded, setIsCouncilExpanded] = useState(false);
     const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
 
+    // Menu Intro Overlay State
+    const [showIntro, setShowIntro] = useState(true);
+
     const toggleCouncil = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setIsCouncilExpanded(!isCouncilExpanded);
@@ -251,6 +255,10 @@ const CustomDrawerContent = React.memo((props: any) => {
                 end={{ x: 1, y: 1 }}
                 pointerEvents="none"
             />
+
+            {/* Menu Intro Overlay */}
+            <MenuIntroOverlay visible={showIntro} onClose={() => setShowIntro(false)} />
+
             {/* ... rest of the code is same structure, effectively validating the diff ... */}
             {/* Copying the body from original but using the updated navigate function */}
 
@@ -640,6 +648,7 @@ export const AppNavigator = () => {
             <AudioProvider>
                 <NavigationContainer ref={navigationRef}>
                     <View style={{ flex: 1 }}>
+                        <OnboardingOverlay />
                         <Stack.Navigator screenOptions={{ headerShown: false }}>
                             {isAuthenticated ? (
                                 <>

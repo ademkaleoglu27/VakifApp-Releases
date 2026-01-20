@@ -447,11 +447,15 @@ export const RisaleUserDb = {
         try {
             const db = await getDb();
 
+            // 1. Fetch Raw Rows (No Grouping/Limit yet for safe merge)
+            // Modified query to get user_id and phone for merging
             let query = `
                 SELECT 
                     c.id, 
+                    c.user_id,
                     c.name, 
                     c.surname, 
+                    c.phone,
                     SUM(cr.pages_read) as total_pages 
                 FROM contacts c 
                 JOIN contact_readings cr ON c.id = cr.contact_id 
@@ -464,15 +468,37 @@ export const RisaleUserDb = {
                 params.push(startDate);
             }
 
-            query += `
-                GROUP BY c.id 
-                ORDER BY total_pages DESC
-                LIMIT 10
-            `;
+            // We group by ID roughly in SQL to reduce rows, but main merge is JS
+            query += ` GROUP BY c.id `;
 
-            const result = await db.getAllAsync(query, params);
+            const rawRows = await db.getAllAsync<any>(query, params);
 
-            return result;
+            // 2. JS Deduplication (Normalized Name)
+            const map = new Map<string, any>();
+            const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
+            const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+
+            for (const row of rawRows) {
+                const displayName = buildDisplayName(row.name, row.surname);
+                const normName = normalize(displayName);
+                const key = `N:${normName}`;
+
+                if (map.has(key)) {
+                    const existing = map.get(key);
+                    existing.total_pages += row.total_pages;
+                    if (!existing.user_id && row.user_id) existing.user_id = row.user_id;
+                    if (!existing.phone && row.phone) existing.phone = row.phone;
+                    if (row.user_id) existing.id = row.id;
+                } else {
+                    map.set(key, { ...row });
+                }
+            }
+
+            // 3. Sort and Limit
+            return Array.from(map.values())
+                .sort((a, b) => b.total_pages - a.total_pages)
+                .slice(0, 10);
+
         } catch (error) {
             console.error('Leaderboard error:', error);
             return [];
@@ -531,9 +557,12 @@ export const RisaleUserDb = {
         dateThreshold.setDate(dateThreshold.getDate() - days);
         const dateStr = dateThreshold.toISOString();
 
-        return await db.getAllAsync(`
+        // 1. Fetch Raw Groups (by contact_id)
+        // We select user_id to help with identity, though strictly we'll group by name for visual cleanup
+        const rawRows = await db.getAllAsync<any>(`
             SELECT 
-                c.id, 
+                c.id,
+                c.user_id, 
                 c.name, 
                 c.surname,
                 c.phone,
@@ -542,8 +571,46 @@ export const RisaleUserDb = {
             JOIN contact_readings cr ON c.id = cr.contact_id 
             WHERE cr.date >= ?
             GROUP BY c.id 
-            ORDER BY total_pages DESC
         `, [dateStr]);
+
+        // 2. JS Aggregation (Deduplication)
+        const map = new Map<string, any>();
+        let mergeCount = 0;
+
+        const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
+        const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+
+        for (const row of rawRows) {
+            const displayName = buildDisplayName(row.name, row.surname);
+            const normName = normalize(displayName);
+
+            // IDENTITY STRATEGY:
+            // To ensure "Adem Kaleoğlu" appears only once, we group by Normalized Name.
+            // Ideally we would use user_id, but if local contacts lack user_id (offline/manual),
+            // they would split from the synced user. Name-based merging bridges this gap.
+            const key = `N:${normName}`;
+
+            if (map.has(key)) {
+                mergeCount++;
+                const existing = map.get(key);
+                existing.total_pages += row.total_pages;
+
+                // Merge Profile Data (Prefer rows with more info)
+                if (!existing.user_id && row.user_id) existing.user_id = row.user_id;
+                if (!existing.phone && row.phone) existing.phone = row.phone;
+                // Keep the ID of the 'primary' contact (e.g. the one with user_id)
+                if (row.user_id) existing.id = row.id;
+            } else {
+                map.set(key, { ...row });
+            }
+        }
+
+        if (mergeCount > 0) {
+            console.log(`[Leaderboard] Deduplicated ${mergeCount} rows for period ${period}.`);
+        }
+
+        // 3. Return Sorted List
+        return Array.from(map.values()).sort((a, b) => b.total_pages - a.total_pages);
     },
 
     async getInactiveUsers(daysThreshold: number = 21): Promise<any[]> {
