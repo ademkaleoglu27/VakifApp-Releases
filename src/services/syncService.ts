@@ -294,19 +294,22 @@ export const syncService = {
                 const payload = JSON.parse(item.payload);
 
                 // --- 1. ROBUST VAKIF_ID INJECTION ---
-                const isTenantScoped = item.type.startsWith('INSERT_') && item.type !== 'INSERT_READING_LOG';
+                // All INSERT_ types need vakif_id (including reading_logs)
+                const isTenantScoped = item.type.startsWith('INSERT_');
 
                 if (isTenantScoped) {
-                    if (!payload.vakif_id && currentVakifId) {
-                        payload.vakif_id = currentVakifId;
+                    // Use default vakif_id for single-tenant pre-store
+                    const DEFAULT_VAKIF_ID = '00000000-0000-0000-0000-000000000001';
+
+                    if (!payload.vakif_id) {
+                        payload.vakif_id = currentVakifId || DEFAULT_VAKIF_ID;
                     }
 
                     // CRITICAL: If still missing vakif_id, we CANNOT send this to Supabase (23502).
                     // We must remove it to unblock the queue.
                     if (!payload.vakif_id) {
-                        console.warn(`[SyncService] Safe Logic: Removing item ${item.type} (ID: ${item.id}) - Missing vakif_id context.`);
                         await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
-                        continue; // Process next item
+                        continue;
                     }
                 }
 

@@ -67,10 +67,10 @@ export const HomeScreen = () => {
     };
 
     const loadLeaderboard = async () => {
-        // Use Centralized Service
-        const data = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('WEEKLY', false);
-        // Take top 10 for Home Screen
-        setLeaderboard(data.slice(0, 10));
+        // Use Centralized Service (RPC + Cache)
+        const { ReadingStatsService } = require('@/services/ReadingStatsService');
+        const data = await ReadingStatsService.fetchLeaderboard('week', 'homeTop10');
+        setLeaderboard(data);
         setIsLoading(false);
     };
 
@@ -129,6 +129,11 @@ export const HomeScreen = () => {
         const isFirst = rank === 0;
         const place = rank === 0 ? 1 : (rank === 1 ? 2 : 3);
 
+        // Safe name extraction with fallback
+        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
+        const nameInitial = displayName?.[0] || '?';
+        const totalPages = item.totalPages || item.total_pages || 0;
+
         // Colors for gradients
         const goldColors = ['#FFD700', '#FDB931', '#F59E0B'];
         const silverColors = ['#E0E0E0', '#BDBDBD', '#9E9E9E'];
@@ -154,7 +159,7 @@ export const HomeScreen = () => {
                     >
                         <View style={[styles.avatarInner, { width: size, height: size, borderRadius: size / 2 }]}>
                             <Text style={[styles.avatarText, { fontSize: isFirst ? 28 : 20 }]}>
-                                {item.name[0]}
+                                {nameInitial}
                             </Text>
                         </View>
                     </LinearGradient>
@@ -164,8 +169,8 @@ export const HomeScreen = () => {
                     </View>
                 </View>
 
-                <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{item.name}</Text>
-                <Text style={styles.podiumPages}>{item.totalPages} sayfa</Text>
+                <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{displayName}</Text>
+                <Text style={styles.podiumPages}>{totalPages} sayfa</Text>
 
                 {/* The Physical Podium Step */}
                 <LinearGradient
@@ -191,16 +196,22 @@ export const HomeScreen = () => {
     );
 
     const renderCompactRow = ({ item, index }: { item: any, index: number }) => {
+        if (!item) return null;
+
         const rank = index + 4; // Since we skip top 3
+        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
+        const nameInitial = displayName?.[0] || '?';
+        const totalPages = item.totalPages || item.total_pages || 0;
+
         return (
             <View style={styles.compactRow}>
                 <Text style={styles.compactRank}>#{rank}</Text>
                 <View style={styles.compactAvatar}>
-                    <Text style={styles.compactAvatarText}>{item.name[0]}</Text>
+                    <Text style={styles.compactAvatarText}>{nameInitial}</Text>
                 </View>
-                <Text style={styles.compactName}>{item.name} {item.surname}</Text>
+                <Text style={styles.compactName}>{displayName} {item.surname || ''}</Text>
                 <View style={{ flex: 1 }} />
-                <Text style={styles.compactPages}>{item.totalPages} Sayfa</Text>
+                <Text style={styles.compactPages}>{totalPages} Sayfa</Text>
             </View>
         );
     };

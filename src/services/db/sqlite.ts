@@ -245,6 +245,14 @@ export const initDb = async () => {
         );
     `);
 
+    // 16. Reading Leaderboard Cache (Centralized Stats)
+    await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS reading_leaderboard_cache (
+            key TEXT PRIMARY KEY, -- vakif_id:range:mode
+            payload TEXT NOT NULL,
+            updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+    `);
 
 };
 

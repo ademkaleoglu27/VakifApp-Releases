@@ -25,13 +25,18 @@ export const AddReadingLogScreen = () => {
     const loadTodayReading = async () => {
         try {
             // Use Centralized Service for Source of Truth Consistency
-            const stats = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('WEEKLY', false);
+            // Correct params: 'week' (lowercase) and 'full' mode
+            const stats = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('week', 'full');
 
-            // Find current user's entry (matches by user_id or name via aggregation)
-            const myStats = stats.find((s: any) => s.id === user?.id || s.displayName === user?.name);
+            // Find current user's entry - RPC returns user_id field
+            const myStats = stats.find((s: any) =>
+                s.user_id === user?.id ||
+                s.displayName === user?.name ||
+                s.display_name === user?.name
+            );
 
             if (myStats) {
-                setTodayReading(myStats.totalPages || 0);
+                setTodayReading(myStats.total_pages || myStats.totalPages || 0);
             }
         } catch (error) {
             console.error('Failed to load today reading:', error);
@@ -74,7 +79,6 @@ export const AddReadingLogScreen = () => {
 
                 // AUTO-CREATE: If no contact exists, create one for this user
                 if (!contact) {
-                    console.log('[ReadingLog] No contact found, auto-creating for user:', user.id);
                     const contactId = await RisaleUserDb.createContactForUser({
                         userId: user.id,
                         name: user.name || 'Kullanıcı',
@@ -87,7 +91,6 @@ export const AddReadingLogScreen = () => {
 
                 if (contact) {
                     await RisaleUserDb.addContactReading(contact.id, parseInt(pages));
-                    console.log('[ReadingLog] Contact reading added for contact:', contact.id);
                 }
             } catch (linkError) {
                 console.warn('Contact reading link failed (non-critical):', linkError);
@@ -104,7 +107,7 @@ export const AddReadingLogScreen = () => {
                 }]
             );
         } catch (error) {
-            console.error('Failed to add reading:', error);
+            console.error('[AddReading] FAILED:', error);
             Alert.alert('Hata', 'Okuma eklenemedi. Lütfen tekrar deneyin.');
         } finally {
             setIsSaving(false);
