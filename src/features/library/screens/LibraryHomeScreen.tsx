@@ -161,6 +161,9 @@ export const LibraryHomeScreen: React.FC = () => {
                     query={searchQuery}
                     onResultPress={handleBookPress}
                     onClose={handleCloseSearch}
+                    onSearchAgain={(newQuery) => {
+                        setSearchQuery(newQuery);
+                    }}
                 />
             )}
 

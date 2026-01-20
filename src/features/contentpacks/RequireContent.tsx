@@ -50,15 +50,26 @@ export const RequireContent: React.FC<RequireContentProps> = ({
         setErrorCode(null);
         setErrorMessage(null);
 
+        // UX: Add minimum delay to prevent flicker (STEP 6)
+        const minDelay = new Promise(resolve => setTimeout(resolve, 500));
+
         try {
+            // STEP 1: Log Diagnosis
+            console.log('[RequireContent] Checking content for:', bookId);
+
             // Check if content is available
             const resolution = await ContentPackResolver.resolve(bookId);
 
-            console.log(`[RequireContent] Resolution for ${bookId}:`, resolution.status);
+            // Wait for delay
+            await minDelay;
+
+            console.log(`[RequireContent] Resolution status: ${resolution.status} (code: ${resolution.errorCode})`);
 
             // Handle resolver errors (e.g., bundled asset missing)
             if (resolution.status === 'error') {
                 console.warn(`[RequireContent] Resolver error: ${resolution.errorCode}`);
+                console.log(`[RequireContent] Download Trigger Reason: RESOLVER_ERROR_${resolution.errorCode}`);
+
                 setFailed(true);
                 setErrorCode(resolution.errorCode || 'UNKNOWN');
                 setErrorMessage(resolution.errorMessage || 'İçerik bulunamadı');
@@ -68,6 +79,7 @@ export const RequireContent: React.FC<RequireContentProps> = ({
 
             // Bundled or already downloaded - ready to render
             if (resolution.status === 'bundled' || resolution.status === 'downloaded') {
+                console.log('[RequireContent] Content READY. Opening reader.');
                 setReady(true);
                 setChecking(false);
                 return;
@@ -79,6 +91,8 @@ export const RequireContent: React.FC<RequireContentProps> = ({
 
             if (!config?.downloadUrl) {
                 console.warn(`[RequireContent] No download URL for ${bookId} (canonical: ${cid})`);
+                console.log('[RequireContent] Download Trigger Reason: NO_DOWNLOAD_URL');
+
                 setFailed(true);
                 setErrorCode('CP_NO_DOWNLOAD_URL');
                 setErrorMessage(`${bookId} için indirme URL'si bulunamadı`);
@@ -87,16 +101,20 @@ export const RequireContent: React.FC<RequireContentProps> = ({
             }
 
             // Trigger download overlay
+            console.log('[RequireContent] Download Trigger Reason: NOT_DOWNLOADED (Starting download...)');
+
             setChecking(false); // Hide checking state during download
             const success = await showDownload({
-                bookId,
+                bookId: cid, // <--- CRITICAL FIX: Use Canonical ID (STEP 4)
                 bookTitle,
                 downloadUrl: config.downloadUrl
             });
 
             if (success) {
+                console.log('[RequireContent] Download SUCCESS. State should now be READY.');
                 setReady(true);
             } else {
+                console.log('[RequireContent] Download FAILED or CANCELLED.');
                 setFailed(true);
                 setErrorCode('CP_DOWNLOAD_FAILED');
                 setErrorMessage('İndirme başarısız oldu');

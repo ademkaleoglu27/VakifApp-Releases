@@ -1,6 +1,7 @@
 // LibraryCatalog.ts - Single source of truth for library items
 import { ImageSourcePropType } from 'react-native';
 import { libraryRegistry, ShelfKey } from '../LibraryRegistry';
+import { expandNumbersInQuery } from '@/services/ai-assist/numberNormalize';
 
 export type LibraryItemKind = 'quran' | 'cevsen' | 'lugat' | 'big' | 'small' | 'html_dev' | 'other';
 export type LibraryItemStatus = 'ready' | 'preparing' | 'disabled';
@@ -162,21 +163,103 @@ export const LibraryCatalog = {
     },
 
     /**
-     * Search items by title
+     * Search items by title with variant matching
+     * 
+     * Pipeline:
+     * 1. Try raw query first (exact case-insensitive match)
+     * 2. If no results, try normalized variants (diacritics removed)
+     * 3. Return combined unique results
      */
     search(query: string): LibraryItem[] {
-        const q = query.toLocaleLowerCase('tr-TR').trim();
-        if (!q || q.length < 2) return [];
+        const rawQuery = query.trim();
+        if (!rawQuery || rawQuery.length < 2) return [];
 
         const allItems = [...this.getAllItems(), ..._extraSearchItems];
 
-        const results = allItems.filter(item => {
+        // DEBUG LOG (DEV only)
+        if (__DEV__) {
+            console.log('[LibraryCatalog.search] ───────────────────');
+            console.log('  rawQuery:', rawQuery);
+        }
+
+        // Helper: Normalize for diacritic-insensitive matching
+        const normalizeTurkish = (s: string): string => {
+            return s
+                .toLocaleLowerCase('tr-TR')
+                .replace(/[âāà]/g, 'a')
+                .replace(/[îīì]/g, 'i')
+                .replace(/[ûūù]/g, 'u')
+                .replace(/[êēè]/g, 'e')
+                .replace(/[ôōò]/g, 'o')
+                .replace(/[''ʿʾ`´ʼ]/g, ''); // Remove apostrophes
+        };
+
+        // 1. Try exact match with rawQuery (case-insensitive)
+        const rawLower = rawQuery.toLocaleLowerCase('tr-TR');
+        let results = allItems.filter(item => {
             const titleLower = item.title.toLocaleLowerCase('tr-TR');
             const subtitleLower = item.subtitle?.toLocaleLowerCase('tr-TR') || '';
-            return titleLower.includes(q) || subtitleLower.includes(q);
+            return titleLower.includes(rawLower) || subtitleLower.includes(rawLower);
         });
 
-        return results.slice(0, 30);
+        if (__DEV__) {
+            console.log('  rawQuery results:', results.length);
+        }
+
+        // 2. If no results, try with number-expanded query (e.g., "4.söz" → "dördüncü söz")
+        if (results.length === 0) {
+            const expandedQuery = expandNumbersInQuery(rawQuery).toLocaleLowerCase('tr-TR');
+
+            if (expandedQuery !== rawLower) {
+                if (__DEV__) {
+                    console.log('  expandedQuery:', expandedQuery);
+                }
+
+                results = allItems.filter(item => {
+                    const titleLower = item.title.toLocaleLowerCase('tr-TR');
+                    const subtitleLower = item.subtitle?.toLocaleLowerCase('tr-TR') || '';
+                    return titleLower.includes(expandedQuery) || subtitleLower.includes(expandedQuery);
+                });
+
+                if (__DEV__) {
+                    console.log('  expanded results:', results.length);
+                }
+            }
+        }
+
+        // 2. If no results, try with diacritic-normalized query
+        if (results.length === 0) {
+            const normalizedQuery = normalizeTurkish(rawQuery);
+
+            if (__DEV__) {
+                console.log('  normalizedQuery:', normalizedQuery);
+            }
+
+            results = allItems.filter(item => {
+                const titleNorm = normalizeTurkish(item.title);
+                const subtitleNorm = item.subtitle ? normalizeTurkish(item.subtitle) : '';
+                return titleNorm.includes(normalizedQuery) || subtitleNorm.includes(normalizedQuery);
+            });
+
+            if (__DEV__) {
+                console.log('  normalized results:', results.length);
+            }
+        }
+
+        // 3. Deduplicate by ID and limit
+        const seen = new Set<string>();
+        const uniqueResults = results.filter(item => {
+            if (seen.has(item.id)) return false;
+            seen.add(item.id);
+            return true;
+        });
+
+        if (__DEV__) {
+            console.log('  final results:', uniqueResults.length);
+            console.log('───────────────────────────────────────');
+        }
+
+        return uniqueResults.slice(0, 30);
     },
 
     /**

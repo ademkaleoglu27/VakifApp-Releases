@@ -132,12 +132,36 @@ export const ContentPackService = {
      */
     async isDownloaded(bookId: string): Promise<boolean> {
         const state = await getDownloadState();
-        if (state[bookId]?.status !== 'downloaded') return false;
 
-        // Verify the active directory exists
+        // Check 1: Record in AsyncStorage
+        if (state[bookId]?.status !== 'downloaded') {
+            log('IS_DOWNLOADED_FAIL_STATE', {
+                bookId,
+                recordExists: !!state[bookId],
+                status: state[bookId]?.status
+            });
+            return false;
+        }
+
+        // Check 2: Active Directory Exists
         const activePath = `${ACTIVE_DIR}${bookId}/`;
-        const info = await FileSystem.getInfoAsync(activePath);
-        return info.exists;
+        const dirInfo = await FileSystem.getInfoAsync(activePath);
+
+        if (!dirInfo.exists) {
+            log('IS_DOWNLOADED_FAIL_DIR', { bookId, path: activePath });
+            return false;
+        }
+
+        // Check 3: Manifest Exists (Integrity)
+        const manifestPath = `${activePath}manifest.json`;
+        const manifestInfo = await FileSystem.getInfoAsync(manifestPath);
+
+        if (!manifestInfo.exists) {
+            log('IS_DOWNLOADED_FAIL_MANIFEST', { bookId, path: manifestPath });
+            return false;
+        }
+
+        return true;
     },
 
     /**

@@ -23,6 +23,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { dictionaryDb, DictionaryEntry } from '@/services/dictionaryDb';
 import { SCHEHERAZADE_BASE64 } from './ScheherazadeNewBase64';
 import { HTML_BOOKS } from '@/features/reader/html/htmlManifest.generated';
+import { getLugatSuggestions, LugatSuggestion } from '@/services/ai-assist';
+import { TelemetryService } from '@/services/TelemetryService';
+import { ENABLE_LUGAT_SUGGESTIONS } from '@/config/features';
 
 // --- CSS CONFIGURATION (STRICT) ---
 const getHtmlCss = () => `
@@ -282,6 +285,8 @@ export const RisaleHtmlReaderScreen = () => {
     const [dictCandidates, setDictCandidates] = useState<DictionaryEntry[]>([]);
     const [dictVisible, setDictVisible] = useState(false);
     const [searchedWord, setSearchedWord] = useState("");
+    const [localSuggestions, setLocalSuggestions] = useState<LugatSuggestion[]>([]);
+    const [suggestionsLoading, setSuggestionsLoading] = useState(false);
 
     // Footnote State
     const [footnoteVisible, setFootnoteVisible] = useState(false);
@@ -413,16 +418,42 @@ export const RisaleHtmlReaderScreen = () => {
             {/* SELECTION ACTION BAR */}
             {selectedText.length > 0 && (
                 <View style={styles.actionBar}>
-                    <TouchableOpacity style={styles.actionBtn} onPress={() => {
+                    <TouchableOpacity style={styles.actionBtn} onPress={async () => {
                         setSearchedWord(selectedText);
                         const query = selectedText.trim();
+                        setLocalSuggestions([]);
+                        setSuggestionsLoading(false);
 
                         // Use flexible search to handle punctuation and normalization
-                        dictionaryDb.searchFlexible(query).then(({ best, candidates }) => {
-                            setDictCandidates(candidates);
-                            setDictEntry(best); // If exact match found, show it directly
-                            setDictVisible(true);
-                        });
+                        const { best, candidates } = await dictionaryDb.searchFlexible(query);
+                        setDictCandidates(candidates);
+                        setDictEntry(best);
+                        setDictVisible(true);
+
+                        // Telemetry
+                        if (best) {
+                            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: 1 });
+                        } else if (candidates.length > 0) {
+                            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: candidates.length });
+                        } else {
+                            TelemetryService.logLookupMiss(query, bookId);
+
+                            // Load local suggestions if feature enabled
+                            if (ENABLE_LUGAT_SUGGESTIONS) {
+                                setSuggestionsLoading(true);
+                                try {
+                                    const suggestions = await getLugatSuggestions(query, 6);
+                                    setLocalSuggestions(suggestions);
+                                    if (suggestions.length > 0) {
+                                        TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: suggestions.length });
+                                    }
+                                } catch (err) {
+                                    console.error('[Lugat] Suggestion error:', err);
+                                } finally {
+                                    setSuggestionsLoading(false);
+                                }
+                            }
+                        }
                     }}>
                         <Ionicons name="book" size={20} color="#fff" />
                         <Text style={styles.actionText}>Lugat</Text>
@@ -538,15 +569,73 @@ export const RisaleHtmlReaderScreen = () => {
                             </>
                         )}
 
-                        {/* 3. NOT FOUND */}
+                        {/* 3. NOT FOUND + LOCAL SUGGESTIONS */}
                         {!dictEntry && dictCandidates.length === 0 && (
-                            <View style={{ alignItems: 'center', padding: 20 }}>
-                                <Ionicons name="alert-circle-outline" size={48} color="#cbd5e1" />
-                                <Text style={{ fontSize: 16, color: '#64748b', marginTop: 12, textAlign: 'center' }}>
-                                    Lügatta bulunamadı:{"\n"}"{searchedWord}"
-                                </Text>
+                            <View style={{ padding: 16 }}>
+                                <View style={{ alignItems: 'center', marginBottom: 16 }}>
+                                    <Ionicons name="alert-circle-outline" size={40} color="#cbd5e1" />
+                                    <Text style={{ fontSize: 15, color: '#64748b', marginTop: 8, textAlign: 'center' }}>
+                                        Lügatta bulunamadı: "{searchedWord}"
+                                    </Text>
+                                </View>
+
+                                {/* Loading indicator */}
+                                {suggestionsLoading && (
+                                    <View style={{ alignItems: 'center', padding: 12 }}>
+                                        <ActivityIndicator size="small" color="#6366f1" />
+                                        <Text style={{ marginTop: 6, color: '#94a3b8', fontSize: 13 }}>Öneriler aranıyor...</Text>
+                                    </View>
+                                )}
+
+                                {/* Local Suggestions */}
+                                {!suggestionsLoading && localSuggestions.length > 0 && (
+                                    <View>
+                                        <Text style={{ fontSize: 14, fontWeight: '600', color: '#475569', marginBottom: 10 }}>Öneriler:</Text>
+                                        <ScrollView style={{ maxHeight: 200 }} showsVerticalScrollIndicator>
+                                            {localSuggestions.map((s, i) => (
+                                                <TouchableOpacity
+                                                    key={s.entry.id || i}
+                                                    style={{
+                                                        flexDirection: 'row',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'space-between',
+                                                        paddingVertical: 10,
+                                                        borderBottomWidth: i < localSuggestions.length - 1 ? 1 : 0,
+                                                        borderBottomColor: '#f1f5f9'
+                                                    }}
+                                                    onPress={() => {
+                                                        TelemetryService.log({ type: 'lookup_suggestion_selected', word: searchedWord, selectedWord: s.entry.word_tr });
+                                                        setDictEntry(s.entry);
+                                                        setLocalSuggestions([]);
+                                                    }}
+                                                >
+                                                    <View style={{ flex: 1 }}>
+                                                        <Text style={{ fontSize: 18, color: '#b45309' }}>{s.entry.word_osm}</Text>
+                                                        <Text style={{ fontSize: 15, color: '#334155', fontWeight: '500' }}>{s.entry.word_tr}</Text>
+                                                    </View>
+                                                    <View style={{
+                                                        backgroundColor: s.matchType === 'fuzzy' ? '#fef3c7' : s.matchType === 'alias' ? '#e0f2fe' : '#f0fdf4',
+                                                        paddingHorizontal: 8, paddingVertical: 3, borderRadius: 12
+                                                    }}>
+                                                        <Text style={{ fontSize: 10, color: s.matchType === 'fuzzy' ? '#92400e' : s.matchType === 'alias' ? '#0284c7' : '#16a34a', fontWeight: '600' }}>
+                                                            {s.matchType === 'normalized' ? 'normalize' : s.matchType === 'variant' ? 'varyant' : s.matchType === 'alias' ? 'ilişkili' : s.matchType === 'fuzzy' ? 'yakın' : 'eşleşme'}
+                                                        </Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            ))}
+                                        </ScrollView>
+                                    </View>
+                                )}
+
+                                {/* No suggestions found */}
+                                {!suggestionsLoading && localSuggestions.length === 0 && (
+                                    <Text style={{ textAlign: 'center', color: '#94a3b8', fontSize: 13, marginTop: 8 }}>
+                                        Öneri bulunamadı.
+                                    </Text>
+                                )}
+
                                 <TouchableOpacity
-                                    style={{ marginTop: 20, backgroundColor: '#f1f5f9', padding: 12, borderRadius: 8 }}
+                                    style={{ marginTop: 16, backgroundColor: '#f1f5f9', padding: 12, borderRadius: 8, alignItems: 'center' }}
                                     onPress={() => setDictVisible(false)}
                                 >
                                     <Text style={{ color: '#334155' }}>Kapat</Text>

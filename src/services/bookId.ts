@@ -52,6 +52,18 @@ export function canonicalizeBookId(input: string): string {
 
         // Add specific fix for Asa-yı Musa if distinct from asayi
         case 'risale.asayimusa@diyanet.tr': return 'asayi';
+
+        // ═══════════════════════════════════════════════════════════════════
+        // VARIANT IDs from bundled DB (map to canonical config keys)
+        // ═══════════════════════════════════════════════════════════════════
+        case 'risale.barla_lahikasi@diyanet.tr': return 'barla';
+        case 'risale.kastamonu_lahikasi@diyanet.tr': return 'kastamonu';
+        case 'risale.emirdag_lahikasi@diyanet.tr': return 'emirdag1'; // Map to first emirdag
+        case 'risale.isaratul_icaz@diyanet.tr': return 'isarat';
+        case 'risale.mesnevi_nuriye@diyanet.tr': return 'mesnevi';
+        case 'risale.sikke_i_tasdik_i_gaybi@diyanet.tr': return 'sikke';
+        case 'risale.tarihce_i_hayat@diyanet.tr': return 'tarihce';
+        case 'risale.asayi_musa@diyanet.tr': return 'asayi';
     }
 
     // Quran ID normalization (defaulting to the main one)
