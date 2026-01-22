@@ -142,11 +142,16 @@ export const QuranMenuScreen = () => {
                     <View style={styles.dialog}>
                         <Text style={styles.dialogTitle}>Sayfaya Git</Text>
                         <TextInput
-                            style={styles.input}
-                            placeholder="1 - 604"
+                            style={styles.pageInput}
+                            placeholder="1"
+                            placeholderTextColor="#94a3b8"
                             keyboardType="number-pad"
+                            maxLength={3}
+                            value={pageInput}
                             onChangeText={setPageInput}
-                            autoFocus
+                            autoComplete="off"
+                            importantForAutofill="no"
+                            textContentType="none"
                         />
                         <TouchableOpacity
                             style={styles.goBtn}

@@ -1,6 +1,7 @@
 import { getSupabaseClient } from '@/services/supabaseClient';
 import { getDb, getLastSyncedAt, setLastSyncedAt } from '@/services/db/sqlite';
 import { NetInfoState, useNetInfo } from '@react-native-community/netinfo'; // Or simple check
+import { Alert } from 'react-native';
 
 // Types matching Supabase Schema
 interface Decision {
@@ -298,16 +299,44 @@ export const syncService = {
                 const isTenantScoped = item.type.startsWith('INSERT_');
 
                 if (isTenantScoped) {
-                    // Use default vakif_id for single-tenant pre-store
-                    const DEFAULT_VAKIF_ID = '00000000-0000-0000-0000-000000000001';
-
+                    // 1. Try Payload
                     if (!payload.vakif_id) {
-                        payload.vakif_id = currentVakifId || DEFAULT_VAKIF_ID;
+                        payload.vakif_id = currentVakifId;
                     }
 
-                    // CRITICAL: If still missing vakif_id, we CANNOT send this to Supabase (23502).
-                    // We must remove it to unblock the queue.
+                    // 2. Try Fetching from Server (Self-Repair)
                     if (!payload.vakif_id) {
+                        try {
+                            console.log('[SyncService] Missing vakif_id for upload, fetching user profile...');
+                            const { data: { user } } = await supabase.auth.getUser();
+                            if (user) {
+                                const { data: profile } = await supabase
+                                    .from('profiles')
+                                    .select('vakif_id')
+                                    .eq('id', user.id)
+                                    .single();
+
+                                if (profile?.vakif_id) {
+                                    payload.vakif_id = profile.vakif_id;
+                                    // Optionally update store or local cache here if we could
+                                    currentVakifId = profile.vakif_id;
+                                }
+                            }
+                        } catch (fetchErr) {
+                            console.warn('[SyncService] Failed to fetch profile for vakif_id correction:', fetchErr);
+                        }
+                    }
+
+                    // 3. Fallback (Single Tenant Default)
+                    if (!payload.vakif_id) {
+                        const DEFAULT_VAKIF_ID = '00000000-0000-0000-0000-000000000001';
+                        console.warn('[SyncService] Still missing vakif_id, using fallback:', DEFAULT_VAKIF_ID);
+                        payload.vakif_id = DEFAULT_VAKIF_ID;
+                    }
+
+                    // CRITICAL CHECK
+                    if (!payload.vakif_id) {
+                        console.error('[SyncService] FATAL: Could not determine vakif_id for item:', item.id);
                         await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
                         continue;
                     }
@@ -399,6 +428,14 @@ export const syncService = {
                         // Regular network/server error - Retry silently or with warning
                         // Downgrading to WARN to stop LogBox spam
                         console.warn(`[SyncService] Push retry pending for item ${item.id}:`, pushError?.message || pushError);
+
+                        // DEBUG: Notify user of logic errors
+                        if (pushError?.message?.includes('violates row-level security') || pushError?.code === '42501') {
+                            Alert.alert('Senkronizasyon Hatası', 'Veri gönderme izniniz reddedildi. Lütfen RLS scriptini çalıştırdığınızdan emin olun.');
+                        } else if (pushError?.code === '23503') {
+                            Alert.alert('Veri Hatası', 'Bağlı olduğunuz Vakıf bilgisi sunucuda bulunamadı. Lütfen yöneticinizle iletişime geçin.');
+                        }
+
                         break; // Stop queue processing, retry later
                     }
                 }

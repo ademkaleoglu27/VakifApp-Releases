@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, FlatList, Modal, TextInput, Alert, Platform, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, FlatList, Modal, TextInput, Alert, Platform, Image, Keyboard } from 'react-native';
 import { useAuthStore } from '@/store/authStore';
 import { useNavigation, useFocusEffect, DrawerActions } from '@react-navigation/native';
 import { useSync } from '@/hooks/dbHooks';

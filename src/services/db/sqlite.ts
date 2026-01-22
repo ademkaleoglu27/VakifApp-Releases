@@ -58,6 +58,9 @@ export const initDb = async () => {
     try {
         await db.execAsync('ALTER TABLE reading_logs ADD COLUMN created_at TEXT;');
     } catch (e) { /* Column likely exists */ }
+    try {
+        await db.execAsync('ALTER TABLE reading_logs ADD COLUMN vakif_id TEXT;');
+    } catch (e) { /* Column likely exists */ }
 
     // SCHEMA MIGRATION: decisions attachment_url
     try {

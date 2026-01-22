@@ -16,11 +16,9 @@ import { LibraryShellScreen } from '@/features/library/screens/LibraryShellScree
 import { DownloadOverlayProvider } from '@/features/contentpacks/DownloadOverlayProvider';
 import { RisaleHtmlReaderHomeGated } from '@/features/contentpacks/RisaleHtmlReaderHomeGated';
 
-// Onboarding features
-import { OnboardingOverlay } from '@/features/onboarding/OnboardingOverlay';
-import { MenuIntroOverlay } from '@/features/onboarding/MenuIntroOverlay';
-
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
+
+
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
 import { AddReadingLogScreen } from '@/features/juz/screens/AddReadingLogScreen';
 import { AnnouncementsScreen } from '@/features/announcements/screens/AnnouncementsScreen';
@@ -205,7 +203,9 @@ const MainTabs = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Ana Sayfa' }} />
-            <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz Takibi' }} />
+            {useAuthStore.getState().user?.group !== 'MİSAFİR' && (
+                <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz Takibi' }} />
+            )}
             <Tab.Screen name="AddReading" component={AddReadingLogScreen} options={{ title: 'Okuma Ekle' }} />
             <Tab.Screen name="Duyurular" component={AnnouncementsScreen} options={{ title: 'Duyurular' }} />
         </Tab.Navigator>
@@ -229,8 +229,7 @@ const CustomDrawerContent = React.memo((props: any) => {
     const [isCouncilExpanded, setIsCouncilExpanded] = useState(false);
     const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
 
-    // Menu Intro Overlay State
-    const [showIntro, setShowIntro] = useState(true);
+
 
     const toggleCouncil = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -256,8 +255,7 @@ const CustomDrawerContent = React.memo((props: any) => {
                 pointerEvents="none"
             />
 
-            {/* Menu Intro Overlay */}
-            <MenuIntroOverlay visible={showIntro} onClose={() => setShowIntro(false)} />
+
 
             {/* ... rest of the code is same structure, effectively validating the diff ... */}
             {/* Copying the body from original but using the updated navigate function */}
@@ -326,13 +324,15 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 color="#334155"
                             />
 
-                            {/* Okuma Takibi */}
-                            <DrawerItem
-                                label="Okuma Takibi"
-                                icon="stats-chart-outline"
-                                onPress={() => navigate('ReadingTracking')}
-                                color="#334155"
-                            />
+                            {/* Okuma Takibi - SADECE MEŞVERET HEYETİ */}
+                            {(user?.role === 'mesveret_admin' || user?.role === 'platform_admin' || user?.role === 'accountant') && (
+                                <DrawerItem
+                                    label="Okuma Takibi"
+                                    icon="stats-chart-outline"
+                                    onPress={() => navigate('ReadingTracking')}
+                                    color="#334155"
+                                />
+                            )}
 
                             {/* Meşveret Accordion */}
                             {requireFeature('MESVERET_SCREEN') && (
@@ -371,12 +371,14 @@ const CustomDrawerContent = React.memo((props: any) => {
                             )}
 
                             {/* Görevlendirmeler */}
-                            <DrawerItem
-                                label="Görevlendirmeler"
-                                icon="checkbox-outline"
-                                onPress={() => navigate('Assignments')}
-                                color="#334155"
-                            />
+                            {user?.group !== 'MİSAFİR' && (
+                                <DrawerItem
+                                    label="Görevlendirmeler"
+                                    icon="checkbox-outline"
+                                    onPress={() => navigate('Assignments')}
+                                    color="#334155"
+                                />
+                            )}
 
                             {/* Nöbet Yönetimi */}
                             {requireFeature('MESVERET_SCREEN') && (
@@ -646,9 +648,14 @@ export const AppNavigator = () => {
     return (
         <DownloadOverlayProvider>
             <AudioProvider>
-                <NavigationContainer ref={navigationRef}>
+                <NavigationContainer
+                    ref={navigationRef}
+                    onStateChange={() => {
+                        const currentRouteName = navigationRef.getCurrentRoute()?.name;
+                        console.log("NAVIGATION_STATE_CHANGE:", currentRouteName);
+                    }}
+                >
                     <View style={{ flex: 1 }}>
-                        <OnboardingOverlay />
                         <Stack.Navigator screenOptions={{ headerShown: false }}>
                             {isAuthenticated ? (
                                 <>

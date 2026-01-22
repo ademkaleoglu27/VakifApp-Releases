@@ -32,8 +32,18 @@ export const ReadingStatsService = {
         const db = await getDb();
 
         // 1. Get Vakif ID (Required for RPC)
+        // 1. Get Vakif ID (Required for RPC)
         const DEFAULT_VAKIF_ID = '00000000-0000-0000-0000-000000000001';
         let vakifId = DEFAULT_VAKIF_ID;
+
+        try {
+            const vakifStore = require('@/store/vakifStore');
+            if (vakifStore.useVakifStore) {
+                vakifId = vakifStore.useVakifStore.getState().currentVakif?.id || DEFAULT_VAKIF_ID;
+            }
+        } catch (e) {
+            console.warn('[ReadingStats] Failed to load vakif store:', e);
+        }
 
         const cacheKey = `stats:${vakifId}:${range}:${mode}`;
 

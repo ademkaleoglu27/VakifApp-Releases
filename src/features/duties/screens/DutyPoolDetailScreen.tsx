@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, Modal, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, TextInput, Keyboard, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getSupabaseClient } from '@/services/supabaseClient';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -201,33 +201,41 @@ export const DutyPoolDetailScreen = () => {
                 contentContainerStyle={styles.list}
             />
 
-            {/* Add Member Modal */}
-            <Modal visible={isAddModalVisible} animationType="slide" presentationStyle="pageSheet">
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.modalTitle}>Kişi Ekle</Text>
-                        <TouchableOpacity onPress={() => setAddModalVisible(false)}>
-                            <Text style={styles.closeText}>Kapat</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="İsim ara..."
-                        value={searchTerm}
-                        onChangeText={setSearchTerm}
-                    />
-                    <FlatList
-                        data={filteredUsers}
-                        keyExtractor={item => item.id}
-                        renderItem={({ item }) => (
-                            <TouchableOpacity style={styles.userItem} onPress={() => addMember(item.id)}>
-                                <Text style={styles.userName}>{item.display_name}</Text>
-                                <Ionicons name="add-circle-outline" size={24} color="#22c55e" />
+            {/* Add Member Modal (Custom Absolute View) */}
+            {isAddModalVisible && (
+                <View style={styles.absoluteOverlay}>
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setAddModalVisible(false); }} />
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Kişi Ekle</Text>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setAddModalVisible(false); }}>
+                                <Text style={styles.closeText}>Kapat</Text>
                             </TouchableOpacity>
-                        )}
-                    />
+                        </View>
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="İsim ara..."
+                            value={searchTerm}
+                            onChangeText={setSearchTerm}
+                            autoComplete="off"
+                            importantForAutofill="no"
+                            textContentType="none"
+                            autoCorrect={false}
+                            spellCheck={false}
+                        />
+                        <FlatList
+                            data={filteredUsers}
+                            keyExtractor={item => item.id}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity style={styles.userItem} onPress={() => addMember(item.id)}>
+                                    <Text style={styles.userName}>{item.display_name}</Text>
+                                    <Ionicons name="add-circle-outline" size={24} color="#22c55e" />
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
                 </View>
-            </Modal>
+            )}
         </SafeAreaView>
     );
 };
@@ -274,6 +282,31 @@ const styles = StyleSheet.create({
     actionBtn: { padding: 4 },
 
     // Modal
+    absoluteOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999,
+        justifyContent: 'flex-end',
+    },
+    backdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 16,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        maxHeight: '80%',
+        minHeight: 400,
+    },
     modalContainer: { flex: 1, backgroundColor: 'white', padding: 16 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
     modalTitle: { fontSize: 20, fontWeight: 'bold' },

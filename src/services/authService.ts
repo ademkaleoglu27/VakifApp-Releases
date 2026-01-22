@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 // Removed MOCK_USER and WAIT_TIME
 
 export const authService = {
-    register: async (email: string, password: string, name: string): Promise<{ user: User; token: string }> => {
+    register: async (email: string, password: string, name: string, vakifCode?: string): Promise<{ user: User; token: string }> => {
         try {
             const supabase = getSupabaseClient();
             if (!supabase) throw new Error('Supabase client not initialized (Env invalid).');
@@ -17,6 +17,7 @@ export const authService = {
                 options: {
                     data: {
                         name: name, // Metadata
+                        vakif_code: vakifCode // Multi-Tenant Code
                     }
                 }
             });
@@ -24,30 +25,57 @@ export const authService = {
             if (authError) throw authError;
             if (!authData.user) throw new Error('Kullanıcı oluşturulamadı.');
 
-            // 2. Create Profile (if trigger doesn't exist, we do it manually)
-            // It's safer to upsert just in case trigger exists
-            const { error: profileError } = await supabase
+            // 2. Create Profile (Handled by DB Trigger)
+            // We do NOT manually insert/upsert here to avoid RLS conflicts.
+            // The trigger 'handle_new_user' guarantees profile creation.
+
+            // 3. Wait for Trigger & Fetch Profile
+            // The DB trigger 'handle_new_user' assigns the role/vakif. We need to fetch it.
+            await new Promise(r => setTimeout(r, 1000)); // 1s delay for trigger propagation
+
+            const { data: profileData, error: profileError } = await supabase
                 .from('profiles')
-                .upsert({
-                    id: authData.user.id,
-                    display_name: name,
-                    role: 'guest' // Default role for new registrations
-                });
+                .select('*')
+                .eq('id', authData.user.id)
+                .single();
 
             if (profileError) {
-                console.error('Profile creation error:', profileError);
-                // Continue, as user exists in Auth
+                console.warn('Register-time profile fetch failed, defaulting to guest', profileError);
+                // Fallback if fetch fails
+                return {
+                    user: {
+                        id: authData.user.id,
+                        email: authData.user.email || email,
+                        name: name,
+                        role: 'guest',
+                        group: 'MİSAFİR',
+                        avatarUrl: 'https://i.pravatar.cc/150?u=' + authData.user.id,
+                    },
+                    token: authData.session?.access_token || '',
+                };
             }
 
-            // REMOVED: contacts insert - handled by RisaleUserDb.createContactForUser
-            // This prevents NULL vakif_id issues with multi-tenant RLS
+            // Map DB Profile to App User
+            const role: Role = (profileData?.role as Role) || 'sohbet_member';
+            const group = (role === 'mesveret_admin' || role === 'accountant' || role === 'platform_admin')
+                ? 'MEŞVERET HEYETİ'
+                : 'SOHBET HEYETİ';
+
+            // Set Context
+            if (profileData?.vakif_id) {
+                require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                    id: profileData.vakif_id,
+                    name: 'Vakfım',
+                    slug: 'current-vakif'
+                });
+            }
 
             const user: User = {
                 id: authData.user.id,
                 email: authData.user.email || email,
-                name: name,
-                role: 'guest',
-                group: 'MİSAFİR',
+                name: profileData?.display_name || name,
+                role,
+                group,
                 avatarUrl: 'https://i.pravatar.cc/150?u=' + authData.user.id,
             };
 
@@ -150,6 +178,15 @@ export const authService = {
 
         const role: Role = (profile?.role as Role) || 'sohbet_member';
         const group = role === 'mesveret_admin' || role === 'accountant' ? 'MEŞVERET HEYETİ' : 'SOHBET HEYETİ';
+
+        // MULTI-TENANT: Restore Vakif Context
+        if (profile?.vakif_id) {
+            require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                id: profile.vakif_id,
+                name: 'Vakfım', // Ideally fetch from DB, but this suffices for logic
+                slug: 'current-vakif'
+            });
+        }
 
         return {
             id: session.user.id,

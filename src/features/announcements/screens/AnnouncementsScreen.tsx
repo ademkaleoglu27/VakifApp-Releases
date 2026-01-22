@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, StatusBar, Modal, TextInput, Alert, Platform, Share } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, StatusBar, TextInput, Alert, Platform, Share, Keyboard, Dimensions } from 'react-native';
 import { useAnnouncements } from '@/features/announcements/hooks/useAnnouncements';
 import { AnnouncementCard } from '@/features/announcements/components/AnnouncementCard';
 import { theme } from '@/config/theme';
@@ -108,6 +108,7 @@ export const AnnouncementsScreen = () => {
             <PremiumHeader
                 title="Duyuru & Bildirim"
                 subtitle="Yönetim Paneli"
+                backButton
             />
 
             {/* ACTION PANEL */}
@@ -166,18 +167,14 @@ export const AnnouncementsScreen = () => {
                 }
             />
 
-            {/* MODAL: BİLDİRİM GÖNDER */}
-            <Modal
-                transparent
-                visible={createMode === 'notification'}
-                animationType="fade"
-                onRequestClose={() => setCreateMode('none')}
-            >
-                <View style={styles.modalOverlay}>
+            {/* MODAL: BİLDİRİM GÖNDER (Custom View) */}
+            {createMode === 'notification' && (
+                <View style={styles.absoluteOverlay}>
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setCreateMode('none'); }} />
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
                             <Text style={styles.modalTitle}>Hızlı Bildirim</Text>
-                            <TouchableOpacity onPress={() => setCreateMode('none')}>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setCreateMode('none'); }}>
                                 <Ionicons name="close" size={24} color="#64748b" />
                             </TouchableOpacity>
                         </View>
@@ -203,50 +200,45 @@ export const AnnouncementsScreen = () => {
                         </View>
 
                         <Text style={styles.label}>Başlık</Text>
-                        <TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="Örn: Hatırlatma" />
+                        <TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="Örn: Hatırlatma" autoComplete="off" importantForAutofill="no" textContentType="none" autoCorrect={false} spellCheck={false} />
 
                         <Text style={styles.label}>Mesaj</Text>
-                        <TextInput style={[styles.input, styles.textArea]} value={content} onChangeText={setContent} multiline placeholder="Kısa ve öz mesajınız..." />
+                        <TextInput style={[styles.input, styles.textArea]} value={content} onChangeText={setContent} multiline placeholder="Kısa ve öz mesajınız..." autoComplete="off" importantForAutofill="no" textContentType="none" />
 
                         <TouchableOpacity style={styles.sendButton} onPress={handleAdd} disabled={isSubmitting}>
                             {isSubmitting ? <ActivityIndicator color="white" /> : <Text style={styles.sendButtonText}>GÖNDER</Text>}
                         </TouchableOpacity>
                     </View>
                 </View>
-            </Modal>
+            )}
 
-            {/* MODAL: DERS / DUYURU */}
-            <Modal
-                transparent
-                visible={createMode === 'lesson'}
-                animationType="fade"
-                onRequestClose={() => setCreateMode('none')}
-            >
-                <View style={styles.modalOverlay}>
+            {/* MODAL: DERS / DUYURU (Custom View) */}
+            {createMode === 'lesson' && (
+                <View style={styles.absoluteOverlay}>
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setCreateMode('none'); }} />
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
                             <Text style={styles.modalTitle}>Ders / Etkinlik Paylaş</Text>
-                            <TouchableOpacity onPress={() => setCreateMode('none')}>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setCreateMode('none'); }}>
                                 <Ionicons name="close" size={24} color="#64748b" />
                             </TouchableOpacity>
                         </View>
 
                         <Text style={styles.label}>Etkinlik Başlığı</Text>
-                        <TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="Örn: Cuma Sohbeti" />
+                        <TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="Örn: Cuma Sohbeti" autoComplete="off" importantForAutofill="no" textContentType="none" autoCorrect={false} spellCheck={false} />
 
                         <Text style={styles.label}>Açıklama / Detay</Text>
-                        <TextInput style={[styles.input, styles.textArea]} value={content} onChangeText={setContent} multiline placeholder="Saat 21:00'da..." />
+                        <TextInput style={[styles.input, styles.textArea]} value={content} onChangeText={setContent} multiline placeholder="Saat 21:00'da..." autoComplete="off" importantForAutofill="no" textContentType="none" />
 
                         <Text style={styles.label}>Konum / Adres</Text>
-                        <TextInput style={styles.input} value={location} onChangeText={setLocation} placeholder="Örn: Vakıf Merkezi" />
+                        <TextInput style={styles.input} value={location} onChangeText={setLocation} placeholder="Örn: Vakıf Merkezi" autoComplete="off" importantForAutofill="no" textContentType="none" />
 
                         <TouchableOpacity style={[styles.sendButton, { backgroundColor: '#22c55e' }]} onPress={handleAdd} disabled={isSubmitting}>
                             {isSubmitting ? <ActivityIndicator color="white" /> : <Text style={styles.sendButtonText}>KAYDET VE PAYLAŞ</Text>}
                         </TouchableOpacity>
                     </View>
                 </View>
-            </Modal>
-
+            )}
         </View>
     );
 };
@@ -304,8 +296,25 @@ const styles = StyleSheet.create({
     emptyText: { color: '#94a3b8' },
 
     // Modal
-    modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'center', padding: 20 },
-    modalContent: { backgroundColor: 'white', borderRadius: 20, padding: 24 },
+    absoluteOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999, // Ensure it's on top
+        justifyContent: 'center',
+        padding: 20,
+    },
+    backdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.6)',
+    },
+    modalContent: { backgroundColor: 'white', borderRadius: 20, padding: 24, zIndex: 10000 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 },
     modalTitle: { fontSize: 18, fontWeight: 'bold', color: '#1e293b' },
     label: { fontSize: 13, fontWeight: '600', color: '#64748b', marginBottom: 6 },

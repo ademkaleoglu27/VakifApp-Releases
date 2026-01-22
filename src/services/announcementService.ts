@@ -43,13 +43,29 @@ export const announcementService = {
         const supabase = getSupabaseClient();
         if (!supabase) throw new Error('Supabase unavailable');
 
+        // Get current user and their vakif_id
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Kullanıcı oturumu bulunamadı');
+
+        const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('vakif_id')
+            .eq('id', user.id)
+            .single();
+
+        if (profileError || !profile?.vakif_id) {
+            console.error('Vakif ID fetch error:', profileError);
+            throw new Error('Vakıf bilgisi bulunamadı.');
+        }
+
         // 1. Insert into Database
         const { error } = await supabase.from('announcements').insert({
             title,
             content,
             priority,
             location, // Now supported again
-            target_role: targetRole
+            target_role: targetRole,
+            vakif_id: profile.vakif_id
         });
 
         if (error) throw error;
