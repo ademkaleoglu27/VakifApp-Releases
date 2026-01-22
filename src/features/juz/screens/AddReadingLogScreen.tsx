@@ -8,6 +8,7 @@ import { RisaleUserDb } from '@/services/risaleUserDb';
 import { useAuthStore } from '@/store/authStore';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { useVakifStore } from '@/store/vakifStore';
 
 export const AddReadingLogScreen = () => {
     const { user } = useAuthStore();
@@ -63,7 +64,8 @@ export const AddReadingLogScreen = () => {
                 section: 'Genel',
                 pagesRead: parseInt(pages),
                 durationMinutes: 0,
-                date: new Date().toISOString()
+                date: new Date().toISOString(),
+                vakifId: useVakifStore.getState().currentVakif?.id // Sending current vakif context
             });
 
             // DETERMINISTIC FIX: Link to contact_readings via user_id (not name-matching)

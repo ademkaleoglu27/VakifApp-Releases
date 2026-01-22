@@ -306,8 +306,8 @@ export const RisaleUserDb = {
 
 
             await db.runAsync(
-                'INSERT INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                [newId, log.userId, log.workId, log.pagesRead, log.durationMinutes, log.date, createdAt]
+                'INSERT INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at, vakif_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                [newId, log.userId, log.workId, log.pagesRead, log.durationMinutes, log.date, createdAt, log.vakifId || null]
             );
 
             // IMPORTANT: Send snake_case keys to outbox for Supabase compatibility
@@ -318,7 +318,8 @@ export const RisaleUserDb = {
                 pages_read: log.pagesRead,
                 duration_minutes: log.durationMinutes,
                 date: log.date,
-                created_at: createdAt
+                created_at: createdAt,
+                vakif_id: log.vakifId || null
             });
 
         } catch (error) {

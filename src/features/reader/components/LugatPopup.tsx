@@ -203,7 +203,7 @@ export const LugatPopup: React.FC<LugatPopupProps> = ({
                     )}
                 </View>
                 <View style={styles.separator} />
-                <ScrollView style={{ maxHeight: 250 }} showsVerticalScrollIndicator>
+                <ScrollView style={{ maxHeight: 250 }} showsVerticalScrollIndicator={true}>
                     <Text style={styles.definition}>{selectedEntry.definition}</Text>
                 </ScrollView>
             </>

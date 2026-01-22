@@ -284,6 +284,9 @@ export const DecisionsScreen = () => {
                                 placeholder="Karar Başlığı"
                                 value={title}
                                 onChangeText={setTitle}
+                                autoComplete="off"
+                                importantForAutofill="no"
+                                textContentType="none"
                             />
                             <TextInput
                                 style={[styles.input, { height: 120, textAlignVertical: 'top' }]}
@@ -291,6 +294,9 @@ export const DecisionsScreen = () => {
                                 value={content}
                                 onChangeText={setContent}
                                 multiline
+                                autoComplete="off"
+                                importantForAutofill="no"
+                                textContentType="none"
                             />
 
                             <View style={styles.imagePickerContainer}>

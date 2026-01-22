@@ -149,6 +149,53 @@ export const DeveloperToolsScreen = () => {
                 </View>
 
                 <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Store Release Tools</Text>
+
+                    <DebugButton
+                        label="Copy Push Token (FCM)"
+                        icon="copy-outline"
+                        onPress={async () => {
+                            try {
+                                const { getPushToken } = require('@/services?.pushService') || {};
+                                // Fallback if direct import fails or not implemented
+                                const token = await AsyncStorage.getItem('@push_token');
+                                if (token) {
+                                    await require('expo-clipboard').setStringAsync(token);
+                                    Alert.alert('Copied', 'Token copied to clipboard: \n' + token.substring(0, 10) + '...');
+                                } else {
+                                    Alert.alert('Not Found', 'No push token found in storage.');
+                                }
+                            } catch (e) {
+                                Alert.alert('Error', 'Could not access clipboard or token.');
+                            }
+                        }}
+                        color="#8b5cf6"
+                    />
+
+                    <DebugButton
+                        label="Test Notification (Local)"
+                        icon="notifications-outline"
+                        onPress={async () => {
+                            // Simple local notification test
+                            const content = {
+                                title: "Test Notification",
+                                body: "This is a test notification from Developer Tools.",
+                            };
+                            try {
+                                await require('expo-notifications').scheduleNotificationAsync({
+                                    content,
+                                    trigger: null, // Send immediately
+                                });
+                                Alert.alert('Sent', 'Check your notification center.');
+                            } catch (e) {
+                                Alert.alert('Error', 'Could not schedule notification. ');
+                            }
+                        }}
+                        color="#8b5cf6"
+                    />
+                </View>
+
+                <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Danger Zone</Text>
 
                     <DebugButton

@@ -513,7 +513,7 @@ export const RisaleHtmlReaderScreen = () => {
             <Modal visible={dictVisible} transparent animationType="fade" onRequestClose={() => setDictVisible(false)}>
                 {/* ... existing dict modal content ... */}
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setDictVisible(false)}>
-                    <View style={styles.modalContent}>
+                    <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
                         {/* ... existing code ... */}
                         {/* 1. DETAIL VIEW */}
                         {dictEntry && (
