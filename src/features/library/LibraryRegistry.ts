@@ -4,6 +4,7 @@ import { SEED_LOCKED_BOOKS } from './seedData';
 
 export type ShelfKey = 'TOP' | 'CEVSEN' | 'LUGAT' | 'FAYDALI' | 'BIG' | 'SMALL';
 export type BookSource = 'core' | 'diyanet' | 'custom' | 'dev';
+export type LibraryItemKind = 'quran' | 'cevsen' | 'lugat' | 'big' | 'small' | 'html_dev' | 'other';
 
 export interface BookContentRef {
     type: 'db' | 'json' | 'pack';

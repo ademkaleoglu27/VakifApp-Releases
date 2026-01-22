@@ -1,9 +1,8 @@
 // LibraryCatalog.ts - Single source of truth for library items
 import { ImageSourcePropType } from 'react-native';
-import { libraryRegistry, ShelfKey } from '../LibraryRegistry';
+import { libraryRegistry, ShelfKey, LibraryItemKind } from '../LibraryRegistry';
 import { expandNumbersInQuery } from '@/services/ai-assist/numberNormalize';
 
-export type LibraryItemKind = 'quran' | 'cevsen' | 'lugat' | 'big' | 'small' | 'html_dev' | 'other';
 export type LibraryItemStatus = 'ready' | 'preparing' | 'disabled';
 
 export interface LibraryItem {
@@ -164,23 +163,12 @@ export const LibraryCatalog = {
 
     /**
      * Search items by title with variant matching
-     * 
-     * Pipeline:
-     * 1. Try raw query first (exact case-insensitive match)
-     * 2. If no results, try normalized variants (diacritics removed)
-     * 3. Return combined unique results
      */
     search(query: string): LibraryItem[] {
         const rawQuery = query.trim();
         if (!rawQuery || rawQuery.length < 2) return [];
 
         const allItems = [...this.getAllItems(), ..._extraSearchItems];
-
-        // DEBUG LOG (DEV only)
-        if (__DEV__) {
-            console.log('[LibraryCatalog.search] ───────────────────');
-            console.log('  rawQuery:', rawQuery);
-        }
 
         // Helper: Normalize for diacritic-insensitive matching
         const normalizeTurkish = (s: string): string => {
@@ -202,64 +190,35 @@ export const LibraryCatalog = {
             return titleLower.includes(rawLower) || subtitleLower.includes(rawLower);
         });
 
-        if (__DEV__) {
-            console.log('  rawQuery results:', results.length);
-        }
-
-        // 2. If no results, try with number-expanded query (e.g., "4.söz" → "dördüncü söz")
+        // 2. If no results, try with number-expanded query
         if (results.length === 0) {
             const expandedQuery = expandNumbersInQuery(rawQuery).toLocaleLowerCase('tr-TR');
-
             if (expandedQuery !== rawLower) {
-                if (__DEV__) {
-                    console.log('  expandedQuery:', expandedQuery);
-                }
-
                 results = allItems.filter(item => {
                     const titleLower = item.title.toLocaleLowerCase('tr-TR');
                     const subtitleLower = item.subtitle?.toLocaleLowerCase('tr-TR') || '';
                     return titleLower.includes(expandedQuery) || subtitleLower.includes(expandedQuery);
                 });
-
-                if (__DEV__) {
-                    console.log('  expanded results:', results.length);
-                }
             }
         }
 
-        // 2. If no results, try with diacritic-normalized query
+        // 3. Fallback to normalized matching
         if (results.length === 0) {
             const normalizedQuery = normalizeTurkish(rawQuery);
-
-            if (__DEV__) {
-                console.log('  normalizedQuery:', normalizedQuery);
-            }
-
             results = allItems.filter(item => {
                 const titleNorm = normalizeTurkish(item.title);
                 const subtitleNorm = item.subtitle ? normalizeTurkish(item.subtitle) : '';
                 return titleNorm.includes(normalizedQuery) || subtitleNorm.includes(normalizedQuery);
             });
-
-            if (__DEV__) {
-                console.log('  normalized results:', results.length);
-            }
         }
 
-        // 3. Deduplicate by ID and limit
+        // 4. Deduplicate and limit
         const seen = new Set<string>();
-        const uniqueResults = results.filter(item => {
+        return results.filter(item => {
             if (seen.has(item.id)) return false;
             seen.add(item.id);
             return true;
-        });
-
-        if (__DEV__) {
-            console.log('  final results:', uniqueResults.length);
-            console.log('───────────────────────────────────────');
-        }
-
-        return uniqueResults.slice(0, 30);
+        }).slice(0, 30);
     },
 
     /**
@@ -267,9 +226,9 @@ export const LibraryCatalog = {
      */
     _mapRecordToItem(record: any, forceKind?: LibraryItemKind): LibraryItem {
         return {
-            id: record.bookId, // Use bookId as the UI ID
+            id: record.bookId,
             title: record.title,
-            subtitle: '', // TODO: Add subtitle if available in record
+            subtitle: '',
             kind: forceKind || (record.shelfKey === 'BIG' ? 'big' : 'small'),
             status: 'ready',
             openAction: {
@@ -283,17 +242,12 @@ export const LibraryCatalog = {
         };
     },
 
-    // Compatibility methods for old adapters if needed
     registerItems(items: LibraryItem[]) {
-        // Only accept "chapter" items or items that are NOT books managed by registry
-        // This keeps the search index populated with chapters
         const extraItems = items.filter(i => i.id.startsWith('chapter-'));
-
         if (extraItems.length > 0) {
             const existingIds = new Set(_extraSearchItems.map(i => i.id));
             const newItems = extraItems.filter(i => !existingIds.has(i.id));
             _extraSearchItems = [..._extraSearchItems, ...newItems];
-            console.log(`[LibraryCatalog] Registered ${newItems.length} extra search items (chapters).`);
         }
     }
 };

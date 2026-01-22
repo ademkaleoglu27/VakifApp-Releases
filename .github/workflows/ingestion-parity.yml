@@ -1,0 +1,62 @@
+name: Ingestion Parity Check
+
+on:
+  push:
+    paths:
+      - 'tools/ingest/**'
+      - 'walkthrough.md'
+      - 'package-lock.json'
+  pull_request:
+    paths:
+      - 'tools/ingest/**'
+      - 'walkthrough.md'
+      - 'package-lock.json'
+
+jobs:
+  verify-parity:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for Legacy Baseline Changes
+        # Fails if any file in tools/ingest/_legacy/ is modified
+        run: |
+          echo "Checking for changes in tools/ingest/_legacy/..."
+          
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+             CHANGES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep "^tools/ingest/_legacy/" || true)
+          else
+             CHANGES=$(git diff --name-only HEAD~1 HEAD | grep "^tools/ingest/_legacy/" || true)
+          fi
+          
+          if [ -n "$CHANGES" ]; then
+             echo "::error::Golden baseline changed! Modified files:"
+             echo "$CHANGES"
+             echo "::error::Changes to tools/ingest/_legacy/ require explicit approval or override."
+             exit 1
+          else
+             echo "✅ Legacy baseline unchanged."
+          fi
+
+      - name: Run Ingestion Parity Check
+        run: node tools/ingest/verifyParity.js --target all
+
+      - name: Upload Walkthrough artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: walkthrough
+          path: walkthrough.md

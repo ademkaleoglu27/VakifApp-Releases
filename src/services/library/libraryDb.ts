@@ -6,11 +6,43 @@ export const getLibraryDb = () => {
     return SQLite.openDatabaseSync(DB_NAME);
 };
 
+// Helper to execute multiple statements one by one for better error reporting
+function shouldNotSplit(sql: string): boolean {
+    const s = sql.trim().toUpperCase();
+    return (
+        s.startsWith('CREATE TRIGGER') ||
+        s.startsWith('CREATE VIEW') ||
+        s.startsWith('CREATE VIRTUAL TABLE') ||
+        (s.includes('BEGIN') && s.includes('END'))
+    );
+}
+
+function splitStatements(sql: string): string[] {
+    if (shouldNotSplit(sql)) return [sql.trim()];
+    return sql
+        .split(';')
+        .map(s => s.trim())
+        .filter(Boolean);
+}
+
+async function execSql(db: SQLite.SQLiteDatabase, sql: string) {
+    const stmts = splitStatements(sql);
+    for (const stmt of stmts) {
+        try {
+            if (__DEV__) console.log('[SQL]', stmt.slice(0, 100));
+            await db.execAsync(stmt.endsWith(';') ? stmt : stmt + ';');
+        } catch (e) {
+            console.error('[SQL-FAIL]', stmt, e);
+            throw e;
+        }
+    }
+}
+
 export const initLibraryDb = async () => {
     const db = getLibraryDb();
 
     // Books Table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS Books (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -23,7 +55,7 @@ export const initLibraryDb = async () => {
     `);
 
     // Versions Table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS BookVersions (
             book_id TEXT,
             version TEXT,

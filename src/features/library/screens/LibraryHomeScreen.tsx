@@ -21,6 +21,7 @@ import { SearchResultsView } from '../components/SearchResultsView';
 import { LibraryCatalog, LibraryItem, Shelf } from '../catalog/LibraryCatalog';
 import { initializeHtmlBooksAdapter } from '../catalog/adapters/htmlBooksAdapter';
 import { getRecentReads, addRecentRead, RecentReadItem } from '../services/recentReads';
+import { QuranNavigationService } from '@/services/quran/QuranNavigationService';
 
 type TabKey = 'quran_evrad' | 'big' | 'small';
 
@@ -86,6 +87,14 @@ export const LibraryHomeScreen: React.FC = () => {
 
         // Navigate
         const { routeName, params } = item.openAction;
+
+        // INTERCEPT QURAN NAVIGATION
+        if (item.kind === 'quran') {
+            console.log('[LibraryHomeScreen] Navigating to QuranMenuScreen');
+            navigation.navigate('QuranMenuScreen', params);
+            return;
+        }
+
         navigation.navigate(routeName, params);
     }, [navigation]);
 

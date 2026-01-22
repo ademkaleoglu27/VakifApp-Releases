@@ -48,3 +48,11 @@ SQLite/
 *.db-journal
 *.sqlite
 *.sqlite3
+
+# Large files and builds
+*.apk
+*.zip
+.next/
+builds/
+temp_repo/
+/assets/quran_pages/

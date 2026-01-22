@@ -332,13 +332,12 @@ export const ContentPackService = {
                 throw new ContentPackError('CP_HTTP_FAILED', 'Download returned null result');
             }
 
-            log('CP_HTTP', {
-                status: result.status,
-                uri: result.uri,
-                headers: JSON.stringify(result.headers || {}).substring(0, 100)
-            });
-
             if (result.status !== 200) {
+                log('CP_HTTP_ERROR', {
+                    status: result.status,
+                    url: downloadUrl,
+                    headers: JSON.stringify(result.headers || {}).substring(0, 200)
+                });
                 throw new ContentPackError('CP_HTTP_FAILED', `HTTP status ${result.status}`);
             }
 

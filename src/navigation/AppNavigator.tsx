@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
+import { navigationRef } from './navigationUtils';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
@@ -21,6 +22,12 @@ import { OnboardingOverlay } from '@/features/onboarding/OnboardingOverlay';
 import { MenuIntroOverlay } from '@/features/onboarding/MenuIntroOverlay';
 
 import { HomeScreen } from '@/features/dashboard/screens/HomeScreen';
+<<<<<<< Updated upstream
+=======
+import { QuranImageReaderScreen } from '@/features/quran_image_reader/screens/QuranImageReaderScreen';
+
+
+>>>>>>> Stashed changes
 import { JuzTrackingScreen } from '@/features/juz/screens/JuzTrackingScreen';
 import { AddReadingLogScreen } from '@/features/juz/screens/AddReadingLogScreen';
 import { AnnouncementsScreen } from '@/features/announcements/screens/AnnouncementsScreen';
@@ -138,8 +145,9 @@ export type RootStackParamList = {
     JuzSelectionScreen: undefined;
     QuranDownloaderScreen: undefined;
     QuranMenuScreen: undefined;
-    QuranReaderScreen: { page: number };
     QuranLegacyReaderScreen: { initialPage: number; juzNumber: number };
+    QuranReaderScreen: { initialPage: number; juzNumber: number };
+    QuranImageReader: { page?: number; juz?: number; surah?: number };
 };
 
 export type MainTabParamList = {
@@ -615,7 +623,6 @@ const drawerStyles = StyleSheet.create({
 export const AppNavigator = () => {
     const { user } = useAuthStore();
     const isAuthenticated = !!user;
-    const navigationRef = useNavigationContainerRef<any>();
 
     // Deep Linking Listener
     React.useEffect(() => {
@@ -623,7 +630,7 @@ export const AppNavigator = () => {
             const screen = response.notification.request.content.data.screen;
             // Navigate if screen info available and generic type 'any' allows simple string nav
             if (screen && navigationRef.isReady()) {
-                navigationRef.navigate(screen);
+                navigationRef.navigate(screen as any);
             }
         });
         return () => subscription.remove();
@@ -646,7 +653,17 @@ export const AppNavigator = () => {
     return (
         <DownloadOverlayProvider>
             <AudioProvider>
+<<<<<<< Updated upstream
                 <NavigationContainer ref={navigationRef}>
+=======
+                <NavigationContainer
+                    ref={navigationRef}
+                    onStateChange={() => {
+                        const currentRouteName = navigationRef.isReady() ? navigationRef.getCurrentRoute()?.name : null;
+                        console.log("NAVIGATION_STATE_CHANGE:", currentRouteName);
+                    }}
+                >
+>>>>>>> Stashed changes
                     <View style={{ flex: 1 }}>
                         <OnboardingOverlay />
                         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -761,6 +778,7 @@ export const AppNavigator = () => {
 
                             <Stack.Screen name="JuzSelectionScreen" component={JuzSelectionScreen} />
                             <Stack.Screen name="QuranLegacyReaderScreen" component={QuranReaderScreen} />
+                            <Stack.Screen name="QuranImageReader" component={QuranImageReaderScreen} options={{ headerShown: false }} />
                         </Stack.Navigator>
                         <MiniPlayer />
                     </View>

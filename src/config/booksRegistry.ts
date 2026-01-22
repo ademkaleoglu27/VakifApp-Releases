@@ -477,6 +477,12 @@ export const CONTENT_PACK_CONFIG: Record<string, ContentPackConfig> = {
         estimatedSizeMb: 0.3,
         downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.konferans.v1-v1.0.0.zip'
     },
+    'quran_v1': {
+        contentMode: 'downloadable',
+        contentPackId: 'quran.mushaf.v1',
+        estimatedSizeMb: 151.0,
+        downloadUrl: 'https://kyyvkmvdqvjpjfqfvnro.supabase.co/storage/v1/object/public/quran-pages/v1/quran_v1_webp.zip'
+    },
 };
 
 /**

@@ -51,6 +51,38 @@ export async function tableExists(db: SQLite.SQLiteDatabase, tableName: string):
     }
 }
 
+// Helper to execute multiple statements one by one for better error reporting
+function shouldNotSplit(sql: string): boolean {
+    const s = sql.trim().toUpperCase();
+    return (
+        s.startsWith('CREATE TRIGGER') ||
+        s.startsWith('CREATE VIEW') ||
+        s.startsWith('CREATE VIRTUAL TABLE') ||
+        (s.includes('BEGIN') && s.includes('END'))
+    );
+}
+
+function splitStatements(sql: string): string[] {
+    if (shouldNotSplit(sql)) return [sql.trim()];
+    return sql
+        .split(';')
+        .map(s => s.trim())
+        .filter(Boolean);
+}
+
+async function execSql(db: SQLite.SQLiteDatabase, sql: string) {
+    const stmts = splitStatements(sql);
+    for (const stmt of stmts) {
+        try {
+            if (__DEV__) console.log('[SQL]', stmt.slice(0, 100));
+            await db.execAsync(stmt.endsWith(';') ? stmt : stmt + ';');
+        } catch (e) {
+            console.error('[SQL-FAIL]', stmt, e);
+            throw e;
+        }
+    }
+}
+
 /**
  * Create core corpus tables if they don't exist
  * Tables: works, sections, paragraphs (chunks)
@@ -59,7 +91,7 @@ export async function createCorpusTables(db: SQLite.SQLiteDatabase): Promise<voi
     console.log('[Migration] Creating corpus tables...');
 
     // Works table (e.g., Sözler, Mektubat)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS works (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -70,7 +102,7 @@ export async function createCorpusTables(db: SQLite.SQLiteDatabase): Promise<voi
     `);
 
     // Sections table (e.g., Birinci Söz, İkinci Mektup)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS sections (
             id TEXT PRIMARY KEY,
             work_id TEXT NOT NULL,
@@ -83,7 +115,7 @@ export async function createCorpusTables(db: SQLite.SQLiteDatabase): Promise<voi
     `);
 
     // Paragraphs/Chunks table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS paragraphs (
             id TEXT PRIMARY KEY,
             section_id TEXT NOT NULL,
@@ -98,7 +130,7 @@ export async function createCorpusTables(db: SQLite.SQLiteDatabase): Promise<voi
     `);
 
     // Metadata table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS meta (
             key TEXT PRIMARY KEY,
             value TEXT NOT NULL
@@ -108,11 +140,63 @@ export async function createCorpusTables(db: SQLite.SQLiteDatabase): Promise<voi
     console.log('[Migration] Corpus tables created successfully');
 }
 
-/**
- * V2 Migration: World Standard Book Identity
- * Adds book_id, section_uid, and version columns.
- * Backfills "Sözler" with deterministic UIDs.
- */
+export async function createCouncilTables(db: SQLite.SQLiteDatabase): Promise<void> {
+    console.log('[Migration] Creating council tables...');
+
+    // Contacts (People) - Check if exists first as RisaleUserDb might have created it
+    await execSql(db, `
+        CREATE TABLE IF NOT EXISTS contacts (
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            surname TEXT,
+            phone TEXT,
+            address TEXT,
+            group_type TEXT, -- 'MESVERET' | 'SOHBET'
+            user_id TEXT, -- Link to synced user
+            created_at TEXT
+        );
+    `);
+
+    // Council Notes (New Table)
+    await execSql(db, `
+        CREATE TABLE IF NOT EXISTS council_notes (
+            id TEXT PRIMARY KEY,
+            contact_id TEXT NOT NULL,
+            text TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY(contact_id) REFERENCES contacts(id)
+        );
+        CREATE INDEX IF NOT EXISTS idx_council_notes_contact ON council_notes(contact_id);
+    `);
+
+    // Assignments - Check if exists
+    await execSql(db, `
+        CREATE TABLE IF NOT EXISTS assignments (
+            id TEXT PRIMARY KEY,
+            title TEXT NOT NULL,
+            description TEXT,
+            assigned_to_id TEXT,
+            due_date TEXT,
+            is_completed INTEGER DEFAULT 0,
+            created_at TEXT,
+            FOREIGN KEY(assigned_to_id) REFERENCES contacts(id)
+        );
+    `);
+
+    // Reminders
+    await execSql(db, `
+        CREATE TABLE IF NOT EXISTS reminders (
+            id TEXT PRIMARY KEY,
+            contact_id TEXT NOT NULL,
+            text TEXT NOT NULL,
+            date TEXT NOT NULL,
+            is_completed INTEGER DEFAULT 0,
+            created_at TEXT,
+            FOREIGN KEY(contact_id) REFERENCES contacts(id)
+        );
+    `);
+}
+
 export async function migrateToV2(db: SQLite.SQLiteDatabase): Promise<void> {
     console.log('[Migration] Running migration to version 2 (World Standard Identity)...');
 
@@ -129,7 +213,7 @@ export async function migrateToV2(db: SQLite.SQLiteDatabase): Promise<void> {
     await backfillSozlerSectionUid(db);
 
     // 3. Create Indexes
-    await db.execAsync(`
+    await execSql(db, `
         CREATE UNIQUE INDEX IF NOT EXISTS idx_sections_book_uid ON sections(book_id, section_uid);
         CREATE INDEX IF NOT EXISTS idx_sections_book_lookup ON sections(book_id);
     `);
@@ -143,15 +227,12 @@ export async function migrateToV2(db: SQLite.SQLiteDatabase): Promise<void> {
 // backfillSozlerSectionUid is now imported from ./backfill/sozlerSectionUidBackfill
 
 
-/**
- * Create FTS5 virtual tables for fulltext search
- */
 export async function createFtsTables(db: SQLite.SQLiteDatabase): Promise<void> {
     console.log('[Migration] Creating FTS5 tables...');
 
     try {
         // FTS for paragraph text search
-        await db.execAsync(`
+        await execSql(db, `
             CREATE VIRTUAL TABLE IF NOT EXISTS paragraphs_fts USING fts5(
                 text,
                 content='paragraphs',
@@ -161,19 +242,13 @@ export async function createFtsTables(db: SQLite.SQLiteDatabase): Promise<void> 
         `);
 
         // Triggers to keep FTS in sync with main table
-        await db.execAsync(`
+        await execSql(db, `
             CREATE TRIGGER IF NOT EXISTS paragraphs_ai AFTER INSERT ON paragraphs BEGIN
                 INSERT INTO paragraphs_fts(rowid, text) VALUES (new.rowid, new.text);
             END;
-        `);
-
-        await db.execAsync(`
             CREATE TRIGGER IF NOT EXISTS paragraphs_ad AFTER DELETE ON paragraphs BEGIN
                 INSERT INTO paragraphs_fts(paragraphs_fts, rowid, text) VALUES('delete', old.rowid, old.text);
             END;
-        `);
-
-        await db.execAsync(`
             CREATE TRIGGER IF NOT EXISTS paragraphs_au AFTER UPDATE ON paragraphs BEGIN
                 INSERT INTO paragraphs_fts(paragraphs_fts, rowid, text) VALUES('delete', old.rowid, old.text);
                 INSERT INTO paragraphs_fts(rowid, text) VALUES (new.rowid, new.text);
@@ -191,7 +266,7 @@ export async function createFtsTables(db: SQLite.SQLiteDatabase): Promise<void> 
  * Create dictionary table if it doesn't exist
  */
 export async function createDictionaryTable(db: SQLite.SQLiteDatabase): Promise<void> {
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS dictionary (
             term TEXT PRIMARY KEY,
             meaning TEXT NOT NULL
@@ -242,6 +317,7 @@ export async function migrateIfNeeded(db: SQLite.SQLiteDatabase): Promise<void> 
         if (currentVersion < 1) {
             console.log('[Migration] Running migration to version 1...');
             await createCorpusTables(db);
+            await createCouncilTables(db);
             await createDictionaryTable(db);
             await createFtsTables(db);
         }

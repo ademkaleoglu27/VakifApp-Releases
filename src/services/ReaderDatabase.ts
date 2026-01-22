@@ -7,6 +7,38 @@ const SQLITE_DIR = `${FileSystem.documentDirectory}SQLite`;
 
 let dbInstance: SQLite.SQLiteDatabase | null = null;
 
+// Helper to execute multiple statements one by one for better error reporting
+function shouldNotSplit(sql: string): boolean {
+    const s = sql.trim().toUpperCase();
+    return (
+        s.startsWith('CREATE TRIGGER') ||
+        s.startsWith('CREATE VIEW') ||
+        s.startsWith('CREATE VIRTUAL TABLE') ||
+        (s.includes('BEGIN') && s.includes('END'))
+    );
+}
+
+function splitStatements(sql: string): string[] {
+    if (shouldNotSplit(sql)) return [sql.trim()];
+    return sql
+        .split(';')
+        .map(s => s.trim())
+        .filter(Boolean);
+}
+
+async function execSql(db: SQLite.SQLiteDatabase, sql: string) {
+    const stmts = splitStatements(sql);
+    for (const stmt of stmts) {
+        try {
+            if (__DEV__) console.log('[SQL]', stmt.slice(0, 100));
+            await db.execAsync(stmt.endsWith(';') ? stmt : stmt + ';');
+        } catch (e) {
+            console.error('[SQL-FAIL]', stmt, e);
+            throw e;
+        }
+    }
+}
+
 export const ReaderDatabase = {
     async init() {
         const dirInfo = await FileSystem.getInfoAsync(SQLITE_DIR);
@@ -23,7 +55,7 @@ export const ReaderDatabase = {
         if (!dbInstance) throw new Error('DB not initialized');
 
         // 1. Installed Packs
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS installed_packs (
                 id TEXT PRIMARY KEY,
                 version TEXT NOT NULL,
@@ -39,7 +71,7 @@ export const ReaderDatabase = {
         `);
 
         // 2. Books Metadata
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS books (
                 id TEXT PRIMARY KEY,
                 pack_id TEXT NOT NULL,
@@ -51,7 +83,7 @@ export const ReaderDatabase = {
         `);
 
         // 3. Sections
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS sections (
                 id TEXT PRIMARY KEY,
                 book_id TEXT NOT NULL,
@@ -63,7 +95,7 @@ export const ReaderDatabase = {
         `);
 
         // 4. Reading Progress
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS reading_progress (
                 book_id TEXT NOT NULL,
                 section_id TEXT NOT NULL,
@@ -75,9 +107,7 @@ export const ReaderDatabase = {
         `);
 
         // 5. Highlights
-        // Added 'on delete cascade' related fields if book/section removed? 
-        // Typically highlights persist or we need complex logic. For now, keep as is.
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS highlights (
                 id TEXT PRIMARY KEY,
                 book_id TEXT NOT NULL,
@@ -92,7 +122,7 @@ export const ReaderDatabase = {
         `);
 
         // 6. Bookmarks
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS bookmarks (
                 id TEXT PRIMARY KEY,
                 book_id TEXT NOT NULL,
@@ -105,7 +135,7 @@ export const ReaderDatabase = {
         `);
 
         // 7. Pagination Cache Meta
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS pagination_cache_meta (
                 book_id TEXT NOT NULL,
                 section_id TEXT NOT NULL,
@@ -119,7 +149,7 @@ export const ReaderDatabase = {
         `);
 
         // 8. Index Jobs
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS index_jobs (
                 job_id TEXT PRIMARY KEY,
                 pack_id TEXT NOT NULL,
@@ -137,7 +167,7 @@ export const ReaderDatabase = {
         await this.createSearchTables();
 
         // 10. Sacred Terms
-        await dbInstance.execAsync(`
+        await execSql(dbInstance, `
             CREATE TABLE IF NOT EXISTS sacred_terms (
                 term TEXT PRIMARY KEY,
                 semantic_type TEXT NOT NULL,
@@ -150,7 +180,7 @@ export const ReaderDatabase = {
         if (!dbInstance) return;
         try {
             // FTS Text
-            await dbInstance.execAsync(`
+            await execSql(dbInstance, `
                 CREATE VIRTUAL TABLE IF NOT EXISTS fts_text USING fts5(
                     bookId UNINDEXED,
                     sectionId UNINDEXED,
@@ -160,7 +190,7 @@ export const ReaderDatabase = {
                 );
             `);
             // FTS Titles
-            await dbInstance.execAsync(`
+            await execSql(dbInstance, `
                 CREATE VIRTUAL TABLE IF NOT EXISTS fts_titles USING fts5(
                     bookId UNINDEXED,
                     sectionId UNINDEXED,
@@ -170,7 +200,7 @@ export const ReaderDatabase = {
                 );
             `);
             // FTS Vecize
-            await dbInstance.execAsync(`
+            await execSql(dbInstance, `
                 CREATE VIRTUAL TABLE IF NOT EXISTS fts_vecize USING fts5(
                     vecizeId UNINDEXED,
                     text,

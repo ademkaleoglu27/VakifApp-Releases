@@ -1,5 +1,6 @@
 import { getSupabaseClient } from './supabaseClient';
 import { getDb } from './db/sqlite';
+import { parseReadingStats } from './parsers/readingStats';
 // If authService doesn't have it, we might need to get it from a different place or local storage.
 // Correction: We should fetch it from the RPC call or just pass it if known.
 // Actually, let's look at `ReadingStatsService.ts` original code again. It used `getDb` and local SQL.
@@ -66,7 +67,7 @@ export const ReadingStatsService = {
 
                 // Success!
                 // Filter for 'needsAttention' client-side (RPC returns all including zeros if requested)
-                let result = (data as any[]).map(mapRpcToStat);
+                let result = parseReadingStats(data);
 
                 if (mode === 'needsAttention') {
                     result = result.filter(r => r.total_pages === 0);
@@ -103,15 +104,4 @@ export const ReadingStatsService = {
     }
 };
 
-function mapRpcToStat(row: any): ReadingStat {
-    return {
-        user_id: row.user_id,
-        display_name: row.display_name,
-        initials: row.initials,
-        total_pages: Number(row.total_pages), // BigInt serialized as likely number or string
-        has_reading: row.has_reading,
-        rank: Number(row.rank),
-        last_reading_date: row.last_reading_date,
-        avatar_url: row.avatar_url
-    };
-}
+

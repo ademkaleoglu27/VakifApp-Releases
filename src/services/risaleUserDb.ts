@@ -165,17 +165,49 @@ export const RisaleUserDb = {
     },
 
     // --- Meşveret Module (Contacts) ---
+    // --- Meşveret Module (Contacts) ---
     async addContact(contact: any): Promise<string> {
         assertFeature('MESVERET_SCREEN');
         const db = await getDb();
-        const newId = generateUUID();
+        const newId = contact.id || generateUUID();
         await db.runAsync(
             'INSERT INTO contacts (id, name, surname, phone, address, group_type, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [newId, contact.name, contact.surname, contact.phone, contact.address, contact.group_type, new Date().toISOString()]
+            [newId, contact.name, contact.surname, contact.phone, contact.address, contact.group_type, contact.created_at || new Date().toISOString()]
         );
 
         // Sync Hook
-        await addToOutbox('INSERT_CONTACT', { ...contact, id: newId, created_at: new Date().toISOString() });
+        await addToOutbox('INSERT_CONTACT', { ...contact, id: newId, created_at: contact.created_at || new Date().toISOString() });
+
+        return newId;
+    },
+
+    // ... (createContactForUser remains generating UUID as it is for new read tracking users)
+
+    // ...
+
+    async addContactNote(contactId: string, text: string, explicitId?: string, explicitCreatedAt?: string): Promise<any> {
+        const db = await getDb();
+        const newId = explicitId || generateUUID();
+        const createdAt = explicitCreatedAt || new Date().toISOString();
+        await db.runAsync(
+            'INSERT INTO contact_notes (id, contact_id, text, created_at) VALUES (?, ?, ?, ?)',
+            [newId, contactId, text, createdAt]
+        );
+        return { id: newId, text, createdAt };
+    },
+
+    // ...
+
+    // --- Assignments ---
+    async addAssignment(assignment: any): Promise<string> {
+        const db = await getDb();
+        const newId = assignment.id || generateUUID();
+        const date = assignment.created_at || new Date().toISOString();
+
+        await db.runAsync(
+            'INSERT INTO assignments (id, title, description, assigned_to_id, created_at, is_completed) VALUES (?, ?, ?, ?, ?, ?)',
+            [newId, assignment.title, assignment.description || null, assignment.assigned_to_id, date, assignment.is_completed ? 1 : 0]
+        );
 
         return newId;
     },
@@ -254,7 +286,28 @@ export const RisaleUserDb = {
         // Add UPDATE_CONTACT to Outbox (Need to handle in syncService)
         // For now, simpler to just allow re-insertion on sync or ignore update conflict.
         // But correct way is UDPATE.
+        // But correct way is UDPATE.
     },
+
+
+
+    async getContactNotes(contactId: string): Promise<any[]> {
+        const db = await getDb();
+        return await db.getAllAsync('SELECT * FROM contact_notes WHERE contact_id = ? ORDER BY created_at DESC', [contactId]);
+    },
+
+    async deleteContactNote(id: string) {
+        const db = await getDb();
+        await db.runAsync('DELETE FROM contact_notes WHERE id = ?', [id]);
+    },
+
+    // --- Decisions (Previously separate, now using shared logic but methods kept for compatibility) ---
+    // ...
+
+    // ...
+
+    // --- Assignments ---
+
 
     // --- Decisions (Previously separate, now using shared logic but methods kept for compatibility) ---
     // Ideally use useAddDecision hook, but if this is used directly:
@@ -505,19 +558,7 @@ export const RisaleUserDb = {
         }
     },
 
-    // --- Assignments ---
-    async addAssignment(assignment: any) {
-        const db = await getDb();
-        const newId = generateUUID();
-        const date = new Date().toISOString();
 
-        await db.runAsync(
-            'INSERT INTO assignments (id, title, description, assigned_to_id, created_at, is_completed) VALUES (?, ?, ?, ?, ?, ?)',
-            [newId, assignment.title, assignment.description || null, assignment.assigned_to_id, date, 0]
-        );
-
-        await addToOutbox('INSERT_ASSIGNMENT', { ...assignment, id: newId, created_at: date });
-    },
 
     async getAssignments(): Promise<any[]> {
         const db = await getDb();

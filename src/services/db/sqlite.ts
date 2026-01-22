@@ -11,11 +11,43 @@ export const getDb = async () => {
     return dbInstance;
 };
 
+// Helper to execute multiple statements one by one for better error reporting
+function shouldNotSplit(sql: string): boolean {
+    const s = sql.trim().toUpperCase();
+    return (
+        s.startsWith('CREATE TRIGGER') ||
+        s.startsWith('CREATE VIEW') ||
+        s.startsWith('CREATE VIRTUAL TABLE') ||
+        (s.includes('BEGIN') && s.includes('END'))
+    );
+}
+
+function splitStatements(sql: string): string[] {
+    if (shouldNotSplit(sql)) return [sql.trim()];
+    return sql
+        .split(';')
+        .map(s => s.trim())
+        .filter(Boolean);
+}
+
+async function execSql(db: SQLite.SQLiteDatabase, sql: string) {
+    const stmts = splitStatements(sql);
+    for (const stmt of stmts) {
+        try {
+            if (__DEV__) console.log('[SQL]', stmt.slice(0, 100));
+            await db.execAsync(stmt.endsWith(';') ? stmt : stmt + ';');
+        } catch (e) {
+            console.error('[SQL-FAIL]', stmt, e);
+            throw e;
+        }
+    }
+}
+
 export const initDb = async () => {
     const db = await getDb();
 
     // 1. Decisions Table (Mirror)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS decisions (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -27,10 +59,8 @@ export const initDb = async () => {
         );
     `);
 
-
-
     // 2. Transactions Table (Mirror)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS transactions (
             id TEXT PRIMARY KEY,
             type TEXT NOT NULL,
@@ -81,9 +111,7 @@ export const initDb = async () => {
 
 
     // 3. Outbox Table (For Offline Writes)
-    // type: 'INSERT_DECISION', 'UPDATE_DECISION', 'INSERT_TRANSACTION', etc.
-    // payload: JSON string of the data
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS outbox (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             type TEXT NOT NULL,
@@ -93,7 +121,7 @@ export const initDb = async () => {
     `);
 
     // 4. Hatims Table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS hatims (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -106,7 +134,7 @@ export const initDb = async () => {
     `);
 
     // 5. Hatim Parts Table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS hatim_parts (
             id TEXT PRIMARY KEY,
             hatim_id TEXT NOT NULL,
@@ -119,7 +147,7 @@ export const initDb = async () => {
     `);
 
     // 6. Reading Logs Table
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS reading_logs (
             id TEXT PRIMARY KEY,
             user_id TEXT NOT NULL,
@@ -132,7 +160,7 @@ export const initDb = async () => {
     `);
 
     // 7. KV Store (For sync timestamps)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS kv_store (
             key TEXT PRIMARY KEY,
             value TEXT
@@ -142,7 +170,7 @@ export const initDb = async () => {
     // --- MERGED FROM RisaleUserDb ---
 
     // 8. Contacts (Synced)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS contacts (
             id TEXT PRIMARY KEY,
             name TEXT NOT NULL,
@@ -156,7 +184,7 @@ export const initDb = async () => {
     `);
 
     // 9. Contact Readings (Synced)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS contact_readings (
             id TEXT PRIMARY KEY,
             contact_id TEXT NOT NULL,
@@ -165,10 +193,23 @@ export const initDb = async () => {
             created_at TEXT DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(contact_id) REFERENCES contacts(id) ON DELETE CASCADE
         );
+        CREATE INDEX IF NOT EXISTS idx_contact_readings_contact_id ON contact_readings(contact_id);
+    `);
+
+    // 9.5 Contact/Council Notes
+    await execSql(db, `
+        CREATE TABLE IF NOT EXISTS contact_notes (
+            id TEXT PRIMARY KEY,
+            contact_id TEXT NOT NULL,
+            text TEXT NOT NULL,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(contact_id) REFERENCES contacts(id) ON DELETE CASCADE
+        );
+        CREATE INDEX IF NOT EXISTS idx_contact_notes_contact_id ON contact_notes(contact_id);
     `);
 
     // 10. Risale Bookmarks (Local only for now, can be synced later)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS risale_bookmarks (
             id TEXT PRIMARY KEY,
             book_id TEXT NOT NULL,
@@ -179,7 +220,7 @@ export const initDb = async () => {
     `);
 
     // 11. Risale Notes (Local/Synced)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS risale_notes (
             id TEXT PRIMARY KEY,
             book_id TEXT NOT NULL,
@@ -192,7 +233,7 @@ export const initDb = async () => {
     `);
 
     // 12. Risale Decision Links
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS risale_decision_links (
             id TEXT PRIMARY KEY,
             decision_id TEXT NOT NULL,
@@ -204,9 +245,7 @@ export const initDb = async () => {
     `);
 
     // 13. Assignments (Merged into existing logic, but table def needed if not exists)
-    // Note: 'assignments' table was in RisaleUserDb, but we might want to sync it.
-    // Let's use TEXT ID.
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS assignments (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -220,7 +259,7 @@ export const initDb = async () => {
     `);
 
     // 14. Agenda Items
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS agenda_items (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -233,7 +272,7 @@ export const initDb = async () => {
     `);
 
     // 15. Announcements
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS announcements (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
@@ -246,7 +285,7 @@ export const initDb = async () => {
     `);
 
     // 16. Reading Leaderboard Cache (Centralized Stats)
-    await db.execAsync(`
+    await execSql(db, `
         CREATE TABLE IF NOT EXISTS reading_leaderboard_cache (
             key TEXT PRIMARY KEY, -- vakif_id:range:mode
             payload TEXT NOT NULL,

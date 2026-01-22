@@ -8,6 +8,7 @@ import { RisaleUserDb } from '@/services/risaleUserDb';
 import { useAuthStore } from '@/store/authStore';
 import { Q_JUZ_MAP } from '@/config/quranMaps';
 import { useNavigation } from '@react-navigation/native';
+import { QuranNavigationService } from '@/services/quran/QuranNavigationService';
 
 interface HatimPart {
     id: string;
@@ -105,7 +106,7 @@ export const JuzTrackingScreen = () => {
                         text: 'Okumaya Git',
                         onPress: () => {
                             const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                            navigation.navigate('QuranReaderScreen', { page: startPage });
+                            QuranNavigationService.navigateToQuran({ page: startPage });
                         }
                     }
                 ]

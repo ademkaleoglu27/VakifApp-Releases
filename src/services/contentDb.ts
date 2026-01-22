@@ -21,6 +21,38 @@ const SQLITE_DIR = `${FileSystem.documentDirectory}SQLite`;
 const DB_PATH = `${SQLITE_DIR}/${DB_NAME}`;
 const META_PATH = `${FileSystem.documentDirectory}${META_FILE}`;
 
+// Helper to execute multiple statements one by one for better error reporting
+function shouldNotSplit(sql: string): boolean {
+    const s = sql.trim().toUpperCase();
+    return (
+        s.startsWith('CREATE TRIGGER') ||
+        s.startsWith('CREATE VIEW') ||
+        s.startsWith('CREATE VIRTUAL TABLE') ||
+        (s.includes('BEGIN') && s.includes('END'))
+    );
+}
+
+function splitStatements(sql: string): string[] {
+    if (shouldNotSplit(sql)) return [sql.trim()];
+    return sql
+        .split(';')
+        .map(s => s.trim())
+        .filter(Boolean);
+}
+
+async function execSql(db: SQLite.SQLiteDatabase, sql: string) {
+    const stmts = splitStatements(sql);
+    for (const stmt of stmts) {
+        try {
+            if (__DEV__) console.log('[SQL]', stmt.slice(0, 100));
+            await db.execAsync(stmt.endsWith(';') ? stmt : stmt + ';');
+        } catch (e) {
+            console.error('[SQL-FAIL]', stmt, e);
+            throw e;
+        }
+    }
+}
+
 interface MetaData {
     version: number;
     lastUpdated: string;
@@ -103,7 +135,7 @@ export const ensureContentDbReady = async (): Promise<void> => {
         console.log('[ContentDB] database_list', await dbInstance.getAllAsync('PRAGMA database_list'));
 
         // 8. Enable foreign keys
-        await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
+        await execSql(dbInstance, 'PRAGMA foreign_keys = ON;');
 
         console.log('[ContentDB] foreign_keys', await dbInstance.getFirstAsync('PRAGMA foreign_keys'));
         console.log('[ContentDB] user_version', await dbInstance.getFirstAsync('PRAGMA user_version'));
@@ -310,7 +342,7 @@ export const reinstallContentDbAsset = async (): Promise<void> => {
         // But we closed dbInstance above!
         // We must re-open it so ensureContentDbReady continues to verify.
         dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
-        await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
+        await execSql(dbInstance, 'PRAGMA foreign_keys = ON;');
 
     } catch (e) {
         console.error('[ContentDB] Reinstall failed:', e);
