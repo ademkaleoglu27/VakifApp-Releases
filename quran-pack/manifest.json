@@ -1,0 +1,15 @@
+﻿{
+  "version": "v2-616",
+  "totalPages": 616,
+  "filePattern": "page_###.webp",
+  "downloadMode": "single",
+  "cacheBust": "v2-616-1",
+  "assets": {
+    "id": "quran-pack-v2-616",
+    "filename": "quran_image_pack_v2_616.zip.zip",
+    "sizeBytes": 625351768,
+    "sha256": "A7BC7B4AF9CD38442CC76F727F72B2878C8CA07A2862B832415904B66629231F",
+    "url": "https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/quran-pack-v2-616/quran_image_pack_v2_616.zip.zip"
+  },
+  "updatedAt": "2026-01-23T00:00:00Z"
+}
