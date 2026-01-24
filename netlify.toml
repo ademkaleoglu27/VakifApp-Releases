@@ -4,4 +4,4 @@
 [build]
   base = "web-admin"
   command = "npm run build"
-  publish = "web-admin/.next"
+  publish = ".next"
