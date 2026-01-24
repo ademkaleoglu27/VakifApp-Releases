@@ -1,0 +1,6 @@
+[build.environment]
+  GIT_SUBMODULE_STRATEGY = "none"
+
+[build]
+  command = "npm run build"
+  publish = ".next"
