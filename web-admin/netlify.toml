@@ -1,4 +1,4 @@
-[build.environment]
+﻿[build.environment]
   GIT_SUBMODULE_STRATEGY = "none"
 
 [build]
