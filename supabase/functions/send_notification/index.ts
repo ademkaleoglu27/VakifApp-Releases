@@ -18,17 +18,23 @@ serve(async (req) => {
         const { data: { user }, error: userError } = await supabaseClient.auth.getUser()
         if (userError || !user) return new Response('Unauthorized', { status: 401 })
 
-        // Check Role
+        // Check Role & Get Vakif Context
         const { data: profile } = await supabaseClient
             .from('profiles')
-            .select('role')
+            .select('role, vakif_id')
             .eq('id', user.id)
             .single()
 
         const role = profile?.role
-        const allowedRoles = ['mesveret_admin', 'accountant']
+        const senderVakifId = profile?.vakif_id
+
+        const allowedRoles = ['mesveret_admin', 'accountant', 'platform_admin', 'vakif_admin']
         if (!allowedRoles.includes(role)) {
             return new Response('Forbidden: Insufficient privileges', { status: 403 })
+        }
+
+        if (!senderVakifId) {
+            return new Response('Forbidden: No vakif context', { status: 403 })
         }
 
         // 2. Fetch Tokens
@@ -39,19 +45,26 @@ serve(async (req) => {
 
         let targetUserIds = new Set<string>()
 
-        // Resolve Roles to User IDs
+        // Resolve Roles to User IDs (Scoped by Vakif)
         if (target_roles && target_roles.length > 0) {
             const { data: usersWithRole } = await supabaseAdmin
                 .from('profiles')
                 .select('id')
                 .in('role', target_roles)
+                .eq('vakif_id', senderVakifId) // TENANT ISOLATION
 
             usersWithRole?.forEach(u => targetUserIds.add(u.id))
         }
 
-        // Add specific User IDs
-        if (user_ids && Array.isArray(user_ids)) {
-            user_ids.forEach(id => targetUserIds.add(id))
+        // Add specific User IDs (Must Validate Vakif)
+        if (user_ids && Array.isArray(user_ids) && user_ids.length > 0) {
+            const { data: validUsers } = await supabaseAdmin
+                .from('profiles')
+                .select('id')
+                .in('id', user_ids)
+                .eq('vakif_id', senderVakifId) // TENANT ISOLATION validation
+
+            validUsers?.forEach(u => targetUserIds.add(u.id))
         }
 
         const targets = Array.from(targetUserIds)
@@ -116,7 +129,8 @@ serve(async (req) => {
             title,
             body,
             data,
-            is_read: false
+            is_read: false,
+            vakif_id: senderVakifId // TENANT ISOLATION
         }))
 
         const { error: insertError } = await supabaseAdmin
@@ -143,4 +157,3 @@ serve(async (req) => {
         })
     }
 })
-

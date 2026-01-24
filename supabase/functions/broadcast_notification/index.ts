@@ -18,7 +18,9 @@ serve(async (req) => {
             { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
         )
 
-        const { title, body, target_role, data } = await req.json()
+        // 1. Authenticate Sender and Get Context (Vakif & Role)
+        const { data: { user }, error: userError } = await supabaseClient.auth.getUser()
+        if (userError || !user) return new Response('Unauthorized', { status: 401, headers: corsHeaders })
 
         // Create Admin Client for fetching tokens (bypass RLS)
         const supabaseAdmin = createClient(
@@ -26,17 +28,50 @@ serve(async (req) => {
             Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
         )
 
-        // 1. Determine Target User IDs
+        // Get Sender Profile for Vakif ID
+        const { data: senderProfile, error: profileError } = await supabaseAdmin
+            .from('profiles')
+            .select('role, vakif_id')
+            .eq('id', user.id)
+            .single()
+
+        if (profileError || !senderProfile) {
+            return new Response(JSON.stringify({ success: false, message: 'Sender profile not found' }), {
+                status: 403,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        const allowedRoles = ['mesveret_admin', 'platform_admin', 'vakif_admin']
+        if (!allowedRoles.includes(senderProfile.role)) {
+            return new Response(JSON.stringify({ success: false, message: 'Forbidden: Insufficient privileges' }), {
+                status: 403,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        const senderVakifId = senderProfile.vakif_id
+        if (!senderVakifId) {
+            return new Response(JSON.stringify({ success: false, message: 'Sender does not belong to a vakif' }), {
+                status: 400,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        const { title, body, target_role, data } = await req.json()
+
+        // 2. Determine Target User IDs (Scoped by Vakif)
         let targetUserIds: string[] | null = null;
 
         if (target_role && target_role !== 'all') {
-            const { data: profiles, error: profileError } = await supabaseAdmin
+            const { data: profiles, error: targetError } = await supabaseAdmin
                 .from('profiles')
                 .select('id')
-                .eq('role', target_role);
+                .eq('role', target_role)
+                .eq('vakif_id', senderVakifId); // TENANT ISOLATION
 
-            if (profileError) {
-                console.error('Profile fetch error:', profileError);
+            if (targetError) {
+                console.error('Target fetch error:', targetError);
                 return new Response(JSON.stringify({ success: false, message: 'Failed to fetch target profiles' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                 });
@@ -45,21 +80,37 @@ serve(async (req) => {
             targetUserIds = profiles.map(p => p.id);
 
             if (targetUserIds.length === 0) {
-                // Graceful exit if no users found in that role
-                return new Response(JSON.stringify({ success: true, count: 0, message: 'No users found for this role' }), {
+                return new Response(JSON.stringify({ success: true, count: 0, message: 'No users found for this role in your vakif' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                 });
             }
+        } else {
+            // If target_role is 'all' or missing, fetch ALL users in vakif
+            const { data: profiles, error: targetError } = await supabaseAdmin
+                .from('profiles')
+                .select('id')
+                .eq('vakif_id', senderVakifId); // TENANT ISOLATION
+
+            if (targetError) {
+                return new Response(JSON.stringify({ success: false, message: 'Failed to fetch all profiles' }), {
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+                });
+            }
+            targetUserIds = profiles.map(p => p.id);
         }
 
-        // 2. Fetch Push Tokens
-        let query = supabaseAdmin.from('user_push_tokens').select('token, user_id');
-
-        if (targetUserIds) {
-            query = query.in('user_id', targetUserIds);
+        // 3. Fetch Push Tokens
+        // Need to filter tokens by user_id list which is already vakif-scoped
+        if (!targetUserIds || targetUserIds.length === 0) {
+            return new Response(JSON.stringify({ success: true, count: 0, message: 'No targets found' }), {
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
         }
 
-        const { data: tokens, error } = await query
+        const { data: tokens, error } = await supabaseAdmin
+            .from('user_push_tokens')
+            .select('token, user_id')
+            .in('user_id', targetUserIds);
 
         if (error) {
             console.error('Token fetch error:', error);
@@ -69,14 +120,14 @@ serve(async (req) => {
         }
 
         if (!tokens || tokens.length === 0) {
-            return new Response(JSON.stringify({ success: true, count: 0, message: 'No devices found for target' }), {
+            return new Response(JSON.stringify({ success: true, count: 0, message: 'No devices found for targets' }), {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },
             })
         }
 
         const pushTokens = tokens.map(t => t.token)
 
-        // 3. Send Notifications (Expo)
+        // 4. Send Notifications (Expo)
         const message = {
             to: pushTokens,
             sound: 'default',
@@ -95,16 +146,13 @@ serve(async (req) => {
             body: JSON.stringify(message),
         });
 
-        // Log response from Expo for debugging
-        const expoData = await expoRes.json();
-        console.log('Expo Response:', expoData);
-
-        // 4. Log to DB
+        // 5. Log to DB (Scoped by Vakif)
         const logInserts = tokens.map(t => ({
             user_id: t.user_id,
             title: title,
             body: body,
-            data: data || {}
+            data: data || {},
+            vakif_id: senderVakifId // TENANT ISOLATION
         }))
 
         if (logInserts.length > 0) {
@@ -119,7 +167,7 @@ serve(async (req) => {
     } catch (error) {
         console.error('Unexpected error:', error);
         return new Response(JSON.stringify({ success: false, error: error.message }), {
-            status: 200, // Return 200 even on error to avoid client throw, let client handle 'success: false'
+            status: 200,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
     }
