@@ -2,5 +2,6 @@
   GIT_SUBMODULE_STRATEGY = "none"
 
 [build]
+  base = "web-admin"
   command = "npm run build"
-  publish = ".next"
+  publish = "web-admin/.next"
