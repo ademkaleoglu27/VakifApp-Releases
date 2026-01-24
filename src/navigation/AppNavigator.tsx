@@ -59,11 +59,9 @@ import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 
 // TesbihatPlayerScreen REMOVED
 import { TesbihatScreen } from '@/features/evrad/screens/TesbihatScreen';
-import { JuzSelectionScreen } from '@/features/quran/screens/JuzSelectionScreen';
+import { QuranMenuScreen } from '@/features/quran/screens/QuranMenuScreen';
 import { QuranReaderScreen } from '@/features/quran/screens/QuranReaderScreen';
 import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloaderScreen';
-import { QuranMenuScreen } from '@/features/quran-pdf/screens/QuranMenuScreen';
-import { QuranReaderScreen as QuranPdfScreen } from '@/features/quran-pdf/screens/QuranReaderScreen';
 
 
 if (Platform.OS === 'android') {
@@ -764,10 +762,7 @@ export const AppNavigator = () => {
                             {/* Kuran (Native PDF Module) */}
                             <Stack.Screen name="QuranDownloaderScreen" component={QuranDownloaderScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="QuranMenuScreen" component={QuranMenuScreen} options={{ headerShown: false }} />
-                            <Stack.Screen name="QuranReaderScreen" component={QuranPdfScreen} options={{ headerShown: false }} />
-
-                            <Stack.Screen name="JuzSelectionScreen" component={JuzSelectionScreen} />
-                            <Stack.Screen name="QuranLegacyReaderScreen" component={QuranReaderScreen} />
+                            <Stack.Screen name="QuranReaderScreen" component={QuranReaderScreen} options={{ headerShown: false }} />
                         </Stack.Navigator>
                         <MiniPlayer />
                     </View>

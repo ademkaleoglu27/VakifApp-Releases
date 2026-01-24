@@ -10,6 +10,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { RISALE_BOOKS } from '@/config/risaleSources';
 import { canAccess } from '@/config/permissions';
 import { PageStepper } from '@/components/PageStepper';
+import { useQuranStore } from '@/features/quran/store/useQuranStore';
+import { QuranPackService } from '@/features/quran/services/QuranPackService';
 
 export const HomeScreen = () => {
     const { user } = useAuthStore();
@@ -17,6 +19,7 @@ export const HomeScreen = () => {
 
     const [leaderboard, setLeaderboard] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { status, downloadProgress, detailedStatus } = useQuranStore(); // Kept for download progress overlay
 
     const openDrawer = () => {
         navigation.dispatch(DrawerActions.openDrawer());
@@ -272,6 +275,20 @@ export const HomeScreen = () => {
                     </View>
                 </View>
 
+                {/* Download Progress Overlay (if actively downloading) */}
+                {status === 'DOWNLOADING' && (
+                    <View style={styles.downloadOverlay}>
+                        <View style={styles.progressHeader}>
+                            <Text style={styles.progressTitle}>Kur'an Kuruluyor...</Text>
+                            <Text style={styles.progressPercent}>%{Math.round(downloadProgress * 100)}</Text>
+                        </View>
+                        <View style={styles.progressBarBg}>
+                            <View style={[styles.progressBarFill, { width: `${downloadProgress * 100}%` }]} />
+                        </View>
+                        {detailedStatus && <Text style={styles.detailedStatusText}>{detailedStatus}</Text>}
+                    </View>
+                )}
+
                 {/* Dashboard Content */}
                 <View style={styles.dashboardContent}>
                     <View style={styles.sectionHeader}>
@@ -520,5 +537,57 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.primary, paddingVertical: 14, paddingHorizontal: 32, borderRadius: 16,
         alignItems: 'center', alignSelf: 'center', marginTop: 20
     },
-    btnSaveText: { color: '#fff', fontWeight: 'bold', fontSize: 14 }
+    btnSaveText: { color: '#fff', fontWeight: 'bold', fontSize: 14 },
+
+    quranMenuCard: { marginBottom: 24, borderRadius: 24, overflow: 'hidden', elevation: 4, shadowColor: '#b45309', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 8 },
+    quranMenuGradient: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 },
+    quranMenuLeft: { flexDirection: 'row', alignItems: 'center', gap: 16 },
+    quranMenuTitle: { fontSize: 18, fontWeight: 'bold', color: '#1e293b' },
+    quranMenuSub: { fontSize: 13, color: '#92400e', marginTop: 2, fontWeight: '500' },
+    quranMenuRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+    quranBadge: { backgroundColor: 'rgba(180, 83, 9, 0.1)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
+    quranBadgeText: { color: '#b45309', fontSize: 11, fontWeight: 'bold' },
+    quranIconCircle: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+
+    // Download Overlay
+    downloadOverlay: {
+        backgroundColor: '#f8fafc',
+        padding: 16,
+        borderRadius: 20,
+        marginBottom: 24,
+        borderWidth: 1,
+        borderColor: '#e2e8f0',
+    },
+    progressHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
+    progressTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#1e293b',
+    },
+    progressPercent: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: theme.colors.primary,
+    },
+    progressBarBg: {
+        height: 6,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 3,
+        overflow: 'hidden',
+    },
+    progressBarFill: {
+        height: '100%',
+        backgroundColor: theme.colors.primary,
+    },
+    detailedStatusText: {
+        fontSize: 12,
+        color: '#64748b',
+        marginTop: 8,
+        fontStyle: 'italic',
+    }
 });

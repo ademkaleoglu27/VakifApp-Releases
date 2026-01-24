@@ -37,7 +37,7 @@ const STATIC_ITEMS: LibraryItem[] = [
         status: 'ready',
         openAction: {
             type: 'route',
-            routeName: 'QuranDownloaderScreen', // The Gatekeeper
+            routeName: 'QuranMenuScreen', // Updated to new Image Reader Flow
             params: {}
         }
     },
