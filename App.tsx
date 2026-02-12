@@ -12,6 +12,7 @@ import { NotificationProvider } from '@/context/NotificationsContext';
 import { useFonts } from 'expo-font';
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 import { Env } from '@/config/env';
+import { syncDynamicAliases } from '@/services/lugat_aliases';
 
 // Google Fonts Imports
 import {
@@ -83,6 +84,9 @@ export default function App() {
       // Initialize Offline Database (Supabase Mirror)
       await initOfflineDb();
       setIsDbReady(true);
+
+      // Non-blocking: Sync dynamic lugat aliases from cloud
+      syncDynamicAliases().catch(e => console.warn('[Lugat] Background sync failed:', e));
     } catch (error) {
       setDbError((error as Error).message);
     }

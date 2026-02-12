@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, FlatList, SectionList } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,13 +7,47 @@ import { theme } from '@/config/theme';
 import { HTML_BOOKS, HtmlBook, HtmlChapter } from '@/features/reader/html/htmlManifest.generated';
 import { canonicalizeBookId } from '@/services/bookId';
 import { CONTENT_PACK_CONFIG } from '@/config/booksRegistry';
+import { getLastRead } from '@/services/readingProgress';
 
 export const RisaleHtmlReaderHomeScreen = () => {
     const navigation = useNavigation<any>();
     const route = useRoute<any>();
     const bookId = route.params?.bookId;
+    const didAutoNav = useRef(false);
 
     const selectedBook = bookId ? HTML_BOOKS[bookId] : null;
+
+    // AUTO-NAVIGATE: Skip TOC and go directly to reader
+    useEffect(() => {
+        if (!selectedBook || didAutoNav.current) return;
+        didAutoNav.current = true;
+
+        const autoNavigate = async () => {
+            const chapters = selectedBook.chapters;
+            if (chapters.length === 0) return;
+
+            // Check for last-read position
+            const lastRead = await getLastRead(selectedBook.id);
+            let targetChapter = chapters[0]; // Default: first chapter
+
+            if (lastRead) {
+                const found = chapters.find(c => c.id === lastRead.chapterId);
+                if (found) {
+                    targetChapter = found;
+                    console.log(`[Reader] Resuming "${selectedBook.title}" from: ${found.title}`);
+                }
+            }
+
+            navigation.replace('RisaleHtmlReader', {
+                assetPath: targetChapter.assetPath,
+                title: targetChapter.title,
+                bookId: selectedBook.id,
+                chapterId: targetChapter.id
+            });
+        };
+
+        autoNavigate();
+    }, [selectedBook]);
 
     // RENDER: BOOK LIST (If no book selected)
     const renderBookItem = ({ item }: { item: HtmlBook }) => {

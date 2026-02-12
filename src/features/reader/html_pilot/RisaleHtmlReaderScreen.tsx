@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     View,
     StyleSheet,
@@ -26,6 +27,9 @@ import { HTML_BOOKS } from '@/features/reader/html/htmlManifest.generated';
 import { getLugatSuggestions, LugatSuggestion } from '@/services/ai-assist';
 import { TelemetryService } from '@/services/TelemetryService';
 import { ENABLE_LUGAT_SUGGESTIONS } from '@/config/features';
+import { checkAlias, LUGAT_ALIASES } from '@/services/lugat_aliases';
+import { Linking } from 'react-native';
+import { saveLastRead } from '@/services/readingProgress';
 
 // --- CSS CONFIGURATION (STRICT) ---
 const getHtmlCss = () => `
@@ -277,6 +281,43 @@ export const RisaleHtmlReaderScreen = () => {
     const [fontsReady, setFontsReady] = useState(false);
     const [pageInfo, setPageInfo] = useState({ current: 1, total: 1, isAtEnd: false });
 
+    // Font Size State
+    const DEFAULT_FONT_SIZE = 19;
+    const MIN_FONT_SIZE = 14;
+    const MAX_FONT_SIZE = 28;
+    const FONT_STEP = 2;
+    const FONT_SIZE_KEY = 'reader_font_size';
+    const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
+
+    // Load saved font size preference
+    useEffect(() => {
+        AsyncStorage.getItem(FONT_SIZE_KEY).then(val => {
+            if (val) {
+                const parsed = parseInt(val, 10);
+                if (!isNaN(parsed) && parsed >= MIN_FONT_SIZE && parsed <= MAX_FONT_SIZE) {
+                    setFontSize(parsed);
+                }
+            }
+        }).catch(() => { });
+    }, []);
+
+    // Inject font size into WebView whenever it changes
+    useEffect(() => {
+        if (webViewRef.current && fontsReady) {
+            webViewRef.current.injectJavaScript(
+                `document.documentElement.style.setProperty('--base-size', '${fontSize}px'); true;`
+            );
+        }
+    }, [fontSize, fontsReady]);
+
+    const changeFontSize = (delta: number) => {
+        setFontSize(prev => {
+            const next = Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, prev + delta));
+            AsyncStorage.setItem(FONT_SIZE_KEY, String(next)).catch(() => { });
+            return next;
+        });
+    };
+
     const [selectedText, setSelectedText] = useState("");
 
     // Dictionary State
@@ -288,13 +329,22 @@ export const RisaleHtmlReaderScreen = () => {
     const [localSuggestions, setLocalSuggestions] = useState<LugatSuggestion[]>([]);
     const [suggestionsLoading, setSuggestionsLoading] = useState(false);
 
+    // TOC Modal State
+    const [tocVisible, setTocVisible] = useState(false);
+    const currentBook = bookId ? HTML_BOOKS[bookId] : null;
+
     // Footnote State
     const [footnoteVisible, setFootnoteVisible] = useState(false);
     const [footnoteContent, setFootnoteContent] = useState("");
 
     useEffect(() => {
         dictionaryDb.init().catch(console.error);
-    }, []);
+        // Save reading progress
+        if (bookId && chapterId) {
+            const idx = currentBook?.chapters.findIndex(c => c.id === chapterId) ?? 0;
+            saveLastRead(bookId, chapterId, idx).catch(console.warn);
+        }
+    }, [chapterId]);
 
     const injectCss = `
         var style = document.createElement('style');
@@ -321,15 +371,16 @@ export const RisaleHtmlReaderScreen = () => {
                     setFontsReady(true);
                     break;
                 case 'METRICS':
-                    // Calculate Current Page (Simple Viewport Math)
+                    // Calculate estimated real book page
                     const viewportH = data.viewportHeight || Dimensions.get('window').height;
                     const scrollTop = data.scrollTop || 0;
-                    const computedPage = Math.ceil((scrollTop + 10) / viewportH);
-                    const newTotal = Math.max(1, data.totalPages || 1);
+                    const contentH = data.contentHeight || viewportH;
+                    const scrollableHeight = Math.max(1, contentH - viewportH);
+                    const scrollPercent = scrollableHeight > 0 ? Math.min(1, Math.max(0, scrollTop / scrollableHeight)) : 0;
 
                     setPageInfo({
-                        current: computedPage,
-                        total: newTotal,
+                        current: scrollPercent,  // store as 0-1 ratio
+                        total: data.totalPages || 1,
                         isAtEnd: !!data.isAtEnd
                     });
                     break;
@@ -371,6 +422,13 @@ export const RisaleHtmlReaderScreen = () => {
     // Use isAtEnd flag for reliable detection (with buffer)
     const showNextButton = nextChapter && pageInfo.isAtEnd;
 
+    // Real page estimation
+    const currentChapter = currentBook?.chapters.find(c => c.id === chapterId);
+    const bookTotalPages = currentBook ? (() => {
+        const last = currentBook.chapters[currentBook.chapters.length - 1];
+        return last.startPage + last.pageCount - 1;
+    })() : 0;
+
     const handleNextSection = () => {
         if (nextChapter) {
             navigation.replace('RisaleHtmlReader', {
@@ -384,8 +442,79 @@ export const RisaleHtmlReaderScreen = () => {
 
     return (
         <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-            {/* Header (Simplified) */}
-            <View style={{ height: 0 }} />
+            {/* Header with Back + Title + Font Controls + TOC */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#efe7d1', paddingHorizontal: 12, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#d4cbb5' }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
+                    <Ionicons name="arrow-back" size={22} color="#334155" />
+                </TouchableOpacity>
+                <Text numberOfLines={1} style={{ flex: 1, fontSize: 15, fontWeight: '600', color: '#1e293b', marginHorizontal: 10 }}>{title}</Text>
+
+                {/* Font Size Controls */}
+                <TouchableOpacity
+                    onPress={() => changeFontSize(-FONT_STEP)}
+                    disabled={fontSize <= MIN_FONT_SIZE}
+                    style={{ padding: 6, opacity: fontSize <= MIN_FONT_SIZE ? 0.3 : 1 }}
+                >
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#334155' }}>A⁻</Text>
+                </TouchableOpacity>
+                <Text style={{ fontSize: 11, color: '#94a3b8', minWidth: 24, textAlign: 'center' }}>{fontSize}</Text>
+                <TouchableOpacity
+                    onPress={() => changeFontSize(FONT_STEP)}
+                    disabled={fontSize >= MAX_FONT_SIZE}
+                    style={{ padding: 6, opacity: fontSize >= MAX_FONT_SIZE ? 0.3 : 1 }}
+                >
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#334155' }}>A⁺</Text>
+                </TouchableOpacity>
+
+                {currentBook && (
+                    <TouchableOpacity onPress={() => setTocVisible(true)} style={{ padding: 6, marginLeft: 4 }}>
+                        <Ionicons name="list" size={22} color="#334155" />
+                    </TouchableOpacity>
+                )}
+            </View>
+
+            {/* TOC Modal */}
+            <Modal visible={tocVisible} animationType="slide" transparent onRequestClose={() => setTocVisible(false)}>
+                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' }}>
+                    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '70%', paddingBottom: 30 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderBottomColor: '#e2e8f0' }}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1e293b' }}>İçindekiler</Text>
+                            <TouchableOpacity onPress={() => setTocVisible(false)}>
+                                <Ionicons name="close" size={24} color="#64748b" />
+                            </TouchableOpacity>
+                        </View>
+                        <FlatList
+                            data={currentBook?.chapters || []}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({ item, index }) => {
+                                const isActive = item.id === chapterId;
+                                return (
+                                    <TouchableOpacity
+                                        style={{ flexDirection: 'row', alignItems: 'center', padding: 14, paddingHorizontal: 20, backgroundColor: isActive ? '#f0f9ff' : '#fff', borderBottomWidth: 1, borderBottomColor: '#f1f5f9' }}
+                                        onPress={() => {
+                                            setTocVisible(false);
+                                            if (!isActive) {
+                                                navigation.replace('RisaleHtmlReader', {
+                                                    assetPath: item.assetPath,
+                                                    title: item.title,
+                                                    bookId: bookId,
+                                                    chapterId: item.id
+                                                });
+                                            }
+                                        }}
+                                    >
+                                        <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: isActive ? '#3b82f6' : '#f1f5f9', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
+                                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: isActive ? '#fff' : '#64748b' }}>{index + 1}</Text>
+                                        </View>
+                                        <Text style={{ flex: 1, fontSize: 14, color: isActive ? '#1d4ed8' : '#334155', fontWeight: isActive ? '700' : '400' }}>{item.title}</Text>
+                                        {isActive && <Ionicons name="radio-button-on" size={16} color="#3b82f6" />}
+                                    </TouchableOpacity>
+                                );
+                            }}
+                        />
+                    </View>
+                </View>
+            </Modal>
 
             {/* CARD READER WRAPPER -> Reverted to standard */}
             <View style={{ flex: 1 }}>
@@ -404,8 +533,18 @@ export const RisaleHtmlReaderScreen = () => {
                     injectedJavaScriptBeforeContentLoaded={injectCss}
                     injectedJavaScript={INJECTED_JS}
                     style={{ flex: 1, backgroundColor: '#efe7d1' }}
+                    webviewDebuggingEnabled={true}
                 />
             </View>
+
+            {/* Real Page Indicator */}
+            {currentChapter && (
+                <View style={styles.pageIndicator}>
+                    <Text style={styles.pageText}>
+                        {`~Sayfa ${currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))} / ${bookTotalPages}`}
+                    </Text>
+                </View>
+            )}
 
             {/* NEXT SECTION BUTTON */}
             {showNextButton && (
@@ -420,12 +559,22 @@ export const RisaleHtmlReaderScreen = () => {
                 <View style={styles.actionBar}>
                     <TouchableOpacity style={styles.actionBtn} onPress={async () => {
                         setSearchedWord(selectedText);
-                        const query = selectedText.trim();
+                        let query = selectedText.trim();
                         setLocalSuggestions([]);
                         setSuggestionsLoading(false);
 
+                        // 1. CHECK ALIAS (Mapping Katmanı)
+                        const alias = checkAlias(query);
+                        if (alias) {
+                            console.log(`[Lugat] Alias found: "${query}" -> "${alias}"`);
+                            query = alias;
+                        }
+
                         // Use flexible search to handle punctuation and normalization
+                        console.log('[Lugat] Searching for:', query);
                         const { best, candidates } = await dictionaryDb.searchFlexible(query);
+                        console.log('[Lugat] Search Result:', { best, candidateCount: candidates.length });
+
                         setDictCandidates(candidates);
                         setDictEntry(best);
                         setDictVisible(true);
@@ -629,9 +778,37 @@ export const RisaleHtmlReaderScreen = () => {
 
                                 {/* No suggestions found */}
                                 {!suggestionsLoading && localSuggestions.length === 0 && (
-                                    <Text style={{ textAlign: 'center', color: '#94a3b8', fontSize: 13, marginTop: 8 }}>
-                                        Öneri bulunamadı.
-                                    </Text>
+                                    <View>
+                                        <Text style={{ textAlign: 'center', color: '#94a3b8', fontSize: 13, marginTop: 8 }}>
+                                            Öneri bulunamadı.
+                                        </Text>
+
+                                        {/* Google Search Button (Phase 1) */}
+                                        <TouchableOpacity
+                                            style={{
+                                                marginTop: 12,
+                                                flexDirection: 'row',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                backgroundColor: '#fff',
+                                                borderWidth: 1,
+                                                borderColor: '#e2e8f0',
+                                                padding: 10,
+                                                borderRadius: 8
+                                            }}
+                                            onPress={async () => {
+                                                try {
+                                                    const url = `https://www.google.com/search?q=${encodeURIComponent(searchedWord + " nedir risale")}`;
+                                                    await Linking.openURL(url);
+                                                } catch (e) {
+                                                    console.warn('[Lugat] Could not open browser:', e);
+                                                }
+                                            }}
+                                        >
+                                            <Ionicons name="logo-google" size={18} color="#475569" style={{ marginRight: 8 }} />
+                                            <Text style={{ color: '#475569', fontWeight: '500' }}>Google'da Ara</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 )}
 
                                 <TouchableOpacity
