@@ -1,8 +1,11 @@
 import { Announcement } from '@/types/announcement';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 
 export const announcementService = {
     getAnnouncements: async (userRole: string = 'sohbet_member'): Promise<Announcement[]> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return [];
+
         let query = supabase
             .from('announcements')
             .select('*')
@@ -37,13 +40,32 @@ export const announcementService = {
     },
 
     addAnnouncement: async (title: string, content: string, priority: 'normal' | 'high', location?: string, targetRole: string = 'all') => {
+        const supabase = getSupabaseClient();
+        if (!supabase) throw new Error('Supabase unavailable');
+
+        // Get current user and their vakif_id
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Kullanıcı oturumu bulunamadı');
+
+        const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('vakif_id')
+            .eq('id', user.id)
+            .single();
+
+        if (profileError || !profile?.vakif_id) {
+            console.error('Vakif ID fetch error:', profileError);
+            throw new Error('Vakıf bilgisi bulunamadı.');
+        }
+
         // 1. Insert into Database
         const { error } = await supabase.from('announcements').insert({
             title,
             content,
             priority,
             location, // Now supported again
-            target_role: targetRole
+            target_role: targetRole,
+            vakif_id: profile.vakif_id
         });
 
         if (error) throw error;
@@ -63,10 +85,12 @@ export const announcementService = {
             if (funcError) {
                 console.warn('Broadcast function returned error (handled):', funcError);
             }
-        } catch (broadcastError) {
+        } catch (broadcastError: any) {
             // Function invocation failed (network, 500, etc.)
             // We log it but do NOT throw, so the UI treats the Announcement add as successful.
             console.warn('Broadcast failed silently:', broadcastError);
+            // Optionally, we could show a conditional alert here, but since it's a silent fail in the original intent:
+            // Alert.alert('Uyarı', 'Duyuru kaydedildi ancak bildirim gönderilemedi: ' + broadcastError.message);
         }
     },
 
@@ -77,6 +101,9 @@ export const announcementService = {
     },
 
     deleteAnnouncement: async (id: string): Promise<void> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) throw new Error('Supabase unavailable');
+
         const { error } = await supabase.from('announcements').delete().eq('id', id);
         if (error) throw error;
     },

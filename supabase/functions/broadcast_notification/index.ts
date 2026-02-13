@@ -1,5 +1,7 @@
+
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { sendPushNotification } from "../_shared/fcm.ts"
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -18,108 +20,138 @@ serve(async (req) => {
             { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
         )
 
-        const { title, body, target_role, data } = await req.json()
+        // 1. Authenticate Sender (BMAD Role Fix)
+        const { data: { user }, error: userError } = await supabaseClient.auth.getUser()
+        if (userError || !user) return new Response('Unauthorized', { status: 401, headers: corsHeaders })
 
-        // Create Admin Client for fetching tokens (bypass RLS)
         const supabaseAdmin = createClient(
             Deno.env.get('SUPABASE_URL') ?? '',
             Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
         )
 
-        // 1. Determine Target User IDs
-        let targetUserIds: string[] | null = null;
+        const { data: senderProfile, error: profileError } = await supabaseAdmin
+            .from('profiles')
+            .select('role, vakif_id')
+            .eq('id', user.id)
+            .single()
 
-        if (target_role && target_role !== 'all') {
-            const { data: profiles, error: profileError } = await supabaseAdmin
-                .from('profiles')
-                .select('id')
-                .eq('role', target_role);
-
-            if (profileError) {
-                console.error('Profile fetch error:', profileError);
-                return new Response(JSON.stringify({ success: false, message: 'Failed to fetch target profiles' }), {
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-                });
-            }
-
-            targetUserIds = profiles.map(p => p.id);
-
-            if (targetUserIds.length === 0) {
-                // Graceful exit if no users found in that role
-                return new Response(JSON.stringify({ success: true, count: 0, message: 'No users found for this role' }), {
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-                });
-            }
-        }
-
-        // 2. Fetch Push Tokens
-        let query = supabaseAdmin.from('user_push_tokens').select('token, user_id');
-
-        if (targetUserIds) {
-            query = query.in('user_id', targetUserIds);
-        }
-
-        const { data: tokens, error } = await query
-
-        if (error) {
-            console.error('Token fetch error:', error);
-            return new Response(JSON.stringify({ success: false, message: 'Error fetching tokens' }), {
-                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-            });
-        }
-
-        if (!tokens || tokens.length === 0) {
-            return new Response(JSON.stringify({ success: true, count: 0, message: 'No devices found for target' }), {
+        if (profileError || !senderProfile) {
+            return new Response(JSON.stringify({ success: false, message: 'Sender profile not found' }), {
+                status: 403,
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },
             })
         }
 
-        const pushTokens = tokens.map(t => t.token)
+        const userRole = senderProfile.role || 'guest'
+        const allowedRoles = ['admin', 'platform_admin', 'vakif_admin', 'mesveret_admin', 'mesveret_member', 'council_member', 'accountant', 'moderator', 'sohbet_member'];
 
-        // 3. Send Notifications (Expo)
-        const message = {
-            to: pushTokens,
-            sound: 'default',
+        console.log(`[Auth] Kullanıcı rolü: ${userRole}, İzin verilenler: ${allowedRoles}`);
+
+        if (!allowedRoles.includes(userRole)) {
+            console.error(`[Auth] REDDEDİLDİ - Rol: ${userRole}`);
+            return new Response(JSON.stringify({
+                error: 'Unauthorized',
+                yourRole: userRole,
+                requiredRoles: allowedRoles
+            }), {
+                status: 403,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            })
+        }
+        console.log(`[Auth] ONAYLANDI - Rol: ${userRole}`);
+
+        const senderVakifId = senderProfile.vakif_id
+        if (!senderVakifId) {
+            return new Response(JSON.stringify({ success: false, message: 'Sender does not belong to a vakif' }), {
+                status: 400,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        const { title, body, target_role, data } = await req.json()
+
+        // 2. Determine Target User IDs
+        let targetUserIds: string[] = [];
+
+        if (target_role && target_role !== 'all') {
+            const { data: profiles } = await supabaseAdmin
+                .from('profiles')
+                .select('id')
+                .eq('role', target_role)
+                .eq('vakif_id', senderVakifId);
+
+            targetUserIds = profiles?.map(p => p.id) || [];
+        } else {
+            const { data: profiles } = await supabaseAdmin
+                .from('profiles')
+                .select('id')
+                .eq('vakif_id', senderVakifId);
+            targetUserIds = profiles?.map(p => p.id) || [];
+        }
+
+        if (targetUserIds.length === 0) {
+            return new Response(JSON.stringify({ success: true, count: 0, message: 'No targets found' }), {
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        // 3. Fetch Push Tokens
+        const { data: tokens, error: tokenError } = await supabaseAdmin
+            .from('user_push_tokens')
+            .select('token, user_id')
+            .in('user_id', targetUserIds);
+
+        if (tokenError || !tokens || tokens.length === 0) {
+            return new Response(JSON.stringify({ success: true, count: 0, message: 'No devices found' }), {
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            })
+        }
+
+        // 4. Send Notifications
+        const fcmConfigStr = Deno.env.get('FCM_SERVICE_ACCOUNT');
+        const result = await sendPushNotification(
+            tokens.map(t => t.token),
+            title,
+            body,
+            data,
+            fcmConfigStr
+        );
+
+        console.log(`[broadcast_notification] Push sonuç:`, result);
+
+        if (result.expoFailed > 0 || result.fcmFailed > 0) {
+            console.warn(`[broadcast_notification] Başarısız bildirimler:`, result.errors);
+        }
+
+        // 5. Database Log
+        const logInserts = targetUserIds.map(uid => ({
+            user_id: uid,
             title: title,
             body: body,
             data: data || {},
-        };
-
-        const expoRes = await fetch('https://exp.host/--/api/v2/push/send', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Accept-encoding': 'gzip, deflate',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(message),
-        });
-
-        // Log response from Expo for debugging
-        const expoData = await expoRes.json();
-        console.log('Expo Response:', expoData);
-
-        // 4. Log to DB
-        const logInserts = tokens.map(t => ({
-            user_id: t.user_id,
-            title: title,
-            body: body,
-            data: data || {}
+            vakif_id: senderVakifId
         }))
 
         if (logInserts.length > 0) {
-            const { error: logError } = await supabaseAdmin.from('notifications').insert(logInserts);
-            if (logError) console.error('Log insert error:', logError);
+            await supabaseAdmin.from('notifications').insert(logInserts);
         }
 
-        return new Response(JSON.stringify({ success: true, count: tokens.length }), {
+        return new Response(JSON.stringify({
+            success: true,
+            targets: targetUserIds.length,
+            expo_sent: result.expoSent,
+            expo_failed: result.expoFailed,
+            fcm_sent: result.fcmSent,
+            fcm_failed: result.fcmFailed,
+            errors: result.errors
+        }), {
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
 
     } catch (error) {
         console.error('Unexpected error:', error);
         return new Response(JSON.stringify({ success: false, error: error.message }), {
-            status: 200, // Return 200 even on error to avoid client throw, let client handle 'success: false'
+            status: 200,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
     }

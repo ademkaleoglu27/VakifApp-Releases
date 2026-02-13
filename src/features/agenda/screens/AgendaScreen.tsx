@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert, Platform } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Alert, Platform, Keyboard, Dimensions } from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { theme } from '@/config/theme';
 import { RisaleUserDb } from '@/services/risaleUserDb';
@@ -203,13 +203,14 @@ export const AgendaScreen = () => {
                 </TouchableOpacity>
             )}
 
-            {/* Add Event Modal */}
-            <Modal visible={isModalVisible} animationType="slide" transparent>
-                <View style={styles.modalOverlay}>
+            {/* Add Event Modal (Custom View) */}
+            {isModalVisible && (
+                <View style={styles.absoluteOverlay}>
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setModalVisible(false); }} />
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
                             <Text style={styles.modalTitle}>Yeni Etkinlik</Text>
-                            <TouchableOpacity onPress={() => setModalVisible(false)}>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setModalVisible(false); }}>
                                 <Ionicons name="close" size={24} color="#999" />
                             </TouchableOpacity>
                         </View>
@@ -219,6 +220,11 @@ export const AgendaScreen = () => {
                             placeholder="Etkinlik Başlığı"
                             value={title}
                             onChangeText={setTitle}
+                            autoComplete="off"
+                            importantForAutofill="no"
+                            textContentType="none"
+                            autoCorrect={false}
+                            spellCheck={false}
                         />
 
                         <TextInput
@@ -226,6 +232,9 @@ export const AgendaScreen = () => {
                             placeholder="Konum (Opsiyonel)"
                             value={location}
                             onChangeText={setLocation}
+                            autoComplete="off"
+                            importantForAutofill="no"
+                            textContentType="none"
                         />
 
                         <TouchableOpacity style={styles.dateBtn} onPress={showPicker}>
@@ -261,7 +270,7 @@ export const AgendaScreen = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </Modal>
+            )}
         </View>
     );
 };
@@ -320,8 +329,25 @@ const styles = StyleSheet.create({
     emptyText: { marginTop: 16, color: '#94A3B8' },
 
     // Modal
-    modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', padding: 24 },
-    modalContent: { backgroundColor: '#fff', borderRadius: 24, padding: 24 },
+    absoluteOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999, // Ensure it's on top
+        justifyContent: 'center',
+        padding: 24,
+    },
+    backdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: { backgroundColor: '#fff', borderRadius: 24, padding: 24, zIndex: 10000 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 },
     modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#1E293B' },
     input: { backgroundColor: '#F8FAFC', padding: 16, borderRadius: 12, marginBottom: 16, borderWidth: 1, borderColor: '#E2E8F0' },

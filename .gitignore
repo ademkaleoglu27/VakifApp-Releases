@@ -41,6 +41,18 @@ yarn-error.*
 /android
 temp_risale_source/
 
+# builds and binary artifacts
+builds/
+**/*.apk
+**/*.aab
+android/app/build/
+android/build/
+**/build/
+*.keystore
+*.jks
+*.hprof
+*.log
+
 # SQLite artifacts
 SQLite/
 *.db-wal
@@ -48,3 +60,16 @@ SQLite/
 *.db-journal
 *.sqlite
 *.sqlite3
+
+# Quran local assets (do not commit)
+assets/quran_pages/
+quran-pack/
+_legacy_archive/temp_repo/
+
+
+# Local Tool & Temp Folders
+.claude/
+_bmad/
+_bmad-output/
+supabase/.temp/
+.gemini/

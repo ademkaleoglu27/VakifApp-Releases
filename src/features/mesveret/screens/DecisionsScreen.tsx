@@ -11,14 +11,17 @@ import { NoAccess } from '@/components/NoAccess';
 
 const { width, height } = Dimensions.get('window');
 
-import { useDecisions, useAddDecision, useDeleteDecision, useSync, Decision } from '@/hooks/dbHooks';
+import { useDecisions, useAddDecision, useDeleteDecision, useSync, useAddDecisionItem, Decision } from '@/hooks/dbHooks';
 import { useAuthStore } from '@/store/authStore';
+import { getSupabaseClient } from '@/services/supabaseClient';
+import { generateUUID } from '@/utils/uuid';
 
 export const DecisionsScreen = () => {
     if (!requireFeature('MESVERET_SCREEN')) return <NoAccess />;
 
     const { data: decisions, isLoading, refetch } = useDecisions();
     const addDecisionMutation = useAddDecision();
+    const addDecisionItemMutation = useAddDecisionItem();
     const deleteDecisionMutation = useDeleteDecision();
     const syncMutation = useSync();
 
@@ -49,7 +52,23 @@ export const DecisionsScreen = () => {
 
     // Form
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState(''); // Still used for Summary
+    const [items, setItems] = useState<string[]>([]);
+    const [currentItem, setCurrentItem] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const addItem = () => {
+        if (currentItem.trim()) {
+            setItems([...items, currentItem.trim()]);
+            setCurrentItem('');
+        }
+    };
+
+    const removeItem = (index: number) => {
+        const newItems = [...items];
+        newItems.splice(index, 1);
+        setItems(newItems);
+    };
 
     const handleAddDecision = async () => {
         if (!title) {
@@ -57,33 +76,75 @@ export const DecisionsScreen = () => {
             return;
         }
 
+        setIsSubmitting(true);
         try {
-            // id: generateUUID(), // Service generates ID now? Or we pass it?
-            // Let's look at `useAddDecision` hook or service.
-            // decisionService.addDecision takes Omit<Decision, 'id'>.
-            // So we remove ID from here.
-            addDecisionMutation.mutate({
+            const newId = generateUUID();
+            let finalAttachmentUrl = imageUri;
+
+            // 1. Upload Image if exists and not http (meaning local file)
+            if (imageUri && !imageUri.startsWith('http')) {
+                const supabase = getSupabaseClient();
+                if (supabase) {
+                    const filename = `${newId}_${Date.now()}.jpg`;
+                    const formData = new FormData();
+                    formData.append('file', {
+                        uri: imageUri,
+                        name: filename,
+                        type: 'image/jpeg',
+                    } as any);
+
+                    const { data, error } = await supabase.storage
+                        .from('decision-attachments')
+                        .upload(filename, formData, { contentType: 'image/jpeg' });
+
+                    if (error) {
+                        console.error('Upload Error:', error);
+                        Alert.alert('Uyarı', 'Resim yüklenemedi, yerel kopya kullanılacak.');
+                    } else if (data) {
+                        // Construct Public URL
+                        const { data: publicUrlData } = supabase.storage
+                            .from('decision-attachments')
+                            .getPublicUrl(filename);
+                        finalAttachmentUrl = publicUrlData.publicUrl;
+                    }
+                }
+            }
+
+            // 2. Create Decision
+            await addDecisionMutation.mutateAsync({
+                id: newId,
                 title: title.trim(),
-                summary: content.trim(),
+                summary: content.trim(), // Optional summary
                 date: new Date().toISOString(),
                 created_by: user?.id || null,
-                attachment_url: imageUri,
-            }, {
-                onSuccess: () => {
-                    setModalVisible(false);
-                    setTitle('');
-                    setContent('');
-                }
+                attachment_url: finalAttachmentUrl,
             });
+
+            // 3. Create Items
+            for (const [index, itemText] of items.entries()) {
+                await addDecisionItemMutation.mutateAsync({
+                    decision_id: newId,
+                    content: itemText,
+                    sort_order: index,
+                    is_completed: false
+                });
+            }
+
+            setModalVisible(false);
+            resetForm();
+
         } catch (e) {
             console.error(e);
             Alert.alert('Hata', 'Karar eklenirken bir sorun oluştu.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
     const resetForm = () => {
         setTitle('');
         setContent('');
+        setItems([]);
         setImageUri(null);
     };
 
@@ -284,14 +345,42 @@ export const DecisionsScreen = () => {
                                 placeholder="Karar Başlığı"
                                 value={title}
                                 onChangeText={setTitle}
+                                autoComplete="off"
+                                importantForAutofill="no"
+                                textContentType="none"
                             />
                             <TextInput
-                                style={[styles.input, { height: 120, textAlignVertical: 'top' }]}
-                                placeholder="Alınan kararlar (İsteğe bağlı)"
+                                style={[styles.input, { height: 80, textAlignVertical: 'top' }]}
+                                placeholder="Genel Özet / Açıklama (İsteğe bağlı)"
                                 value={content}
                                 onChangeText={setContent}
                                 multiline
                             />
+
+                            {/* ITEM LIST BUILDER */}
+                            <View style={{ marginBottom: 20 }}>
+                                <Text style={styles.label}>Karar Maddeleri</Text>
+                                <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
+                                    <TextInput
+                                        style={[styles.input, { flex: 1, marginBottom: 0 }]}
+                                        placeholder="Madde yazın..."
+                                        value={currentItem}
+                                        onChangeText={setCurrentItem}
+                                    />
+                                    <TouchableOpacity style={styles.btnAddItem} onPress={addItem}>
+                                        <Ionicons name="add" size={24} color="#fff" />
+                                    </TouchableOpacity>
+                                </View>
+
+                                {items.map((item, index) => (
+                                    <View key={index} style={styles.itemRow}>
+                                        <Text style={styles.itemText}>{index + 1}. {item}</Text>
+                                        <TouchableOpacity onPress={() => removeItem(index)}>
+                                            <Ionicons name="close-circle" size={20} color="#EF4444" />
+                                        </TouchableOpacity>
+                                    </View>
+                                ))}
+                            </View>
 
                             <View style={styles.imagePickerContainer}>
                                 <Text style={styles.label}>Görsel Ekle (Opsiyonel)</Text>
@@ -316,8 +405,12 @@ export const DecisionsScreen = () => {
                                 )}
                             </View>
 
-                            <TouchableOpacity style={styles.btnSave} onPress={handleAddDecision}>
-                                <Text style={styles.btnSaveText}>KAYDET</Text>
+                            <TouchableOpacity
+                                style={[styles.btnSave, isSubmitting && { opacity: 0.7 }]}
+                                onPress={handleAddDecision}
+                                disabled={isSubmitting}
+                            >
+                                <Text style={styles.btnSaveText}>{isSubmitting ? 'KAYDEDİLİYOR...' : 'KAYDET'}</Text>
                             </TouchableOpacity>
                         </ScrollView>
                     </View>
@@ -430,5 +523,10 @@ const styles = StyleSheet.create({
     // Full Image Modal
     fullImageOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.9)', justifyContent: 'center', alignItems: 'center' },
     fullImage: { width: width, height: height * 0.8 },
-    closeFullImage: { position: 'absolute', top: 50, right: 20, zIndex: 20 }
+    closeFullImage: { position: 'absolute', top: 50, right: 20, zIndex: 20 },
+
+    // Item List Styles
+    btnAddItem: { backgroundColor: theme.colors.primary, width: 56, height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+    itemRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#F3F4F6', padding: 12, borderRadius: 12, marginBottom: 8 },
+    itemText: { fontSize: 15, color: '#374151', flex: 1, marginRight: 8 },
 });

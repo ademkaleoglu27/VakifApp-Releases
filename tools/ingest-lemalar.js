@@ -95,14 +95,15 @@ function ingestLemalar() {
     let paragraphIndex = 0;
 
     // Clean existing
-    db.prepare("DELETE FROM works WHERE id = ?").run(workSlug);
-    db.prepare("DELETE FROM sections WHERE work_id = ?").run(workSlug);
+    // Clean existing
     // Paragraphs cascade via manual query just in case
     // (We don't want to run expensive deletes if we can avoid, but for ingest it's safer)
     const sectionsToDelete = db.prepare("SELECT id FROM sections WHERE work_id = ?").all(workSlug);
     for (const s of sectionsToDelete) {
         db.prepare("DELETE FROM paragraphs WHERE section_id = ?").run(s.id);
     }
+    db.prepare("DELETE FROM sections WHERE work_id = ?").run(workSlug);
+    db.prepare("DELETE FROM works WHERE id = ?").run(workSlug);
 
     // Re-insert work
     insertWork.run(workSlug, workTitle, 2, 'Ana Kitaplar');

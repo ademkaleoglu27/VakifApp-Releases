@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Modal, TextInput, Alert } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, TextInput, Alert, Keyboard, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { theme } from '@/config/theme';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { useNavigation } from '@react-navigation/native';
@@ -28,6 +28,12 @@ export const DutyListScreen = () => {
 
     const fetchPools = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         const { data, error } = await supabase
             .from('rotation_pools')
             .select('*')
@@ -40,6 +46,9 @@ export const DutyListScreen = () => {
     };
 
     const fetchTypes = async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const { data } = await supabase.from('duty_types').select('*');
         if (data) {
             setDutyTypes(data);
@@ -76,6 +85,12 @@ export const DutyListScreen = () => {
 
         const daysStr = selectedDays.join(',');
         const cron = `0 ${selectedHour} * * ${daysStr}`;
+
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            alert('Supabase unavailable');
+            return;
+        }
 
         const { error } = await supabase.from('rotation_pools').insert({
             name: newName,
@@ -115,6 +130,12 @@ export const DutyListScreen = () => {
                     style: 'destructive',
                     onPress: async () => {
                         setLoading(true);
+                        const supabase = getSupabaseClient();
+                        if (!supabase) {
+                            setLoading(false);
+                            return;
+                        }
+
                         // Cascade delete manually just in case
                         await supabase.from('duty_assignments').delete().eq('pool_id', id);
                         await supabase.from('rotation_pool_members').delete().eq('pool_id', id);
@@ -171,7 +192,6 @@ export const DutyListScreen = () => {
             <PremiumHeader
                 title="Nöbet Listeleri"
                 backButton
-                onBackPress={() => navigation.navigate('DrawerRoot', { screen: 'MainTabs' } as any)}
             >
                 <TouchableOpacity onPress={() => setCreateModalVisible(true)} style={styles.addBtn}>
                     <Ionicons name="add" size={24} color={theme.colors.primary} />
@@ -190,62 +210,73 @@ export const DutyListScreen = () => {
                 />
             )}
 
-            {/* CREATE MODAL */}
-            <Modal visible={isCreateModalVisible} animationType="slide" presentationStyle="pageSheet">
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.modalTitle}>Yeni Grup Oluştur</Text>
-                        <TouchableOpacity onPress={() => setCreateModalVisible(false)}>
-                            <Text style={styles.closeText}>İptal</Text>
+            {/* CREATE MODAL (Custom Absolute View) */}
+            {isCreateModalVisible && (
+                <View style={styles.absoluteOverlay}>
+                    {/* Backdrop */}
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setCreateModalVisible(false); }} />
+
+                    {/* Content */}
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Yeni Grup Oluştur</Text>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setCreateModalVisible(false); }}>
+                                <Text style={styles.closeText}>İptal</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.formItem}>
+                            <Text style={styles.label}>Grup Adı</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={newName}
+                                onChangeText={setNewName}
+                                placeholder="Örn: Cuma Temizliği"
+                                placeholderTextColor="#94a3b8"
+                                autoComplete="off"
+                                importantForAutofill="no"
+                                textContentType="none"
+                                autoCorrect={false}
+                                spellCheck={false}
+                            />
+                        </View>
+
+                        <View style={styles.formItem}>
+                            <Text style={styles.label}>Hangi Günler?</Text>
+                            <View style={styles.daysRow}>
+                                {DAYS.map(day => (
+                                    <TouchableOpacity
+                                        key={day.val}
+                                        style={[styles.dayChip, selectedDays.includes(day.val) && styles.dayChipActive]}
+                                        onPress={() => toggleDay(day.val)}
+                                    >
+                                        <Text style={[styles.dayText, selectedDays.includes(day.val) && styles.dayTextActive]}>{day.label}</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+
+                        <View style={styles.formItem}>
+                            <Text style={styles.label}>Saat (Her sabah bildirim gider)</Text>
+                            <View style={styles.daysRow}>
+                                {['07', '09', '12', '18', '20', '21'].map(h => (
+                                    <TouchableOpacity
+                                        key={h}
+                                        style={[styles.dayChip, selectedHour === h && styles.dayChipActive]}
+                                        onPress={() => setSelectedHour(h)}
+                                    >
+                                        <Text style={[styles.dayText, selectedHour === h && styles.dayTextActive]}>{h}:00</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+
+                        <TouchableOpacity style={styles.createBtn} onPress={handleCreate}>
+                            <Text style={styles.createBtnText}>Oluştur</Text>
                         </TouchableOpacity>
                     </View>
-
-                    <View style={styles.formItem}>
-                        <Text style={styles.label}>Grup Adı</Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Örn: Cuma Temizliği"
-                            placeholderTextColor="#94a3b8"
-                            value={newName}
-                            onChangeText={setNewName}
-                        />
-                    </View>
-
-                    <View style={styles.formItem}>
-                        <Text style={styles.label}>Hangi Günler?</Text>
-                        <View style={styles.daysRow}>
-                            {DAYS.map(day => (
-                                <TouchableOpacity
-                                    key={day.val}
-                                    style={[styles.dayChip, selectedDays.includes(day.val) && styles.dayChipActive]}
-                                    onPress={() => toggleDay(day.val)}
-                                >
-                                    <Text style={[styles.dayText, selectedDays.includes(day.val) && styles.dayTextActive]}>{day.label}</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                    </View>
-
-                    <View style={styles.formItem}>
-                        <Text style={styles.label}>Saat (Her sabah bildirim gider)</Text>
-                        <View style={styles.daysRow}>
-                            {['07', '09', '12', '18', '20', '21'].map(h => (
-                                <TouchableOpacity
-                                    key={h}
-                                    style={[styles.dayChip, selectedHour === h && styles.dayChipActive]}
-                                    onPress={() => setSelectedHour(h)}
-                                >
-                                    <Text style={[styles.dayText, selectedHour === h && styles.dayTextActive]}>{h}:00</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                    </View>
-
-                    <TouchableOpacity style={styles.createBtn} onPress={handleCreate}>
-                        <Text style={styles.createBtnText}>Oluştur</Text>
-                    </TouchableOpacity>
                 </View>
-            </Modal>
+            )}
         </View>
     );
 };
@@ -296,7 +327,30 @@ const styles = StyleSheet.create({
     empty: { textAlign: 'center', marginTop: 40, color: '#94a3b8' },
 
     // Modal Styles
-    modalContainer: { flex: 1, backgroundColor: 'white', padding: 24 },
+    absoluteOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999, // Ensure it's on top
+        justifyContent: 'flex-end', // Bottom sheet style or 'center' for center
+    },
+    backdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 24,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        maxHeight: '90%',
+    },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 32 },
     modalTitle: { fontSize: 24, fontWeight: 'bold', color: '#0f172a' },
     closeText: { fontSize: 16, color: '#64748b' },

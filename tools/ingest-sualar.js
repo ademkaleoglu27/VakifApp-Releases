@@ -2,47 +2,45 @@ const fs = require('fs');
 const path = require('path');
 const Database = require('better-sqlite3');
 
-// --- ⚙️ CONFIGURATION (UPDATE THESE) ---
-const WORK_SLUG = 'sualar';               // e.g. 'sualar'
-const WORK_TITLE = 'Şualar';              // e.g. 'Şualar'
-const BOOK_ID = `risale.${WORK_SLUG}@diyanet.tr`;
-const VERSION = 'v1';
-const ORDER_INDEX = 3;                     // Sozler=0, Mektubat=1, Lemalar=2, Sualar=3
-const JSON_FILENAME = `${WORK_SLUG}.json`;  // Ensure this file exists in assets/risale_json/
-
 const DB_PATH = path.join(__dirname, '../assets/risale.db');
-const JSON_PATH = path.join(__dirname, `../assets/risale_json/${JSON_FILENAME}`);
-const META_PATH = path.join(__dirname, '../assets/content/content.meta.json');
-// ----------------------------------------
+const JSON_PATH = path.join(__dirname, '../assets/risale_json/sualar.json');
 
 const db = new Database(DB_PATH);
 
-function ingestBook() {
-    console.log(`📖 Reading ${WORK_TITLE} JSON...`);
+function ingestSualar() {
+    console.log('📖 Reading Şualar JSON...');
     if (!fs.existsSync(JSON_PATH)) {
-        console.error(`❌ JSON not found at: ${JSON_PATH}`);
+        console.error('❌ Şualar JSON not found!');
         process.exit(1);
     }
     const data = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'));
 
-    console.log(`📘 Processing Work: ${WORK_TITLE} (${WORK_SLUG})`);
+    // Config for Şualar
+    const workSlug = 'sualar';
+    const bookId = 'risale.sualar@diyanet.tr';
+    const workTitle = 'Şualar';
+    const version = 'v1';
 
-    // 0. Schema Migration (Auto-fix for assets/risale.db)
+    console.log(`📘 Processing Work: ${workTitle} (${workSlug})`);
+
+    // 0. Schema Migration
     const columns = db.prepare("PRAGMA table_info(sections)").all().map(c => c.name);
 
-    ['section_uid', 'book_id', 'version', 'type'].forEach(col => {
-        if (!columns.includes(col)) {
-            console.log(`🔧 Adding missing column: ${col}`);
-            db.prepare(`ALTER TABLE sections ADD COLUMN ${col} TEXT`).run();
-        }
-    });
+    if (!columns.includes('section_uid')) db.prepare("ALTER TABLE sections ADD COLUMN section_uid TEXT").run();
+    if (!columns.includes('book_id')) db.prepare("ALTER TABLE sections ADD COLUMN book_id TEXT").run();
+    if (!columns.includes('version')) db.prepare("ALTER TABLE sections ADD COLUMN version TEXT").run();
+    if (!columns.includes('type')) db.prepare("ALTER TABLE sections ADD COLUMN type TEXT").run();
 
-    // 1. Prepare Statements
+    // 1. Insert Work
     const insertWork = db.prepare(`
         INSERT OR REPLACE INTO works (id, title, order_index, category) 
         VALUES (?, ?, ?, ?)
     `);
 
+    // Şualar order_index = 3
+    insertWork.run(workSlug, workTitle, 3, 'Ana Kitaplar');
+
+    // 2. Process Blocks into Sections & Paragraphs
     const insertSection = db.prepare(`
         INSERT INTO sections (id, work_id, title, order_index, type, parent_id, section_uid, book_id, version) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -53,92 +51,61 @@ function ingestBook() {
         VALUES (?, ?, ?, ?, ?, ?)
     `);
 
-    // 2. Clear Existing Data
-    console.log('🧹 Clearing existing data...');
-    db.prepare("DELETE FROM works WHERE id = ?").run(WORK_SLUG);
-
-    const sectionsToDelete = db.prepare("SELECT id FROM sections WHERE work_id = ?").all(WORK_SLUG);
-    const deleteParagraphsStmt = db.prepare("DELETE FROM paragraphs WHERE section_id = ?");
-    for (const s of sectionsToDelete) {
-        deleteParagraphsStmt.run(s.id);
-    }
-    db.prepare("DELETE FROM sections WHERE work_id = ?").run(WORK_SLUG);
-
-    db.prepare(`DELETE FROM paragraphs WHERE section_id LIKE '${WORK_SLUG}-%'`).run();
-    db.prepare(`DELETE FROM paragraphs WHERE section_id LIKE '${WORK_SLUG}_%'`).run();
-
-    // 3. Process & Insert
-    console.log('📝 Inserting new data...');
-    insertWork.run(WORK_SLUG, WORK_TITLE, ORDER_INDEX, 'Ana Kitaplar');
-
     let sectionIndex = 0;
     let paragraphIndex = 0;
 
-    // Intro Section
-    let currentSectionId = `${WORK_SLUG}-intro`;
-    let currentSectionUid = `${WORK_SLUG}_intro`;
-    let currentSectionTitle = 'Mukaddime';
-    let currentType = 'main';
+    // Clean existing
+    console.log('Cleaning existing Şualar content...');
+    db.prepare("DELETE FROM paragraphs WHERE section_id IN (SELECT id FROM sections WHERE work_id = ?)").run(workSlug);
+    db.prepare("DELETE FROM sections WHERE work_id = ?").run(workSlug);
 
-    insertSection.run(currentSectionId, WORK_SLUG, currentSectionTitle, sectionIndex++, currentType, null, currentSectionUid, BOOK_ID, VERSION);
+    const blocks = data.blocks || [];
+    let currentSection = null;
 
-    const transaction = db.transaction(() => {
-        for (const block of data.blocks) {
-            if (block.type === 'heading') {
-                const cleanTitle = block.text.trim();
-                currentSectionId = `${WORK_SLUG}-${sectionIndex}`;
-                currentSectionUid = `${WORK_SLUG}_${sectionIndex}`;
-                currentSectionTitle = cleanTitle;
-                paragraphIndex = 0;
+    db.transaction(() => {
+        for (const block of blocks) {
+            // New Section
+            if (block.type === 'section') {
+                sectionIndex++;
+                const sectionId = `${workSlug}_${sectionIndex}`;
+                // UID is sanitized title or just ID
+                const uid = sectionId;
+
+                currentSection = sectionId;
 
                 insertSection.run(
-                    currentSectionId,
-                    WORK_SLUG,
-                    currentSectionTitle,
-                    sectionIndex++,
-                    'chapter',
+                    sectionId,
+                    workSlug,
+                    block.title || `Bölüm ${sectionIndex}`,
+                    sectionIndex,
+                    'CHAPTER',
                     null,
-                    currentSectionUid,
-                    BOOK_ID,
-                    VERSION
+                    uid,
+                    bookId,
+                    version
                 );
-                continue;
             }
+            // Content Paragraph
+            // Fixed: Check for p, h1-h6, quote, arabic
+            else if (['p', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'quote', 'arabic'].includes(block.type)) {
+                if (!currentSection) continue;
 
-            const pId = `${currentSectionId}-${paragraphIndex}`;
-            const isArabic = block.type === 'arabic_block' ? 1 : 0;
+                paragraphIndex++;
+                const isArabic = block.type === 'arabic' ? 1 : 0;
 
-            insertParagraph.run(
-                pId,
-                currentSectionId,
-                block.text,
-                paragraphIndex++,
-                isArabic,
-                0
-            );
+                insertParagraph.run(
+                    `${workSlug}_p_${paragraphIndex}`,
+                    currentSection,
+                    block.text, // Text content
+                    paragraphIndex,
+                    isArabic,
+                    0 // page_no placeholder
+                );
+            }
         }
-    });
+    })();
 
-    transaction();
-    console.log(`✅ Imported ${sectionIndex} sections.`);
-
-    // 4. Verification
-    const secCount = db.prepare("SELECT COUNT(*) as c FROM sections WHERE work_id = ?").get(WORK_SLUG);
-    const paraCount = db.prepare("SELECT COUNT(*) as c FROM paragraphs WHERE section_id LIKE ?").get(`${WORK_SLUG}%`);
-    console.log(`📊 Verification: ${secCount.c} sections, ${paraCount.c} paragraphs.`);
-
-    // 5. Meta Bump
-    if (fs.existsSync(META_PATH)) {
-        const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf-8'));
-        meta.version += 1;
-        meta.lastUpdated = new Date().toISOString();
-        fs.writeFileSync(META_PATH, JSON.stringify(meta, null, 2));
-        console.log(`🆙 Bumped DB Version to: ${meta.version}`);
-    } else {
-        console.warn('⚠️ content.meta.json not found, version not bumped.');
-    }
-
-    db.close();
+    console.log(`✅ Ingested ${sectionIndex} sections and ${paragraphIndex} paragraphs.`);
 }
 
-ingestBook();
+ingestSualar();

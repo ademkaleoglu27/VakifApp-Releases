@@ -12,6 +12,7 @@ export const ReadingTrackingScreen = () => {
     const [activeTab, setActiveTab] = useState<TabType>('WEEKLY');
     const [data, setData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useFocusEffect(
         React.useCallback(() => {
@@ -21,26 +22,36 @@ export const ReadingTrackingScreen = () => {
 
     const loadData = async () => {
         setLoading(true);
-        setData([]); // Clear old data to prevent flashing
+        setData([]);
+        setError(null);
         try {
+            const { ReadingStatsService } = require('@/services/ReadingStatsService');
             let result = [];
-            if (activeTab === 'WEEKLY') {
-                result = await RisaleUserDb.getReadingStats('weekly');
-            } else if (activeTab === 'MONTHLY') {
-                result = await RisaleUserDb.getReadingStats('monthly');
-            } else if (activeTab === 'YEARLY') {
-                result = await RisaleUserDb.getReadingStats('yearly');
+
+            if (activeTab === 'ALERTS') {
+                // Mode: needsAttention (All zeros)
+                result = await ReadingStatsService.fetchLeaderboard('week', 'needsAttention');
             } else {
-                result = await RisaleUserDb.getInactiveUsers(21); // 3 weeks
+                // Mode: full (All users)
+                // Map Tab to Range: WEEKLY -> week, MONTHLY -> month, YEARLY -> year
+                const rangeMap: Record<string, 'week' | 'month' | 'year'> = {
+                    'WEEKLY': 'week',
+                    'MONTHLY': 'month',
+                    'YEARLY': 'year'
+                };
+                const range = rangeMap[activeTab] || 'week';
+                result = await ReadingStatsService.fetchLeaderboard(range, 'full');
             }
-            setData(result || []);
-        } catch (e) {
-            console.error(e);
-            Alert.alert('Hata', 'Veriler yüklenemedi.');
+
+            setData(result);
+        } catch (e: any) {
+            const errMsg = e?.message || String(e);
+            setError(errMsg);
         } finally {
             setLoading(false);
         }
     };
+
 
     const handleCall = (phone: string) => {
         if (!phone) return;
@@ -53,27 +64,32 @@ export const ReadingTrackingScreen = () => {
     };
 
     const renderItem = ({ item }: { item: any }) => {
-        const nameInitial = item.name ? item.name[0] : '?';
-        const surnameInitial = item.surname ? item.surname[0] : '';
-        const displayName = `${item.name || ''} ${item.surname || ''}`.trim() || 'İsimsiz';
+        if (!item) return null;
+
+        // Support both snake_case (from RPC) and camelCase (legacy) field names
+        const displayName = item.display_name || item.displayName || 'İsimsiz';
+        const initials = item.initials || displayName?.[0] || '?';
+        const totalPages = item.total_pages || item.totalPages || 0;
+        const lastReadingDate = item.last_reading_date || item.lastReadingDate;
+        const phone = item.phone || '';
 
         return (
             <View style={styles.card}>
                 <View style={styles.avatar}>
-                    <Text style={styles.avatarText}>{nameInitial}{surnameInitial}</Text>
+                    <Text style={styles.avatarText}>{initials}</Text>
                 </View>
 
                 <View style={styles.info}>
                     <Text style={styles.name}>{displayName}</Text>
                     {activeTab !== 'ALERTS' ? (
-                        <Text style={styles.stats}>{item.total_pages || 0} Sayfa</Text>
+                        <Text style={styles.stats}>{totalPages} Sayfa</Text>
                     ) : (
                         <Text style={styles.alertText}>
                             {(() => {
-                                if (!item.last_reading_date) return 'Hiç okuma kaydı yok';
+                                if (!lastReadingDate) return 'Hiç okuma kaydı yok';
 
                                 const now = new Date();
-                                const last = new Date(item.last_reading_date);
+                                const last = new Date(lastReadingDate);
                                 const diffTime = Math.abs(now.getTime() - last.getTime());
                                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -87,12 +103,12 @@ export const ReadingTrackingScreen = () => {
                 </View>
 
                 <View style={styles.actions}>
-                    {item.phone && (
+                    {phone && (
                         <>
-                            <TouchableOpacity onPress={() => handleCall(item.phone)} style={[styles.actionBtn, styles.callBtn]}>
+                            <TouchableOpacity onPress={() => handleCall(phone)} style={[styles.actionBtn, styles.callBtn]}>
                                 <Ionicons name="call" size={18} color="#0284C7" />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => handleWhatsApp(item.phone)} style={[styles.actionBtn, styles.whatsappBtn]}>
+                            <TouchableOpacity onPress={() => handleWhatsApp(phone)} style={[styles.actionBtn, styles.whatsappBtn]}>
                                 <Ionicons name="logo-whatsapp" size={18} color="#16A34A" />
                             </TouchableOpacity>
                         </>
@@ -136,12 +152,22 @@ export const ReadingTrackingScreen = () => {
             {loading ? (
                 <View style={styles.loadingContainer}>
                     <ActivityIndicator size="large" color={theme.colors.primary} />
+                    <Text style={{ marginTop: 12, color: '#64748B' }}>Yükleniyor...</Text>
+                </View>
+            ) : error ? (
+                <View style={styles.errorContainer}>
+                    <Ionicons name="warning-outline" size={48} color="#EF4444" />
+                    <Text style={styles.errorTitle}>Bir Hata Oluştu</Text>
+                    <Text style={styles.errorText}>{error}</Text>
+                    <TouchableOpacity style={styles.retryBtn} onPress={loadData}>
+                        <Text style={styles.retryBtnText}>Tekrar Dene</Text>
+                    </TouchableOpacity>
                 </View>
             ) : (
                 <FlatList
                     data={data}
                     renderItem={renderItem}
-                    keyExtractor={(item) => item.id.toString()}
+                    keyExtractor={(item, index) => item?.user_id || item?.id?.toString() || `item-${index}`}
                     contentContainerStyle={styles.list}
                     ListEmptyComponent={
                         <View style={styles.empty}>
@@ -271,5 +297,35 @@ const styles = StyleSheet.create({
         marginTop: 12,
         color: '#94A3B8',
         fontSize: 16,
+    },
+    errorContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 24,
+    },
+    errorTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1E293B',
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    errorText: {
+        fontSize: 14,
+        color: '#64748B',
+        textAlign: 'center',
+        marginBottom: 24,
+    },
+    retryBtn: {
+        backgroundColor: theme.colors.primary,
+        paddingHorizontal: 24,
+        paddingVertical: 12,
+        borderRadius: 12,
+    },
+    retryBtnText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 14,
     }
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, StyleSheet, StatusBar, Platform } from 'react-native';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { DutyAssignment } from '@/types/duty';
 import { format } from 'date-fns';
 import { tr } from 'date-fns/locale';
@@ -19,6 +19,12 @@ export const DutyDashboardScreen = () => {
 
     const fetchDuties = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
@@ -44,6 +50,9 @@ export const DutyDashboardScreen = () => {
 
     const handleAction = async (id: string, action: 'ACCEPT' | 'PASS') => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
             const { data, error } = await supabase.functions.invoke('respond_assignment', {
                 body: { assignment_id: id, action }
             });
@@ -68,9 +77,31 @@ export const DutyDashboardScreen = () => {
                     style: 'destructive',
                     onPress: async () => {
                         try {
-                            const { error } = await supabase.from('duty_assignments').delete().eq('id', id);
-                            if (error) throw error;
+                            const supabase = getSupabaseClient();
+                            if (!supabase) return;
+
+                            // OPTIMISTIC UPDATE: Remove from UI immediately
+                            setMyDuties(prev => prev.filter(d => d.id !== id));
+
+                            // Perform actual delete
+                            const { error, count } = await supabase
+                                .from('duty_assignments')
+                                .delete()
+                                .eq('id', id)
+                                .select();
+
+                            // DEBUG: Log delete result
+                            console.log('[DutyDelete] id:', id, 'error:', error, 'deleted count:', count);
+
+                            if (error) {
+                                // Revert optimistic update on error
+                                console.error('[DutyDelete] Failed, refetching:', error);
+                                fetchDuties();
+                                throw error;
+                            }
+
                             Alert.alert('Başarılı', 'Görev silindi.');
+                            // Refresh to ensure sync (already optimistically updated)
                             fetchDuties();
                         } catch (e: any) {
                             Alert.alert('Hata', 'Silme işlemi başarısız: ' + e.message);

@@ -1,12 +1,15 @@
 import { User, Role } from '@/types/auth';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { Alert } from 'react-native';
 
 // Removed MOCK_USER and WAIT_TIME
 
 export const authService = {
-    register: async (email: string, password: string, name: string): Promise<{ user: User; token: string }> => {
+    register: async (email: string, password: string, name: string, vakifCode?: string): Promise<{ user: User; token: string }> => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase client not initialized (Env invalid).');
+
             // 1. Sign up with Supabase
             const { data: authData, error: authError } = await supabase.auth.signUp({
                 email,
@@ -14,6 +17,7 @@ export const authService = {
                 options: {
                     data: {
                         name: name, // Metadata
+                        vakif_code: vakifCode // Multi-Tenant Code
                     }
                 }
             });
@@ -21,51 +25,57 @@ export const authService = {
             if (authError) throw authError;
             if (!authData.user) throw new Error('Kullanıcı oluşturulamadı.');
 
-            // 2. Create Profile (if trigger doesn't exist, we do it manually)
-            // It's safer to upsert just in case trigger exists
-            const { error: profileError } = await supabase
+            // 2. Create Profile (Handled by DB Trigger)
+            // We do NOT manually insert/upsert here to avoid RLS conflicts.
+            // The trigger 'handle_new_user' guarantees profile creation.
+
+            // 3. Wait for Trigger & Fetch Profile
+            // The DB trigger 'handle_new_user' assigns the role/vakif. We need to fetch it.
+            await new Promise(r => setTimeout(r, 1000)); // 1s delay for trigger propagation
+
+            const { data: profileData, error: profileError } = await supabase
                 .from('profiles')
-                .upsert({
-                    id: authData.user.id,
-                    display_name: name,
-                    role: 'sohbet_member' // Default role
-                });
+                .select('*')
+                .eq('id', authData.user.id)
+                .single();
 
             if (profileError) {
-                console.error('Profile creation error:', profileError);
-                // Continue, as user exists in Auth
+                console.warn('Register-time profile fetch failed, defaulting to guest', profileError);
+                // Fallback if fetch fails
+                return {
+                    user: {
+                        id: authData.user.id,
+                        email: authData.user.email || email,
+                        name: name,
+                        role: 'guest',
+                        group: 'MİSAFİR',
+                        avatarUrl: 'https://i.pravatar.cc/150?u=' + authData.user.id,
+                    },
+                    token: authData.session?.access_token || '',
+                };
             }
 
-            // 3. Create Contact for Leaderboard Linking
-            // We need to add this user to 'contacts' table too so they can be tracked in 'Weekly Reading'
-            // We'll use a server-side function ideally, but here we can try client-side if policy allows.
-            // If fail, we just log.
-            try {
-                // Check if contact exists? Unlikely for new user.
-                const { error: contactError } = await supabase
-                    .from('contacts')
-                    .insert({
-                        // using user id as contact id if possible, otherwise UUID
-                        // BUT contact IDs are usually UUIDs. 
-                        // Ideally we link contact -> user_id, but schema might not have it.
-                        // For now, insert Name/Surname.
-                        name: name,
-                        surname: '', // Or split name
-                        phone: '',
-                        group_type: 'SOHBET'
-                    });
+            // Map DB Profile to App User
+            const role: Role = (profileData?.role as Role) || 'sohbet_member';
+            const group = (role === 'mesveret_admin' || role === 'accountant' || role === 'platform_admin')
+                ? 'MEŞVERET HEYETİ'
+                : 'SOHBET HEYETİ';
 
-                if (contactError) console.warn('Contact auto-create failed:', contactError);
-            } catch (e) {
-                console.warn('Contact create exception', e);
+            // Set Context
+            if (profileData?.vakif_id) {
+                require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                    id: profileData.vakif_id,
+                    name: 'Vakfım',
+                    slug: 'current-vakif'
+                });
             }
 
             const user: User = {
                 id: authData.user.id,
                 email: authData.user.email || email,
-                name: name,
-                role: 'sohbet_member',
-                group: 'SOHBET HEYETİ',
+                name: profileData?.display_name || name,
+                role,
+                group,
                 avatarUrl: 'https://i.pravatar.cc/150?u=' + authData.user.id,
             };
 
@@ -82,6 +92,9 @@ export const authService = {
 
     login: async (email: string, password: string): Promise<{ user: User; token: string }> => {
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase client not initialized.');
+
             // 1. Sign in with Supabase
             const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
                 email,
@@ -104,7 +117,19 @@ export const authService = {
 
             // Map Supabase User to App User
             const role: Role = (profileData?.role as Role) || 'sohbet_member';
-            const group = role === 'mesveret_admin' || role === 'accountant' ? 'MEŞVERET HEYETİ' : 'SOHBET HEYETİ';
+            const group = (role === 'mesveret_admin' || role === 'accountant' || role === 'platform_admin')
+                ? 'MEŞVERET HEYETİ'
+                : 'SOHBET HEYETİ';
+
+            // MULTI-TENANT: Set Global Vakif Context
+            if (profileData?.vakif_id) {
+                // We'd ideally fetch vakif name too, but for now ID is enough for logic
+                require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                    id: profileData.vakif_id,
+                    name: 'Vakfım',
+                    slug: 'current-vakif'
+                });
+            }
 
             const user: User = {
                 id: authData.user.id,
@@ -127,11 +152,20 @@ export const authService = {
     },
 
     logout: async (): Promise<void> => {
+        // Clear Vakif Context
+        require('@/store/vakifStore').useVakifStore.getState().clear();
+
+        const supabase = getSupabaseClient();
+        if (!supabase) return; // already out effectively
+
         const { error } = await supabase.auth.signOut();
         if (error) throw error;
     },
 
     getUser: async (): Promise<User | null> => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return null;
+
         const { data: { session } } = await supabase.auth.getSession();
         if (!session?.user) return null;
 
@@ -144,6 +178,15 @@ export const authService = {
 
         const role: Role = (profile?.role as Role) || 'sohbet_member';
         const group = role === 'mesveret_admin' || role === 'accountant' ? 'MEŞVERET HEYETİ' : 'SOHBET HEYETİ';
+
+        // MULTI-TENANT: Restore Vakif Context
+        if (profile?.vakif_id) {
+            require('@/store/vakifStore').useVakifStore.getState().setVakif({
+                id: profile.vakif_id,
+                name: 'Vakfım', // Ideally fetch from DB, but this suffices for logic
+                slug: 'current-vakif'
+            });
+        }
 
         return {
             id: session.user.id,

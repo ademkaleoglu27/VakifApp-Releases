@@ -13,6 +13,8 @@ export const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPasswordVisible, setPasswordVisible] = useState(false);
+    const [vakifCode, setVakifCode] = useState('');
+    const [isGuestMode, setIsGuestMode] = useState(false);
 
     // Auth Store
     const { login, setLoading, isLoading } = useAuthStore();
@@ -36,7 +38,8 @@ export const LoginScreen = () => {
 
             if (isRegistering) {
                 // Register Flow
-                const result = await authService.register(email, password, name);
+                const codeToSend = isGuestMode ? 'MISAFIR' : vakifCode;
+                const result = await authService.register(email, password, name, codeToSend);
                 user = result.user;
                 token = result.token;
                 Alert.alert('Hoşgeldiniz', 'Kayıt başarılı! Giriş yapılıyor...');
@@ -115,20 +118,49 @@ export const LoginScreen = () => {
 
                         <View style={styles.form}>
                             {isRegistering && (
-                                <View style={styles.inputGroup}>
-                                    <View style={styles.inputIcon}>
-                                        <Ionicons name="person-outline" size={20} color={theme.colors.primary} />
+                                <>
+                                    <View style={styles.inputGroup}>
+                                        <View style={styles.inputIcon}>
+                                            <Ionicons name="person-outline" size={20} color={theme.colors.primary} />
+                                        </View>
+                                        <TextInput
+                                            style={styles.input}
+                                            placeholder="Ad Soyad"
+                                            placeholderTextColor="#94A3B8"
+                                            value={name}
+                                            onChangeText={setName}
+                                            autoCapitalize="words"
+                                            editable={!isLoading}
+                                        />
                                     </View>
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Ad Soyad"
-                                        placeholderTextColor="#94A3B8"
-                                        value={name}
-                                        onChangeText={setName}
-                                        autoCapitalize="words"
-                                        editable={!isLoading}
-                                    />
-                                </View>
+
+                                    {/* Vakif Code Section */}
+                                    <View style={styles.inputGroup}>
+                                        <View style={styles.inputIcon}>
+                                            <Ionicons name={isGuestMode ? "earth-outline" : "qr-code-outline"} size={20} color={theme.colors.primary} />
+                                        </View>
+                                        <TextInput
+                                            style={[styles.input, isGuestMode && { color: '#64748B', fontStyle: 'italic' }]}
+                                            placeholder={isGuestMode ? "Bireysel (Misafir) Modu" : "Vakıf Katılım Kodu"}
+                                            placeholderTextColor="#94A3B8"
+                                            value={isGuestMode ? "Bireysel (Misafir) Modu" : vakifCode}
+                                            onChangeText={setVakifCode}
+                                            autoCapitalize="characters"
+                                            editable={!isLoading && !isGuestMode}
+                                        />
+                                    </View>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            if (!isGuestMode) setVakifCode(''); // Clear code when switching to guest
+                                            setIsGuestMode(!isGuestMode);
+                                        }}
+                                        style={{ alignSelf: 'flex-end', marginTop: -8, marginBottom: 8, padding: 4 }}
+                                    >
+                                        <Text style={{ color: theme.colors.primary, fontSize: 12, fontWeight: '600' }}>
+                                            {isGuestMode ? "Mevcut bir vakıf kodum var" : "Vakıf kodum yok / Bireysel devam et"}
+                                        </Text>
+                                    </TouchableOpacity>
+                                </>
                             )}
 
                             <View style={styles.inputGroup}>

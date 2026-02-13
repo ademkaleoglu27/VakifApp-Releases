@@ -1,6 +1,7 @@
-import { supabase } from './supabaseClient';
+import { getSupabaseClient } from './supabaseClient';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
+import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 export const notificationService = {
@@ -35,16 +36,16 @@ export const notificationService = {
                     return undefined;
                 }
 
-                // Try to get Device Push Token (FCM)
-                // This will fail if Firebase is not correctly configured in native code
+                // Try to get Expo Push Token (which wraps FCM for Android)
+                // This requires correctly configured google-services.json and projectId
                 try {
-                    const tokenData = await Notifications.getDevicePushTokenAsync();
+                    const tokenData = await Notifications.getExpoPushTokenAsync({
+                        projectId: Constants.expoConfig?.extra?.eas?.projectId
+                    });
                     token = tokenData.data;
+                    console.log("[Token] Expo Push Token:", token);
                 } catch (e) {
-                    console.warn("[Notification] FCM token fetch failed (Dev mode?):", e);
-                    // attempt fallback or just proceed without token
-                    // const expoToken = await Notifications.getExpoPushTokenAsync();
-                    // token = expoToken.data;
+                    console.warn("[Notification] Token fetch failed:", e);
                     return undefined;
                 }
             } else {
@@ -65,6 +66,11 @@ export const notificationService = {
     },
 
     syncToken: async (token: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            console.warn('[Notification] Token sync skipped: Supabase unavailable');
+            return;
+        }
         const { data, error } = await supabase.functions.invoke('register_push_token', {
             body: {
                 token: token,
@@ -78,6 +84,9 @@ export const notificationService = {
     },
 
     getNotifications: async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return [];
+
         const { data, error } = await supabase
             .from('notifications')
             .select('*')
@@ -88,6 +97,9 @@ export const notificationService = {
     },
 
     markAsRead: async (id: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const { error } = await supabase
             .from('notifications')
             .update({ is_read: true })

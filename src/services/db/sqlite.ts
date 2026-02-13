@@ -27,6 +27,20 @@ export const initDb = async () => {
         );
     `);
 
+    // 1.1 Decision Items Table (Structured)
+    await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS decision_items (
+            id TEXT PRIMARY KEY,
+            decision_id TEXT NOT NULL,
+            content TEXT NOT NULL,
+            is_completed INTEGER DEFAULT 0,
+            sort_order INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            vakif_id TEXT,
+            FOREIGN KEY(decision_id) REFERENCES decisions(id) ON DELETE CASCADE
+        );
+    `);
+
 
 
     // 2. Transactions Table (Mirror)
@@ -58,6 +72,9 @@ export const initDb = async () => {
     try {
         await db.execAsync('ALTER TABLE reading_logs ADD COLUMN created_at TEXT;');
     } catch (e) { /* Column likely exists */ }
+    try {
+        await db.execAsync('ALTER TABLE reading_logs ADD COLUMN vakif_id TEXT;');
+    } catch (e) { /* Column likely exists */ }
 
     // SCHEMA MIGRATION: decisions attachment_url
     try {
@@ -67,6 +84,16 @@ export const initDb = async () => {
     // SCHEMA MIGRATION: hatims type
     try {
         await db.execAsync('ALTER TABLE hatims ADD COLUMN type TEXT;');
+    } catch (e) { /* Column likely exists */ }
+
+    // SCHEMA MIGRATION: contacts.user_id for deterministic reading tracking
+    try {
+        await db.execAsync('ALTER TABLE contacts ADD COLUMN user_id TEXT;');
+    } catch (e) { /* Column likely exists */ }
+
+    // SCHEMA MIGRATION: contacts.vakif_id for multi-tenant
+    try {
+        await db.execAsync('ALTER TABLE contacts ADD COLUMN vakif_id TEXT;');
     } catch (e) { /* Column likely exists */ }
 
 
@@ -235,6 +262,14 @@ export const initDb = async () => {
         );
     `);
 
+    // 16. Reading Leaderboard Cache (Centralized Stats)
+    await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS reading_leaderboard_cache (
+            key TEXT PRIMARY KEY, -- vakif_id:range:mode
+            payload TEXT NOT NULL,
+            updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+    `);
 
 };
 

@@ -12,6 +12,8 @@ import { requireFeature } from '@/utils/guard';
 import { NoAccess } from '@/components/NoAccess';
 import { useAuthStore } from '@/store/authStore';
 import { canAccess } from '@/config/permissions';
+import { excelService } from '@/services/excelService';
+import { Alert } from 'react-native';
 
 export const AccountingScreen = () => {
     if (!requireFeature('ACCOUNTING_SCREEN')) return <NoAccess />;
@@ -59,7 +61,9 @@ export const AccountingScreen = () => {
     // Filter Logic
     const filteredTransactions = transactions?.filter(t => {
         const tDate = new Date(t.date);
-        return tDate.getMonth() === currentDate.getMonth() && tDate.getFullYear() === currentDate.getFullYear();
+        // Use local year and month comparison
+        return tDate.getMonth() === currentDate.getMonth() &&
+            tDate.getFullYear() === currentDate.getFullYear();
     }) || [];
 
     // Calculate Summary Dynamically
@@ -69,6 +73,26 @@ export const AccountingScreen = () => {
         return acc;
     }, { totalIncome: 0, totalExpense: 0, balance: 0 });
     monthlySummary.balance = monthlySummary.totalIncome - monthlySummary.totalExpense;
+
+    const [isExporting, setIsExporting] = useState(false);
+    const handleExport = async () => {
+        if (filteredTransactions.length === 0) {
+            Alert.alert('Uyarı', 'Bu ay için dışa aktarılacak işlem bulunamadı.');
+            return;
+        }
+
+        try {
+            setIsExporting(true);
+            // Re-sync before export to ensure we have the very latest data
+            await syncMutation.mutateAsync();
+            const monthName = currentDate.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' });
+            await excelService.exportTransactions(filteredTransactions, monthName);
+        } catch (e: any) {
+            Alert.alert('Hata', 'Excel dökümü oluşturulurken bir hata oluştu: ' + e.message);
+        } finally {
+            setIsExporting(false);
+        }
+    };
 
     if (isLoading) {
         return (
@@ -97,6 +121,23 @@ export const AccountingScreen = () => {
                     <TouchableOpacity onPress={goToNextMonth} style={styles.arrowBtn}>
                         <Ionicons name="chevron-forward" size={20} color="#fff" />
                     </TouchableOpacity>
+
+                    {/* Excel Export Button (Only for authorized users) */}
+                    {canViewDetails && (
+                        <TouchableOpacity
+                            onPress={handleExport}
+                            style={[styles.exportBtn, isExporting && { opacity: 0.5 }]}
+                            disabled={isExporting}
+                            activeOpacity={0.7}
+                        >
+                            {isExporting ? (
+                                <ActivityIndicator size="small" color="#fff" />
+                            ) : (
+                                <Ionicons name="download-outline" size={20} color="#fff" />
+                            )}
+                            <Text style={styles.exportBtnText}>Excel</Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
             </PremiumHeader>
 
@@ -128,26 +169,36 @@ export const AccountingScreen = () => {
                     </View>
                 </View>
 
-                <View style={styles.listHeader}>
-                    <Text style={styles.sectionTitle}>Son İşlemler</Text>
-                </View>
-
-                <FlatList
-                    data={filteredTransactions}
-                    keyExtractor={(item, index) => item.id || `transaction-${index}`}
-                    renderItem={({ item }) => (
-                        <TransactionCard
-                            transaction={item}
-                            onDelete={canManage ? () => handleDelete(item.id) : undefined}
-                        />
-                    )}
-                    contentContainerStyle={styles.list}
-                    ListEmptyComponent={
-                        <View style={styles.emptyContainer}>
-                            <Text style={styles.emptyText}>Bu ay için işlem bulunamadı.</Text>
+                {/* List and FAB are restricted to authorized roles (Accounting/Admin) */}
+                {canViewDetails ? (
+                    <>
+                        <View style={styles.listHeader}>
+                            <Text style={styles.sectionTitle}>Son İşlemler</Text>
                         </View>
-                    }
-                />
+
+                        <FlatList
+                            data={filteredTransactions}
+                            keyExtractor={(item, index) => item.id || `transaction-${index}`}
+                            renderItem={({ item }) => (
+                                <TransactionCard
+                                    transaction={item}
+                                    onDelete={canManage ? () => handleDelete(item.id) : undefined}
+                                />
+                            )}
+                            contentContainerStyle={styles.list}
+                            ListEmptyComponent={
+                                <View style={styles.emptyContainer}>
+                                    <Text style={styles.emptyText}>Bu ay için işlem bulunamadı.</Text>
+                                </View>
+                            }
+                        />
+                    </>
+                ) : (
+                    <View style={styles.emptyContainer}>
+                        <Ionicons name="lock-closed-outline" size={48} color={theme.colors.onSurfaceVariant} style={{ opacity: 0.5, marginBottom: 12 }} />
+                        <Text style={styles.emptyText}>Detaylı işlem listesi sadece muhasebe yetkilisine açıktır.</Text>
+                    </View>
+                )}
             </View>
 
             {canManage && (
@@ -203,6 +254,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
         textTransform: 'capitalize'
+    },
+    exportBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0.25)',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 16,
+        marginLeft: 12,
+        gap: 6,
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255,0.3)',
+    },
+    exportBtnText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 13,
     },
 
     // Card Styles

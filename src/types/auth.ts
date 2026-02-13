@@ -1,5 +1,5 @@
 // export type Role = 'council_admin' | 'member'; // Deprecated
-export type Role = 'mesveret_admin' | 'sohbet_member' | 'accountant';
+export type Role = 'guest' | 'sohbet_member' | 'accountant' | 'mesveret_admin' | 'platform_admin';
 
 export interface User {
     id: string;
@@ -18,7 +18,9 @@ export interface User {
 // };
 
 export const ROLES = {
+    GUEST: 'guest' as Role,
+    SOHBET_MEMBER: 'sohbet_member' as Role,
     ACCOUNTANT: 'accountant' as Role,
     MESVERET_ADMIN: 'mesveret_admin' as Role,
-    SOHBET_MEMBER: 'sohbet_member' as Role,
+    PLATFORM_ADMIN: 'platform_admin' as Role,
 };

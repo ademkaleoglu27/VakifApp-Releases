@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert, Linking, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { theme } from '@/config/theme';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { requireFeature } from '@/utils/guard';
@@ -10,7 +10,7 @@ import { useAuthStore } from '@/store/authStore';
 import * as Contacts from 'expo-contacts';
 
 // Types
-type Role = 'mesveret_admin' | 'sohbet_member' | 'accountant';
+import { Role } from '@/types/auth';
 
 interface Profile {
     id: string;
@@ -24,7 +24,7 @@ export const ContactsScreen = () => {
     if (!requireFeature('MESVERET_SCREEN')) return <NoAccess />;
 
     const { user } = useAuthStore();
-    const isAdmin = user?.role === 'mesveret_admin';
+    const isAdmin = user?.role === 'mesveret_admin' || user?.role === 'platform_admin';
 
     const [activeTab, setActiveTab] = useState<Role>('mesveret_admin');
     const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -49,11 +49,21 @@ export const ContactsScreen = () => {
     const fetchProfiles = async () => {
         setLoading(true);
         try {
-            const { data, error } = await supabase
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
+            let query = supabase
                 .from('profiles')
-                .select('*')
-                .eq('role', activeTab)
-                .order('display_name', { ascending: true });
+                .select('*');
+
+            // If viewing Mesveret, show both Mesveret Admins AND Platform Admins
+            if (activeTab === 'mesveret_admin') {
+                query = query.in('role', ['mesveret_admin', 'platform_admin']);
+            } else {
+                query = query.eq('role', activeTab);
+            }
+
+            const { data, error } = await query.order('display_name', { ascending: true });
 
             if (error) throw error;
             setProfiles(data || []);
@@ -84,6 +94,9 @@ export const ContactsScreen = () => {
 
         setLoading(true);
         try {
+            const supabase = getSupabaseClient();
+            if (!supabase) throw new Error('Supabase unavailable');
+
             // 1. Update Basic Info (Name, Phone)
             const { error: basicError } = await supabase
                 .from('profiles')
@@ -170,7 +183,9 @@ export const ContactsScreen = () => {
                     <View style={{ flexDirection: 'row', gap: 6, marginTop: 4 }}>
                         <View style={[styles.badge, styles[`badge_${item.role}`]]}>
                             <Text style={styles.badgeText}>
-                                {item.role === 'mesveret_admin' ? 'Meşveret' : item.role === 'accountant' ? 'Muhasebe' : 'Sohbet'}
+                                {item.role === 'mesveret_admin' ? 'Meşveret' :
+                                    item.role === 'platform_admin' ? 'Yönetici' :
+                                        item.role === 'accountant' ? 'Muhasebe' : 'Sohbet'}
                             </Text>
                         </View>
                     </View>
@@ -252,16 +267,19 @@ export const ContactsScreen = () => {
                         </View>
 
                         <Text style={styles.label}>Ad Soyad</Text>
-                        <TextInput style={styles.input} value={editName} onChangeText={setEditName} />
+                        <TextInput style={styles.input} value={editName} onChangeText={setEditName} autoComplete="off" importantForAutofill="no" textContentType="none" />
 
                         <Text style={styles.label}>Telefon</Text>
                         <View style={{ flexDirection: 'row', gap: 8 }}>
                             <TextInput
-                                style={[styles.input, { flex: 1 }]}
+                                style={styles.input}
                                 value={editPhone}
                                 onChangeText={setEditPhone}
                                 keyboardType="phone-pad"
-                                placeholder="+90..."
+                                placeholder="5XX XXX XX XX"
+                                autoComplete="off"
+                                importantForAutofill="no"
+                                textContentType="none"
                             />
                             <TouchableOpacity style={styles.pickBtn} onPress={openContactPicker}>
                                 <Ionicons name="people" size={20} color="#fff" />
@@ -317,10 +335,13 @@ export const ContactsScreen = () => {
                         <View style={{ width: 28 }} />
                     </View>
                     <TextInput
-                        style={styles.pickerSearch}
-                        placeholder="Kişi Ara..."
+                        style={styles.searchInput}
+                        placeholder="Kişi ara..."
                         value={contactSearch}
                         onChangeText={setContactSearch}
+                        autoComplete="off"
+                        importantForAutofill="no"
+                        textContentType="none"
                     />
                     <FlatList
                         data={filteredDeviceContacts}
@@ -371,6 +392,8 @@ const styles = StyleSheet.create({
     badge_mesveret_admin: { backgroundColor: '#FEF3C7' },
     badge_accountant: { backgroundColor: '#DBEAFE' },
     badge_sohbet_member: { backgroundColor: '#F3F4F6' },
+    badge_guest: { backgroundColor: '#F3F4F6' },
+    badge_platform_admin: { backgroundColor: '#D1FAE5' },
     badgeText: { fontSize: 10, fontWeight: 'bold', color: '#4B5563' },
 
     emptyContainer: { alignItems: 'center', marginTop: 60, gap: 12 },
@@ -401,6 +424,8 @@ const styles = StyleSheet.create({
     pickerHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingBottom: 16, borderBottomWidth: 1, borderBottomColor: '#eee' },
     pickerTitle: { fontSize: 18, fontWeight: 'bold' },
     pickerSearch: { margin: 16, padding: 12, backgroundColor: '#f3f4f6', borderRadius: 12, fontSize: 16 },
+    // ADDED searchInput here
+    searchInput: { margin: 16, padding: 12, backgroundColor: '#f3f4f6', borderRadius: 12, fontSize: 16 },
     contactItem: { flexDirection: 'row', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderBottomColor: '#f3f4f6' },
     contactAvatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#e5e7eb', alignItems: 'center', justifyContent: 'center', marginRight: 12 },
     contactAvatarText: { fontSize: 16, fontWeight: 'bold', color: '#6b7280' },

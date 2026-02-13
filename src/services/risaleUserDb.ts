@@ -180,6 +180,36 @@ export const RisaleUserDb = {
         return newId;
     },
 
+    // AUTO-CREATE contact for reading tracking (no permission needed - self registration)
+    async createContactForUser(params: {
+        userId: string;
+        name: string;
+        surname: string;
+        phone: string;
+        groupType: string;
+    }): Promise<string> {
+        const db = await getDb();
+        const newId = generateUUID();
+        await db.runAsync(
+            'INSERT INTO contacts (id, name, surname, phone, group_type, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [newId, params.name, params.surname, params.phone, params.groupType, params.userId, new Date().toISOString()]
+        );
+
+        // Sync Hook
+        await addToOutbox('INSERT_CONTACT', {
+            id: newId,
+            name: params.name,
+            surname: params.surname,
+            phone: params.phone,
+            group_type: params.groupType,
+            user_id: params.userId,
+            created_at: new Date().toISOString()
+        });
+
+        console.log('[RisaleUserDb] Created contact for user:', params.userId, 'contactId:', newId);
+        return newId;
+    },
+
     async getContacts(group?: 'MESVERET' | 'SOHBET'): Promise<any[]> {
         assertFeature('MESVERET_SCREEN');
         const db = await getDb();
@@ -189,17 +219,19 @@ export const RisaleUserDb = {
         return await db.getAllAsync('SELECT * FROM contacts ORDER BY name ASC');
     },
 
-    // New: Safe lookup for linking readings without full permission
-    async getContactByName(name: string): Promise<any | null> {
-        // No assertFeature needed here as it's a specific lookup for self
+    // DETERMINISTIC: Lookup contact by user_id (not name-matching)
+    // Requires contacts.user_id column from SQL migration
+    async getContactByUserId(userId: string): Promise<any | null> {
         const db = await getDb();
-        // Try exact match first
-        let contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name = ?', [name]);
+        const contact = await db.getFirstAsync('SELECT * FROM contacts WHERE user_id = ?', [userId]);
+        return contact || null;
+    },
 
+    // DEPRECATED: Keep for backward compatibility but prefer getContactByUserId
+    async getContactByName(name: string): Promise<any | null> {
+        const db = await getDb();
+        let contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name = ?', [name]);
         if (!contact) {
-            // Try fuzzy match or name+surname
-            // Since we store name and surname separately, and user.name might be combined
-            // We just try to see if any contact with name match exists
             contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name LIKE ? OR (name || " " || surname) = ?', [`%${name}%`, name]);
         }
         return contact || null;
@@ -264,6 +296,54 @@ export const RisaleUserDb = {
         await addToOutbox('DELETE_DECISION', { id });
     },
 
+    // --- Decision Items (Structured) ---
+    async addDecisionItem(item: any) {
+        const db = await getDb();
+        const newId = item.id || generateUUID();
+        const createdAt = item.created_at || new Date().toISOString();
+
+        await db.runAsync(
+            'INSERT INTO decision_items (id, decision_id, content, is_completed, sort_order, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+            [newId, item.decision_id, item.content, item.is_completed ? 1 : 0, item.sort_order || 0, createdAt]
+        );
+
+        await addToOutbox('INSERT_DECISION_ITEM', {
+            id: newId,
+            decision_id: item.decision_id,
+            content: item.content,
+            is_completed: item.is_completed ? true : false,
+            sort_order: item.sort_order || 0,
+            created_at: createdAt,
+            // vakif_id will be injected by syncService
+        });
+    },
+
+    async getDecisionItems(decisionId: string): Promise<any[]> {
+        const db = await getDb();
+        return await db.getAllAsync('SELECT * FROM decision_items WHERE decision_id = ? ORDER BY sort_order ASC, created_at ASC', [decisionId]);
+    },
+
+    async toggleDecisionItemComplete(id: string, currentStatus: boolean) {
+        const db = await getDb();
+        const newStatus = !currentStatus;
+        await db.runAsync(
+            'UPDATE decision_items SET is_completed = ? WHERE id = ?',
+            [newStatus ? 1 : 0, id]
+        );
+
+        // Optimistic sync - simple update
+        await addToOutbox('UPDATE_DECISION_ITEM', {
+            id: id,
+            is_completed: newStatus
+        });
+    },
+
+    async deleteDecisionItem(id: string) {
+        const db = await getDb();
+        await db.runAsync('DELETE FROM decision_items WHERE id = ?', [id]);
+        await addToOutbox('DELETE_DECISION_ITEM', { id });
+    },
+
     // --- Leaderboard & Readings ---
     async addReadingLog(log: Omit<ReadingLog, 'id'>) {
         try {
@@ -274,8 +354,8 @@ export const RisaleUserDb = {
 
 
             await db.runAsync(
-                'INSERT INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                [newId, log.userId, log.workId, log.pagesRead, log.durationMinutes, log.date, createdAt]
+                'INSERT INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at, vakif_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                [newId, log.userId, log.workId, log.pagesRead, log.durationMinutes, log.date, createdAt, log.vakifId || null]
             );
 
             // IMPORTANT: Send snake_case keys to outbox for Supabase compatibility
@@ -286,7 +366,8 @@ export const RisaleUserDb = {
                 pages_read: log.pagesRead,
                 duration_minutes: log.durationMinutes,
                 date: log.date,
-                created_at: createdAt
+                created_at: createdAt,
+                vakif_id: log.vakifId || null
             });
 
         } catch (error) {
@@ -415,11 +496,15 @@ export const RisaleUserDb = {
         try {
             const db = await getDb();
 
+            // 1. Fetch Raw Rows (No Grouping/Limit yet for safe merge)
+            // Modified query to get user_id and phone for merging
             let query = `
                 SELECT 
                     c.id, 
+                    c.user_id,
                     c.name, 
                     c.surname, 
+                    c.phone,
                     SUM(cr.pages_read) as total_pages 
                 FROM contacts c 
                 JOIN contact_readings cr ON c.id = cr.contact_id 
@@ -432,15 +517,37 @@ export const RisaleUserDb = {
                 params.push(startDate);
             }
 
-            query += `
-                GROUP BY c.id 
-                ORDER BY total_pages DESC
-                LIMIT 10
-            `;
+            // We group by ID roughly in SQL to reduce rows, but main merge is JS
+            query += ` GROUP BY c.id `;
 
-            const result = await db.getAllAsync(query, params);
+            const rawRows = await db.getAllAsync<any>(query, params);
 
-            return result;
+            // 2. JS Deduplication (Normalized Name)
+            const map = new Map<string, any>();
+            const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
+            const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+
+            for (const row of rawRows) {
+                const displayName = buildDisplayName(row.name, row.surname);
+                const normName = normalize(displayName);
+                const key = `N:${normName}`;
+
+                if (map.has(key)) {
+                    const existing = map.get(key);
+                    existing.total_pages += row.total_pages;
+                    if (!existing.user_id && row.user_id) existing.user_id = row.user_id;
+                    if (!existing.phone && row.phone) existing.phone = row.phone;
+                    if (row.user_id) existing.id = row.id;
+                } else {
+                    map.set(key, { ...row });
+                }
+            }
+
+            // 3. Sort and Limit
+            return Array.from(map.values())
+                .sort((a, b) => b.total_pages - a.total_pages)
+                .slice(0, 10);
+
         } catch (error) {
             console.error('Leaderboard error:', error);
             return [];
@@ -499,9 +606,12 @@ export const RisaleUserDb = {
         dateThreshold.setDate(dateThreshold.getDate() - days);
         const dateStr = dateThreshold.toISOString();
 
-        return await db.getAllAsync(`
+        // 1. Fetch Raw Groups (by contact_id)
+        // We select user_id to help with identity, though strictly we'll group by name for visual cleanup
+        const rawRows = await db.getAllAsync<any>(`
             SELECT 
-                c.id, 
+                c.id,
+                c.user_id, 
                 c.name, 
                 c.surname,
                 c.phone,
@@ -510,8 +620,46 @@ export const RisaleUserDb = {
             JOIN contact_readings cr ON c.id = cr.contact_id 
             WHERE cr.date >= ?
             GROUP BY c.id 
-            ORDER BY total_pages DESC
         `, [dateStr]);
+
+        // 2. JS Aggregation (Deduplication)
+        const map = new Map<string, any>();
+        let mergeCount = 0;
+
+        const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
+        const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+
+        for (const row of rawRows) {
+            const displayName = buildDisplayName(row.name, row.surname);
+            const normName = normalize(displayName);
+
+            // IDENTITY STRATEGY:
+            // To ensure "Adem Kaleoğlu" appears only once, we group by Normalized Name.
+            // Ideally we would use user_id, but if local contacts lack user_id (offline/manual),
+            // they would split from the synced user. Name-based merging bridges this gap.
+            const key = `N:${normName}`;
+
+            if (map.has(key)) {
+                mergeCount++;
+                const existing = map.get(key);
+                existing.total_pages += row.total_pages;
+
+                // Merge Profile Data (Prefer rows with more info)
+                if (!existing.user_id && row.user_id) existing.user_id = row.user_id;
+                if (!existing.phone && row.phone) existing.phone = row.phone;
+                // Keep the ID of the 'primary' contact (e.g. the one with user_id)
+                if (row.user_id) existing.id = row.id;
+            } else {
+                map.set(key, { ...row });
+            }
+        }
+
+        if (mergeCount > 0) {
+            console.log(`[Leaderboard] Deduplicated ${mergeCount} rows for period ${period}.`);
+        }
+
+        // 3. Return Sorted List
+        return Array.from(map.values()).sort((a, b) => b.total_pages - a.total_pages);
     },
 
     async getInactiveUsers(daysThreshold: number = 21): Promise<any[]> {

@@ -1,6 +1,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
+import { sendPushNotification } from "../_shared/fcm.ts"
 
 // No Firebase needed for Expo
 
@@ -35,13 +36,24 @@ serve(async (req) => {
 
         if (assignError || !assignment) return new Response('Assignment not found', { status: 404 })
 
-        // Check ownership
+        // 3. Auth Check (BMAD Role Fix)
+        const { data: profile } = await supabaseAdmin.from('profiles').select('role').eq('id', user.id).single()
+        const userRole = profile?.role || 'guest'
+
         let isOwner = assignment.user_id === user.id
-        if (!isOwner) {
-            // Check admin
-            const { data: profile } = await supabaseAdmin.from('profiles').select('role').eq('id', user.id).single()
-            if (profile?.role !== 'mesveret_admin') return new Response('Forbidden', { status: 403 })
+        const allowedRoles = ['admin', 'mesveret_admin', 'mesveret_member', 'council_member', 'moderator'];
+
+        console.log(`[Auth] Kullanıcı rolü: ${userRole}, İzin verilenler: ${allowedRoles}`);
+
+        if (!isOwner && !allowedRoles.includes(userRole)) {
+            console.error(`[Auth] REDDEDİLDİ - Rol: ${userRole}`);
+            return new Response(JSON.stringify({
+                error: 'Unauthorized',
+                yourRole: userRole,
+                requiredRoles: allowedRoles
+            }), { status: 403, headers: { "Content-Type": "application/json" } });
         }
+        console.log(`[Auth] ONAYLANDI - Rol: ${userRole}`);
 
         // 3. Handle Action
         if (action === 'ACCEPT') {
@@ -94,30 +106,25 @@ serve(async (req) => {
                 .select()
                 .single()
 
-            // D. Send Push to New Assignee (Expo)
+            // D. Send Push to New Assignee
             const { data: tokens } = await supabaseAdmin.from('user_push_tokens').select('token').eq('user_id', nextMember.user_id)
             const pushTokens = tokens?.map(t => t.token) || []
-            const validTokens = pushTokens.filter(t => t.startsWith('ExponentPushToken') || t.startsWith('ExpoPushToken'));
 
-            if (validTokens.length > 0) {
-                try {
-                    await fetch('https://exp.host/--/api/v2/push/send', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Accept-encoding': 'gzip, deflate',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            to: validTokens,
-                            sound: 'default',
-                            title: 'Görev Devredildi',
-                            body: `${assignment.rotation_pools.name} görevi size devredildi.`,
-                            data: { type: 'duty_assigned', assignment_id: newAssignment?.id }
-                        }),
-                    });
-                } catch (e) {
-                    console.error("Expo Send Error", e)
+            if (pushTokens.length > 0) {
+                const targetDate = new Date(assignment.date);
+                const pool = assignment.rotation_pools;
+                const dateStr = targetDate.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
+                const result = await sendPushNotification(
+                    pushTokens,
+                    'Görev Devredildi',
+                    `${assignment.rotation_pools.name} görevi size devredildi.`,
+                    { type: 'duty_assigned', assignment_id: newAssignment?.id },
+                    Deno.env.get('FCM_SERVICE_ACCOUNT')
+                );
+
+                console.log(`[respond_assignment] Push sonuç:`, result);
+                if (result.expoFailed > 0 || result.fcmFailed > 0) {
+                    console.warn(`[respond_assignment] Başarısız bildirimler:`, result.errors);
                 }
             }
 
@@ -126,7 +133,8 @@ serve(async (req) => {
                 user_id: nextMember.user_id,
                 title: 'Yeni Görev Ataması',
                 body: 'Bir görev pas geçildi ve size atandı.',
-                data: { type: 'duty_assigned', assignment_id: newAssignment?.id }
+                data: { type: 'duty_assigned', assignment_id: newAssignment?.id },
+                vakif_id: assignment.vakif_id
             })
 
             return new Response(JSON.stringify({ message: 'Duty Passed & Reassigned' }), { headers: { 'Content-Type': 'application/json' } })

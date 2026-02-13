@@ -37,6 +37,7 @@ export interface ReadingLog {
     durationMinutes: number;
     pagesRead: number;
     date: string; // ISO date string
+    vakifId?: string; // Multi-tenant ID
     note?: string;
 }
 

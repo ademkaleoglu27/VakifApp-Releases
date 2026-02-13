@@ -1,6 +1,7 @@
 import 'react-native-url-polyfill/auto';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import * as SecureStore from 'expo-secure-store';
+import { Env } from '@/config/env';
 
 const ExpoSecureStoreAdapter = {
     getItem: (key: string) => {
@@ -14,19 +15,23 @@ const ExpoSecureStoreAdapter = {
     },
 };
 
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || '';
+// Safe Factory to ensure no client is created if Env is invalid.
+let clientInstance: SupabaseClient<any, "public", any> | null = null;
 
-// Fallback for dev if env vars are missing (warn usage)
-if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Supabase URL or Key is missing! Check your .env file or Expo secrets.');
-}
+export const getSupabaseClient = (): SupabaseClient<any, "public", any> | null => {
+    // If Env is invalid, we strictly return null or throw.
+    // App.tsx should gate this, but for safety in services:
+    if (!Env.isValid) return null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-        storage: ExpoSecureStoreAdapter,
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: false,
-    },
-});
+    if (!clientInstance) {
+        clientInstance = createClient(Env.supabaseUrl, Env.supabaseAnonKey, {
+            auth: {
+                storage: ExpoSecureStoreAdapter,
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: false,
+            },
+        });
+    }
+    return clientInstance;
+};

@@ -68,27 +68,7 @@ export const ReaderMoreMenuButton = React.memo(({ lugatEnabled, onLugatToggle, o
                                 <Text style={styles.headerTitle}>Seçenekler</Text>
                                 <View style={styles.divider} />
 
-                                {/* Lugat Toggle Item */}
-                                <TouchableOpacity style={styles.menuItem} onPress={handleToggle}>
-                                    <View style={[styles.iconBox, { backgroundColor: lugatEnabled ? '#E3F2FD' : '#FAFAFA' }]}>
-                                        <Ionicons
-                                            name={lugatEnabled ? "book" : "book-outline"}
-                                            size={20}
-                                            color={lugatEnabled ? "#2196F3" : "#757575"}
-                                        />
-                                    </View>
-                                    <View style={{ flex: 1, marginLeft: 12 }}>
-                                        <Text style={styles.itemTitle}>Lugat Modu</Text>
-                                        <Text style={styles.itemSub}>
-                                            {lugatEnabled ? "Açık" : "Kapalı"}
-                                        </Text>
-                                    </View>
-                                    <View style={[styles.toggleBadge, { backgroundColor: lugatEnabled ? '#4CAF50' : '#E0E0E0' }]}>
-                                        <Text style={{ fontSize: 10, color: lugatEnabled ? 'white' : '#757575', fontWeight: 'bold' }}>
-                                            {lugatEnabled ? "ON" : "OFF"}
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
+                                {/* Lugat Toggle Removed (Always Active) */}
 
                                 {/* Yeniden Başla (Restart Book) */}
                                 {onRestartBook && (

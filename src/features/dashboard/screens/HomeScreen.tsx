@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, FlatList, Modal, TextInput, Alert, Platform, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, FlatList, Modal, TextInput, Alert, Platform, Image, Keyboard } from 'react-native';
 import { useAuthStore } from '@/store/authStore';
 import { useNavigation, useFocusEffect, DrawerActions } from '@react-navigation/native';
 import { useSync } from '@/hooks/dbHooks';
@@ -10,6 +10,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { RISALE_BOOKS } from '@/config/risaleSources';
 import { canAccess } from '@/config/permissions';
 import { PageStepper } from '@/components/PageStepper';
+import { useQuranStore } from '@/features/quran/store/useQuranStore';
+import { QuranPackService } from '@/features/quran/services/QuranPackService';
 
 export const HomeScreen = () => {
     const { user } = useAuthStore();
@@ -17,6 +19,7 @@ export const HomeScreen = () => {
 
     const [leaderboard, setLeaderboard] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { status, downloadProgress, detailedStatus } = useQuranStore(); // Kept for download progress overlay
 
     const openDrawer = () => {
         navigation.dispatch(DrawerActions.openDrawer());
@@ -67,18 +70,9 @@ export const HomeScreen = () => {
     };
 
     const loadLeaderboard = async () => {
-        // Don't show full loading spinner for refresh to keep UI smooth
-        // setIsLoading(true); 
-
-        // Cleanup is expensive, maybe move to App init or occasional background task?
-        // for now, just removing the await to let it run parallel if needed, or removing entirely if redundant.
-        // await RisaleUserDb.cleanupDummies(); 
-
-        const startDate = getLastMondayNoon();
-        console.log('Fetching leaderboard since:', startDate);
-
-        // Pass the start date to filter by week
-        let data = await RisaleUserDb.getLeaderboard(startDate);
+        // Use Centralized Service (RPC + Cache)
+        const { ReadingStatsService } = require('@/services/ReadingStatsService');
+        const data = await ReadingStatsService.fetchLeaderboard('week', 'homeTop10');
         setLeaderboard(data);
         setIsLoading(false);
     };
@@ -138,6 +132,11 @@ export const HomeScreen = () => {
         const isFirst = rank === 0;
         const place = rank === 0 ? 1 : (rank === 1 ? 2 : 3);
 
+        // Safe name extraction with fallback
+        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
+        const nameInitial = displayName?.[0] || '?';
+        const totalPages = item.totalPages || item.total_pages || 0;
+
         // Colors for gradients
         const goldColors = ['#FFD700', '#FDB931', '#F59E0B'];
         const silverColors = ['#E0E0E0', '#BDBDBD', '#9E9E9E'];
@@ -163,7 +162,7 @@ export const HomeScreen = () => {
                     >
                         <View style={[styles.avatarInner, { width: size, height: size, borderRadius: size / 2 }]}>
                             <Text style={[styles.avatarText, { fontSize: isFirst ? 28 : 20 }]}>
-                                {item.name[0]}
+                                {nameInitial}
                             </Text>
                         </View>
                     </LinearGradient>
@@ -173,8 +172,8 @@ export const HomeScreen = () => {
                     </View>
                 </View>
 
-                <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{item.name}</Text>
-                <Text style={styles.podiumPages}>{item.total_pages} sayfa</Text>
+                <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{displayName}</Text>
+                <Text style={styles.podiumPages}>{totalPages} sayfa</Text>
 
                 {/* The Physical Podium Step */}
                 <LinearGradient
@@ -200,16 +199,22 @@ export const HomeScreen = () => {
     );
 
     const renderCompactRow = ({ item, index }: { item: any, index: number }) => {
+        if (!item) return null;
+
         const rank = index + 4; // Since we skip top 3
+        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
+        const nameInitial = displayName?.[0] || '?';
+        const totalPages = item.totalPages || item.total_pages || 0;
+
         return (
             <View style={styles.compactRow}>
                 <Text style={styles.compactRank}>#{rank}</Text>
                 <View style={styles.compactAvatar}>
-                    <Text style={styles.compactAvatarText}>{item.name[0]}</Text>
+                    <Text style={styles.compactAvatarText}>{nameInitial}</Text>
                 </View>
-                <Text style={styles.compactName}>{item.name} {item.surname}</Text>
+                <Text style={styles.compactName}>{displayName} {item.surname || ''}</Text>
                 <View style={{ flex: 1 }} />
-                <Text style={styles.compactPages}>{item.total_pages} Sayfa</Text>
+                <Text style={styles.compactPages}>{totalPages} Sayfa</Text>
             </View>
         );
     };
@@ -269,6 +274,20 @@ export const HomeScreen = () => {
                         <Text style={styles.quoteSource}>- Mektubat</Text>
                     </View>
                 </View>
+
+                {/* Download Progress Overlay (if actively downloading) */}
+                {status === 'DOWNLOADING' && (
+                    <View style={styles.downloadOverlay}>
+                        <View style={styles.progressHeader}>
+                            <Text style={styles.progressTitle}>Kur'an Kuruluyor...</Text>
+                            <Text style={styles.progressPercent}>%{Math.round(downloadProgress * 100)}</Text>
+                        </View>
+                        <View style={styles.progressBarBg}>
+                            <View style={[styles.progressBarFill, { width: `${downloadProgress * 100}%` }]} />
+                        </View>
+                        {detailedStatus && <Text style={styles.detailedStatusText}>{detailedStatus}</Text>}
+                    </View>
+                )}
 
                 {/* Dashboard Content */}
                 <View style={styles.dashboardContent}>
@@ -518,5 +537,57 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.primary, paddingVertical: 14, paddingHorizontal: 32, borderRadius: 16,
         alignItems: 'center', alignSelf: 'center', marginTop: 20
     },
-    btnSaveText: { color: '#fff', fontWeight: 'bold', fontSize: 14 }
+    btnSaveText: { color: '#fff', fontWeight: 'bold', fontSize: 14 },
+
+    quranMenuCard: { marginBottom: 24, borderRadius: 24, overflow: 'hidden', elevation: 4, shadowColor: '#b45309', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 8 },
+    quranMenuGradient: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 },
+    quranMenuLeft: { flexDirection: 'row', alignItems: 'center', gap: 16 },
+    quranMenuTitle: { fontSize: 18, fontWeight: 'bold', color: '#1e293b' },
+    quranMenuSub: { fontSize: 13, color: '#92400e', marginTop: 2, fontWeight: '500' },
+    quranMenuRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+    quranBadge: { backgroundColor: 'rgba(180, 83, 9, 0.1)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
+    quranBadgeText: { color: '#b45309', fontSize: 11, fontWeight: 'bold' },
+    quranIconCircle: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+
+    // Download Overlay
+    downloadOverlay: {
+        backgroundColor: '#f8fafc',
+        padding: 16,
+        borderRadius: 20,
+        marginBottom: 24,
+        borderWidth: 1,
+        borderColor: '#e2e8f0',
+    },
+    progressHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
+    progressTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#1e293b',
+    },
+    progressPercent: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: theme.colors.primary,
+    },
+    progressBarBg: {
+        height: 6,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 3,
+        overflow: 'hidden',
+    },
+    progressBarFill: {
+        height: '100%',
+        backgroundColor: theme.colors.primary,
+    },
+    detailedStatusText: {
+        fontSize: 12,
+        color: '#64748b',
+        marginTop: 8,
+        fontStyle: 'italic',
+    }
 });

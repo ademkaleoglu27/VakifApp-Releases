@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, Modal, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, TextInput, Keyboard, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { supabase } from '@/services/supabaseClient';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '@/navigation/AppNavigator';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,6 +26,12 @@ export const DutyPoolDetailScreen = () => {
 
     const fetchMembers = async () => {
         setLoading(true);
+        const supabase = getSupabaseClient();
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         // Using a join to get profile info
         const { data, error } = await supabase
             .from('rotation_pool_members')
@@ -46,6 +52,9 @@ export const DutyPoolDetailScreen = () => {
     };
 
     const fetchAllUsers = async () => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         // For the picker
         const { data } = await supabase.from('profiles').select('*').order('display_name');
         if (data) setAllUsers(data);
@@ -78,6 +87,9 @@ export const DutyPoolDetailScreen = () => {
             { pool_id: poolId, user_id: otherItem.user_id, sort_order: currentItem.sort_order }
         ];
 
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         for (const update of updates) {
             const { error } = await supabase
                 .from('rotation_pool_members')
@@ -98,6 +110,9 @@ export const DutyPoolDetailScreen = () => {
                     text: 'Sil',
                     style: 'destructive',
                     onPress: async () => {
+                        const supabase = getSupabaseClient();
+                        if (!supabase) return;
+
                         const { error } = await supabase
                             .from('rotation_pool_members')
                             .delete()
@@ -113,6 +128,9 @@ export const DutyPoolDetailScreen = () => {
     };
 
     const addMember = async (userId: string) => {
+        const supabase = getSupabaseClient();
+        if (!supabase) return;
+
         const maxSortOrder = members.length > 0 ? Math.max(...members.map(m => m.sort_order)) : 0;
 
         const { error } = await supabase.from('rotation_pool_members').insert({
@@ -183,33 +201,41 @@ export const DutyPoolDetailScreen = () => {
                 contentContainerStyle={styles.list}
             />
 
-            {/* Add Member Modal */}
-            <Modal visible={isAddModalVisible} animationType="slide" presentationStyle="pageSheet">
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.modalTitle}>Kişi Ekle</Text>
-                        <TouchableOpacity onPress={() => setAddModalVisible(false)}>
-                            <Text style={styles.closeText}>Kapat</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="İsim ara..."
-                        value={searchTerm}
-                        onChangeText={setSearchTerm}
-                    />
-                    <FlatList
-                        data={filteredUsers}
-                        keyExtractor={item => item.id}
-                        renderItem={({ item }) => (
-                            <TouchableOpacity style={styles.userItem} onPress={() => addMember(item.id)}>
-                                <Text style={styles.userName}>{item.display_name}</Text>
-                                <Ionicons name="add-circle-outline" size={24} color="#22c55e" />
+            {/* Add Member Modal (Custom Absolute View) */}
+            {isAddModalVisible && (
+                <View style={styles.absoluteOverlay}>
+                    <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setAddModalVisible(false); }} />
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Kişi Ekle</Text>
+                            <TouchableOpacity onPress={() => { Keyboard.dismiss(); setAddModalVisible(false); }}>
+                                <Text style={styles.closeText}>Kapat</Text>
                             </TouchableOpacity>
-                        )}
-                    />
+                        </View>
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="İsim ara..."
+                            value={searchTerm}
+                            onChangeText={setSearchTerm}
+                            autoComplete="off"
+                            importantForAutofill="no"
+                            textContentType="none"
+                            autoCorrect={false}
+                            spellCheck={false}
+                        />
+                        <FlatList
+                            data={filteredUsers}
+                            keyExtractor={item => item.id}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity style={styles.userItem} onPress={() => addMember(item.id)}>
+                                    <Text style={styles.userName}>{item.display_name}</Text>
+                                    <Ionicons name="add-circle-outline" size={24} color="#22c55e" />
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
                 </View>
-            </Modal>
+            )}
         </SafeAreaView>
     );
 };
@@ -256,6 +282,31 @@ const styles = StyleSheet.create({
     actionBtn: { padding: 4 },
 
     // Modal
+    absoluteOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999,
+        justifyContent: 'flex-end',
+    },
+    backdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 16,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        maxHeight: '80%',
+        minHeight: 400,
+    },
     modalContainer: { flex: 1, backgroundColor: 'white', padding: 16 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
     modalTitle: { fontSize: 20, fontWeight: 'bold' },
