@@ -176,6 +176,31 @@ export const useDeleteDecision = () => {
     });
 };
 
+// Hook: Get Decision Items
+export const useDecisionItems = (decisionId: string) => {
+    return useQuery({
+        queryKey: ['decision_items', decisionId],
+        queryFn: async () => {
+            return await RisaleUserDb.getDecisionItems(decisionId);
+        },
+        enabled: !!decisionId
+    });
+};
+
+// Hook: Add Decision Item
+export const useAddDecisionItem = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (item: any) => {
+            return await RisaleUserDb.addDecisionItem(item);
+        },
+        onSuccess: (_, variables) => {
+            queryClient.invalidateQueries({ queryKey: ['decision_items', variables.decision_id] });
+            syncService.sync();
+        }
+    });
+};
+
 // Hook: Get Contacts
 export const useContacts = (group?: 'MESVERET' | 'SOHBET') => {
     return useQuery({

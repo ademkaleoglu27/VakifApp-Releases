@@ -27,6 +27,20 @@ export const initDb = async () => {
         );
     `);
 
+    // 1.1 Decision Items Table (Structured)
+    await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS decision_items (
+            id TEXT PRIMARY KEY,
+            decision_id TEXT NOT NULL,
+            content TEXT NOT NULL,
+            is_completed INTEGER DEFAULT 0,
+            sort_order INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            vakif_id TEXT,
+            FOREIGN KEY(decision_id) REFERENCES decisions(id) ON DELETE CASCADE
+        );
+    `);
+
 
 
     // 2. Transactions Table (Mirror)

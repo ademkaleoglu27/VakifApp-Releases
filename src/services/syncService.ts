@@ -58,6 +58,23 @@ export const syncService = {
                 }
             }
 
+            // A.2 Decision Items
+            let queryDI = supabase.from('decision_items').select('*');
+            if (lastSyncedAt) queryDI = queryDI.gt('created_at', lastSyncedAt);
+            const { data: decisionItems, error: errDI } = await queryDI;
+            if (errDI) throw errDI;
+
+            if (decisionItems && decisionItems.length > 0) {
+                for (const item of decisionItems as any[]) {
+                    try {
+                        await db.runAsync(
+                            `INSERT OR REPLACE INTO decision_items (id, decision_id, content, is_completed, sort_order, created_at, vakif_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                            [item.id, item.decision_id, item.content, item.is_completed ? 1 : 0, item.sort_order, item.created_at, item.vakif_id]
+                        );
+                    } catch (e) { console.warn('Skip DecisionItem:', item.id); }
+                }
+            }
+
             // B. Transactions (Role-Based Access Control)
             let userRole: string | undefined;
             try {
@@ -380,6 +397,13 @@ export const syncService = {
                     } else if (item.type === 'INSERT_DECISION_LINK') {
                         const { error: err } = await supabase.from('risale_decision_links').insert(payload);
                         error = err;
+                    } else if (item.type === 'INSERT_DECISION_ITEM') {
+                        const { error: err } = await supabase.from('decision_items').insert(payload);
+                        error = err;
+                    } else if (item.type === 'UPDATE_DECISION_ITEM') {
+                        const { id, ...updates } = payload;
+                        const { error: err } = await supabase.from('decision_items').update(updates).eq('id', id);
+                        error = err;
                     }
 
                     // Deletions 
@@ -403,6 +427,9 @@ export const syncService = {
                         error = err;
                     } else if (item.type === 'DELETE_ASSIGNMENT') {
                         const { error: err } = await supabase.from('assignments').delete().eq('id', payload.id);
+                        error = err;
+                    } else if (item.type === 'DELETE_DECISION_ITEM') {
+                        const { error: err } = await supabase.from('decision_items').delete().eq('id', payload.id);
                         error = err;
                     }
 

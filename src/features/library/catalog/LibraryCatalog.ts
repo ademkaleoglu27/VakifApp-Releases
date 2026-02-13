@@ -33,6 +33,7 @@ const STATIC_ITEMS: LibraryItem[] = [
         id: 'quran@vakifapp',
         title: "Kur'an-ı Kerim",
         subtitle: 'Meal, Transliterasyon & Ses',
+        // cover: require('../../../../assets/covers/quran.png'),
         kind: 'quran',
         status: 'ready',
         openAction: {

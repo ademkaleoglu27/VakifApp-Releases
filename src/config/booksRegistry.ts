@@ -341,141 +341,141 @@ export const CONTENT_PACK_CONFIG: Record<string, ContentPackConfig> = {
     // ═══════════════════════════════════════════════════════════════════════
     'mektubat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.mektubat.v1',
+        contentPackId: 'risale.mektubat.v2',
         estimatedSizeMb: 6.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.mektubat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.mektubat.v2-v1.0.0.zip'
     },
     'lemalar': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.lemalar.v1',
+        contentPackId: 'risale.lemalar.v2',
         estimatedSizeMb: 6.6,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.lemalar.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.lemalar.v2-v1.0.0.zip'
     },
     'sualar': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.sualar.v1',
+        contentPackId: 'risale.sualar.v2',
         estimatedSizeMb: 3.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.sualar.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sualar.v2-v1.0.0.zip'
     },
     'tarihce': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.tarihce.v1',
+        contentPackId: 'risale.tarihce.v2',
         estimatedSizeMb: 3.0,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.tarihce.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.tarihce.v2-v1.0.0.zip'
     },
     'mesnevi': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.mesnevi.v1',
+        contentPackId: 'risale.mesnevi.v2',
         estimatedSizeMb: 3.4,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.mesnevi.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.mesnevi.v2-v1.0.0.zip'
     },
     'isarat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.isarat.v1',
+        contentPackId: 'risale.isarat.v2',
         estimatedSizeMb: 5.5,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.isarat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.isarat.v2-v1.0.0.zip'
     },
     'sikke': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.sikke.v1',
+        contentPackId: 'risale.sikke.v2',
         estimatedSizeMb: 1.9,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.sikke.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sikke.v2-v1.0.0.zip'
     },
     'barla': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.barla.v1',
+        contentPackId: 'risale.barla.v2',
         estimatedSizeMb: 4.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.barla.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.barla.v2-v1.0.0.zip'
     },
     'kastamonu': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.kastamonu.v1',
+        contentPackId: 'risale.kastamonu.v2',
         estimatedSizeMb: 2.9,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.kastamonu.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.kastamonu.v2-v1.0.0.zip'
     },
     'emirdag1': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.emirdag1.v1',
+        contentPackId: 'risale.emirdag1.v2',
         estimatedSizeMb: 3.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.emirdag1.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.emirdag1.v2-v1.0.0.zip'
     },
     'emirdag2': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.emirdag2.v1',
+        contentPackId: 'risale.emirdag2.v2',
         estimatedSizeMb: 2.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.emirdag2.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.emirdag2.v2-v1.0.0.zip'
     },
     'asayi': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.asayi.v1',
+        contentPackId: 'risale.asayi.v2',
         estimatedSizeMb: 5.1,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.asayi.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.asayi.v2-v1.0.0.zip'
     },
     'muhakemat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.muhakemat.v1',
+        contentPackId: 'risale.muhakemat.v2',
         estimatedSizeMb: 1.4,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.muhakemat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.muhakemat.v2-v1.0.0.zip'
     },
     'sunuhat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.sunuhat.v1',
+        contentPackId: 'risale.sunuhat.v2',
         estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.sunuhat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sunuhat.v2-v1.0.0.zip'
     },
     'isarat_k': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.isarat_k.v1',
+        contentPackId: 'risale.isarat_k.v2',
         estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.isarat_k.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.isarat_k.v2-v1.0.0.zip'
     },
     'tuluat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.tuluat.v1',
+        contentPackId: 'risale.tuluat.v2',
         estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.tuluat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.tuluat.v2-v1.0.0.zip'
     },
     'nurcesmesi': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.nurcesmesi.v1',
+        contentPackId: 'risale.nurcesmesi.v2',
         estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.nurcesmesi.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.nurcesmesi.v2-v1.0.0.zip'
     },
     'divaniharbi': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.divaniharbi.v1',
+        contentPackId: 'risale.divaniharbi.v2',
         estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.divaniharbi.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.divaniharbi.v2-v1.0.0.zip'
     },
     'hutbe': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.hutbe.v1',
+        contentPackId: 'risale.hutbe.v2',
         estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.hutbe.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.hutbe.v2-v1.0.0.zip'
     },
     'munazarat': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.munazarat.v1',
+        contentPackId: 'risale.munazarat.v2',
         estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.munazarat.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.munazarat.v2-v1.0.0.zip'
     },
     'genclik': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.genclik.v1',
+        contentPackId: 'risale.genclik.v2',
         estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.genclik.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.genclik.v2-v1.0.0.zip'
     },
     'hanimlar': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.hanimlar.v1',
+        contentPackId: 'risale.hanimlar.v2',
         estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.hanimlar.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.hanimlar.v2-v1.0.0.zip'
     },
     'konferans': {
         contentMode: 'downloadable',
-        contentPackId: 'risale.konferans.v1',
+        contentPackId: 'risale.konferans.v2',
         estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v1/contentpack-risale.konferans.v1-v1.0.0.zip'
+        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.konferans.v2-v1.0.0.zip'
     },
 };
 

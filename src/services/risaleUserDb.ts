@@ -296,6 +296,54 @@ export const RisaleUserDb = {
         await addToOutbox('DELETE_DECISION', { id });
     },
 
+    // --- Decision Items (Structured) ---
+    async addDecisionItem(item: any) {
+        const db = await getDb();
+        const newId = item.id || generateUUID();
+        const createdAt = item.created_at || new Date().toISOString();
+
+        await db.runAsync(
+            'INSERT INTO decision_items (id, decision_id, content, is_completed, sort_order, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+            [newId, item.decision_id, item.content, item.is_completed ? 1 : 0, item.sort_order || 0, createdAt]
+        );
+
+        await addToOutbox('INSERT_DECISION_ITEM', {
+            id: newId,
+            decision_id: item.decision_id,
+            content: item.content,
+            is_completed: item.is_completed ? true : false,
+            sort_order: item.sort_order || 0,
+            created_at: createdAt,
+            // vakif_id will be injected by syncService
+        });
+    },
+
+    async getDecisionItems(decisionId: string): Promise<any[]> {
+        const db = await getDb();
+        return await db.getAllAsync('SELECT * FROM decision_items WHERE decision_id = ? ORDER BY sort_order ASC, created_at ASC', [decisionId]);
+    },
+
+    async toggleDecisionItemComplete(id: string, currentStatus: boolean) {
+        const db = await getDb();
+        const newStatus = !currentStatus;
+        await db.runAsync(
+            'UPDATE decision_items SET is_completed = ? WHERE id = ?',
+            [newStatus ? 1 : 0, id]
+        );
+
+        // Optimistic sync - simple update
+        await addToOutbox('UPDATE_DECISION_ITEM', {
+            id: id,
+            is_completed: newStatus
+        });
+    },
+
+    async deleteDecisionItem(id: string) {
+        const db = await getDb();
+        await db.runAsync('DELETE FROM decision_items WHERE id = ?', [id]);
+        await addToOutbox('DELETE_DECISION_ITEM', { id });
+    },
+
     // --- Leaderboard & Readings ---
     async addReadingLog(log: Omit<ReadingLog, 'id'>) {
         try {

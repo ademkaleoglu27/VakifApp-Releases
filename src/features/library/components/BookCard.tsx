@@ -48,20 +48,30 @@ export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCard
                     backgroundColor: coverColor
                 }
             ]}>
-                {/* Decorative frame */}
-                <View style={styles.frame}>
-                    <View style={styles.innerFrame} />
-                </View>
+                {item.cover ? (
+                    <Image
+                        source={typeof item.cover === 'string' ? { uri: item.cover } : item.cover}
+                        style={StyleSheet.absoluteFillObject}
+                        resizeMode="cover"
+                    />
+                ) : (
+                    <>
+                        {/* Decorative frame */}
+                        <View style={styles.frame}>
+                            <View style={styles.innerFrame} />
+                        </View>
 
-                {/* Title on cover */}
-                <View style={styles.titleContainer}>
-                    <Text style={[
-                        styles.coverTitle,
-                        size === 'large' && styles.coverTitleLarge
-                    ]} numberOfLines={3}>
-                        {item.title}
-                    </Text>
-                </View>
+                        {/* Title on cover - Only shown if no image */}
+                        <View style={styles.titleContainer}>
+                            <Text style={[
+                                styles.coverTitle,
+                                size === 'large' && styles.coverTitleLarge
+                            ]} numberOfLines={3}>
+                                {item.title}
+                            </Text>
+                        </View>
+                    </>
+                )}
 
                 {/* Preparing overlay */}
                 {isPreparing && (
@@ -70,7 +80,7 @@ export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCard
                     </View>
                 )}
 
-                {/* 3D spine effect */}
+                {/* 3D spine effect - Always visible for depth */}
                 <View style={styles.spine} />
             </View>
 

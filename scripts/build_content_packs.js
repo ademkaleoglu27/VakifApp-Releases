@@ -30,30 +30,30 @@ const DIST_DIR = path.join(__dirname, '..', 'dist', 'packs');
 
 // Book packs to generate (matches CONTENT_PACK_CONFIG downloadable entries)
 const PACKS = [
-    { bookId: 'mektubat', packId: 'risale.mektubat.v1', sourceDir: '02_mektubat', title: 'Mektubat' },
-    { bookId: 'lemalar', packId: 'risale.lemalar.v1', sourceDir: '03_lemalar', title: 'Lem\'alar' },
-    { bookId: 'sualar', packId: 'risale.sualar.v1', sourceDir: '04_sualar', title: 'Şualar' },
-    { bookId: 'tarihce', packId: 'risale.tarihce.v1', sourceDir: '05_tarihce', title: 'Tarihçe-i Hayat' },
-    { bookId: 'mesnevi', packId: 'risale.mesnevi.v1', sourceDir: '06_mesnevi', title: 'Mesnevî-i Nuriye' },
-    { bookId: 'isarat', packId: 'risale.isarat.v1', sourceDir: '07_isarat', title: 'İşaratü\'l-i\'caz' },
-    { bookId: 'sikke', packId: 'risale.sikke.v1', sourceDir: '08_sikke', title: 'Sikke-i Tasdik-i Gaybî' },
-    { bookId: 'barla', packId: 'risale.barla.v1', sourceDir: '09_barla', title: 'Barla Lahikası' },
-    { bookId: 'kastamonu', packId: 'risale.kastamonu.v1', sourceDir: '10_kastamonu', title: 'Kastamonu Lahikası' },
-    { bookId: 'emirdag1', packId: 'risale.emirdag1.v1', sourceDir: '11_emirdag1', title: 'Emirdağ Lahikası I' },
-    { bookId: 'emirdag2', packId: 'risale.emirdag2.v1', sourceDir: '12_emirdag2', title: 'Emirdağ Lahikası II' },
-    { bookId: 'asayi', packId: 'risale.asayi.v1', sourceDir: '13_asayi', title: 'Âsâ-yı Mûsâ' },
-    { bookId: 'muhakemat', packId: 'risale.muhakemat.v1', sourceDir: '14_muhakemat', title: 'Muhakemat' },
+    { bookId: 'mektubat', packId: 'risale.mektubat.v2', sourceDir: '02_mektubat', title: 'Mektubat' },
+    { bookId: 'lemalar', packId: 'risale.lemalar.v2', sourceDir: '03_lemalar', title: 'Lem\'alar' },
+    { bookId: 'sualar', packId: 'risale.sualar.v2', sourceDir: '04_sualar', title: 'Şualar' },
+    { bookId: 'tarihce', packId: 'risale.tarihce.v2', sourceDir: '05_tarihce', title: 'Tarihçe-i Hayat' },
+    { bookId: 'mesnevi', packId: 'risale.mesnevi.v2', sourceDir: '06_mesnevi', title: 'Mesnevî-i Nuriye' },
+    { bookId: 'isarat', packId: 'risale.isarat.v2', sourceDir: '07_isarat', title: 'İşaratü\'l-i\'caz' },
+    { bookId: 'sikke', packId: 'risale.sikke.v2', sourceDir: '08_sikke', title: 'Sikke-i Tasdik-i Gaybî' },
+    { bookId: 'barla', packId: 'risale.barla.v2', sourceDir: '09_barla', title: 'Barla Lahikası' },
+    { bookId: 'kastamonu', packId: 'risale.kastamonu.v2', sourceDir: '10_kastamonu', title: 'Kastamonu Lahikası' },
+    { bookId: 'emirdag1', packId: 'risale.emirdag1.v2', sourceDir: '11_emirdag1', title: 'Emirdağ Lahikası I' },
+    { bookId: 'emirdag2', packId: 'risale.emirdag2.v2', sourceDir: '12_emirdag2', title: 'Emirdağ Lahikası II' },
+    { bookId: 'asayi', packId: 'risale.asayi.v2', sourceDir: '13_asayi', title: 'Âsâ-yı Mûsâ' },
+    { bookId: 'muhakemat', packId: 'risale.muhakemat.v2', sourceDir: '14_muhakemat', title: 'Muhakemat' },
     // Küçük Kitaplar
-    { bookId: 'sunuhat', packId: 'risale.sunuhat.v1', sourceDir: '15_sunuhat', title: 'Sünuhat' },
-    { bookId: 'isarat_k', packId: 'risale.isarat_k.v1', sourceDir: '16_isarat_k', title: 'İşarat' },
-    { bookId: 'tuluat', packId: 'risale.tuluat.v1', sourceDir: '17_tuluat', title: 'Tulûat' },
-    { bookId: 'nurcesmesi', packId: 'risale.nurcesmesi.v1', sourceDir: '19_nurcesmesi', title: 'Nur\'un İlk Kapısı' },
-    { bookId: 'divaniharbi', packId: 'risale.divaniharbi.v1', sourceDir: '20_divaniharbi', title: 'Divan-ı Harb-i Örfî' },
-    { bookId: 'hutbe', packId: 'risale.hutbe.v1', sourceDir: '21_hutbe', title: 'Hutbe-i Şamiye' },
-    { bookId: 'munazarat', packId: 'risale.munazarat.v1', sourceDir: '22_munazarat', title: 'Münazarat' },
-    { bookId: 'genclik', packId: 'risale.genclik.v1', sourceDir: '23_genclik', title: 'Gençlik Rehberi' },
-    { bookId: 'hanimlar', packId: 'risale.hanimlar.v1', sourceDir: '24_hanimlar', title: 'Hanımlar Rehberi' },
-    { bookId: 'konferans', packId: 'risale.konferans.v1', sourceDir: '25_konferans', title: 'Konferans' },
+    { bookId: 'sunuhat', packId: 'risale.sunuhat.v2', sourceDir: '15_sunuhat', title: 'Sünuhat' },
+    { bookId: 'isarat_k', packId: 'risale.isarat_k.v2', sourceDir: '16_isarat_k', title: 'İşarat' },
+    { bookId: 'tuluat', packId: 'risale.tuluat.v2', sourceDir: '17_tuluat', title: 'Tulûat' },
+    { bookId: 'nurcesmesi', packId: 'risale.nurcesmesi.v2', sourceDir: '19_nurcesmesi', title: 'Nur\'un İlk Kapısı' },
+    { bookId: 'divaniharbi', packId: 'risale.divaniharbi.v2', sourceDir: '20_divaniharbi', title: 'Divan-ı Harb-i Örfî' },
+    { bookId: 'hutbe', packId: 'risale.hutbe.v2', sourceDir: '21_hutbe', title: 'Hutbe-i Şamiye' },
+    { bookId: 'munazarat', packId: 'risale.munazarat.v2', sourceDir: '22_munazarat', title: 'Münazarat' },
+    { bookId: 'genclik', packId: 'risale.genclik.v2', sourceDir: '23_genclik', title: 'Gençlik Rehberi' },
+    { bookId: 'hanimlar', packId: 'risale.hanimlar.v2', sourceDir: '24_hanimlar', title: 'Hanımlar Rehberi' },
+    { bookId: 'konferans', packId: 'risale.konferans.v2', sourceDir: '25_konferans', title: 'Konferans' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -243,6 +243,7 @@ async function main() {
     const results = [];
     for (const pack of PACKS) {
         try {
+            console.log(`  Processing ${pack.bookId}...`);
             const result = await buildPack(pack, sourceBaseDir);
             if (result) {
                 results.push(result);
