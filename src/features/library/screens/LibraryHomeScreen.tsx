@@ -108,13 +108,38 @@ export const LibraryHomeScreen: React.FC = () => {
         : [];
 
     // Convert recent reads to LibraryItems for display
-    const recentItems: LibraryItem[] = recentReads.map(r => ({
-        id: r.id,
-        title: r.title,
-        kind: 'other',
-        status: 'ready',
-        openAction: { type: 'route', routeName: 'RisaleHtmlReaderHome', params: { bookId: r.bookId } }
-    }));
+    const recentItems: LibraryItem[] = recentReads.map(r => {
+        // 1. Try to find full item in Catalog (Best for static items like Cevşen, Qur'an)
+        const catalogItem = LibraryCatalog.getAllItems().find(i => i.id === r.id);
+        if (catalogItem) {
+            return {
+                ...catalogItem,
+                title: r.title || catalogItem.title
+            };
+        }
+
+        // 2. Fallback Heuristics for items not in catalog or legacy IDs
+        let routeName = 'RisaleHtmlReaderHome';
+        const params: any = { bookId: r.bookId, title: r.title };
+
+        if (r.id === 'cevsen' || r.id === 'mealli-cevsen') {
+            routeName = 'CevsenScreen';
+        } else if (r.id === 'quran@vakifapp') {
+            routeName = 'QuranTextMenuScreen';
+        } else if (r.bookId === 'evrad.tesbihat') {
+            routeName = 'TesbihatScreen';
+        } else if (r.id === 'lugat') {
+            routeName = 'Lugat';
+        }
+
+        return {
+            id: r.id,
+            title: r.title,
+            kind: 'other',
+            status: 'ready',
+            openAction: { type: 'route', routeName, params }
+        };
+    });
 
     return (
         <SafeAreaView style={styles.container} edges={['top']}>

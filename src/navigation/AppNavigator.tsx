@@ -59,6 +59,7 @@ import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 
 // TesbihatPlayerScreen REMOVED
 import { TesbihatScreen } from '@/features/evrad/screens/TesbihatScreen';
+import { CevsenScreen } from '@/features/evrad/screens/CevsenScreen';
 import { QuranMenuScreen } from '@/features/quran/screens/QuranMenuScreen';
 import { QuranReaderScreen } from '@/features/quran/screens/QuranReaderScreen';
 import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloaderScreen';
@@ -135,6 +136,7 @@ export type RootStackParamList = {
     DeveloperTools: undefined;
     LibraryHome: undefined;
     TesbihatScreen: undefined;
+    CevsenScreen: undefined;
     JuzSelectionScreen: undefined;
     QuranDownloaderScreen: undefined;
     QuranMenuScreen: undefined;
@@ -767,6 +769,8 @@ export const AppNavigator = () => {
                             <Stack.Screen name="ReadingTracking" component={ReadingTrackingScreen} />
                             {/* Tesbihat */}
                             <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
+                            {/* Cevşen */}
+                            <Stack.Screen name="CevsenScreen" component={CevsenScreen} />
 
                             {/* Kuran (New Native Reader) */}
                             {/* Kuran (Native PDF Module) */}

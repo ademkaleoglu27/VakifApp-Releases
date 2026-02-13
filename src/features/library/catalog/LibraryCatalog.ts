@@ -47,24 +47,14 @@ const STATIC_ITEMS: LibraryItem[] = [
         title: 'Cevşen',
         subtitle: 'Cevşenü\'l-Kebir',
         kind: 'cevsen',
-        status: 'preparing',
+        status: 'ready',
         openAction: {
             type: 'route',
-            routeName: 'CevsenLanding',
+            routeName: 'CevsenScreen',
             params: {}
         }
     },
-    {
-        id: 'mealli-cevsen',
-        title: 'Mealli Cevşen',
-        kind: 'cevsen',
-        status: 'preparing',
-        openAction: {
-            type: 'route',
-            routeName: 'CevsenLanding',
-            params: {}
-        }
-    },
+
     {
         id: 'celcelutiye',
         title: 'Celcelutiye',
