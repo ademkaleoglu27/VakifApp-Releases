@@ -85,10 +85,12 @@ export const announcementService = {
             if (funcError) {
                 console.warn('Broadcast function returned error (handled):', funcError);
             }
-        } catch (broadcastError) {
+        } catch (broadcastError: any) {
             // Function invocation failed (network, 500, etc.)
             // We log it but do NOT throw, so the UI treats the Announcement add as successful.
             console.warn('Broadcast failed silently:', broadcastError);
+            // Optionally, we could show a conditional alert here, but since it's a silent fail in the original intent:
+            // Alert.alert('Uyarı', 'Duyuru kaydedildi ancak bildirim gönderilemedi: ' + broadcastError.message);
         }
     },
 

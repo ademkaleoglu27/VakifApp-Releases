@@ -104,8 +104,22 @@ export const JuzTrackingScreen = () => {
                     {
                         text: 'Okumaya Git',
                         onPress: () => {
-                            const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                            navigation.navigate('QuranReaderScreen', { page: startPage });
+                            // Juz → { surahId, verseNumber } mapping (Medina Mushaf)
+
+                            const juzStartMap: Record<number, { s: number; v: number }> = {
+                                1: { s: 1, v: 1 }, 2: { s: 2, v: 142 }, 3: { s: 2, v: 253 },
+                                4: { s: 3, v: 93 }, 5: { s: 4, v: 24 }, 6: { s: 4, v: 148 },
+                                7: { s: 5, v: 82 }, 8: { s: 6, v: 111 }, 9: { s: 7, v: 88 },
+                                10: { s: 8, v: 41 }, 11: { s: 9, v: 93 }, 12: { s: 11, v: 6 },
+                                13: { s: 12, v: 53 }, 14: { s: 15, v: 1 }, 15: { s: 17, v: 1 },
+                                16: { s: 18, v: 75 }, 17: { s: 21, v: 1 }, 18: { s: 23, v: 1 },
+                                19: { s: 25, v: 21 }, 20: { s: 27, v: 56 }, 21: { s: 29, v: 46 },
+                                22: { s: 33, v: 31 }, 23: { s: 36, v: 28 }, 24: { s: 39, v: 32 },
+                                25: { s: 41, v: 47 }, 26: { s: 46, v: 1 }, 27: { s: 51, v: 31 },
+                                28: { s: 58, v: 1 }, 29: { s: 67, v: 1 }, 30: { s: 78, v: 1 },
+                            };
+                            const start = juzStartMap[selectedPart.juz_number] || { s: 1, v: 1 };
+                            navigation.navigate('QuranTextReaderScreen', { surahId: start.s, startVerse: start.v });
                         }
                     }
                 ]
@@ -306,8 +320,20 @@ export const JuzTrackingScreen = () => {
                             onPress={() => {
                                 if (selectedPart) {
                                     setManageModalVisible(false);
-                                    const startPage = Q_JUZ_MAP[selectedPart.juz_number] || 1;
-                                    navigation.navigate('QuranReaderScreen', { page: startPage });
+                                    const juzStartMap: Record<number, { s: number; v: number }> = {
+                                        1: { s: 1, v: 1 }, 2: { s: 2, v: 142 }, 3: { s: 2, v: 253 },
+                                        4: { s: 3, v: 93 }, 5: { s: 4, v: 24 }, 6: { s: 4, v: 148 },
+                                        7: { s: 5, v: 82 }, 8: { s: 6, v: 111 }, 9: { s: 7, v: 88 },
+                                        10: { s: 8, v: 41 }, 11: { s: 9, v: 93 }, 12: { s: 11, v: 6 },
+                                        13: { s: 12, v: 53 }, 14: { s: 15, v: 1 }, 15: { s: 17, v: 1 },
+                                        16: { s: 18, v: 75 }, 17: { s: 21, v: 1 }, 18: { s: 23, v: 1 },
+                                        19: { s: 25, v: 21 }, 20: { s: 27, v: 56 }, 21: { s: 29, v: 46 },
+                                        22: { s: 33, v: 31 }, 23: { s: 36, v: 28 }, 24: { s: 39, v: 32 },
+                                        25: { s: 41, v: 47 }, 26: { s: 46, v: 1 }, 27: { s: 51, v: 31 },
+                                        28: { s: 58, v: 1 }, 29: { s: 67, v: 1 }, 30: { s: 78, v: 1 },
+                                    };
+                                    const start = juzStartMap[selectedPart.juz_number] || { s: 1, v: 1 };
+                                    navigation.navigate('QuranTextReaderScreen', { surahId: start.s, startVerse: start.v });
                                 }
                             }}
                         >

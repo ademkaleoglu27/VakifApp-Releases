@@ -30,14 +30,14 @@ export interface Shelf {
 // Static catalog items (Kur'an, Cevşen, Lugat, etc.) - Legacy until fully migrated to Registry
 const STATIC_ITEMS: LibraryItem[] = [
     {
-        id: 'quran.pdf@vakifapp',
+        id: 'quran@vakifapp',
         title: "Kur'an-ı Kerim",
-        subtitle: 'Diyanet PDF',
+        subtitle: 'Meal, Transliterasyon & Ses',
         kind: 'quran',
         status: 'ready',
         openAction: {
             type: 'route',
-            routeName: 'QuranMenuScreen', // Updated to new Image Reader Flow
+            routeName: 'QuranTextMenuScreen',
             params: {}
         }
     },

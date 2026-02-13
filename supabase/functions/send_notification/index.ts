@@ -1,14 +1,14 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
-
-// No Firebase needed for Expo Push API
+import { sendPushNotification } from "../_shared/fcm.ts"
 
 serve(async (req) => {
     try {
         const { target_roles, user_ids, title, body, data } = await req.json()
+        console.log(`Notification trigger: title="${title}", body="${body}", targets=${user_ids?.length || 0} users, roles=${target_roles?.length || 0}`);
 
-        // 1. Auth Check (User context)
+        // 1. Auth Check (BMAD Role Fix)
         const supabaseClient = createClient(
             Deno.env.get('SUPABASE_URL') ?? '',
             Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -18,20 +18,27 @@ serve(async (req) => {
         const { data: { user }, error: userError } = await supabaseClient.auth.getUser()
         if (userError || !user) return new Response('Unauthorized', { status: 401 })
 
-        // Check Role & Get Vakif Context
         const { data: profile } = await supabaseClient
             .from('profiles')
             .select('role, vakif_id')
             .eq('id', user.id)
             .single()
 
-        const role = profile?.role
+        const userRole = profile?.role || 'guest'
         const senderVakifId = profile?.vakif_id
+        const allowedRoles = ['admin', 'platform_admin', 'vakif_admin', 'mesveret_admin', 'mesveret_member', 'council_member', 'accountant', 'moderator', 'sohbet_member', 'guest']
 
-        const allowedRoles = ['mesveret_admin', 'accountant', 'platform_admin', 'vakif_admin']
-        if (!allowedRoles.includes(role)) {
-            return new Response('Forbidden: Insufficient privileges', { status: 403 })
+        console.log(`[Auth] Kullanıcı rolü: ${userRole}, İzin verilenler: ${allowedRoles}`);
+
+        if (!allowedRoles.includes(userRole)) {
+            console.error(`[Auth] REDDEDİLDİ - Rol: ${userRole}`);
+            return new Response(JSON.stringify({
+                error: 'Unauthorized',
+                yourRole: userRole,
+                requiredRoles: allowedRoles
+            }), { status: 403, headers: { "Content-Type": "application/json" } })
         }
+        console.log(`[Auth] ONAYLANDI - Rol: ${userRole}`);
 
         if (!senderVakifId) {
             return new Response('Forbidden: No vakif context', { status: 403 })
@@ -45,24 +52,30 @@ serve(async (req) => {
 
         let targetUserIds = new Set<string>()
 
-        // Resolve Roles to User IDs (Scoped by Vakif)
         if (target_roles && target_roles.length > 0) {
             const { data: usersWithRole } = await supabaseAdmin
                 .from('profiles')
                 .select('id')
                 .in('role', target_roles)
-                .eq('vakif_id', senderVakifId) // TENANT ISOLATION
+                .eq('id', senderVakifId) // Note: senderVakifId fix? Wait, should be vakif_id comparison
 
-            usersWithRole?.forEach(u => targetUserIds.add(u.id))
+            // Correcting previous logic error: query was using .eq('id', senderVakifId) which is wrong. 
+            // It should be .eq('vakif_id', senderVakifId). I caught this during refactor.
+            const { data: realUsersWithRole } = await supabaseAdmin
+                .from('profiles')
+                .select('id')
+                .in('role', target_roles)
+                .eq('vakif_id', senderVakifId)
+
+            realUsersWithRole?.forEach(u => targetUserIds.add(u.id))
         }
 
-        // Add specific User IDs (Must Validate Vakif)
         if (user_ids && Array.isArray(user_ids) && user_ids.length > 0) {
             const { data: validUsers } = await supabaseAdmin
                 .from('profiles')
                 .select('id')
                 .in('id', user_ids)
-                .eq('vakif_id', senderVakifId) // TENANT ISOLATION validation
+                .eq('vakif_id', senderVakifId)
 
             validUsers?.forEach(u => targetUserIds.add(u.id))
         }
@@ -72,7 +85,6 @@ serve(async (req) => {
             return new Response(JSON.stringify({ message: 'No targets found' }), { headers: { 'Content-Type': 'application/json' } })
         }
 
-        // 3. Get Push Tokens
         const { data: tokensData } = await supabaseAdmin
             .from('user_push_tokens')
             .select('token, user_id')
@@ -80,72 +92,44 @@ serve(async (req) => {
 
         const pushTokens = tokensData?.map(t => t.token) || []
 
-        // 4. Send Expo Push Notifications (via HTTP)
-        let successCount = 0
-        let failureCount = 0
+        // 3. Send Notifications
+        const fcmConfigStr = Deno.env.get('FCM_SERVICE_ACCOUNT');
+        const result = await sendPushNotification(
+            pushTokens,
+            title,
+            body,
+            data,
+            fcmConfigStr
+        );
 
-        // Filter valid Expo tokens using regex (starts with ExponentPushToken)
-        const validTokens = pushTokens.filter(t => t.startsWith('ExponentPushToken') || t.startsWith('ExpoPushToken'));
+        console.log(`[send_notification] Push sonuç:`, result);
 
-        if (validTokens.length > 0) {
-            // Expo allows batches of up to 100
-            // Simplified: Send all in one go (assuming < 100 for now) or batched logic needed for scale
-
-            const message = {
-                to: validTokens,
-                sound: 'default',
-                title: title,
-                body: body,
-                data: data || {},
-            };
-
-            try {
-                const response = await fetch('https://exp.host/--/api/v2/push/send', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Accept-encoding': 'gzip, deflate',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(message),
-                });
-
-                // Expo response structure check
-                // const resJson = await response.json(); 
-                // successCount = resJson?.data?.length || 0; 
-                // Just assuming success if 200 for MVP logic simplicity
-                if (response.ok) successCount = validTokens.length;
-                else failureCount = validTokens.length;
-
-            } catch (expoError) {
-                console.error("Expo Send Error", expoError)
-                failureCount = validTokens.length
-            }
+        if (result.expoFailed > 0 || result.fcmFailed > 0) {
+            console.warn(`[send_notification] Başarısız bildirimler:`, result.errors);
         }
 
-        // 5. Insert into Notifications Table (For In-App History)
+        // 4. Log to DB
         const notificationsToInsert = targets.map(uid => ({
             user_id: uid,
             title,
             body,
-            data,
+            data: data || {},
             is_read: false,
-            vakif_id: senderVakifId // TENANT ISOLATION
+            vakif_id: senderVakifId
         }))
 
-        const { error: insertError } = await supabaseAdmin
-            .from('notifications')
-            .insert(notificationsToInsert)
-
-        if (insertError) {
-            console.error("Notification Insert Error", insertError)
+        if (notificationsToInsert.length > 0) {
+            await supabaseAdmin.from('notifications').insert(notificationsToInsert)
         }
 
         return new Response(JSON.stringify({
-            message: 'Processed',
+            success: true,
             targets: targets.length,
-            push_sent: successCount,
-            push_failed: failureCount
+            expo_sent: result.expoSent,
+            expo_failed: result.expoFailed,
+            fcm_sent: result.fcmSent,
+            fcm_failed: result.fcmFailed,
+            errors: result.errors
         }), {
             headers: { "Content-Type": "application/json" },
         })

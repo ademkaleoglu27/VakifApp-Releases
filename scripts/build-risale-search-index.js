@@ -1,4 +1,4 @@
-/**
+bo/**
  * scripts/build-risale-search-index.js
  * 
  * This script is a template for creating the 'risale_search.db' FTS5 database.

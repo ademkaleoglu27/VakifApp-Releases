@@ -63,6 +63,10 @@ import { QuranMenuScreen } from '@/features/quran/screens/QuranMenuScreen';
 import { QuranReaderScreen } from '@/features/quran/screens/QuranReaderScreen';
 import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloaderScreen';
 
+// Quran Text (Meal/Transliterasyon) Screens
+import { QuranTextMenuScreen } from '@/features/quran-text/screens/QuranTextMenuScreen';
+import { QuranTextReaderScreen } from '@/features/quran-text/screens/QuranTextReaderScreen';
+
 
 if (Platform.OS === 'android') {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -136,6 +140,10 @@ export type RootStackParamList = {
     QuranMenuScreen: undefined;
     QuranReaderScreen: { page: number };
     QuranLegacyReaderScreen: { initialPage: number; juzNumber: number };
+
+    // Quran Text (Meal) Screens
+    QuranTextMenuScreen: undefined;
+    QuranTextReaderScreen: { surahId: number };
 };
 
 export type MainTabParamList = {
@@ -620,7 +628,9 @@ export const AppNavigator = () => {
     // Deep Linking Listener
     React.useEffect(() => {
         const subscription = Notifications.addNotificationResponseReceivedListener(response => {
-            const screen = response.notification.request.content.data.screen;
+            const data = response?.notification?.request?.content?.data;
+            const screen = data?.screen;
+
             // Navigate if screen info available and generic type 'any' allows simple string nav
             if (screen && navigationRef.isReady()) {
                 navigationRef.navigate(screen);
@@ -763,6 +773,10 @@ export const AppNavigator = () => {
                             <Stack.Screen name="QuranDownloaderScreen" component={QuranDownloaderScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="QuranMenuScreen" component={QuranMenuScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="QuranReaderScreen" component={QuranReaderScreen} options={{ headerShown: false }} />
+
+                            {/* Kuran Okuma (Text/Meal Mode) */}
+                            <Stack.Screen name="QuranTextMenuScreen" component={QuranTextMenuScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="QuranTextReaderScreen" component={QuranTextReaderScreen} options={{ headerShown: false }} />
                         </Stack.Navigator>
                         <MiniPlayer />
                     </View>

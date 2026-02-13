@@ -2138,13 +2138,6 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
             },
         ]
     },
-    "risale.nurunilkkapisi@diyanet.tr": {
-        id: "risale.nurunilkkapisi@diyanet.tr",
-        title: "Nur'un İlk Kapısı",
-        category: "Küçük Kitaplar",
-        chapters: [
-        ]
-    },
     "risale.nurcesmesi@diyanet.tr": {
         id: "risale.nurcesmesi@diyanet.tr",
         title: "Nur Çeşmesi",
@@ -2239,20 +2232,6 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 title: "00 11 KONFERANS",
                 assetPath: "risale_html_pilot/25_konferans/25_01.html",
                 pageCount: 96,
-                startPage: 1,
-            },
-        ]
-    },
-    "risale.tilsimlar@diyanet.tr": {
-        id: "risale.tilsimlar@diyanet.tr",
-        title: "Tılsımlar",
-        category: "Küçük Kitaplar",
-        chapters: [
-            {
-                id: "risale.tilsimlar@diyanet.tr:html_01",
-                title: "00 12 Tılsımlar",
-                assetPath: "risale_html_pilot/26_tilsimlar/26_01.html",
-                pageCount: 1,
                 startPage: 1,
             },
         ]
