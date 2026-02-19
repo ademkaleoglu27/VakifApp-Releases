@@ -67,6 +67,21 @@ const STATIC_ITEMS: LibraryItem[] = [
         }
     },
     {
+        id: 'buyuk_cevsen',
+        title: 'Büyük Cevşen',
+        subtitle: 'Tam Dua Kitabı (Resim)',
+        kind: 'cevsen',
+        status: 'ready',
+        openAction: {
+            type: 'route',
+            routeName: 'CevsenReaderScreen',
+            params: {
+                title: 'Büyük Cevşen',
+                initialPage: 1
+            }
+        }
+    },
+    {
         id: 'lugat',
         title: 'Hayrat Lügat',
         subtitle: 'Osmanlıca-Türkçe',

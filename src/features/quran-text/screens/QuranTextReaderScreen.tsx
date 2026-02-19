@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
     View, Text, StyleSheet, FlatList, TouchableOpacity,
-    ActivityIndicator, StatusBar, Platform, Switch, ScrollView, Alert
+    ActivityIndicator, StatusBar, Platform, Switch, ScrollView, Alert, useWindowDimensions
 } from 'react-native';
+import * as ScreenOrientation from 'expo-screen-orientation'; // Added for Phase 4
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -41,6 +42,21 @@ export const QuranTextReaderScreen = () => {
     const route = useRoute<any>();
     const navigation = useNavigation<any>();
     const { surahId, startVerse } = route.params || { surahId: 1, startVerse: 1 };
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
+
+    // Phase 4: Unlock Orientation for Reading
+    useFocusEffect(
+        useCallback(() => {
+            // Unlock to allow Landscape
+            ScreenOrientation.unlockAsync();
+
+            return () => {
+                // Re-lock to Portrait when leaving this screen
+                ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            };
+        }, [])
+    );
 
     const {
         selectedAuthorId,
@@ -397,55 +413,68 @@ export const QuranTextReaderScreen = () => {
             <StatusBar barStyle="dark-content" />
 
             {/* Top Bar */}
-            <View style={styles.topBar}>
+            {!isLandscape && (
+                <View style={styles.topBar}>
+                    <TouchableOpacity
+                        onPress={() => navigation.goBack()}
+                        style={styles.topBarBtn}
+                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                    >
+                        <Ionicons name="arrow-back" size={22} color="#5D4037" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.topBarTitle}
+                        onPress={() => navigation.navigate('QuranTextMenuScreen')}
+                    >
+                        <Text style={styles.topBarTitleText} numberOfLines={1}>
+                            {surah ? `${surah.name} Suresi` : 'Yükleniyor...'}
+                        </Text>
+                        <Ionicons name="chevron-down" size={14} color="#8B7355" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => setShowSettings(!showSettings)}
+                        style={styles.topBarBtn}
+                    >
+                        <Ionicons
+                            name={showSettings ? 'settings' : 'settings-outline'}
+                            size={22}
+                            color="#5D4037"
+                        />
+                    </TouchableOpacity>
+
+                    {/* Audio Play Button */}
+                    {surah?.audio?.mp3 && (
+                        <TouchableOpacity
+                            onPress={handlePlaySurah}
+                            style={[styles.topBarBtn, isCurrentSurahPlaying && styles.topBarBtnActive]}
+                            disabled={audioLoading}
+                        >
+                            {audioLoading && currentTrack?.id === `quran-surah-${surahId}` ? (
+                                <ActivityIndicator size="small" color="#8B4513" />
+                            ) : (
+                                <Ionicons
+                                    name={isCurrentSurahPlaying ? 'pause' : 'play'}
+                                    size={22}
+                                    color={isCurrentSurahPlaying ? '#fff' : '#5D4037'}
+                                />
+                            )}
+                        </TouchableOpacity>
+                    )}
+                </View>
+            )}
+
+            {/* Floating Back Button for Landscape */}
+            {isLandscape && (
                 <TouchableOpacity
+                    style={styles.floatingLandscapeBack}
                     onPress={() => navigation.goBack()}
-                    style={styles.topBarBtn}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 >
-                    <Ionicons name="arrow-back" size={22} color="#5D4037" />
+                    <Ionicons name="arrow-back" size={20} color="#5D4037" />
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.topBarTitle}
-                    onPress={() => navigation.navigate('QuranTextMenuScreen')}
-                >
-                    <Text style={styles.topBarTitleText} numberOfLines={1}>
-                        {surah ? `${surah.name} Suresi` : 'Yükleniyor...'}
-                    </Text>
-                    <Ionicons name="chevron-down" size={14} color="#8B7355" />
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => setShowSettings(!showSettings)}
-                    style={styles.topBarBtn}
-                >
-                    <Ionicons
-                        name={showSettings ? 'settings' : 'settings-outline'}
-                        size={22}
-                        color="#5D4037"
-                    />
-                </TouchableOpacity>
-
-                {/* Audio Play Button */}
-                {surah?.audio?.mp3 && (
-                    <TouchableOpacity
-                        onPress={handlePlaySurah}
-                        style={[styles.topBarBtn, isCurrentSurahPlaying && styles.topBarBtnActive]}
-                        disabled={audioLoading}
-                    >
-                        {audioLoading && currentTrack?.id === `quran-surah-${surahId}` ? (
-                            <ActivityIndicator size="small" color="#8B4513" />
-                        ) : (
-                            <Ionicons
-                                name={isCurrentSurahPlaying ? 'pause' : 'play'}
-                                size={22}
-                                color={isCurrentSurahPlaying ? '#fff' : '#5D4037'}
-                            />
-                        )}
-                    </TouchableOpacity>
-                )}
-            </View>
+            )}
 
             {/* Settings */}
             {showSettings && <SettingsPanel />}
@@ -503,6 +532,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFF8E7', // Warm parchment / cream
+    },
+    floatingLandscapeBack: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        backgroundColor: 'rgba(255, 248, 231, 0.8)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 50,
+        borderWidth: 1,
+        borderColor: '#E8D5A3',
     },
     // ── Top Bar ──
     topBar: {

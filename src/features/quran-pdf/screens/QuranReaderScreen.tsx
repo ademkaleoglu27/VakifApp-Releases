@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { View, StyleSheet, TouchableOpacity, StatusBar, Dimensions, SafeAreaView, ActivityIndicator, Text, Alert } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, StatusBar, Dimensions, SafeAreaView, ActivityIndicator, Text, Alert, useWindowDimensions } from 'react-native';
 import Pdf from 'react-native-pdf';
 import * as FileSystem from 'expo-file-system';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native';
+import * as ScreenOrientation from 'expo-screen-orientation';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,6 +20,7 @@ const PDF_SOURCE = { uri: LOCAL_FILE, cache: true };
 
 // Memoized PDF Component to prevent re-renders when parent state (like page badge) changes
 const StablePdfView = React.memo(({
+    source,
     page,
     onLoadComplete,
     onPageChanged,
@@ -32,7 +34,7 @@ const StablePdfView = React.memo(({
 
     return (
         <Pdf
-            source={PDF_SOURCE}
+            source={source}
             page={page}
             style={styles.pdf}
             horizontal={true}
@@ -70,6 +72,27 @@ const useDebounce = (callback: (...args: any[]) => void, delay: number) => {
 export const QuranReaderScreen = () => {
     const navigation = useNavigation<any>();
     const route = useRoute<any>();
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
+
+    // Params for Generic Usage
+    const customTitle = route.params?.title;
+    const customSource = route.params?.source; // expects { uri: ... } or require(...)
+    const initialPage = route.params?.page || 1;
+    const isGenericPdf = !!customSource;
+
+    // Use custom source or fall back to Quran default
+    const pdfSource = customSource || PDF_SOURCE;
+
+    // Phase 4: Unlock Orientation
+    useFocusEffect(
+        useCallback(() => {
+            ScreenOrientation.unlockAsync();
+            return () => {
+                ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            };
+        }, [])
+    );
 
     // Diagnostic: Parent Render Count
     const renderRef = useRef(0);
@@ -78,17 +101,20 @@ export const QuranReaderScreen = () => {
     // State
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [currentPage, setCurrentPage] = useState<number>((route.params?.page || 1));
+    const [currentPage, setCurrentPage] = useState<number>(initialPage);
 
     // Uncontrolled Page Prop: only set on mount.
-    // We do NOT update this prop when the user swipes in the PDF.
-    const initialPdfPage = useRef((route.params?.page || 1) + PAGE_OFFSET).current;
+    const initialPdfPage = useRef(isGenericPdf ? initialPage : initialPage + PAGE_OFFSET).current;
 
-    console.log(`[READER PARENT] Render #${renderRef.current} | PageState: ${currentPage} | InitialPdfPage: ${initialPdfPage}`);
+    console.log(`[READER PARENT] Render #${renderRef.current} | PageState: ${currentPage} | Source: ${isGenericPdf ? 'Custom' : 'Default'}`);
 
     useEffect(() => {
-        checkFile();
-    }, []);
+        if (!isGenericPdf) {
+            checkFile();
+        } else {
+            setLoading(false); // Custom assets assumed ready
+        }
+    }, [isGenericPdf]);
 
     const checkFile = async () => {
         const info = await FileSystem.getInfoAsync(LOCAL_FILE);
@@ -170,6 +196,7 @@ export const QuranReaderScreen = () => {
                 </View>
             ) : (
                 <StablePdfView
+                    source={pdfSource}
                     page={initialPdfPage} // UNCONTROLLED: Only initial page is passed
                     onLoadComplete={handleLoadComplete}
                     onPageChanged={handlePageChange}
@@ -178,29 +205,46 @@ export const QuranReaderScreen = () => {
                 />
             )}
 
-            {/* Custom Floating Header */}
-            <SafeAreaView style={styles.floatingHeader} pointerEvents="box-none">
-                <View style={styles.headerRow}>
-                    <TouchableOpacity
-                        style={styles.circleBtn}
-                        onPress={() => navigation.goBack()}
-                    >
-                        <Ionicons name="arrow-back" size={24} color="#57534E" />
-                    </TouchableOpacity>
-
-                    <View style={styles.rightButtons}>
-                        <View style={styles.pageBadge}>
-                            <Text style={styles.pageText}>Sayfa {currentPage}</Text>
-                        </View>
+            {/* Custom Floating Header - Hide in Landscape */}
+            {!isLandscape && (
+                <SafeAreaView style={styles.floatingHeader} pointerEvents="box-none">
+                    <View style={styles.headerRow}>
                         <TouchableOpacity
-                            style={[styles.circleBtn, styles.bookmarkBtn]}
-                            onPress={saveBookmark}
+                            style={styles.circleBtn}
+                            onPress={() => navigation.goBack()}
                         >
-                            <Ionicons name="bookmark" size={22} color="#DC2626" />
+                            <Ionicons name="arrow-back" size={24} color="#57534E" />
                         </TouchableOpacity>
+
+                        <View style={styles.rightButtons}>
+                            <View style={styles.pageBadge}>
+                                <Text style={styles.pageText}>{customTitle || `Sayfa ${currentPage}`}</Text>
+                            </View>
+                            <TouchableOpacity
+                                style={[styles.circleBtn, styles.bookmarkBtn]}
+                                onPress={saveBookmark}
+                            >
+                                <Ionicons name="bookmark" size={22} color="#DC2626" />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
-            </SafeAreaView>
+                </SafeAreaView>
+            )}
+
+            {/* Landscape Floating Back Button */}
+            {isLandscape && (
+                <TouchableOpacity
+                    style={{
+                        position: 'absolute', top: 40, left: 20, zIndex: 100,
+                        width: 40, height: 40, backgroundColor: 'rgba(255, 251, 232, 0.9)',
+                        borderRadius: 20, justifyContent: 'center', alignItems: 'center',
+                        borderWidth: 1, borderColor: '#ccc'
+                    }}
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons name="arrow-back" size={24} color="#57534E" />
+                </TouchableOpacity>
+            )}
         </View>
     );
 };

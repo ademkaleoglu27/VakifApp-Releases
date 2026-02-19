@@ -15,11 +15,14 @@ import {
     FlatList,
     Image,
     InteractionManager,
-    Dimensions
+    Dimensions,
+    useWindowDimensions,
+    Alert
 } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
+import * as ScreenOrientation from 'expo-screen-orientation';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { dictionaryDb, DictionaryEntry } from '@/services/dictionaryDb';
 import { SCHEHERAZADE_BASE64 } from './ScheherazadeNewBase64';
@@ -56,18 +59,31 @@ const getHtmlCss = () => `
   body {
     font-family: "Crimson Pro", "Times New Roman", serif;
     font-size: var(--base-size);
-    line-height: 1.62;
+    line-height: 1.65;
     padding: 24px 20px 60px;
     -webkit-text-size-adjust: 100%;
     
-    /* Selection Enabled */
-    -webkit-user-select: text;
-    user-select: text;
-    -webkit-touch-callout: default;
+    /* Selection Enabled - FORCE */
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    /* -webkit-touch-callout: default !important; */ /* Let native handle callouts for menu */
+    /* cursor: auto !important; */
+  }
+
+  /* Specific elements text selection */
+  p, div, span, h1, h2, h3, h4, b, strong, i, em, mark, .arabic-block, .arabic {
+      -webkit-user-select: text !important;
+      user-select: text !important;
+  }
+  
+  /* FORCE ALL */
+  * {
+      -webkit-user-select: text !important;
+      user-select: text !important;
   }
 
   ::selection {
-    background: rgba(189, 148, 90, 0.3);
+    background: rgba(189, 148, 90, 0.4);
     color: inherit;
   }
 
@@ -80,22 +96,36 @@ const getHtmlCss = () => `
     /* Clamp: Min 24px, Ideal relative to root, Max 32px */
     font-size: clamp(24px, 1.5rem, 32px); 
     
-    line-height: 1.9; 
-    padding: 12px 0; 
+    line-height: 2.0; 
+    padding: 16px 8px;
     margin: 16px 0;
     display: block; 
     direction: rtl;
     width: 100%;
+    
+    /* FIX: Revert to isolate for blocks (safer for layout), use embed for spans */
+    unicode-bidi: isolate;
   }
 
   /* 2.1 INLINE ARABIC SPANS */
   span.arabic, .arabic {
       font-family: "ScheherazadeNew", "Noto Naskh Arabic", serif;
       color: var(--arabic);
-      font-size: 1.25em; /* Slightly larger than body */
-      line-height: 1.4;
+      font-size: 1.25em; 
+      line-height: 1.5;
       white-space: normal !important;
       overflow-wrap: break-word !important;
+      
+      /* FIX: 'embed' maintains RTL but allows selection to flow through */
+      unicode-bidi: embed; 
+      padding: 2px 0;
+  }
+  
+  /* FIX: Ensure bold/italic are explicitly selectable and don't trap selection */
+  b, strong, i, em, mark {
+      -webkit-user-select: text;
+      user-select: text;
+      cursor: auto;
   }
   
   /* 3. HEADINGS (Clamped & Normalized) */
@@ -167,6 +197,8 @@ const INJECTED_JS = `
 (function() {
     // STATE
     let scrollTimer;
+    let isSelectionInitialized = false;
+    let selectionTimeout;
     
     // 1. MESSAGING HELPER
     function send(type, payload={}) {
@@ -220,17 +252,53 @@ const INJECTED_JS = `
     
     window.addEventListener('resize', reportMetrics);
 
-    // 4. SELECTION LISTENER
-    let selectionTimeout;
-    function reportSelection() {
-        const sel = window.getSelection();
-        const text = sel ? sel.toString().trim() : "";
-        send("SELECTION", { text });
+    // 4. SELECTION MANAGER (ROBUST)
+    function handleSelectionChange() {
+        clearTimeout(selectionTimeout);
+        selectionTimeout = setTimeout(() => {
+            const sel = window.getSelection();
+            const text = sel ? sel.toString().trim() : "";
+            send("SELECTION", { text });
+        }, 300); // Increased delay for stability
     }
 
-    document.addEventListener('selectionchange', function() {
-        clearTimeout(selectionTimeout);
-        selectionTimeout = setTimeout(reportSelection, 250); 
+    function initSelection() {
+        if (isSelectionInitialized) return;
+        
+        // Clean up old listeners if any
+        document.removeEventListener('selectionchange', handleSelectionChange);
+        
+        // Add listener
+        document.addEventListener('selectionchange', handleSelectionChange);
+        
+        isSelectionInitialized = true;
+    }
+
+    // SELECTION RESET API (Called from Native)
+    window.resetSelectionAPI = function() {
+        // ANDROID İÇİN DAHA UZUN DELAY
+        setTimeout(() => {
+            const selection = window.getSelection();
+            if (selection && selection.rangeCount > 0) {
+                selection.removeAllRanges();
+            }
+            send("CONSOLE", { msg: "Selection cleared after 800ms delay" });
+        }, 800);  // 500ms -> 800ms (Android İçin)
+    };
+
+    // Auto-init on load
+    initSelection();
+
+    // Re-init on visibility change (App background/foreground)
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            // Apply clearance only when going to background
+            // Delay to allow menu close
+            setTimeout(() => {
+                const sel = window.getSelection();
+                if (sel) sel.removeAllRanges();
+            }, 200);
+        }
     });
 
     // 5. AUTO-TAG ARABIC BLOCKS
@@ -276,10 +344,23 @@ export const RisaleHtmlReaderScreen = () => {
     const navigation = useNavigation<any>();
     const { assetPath, title, bookId, chapterId } = route.params;
     const webViewRef = useRef<WebView>(null);
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
+    const insets = useSafeAreaInsets();
 
     // State
     const [fontsReady, setFontsReady] = useState(false);
     const [pageInfo, setPageInfo] = useState({ current: 1, total: 1, isAtEnd: false });
+
+    // Phase 4: Unlock Orientation
+    useFocusEffect(
+        useCallback(() => {
+            ScreenOrientation.unlockAsync();
+            return () => {
+                ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            };
+        }, [])
+    );
 
     // Font Size State
     const DEFAULT_FONT_SIZE = 19;
@@ -288,6 +369,20 @@ export const RisaleHtmlReaderScreen = () => {
     const FONT_STEP = 2;
     const FONT_SIZE_KEY = 'reader_font_size';
     const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
+
+    // --- SELECTION RESET ON FOCUS ---
+    useFocusEffect(
+        useCallback(() => {
+            if (webViewRef.current) {
+                webViewRef.current.injectJavaScript(`
+                   if (window.resetSelectionAPI) { 
+                       window.resetSelectionAPI(); 
+                   }
+                   true;
+               `);
+            }
+        }, [])
+    );
 
     // Load saved font size preference
     useEffect(() => {
@@ -336,6 +431,9 @@ export const RisaleHtmlReaderScreen = () => {
     // Footnote State
     const [footnoteVisible, setFootnoteVisible] = useState(false);
     const [footnoteContent, setFootnoteContent] = useState("");
+
+    // AI Modal State
+    const [aiModalVisible, setAiModalVisible] = useState(false);
 
     useEffect(() => {
         dictionaryDb.init().catch(console.error);
@@ -443,35 +541,37 @@ export const RisaleHtmlReaderScreen = () => {
     return (
         <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
             {/* Header with Back + Title + Font Controls + TOC */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#efe7d1', paddingHorizontal: 12, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#d4cbb5' }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
-                    <Ionicons name="arrow-back" size={22} color="#334155" />
-                </TouchableOpacity>
-                <Text numberOfLines={1} style={{ flex: 1, fontSize: 15, fontWeight: '600', color: '#1e293b', marginHorizontal: 10 }}>{title}</Text>
-
-                {/* Font Size Controls */}
-                <TouchableOpacity
-                    onPress={() => changeFontSize(-FONT_STEP)}
-                    disabled={fontSize <= MIN_FONT_SIZE}
-                    style={{ padding: 6, opacity: fontSize <= MIN_FONT_SIZE ? 0.3 : 1 }}
-                >
-                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#334155' }}>A⁻</Text>
-                </TouchableOpacity>
-                <Text style={{ fontSize: 11, color: '#94a3b8', minWidth: 24, textAlign: 'center' }}>{fontSize}</Text>
-                <TouchableOpacity
-                    onPress={() => changeFontSize(FONT_STEP)}
-                    disabled={fontSize >= MAX_FONT_SIZE}
-                    style={{ padding: 6, opacity: fontSize >= MAX_FONT_SIZE ? 0.3 : 1 }}
-                >
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#334155' }}>A⁺</Text>
-                </TouchableOpacity>
-
-                {currentBook && (
-                    <TouchableOpacity onPress={() => setTocVisible(true)} style={{ padding: 6, marginLeft: 4 }}>
-                        <Ionicons name="list" size={22} color="#334155" />
+            {!isLandscape && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#efe7d1', paddingHorizontal: 12, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#d4cbb5' }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
+                        <Ionicons name="arrow-back" size={22} color="#334155" />
                     </TouchableOpacity>
-                )}
-            </View>
+                    <Text numberOfLines={1} style={{ flex: 1, fontSize: 15, fontWeight: '600', color: '#1e293b', marginHorizontal: 10 }}>{title}</Text>
+
+                    {/* Font Size Controls */}
+                    <TouchableOpacity
+                        onPress={() => changeFontSize(-FONT_STEP)}
+                        disabled={fontSize <= MIN_FONT_SIZE}
+                        style={{ padding: 6, opacity: fontSize <= MIN_FONT_SIZE ? 0.3 : 1 }}
+                    >
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#334155' }}>A⁻</Text>
+                    </TouchableOpacity>
+                    <Text style={{ fontSize: 11, color: '#94a3b8', minWidth: 24, textAlign: 'center' }}>{fontSize}</Text>
+                    <TouchableOpacity
+                        onPress={() => changeFontSize(FONT_STEP)}
+                        disabled={fontSize >= MAX_FONT_SIZE}
+                        style={{ padding: 6, opacity: fontSize >= MAX_FONT_SIZE ? 0.3 : 1 }}
+                    >
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#334155' }}>A⁺</Text>
+                    </TouchableOpacity>
+
+                    {currentBook && (
+                        <TouchableOpacity onPress={() => setTocVisible(true)} style={{ padding: 6, marginLeft: 4 }}>
+                            <Ionicons name="list" size={22} color="#334155" />
+                        </TouchableOpacity>
+                    )}
+                </View>
+            )}
 
             {/* TOC Modal */}
             <Modal visible={tocVisible} animationType="slide" transparent onRequestClose={() => setTocVisible(false)}>
@@ -520,7 +620,7 @@ export const RisaleHtmlReaderScreen = () => {
             <View style={{ flex: 1 }}>
                 <WebView
                     ref={webViewRef}
-                    source={{ uri: `file:///android_asset/${assetPath}` }}
+                    source={{ uri: assetPath.startsWith('file:') ? assetPath : `file:///android_asset/${assetPath}` }}
                     originWhitelist={['*']}
                     allowFileAccess={true}
                     allowUniversalAccessFromFileURLs={true}
@@ -551,6 +651,31 @@ export const RisaleHtmlReaderScreen = () => {
                 <TouchableOpacity style={styles.nextSectionBtn} onPress={handleNextSection}>
                     <Text style={styles.nextSectionText}>Sonraki Bölüm</Text>
                     <Ionicons name="arrow-forward" size={18} color="#fff" />
+                </TouchableOpacity>
+            )}
+
+            {/* Floating Back Button for Landscape (Moved to end for Z-Index Safety) */}
+            {isLandscape && (
+                <TouchableOpacity
+                    style={{
+                        position: 'absolute',
+                        left: 10,
+                        top: Math.max(10, insets.top + 10),
+                        width: 36,
+                        height: 36,
+                        borderRadius: 18,
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: 999,
+                        elevation: 10,
+                        borderWidth: 1,
+                        borderColor: 'rgba(255,255,255,0.3)',
+                    }}
+                    onPress={() => navigation.goBack()}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                    <Ionicons name="arrow-back" size={20} color="#FFF" />
                 </TouchableOpacity>
             )}
 
@@ -611,6 +736,15 @@ export const RisaleHtmlReaderScreen = () => {
                     <View style={styles.divider} />
 
                     <TouchableOpacity style={styles.actionBtn} onPress={() => {
+                        setAiModalVisible(true);
+                    }}>
+                        <Ionicons name="sparkles" size={20} color="#fff" />
+                        <Text style={styles.actionText}>Nuri Abi</Text>
+                    </TouchableOpacity>
+
+                    <View style={styles.divider} />
+
+                    <TouchableOpacity style={styles.actionBtn} onPress={() => {
                         Share.share({ message: selectedText });
                     }}>
                         <Ionicons name="share-social" size={20} color="#fff" />
@@ -621,9 +755,15 @@ export const RisaleHtmlReaderScreen = () => {
 
                     <TouchableOpacity style={styles.actionBtn} onPress={() => {
                         Clipboard.setString(selectedText);
-                        // Optional: Show toast
-                        setSelectedText(""); // Auto deselect after copy? Maybe keep it.
-                        webViewRef.current?.injectJavaScript(`window.getSelection().removeAllRanges(); true;`);
+
+                        // Show toast feedback
+                        Alert.alert("✅", "Metin kopyalandı", [{ text: "Tamam" }]);
+
+                        // DAHA UZUN DELAY
+                        setTimeout(() => {
+                            setSelectedText("");
+                            webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                        }, 500); // 300ms -> 500ms
                     }}>
                         <Ionicons name="copy" size={20} color="#fff" />
                         <Text style={styles.actionText}>Kopyala</Text>
@@ -633,12 +773,117 @@ export const RisaleHtmlReaderScreen = () => {
 
                     <TouchableOpacity style={styles.iconBtnSmall} onPress={() => {
                         setSelectedText("");
-                        webViewRef.current?.injectJavaScript(`window.getSelection().removeAllRanges(); true;`);
+                        // Delay clearing slightly
+                        setTimeout(() => {
+                            webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                        }, 200); // 100ms -> 200ms
                     }}>
                         <Ionicons name="close" size={22} color="#cbd5e1" />
                     </TouchableOpacity>
                 </View>
             )}
+
+            {/* AI OPTIONS MODAL */}
+            <Modal visible={aiModalVisible} transparent animationType="slide" onRequestClose={() => setAiModalVisible(false)}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setAiModalVisible(false)}>
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Ionicons name="sparkles" size={24} color="#7c3aed" style={{ marginRight: 8 }} />
+                                <Text style={styles.candTitle}>Nuri Abi'ye Sor</Text>
+                            </View>
+                            <TouchableOpacity onPress={() => setAiModalVisible(false)}>
+                                <Ionicons name="close-circle" size={30} color="#94a3b8" />
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{ color: '#64748b', marginBottom: 16, fontSize: 13 }}>
+                            Seçili metinle ilgili ne yapmak istersiniz?
+                        </Text>
+
+                        <View style={styles.separator} />
+
+                        <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
+                            const query = `Şu metni analiz et. \n1. Eğer metin BIR AYET veya HADIS ise (Tamamen Arapça): Önce **TAM MEALİNİ** yaz. Sonra (varsa) içindeki zor kelimeleri listele.\n2. Eğer metin Osmanlıca/Türkçe bir ibare veya tamlama ise (Örn: Kadîr-i Rahîm, Şakîlerin şerrinden): BÜTÜN olarak manasını açıkla ("Kadîr-i Rahîm: Hem kudretli hem merhametli..." gibi). Sadece kelime kelime bölme.\n\nUYARI: Osmanlıca kelimeler Arapça değildir, "Metin Arapça" deme.\n\nKonuşma dili kullanma, direkt cevabı ver.\n\nMetin:\n"${selectedText}"`;
+                            setAiModalVisible(false);
+                            setSelectedText("");
+                            // FIX: Delay ekle
+                            setTimeout(() => {
+                                webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                            }, 100);
+                            navigation.navigate('GeminiChat', { initialQuery: query });
+                        }}>
+                            <View style={[styles.aiIconBox, { backgroundColor: '#e0f2fe' }]}>
+                                <Ionicons name="book-outline" size={24} color="#0284c7" />
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.aiOptionTitle}>Kelime Manaları</Text>
+                                <Text style={styles.aiOptionDesc}>Seçili metindeki bilinmeyen kelimeleri açıkla</Text>
+                            </View>
+                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
+                            const query = `Bu metinle ilgili ayet ve hadis bağlantıları nelerdir? \nEğer metin bizzat ayet/hadis ise kaynağını ve mealini göster. \nEğer Risale-i Nur metni ise, dayandığı ayet/hadisleri açıkla.\n\nMetin:\n"${selectedText}"`;
+                            setAiModalVisible(false);
+                            setSelectedText("");
+                            // FIX: Delay ekle
+                            setTimeout(() => {
+                                webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                            }, 100);
+                            navigation.navigate('GeminiChat', { initialQuery: query });
+                        }}>
+                            <View style={[styles.aiIconBox, { backgroundColor: '#dcfce7' }]}>
+                                <Ionicons name="leaf-outline" size={24} color="#16a34a" />
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.aiOptionTitle}>Ayet & Hadis Bağlantısı</Text>
+                                <Text style={styles.aiOptionDesc}>İlgili ayet ve hadis kaynaklarını göster</Text>
+                            </View>
+                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
+                            const query = `Şu metni maddeler halinde özetleyip, Risale-i Nur külliyatındaki yeri bağlamında izah eder misin:\n\n"${selectedText}"`;
+                            setAiModalVisible(false);
+                            setSelectedText("");
+                            // FIX: Delay ekle
+                            setTimeout(() => {
+                                webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                            }, 100);
+                            navigation.navigate('GeminiChat', { initialQuery: query });
+                        }}>
+                            <View style={[styles.aiIconBox, { backgroundColor: '#fef3c7' }]}>
+                                <Ionicons name="list-outline" size={24} color="#d97706" />
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.aiOptionTitle}>Özetle ve İzah Et</Text>
+                                <Text style={styles.aiOptionDesc}>Metni özetle ve ana fikrini açıkla</Text>
+                            </View>
+                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
+                            const query = `Şu metinden çalışma veya tefekkür soruları çıkar:\n\n"${selectedText}"`;
+                            setAiModalVisible(false);
+                            setSelectedText("");
+                            // FIX: Delay ekle
+                            setTimeout(() => {
+                                webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
+                            }, 100);
+                            navigation.navigate('GeminiChat', { initialQuery: query });
+                        }}>
+                            <View style={[styles.aiIconBox, { backgroundColor: '#f5f3ff' }]}>
+                                <Ionicons name="chatbubbles-outline" size={24} color="#7c3aed" />
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.aiOptionTitle}>Sohbet / Ders</Text>
+                                <Text style={styles.aiOptionDesc}>Konu üzerine interaktif sohbet</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                    </View>
+                </TouchableOpacity>
+            </Modal>
 
             {/* FOOTNOTE MODAL (Bottom Sheet Style) */}
             <Modal visible={footnoteVisible} transparent animationType="slide" onRequestClose={() => setFootnoteVisible(false)}>
@@ -950,5 +1195,31 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         zIndex: 1000
     },
-    nextSectionText: { color: '#fff', fontWeight: 'bold', marginRight: 8, fontSize: 14 }
+    nextSectionText: { color: '#fff', fontWeight: 'bold', marginRight: 8, fontSize: 14 },
+    // AI Modal Styles
+    aiOptionBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f1f5f9',
+    },
+    aiIconBox: {
+        width: 44,
+        height: 44,
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 16,
+    },
+    aiOptionTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#334155',
+        marginBottom: 2,
+    },
+    aiOptionDesc: {
+        fontSize: 12,
+        color: '#64748b',
+    }
 });

@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font';
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 import { Env } from '@/config/env';
 import { syncDynamicAliases } from '@/services/lugat_aliases';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Google Fonts Imports
 import {
@@ -92,7 +93,13 @@ export default function App() {
     }
   };
 
+
+
   useEffect(() => {
+    // Phase 4: Lock to Portrait by default globally
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP).catch(e =>
+      console.warn('Orientation Lock Error:', e)
+    );
     initAppData();
   }, []);
 

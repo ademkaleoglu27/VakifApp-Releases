@@ -60,6 +60,8 @@ import { DeveloperToolsScreen } from '@/screens/DeveloperToolsScreen';
 // TesbihatPlayerScreen REMOVED
 import { TesbihatScreen } from '@/features/evrad/screens/TesbihatScreen';
 import { CevsenScreen } from '@/features/evrad/screens/CevsenScreen';
+import { CevsenReaderScreen } from '@/features/evrad/screens/CevsenReaderScreen';
+import { CevsenMenuScreen } from '@/features/evrad/screens/CevsenMenuScreen';
 import { QuranMenuScreen } from '@/features/quran/screens/QuranMenuScreen';
 import { QuranReaderScreen } from '@/features/quran/screens/QuranReaderScreen';
 import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloaderScreen';
@@ -67,6 +69,7 @@ import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloa
 // Quran Text (Meal/Transliterasyon) Screens
 import { QuranTextMenuScreen } from '@/features/quran-text/screens/QuranTextMenuScreen';
 import { QuranTextReaderScreen } from '@/features/quran-text/screens/QuranTextReaderScreen';
+import { GeminiChatScreen } from '@/features/ai/screens/GeminiChatScreen';
 
 
 if (Platform.OS === 'android') {
@@ -137,6 +140,7 @@ export type RootStackParamList = {
     LibraryHome: undefined;
     TesbihatScreen: undefined;
     CevsenScreen: undefined;
+    CevsenReaderScreen: { initialPage?: number; title?: string };
     JuzSelectionScreen: undefined;
     QuranDownloaderScreen: undefined;
     QuranMenuScreen: undefined;
@@ -146,6 +150,7 @@ export type RootStackParamList = {
     // Quran Text (Meal) Screens
     QuranTextMenuScreen: undefined;
     QuranTextReaderScreen: { surahId: number };
+    GeminiChat: undefined;
 };
 
 export type MainTabParamList = {
@@ -307,6 +312,14 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 icon="home-outline"
                                 onPress={() => navigate('MainTabs')}
                                 color="#334155"
+                            />
+
+                            {/* Gemini AI Assistant */}
+                            <DrawerItem
+                                label="Asistan (AI)"
+                                icon="sparkles-outline"
+                                onPress={() => navigate('GeminiChat')}
+                                color="#7c3aed"
                             />
 
                             {/* Kütüphane REMOVED */}
@@ -771,6 +784,8 @@ export const AppNavigator = () => {
                             <Stack.Screen name="TesbihatScreen" component={TesbihatScreen} />
                             {/* Cevşen */}
                             <Stack.Screen name="CevsenScreen" component={CevsenScreen} />
+                            <Stack.Screen name="CevsenReaderScreen" component={CevsenReaderScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="CevsenMenuScreen" component={CevsenMenuScreen} options={{ headerShown: false }} />
 
                             {/* Kuran (New Native Reader) */}
                             {/* Kuran (Native PDF Module) */}
@@ -781,6 +796,7 @@ export const AppNavigator = () => {
                             {/* Kuran Okuma (Text/Meal Mode) */}
                             <Stack.Screen name="QuranTextMenuScreen" component={QuranTextMenuScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="QuranTextReaderScreen" component={QuranTextReaderScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="GeminiChat" component={GeminiChatScreen} options={{ headerShown: false }} />
                         </Stack.Navigator>
                         <MiniPlayer />
                     </View>

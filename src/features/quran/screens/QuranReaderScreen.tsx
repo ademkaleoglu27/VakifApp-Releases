@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, StatusBar, useWindowDimensions } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
+import * as ScreenOrientation from 'expo-screen-orientation';
 import { Ionicons } from '@expo/vector-icons';
 import { QuranPackService } from '../services/QuranPackService';
 import { QuranMeta } from '../services/QuranMeta';
@@ -15,6 +16,17 @@ export const QuranReaderScreen = () => {
     const { initialPage } = route.params || { initialPage: 1 };
     const { setLastPageNumber, status, totalPages, lastError } = useQuranStore();
     const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
+
+    // Phase 4: Unlock Orientation
+    useFocusEffect(
+        useCallback(() => {
+            ScreenOrientation.unlockAsync();
+            return () => {
+                ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            };
+        }, [])
+    );
 
     const [headerTitle, setHeaderTitle] = useState('');
 
@@ -55,18 +67,34 @@ export const QuranReaderScreen = () => {
         <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#FFF8F0' }}>
             <StatusBar hidden />
 
-            {/* Header */}
-            <View style={styles.overlayHeader}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconButton}>
-                    <Ionicons name="arrow-back" size={20} color="#334155" />
-                </TouchableOpacity>
-                <View style={[styles.headerTitleContainer, { opacity: 0.9 }]}>
-                    <Text style={styles.headerTitleText}>{headerTitle}</Text>
+            {/* Header - Auto-Hide */}
+            {!isLandscape && (
+                <View style={styles.overlayHeader}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconButton}>
+                        <Ionicons name="arrow-back" size={20} color="#334155" />
+                    </TouchableOpacity>
+                    <View style={[styles.headerTitleContainer, { opacity: 0.9 }]}>
+                        <Text style={styles.headerTitleText}>{headerTitle}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => (navigation as any).navigate('QuranMenuScreen')} style={styles.iconButton}>
+                        <Ionicons name="list" size={20} color="#334155" />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => (navigation as any).navigate('QuranMenuScreen')} style={styles.iconButton}>
-                    <Ionicons name="list" size={20} color="#334155" />
+            )}
+
+            {/* Landscape Floating Back Button */}
+            {isLandscape && (
+                <TouchableOpacity
+                    style={{
+                        position: 'absolute', top: 40, left: 20, zIndex: 50,
+                        width: 40, height: 40, backgroundColor: 'rgba(0,0,0,0.4)',
+                        borderRadius: 20, justifyContent: 'center', alignItems: 'center'
+                    }}
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons name="arrow-back" size={24} color="#FFF" />
                 </TouchableOpacity>
-            </View>
+            )}
 
             {/* Vertical List Component */}
             <QuranVerticalList

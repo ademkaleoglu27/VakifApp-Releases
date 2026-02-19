@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform, StatusBar, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform, StatusBar, Switch, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 // --- TYPES ---
 interface TesbihatContent {
@@ -114,6 +116,18 @@ const PrayerCard = ({ item, onPress }: { item: PrayerItem; onPress: () => void }
 );
 
 const DetailView = ({ prayer, onBack }: { prayer: PrayerItem; onBack: () => void }) => {
+    useFocusEffect(
+        React.useCallback(() => {
+            ScreenOrientation.unlockAsync();
+            return () => {
+                ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            };
+        }, [])
+    );
+
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
+
     const [showSettings, setShowSettings] = useState(false);
     const [showLatin, setShowLatin] = useState(false);
 
@@ -170,24 +184,27 @@ const DetailView = ({ prayer, onBack }: { prayer: PrayerItem; onBack: () => void
         <SafeAreaView style={styles.detailContainer} edges={['top']}>
             <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
 
-            {/* Header */}
-            <View style={styles.header}>
-                <TouchableOpacity onPress={onBack} style={styles.backButton}>
-                    <Ionicons name="arrow-back" size={24} color="#FFF" />
-                </TouchableOpacity>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.headerTitle}>{prayer.title}</Text>
-                    <Text style={styles.headerSubtitle}>
-                        {showLatin ? 'TÜRKÇE OKUNUŞ' : 'TESBİHAT'}
-                    </Text>
+            {/* Header - Auto Hide */}
+            {!isLandscape && (
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={onBack} style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color="#FFF" />
+                    </TouchableOpacity>
+                    <View style={{ flex: 1 }}>
+                        <Text style={styles.headerTitle}>{prayer.title}</Text>
+                        <Text style={styles.headerSubtitle}>
+                            {showLatin ? 'TÜRKÇE OKUNUŞ' : 'TESBİHAT'}
+                        </Text>
+                    </View>
+                    <TouchableOpacity
+                        style={styles.settingsButton}
+                        onPress={() => setShowSettings(!showSettings)}
+                    >
+                        <Ionicons name={showSettings ? 'close' : 'settings-outline'} size={22} color="#FFF" />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                    style={styles.settingsButton}
-                    onPress={() => setShowSettings(!showSettings)}
-                >
-                    <Ionicons name={showSettings ? 'close' : 'settings-outline'} size={22} color="#FFF" />
-                </TouchableOpacity>
-            </View>
+            )}
+
 
             {/* Settings Panel */}
             {showSettings && (
@@ -339,6 +356,32 @@ const DetailView = ({ prayer, onBack }: { prayer: PrayerItem; onBack: () => void
                 ))}
                 <View style={{ height: 40 }} />
             </ScrollView>
+
+            {/* Landscape Floating Button (Settings + Back) - Moved to bottom for Z-Index */}
+            {isLandscape && (
+                <View style={{ position: 'absolute', top: 35, left: 10, right: 10, zIndex: 100, elevation: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <TouchableOpacity
+                        style={{
+                            width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(0,0,0,0.5)',
+                            justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)'
+                        }}
+                        onPress={onBack}
+                    >
+                        <Ionicons name="arrow-back" size={20} color="#FFF" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(0,0,0,0.5)',
+                            justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)'
+                        }}
+                        onPress={() => setShowSettings(!showSettings)}
+                    >
+                        {/* Show close icon if settings are open */}
+                        <Ionicons name={showSettings ? 'close' : 'settings-outline'} size={20} color="#FFF" />
+                    </TouchableOpacity>
+                </View>
+            )}
         </SafeAreaView>
     );
 };
