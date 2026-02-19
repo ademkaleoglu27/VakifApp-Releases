@@ -1,0 +1,28 @@
+{
+    "version": "v1",
+    "totalPages": 463,
+    "filePattern": "page_\\d{3}.webp",
+    "downloadMode": "multipart",
+    "cacheBust": "1771530453",
+    "assets": [
+        {
+            "id": "part_1",
+            "filename": "buyuk_cevsen_part1.zip",
+            "sizeBytes": 20979660,
+            "sha256": "826829b8c511ccc49ade3bc878fba88a6900a38ced81cda20b46030955fbb389",
+            "url": "https://raw.githubusercontent.com/ademkaleoglu27/VakifApp-Assets/main/books/buyuk_cevsen/buyuk_cevsen_part1.zip",
+            "pageFrom": 1,
+            "pageTo": 270
+        },
+        {
+            "id": "part_2",
+            "filename": "buyuk_cevsen_part2.zip",
+            "sizeBytes": 13164978,
+            "sha256": "6daf6d16d74ceea12ff81011793cfdaa785a68cf718dc5f1ff8a21df47b67513",
+            "url": "https://raw.githubusercontent.com/ademkaleoglu27/VakifApp-Assets/main/books/buyuk_cevsen/buyuk_cevsen_part2.zip",
+            "pageFrom": 271,
+            "pageTo": 463
+        }
+    ],
+    "updatedAt": "2026-02-19T22:47:33.988752"
+}
