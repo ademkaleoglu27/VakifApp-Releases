@@ -21,7 +21,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { ContentPackResolver } from '@/services/ContentPackResolver';
 import { CONTENT_PACK_CONFIG } from '@/config/booksRegistry';
-import { useDownloadOverlay } from './DownloadOverlayProvider';
+import { ContentPackService } from '@/services/ContentPackService';
 import { theme } from '@/config/theme';
 import { canonicalizeBookId } from '@/services/bookId';
 
@@ -41,7 +41,9 @@ export const RequireContent: React.FC<RequireContentProps> = ({
     const [failed, setFailed] = useState(false);
     const [errorCode, setErrorCode] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const { showDownload } = useDownloadOverlay();
+    const [downloading, setDownloading] = useState(false);
+    const [dlProgress, setDlProgress] = useState(0);
+    const [dlStatus, setDlStatus] = useState<string>('Hazırlanıyor...');
     const navigation = useNavigation();
 
     const checkContent = async () => {
@@ -100,21 +102,32 @@ export const RequireContent: React.FC<RequireContentProps> = ({
                 return;
             }
 
-            // Trigger download overlay
+            // Trigger download inline
             console.log('[RequireContent] Download Trigger Reason: NOT_DOWNLOADED (Starting download...)');
 
-            setChecking(false); // Hide checking state during download
-            const success = await showDownload({
-                bookId: cid, // <--- CRITICAL FIX: Use Canonical ID (STEP 4)
-                bookTitle,
-                downloadUrl: config.downloadUrl
+            setChecking(false);
+            setDownloading(true);
+            setDlProgress(0);
+            setDlStatus('İndiriliyor...');
+
+            const success = await ContentPackService.downloadPack(cid, config.downloadUrl, (p) => {
+                setDlProgress(p.percentage);
+                if (p.status === 'downloading') setDlStatus('İndiriliyor...');
+                if (p.status === 'verifying') setDlStatus('Doğrulanıyor...');
+                if (p.status === 'extracting') setDlStatus('Dosyalar açılıyor...');
+                if (p.status === 'installing') setDlStatus('Kuruluyor...');
+                if (p.status === 'completed') setDlStatus('Tamamlandı!');
             });
 
             if (success) {
                 console.log('[RequireContent] Download SUCCESS. State should now be READY.');
-                setReady(true);
+                setTimeout(() => {
+                    setDownloading(false);
+                    setReady(true);
+                }, 500);
             } else {
                 console.log('[RequireContent] Download FAILED or CANCELLED.');
+                setDownloading(false);
                 setFailed(true);
                 setErrorCode('CP_DOWNLOAD_FAILED');
                 setErrorMessage('İndirme başarısız oldu');
@@ -193,8 +206,39 @@ export const RequireContent: React.FC<RequireContentProps> = ({
         return <>{children}</>;
     }
 
-    // Fallback (shouldn't reach here)
-    return null;
+    // Downloading state
+    if (downloading) {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.title}>{bookTitle}</Text>
+
+                <View style={styles.progressCard}>
+                    <ActivityIndicator size="large" color={theme.colors.primary} style={{ marginBottom: 16 }} />
+                    <Text style={styles.statusText}>{dlStatus}</Text>
+
+                    <View style={styles.progressContainer}>
+                        <View style={[styles.progressBar, { width: `${dlProgress}%` }]} />
+                    </View>
+                    <Text style={styles.progressText}>%{Math.round(dlProgress)}</Text>
+
+                    <View style={styles.warningContainer}>
+                        <Ionicons name="information-circle" size={20} color="#64748B" />
+                        <Text style={styles.warningText}>
+                            İzleme deneyimi için kitap içeriği hazırlanıyor. Lütfen işlem tamamlanana kadar bu sayfada kalın.
+                        </Text>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+
+    // Fallback 
+    return (
+        <View style={styles.container}>
+            <ActivityIndicator size="large" color={theme.colors.primary} />
+            <Text style={styles.loadingText}>İçerik hazırlanıyor...</Text>
+        </View>
+    );
 };
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -265,6 +309,65 @@ const styles = StyleSheet.create({
     backButtonText: {
         color: '#64748B',
         fontWeight: '600'
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#1E293B',
+        marginBottom: 24,
+        textAlign: 'center'
+    },
+    progressCard: {
+        backgroundColor: '#FFF',
+        borderRadius: 24,
+        padding: 32,
+        width: '100%',
+        maxWidth: 340,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.05,
+        shadowRadius: 12,
+        elevation: 2
+    },
+    statusText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#334155',
+        marginBottom: 16
+    },
+    progressContainer: {
+        width: '100%',
+        height: 10,
+        backgroundColor: '#E2E8F0',
+        borderRadius: 5,
+        overflow: 'hidden'
+    },
+    progressBar: {
+        height: '100%',
+        backgroundColor: theme.colors.primary,
+        borderRadius: 5
+    },
+    progressText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: theme.colors.primary,
+        marginTop: 12
+    },
+    warningContainer: {
+        flexDirection: 'row',
+        backgroundColor: '#F8FAFC',
+        padding: 16,
+        borderRadius: 12,
+        marginTop: 24,
+        alignItems: 'flex-start',
+        gap: 12
+    },
+    warningText: {
+        flex: 1,
+        fontSize: 13,
+        color: '#64748B',
+        lineHeight: 18
     }
 });
 

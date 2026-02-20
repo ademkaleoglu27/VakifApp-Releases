@@ -49,11 +49,13 @@ export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCard
                 }
             ]}>
                 {item.cover ? (
-                    <Image
-                        source={typeof item.cover === 'string' ? { uri: item.cover } : item.cover}
-                        style={StyleSheet.absoluteFillObject}
-                        resizeMode="cover"
-                    />
+                    <View style={[StyleSheet.absoluteFillObject, { borderRadius: 8, overflow: 'hidden' }]}>
+                        <Image
+                            source={typeof item.cover === 'string' ? { uri: item.cover } : item.cover}
+                            style={{ width: '108%', height: '100%', left: '-8%' }}
+                            resizeMode="stretch"
+                        />
+                    </View>
                 ) : (
                     <>
                         {/* Decorative frame */}
@@ -70,6 +72,9 @@ export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCard
                                 {item.title}
                             </Text>
                         </View>
+
+                        {/* 3D spine effect - Only for placeholder covers (images have spine baked in) */}
+                        <View style={styles.spine} />
                     </>
                 )}
 
@@ -79,9 +84,6 @@ export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCard
                         <Ionicons name="cloud-download-outline" size={32} color="#fff" />
                     </View>
                 )}
-
-                {/* 3D spine effect - Always visible for depth */}
-                <View style={styles.spine} />
             </View>
 
             {/* Subtitle below */}

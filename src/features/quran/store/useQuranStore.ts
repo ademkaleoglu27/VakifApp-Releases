@@ -99,6 +99,13 @@ export const useQuranStore = create<QuranState>()(
                 retryCount: state.retryCount,
                 totalPages: state.totalPages
             }),
+            onRehydrateStorage: () => (state) => {
+                // If app was killed during download, reset to NOT_INSTALLED
+                if (state && (state.status === 'DOWNLOADING' || state.status === 'PARTIAL')) {
+                    console.log('[QuranStore] Resetting stale download status on rehydrate');
+                    state.setStatus('NOT_INSTALLED');
+                }
+            },
         }
     )
 );

@@ -90,14 +90,23 @@ export const QuranPackService = {
 
     async downloadAndInstall() {
         const store = useQuranStore.getState();
-        store.setStatus('DOWNLOADING');
-        store.setDownloadProgress(0);
-        store.setDetailedStatus('Manifest alınıyor...');
+
+        // Batch all initial state into one set() to prevent race-condition renders
+        useQuranStore.setState({
+            status: 'DOWNLOADING',
+            downloadProgress: 0,
+            detailedStatus: 'Manifest alınıyor...',
+            lastError: null,
+            lastUpdatedAt: new Date().toISOString(),
+        });
 
         let currentVersion = store.installedVersion || 'v1';
 
         try {
+            console.log('[QuranPack] Fetching manifest...');
             const manifest = await this.fetchManifest();
+            console.log('[QuranPack] Manifest OK:', manifest.version, 'pages:', manifest.totalPages);
+
             currentVersion = manifest.version;
             const paths = this.getPaths(currentVersion);
 
@@ -110,10 +119,14 @@ export const QuranPackService = {
             const requiredBytes = Math.ceil(totalSize * factor);
             const requiredMB = Math.ceil(requiredBytes / 1024 / 1024);
 
+            console.log('[QuranPack] Checking disk space...', requiredMB, 'MB required');
+            useQuranStore.getState().setDetailedStatus('Depolama alanı kontrol ediliyor...');
+
             if (!(await this.checkDiskSpace(requiredBytes))) {
                 throw new Error(`Yetersiz depolama alanı. Lütfen en az ${requiredMB}MB yer açın.`);
             }
 
+            console.log('[QuranPack] Disk OK. Creating directories...');
             await FileSystem.makeDirectoryAsync(paths.staging, { intermediates: true });
             await FileSystem.makeDirectoryAsync(paths.tmp, { intermediates: true });
 
@@ -121,30 +134,36 @@ export const QuranPackService = {
 
             for (const asset of assets) {
                 if (store.installedParts.includes(asset.id) && store.installedVersion === currentVersion) {
+                    console.log(`[QuranPack] Skipping ${asset.id} (already installed)`);
                     completedCount++;
                     continue;
                 }
 
-                store.setDetailedStatus(`${asset.id} indiriliyor...`);
+                useQuranStore.getState().setDetailedStatus(`${asset.id} indiriliyor...`);
                 const zipPath = `${paths.tmp}${asset.filename}`;
                 const assetStaging = `${paths.staging}${asset.id}/`;
                 await FileSystem.makeDirectoryAsync(assetStaging, { intermediates: true });
 
-                console.log(`Starting real download for ${asset.id}`);
+                console.log(`[QuranPack] Starting download: ${asset.id} from ${asset.url}`);
                 await this.downloadFileWithRetry(
-                    asset.url, // No cache bust for binary
+                    asset.url,
                     zipPath,
                     (assetProgress) => {
-                        console.log(`Progress: ${assetProgress}`);
                         const totalProgress = (completedCount + assetProgress) / totalAssets;
                         useQuranStore.getState().setDownloadProgress(totalProgress);
+                        // Update detailed status with percentage
+                        useQuranStore.getState().setDetailedStatus(
+                            `${asset.id} indiriliyor... %${Math.round(assetProgress * 100)}`
+                        );
                     }
                 );
 
-                store.setDetailedStatus(`${asset.id} doğrulanıyor...`);
+                console.log(`[QuranPack] Download complete: ${asset.id}. Verifying hash...`);
+                useQuranStore.getState().setDetailedStatus(`${asset.id} doğrulanıyor...`);
                 if (!(await this.verifyHash(zipPath, asset.sha256))) throw new Error(`${asset.id} HASH hatası`);
 
-                store.setDetailedStatus(`${asset.id} paket açılıyor...`);
+                console.log(`[QuranPack] Hash OK. Unzipping ${asset.id}...`);
+                useQuranStore.getState().setDetailedStatus(`${asset.id} paket açılıyor...`);
                 await unzip(zipPath, assetStaging);
 
                 // Pattern & Structural check (Stronger Hardening)
@@ -170,30 +189,34 @@ export const QuranPackService = {
                     }
                 }
 
-                store.setDetailedStatus(`${asset.id} kuruluyor...`);
+                console.log(`[QuranPack] Verified OK. Installing ${asset.id}...`);
+                useQuranStore.getState().setDetailedStatus(`${asset.id} kuruluyor...`);
                 await this.atomicSyncFromStaging(assetStaging, paths);
 
                 completedCount++;
-                store.addInstalledPart(asset.id);
-                store.setInstalledVersion(currentVersion);
-                store.setDownloadProgress(completedCount / totalAssets);
-                if (completedCount === 1 && totalAssets > 1) store.setStatus('PARTIAL');
+                useQuranStore.getState().addInstalledPart(asset.id);
+                useQuranStore.getState().setInstalledVersion(currentVersion);
+                useQuranStore.getState().setDownloadProgress(completedCount / totalAssets);
+                if (completedCount === 1 && totalAssets > 1) useQuranStore.getState().setStatus('PARTIAL');
 
                 await FileSystem.deleteAsync(zipPath, { idempotent: true });
                 await FileSystem.deleteAsync(assetStaging, { idempotent: true });
             }
 
             const activeFiles = await FileSystem.readDirectoryAsync(paths.active);
+            console.log(`[QuranPack] Active files: ${activeFiles.length}/${manifest.totalPages}`);
             if (activeFiles.length === manifest.totalPages) {
-                store.setStatus('INSTALLED');
-                store.setDetailedStatus(null);
+                useQuranStore.getState().setStatus('INSTALLED');
+                useQuranStore.getState().setDetailedStatus(null);
+                console.log('[QuranPack] ✅ Installation complete!');
             } else {
-                store.setError(`Eksik dosya: ${activeFiles.length}/${manifest.totalPages}`);
+                useQuranStore.getState().setError(`Eksik dosya: ${activeFiles.length}/${manifest.totalPages}`);
             }
 
         } catch (error: any) {
-            store.incrementRetry();
-            store.setError(error.message || 'Hata');
+            console.error('[QuranPack] ❌ Error:', error.message);
+            useQuranStore.getState().incrementRetry();
+            useQuranStore.getState().setError(error.message || 'Hata');
         } finally {
             await this.cleanup(currentVersion);
         }

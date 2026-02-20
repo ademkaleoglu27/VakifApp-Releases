@@ -7,31 +7,30 @@ let isInitialized = false;
 
 /**
  * Static mapping of book IDs to local cover images.
- * UNCOMMENT these lines after adding the corresponding files to assets/covers/
  */
-// const COVER_IMAGES: Record<string, any> = {
-//     "risale.sozler@diyanet.tr": require('../../../../../assets/covers/sozler.png'),
-//     "risale.mektubat@diyanet.tr": require('../../../../../assets/covers/mektubat.png'),
-//     "risale.lemalar@diyanet.tr": require('../../../../../assets/covers/lemalar.png'),
-//     "risale.sualar@diyanet.tr": require('../../../../../assets/covers/sualar.png'),
-//     "risale.barla@diyanet.tr": require('../../../../../assets/covers/barla.png'),
-//     "risale.kastamonu@diyanet.tr": require('../../../../../assets/covers/kastamonu.png'),
-//     "risale.emirdag1@diyanet.tr": require('../../../../../assets/covers/emirdag1.png'),
-//     "risale.emirdag2@diyanet.tr": require('../../../../../assets/covers/emirdag2.png'),
-//     "risale.asayi@diyanet.tr": require('../../../../../assets/covers/asayi.png'),
-//     "risale.muhakemat@diyanet.tr": require('../../../../../assets/covers/muhakemat.png'),
-//     // Small books
-//     "risale.sunuhat@diyanet.tr": require('../../../../../assets/covers/sunuhat.png'),
-//     "risale.isarat_k@diyanet.tr": require('../../../../../assets/covers/isarat.png'),
-//     "risale.tuluat@diyanet.tr": require('../../../../../assets/covers/tuluat.png'),
-//     "risale.nurcesmesi@diyanet.tr": require('../../../../../assets/covers/nurcesmesi.png'),
-//     "risale.divaniharbi@diyanet.tr": require('../../../../../assets/covers/divaniharbi.png'),
-//     "risale.hutbe@diyanet.tr": require('../../../../../assets/covers/hutbe.png'),
-//     "risale.munazarat@diyanet.tr": require('../../../../../assets/covers/munazarat.png'),
-//     "risale.genclik@diyanet.tr": require('../../../../../assets/covers/genclik.png'),
-//     "risale.hanimlar@diyanet.tr": require('../../../../../assets/covers/hanimlar.png'),
-//     "risale.konferans@diyanet.tr": require('../../../../../assets/covers/konferans.png'),
-// };
+const COVER_IMAGES: Record<string, any> = {
+    "risale.sozler@diyanet.tr": require('../../../../../assets/covers/sozler.png'),
+    "risale.mektubat@diyanet.tr": require('../../../../../assets/covers/mektubat.png'),
+    "risale.lemalar@diyanet.tr": require('../../../../../assets/covers/lemalar.png'),
+    "risale.sualar@diyanet.tr": require('../../../../../assets/covers/sualar.png'),
+    "risale.barla@diyanet.tr": require('../../../../../assets/covers/barla.png'),
+    "risale.kastamonu@diyanet.tr": require('../../../../../assets/covers/kastamonu.png'),
+    "risale.emirdag1@diyanet.tr": require('../../../../../assets/covers/emirdag1.png'),
+    "risale.emirdag2@diyanet.tr": require('../../../../../assets/covers/emirdag2.png'),
+    "risale.asayi@diyanet.tr": require('../../../../../assets/covers/asayi.png'),
+    "risale.muhakemat@diyanet.tr": require('../../../../../assets/covers/muhakemat.png'),
+    // Small books
+    "risale.sunuhat@diyanet.tr": require('../../../../../assets/covers/sunuhat.png'),
+    "risale.isarat_k@diyanet.tr": require('../../../../../assets/covers/isarat.png'),
+    "risale.tuluat@diyanet.tr": require('../../../../../assets/covers/tuluat.png'),
+    "risale.nurcesmesi@diyanet.tr": require('../../../../../assets/covers/nurcesmesi.png'),
+    "risale.divaniharbi@diyanet.tr": require('../../../../../assets/covers/divaniharbi.png'),
+    "risale.hutbe@diyanet.tr": require('../../../../../assets/covers/hutbe.png'),
+    "risale.munazarat@diyanet.tr": require('../../../../../assets/covers/munazarat.png'),
+    "risale.genclik@diyanet.tr": require('../../../../../assets/covers/genclik.png'),
+    "risale.hanimlar@diyanet.tr": require('../../../../../assets/covers/hanimlar.png'),
+    "risale.konferans@diyanet.tr": require('../../../../../assets/covers/konferans.png'),
+};
 
 /**
  * Convert HTML_BOOKS from manifest to LibraryItem format
@@ -58,7 +57,7 @@ function adaptHtmlBooks(): LibraryItem[] {
             id: `html-${book.id}`,
             title: book.title,
             subtitle: `${book.chapters.length} bölüm`,
-            // cover: COVER_IMAGES[book.id], 
+            cover: COVER_IMAGES[book.id],
             kind,
             status: 'ready' as const,
             openAction: {

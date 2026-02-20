@@ -33,7 +33,7 @@ const STATIC_ITEMS: LibraryItem[] = [
         id: 'quran@vakifapp',
         title: "Kur'an-ı Kerim",
         subtitle: 'Meal, Transliterasyon & Ses',
-        // cover: require('../../../../assets/covers/quran.png'),
+        cover: require('../../../../assets/covers/quran.png'),
         kind: 'quran',
         status: 'ready',
         openAction: {
@@ -97,6 +97,37 @@ const STATIC_ITEMS: LibraryItem[] = [
 
 // Mutable storage for search-only items (chapters, etc.)
 let _extraSearchItems: LibraryItem[] = [];
+
+// Cover images mapped by bookId
+// NOTE: Main folder small-book PNGs were mislabeled; using kucuk-png/ for correct covers
+const BOOK_COVERS: Record<string, any> = {
+    // --- BÜYÜK KİTAPLAR (main folder covers are correct) ---
+    'risale.sozler@diyanet.tr': require('../../../../assets/covers/sozler.png'),
+    'risale.mektubat@diyanet.tr': require('../../../../assets/covers/mektubat.png'),
+    'risale.lemalar@diyanet.tr': require('../../../../assets/covers/lemalar.png'),
+    'risale.sualar@diyanet.tr': require('../../../../assets/covers/sualar.png'),
+    'risale.barla@diyanet.tr': require('../../../../assets/covers/barla.png'),
+    'risale.kastamonu@diyanet.tr': require('../../../../assets/covers/kastamonu.png'),
+    'risale.emirdag1@diyanet.tr': require('../../../../assets/covers/emirdag1.png'),
+    'risale.emirdag2@diyanet.tr': require('../../../../assets/covers/emirdag2.png'),
+    'risale.asayi@diyanet.tr': require('../../../../assets/covers/asayi.png'),
+    'risale.muhakemat@diyanet.tr': require('../../../../assets/covers/muhakemat.png'),
+    'risale.isarat@diyanet.tr': require('../../../../assets/covers/buyuk-png/10_isaratulicaz.png'),
+    'risale.tarihce@diyanet.tr': require('../../../../assets/covers/buyuk-png/02_tarihceihayat.png'),
+    'risale.mesnevi@diyanet.tr': require('../../../../assets/covers/buyuk-png/09_mesneviinuriye.png'),
+    'risale.sikke@diyanet.tr': require('../../../../assets/covers/buyuk-png/11_sikkeitasdik.png'),
+    // --- KÜÇÜK KİTAPLAR (using kucuk-png/ with correct visual matches) ---
+    'risale.sunuhat@diyanet.tr': require('../../../../assets/covers/munazarat.png'),       // munazarat.png = Sünuhat/Tuluat/İşarat combined cover
+    'risale.isarat_k@diyanet.tr': require('../../../../assets/covers/munazarat.png'),      // same combined cover
+    'risale.tuluat@diyanet.tr': require('../../../../assets/covers/munazarat.png'),         // same combined cover
+    'risale.nurcesmesi@diyanet.tr': require('../../../../assets/covers/kucuk-png/03.png'), // Nur Çeşmesi
+    'risale.divaniharbi@diyanet.tr': require('../../../../assets/covers/nurcesmesi.png'),  // nurcesmesi.png = actually Divan-ı Harb-i Örfî
+    'risale.hutbe@diyanet.tr': require('../../../../assets/covers/kucuk-png/18.png'),      // Hutbe-i Şamiye
+    'risale.munazarat@diyanet.tr': require('../../../../assets/covers/kucuk-png/20.png'),  // Münâzarât
+    'risale.genclik@diyanet.tr': require('../../../../assets/covers/kucuk-png/05.png'),    // Gençlik Rehberi
+    'risale.hanimlar@diyanet.tr': require('../../../../assets/covers/kucuk-png/14.png'),   // Hanımlar Rehberi
+    'risale.konferans@diyanet.tr': require('../../../../assets/covers/kucuk-png/15.png'),  // Konferans
+};
 
 // Initialize Registry
 libraryRegistry.init();
@@ -276,6 +307,7 @@ export const LibraryCatalog = {
             id: record.bookId, // Use bookId as the UI ID
             title: record.title,
             subtitle: '', // TODO: Add subtitle if available in record
+            cover: BOOK_COVERS[record.bookId],
             kind: forceKind || (record.shelfKey === 'BIG' ? 'big' : 'small'),
             status: 'ready',
             openAction: {

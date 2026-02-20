@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, StatusBar, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, StatusBar, useWindowDimensions, ActivityIndicator } from 'react-native';
 import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { Ionicons } from '@expo/vector-icons';
@@ -14,7 +14,7 @@ export const QuranReaderScreen = () => {
     const route = useRoute<any>();
     const navigation = useNavigation();
     const { initialPage } = route.params || { initialPage: 1 };
-    const { setLastPageNumber, status, totalPages, lastError } = useQuranStore();
+    const { setLastPageNumber, status, totalPages, lastError, downloadProgress, detailedStatus } = useQuranStore();
     const { width, height } = useWindowDimensions();
     const isLandscape = width > height;
 
@@ -46,6 +46,9 @@ export const QuranReaderScreen = () => {
             <View style={styles.centered}>
                 <Ionicons name="cloud-download-outline" size={48} color={theme.colors.primary} />
                 <Text style={{ marginTop: 16, fontSize: 16, fontWeight: '600', color: '#334155' }}>Hat Kur'an Paketi</Text>
+                <Text style={{ marginTop: 8, fontSize: 13, color: '#64748b', textAlign: 'center', paddingHorizontal: 40 }}>
+                    Hat yazılı Mushaf sayfalarını görüntülemek için paket indirilmelidir (~171 MB).
+                </Text>
                 {status === 'CORRUPT' && (
                     <Text style={{ color: '#EF4444', marginVertical: 8, textAlign: 'center', paddingHorizontal: 20 }}>
                         Hata: {lastError || 'Bilinmeyen Hata'}
@@ -63,8 +66,36 @@ export const QuranReaderScreen = () => {
         );
     }
 
+    // ── İndirme Süreci Ekranı ──
+    if (status === 'DOWNLOADING' || status === 'PARTIAL') {
+        const progressPercent = Math.round((downloadProgress || 0) * 100);
+        return (
+            <View style={styles.centered}>
+                <ActivityIndicator size="large" color={theme.colors.primary} />
+                <Text style={{ marginTop: 20, fontSize: 18, fontWeight: '700', color: '#334155' }}>
+                    Hat Mushaf İndiriliyor
+                </Text>
+                <Text style={{ marginTop: 8, fontSize: 13, color: '#64748b' }}>
+                    {detailedStatus || 'Hazırlanıyor...'}
+                </Text>
+
+                {/* Progress Bar */}
+                <View style={{ width: '70%', height: 8, backgroundColor: '#E2E8F0', borderRadius: 4, marginTop: 20, overflow: 'hidden' }}>
+                    <View style={{ width: `${progressPercent}%`, height: '100%', backgroundColor: theme.colors.primary, borderRadius: 4 }} />
+                </View>
+                <Text style={{ marginTop: 8, fontSize: 14, fontWeight: '600', color: theme.colors.primary }}>
+                    %{progressPercent}
+                </Text>
+
+                <Text style={{ marginTop: 20, fontSize: 11, color: '#94a3b8', textAlign: 'center', paddingHorizontal: 40 }}>
+                    Lütfen uygulamayı kapatmayın. İndirme arka planda devam eder.
+                </Text>
+            </View>
+        );
+    }
+
     return (
-        <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#FFF8F0' }}>
+        <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#EDD9BF' }}>
             <StatusBar hidden />
 
             {/* Header - Auto-Hide */}

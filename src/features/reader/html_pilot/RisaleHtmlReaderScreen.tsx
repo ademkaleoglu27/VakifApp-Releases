@@ -520,6 +520,18 @@ export const RisaleHtmlReaderScreen = () => {
     // Use isAtEnd flag for reliable detection (with buffer)
     const showNextButton = nextChapter && pageInfo.isAtEnd;
 
+    // Is this the first chapter (Index/Cover page)?
+    // Only replace if it's an actual index page (not "Birinci Şua")
+    const isFirstChapter = currentBook?.chapters[0]?.id === chapterId;
+    const firstChapterTitle = currentBook?.chapters[0]?.title?.toLowerCase() || '';
+    const isCoverPage = isFirstChapter && (
+        firstChapterTitle.includes('00 00') ||
+        firstChapterTitle.includes('fihrist') ||
+        firstChapterTitle.includes('takdim') ||
+        firstChapterTitle.includes('index') ||
+        firstChapterTitle.includes('içindekiler')
+    );
+
     // Real page estimation
     const currentChapter = currentBook?.chapters.find(c => c.id === chapterId);
     const bookTotalPages = currentBook ? (() => {
@@ -616,29 +628,64 @@ export const RisaleHtmlReaderScreen = () => {
                 </View>
             </Modal>
 
-            {/* CARD READER WRAPPER -> Reverted to standard */}
+            {/* CARD READER WRAPPER -> Handled Custom Cover vs WebView */}
             <View style={{ flex: 1 }}>
-                <WebView
-                    ref={webViewRef}
-                    source={{ uri: assetPath.startsWith('file:') ? assetPath : `file:///android_asset/${assetPath}` }}
-                    originWhitelist={['*']}
-                    allowFileAccess={true}
-                    allowUniversalAccessFromFileURLs={true}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    scalesPageToFit={false}
-                    setBuiltInZoomControls={true}
-                    setDisplayZoomControls={false}
-                    onMessage={handleMessage}
-                    injectedJavaScriptBeforeContentLoaded={injectCss}
-                    injectedJavaScript={INJECTED_JS}
-                    style={{ flex: 1, backgroundColor: '#efe7d1' }}
-                    webviewDebuggingEnabled={true}
-                />
+                {isCoverPage && currentBook ? (
+                    <View style={{ flex: 1, backgroundColor: '#efe7d1', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+                        <View style={{
+                            width: 140, height: 180,
+                            backgroundColor: '#8b1e16', // Dark maroon/red classic risale color
+                            borderRadius: 8,
+                            marginBottom: 40,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            shadowColor: '#000', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.2, shadowRadius: 15, elevation: 8,
+                            borderWidth: 2, borderColor: '#a73a30'
+                        }}>
+                            <View style={{ width: '85%', height: '90%', borderWidth: 1, borderColor: '#d4af37', borderRadius: 4, justifyContent: 'center', alignItems: 'center' }}>
+                                <Ionicons name="book" size={50} color="#d4af37" />
+                            </View>
+                        </View>
+                        <Text style={{ fontSize: 36, fontFamily: 'serif', fontWeight: 'bold', color: '#111', textAlign: 'center', marginBottom: 16, letterSpacing: 1 }}>{currentBook.title}</Text>
+                        <Text style={{ fontSize: 18, color: '#555', marginBottom: 60, fontStyle: 'italic', fontFamily: 'serif' }}>Risale-i Nur Külliyatı</Text>
+
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: '#111',
+                                paddingHorizontal: 36, paddingVertical: 18,
+                                borderRadius: 30,
+                                flexDirection: 'row', alignItems: 'center',
+                                shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 8, elevation: 4
+                            }}
+                            onPress={handleNextSection}
+                        >
+                            <Text style={{ color: '#efe7d1', fontSize: 18, fontWeight: 'bold', marginRight: 12, letterSpacing: 0.5 }}>Okumaya Başla</Text>
+                            <Ionicons name="arrow-forward" size={22} color="#efe7d1" />
+                        </TouchableOpacity>
+                    </View>
+                ) : (
+                    <WebView
+                        ref={webViewRef}
+                        source={{ uri: assetPath.startsWith('file:') ? assetPath : `file:///android_asset/${assetPath}` }}
+                        originWhitelist={['*']}
+                        allowFileAccess={true}
+                        allowUniversalAccessFromFileURLs={true}
+                        javaScriptEnabled={true}
+                        domStorageEnabled={true}
+                        scalesPageToFit={false}
+                        setBuiltInZoomControls={true}
+                        setDisplayZoomControls={false}
+                        onMessage={handleMessage}
+                        injectedJavaScriptBeforeContentLoaded={injectCss}
+                        injectedJavaScript={INJECTED_JS}
+                        style={{ flex: 1, backgroundColor: '#efe7d1' }}
+                        webviewDebuggingEnabled={true}
+                    />
+                )}
             </View>
 
             {/* Real Page Indicator */}
-            {currentChapter && (
+            {currentChapter && !isCoverPage && (
                 <View style={styles.pageIndicator}>
                     <Text style={styles.pageText}>
                         {`~Sayfa ${currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))} / ${bookTotalPages}`}
@@ -647,7 +694,7 @@ export const RisaleHtmlReaderScreen = () => {
             )}
 
             {/* NEXT SECTION BUTTON */}
-            {showNextButton && (
+            {showNextButton && !isCoverPage && (
                 <TouchableOpacity style={styles.nextSectionBtn} onPress={handleNextSection}>
                     <Text style={styles.nextSectionText}>Sonraki Bölüm</Text>
                     <Ionicons name="arrow-forward" size={18} color="#fff" />

@@ -32,7 +32,7 @@ export const QuranVerticalList = ({ totalPages, initialPage, onPageChanged, widt
 
     const renderItem = useCallback(({ item }: { item: number }) => (
         <QuranPageItem
-            pageNumber={item + 1}
+            pageNumber={item}
             width={width}
             height={itemHeight}
         />

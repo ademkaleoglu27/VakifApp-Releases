@@ -2,12 +2,15 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export type ReadingMode = 'text' | 'image';
+
 interface QuranTextState {
     // Reading state
     lastSurahId: number;
     lastVerseNumber: number;
 
     // Preferences
+    readingMode: ReadingMode;      // Metin veya Resim modu
     selectedAuthorId: number;      // Default: 11 (Diyanet İşleri)
     selectedReciterId: number;     // Default: 7 (Mişari el-Afasi)
     showTransliteration: boolean;
@@ -21,6 +24,7 @@ interface QuranTextState {
 
     // Actions
     setLastPosition: (surahId: number, verseNumber: number) => void;
+    setReadingMode: (mode: ReadingMode) => void;
     setSelectedAuthorId: (authorId: number) => void;
     setSelectedReciterId: (reciterId: number) => void;
     setShowTransliteration: (show: boolean) => void;
@@ -36,6 +40,7 @@ export const useQuranTextStore = create<QuranTextState>()(
         (set) => ({
             lastSurahId: 1,
             lastVerseNumber: 1,
+            readingMode: 'text' as ReadingMode,
             selectedAuthorId: 11,       // Diyanet İşleri
             selectedReciterId: 7,       // Mişari el-Afasi
             showTransliteration: true,
@@ -46,6 +51,7 @@ export const useQuranTextStore = create<QuranTextState>()(
             offlineCachedCount: 0,
 
             setLastPosition: (surahId, verseNumber) => set({ lastSurahId: surahId, lastVerseNumber: verseNumber }),
+            setReadingMode: (readingMode) => set({ readingMode }),
             setSelectedAuthorId: (selectedAuthorId) => set({ selectedAuthorId }),
             setSelectedReciterId: (selectedReciterId) => set({ selectedReciterId }),
             setShowTransliteration: (showTransliteration) => set({ showTransliteration }),
@@ -61,6 +67,7 @@ export const useQuranTextStore = create<QuranTextState>()(
             partialize: (state) => ({
                 lastSurahId: state.lastSurahId,
                 lastVerseNumber: state.lastVerseNumber,
+                readingMode: state.readingMode,
                 selectedAuthorId: state.selectedAuthorId,
                 selectedReciterId: state.selectedReciterId,
                 showTransliteration: state.showTransliteration,

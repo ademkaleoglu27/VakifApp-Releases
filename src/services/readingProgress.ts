@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const PROGRESS_PREFIX = 'reading_progress_';
+const PROGRESS_PREFIX = 'reading_prog_v2_';
 
 export interface ReadingProgress {
     chapterId: string;

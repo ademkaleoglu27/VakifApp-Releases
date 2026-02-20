@@ -7,20 +7,19 @@
 // Default cover for books without specific covers
 const defaultCover = require('../../assets/books/default.png');
 
-// Book covers mapping - using default for now since no specific covers exist yet
+// Book covers mapping
 export const BookCovers: Record<string, any> = {
-    sozler: defaultCover,
-    mektubat: defaultCover,
-    lemalar: defaultCover,
-    sualar: defaultCover,
-    tarihce: defaultCover,
-    mesnevi: defaultCover,
-    isarat: defaultCover,
-    barla: defaultCover,
-    kastamonu: defaultCover,
-    emirdag1: defaultCover,
-    emirdag2: defaultCover,
-    asayimusa: defaultCover,
+    sozler: require('../../assets/covers/sozler.png'),
+    mektubat: require('../../assets/covers/mektubat.png'),
+    lemalar: require('../../assets/covers/lemalar.png'),
+    sualar: require('../../assets/covers/sualar.png'),
+    muhakemat: require('../../assets/covers/muhakemat.png'),
+    isarat: require('../../assets/covers/isarat.png'),
+    barla: require('../../assets/covers/barla.png'),
+    kastamonu: require('../../assets/covers/kastamonu.png'),
+    emirdag1: require('../../assets/covers/emirdag1.png'),
+    emirdag2: require('../../assets/covers/emirdag2.png'),
+    asayimusa: require('../../assets/covers/asayi.png'),
     default: defaultCover,
 };
 

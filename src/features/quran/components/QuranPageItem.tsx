@@ -47,14 +47,14 @@ const QuranPageItem = React.memo(({ pageNumber, width, height }: QuranPageItemPr
 
     if (status === 'loading') {
         return (
-            <View style={[styles.container, { width, height, backgroundColor: '#FFF8F0' }]}>
+            <View style={[styles.container, { width, height, backgroundColor: '#EDD9BF' }]}>
                 <ActivityIndicator size="small" color={theme.colors.primary} />
             </View>
         );
     }
 
     return (
-        <View style={{ width, height, overflow: 'hidden' }}>
+        <View style={{ width, height, overflow: 'hidden', backgroundColor: '#EDD9BF' }}>
             <Image
                 source={{ uri: source! }}
                 style={{ flex: 1, width: '100%', height: '100%' }}
@@ -75,14 +75,15 @@ const styles = StyleSheet.create({
     },
     pageNumber: {
         position: 'absolute',
-        bottom: 2,
+        bottom: 4,
         alignSelf: 'center',
         fontSize: 10,
-        color: '#94A3B8',
-        backgroundColor: 'rgba(255,255,255,0.7)',
+        color: '#8B7355',
+        backgroundColor: 'rgba(237,217,191,0.85)',
         paddingHorizontal: 6,
         paddingVertical: 2,
-        borderRadius: 4
+        borderRadius: 4,
+        zIndex: 10
     }
 });
 

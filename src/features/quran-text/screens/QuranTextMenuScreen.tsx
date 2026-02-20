@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import {
     View, Text, StyleSheet, FlatList, TouchableOpacity,
-    TextInput, ActivityIndicator, StatusBar, Dimensions, Platform
+    TextInput, ActivityIndicator, StatusBar, Dimensions, Platform, Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { theme } from '@/config/theme';
 import { QuranTextService, SurahSummary } from '../services/QuranTextService';
 import { useQuranTextStore } from '../store/useQuranTextStore';
+import { useQuranStore } from '@/features/quran/store/useQuranStore';
+import METADATA from '../../quran-pdf/data/quran_metadata.json';
 
 const { width } = Dimensions.get('window');
 
@@ -51,12 +53,18 @@ const JUZ_RANGES: { juz: number; startSurah: string; endSurah: string }[] = [
 
 export const QuranTextMenuScreen = () => {
     const navigation = useNavigation<any>();
-    const { lastSurahId } = useQuranTextStore();
+    const { lastSurahId, readingMode, setReadingMode } = useQuranTextStore();
+    const quranPackStatus = useQuranStore(s => s.status);
+    const downloadProgress = useQuranStore(s => s.downloadProgress);
     const [surahs, setSurahs] = useState<SurahSummary[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState<TabType>('surah');
+
+    const isImageMode = readingMode === 'image';
+    const packReady = quranPackStatus === 'INSTALLED';
+    const isDownloading = quranPackStatus === 'DOWNLOADING' || quranPackStatus === 'PARTIAL';
 
     useEffect(() => {
         loadSurahs();
@@ -93,8 +101,30 @@ export const QuranTextMenuScreen = () => {
         );
     }, [surahs, searchQuery]);
 
+    // ── Surah → Page number lookup ──────────────────────────
+    const getPageForSurah = (surahId: number): number => {
+        const match = METADATA.surahs.find((s: any) => s.id === surahId);
+        return match?.page || 1;
+    };
+
+    // ── Juz → Page number lookup ────────────────────────────
+    const getPageForJuz = (juzId: number): number => {
+        const match = METADATA.juzs.find((j: any) => j.id === juzId);
+        return match?.page || 1;
+    };
+
     const navigateToReader = (surahId: number, startVerse?: number) => {
-        navigation.navigate('QuranTextReaderScreen', { surahId, startVerse: startVerse || 1 });
+        if (isImageMode) {
+            const page = getPageForSurah(surahId);
+            navigation.navigate('QuranReaderScreen', { initialPage: page });
+        } else {
+            navigation.navigate('QuranTextReaderScreen', { surahId, startVerse: startVerse || 1 });
+        }
+    };
+
+    const navigateToJuzImage = (juzId: number) => {
+        const page = getPageForJuz(juzId);
+        navigation.navigate('QuranReaderScreen', { initialPage: page });
     };
 
     // ── Render Surah Item ──────────────────────────────────
@@ -136,21 +166,25 @@ export const QuranTextMenuScreen = () => {
         <TouchableOpacity
             style={styles.juzItem}
             onPress={() => {
-                // Juz → { surahId, verseNumber } mapping (Medina Mushaf)
-                const juzStartMap: Record<number, { s: number; v: number }> = {
-                    1: { s: 1, v: 1 }, 2: { s: 2, v: 142 }, 3: { s: 2, v: 253 },
-                    4: { s: 3, v: 93 }, 5: { s: 4, v: 24 }, 6: { s: 4, v: 148 },
-                    7: { s: 5, v: 82 }, 8: { s: 6, v: 111 }, 9: { s: 7, v: 88 },
-                    10: { s: 8, v: 41 }, 11: { s: 9, v: 93 }, 12: { s: 11, v: 6 },
-                    13: { s: 12, v: 53 }, 14: { s: 15, v: 1 }, 15: { s: 17, v: 1 },
-                    16: { s: 18, v: 75 }, 17: { s: 21, v: 1 }, 18: { s: 23, v: 1 },
-                    19: { s: 25, v: 21 }, 20: { s: 27, v: 56 }, 21: { s: 29, v: 46 },
-                    22: { s: 33, v: 31 }, 23: { s: 36, v: 28 }, 24: { s: 39, v: 32 },
-                    25: { s: 41, v: 47 }, 26: { s: 46, v: 1 }, 27: { s: 51, v: 31 },
-                    28: { s: 58, v: 1 }, 29: { s: 67, v: 1 }, 30: { s: 78, v: 1 },
-                };
-                const start = juzStartMap[item.juz] || { s: 1, v: 1 };
-                navigateToReader(start.s, start.v);
+                if (isImageMode) {
+                    navigateToJuzImage(item.juz);
+                } else {
+                    // Juz → { surahId, verseNumber } mapping (Medina Mushaf)
+                    const juzStartMap: Record<number, { s: number; v: number }> = {
+                        1: { s: 1, v: 1 }, 2: { s: 2, v: 142 }, 3: { s: 2, v: 253 },
+                        4: { s: 3, v: 93 }, 5: { s: 4, v: 24 }, 6: { s: 4, v: 148 },
+                        7: { s: 5, v: 82 }, 8: { s: 6, v: 111 }, 9: { s: 7, v: 88 },
+                        10: { s: 8, v: 41 }, 11: { s: 9, v: 93 }, 12: { s: 11, v: 6 },
+                        13: { s: 12, v: 53 }, 14: { s: 15, v: 1 }, 15: { s: 17, v: 1 },
+                        16: { s: 18, v: 75 }, 17: { s: 21, v: 1 }, 18: { s: 23, v: 1 },
+                        19: { s: 25, v: 21 }, 20: { s: 27, v: 56 }, 21: { s: 29, v: 46 },
+                        22: { s: 33, v: 31 }, 23: { s: 36, v: 28 }, 24: { s: 39, v: 32 },
+                        25: { s: 41, v: 47 }, 26: { s: 46, v: 1 }, 27: { s: 51, v: 31 },
+                        28: { s: 58, v: 1 }, 29: { s: 67, v: 1 }, 30: { s: 78, v: 1 },
+                    };
+                    const start = juzStartMap[item.juz] || { s: 1, v: 1 };
+                    navigateToReader(start.s, start.v);
+                }
             }}
             activeOpacity={0.7}
         >
@@ -187,9 +221,25 @@ export const QuranTextMenuScreen = () => {
                     </TouchableOpacity>
                     <View style={styles.headerCenter}>
                         <Text style={styles.headerTitle}>Kur'an-ı Kerim</Text>
-                        <Text style={styles.headerSubtitle}>Meal & Transliterasyon</Text>
+                        <Text style={styles.headerSubtitle}>
+                            {isImageMode ? 'Hat Mushaf (Resim)' : 'Meal & Transliterasyon'}
+                        </Text>
                     </View>
-                    <View style={{ width: 36 }} />
+                    {/* ── Mod Geçiş Butonu ── */}
+                    <TouchableOpacity
+                        onPress={() => setReadingMode(isImageMode ? 'text' : 'image')}
+                        style={styles.modeToggleBtn}
+                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                    >
+                        <Ionicons
+                            name={isImageMode ? 'document-text-outline' : 'image-outline'}
+                            size={20}
+                            color="white"
+                        />
+                        <Text style={styles.modeToggleText}>
+                            {isImageMode ? 'Metin' : 'Resim'}
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
                 {/* Search */}
@@ -231,6 +281,28 @@ export const QuranTextMenuScreen = () => {
                     </Text>
                 </TouchableOpacity>
             </View>
+
+            {/* Image Mode Status Banner */}
+            {isImageMode && !packReady && (
+                <View style={styles.packBanner}>
+                    <Ionicons
+                        name={isDownloading ? 'cloud-download-outline' : 'information-circle-outline'}
+                        size={18}
+                        color={isDownloading ? '#2563eb' : '#b45309'}
+                    />
+                    <Text style={styles.packBannerText}>
+                        {isDownloading
+                            ? `Hat Mushaf indiriliyor... %${Math.round(downloadProgress * 100)}`
+                            : 'Hat Mushaf paketi henüz indirilmedi. Bir sureye dokunun.'}
+                    </Text>
+                </View>
+            )}
+            {isImageMode && packReady && (
+                <View style={[styles.packBanner, { backgroundColor: '#f0fdf4' }]}>
+                    <Ionicons name="checkmark-circle" size={18} color="#16a34a" />
+                    <Text style={[styles.packBannerText, { color: '#15803d' }]}>Hat Mushaf hazır</Text>
+                </View>
+            )}
 
             {/* Content */}
             {loading ? (
@@ -292,6 +364,36 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.15)',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    modeToggleBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        borderRadius: 16,
+        gap: 4,
+    },
+    modeToggleText: {
+        fontSize: 11,
+        fontWeight: '600',
+        color: 'white',
+    },
+    packBanner: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        backgroundColor: '#FFFBEB',
+        borderBottomWidth: 1,
+        borderBottomColor: '#FDE68A',
+    },
+    packBannerText: {
+        flex: 1,
+        fontSize: 12,
+        fontWeight: '500',
+        color: '#92400E',
     },
     headerCenter: {
         alignItems: 'center',

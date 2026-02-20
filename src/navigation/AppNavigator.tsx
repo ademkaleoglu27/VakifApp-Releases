@@ -141,10 +141,11 @@ export type RootStackParamList = {
     TesbihatScreen: undefined;
     CevsenScreen: undefined;
     CevsenReaderScreen: { initialPage?: number; title?: string };
+    CevsenMenuScreen: undefined;
     JuzSelectionScreen: undefined;
     QuranDownloaderScreen: undefined;
     QuranMenuScreen: undefined;
-    QuranReaderScreen: { page: number };
+    QuranReaderScreen: { initialPage: number };
     QuranLegacyReaderScreen: { initialPage: number; juzNumber: number };
 
     // Quran Text (Meal) Screens

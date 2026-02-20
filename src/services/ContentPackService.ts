@@ -306,26 +306,36 @@ export const ContentPackService = {
             // Download the pack
             log('CP_DOWNLOAD_START', { bookId, url: downloadUrl });
 
-            const downloadResumable = FileSystem.createDownloadResumable(
-                downloadUrl,
-                zipPath,
-                {},
-                (downloadProgress) => {
-                    const percentage = downloadProgress.totalBytesExpectedToWrite > 0
-                        ? (downloadProgress.totalBytesWritten / downloadProgress.totalBytesExpectedToWrite) * 100
-                        : 0;
+            let result;
+            try {
+                const downloadResumable = FileSystem.createDownloadResumable(
+                    downloadUrl,
+                    zipPath,
+                    {},
+                    (downloadProgress) => {
+                        const percentage = downloadProgress.totalBytesExpectedToWrite > 0
+                            ? (downloadProgress.totalBytesWritten / downloadProgress.totalBytesExpectedToWrite) * 100
+                            : 0;
 
-                    onProgress?.({
-                        bookId,
-                        downloadedBytes: downloadProgress.totalBytesWritten,
-                        totalBytes: downloadProgress.totalBytesExpectedToWrite,
-                        percentage: Math.min(percentage, 70), // Reserve 30% for extract/install
-                        status: 'downloading'
-                    });
-                }
-            );
+                        onProgress?.({
+                            bookId,
+                            downloadedBytes: downloadProgress.totalBytesWritten,
+                            totalBytes: downloadProgress.totalBytesExpectedToWrite,
+                            percentage: Math.min(percentage, 70), // Reserve 30% for extract/install
+                            status: 'downloading'
+                        });
+                    }
+                );
 
-            const result = await downloadResumable.downloadAsync();
+                result = await downloadResumable.downloadAsync();
+            } catch (dlError: any) {
+                log('CP_DOWNLOAD_CRASH', {
+                    error: dlError.message || String(dlError),
+                    name: dlError.name,
+                    code: dlError.code
+                });
+                throw new ContentPackError('CP_HTTP_FAILED', `Download crash: ${dlError.message}`);
+            }
 
             if (!result) {
                 log('CP_HTTP', { status: 'null', msg: 'Download returned null' });
