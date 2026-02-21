@@ -46,6 +46,7 @@ const STATIC_ITEMS: LibraryItem[] = [
         id: 'cevsen',
         title: 'Cevşen',
         subtitle: 'Cevşenü\'l-Kebir',
+        cover: require('../../../../assets/covers/cevsen.png'),
         kind: 'cevsen',
         status: 'ready',
         openAction: {
@@ -58,6 +59,7 @@ const STATIC_ITEMS: LibraryItem[] = [
     {
         id: 'celcelutiye',
         title: 'Celcelutiye',
+        cover: require('../../../../assets/covers/cevsen.png'),
         kind: 'cevsen',
         status: 'preparing',
         openAction: {
@@ -70,6 +72,7 @@ const STATIC_ITEMS: LibraryItem[] = [
         id: 'buyuk_cevsen',
         title: 'Büyük Cevşen',
         subtitle: 'Tam Dua Kitabı (Resim)',
+        cover: require('../../../../assets/covers/buyuk_cevsen.png'),
         kind: 'cevsen',
         status: 'ready',
         openAction: {
@@ -127,6 +130,9 @@ const BOOK_COVERS: Record<string, any> = {
     'risale.genclik@diyanet.tr': require('../../../../assets/covers/kucuk-png/05.png'),    // Gençlik Rehberi
     'risale.hanimlar@diyanet.tr': require('../../../../assets/covers/kucuk-png/14.png'),   // Hanımlar Rehberi
     'risale.konferans@diyanet.tr': require('../../../../assets/covers/kucuk-png/15.png'),  // Konferans
+
+    // --- FAYDALI KİTAPLAR ---
+    'evrad.tesbihat': require('../../../../assets/covers/tesbihat.png'),
 };
 
 // Initialize Registry
@@ -151,28 +157,14 @@ export const LibraryCatalog = {
             case 'quran_evrad':
                 return [
                     {
-                        id: 'quran-hero',
-                        title: '',
-                        items: STATIC_ITEMS.filter(i => i.kind === 'quran'),
-                        style: 'hero'
-                    },
-                    {
-                        id: 'cevsen-shelf',
-                        title: 'Cevşen',
-                        items: STATIC_ITEMS.filter(i => i.kind === 'cevsen'),
-                        style: 'standard'
-                    },
-                    {
-                        id: 'faydali-shelf',
-                        title: 'Faydalı Kitaplar',
-                        // Map 'FAYDALI' books from Registry
-                        items: libraryRegistry.getBooksByShelf('FAYDALI').map(b => this._mapRecordToItem(b, 'cevsen')), // using 'cevsen' kind for similar styling
-                        style: 'standard'
-                    },
-                    {
-                        id: 'lugat-shelf',
-                        title: 'Lügat',
-                        items: STATIC_ITEMS.filter(i => i.kind === 'lugat'),
+                        id: 'quran-evrad-combined',
+                        title: "Kur'an ve Evrad",
+                        items: [
+                            ...STATIC_ITEMS.filter(i => i.kind === 'quran'),
+                            ...STATIC_ITEMS.filter(i => i.kind === 'cevsen'),
+                            ...libraryRegistry.getBooksByShelf('FAYDALI').map(b => this._mapRecordToItem(b, 'cevsen')), // tesbihat etc.
+                            ...STATIC_ITEMS.filter(i => i.kind === 'lugat'),
+                        ],
                         style: 'standard'
                     }
                 ];

@@ -22,17 +22,8 @@ import { LibraryCatalog, LibraryItem, Shelf } from '../catalog/LibraryCatalog';
 import { initializeHtmlBooksAdapter } from '../catalog/adapters/htmlBooksAdapter';
 import { getRecentReads, addRecentRead, RecentReadItem } from '../services/recentReads';
 
-type TabKey = 'quran_evrad' | 'big' | 'small';
-
-const TABS: { key: TabKey; label: string }[] = [
-    { key: 'quran_evrad', label: "KUR'AN\nEVRAD" },
-    { key: 'big', label: 'BÜYÜK\nKİTAPLAR' },
-    { key: 'small', label: 'KÜÇÜK\nKİTAPLAR' }
-];
-
 export const LibraryHomeScreen: React.FC = () => {
     const navigation = useNavigation<any>();
-    const [activeTab, setActiveTab] = useState<TabKey>('quran_evrad');
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearching, setIsSearching] = useState(false);
     const [shelves, setShelves] = useState<Shelf[]>([]);
@@ -46,11 +37,14 @@ export const LibraryHomeScreen: React.FC = () => {
         initializeHtmlBooksAdapter();
     }, []);
 
-    // Load shelves when tab changes
+    // Load all shelves at once for vertical layout
     useEffect(() => {
-        const loadedShelves = LibraryCatalog.getShelves(activeTab);
-        setShelves(loadedShelves);
-    }, [activeTab]);
+        const quranEvradShelves = LibraryCatalog.getShelves('quran_evrad');
+        const bigShelves = LibraryCatalog.getShelves('big');
+        const smallShelves = LibraryCatalog.getShelves('small');
+
+        setShelves([...quranEvradShelves, ...bigShelves, ...smallShelves]);
+    }, []);
 
     // Load recent reads
     useEffect(() => {
@@ -225,34 +219,7 @@ export const LibraryHomeScreen: React.FC = () => {
                                 </View>
                             )}
 
-                            {/* Category Tabs */}
-                            <View style={styles.tabsContainer}>
-                                {TABS.map((tab) => (
-                                    <TouchableOpacity
-                                        key={tab.key}
-                                        style={[
-                                            styles.tab,
-                                            activeTab === tab.key && styles.tabActive
-                                        ]}
-                                        onPress={() => setActiveTab(tab.key)}
-                                    >
-                                        <Text style={[
-                                            styles.tabLabel,
-                                            activeTab === tab.key && styles.tabLabelActive
-                                        ]}>
-                                            {tab.label}
-                                        </Text>
-                                    </TouchableOpacity>
-                                ))}
-
-                                {/* Kitap İndir button (disabled) */}
-                                <TouchableOpacity style={styles.downloadButton} disabled>
-                                    <View style={styles.downloadIcon}>
-                                        <Ionicons name="add" size={18} color="#94a3b8" />
-                                    </View>
-                                    <Text style={styles.downloadLabel}>Kitap{'\n'}İndir</Text>
-                                </TouchableOpacity>
-                            </View>
+                            {/* Removed Category Tabs for unified vertical layout */}
                         </>
                     }
                     renderItem={({ item: shelf }) => (

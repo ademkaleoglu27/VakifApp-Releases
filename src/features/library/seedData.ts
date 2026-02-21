@@ -167,39 +167,6 @@ export const SEED_LOCKED_BOOKS: BookRecord[] = [
 
     // --- KÜÇÜK KİTAPLAR (SHELF_SMALL) ---
     {
-        bookId: 'risale.sunuhat@diyanet.tr',
-        title: 'Sünuhat',
-        shelfKey: 'SMALL',
-        locked: true,
-        source: 'core',
-        version: '1.0.0',
-        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
-        installedAt: Date.now(),
-        updatedAt: Date.now()
-    },
-    {
-        bookId: 'risale.isarat_k@diyanet.tr',
-        title: 'İşarat',
-        shelfKey: 'SMALL',
-        locked: true,
-        source: 'core',
-        version: '1.0.0',
-        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
-        installedAt: Date.now(),
-        updatedAt: Date.now()
-    },
-    {
-        bookId: 'risale.tuluat@diyanet.tr',
-        title: 'Tulûat',
-        shelfKey: 'SMALL',
-        locked: true,
-        source: 'core',
-        version: '1.0.0',
-        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
-        installedAt: Date.now(),
-        updatedAt: Date.now()
-    },
-    {
         bookId: 'risale.nurcesmesi@diyanet.tr',
         title: 'Nur Çeşmesi',
         shelfKey: 'SMALL',
@@ -276,6 +243,40 @@ export const SEED_LOCKED_BOOKS: BookRecord[] = [
         installedAt: Date.now(),
         updatedAt: Date.now()
     },
+    // --- Sünuhat / İşarat / Tulûat (sona taşındı) ---
+    {
+        bookId: 'risale.sunuhat@diyanet.tr',
+        title: 'Sünuhat',
+        shelfKey: 'SMALL',
+        locked: true,
+        source: 'core',
+        version: '1.0.0',
+        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
+        installedAt: Date.now(),
+        updatedAt: Date.now()
+    },
+    {
+        bookId: 'risale.isarat_k@diyanet.tr',
+        title: 'İşarat',
+        shelfKey: 'SMALL',
+        locked: true,
+        source: 'core',
+        version: '1.0.0',
+        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
+        installedAt: Date.now(),
+        updatedAt: Date.now()
+    },
+    {
+        bookId: 'risale.tuluat@diyanet.tr',
+        title: 'Tulûat',
+        shelfKey: 'SMALL',
+        locked: true,
+        source: 'core',
+        version: '1.0.0',
+        contentRef: { type: 'pack', uri: 'html_manifest', hash: 'locked_core_v1' },
+        installedAt: Date.now(),
+        updatedAt: Date.now()
+    },
 
     // --- FAYDALI KİTAPLAR (SHELF_FAYDALI) ---
     {
@@ -286,6 +287,7 @@ export const SEED_LOCKED_BOOKS: BookRecord[] = [
         source: 'custom',
         version: '1.0.0',
         contentRef: { type: 'json', uri: 'asset://books/tesbihat.json', hash: 'generated_v1' },
+        coverRef: 'asset://covers/tesbihat.png',
         installedAt: Date.now(),
         updatedAt: Date.now()
     }
