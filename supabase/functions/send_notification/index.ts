@@ -57,17 +57,9 @@ serve(async (req) => {
                 .from('profiles')
                 .select('id')
                 .in('role', target_roles)
-                .eq('id', senderVakifId) // Note: senderVakifId fix? Wait, should be vakif_id comparison
-
-            // Correcting previous logic error: query was using .eq('id', senderVakifId) which is wrong. 
-            // It should be .eq('vakif_id', senderVakifId). I caught this during refactor.
-            const { data: realUsersWithRole } = await supabaseAdmin
-                .from('profiles')
-                .select('id')
-                .in('role', target_roles)
                 .eq('vakif_id', senderVakifId)
 
-            realUsersWithRole?.forEach(u => targetUserIds.add(u.id))
+            usersWithRole?.forEach(u => targetUserIds.add(u.id))
         }
 
         if (user_ids && Array.isArray(user_ids) && user_ids.length > 0) {

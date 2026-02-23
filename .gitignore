@@ -73,3 +73,6 @@ _bmad/
 _bmad-output/
 supabase/.temp/
 .gemini/
+
+# Environment variables
+.env

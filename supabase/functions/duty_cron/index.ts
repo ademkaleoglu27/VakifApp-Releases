@@ -174,9 +174,9 @@ serve(async (req) => {
                             const dateStr = targetDate.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
                             const result = await sendPushNotification(
                                 pushTokens,
-                                'Yeni Görev',
-                                `${dateStr} tarihli ${pool.name} görevi size atandı.`,
-                                { type: 'duty_assigned' },
+                                '📋 Görev Bildirimi',
+                                `Bu hafta ${pool.name} sırası sende! Onaylıyor musun?`,
+                                { type: 'duty_assigned', screen: 'DutyDashboard' },
                                 Deno.env.get('FCM_SERVICE_ACCOUNT')
                             );
                             console.log(`[duty_cron:generation] Push sonuç:`, result);
@@ -252,9 +252,9 @@ serve(async (req) => {
 
                         const result = await sendPushNotification(
                             pushTokens,
-                            'Görev Devredildi (Süre Doldu)',
-                            `${poolName} görevi size düştü.`,
-                            undefined,
+                            '📋 Görev Devredildi',
+                            `${poolName} görevi size düştü! Onaylıyor musunuz?`,
+                            { type: 'duty_assigned', screen: 'DutyDashboard' },
                             Deno.env.get('FCM_SERVICE_ACCOUNT')
                         );
                         console.log(`[duty_cron:expiration] Push sonuç:`, result);

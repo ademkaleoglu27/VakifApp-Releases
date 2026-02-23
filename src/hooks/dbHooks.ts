@@ -164,6 +164,7 @@ export const useDeleteDecision = () => {
         mutationFn: async (id: string) => {
             const db = await getDb();
             // 1. Delete Local
+            await db.runAsync('DELETE FROM decision_items WHERE decision_id = ?', [id]);
             await db.runAsync('DELETE FROM decisions WHERE id = ?', [id]);
 
             // 2. Add to Outbox

@@ -55,8 +55,9 @@ export const DutyPoolDetailScreen = () => {
         const supabase = getSupabaseClient();
         if (!supabase) return;
 
-        // For the picker
-        const { data } = await supabase.from('profiles').select('*').order('display_name');
+        // RLS policy on profiles table filters by vakif_id automatically
+        // Only users from the same vakif will be returned
+        const { data } = await supabase.from('profiles').select('id, display_name, phone').order('display_name');
         if (data) setAllUsers(data);
     };
 

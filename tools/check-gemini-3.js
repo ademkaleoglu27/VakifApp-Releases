@@ -1,8 +1,9 @@
 
 const https = require('https');
+require('dotenv').config();
 
 // Using the NEW AI Studio key provided by user
-const API_KEY = 'AIzaSyC6pD-q5oh5ah_82sqYfoX8deKEuP3dNJY';
+const API_KEY = process.env.GEMINI_API_KEY;
 
 const modelsToTest = [
     'gemini-3-flash-preview',

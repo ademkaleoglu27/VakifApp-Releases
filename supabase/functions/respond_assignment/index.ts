@@ -101,7 +101,8 @@ serve(async (req) => {
                     pool_id: assignment.pool_id,
                     user_id: nextMember.user_id,
                     date: assignment.date,
-                    status: 'PENDING'
+                    status: 'PENDING',
+                    vakif_id: assignment.vakif_id
                 })
                 .select()
                 .single()
@@ -116,9 +117,9 @@ serve(async (req) => {
                 const dateStr = targetDate.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
                 const result = await sendPushNotification(
                     pushTokens,
-                    'Görev Devredildi',
-                    `${assignment.rotation_pools.name} görevi size devredildi.`,
-                    { type: 'duty_assigned', assignment_id: newAssignment?.id },
+                    '📋 Görev Devredildi',
+                    `${assignment.rotation_pools.name} görevi size devredildi! Onaylıyor musunuz?`,
+                    { type: 'duty_assigned', assignment_id: newAssignment?.id, screen: 'DutyDashboard' },
                     Deno.env.get('FCM_SERVICE_ACCOUNT')
                 );
 

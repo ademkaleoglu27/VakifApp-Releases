@@ -13,7 +13,7 @@ select cron.schedule(
     '0 9 * * *',        -- Schedule (09:00 AM Every Day)
     $$
     select net.http_post(
-        url:='https://kyyvkmvdqvjpjfqfvnro.supabase.co/functions/v1/duty_cron',
+        url:='https://YOUR_SUPABASE_PROJECT_REF.supabase.co/functions/v1/duty_cron',
         headers:='{"Content-Type": "application/json", "Authorization": "Bearer SERVICE_ROLE_KEY"}'::jsonb,
         body:='{"type": "generate"}'::jsonb
     ) as request_id;

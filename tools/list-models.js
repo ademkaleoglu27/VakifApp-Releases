@@ -1,7 +1,8 @@
 
 const https = require('https');
+require('dotenv').config();
 
-const API_KEY = 'AIzaSyC6pD-q5oh5ah_82sqYfoX8deKEuP3dNJY';
+const API_KEY = process.env.GEMINI_API_KEY;
 
 const options = {
     hostname: 'generativelanguage.googleapis.com',

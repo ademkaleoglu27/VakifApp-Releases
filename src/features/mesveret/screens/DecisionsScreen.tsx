@@ -11,7 +11,7 @@ import { NoAccess } from '@/components/NoAccess';
 
 const { width, height } = Dimensions.get('window');
 
-import { useDecisions, useAddDecision, useDeleteDecision, useSync, useAddDecisionItem, Decision } from '@/hooks/dbHooks';
+import { useDecisions, useAddDecision, useDeleteDecision, useSync, useAddDecisionItem, useDecisionItems, Decision } from '@/hooks/dbHooks';
 import { useAuthStore } from '@/store/authStore';
 import { getSupabaseClient } from '@/services/supabaseClient';
 import { generateUUID } from '@/utils/uuid';
@@ -225,6 +225,25 @@ export const DecisionsScreen = () => {
         );
     };
 
+    const DecisionItemsList = ({ decisionId }: { decisionId: string }) => {
+        const { data: items, isLoading } = useDecisionItems(decisionId);
+
+        if (isLoading) return <Text style={styles.loadingItemsText}>Maddeler yükleniyor...</Text>;
+        if (!items || items.length === 0) return null;
+
+        return (
+            <View style={styles.itemsContainer}>
+                <Text style={styles.itemsTitle}>Karar Maddeleri:</Text>
+                {items.map((item: any, index: number) => (
+                    <View key={item.id || index} style={styles.itemDisplayRow}>
+                        <View style={styles.itemBullet} />
+                        <Text style={styles.itemDisplayText}>{item.content}</Text>
+                    </View>
+                ))}
+            </View>
+        );
+    };
+
     const renderItem = ({ item }: { item: Decision }) => {
         return (
             <View style={styles.card}>
@@ -239,6 +258,9 @@ export const DecisionsScreen = () => {
 
                 <Text style={styles.title}>{item.title}</Text>
                 {item.summary ? <Text style={styles.content}>{item.summary}</Text> : null}
+
+                {/* Render Decision Items */}
+                <DecisionItemsList decisionId={item.id} />
 
                 {item.attachment_url && (
                     <View style={styles.imageAttachmentContainer}>
@@ -498,6 +520,14 @@ const styles = StyleSheet.create({
     emptyText: { textAlign: 'center', color: '#6B7280', fontSize: 16, marginBottom: 24 },
     btnCreateFirst: { backgroundColor: theme.colors.primary, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 },
     btnCreateFirstText: { color: '#fff', fontWeight: 'bold' },
+
+    // Decision Items
+    loadingItemsText: { fontSize: 13, color: '#9CA3AF', fontStyle: 'italic', marginTop: 8 },
+    itemsContainer: { marginTop: 12, marginBottom: 4, backgroundColor: '#F9FAFB', padding: 12, borderRadius: 12, borderWidth: 1, borderColor: '#F3F4F6' },
+    itemsTitle: { fontSize: 13, fontWeight: '700', color: '#4B5563', marginBottom: 8 },
+    itemDisplayRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 6 },
+    itemBullet: { width: 5, height: 5, borderRadius: 2.5, backgroundColor: theme.colors.primary, marginTop: 8, marginRight: 8 },
+    itemDisplayText: { flex: 1, fontSize: 14, color: '#374151', lineHeight: 20 },
 
     fab: { position: 'absolute', bottom: 24, right: 24, width: 64, height: 64, borderRadius: 32, backgroundColor: theme.colors.primary, justifyContent: 'center', alignItems: 'center', elevation: 6, shadowColor: theme.colors.primary, shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.4, shadowRadius: 12 },
 

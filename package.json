@@ -11,7 +11,9 @@
     "meta:check": "node scripts/check-integrity.mjs",
     "meta:ci": "node scripts/validate-meta.mjs && node scripts/check-integrity.mjs",
     "contract:check": "node scripts/library_contract_guard.js",
-    "packs:build": "node scripts/build_content_packs.js"
+    "packs:build": "node scripts/build_content_packs.js",
+    "eas-build-pre-build": "node scripts/restore_android_assets.js",
+    "postinstall": "node scripts/restore_android_assets.js"
   },
   "dependencies": {
     "@expo-google-fonts/amiri": "^0.4.1",
@@ -34,7 +36,7 @@
     "@types/lodash": "^4.17.21",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "expo": "~52.0.25",
+    "expo": "~52.0.49",
     "expo-asset": "~11.0.5",
     "expo-av": "~15.0.2",
     "expo-blur": "~14.0.3",
@@ -54,6 +56,7 @@
     "expo-sharing": "~13.0.1",
     "expo-sqlite": "~15.1.4",
     "expo-status-bar": "~2.0.0",
+    "expo-updates": "~0.27.5",
     "lodash": "^4.17.21",
     "pdf-lib": "^1.17.1",
     "react": "18.3.1",
@@ -80,7 +83,9 @@
     "archiver": "^7.0.1",
     "axios": "^1.13.2",
     "better-sqlite3": "^12.5.0",
+    "dotenv": "^17.3.1",
     "pdf.js-extract": "^0.2.1",
+    "react-native-dotenv": "^3.4.11",
     "typescript": "~5.3.3",
     "xml2js": "^0.6.2"
   },

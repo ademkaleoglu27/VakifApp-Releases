@@ -21,8 +21,20 @@ serve(async (req) => {
         )
 
         // 1. Authenticate Sender (BMAD Role Fix)
+        const authHeader = req.headers.get('Authorization');
+        console.log(`[broadcast_notification] Auth header present: ${!!authHeader}, length: ${authHeader?.length || 0}`);
+
         const { data: { user }, error: userError } = await supabaseClient.auth.getUser()
-        if (userError || !user) return new Response('Unauthorized', { status: 401, headers: corsHeaders })
+
+        if (userError || !user) {
+            console.error(`[broadcast_notification] AUTH FAILED - userError: ${JSON.stringify(userError)}, user: ${!!user}`);
+            return new Response(JSON.stringify({
+                error: 'Unauthorized',
+                details: userError?.message || 'No user found',
+                authHeaderPresent: !!authHeader
+            }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+        }
+        console.log(`[broadcast_notification] AUTH OK - user: ${user.id}`);
 
         const supabaseAdmin = createClient(
             Deno.env.get('SUPABASE_URL') ?? '',
@@ -107,6 +119,9 @@ serve(async (req) => {
             })
         }
 
+        console.log(`[broadcast_notification] Hedef kullanıcı: ${targetUserIds.length}, Token: ${tokens.length}`);
+        console.log(`[broadcast_notification] Token'lar: ${tokens.map(t => t.token.substring(0, 20) + '...').join(', ')}`);
+
         // 4. Send Notifications
         const fcmConfigStr = Deno.env.get('FCM_SERVICE_ACCOUNT');
         const result = await sendPushNotification(
@@ -117,7 +132,7 @@ serve(async (req) => {
             fcmConfigStr
         );
 
-        console.log(`[broadcast_notification] Push sonuç:`, result);
+        console.log(`[broadcast_notification] Push sonuç:`, JSON.stringify(result));
 
         if (result.expoFailed > 0 || result.fcmFailed > 0) {
             console.warn(`[broadcast_notification] Başarısız bildirimler:`, result.errors);
@@ -151,7 +166,7 @@ serve(async (req) => {
     } catch (error) {
         console.error('Unexpected error:', error);
         return new Response(JSON.stringify({ success: false, error: error.message }), {
-            status: 200,
+            status: 500,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
     }

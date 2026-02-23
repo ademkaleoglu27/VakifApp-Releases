@@ -1,8 +1,9 @@
 
 const https = require('https');
+require('dotenv').config();
 
-const SUPABASE_URL = 'https://kyyvkmvdqvjpjfqfvnro.supabase.co';
-const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5eXZrbXZkcXZqcGpmcWZ2bnJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyOTI3MDMsImV4cCI6MjA4Mjg2ODcwM30.lMGgbzWzCxBy4fNJpT3zZNIFQAEzfxcpRpnLe-frj9I';
+const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL;
+const ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
 const data = JSON.stringify({
     prompt: "Merhaba, nasılsın?",
@@ -10,7 +11,7 @@ const data = JSON.stringify({
 });
 
 const options = {
-    hostname: 'kyyvkmvdqvjpjfqfvnro.supabase.co',
+    hostname: SUPABASE_URL.replace('https://', ''),
     path: '/functions/v1/gemini-chat',
     method: 'POST',
     headers: {

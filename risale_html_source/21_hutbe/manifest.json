@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.hutbe@diyanet.tr",
+  "title": "Hutbe-i Şamiye",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-21_hutbe",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 83,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.hutbe@diyanet.tr:html_01",
+      "index": 1,
+      "file": "21_01.html",
+      "title": "00 07 HUTBE-İ ŞAMİYE",
+      "startPage": 1,
+      "pageCount": 83
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.konferans@diyanet.tr",
+  "title": "Konferans",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-25_konferans",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 96,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.konferans@diyanet.tr:html_01",
+      "index": 1,
+      "file": "25_01.html",
+      "title": "00 11 KONFERANS",
+      "startPage": 1,
+      "pageCount": 96
+    }
+  ]
+}

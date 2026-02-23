@@ -1,25 +1,28 @@
 {
-    "build": {
-        "development": {
-            "developmentClient": true,
-            "distribution": "internal",
-            "android": {
-                "buildType": "apk",
-                "gradleCommand": ":app:assembleDebug"
-            }
-        },
-        "production": {
-            "android": {
-                "buildType": "app-bundle"
-            }
-        },
-        "preview": {
-            "android": {
-                "buildType": "apk"
-            },
-            "env": {
-                "NODE_OPTIONS": "--max_old_space_size=4096"
-            }
-        }
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "channel": "development"
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "channel": "production"
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "NODE_OPTIONS": "--max_old_space_size=4096"
+      },
+      "channel": "preview"
     }
+  }
 }

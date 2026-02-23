@@ -8,18 +8,21 @@
 
 const RAW_SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const RAW_SUPABASE_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+const RAW_GEMINI_KEY = process.env.GEMINI_API_KEY;
 
 // Validation Logic
 const isSupabaseConfigured = (): boolean => {
     // Basic check: must be non-empty strings
     const urlValid = typeof RAW_SUPABASE_URL === 'string' && RAW_SUPABASE_URL.length > 0 && RAW_SUPABASE_URL !== 'undefined';
     const keyValid = typeof RAW_SUPABASE_KEY === 'string' && RAW_SUPABASE_KEY.length > 0 && RAW_SUPABASE_KEY !== 'undefined';
-    return urlValid && keyValid;
+    const geminiValid = typeof RAW_GEMINI_KEY === 'string' && RAW_GEMINI_KEY.length > 0 && RAW_GEMINI_KEY !== 'undefined';
+    return urlValid && keyValid && geminiValid;
 }
 
 export const Env = {
     supabaseUrl: RAW_SUPABASE_URL || 'https://placeholder-url.supabase.co', // Dummy fallback to prevent type errors
     supabaseAnonKey: RAW_SUPABASE_KEY || 'placeholder-key',
+    geminiApiKey: RAW_GEMINI_KEY || 'placeholder-gemini-key',
 
     isValid: isSupabaseConfigured(),
 
@@ -27,6 +30,7 @@ export const Env = {
         const missing: string[] = [];
         if (!RAW_SUPABASE_URL || RAW_SUPABASE_URL === 'undefined') missing.push('EXPO_PUBLIC_SUPABASE_URL');
         if (!RAW_SUPABASE_KEY || RAW_SUPABASE_KEY === 'undefined') missing.push('EXPO_PUBLIC_SUPABASE_ANON_KEY');
+        if (!RAW_GEMINI_KEY || RAW_GEMINI_KEY === 'undefined') missing.push('GEMINI_API_KEY');
         return missing;
     }
 };

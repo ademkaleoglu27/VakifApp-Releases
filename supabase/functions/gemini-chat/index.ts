@@ -41,7 +41,7 @@ serve(async (req) => {
 
         console.log(`👤 Request from: ${deviceID}`);
 
-        // B. Check Daily Limit (7 Questions/Day)
+        // B. Check Daily Limit (10 Questions/Day)
         const { data: isAllowed, error: limitError } = await supabase
             .rpc('check_daily_limit', { p_device_id: deviceID });
 

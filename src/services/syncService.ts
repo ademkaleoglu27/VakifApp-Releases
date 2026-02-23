@@ -26,6 +26,8 @@ interface Transaction {
     created_at: string;
 }
 
+let isSyncing = false;
+
 export const syncService = {
     // 1. PULL: Get latest data from Cloud -> SQLite
     pullChanges: async () => {
@@ -475,10 +477,18 @@ export const syncService = {
 
     // 3. Full Sync
     sync: async () => {
+        if (isSyncing) {
+            console.log('[SyncService] Sync already in progress, skipping...');
+            return;
+        }
 
-        await syncService.pushChanges();
-        await syncService.pullChanges();
-
+        isSyncing = true;
+        try {
+            await syncService.pushChanges();
+            await syncService.pullChanges();
+        } finally {
+            isSyncing = false;
+        }
     }
 };
 

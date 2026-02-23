@@ -73,7 +73,17 @@ export const announcementService = {
         // 2. Trigger Broadcast Notification (Edge Function)
         // We wrap this in a try/catch to ensure the user sees 'Success' even if push notifications fail.
         try {
-            const { error: funcError } = await supabase.functions.invoke('broadcast_notification', {
+            // Explicitly get session token to ensure auth header is sent
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session?.access_token) {
+                console.warn('Broadcast skipped: No active session');
+                return;
+            }
+
+            const { error: funcError, data: funcData } = await supabase.functions.invoke('broadcast_notification', {
+                headers: {
+                    Authorization: `Bearer ${session.access_token}`
+                },
                 body: {
                     title: priority === 'high' ? `📢 ACİL: ${title}` : `📢 ${title}`,
                     body: content,
@@ -81,6 +91,8 @@ export const announcementService = {
                     data: { screen: 'Duyurular' }
                 }
             });
+
+            console.log('Broadcast result:', funcData);
 
             if (funcError) {
                 console.warn('Broadcast function returned error (handled):', funcError);

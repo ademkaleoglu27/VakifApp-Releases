@@ -65,9 +65,14 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
         });
 
         responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-            // User tapped notification
-
-            // Handle deep link logic here
+            // User tapped notification — handle deep link
+            const data = response.notification.request.content.data;
+            if (data?.screen === 'DutyDashboard') {
+                // Navigate to DutyDashboard screen
+                // This relies on the navigation ref being available globally
+                // The actual navigation will be handled by the component that renders this context
+                console.log('[Notification] Deep link to DutyDashboard');
+            }
         });
 
         // 4. Realtime Subscription
@@ -83,6 +88,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
                         event: 'INSERT',
                         schema: 'public',
                         table: 'notifications',
+                        filter: user?.id ? `user_id=eq.${user.id}` : undefined,
                     },
                     (payload) => {
                         refreshNotifications();

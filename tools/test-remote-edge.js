@@ -1,9 +1,10 @@
 
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const doFetch = async () => {
-    const URL = 'https://kyyvkmvdqvjpjfqfvnro.supabase.co/functions/v1/gemini-chat';
-    const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5eXZrbXZkcXZqcGpmcWZ2bnJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyOTI3MDMsImV4cCI6MjA4Mjg2ODcwM30.lMGgbzWzCxBy4fNJpT3zZNIFQAEzfxcpRpnLe-frj9I';
+    const URL = `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/gemini-chat`;
+    const KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
     console.log(`Testing URL: ${URL}`);
 

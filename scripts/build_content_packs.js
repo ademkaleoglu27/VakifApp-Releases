@@ -211,6 +211,7 @@ async function main() {
     // Determine source directory
     // Try multiple possible locations
     const possibleSourceDirs = [
+        path.join(__dirname, '..', 'risale_html_source'),
         path.join(__dirname, '..', 'android', 'app', 'src', 'main', 'assets', 'risale_html_pilot'),
         path.join(__dirname, '..', 'assets', 'risale_html_pilot'),
         path.join(__dirname, '..', 'generated', 'risale_html_pilot'),

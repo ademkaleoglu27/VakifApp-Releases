@@ -55,19 +55,6 @@ const STATIC_ITEMS: LibraryItem[] = [
             params: {}
         }
     },
-
-    {
-        id: 'celcelutiye',
-        title: 'Celcelutiye',
-        cover: require('../../../../assets/covers/cevsen.png'),
-        kind: 'cevsen',
-        status: 'preparing',
-        openAction: {
-            type: 'route',
-            routeName: 'CevsenLanding',
-            params: {}
-        }
-    },
     {
         id: 'buyuk_cevsen',
         title: 'Büyük Cevşen',
@@ -82,6 +69,19 @@ const STATIC_ITEMS: LibraryItem[] = [
                 title: 'Büyük Cevşen',
                 initialPage: 1
             }
+        }
+    },
+    // --- Preparing items (yüklenmemiş) ---
+    {
+        id: 'celcelutiye',
+        title: 'Celcelutiye',
+        cover: require('../../../../assets/covers/cevsen.png'),
+        kind: 'cevsen',
+        status: 'preparing',
+        openAction: {
+            type: 'route',
+            routeName: 'CevsenLanding',
+            params: {}
         }
     },
     {
@@ -161,8 +161,9 @@ export const LibraryCatalog = {
                         title: "Kur'an ve Evrad",
                         items: [
                             ...STATIC_ITEMS.filter(i => i.kind === 'quran'),
-                            ...STATIC_ITEMS.filter(i => i.kind === 'cevsen'),
+                            ...STATIC_ITEMS.filter(i => i.kind === 'cevsen' && i.status === 'ready'),
                             ...libraryRegistry.getBooksByShelf('FAYDALI').map(b => this._mapRecordToItem(b, 'cevsen')), // tesbihat etc.
+                            ...STATIC_ITEMS.filter(i => i.kind === 'cevsen' && i.status !== 'ready'), // preparing items last
                             ...STATIC_ITEMS.filter(i => i.kind === 'lugat'),
                         ],
                         style: 'standard'

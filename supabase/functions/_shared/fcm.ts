@@ -73,6 +73,14 @@ export async function sendFCMNotification(
 
     try {
         const accessToken = await getAccessToken(config);
+        // FCM v1 API requires ALL data values to be strings
+        const stringifiedData: Record<string, string> = {};
+        if (data && typeof data === 'object') {
+            for (const [key, value] of Object.entries(data)) {
+                stringifiedData[key] = typeof value === 'string' ? value : JSON.stringify(value);
+            }
+        }
+
         const message = {
             message: {
                 token: token,
@@ -80,11 +88,11 @@ export async function sendFCMNotification(
                     title: title,
                     body: body,
                 },
-                data: data || {},
+                data: stringifiedData,
                 android: {
                     priority: "HIGH",
                     notification: {
-                        channel_id: "vakif_urgent_v1",
+                        channel_id: "default",
                         sound: "default",
                         notification_priority: "PRIORITY_MAX",
                     },
@@ -165,11 +173,21 @@ async function sendToExpo(tokens: string[], title: string, body: string, data?: 
             }),
         });
 
+        const responseData = await response.json();
+        console.log(`[Expo Push] Response:`, JSON.stringify(responseData));
+
         if (response.ok) {
-            return { successCount: tokens.length, failureCount: 0, errors: [] };
+            // Check individual ticket statuses
+            const tickets = responseData?.data || [];
+            const failed = tickets.filter((t: any) => t.status === 'error');
+            const succeeded = tickets.filter((t: any) => t.status === 'ok');
+            return {
+                successCount: succeeded.length || tokens.length,
+                failureCount: failed.length,
+                errors: failed.map((t: any) => `Expo: ${t.message || t.details?.error || 'unknown'}`)
+            };
         } else {
-            const errText = await response.text();
-            return { successCount: 0, failureCount: tokens.length, errors: [`Expo API Error: ${errText}`] };
+            return { successCount: 0, failureCount: tokens.length, errors: [`Expo API Error: ${JSON.stringify(responseData)}`] };
         }
     } catch (e) {
         return { successCount: 0, failureCount: tokens.length, errors: [`Expo Fetch Error: ${e.message}`] };

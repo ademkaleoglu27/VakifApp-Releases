@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.munazarat@diyanet.tr",
+  "title": "Münazarat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-22_munazarat",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 63,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.munazarat@diyanet.tr:html_01",
+      "index": 1,
+      "file": "22_01.html",
+      "title": "00 08 MÜNAZARAT",
+      "startPage": 1,
+      "pageCount": 63
+    }
+  ]
+}
