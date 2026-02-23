@@ -60,7 +60,7 @@ const LINE_HEIGHT_OPTIONS = [
 ];
 
 // --- CSS CONFIGURATION (STRICT) ---
-const getHtmlCss = (isSozler: boolean = false) => `
+const getHtmlCss = () => `
 <style>
   /* 1. FONTS */
 
@@ -216,41 +216,6 @@ const getHtmlCss = (isSozler: boolean = false) => `
     padding: 0 2px;
     text-decoration: none;
   }
-  
-  ${isSozler ? `
-  /* --- SOZLER EXCLUSIVE STYLING --- */
-  .arabic-block { 
-    color: #8b0000;
-    font-weight: 500;
-    font-size: clamp(26px, 1.6rem, 34px); 
-    line-height: 2.2; 
-    padding: 24px 12px;
-    margin: 24px 0;
-    background-color: rgba(139, 0, 0, 0.03); 
-    border-radius: 8px;
-  }
-  span.arabic, .arabic {
-      color: #8b0000;
-      font-size: 1.3em; 
-      line-height: 1.4;
-      font-weight: 500;
-  }
-  h1, h2, h3, h4,
-  .heading-1, .heading-2, .heading-3, .heading-4 { 
-    margin: 36px 0 20px; 
-    line-height: 1.4; 
-    color: #1a1a1a;
-  }
-  h1, .heading-1 {
-      font-size: clamp(24px, 1.4rem, 32px);
-      border-bottom: 2px double #d4af37;
-      padding-bottom: 8px;
-      margin-bottom: 32px;
-  }
-  h2, .heading-2 { font-size: clamp(22px, 1.25rem, 28px); }
-  h3, .heading-3 { font-size: clamp(20px, 1.15rem, 24px); }
-  p, .paragraph { margin: 0 0 16px; }
-  ` : ''}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 `;
@@ -365,75 +330,25 @@ const INJECTED_JS = `
         }
     });
 
-    // 5. AUTO-TAG ARABIC BLOCKS & FRAGMENTS
+    // 5. AUTO-TAG ARABIC BLOCKS
     function tagArabicBlocks() {
-        const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g;
-        
-        // Tag whole blocks (p, h1, h2, h3, h4), works for all books to some extent
-        const blockEls = document.querySelectorAll('p, h1, h2, h3, h4'); 
-        blockEls.forEach(el => {
+        const els = document.querySelectorAll('p, h3, h4'); 
+        const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
+
+        els.forEach(el => {
             const text = el.textContent.trim();
             if (!text) return;
             
-            const arabicChars = (text.match(arabicRegex) || []).length;
+            const arabicChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g) || []).length;
             const totalChars = text.replace(/\s/g, '').length;
             
             if (totalChars > 0) {
                 const ratio = arabicChars / totalChars;
-                // If mostly arabic, tag the whole block
                 if (ratio > 0.6) {
                     el.classList.add('arabic-block');
                     el.dir = 'rtl'; 
-                } else if (arabicChars > 0 && window.__isSozler) {
-                    // Only apply inline fragment wrapping if it's Sözler
-                    wrapInlineArabic(el);
                 }
             }
-        });
-    }
-
-    // ONLY FOR SOZLER: Wrap inline elements
-    function wrapInlineArabic(root) {
-        if (!window.__isSozler) return;
-        const arabicRegex = /([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF][\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\s\d]*[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF])/g;
-        
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
-        let node;
-        const nodesToReplace = [];
-
-        while (node = walker.nextNode()) {
-            if (node.parentElement.closest('.arabic, .arabic-block')) continue;
-            if (arabicRegex.test(node.nodeValue)) {
-                nodesToReplace.push(node);
-            }
-            arabicRegex.lastIndex = 0; // reset
-        }
-
-        nodesToReplace.forEach(node => {
-            const val = node.nodeValue;
-            const frag = document.createDocumentFragment();
-            let lastIdx = 0;
-            let match;
-
-            while ((match = arabicRegex.exec(val)) !== null) {
-                // Turkish text before match
-                if (match.index > lastIdx) {
-                    frag.appendChild(document.createTextNode(val.substring(lastIdx, match.index)));
-                }
-                // Wrapped Arabic
-                const span = document.createElement('span');
-                span.className = 'arabic';
-                span.textContent = match[0];
-                frag.appendChild(span);
-                lastIdx = arabicRegex.lastIndex;
-            }
-
-            // Remaining Turkish text
-            if (lastIdx < val.length) {
-                frag.appendChild(document.createTextNode(val.substring(lastIdx)));
-            }
-
-            node.parentNode.replaceChild(frag, node);
         });
     }
     tagArabicBlocks();
@@ -667,26 +582,8 @@ export const RisaleHtmlReaderScreen = () => {
         let mounted = true;
 
         const resolveContentUri = async () => {
-            // Robust URI normalization to prevent double protocols like file://file:///
-            const normalizeUri = (uri: string, isBundled: boolean = false) => {
-                if (!uri) return uri;
-
-                // 1. Strip all leading "file:/" variations
-                let clean = uri.replace(/^file:\/+/i, '');
-
-                // 2. Handle bundled vs absolute paths
-                if (isBundled) {
-                    if (!clean.includes('android_asset')) {
-                        clean = 'android_asset/' + clean.replace(/^\//, '');
-                    }
-                }
-
-                // 3. Return with exactly one file:/// prefix
-                return `file:///${clean.replace(/^\//, '')}`;
-            };
-
             if (!bookId || !assetPath) {
-                if (mounted) setResolvedUri(normalizeUri(assetPath, true));
+                if (mounted) setResolvedUri(assetPath.startsWith('file:') ? assetPath : `file:///android_asset/${assetPath}`);
                 return;
             }
 
@@ -696,16 +593,14 @@ export const RisaleHtmlReaderScreen = () => {
                 if (!mounted) return;
 
                 if (resolution.status === 'bundled') {
-                    const uri = normalizeUri(assetPath, true);
-                    setResolvedUri(uri);
-                    console.log("🚨 WEBVIEW'E GIDEN DOSYA YOLU (BUNDLED): ", uri);
+                    // Bundled asset path: file:///android_asset/...
+                    setResolvedUri(`file:///android_asset/${assetPath}`);
                 } else if (resolution.status === 'downloaded' && resolution.contentPath) {
+                    // Downloaded asset path: extracted ZIP puts content in 'content/' folder
+                    // assetPath is like 'risale_html_pilot/02_mektubat/02_01.html', we just want '02_01.html'
+                    // For safety, grab the filename
                     const filename = assetPath.split('/').pop();
-                    const basePath = resolution.contentPath.endsWith('/') ? resolution.contentPath : `${resolution.contentPath}/`;
-                    const fullPath = `${basePath}content/${filename}`;
-                    const uri = normalizeUri(fullPath);
-                    setResolvedUri(uri);
-                    console.log("🚨 WEBVIEW'E GIDEN DOSYA YOLU (DOWNLOADED): ", uri);
+                    setResolvedUri(`file://${resolution.contentPath}content/${filename}`);
                 } else {
                     setResolveError(`İçerik bulunamadı (${resolution.status}). Lütfen kitabı kütüphaneden tekrar indirin.`);
                 }
@@ -722,11 +617,9 @@ export const RisaleHtmlReaderScreen = () => {
         };
     }, [bookId, chapterId, assetPath]);
 
-    const isSozler = bookId === 'sozler' || bookId === 'risale.sozler@diyanet.tr';
     const injectCss = `
-        window.__isSozler = ${isSozler};
         var style = document.createElement('style');
-        style.innerHTML = \`${getHtmlCss(isSozler).replace(/<style>/g, '').replace(/<\/style>/g, '')}\`;
+                    style.innerHTML = \`${getHtmlCss().replace(/<style>/g, '').replace(/<\/style>/g, '')}\`;
         document.head.appendChild(style);
         true;
     `;
