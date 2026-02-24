@@ -74,7 +74,7 @@ const getHtmlCss = () => `
   :root{ 
       --bg:#efe7d1; 
       --text:#111; 
-      --arabic:#b3261e; 
+      --arabic:#8b0000; 
       --base-size: 19px;
       --font-family: "Crimson Pro", "Times New Roman", serif;
       --line-height: 1.65;
@@ -118,36 +118,41 @@ const getHtmlCss = () => `
 
   /* 2. ARABIC BLOCKS (Normalized & Clamped) */
   .arabic-block { 
-    font-family: "ScheherazadeNew", "Noto Naskh Arabic", serif; 
-    color: var(--arabic); 
-    text-align: center; 
+    font-family: "ScheherazadeNew", "Noto Naskh Arabic", serif !important; 
+    color: var(--arabic) !important; 
+    text-align: center !important; 
     
     /* Clamp: Min 24px, Ideal relative to root, Max 32px */
-    font-size: clamp(24px, 1.5rem, 32px); 
+    font-size: clamp(24px, 1.5rem, 32px) !important; 
     
-    line-height: 2.0; 
-    padding: 16px 8px;
-    margin: 16px 0;
-    display: block; 
-    direction: rtl;
-    width: 100%;
+    line-height: 2.0 !important; 
+    padding: 16px 8px !important;
+    margin: 16px 0 !important;
+    display: block !important; 
+    direction: rtl !important;
+    width: 100% !important;
+    background-color: transparent !important;
     
     /* FIX: Revert to isolate for blocks (safer for layout), use embed for spans */
-    unicode-bidi: isolate;
+    unicode-bidi: isolate !important;
   }
 
   /* 2.1 INLINE ARABIC SPANS */
   span.arabic, .arabic {
-      font-family: "ScheherazadeNew", "Noto Naskh Arabic", serif;
-      color: var(--arabic);
-      font-size: 1.25em; 
-      line-height: 1.5;
+      font-family: "ScheherazadeNew", "Noto Naskh Arabic", serif !important;
+      color: var(--arabic) !important;
+      font-size: 1.25em !important; 
+      line-height: inherit !important; 
       white-space: normal !important;
       overflow-wrap: break-word !important;
       
+      /* Satır aralığını bozmaması için sıfırlamalar */
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: transparent !important;
+      
       /* FIX: 'embed' maintains RTL but allows selection to flow through */
-      unicode-bidi: embed; 
-      padding: 2px 0;
+      unicode-bidi: embed !important; 
   }
   
   /* FIX: Ensure bold/italic are explicitly selectable and don't trap selection */
@@ -158,13 +163,13 @@ const getHtmlCss = () => `
   }
   
   /* 3. HEADINGS (Clamped & Normalized) */
-  h1, h2, h3, 
-  .heading-1, .heading-2, .heading-3 { 
+  h1, h2, h3, h4, h5, h6,
+  .heading-1, .heading-2, .heading-3, .heading-4 { 
     font-family: "UnifrakturCook","Germania One",serif; 
     text-align: center; 
     margin: 32px 0 16px; 
     line-height: 1.3; 
-    color: #000;
+    color: var(--text);
   }
 
   /* Title Fix: H1 */
@@ -222,8 +227,10 @@ const getHtmlCss = () => `
 
 // --- JS CONTROLLER ---
 // --- JS CONTROLLER ---
-const INJECTED_JS = `
+const getInjectedJs = (bookId?: string) => `
 (function() {
+    const CURRENT_BOOK = "${bookId || ''}";
+    
     // STATE
     let scrollTimer;
     let isSelectionInitialized = false;
@@ -332,24 +339,115 @@ const INJECTED_JS = `
 
     // 5. AUTO-TAG ARABIC BLOCKS
     function tagArabicBlocks() {
-        const els = document.querySelectorAll('p, h3, h4'); 
-        const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
-
-        els.forEach(el => {
-            const text = el.textContent.trim();
-            if (!text) return;
-            
-            const arabicChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g) || []).length;
-            const totalChars = text.replace(/\s/g, '').length;
-            
-            if (totalChars > 0) {
-                const ratio = arabicChars / totalChars;
-                if (ratio > 0.6) {
+        if (CURRENT_BOOK === 'risale.sozler@diyanet.tr' || CURRENT_BOOK.includes('sozler')) {
+            // FIX 1: Tamamen veya büyük oranda Arapça olan paragrafları 'arabic-block' yap (Ortalama ve büyük boyut)
+            const blockEls = document.querySelectorAll('p, div, h1, h2, h3, h4, h5, h6'); 
+            blockEls.forEach(el => {
+                const text = el.textContent.trim();
+                if (!text) return;
+                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
+                const totalChars = text.replace(/\\s/g, '').length;
+                if (totalChars > 0 && arabicChars > 0 && (arabicChars / totalChars > 0.6)) {
                     el.classList.add('arabic-block');
-                    el.dir = 'rtl'; 
+                    el.dir = 'rtl';
+                }
+            });
+
+            // FIX 2: Sual/Elcevap gibi Mavi Başlıkları temizle, Arapça metinlerdeki bozuk satır-içi fontları sil
+            const coloredSpans = document.querySelectorAll('span[style*="#0070c0"], span[style*="#002060"], span[style*="color: rgb(0, 112, 192)"], span[style*="color: rgb(0, 32, 96)"]');
+            coloredSpans.forEach(span => {
+                span.style.color = '';
+                
+                const isArabicBlock = span.closest('.arabic-block');
+                const text = span.textContent.trim();
+                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
+                const isArabicText = text.length > 0 && (arabicChars / text.replace(/\\s/g, '').length) > 0.5;
+
+                if (!isArabicBlock && !isArabicText) {
+                    span.style.fontWeight = 'bold'; // Sadece Türkçe başlıklara (Sual vs) kalınlık ekle
+                } else {
+                    span.style.fontSize = ''; // Aşırı büyük gelen font-size'ı sıfırla
+                    span.style.fontFamily = ''; // Yanlış font family'i sıfırla
+                }
+            });
+
+            // Genel temizlik: Tüm arabic-block içindeki spanların inline bozuk değerlerini temizle ki custom CSS (kırmızı vb) işlesin
+            document.querySelectorAll('.arabic-block span').forEach(span => {
+                if (span.style.color) span.style.color = '';
+                if (span.style.fontSize) span.style.fontSize = '';
+                if (span.style.fontFamily) span.style.fontFamily = '';
+            });
+
+            // FIX 3: Metin Düğümlerini Tarayan Gelişmiş Arapça Algoritması (Satır içi ufak ayet parçaları için)
+            const arabicRegex = /([\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\s]+)/g;
+            
+            function processNode(node) {
+                if (node.nodeType === 3) { // Text Node
+                    const text = node.nodeValue;
+                    if (arabicRegex.test(text) && /[^\\s]/.test(text)) {
+                        const parent = node.parentNode;
+                        if (!parent) return;
+                        
+                        // Zaten arabic-block veya arabic içindeyse atla
+                        if (parent.closest('.arabic-block') || parent.closest('.arabic')) return;
+
+                        const fragment = document.createDocumentFragment();
+                        let lastIndex = 0;
+                        arabicRegex.lastIndex = 0; // Reset regex
+                        let match;
+                        
+                        while ((match = arabicRegex.exec(text)) !== null) {
+                            if (match.index > lastIndex) {
+                                fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+                            }
+                            const span = document.createElement('span');
+                            span.className = 'arabic';
+                            span.dir = 'rtl';
+                            span.textContent = match[0];
+                            fragment.appendChild(span);
+                            lastIndex = arabicRegex.lastIndex;
+                        }
+                        if (lastIndex < text.length) {
+                            fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                        }
+                        parent.replaceChild(fragment, node);
+                    }
+                } else if (node.nodeType === 1) { // Element Node
+                    if (['SCRIPT', 'STYLE', 'IFRAME', 'VIDEO', 'IMG'].includes(node.tagName) || node.classList.contains('arabic') || node.classList.contains('arabic-block')) return;
+                    Array.from(node.childNodes).forEach(processNode);
                 }
             }
-        });
+            processNode(document.body);
+            
+        } else {
+            // ESKİ ALGORİTMA: Diğer kitaplardaki mevcut davranış bozulmasın diye aynen bırakıldı
+            const els = document.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, b, strong, i, em, mark, font'); 
+            
+            els.forEach(el => {
+                const text = el.textContent.trim();
+                if (!text) return;
+                
+                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
+                const totalChars = text.replace(/\\s/g, '').length;
+                
+                if (totalChars > 0 && arabicChars > 0) {
+                    const ratio = arabicChars / totalChars;
+                    if (ratio > 0.6) {
+                        const isBlock = ['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName);
+                        if (isBlock) {
+                            el.classList.add('arabic-block');
+                            el.dir = 'rtl';
+                        } else {
+                            el.classList.add('arabic');
+                        }
+                        
+                        // Inline stilleri ez
+                        if (el.style.color) el.style.color = '';
+                        if (el.getAttribute('color')) el.removeAttribute('color');
+                    }
+                }
+            });
+        }
     }
     tagArabicBlocks();
 
@@ -538,7 +636,7 @@ export const RisaleHtmlReaderScreen = () => {
                    document.documentElement.style.setProperty('--arabic', '#bf360c');
                    document.body.style.color = '#3E2723';
                 } else {
-                   document.documentElement.style.setProperty('--arabic', '#b3261e');
+                   document.documentElement.style.setProperty('--arabic', '#8b0000');
                    document.body.style.color = '${theme.text}';
                 }
                 true;`;
@@ -600,7 +698,10 @@ export const RisaleHtmlReaderScreen = () => {
                     // assetPath is like 'risale_html_pilot/02_mektubat/02_01.html', we just want '02_01.html'
                     // For safety, grab the filename
                     const filename = assetPath.split('/').pop();
-                    setResolvedUri(`file://${resolution.contentPath}content/${filename}`);
+                    let safePath = resolution.contentPath.replace(/^file:\/\//, '');
+                    if (!safePath.startsWith('/')) safePath = '/' + safePath;
+                    if (!safePath.endsWith('/')) safePath += '/';
+                    setResolvedUri(`file://${safePath}content/${filename}`);
                 } else {
                     setResolveError(`İçerik bulunamadı (${resolution.status}). Lütfen kitabı kütüphaneden tekrar indirin.`);
                 }
@@ -864,7 +965,9 @@ export const RisaleHtmlReaderScreen = () => {
                         source={{ uri: resolvedUri }}
                         originWhitelist={['*']}
                         allowFileAccess={true}
+                        allowFileAccessFromFileURLs={true}
                         allowUniversalAccessFromFileURLs={true}
+                        mixedContentMode="always"
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         scalesPageToFit={false}
@@ -878,7 +981,7 @@ export const RisaleHtmlReaderScreen = () => {
                             }
                         }}
                         injectedJavaScriptBeforeContentLoaded={injectCss}
-                        injectedJavaScript={INJECTED_JS}
+                        injectedJavaScript={getInjectedJs(bookId)}
                         style={{ flex: 1, backgroundColor: '#efe7d1' }}
                         webviewDebuggingEnabled={true}
                     />

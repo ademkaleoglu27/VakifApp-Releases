@@ -1,9 +1,6 @@
 import { getSupabaseClient } from './supabaseClient';
 import { getDb } from './db/sqlite';
-// If authService doesn't have it, we might need to get it from a different place or local storage.
-// Correction: We should fetch it from the RPC call or just pass it if known.
-// Actually, let's look at `ReadingStatsService.ts` original code again. It used `getDb` and local SQL.
-// We need to know 'vakif_id' to call the RPC.
+import { getCurrentVakifId } from '@/store/vakifStore';
 
 export interface ReadingStat {
     user_id: string;
@@ -12,54 +9,41 @@ export interface ReadingStat {
     total_pages: number;
     has_reading: boolean;
     rank: number;
-    last_reading_date?: string;
-    avatar_url?: string;
-    // Client-side computed or passed through
+    last_reading_date: string | null;
+    avatar_url: string | null;
     is_me?: boolean;
+    phone?: string;
 }
 
 export type StatsRange = 'week' | 'month' | 'year';
 export type FetchMode = 'homeTop10' | 'full' | 'needsAttention';
 
 export const ReadingStatsService = {
-
-    /**
-     * SINGLE Source of Truth for Leaderboard.
-     * Uses RPC 'get_reading_leaderboard' with offline caching.
-     */
     async fetchLeaderboard(range: StatsRange, mode: FetchMode): Promise<ReadingStat[]> {
         const supabase = getSupabaseClient();
         const db = await getDb();
 
-        // 1. Get Vakif ID (Required for RPC)
-        // 1. Get Vakif ID (Required for RPC)
-        const DEFAULT_VAKIF_ID = '00000000-0000-0000-0000-000000000001';
-        let vakifId = DEFAULT_VAKIF_ID;
+        // ✅ Önceden tanımlanmış helper'ı kullan
+        const vakifId = getCurrentVakifId();
 
-        try {
-            const vakifStore = require('@/store/vakifStore');
-            if (vakifStore.useVakifStore) {
-                vakifId = vakifStore.useVakifStore.getState().currentVakif?.id || DEFAULT_VAKIF_ID;
-            }
-        } catch (e) {
-            console.warn('[ReadingStats] Failed to load vakif store:', e);
+        if (!vakifId) {
+            console.warn('[ReadingStats] vakifId bulunamadı, boş liste dönülüyor.');
+            return [];
         }
+
+        console.log('[ReadingStats] →', { vakifId, range, mode }); // debug için
 
         const cacheKey = `stats:${vakifId}:${range}:${mode}`;
 
-        // Determine RPC Params based on Mode
         let limit: number | null = null;
         let includeZero = false;
 
         if (mode === 'homeTop10') {
             limit = 10;
-            includeZero = false;
         } else if (mode === 'full') {
-            limit = null; // No limit
-            includeZero = true; // Show everyone
+            includeZero = true;
         } else if (mode === 'needsAttention') {
-            limit = null;
-            includeZero = true; // We need zeros to filter them later
+            includeZero = true;
         }
 
         // 2. Try Online Fetch (RPC)
@@ -72,10 +56,13 @@ export const ReadingStatsService = {
                     p_include_zero: includeZero
                 });
 
-                if (error) throw error;
+                if (error) {
+                    console.error('[ReadingStats] RPC Hatası:', error);
+                    throw error;
+                }
 
                 // Success!
-                // Filter for 'needsAttention' client-side (RPC returns all including zeros if requested)
+                console.log('[ReadingStats] Dönen kayıt sayısı:', data?.length);
                 let result = (data as any[]).map(mapRpcToStat);
 
                 if (mode === 'needsAttention') {

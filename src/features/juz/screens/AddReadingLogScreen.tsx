@@ -1,6 +1,6 @@
 // AddReadingLogScreen.tsx - Screen for users to add their own daily reading
 import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, StatusBar, DeviceEventEmitter } from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { PageStepper } from '@/components/PageStepper';
 import { theme } from '@/config/theme';
@@ -9,6 +9,7 @@ import { useAuthStore } from '@/store/authStore';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useVakifStore } from '@/store/vakifStore';
+import { ReadingStatsService } from '@/services/ReadingStatsService';
 
 export const AddReadingLogScreen = () => {
     const { user } = useAuthStore();
@@ -27,7 +28,7 @@ export const AddReadingLogScreen = () => {
         try {
             // Use Centralized Service for Source of Truth Consistency
             // Correct params: 'week' (lowercase) and 'full' mode
-            const stats = await require('@/services/ReadingStatsService').ReadingStatsService.fetchLeaderboard('week', 'full');
+            const stats = await ReadingStatsService.fetchLeaderboard('week', 'full');
 
             // Find current user's entry - RPC returns user_id field
             const myStats = stats.find((s: any) =>
@@ -55,6 +56,18 @@ export const AddReadingLogScreen = () => {
             return;
         }
 
+        const currentVakifId = useVakifStore.getState().currentVakif?.id;
+
+        // Yalnızca tamamen 0 olan sahipsiz ID'leri engelliyoruz.
+        // 0000...0001 ID'si varsayılan / genel vakıf ID'si olarak geçerlidir.
+        if (
+            !currentVakifId ||
+            currentVakifId === '00000000-0000-0000-0000-000000000000'
+        ) {
+            Alert.alert('Hatalı Vakıf Bilgisi', 'Vakıf ortamı algılanamadı (Kayıtsız veri). Lütfen gerçek bir vakfa geçiş yapıp tekrar deneyin.');
+            return;
+        }
+
         setIsSaving(true);
         try {
             await RisaleUserDb.addReadingLog({
@@ -65,7 +78,7 @@ export const AddReadingLogScreen = () => {
                 pagesRead: parseInt(pages),
                 durationMinutes: 0,
                 date: new Date().toISOString(),
-                vakifId: useVakifStore.getState().currentVakif?.id // Sending current vakif context
+                vakifId: currentVakifId
             });
 
             // DETERMINISTIC FIX: Link to contact_readings via user_id (not name-matching)
@@ -98,13 +111,17 @@ export const AddReadingLogScreen = () => {
                 console.warn('Contact reading link failed (non-critical):', linkError);
             }
 
+            // Emit global event to easily trigger query invalidation
+            DeviceEventEmitter.emit('READING_LOG_ADDED');
+
             Alert.alert(
                 'Başarılı! 🎉',
                 `${pages} sayfa okuma eklendi. Tebrikler!`,
                 [{
                     text: 'Tamam', onPress: () => {
                         setPages('');
-                        loadTodayReading();
+                        // Give local state a bump
+                        setTodayReading(prev => prev + parseInt(pages));
                     }
                 }]
             );

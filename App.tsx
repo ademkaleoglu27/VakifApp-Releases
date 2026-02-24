@@ -11,6 +11,7 @@ import { View, ActivityIndicator, Text } from 'react-native';
 import { NotificationProvider } from '@/context/NotificationsContext';
 import { useFonts } from 'expo-font';
 import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
+import { OTAUpdateManager } from '@/components/OTAUpdateManager';
 import { Env } from '@/config/env';
 import { syncDynamicAliases } from '@/services/lugat_aliases';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -145,6 +146,7 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
           <NotificationProvider>
+            <OTAUpdateManager />
             <StatusBar style="auto" />
             <AppNavigator />
           </NotificationProvider>

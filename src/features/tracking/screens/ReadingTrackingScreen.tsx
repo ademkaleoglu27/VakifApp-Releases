@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Linking, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Linking, Alert, ActivityIndicator, DeviceEventEmitter } from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { theme } from '@/config/theme';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
+import { exportToExcel } from '@/utils/excelExport';
+import { ReadingStatsService, FetchMode, StatsRange } from '@/services/ReadingStatsService';
 
-type TabType = 'WEEKLY' | 'MONTHLY' | 'YEARLY' | 'ALERTS';
+type TabType = 'WEEKLY' | 'MONTHLY' | 'YEARLY';
 
 export const ReadingTrackingScreen = () => {
     const [activeTab, setActiveTab] = useState<TabType>('WEEKLY');
+    const [isAlertsMode, setIsAlertsMode] = useState(false);
     const [data, setData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isExporting, setIsExporting] = useState(false);
 
     useFocusEffect(
         React.useCallback(() => {
             loadData();
-        }, [activeTab])
+
+            // Refresh data when a new reading log is added anywhere in the app
+            const subscription = DeviceEventEmitter.addListener('READING_LOG_ADDED', () => {
+                loadData();
+            });
+
+            return () => {
+                subscription.remove();
+            };
+        }, [activeTab, isAlertsMode])
     );
 
     const loadData = async () => {
@@ -25,28 +38,19 @@ export const ReadingTrackingScreen = () => {
         setData([]);
         setError(null);
         try {
-            const { ReadingStatsService } = require('@/services/ReadingStatsService');
-            let result = [];
-
-            if (activeTab === 'ALERTS') {
-                // Mode: needsAttention (All zeros)
-                result = await ReadingStatsService.fetchLeaderboard('week', 'needsAttention');
-            } else {
-                // Mode: full (All users)
-                // Map Tab to Range: WEEKLY -> week, MONTHLY -> month, YEARLY -> year
-                const rangeMap: Record<string, 'week' | 'month' | 'year'> = {
-                    'WEEKLY': 'week',
-                    'MONTHLY': 'month',
-                    'YEARLY': 'year'
-                };
-                const range = rangeMap[activeTab] || 'week';
-                result = await ReadingStatsService.fetchLeaderboard(range, 'full');
-            }
-
-            setData(result);
+            // ✅ require() kaldırıldı, direkt import kullanılıyor
+            const mode: FetchMode = isAlertsMode ? 'needsAttention' : 'full';
+            const rangeMap: Record<TabType, StatsRange> = {
+                'WEEKLY': 'week',
+                'MONTHLY': 'month',
+                'YEARLY': 'year',
+            };
+            const range = rangeMap[activeTab];
+            const result = await ReadingStatsService.fetchLeaderboard(range, mode);
+            console.log('[Screen] Leaderboard geldi:', result?.length, 'kayıt');
+            setData(result || []);
         } catch (e: any) {
-            const errMsg = e?.message || String(e);
-            setError(errMsg);
+            setError(e?.message || String(e));
         } finally {
             setLoading(false);
         }
@@ -61,6 +65,55 @@ export const ReadingTrackingScreen = () => {
     const handleWhatsApp = (phone: string) => {
         if (!phone) return;
         Linking.openURL(`whatsapp://send?phone=${phone}`);
+    };
+
+    const handleExport = async () => {
+        if (data.length === 0) {
+            Alert.alert("Bilgi", "Dışa aktarılacak veri bulunamadı.");
+            return;
+        }
+
+        setIsExporting(true);
+        try {
+            const rangeMap: Record<string, string> = {
+                'WEEKLY': 'Haftalik',
+                'MONTHLY': 'Aylik',
+                'YEARLY': 'Yillik'
+            };
+            const fileName = `Okuma_Takibi_${rangeMap[activeTab]}${isAlertsMode ? '_Ilgilen' : ''}_${new Date().toISOString().split('T')[0]}`;
+
+            const exportData = data.map(item => {
+                const displayName = item.display_name || item.displayName || 'İsimsiz';
+                const totalPages = item.total_pages || item.totalPages || 0;
+                const lastReadingDate = item.last_reading_date || item.lastReadingDate;
+                const lastDateObj = lastReadingDate ? new Date(lastReadingDate) : null;
+                const isValidDate = lastDateObj && !isNaN(lastDateObj.getTime());
+                const formattedDate = isValidDate ? `${lastDateObj.getDate()}.${lastDateObj.getMonth() + 1}.${lastDateObj.getFullYear()}` : 'Hiç okumadı';
+
+                if (isAlertsMode) {
+                    return {
+                        'Kişi Adı': displayName,
+                        'Durum': 'Bu dönemde okuma girmedi',
+                        'Son Okuma Tarihi': formattedDate,
+                        'Telefon': item.phone || ''
+                    };
+                }
+
+                return {
+                    'Kişi Adı': displayName,
+                    'Okuma Sayısı (Sayfa)': totalPages,
+                    'Son Okuma Tarihi': formattedDate,
+                    'Telefon': item.phone || ''
+                };
+            });
+
+            await exportToExcel(exportData, fileName, 'Okuma Verileri');
+        } catch (error) {
+            Alert.alert("Hata", "Excel'e aktarım sırasında bir hata oluştu.");
+            console.error(error);
+        } finally {
+            setIsExporting(false);
+        }
     };
 
     const renderItem = ({ item }: { item: any }) => {
@@ -81,7 +134,7 @@ export const ReadingTrackingScreen = () => {
 
                 <View style={styles.info}>
                     <Text style={styles.name}>{displayName}</Text>
-                    {activeTab !== 'ALERTS' ? (
+                    {!isAlertsMode ? (
                         <Text style={styles.stats}>{totalPages} Sayfa</Text>
                     ) : (
                         <Text style={styles.alertText}>
@@ -122,6 +175,14 @@ export const ReadingTrackingScreen = () => {
         <View style={styles.container}>
             <PremiumHeader title="Okuma Takibi" backButton={false} />
 
+            <View style={styles.headerActions}>
+                <Text style={styles.sectionTitle}>Liste Görünümü</Text>
+                <TouchableOpacity style={styles.exportBtn} onPress={handleExport} disabled={isExporting || data.length === 0}>
+                    {isExporting ? <ActivityIndicator size="small" color="#0284C7" /> : <Ionicons name="download-outline" size={18} color="#0284C7" />}
+                    <Text style={styles.exportBtnText}>Excel'e Aktar</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.tabsContainer}>
                 <TouchableOpacity
                     style={[styles.tab, activeTab === 'WEEKLY' && styles.activeTab]}
@@ -142,10 +203,10 @@ export const ReadingTrackingScreen = () => {
                     <Text style={[styles.tabText, activeTab === 'YEARLY' && styles.activeTabText]}>Yıllık</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.tab, activeTab === 'ALERTS' && styles.activeTabAlert]}
-                    onPress={() => setActiveTab('ALERTS')}
+                    style={[styles.tab, isAlertsMode && styles.activeTabAlert]}
+                    onPress={() => setIsAlertsMode(!isAlertsMode)}
                 >
-                    <Text style={[styles.tabText, activeTab === 'ALERTS' && styles.activeTabAlertText]}>İlgilen!</Text>
+                    <Text style={[styles.tabText, isAlertsMode ? styles.activeTabAlertText : { color: '#EF4444' }]}>İlgilen!</Text>
                 </TouchableOpacity>
             </View>
 
@@ -183,6 +244,34 @@ export const ReadingTrackingScreen = () => {
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#F8FAFC' },
+    headerActions: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 16,
+        paddingTop: 16,
+    },
+    sectionTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#1E293B',
+    },
+    exportBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#F0F9FF',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#E0F2FE',
+        gap: 6,
+    },
+    exportBtnText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#0284C7',
+    },
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',

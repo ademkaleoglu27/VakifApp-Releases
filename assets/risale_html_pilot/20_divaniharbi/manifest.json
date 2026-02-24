@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.divaniharbi@diyanet.tr",
+  "title": "Divan-ı Harb-i Örfî",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-20_divaniharbi",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 43,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.divaniharbi@diyanet.tr:html_01",
+      "index": 1,
+      "file": "20_01.html",
+      "title": "00 06 DİVAN-I HARB-İ ÖRFÎ",
+      "startPage": 1,
+      "pageCount": 43
+    }
+  ]
+}

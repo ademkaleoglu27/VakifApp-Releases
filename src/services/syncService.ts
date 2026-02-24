@@ -375,7 +375,9 @@ export const syncService = {
                         const { error: err } = await supabase.from('hatim_parts').update(updates).eq('id', id);
                         error = err;
                     } else if (item.type === 'INSERT_READING_LOG') {
-                        const { error: err } = await supabase.from('reading_logs').insert(payload);
+                        // FIX: Use upsert to handle 23505 duplicate key violations 
+                        // when the app restarts before finishing a clear-outbox routine.
+                        const { error: err } = await supabase.from('reading_logs').upsert(payload, { onConflict: 'id' });
                         error = err;
                     } else if (item.type === 'INSERT_CONTACT') {
                         const { error: err } = await supabase.from('contacts').insert(payload);
@@ -451,7 +453,7 @@ export const syncService = {
                     const isForeignKeyError = errorCode === '23503'; // Orphaned data
 
                     if (isFormatError || isDuplicateError || isNotNullError || isForeignKeyError) {
-                        console.warn(`[SyncService] Auto-removing fatal item (Code: ${errorCode}):`, item.id);
+                        console.error(`[SyncService] Auto-removing fatal item (Code: ${errorCode}). FULL ERROR DUMP:`, JSON.stringify(pushError, null, 2));
                         await db.runAsync('DELETE FROM outbox WHERE id = ?', [item.id]);
                     } else {
                         // Regular network/server error - Retry silently or with warning

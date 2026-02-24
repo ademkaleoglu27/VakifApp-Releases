@@ -104,7 +104,7 @@ VALUES (
     'DEFAULT',
     'Mevcut verilerin taşındığı varsayılan vakıf'
     , true
-) ON CONFLICT (code) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 -- Migrate existing data to default vakif
 UPDATE public.profiles SET vakif_id = '00000000-0000-0000-0000-000000000001' WHERE vakif_id IS NULL;
@@ -186,17 +186,17 @@ DROP POLICY IF EXISTS "Users can view their own vakif" ON public.vakiflar;
 DROP POLICY IF EXISTS "Platform admins can manage vakiflar" ON public.vakiflar;
 DROP POLICY IF EXISTS "Anyone can read platform settings" ON public.platform_settings;
 DROP POLICY IF EXISTS "Only platform admin can update settings" ON public.platform_settings;
-DROP POLICY IF EXISTS "Users see own vakif transactions" ON public.transactions;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.decisions;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.contacts;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.contact_readings;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.assignments;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.announcements;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.notifications;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.rotation_pools;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.rotation_pool_members;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.duty_types;
-DROP POLICY IF EXISTS "Tenant isolation" ON public.duty_assignments;
+DROP POLICY IF EXISTS "Transactions tenant isolation" ON public.transactions;
+DROP POLICY IF EXISTS "Decisions tenant isolation" ON public.decisions;
+DROP POLICY IF EXISTS "Contacts tenant isolation" ON public.contacts;
+DROP POLICY IF EXISTS "Contact readings tenant isolation" ON public.contact_readings;
+DROP POLICY IF EXISTS "Assignments tenant isolation" ON public.assignments;
+DROP POLICY IF EXISTS "Announcements tenant isolation" ON public.announcements;
+DROP POLICY IF EXISTS "Notifications tenant isolation" ON public.notifications;
+DROP POLICY IF EXISTS "Rotation pools tenant isolation" ON public.rotation_pools;
+DROP POLICY IF EXISTS "Rotation pool members tenant isolation" ON public.rotation_pool_members;
+DROP POLICY IF EXISTS "Duty types tenant isolation" ON public.duty_types;
+DROP POLICY IF EXISTS "Duty assignments tenant isolation" ON public.duty_assignments;
 
 -- Vakiflar policies
 CREATE POLICY "Users can view their own vakif" ON public.vakiflar
@@ -212,6 +212,7 @@ CREATE POLICY "Anyone can read platform settings" ON public.platform_settings
 CREATE POLICY "Only platform admin can update settings" ON public.platform_settings
     FOR UPDATE USING (public.is_platform_admin());
 
+DROP POLICY IF EXISTS "Only platform admin can insert settings" ON public.platform_settings;
 CREATE POLICY "Only platform admin can insert settings" ON public.platform_settings
     FOR INSERT WITH CHECK (public.is_platform_admin());
 

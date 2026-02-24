@@ -346,15 +346,20 @@ export const RisaleUserDb = {
 
     // --- Leaderboard & Readings ---
     async addReadingLog(log: Omit<ReadingLog, 'id'>) {
+        if (
+            !log.vakifId ||
+            log.vakifId === '00000000-0000-0000-0000-000000000000'
+        ) {
+            throw new Error('[RisaleUserDb] vakifId is strictly required and cannot be a totally zero UUID. 0000...0001 is allowed.');
+        }
+
         try {
             const db = await getDb();
             const newId = generateUUID();
             const createdAt = new Date().toISOString();
 
-
-
             await db.runAsync(
-                'INSERT INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at, vakif_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                'INSERT OR REPLACE INTO reading_logs (id, user_id, book_id, pages_read, duration_minutes, date, created_at, vakif_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                 [newId, log.userId, log.workId, log.pagesRead, log.durationMinutes, log.date, createdAt, log.vakifId || null]
             );
 

@@ -12,6 +12,7 @@ import { canAccess } from '@/config/permissions';
 import { PageStepper } from '@/components/PageStepper';
 import { useQuranStore } from '@/features/quran/store/useQuranStore';
 import { QuranPackService } from '@/features/quran/services/QuranPackService';
+import { ReadingStatsService } from '@/services/ReadingStatsService';
 
 export const HomeScreen = () => {
     const { user } = useAuthStore();
@@ -71,7 +72,6 @@ export const HomeScreen = () => {
 
     const loadLeaderboard = async () => {
         // Use Centralized Service (RPC + Cache)
-        const { ReadingStatsService } = require('@/services/ReadingStatsService');
         const data = await ReadingStatsService.fetchLeaderboard('week', 'homeTop10');
         setLeaderboard(data);
         setIsLoading(false);

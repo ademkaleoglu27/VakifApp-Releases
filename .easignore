@@ -1,41 +1,29 @@
-﻿# --- EAS upload size reduction (HARD v2) ---
+﻿# Bagimliliklar (Bulutta otomatik kurulur)
+node_modules/
 
-# Git history (NEVER needed for EAS build upload)
-.git/**
+# Yerel derleme ciktilari ve onbellekler
+android/
+ios/
+dist/
+.expo/
 
-# Dependencies (EAS installs on server)
-node_modules/**
+# Gereksiz devasa yedekler ve test klasorleri
+_legacy_archive/
+web-admin/
+temp_risale_source/
+audio_release_bundle/
+test-export-semantic/
+test-export-tag-cleanup/
+test-export-semantic-fix/
+test-export-semantic-v3/
+test-export-semantic-v2/
 
-# Web admin (not needed for Android APK)
-web-admin/**
-tools/risale_source_data/**
-temp_risale_source/**
+# Diger gereksizler
+*.apk
+*.aab
+build-error.txt
 
-# Legacy / experiments
-_legacy_archive/**
-test-export*/**
-test-export-*/**
 
-# Large local content packs / generated assets (downloaded at runtime)
-assets/quran_pages/**
-quran-pack/**
-
-# Android build outputs / caches
-android/.gradle/**
-android/.cxx/**
-android/app/.cxx/**
-android/app/build/**
-android/build/**
-**/build/**
-
-# Expo caches / logs
-.expo/**
-.expo-shared/**
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-*.log
-*.hprof
-
-# Large stray artifacts
-kuran_v2_lite.pdf*
+# Critical massive assets and git history blocking EAS upload
+.git/
+assets/quran_pages/

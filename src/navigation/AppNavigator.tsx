@@ -725,20 +725,16 @@ export const AppNavigator = () => {
                                     {/* Legacy Reader Routes REMOVED */}
 
                                     {/* Secondary Features (Cevsen, Lugat, Tesbihat, Dualar) REMOVED */}
-                                    {__DEV__ && (
-                                        <>
-                                            <Stack.Screen
-                                                name="ContentHealthDebug"
-                                                component={ContentHealthDebugScreen}
-                                                options={{ title: 'Geliştirici Kontrol', headerShown: true }}
-                                            />
-                                            <Stack.Screen
-                                                name="DeveloperTools"
-                                                component={DeveloperToolsScreen}
-                                                options={{ title: 'Geliştirici Araçları', headerShown: false }}
-                                            />
-                                        </>
-                                    )}
+                                    <Stack.Screen
+                                        name="ContentHealthDebug"
+                                        component={ContentHealthDebugScreen}
+                                        options={{ title: 'Geliştirici Kontrol', headerShown: true }}
+                                    />
+                                    <Stack.Screen
+                                        name="DeveloperTools"
+                                        component={DeveloperToolsScreen}
+                                        options={{ title: 'Geliştirici Araçları', headerShown: false }}
+                                    />
 
                                     {/* Risale Library V1 REMOVED */}
                                     {/* LibraryDetail, WorkDetail, HatimDuasi REMOVED */}

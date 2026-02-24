@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.sunuhat@diyanet.tr",
+  "title": "Sünuhat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-15_sunuhat",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 36,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.sunuhat@diyanet.tr:html_01",
+      "index": 1,
+      "file": "15_01.html",
+      "title": "00 01 SÜNUHAT",
+      "startPage": 1,
+      "pageCount": 36
+    }
+  ]
+}
