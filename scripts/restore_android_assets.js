@@ -17,12 +17,12 @@ if (fs.existsSync(srcDir)) {
     const files = fs.readdirSync(srcDir);
     let count = 0;
     for (const file of files) {
-        if (file.endsWith('.html')) {
+        if (file.endsWith('.html') || file.endsWith('.json')) {
             fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
             count++;
         }
     }
-    console.log(`✅ Successfully copied ${count} HTML files to Android assets.`);
+    console.log(`✅ Successfully copied ${count} HTML/JSON files to Android assets.`);
 } else {
     console.warn(`⚠️ Warning: Source directory ${srcDir} does not exist! Sözler will not be bundled.`);
 }
