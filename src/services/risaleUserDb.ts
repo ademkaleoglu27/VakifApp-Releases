@@ -1,5 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 import * as FileSystem from 'expo-file-system';
+import { getSupabaseClient } from '@/services/supabaseClient';
 import { assertFeature } from '@/utils/guard';
 import { getDb } from './db/sqlite';
 import { addToOutbox } from './syncService';
@@ -74,6 +75,38 @@ export const RisaleUserDb = {
         await FileSystem.makeDirectoryAsync(dir, { intermediates: true });
         await FileSystem.copyAsync({ from: sourceUri, to: newPath });
         return newPath;
+    },
+
+    async getTodayQuote(): Promise<{ text: string, source: string } | null> {
+        try {
+            // Get today's date in YYYY-MM-DD for Turkey
+            const todayStr = new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'Europe/Istanbul',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            }).format(new Date());
+
+            const supabase = getSupabaseClient();
+            if (!supabase) {
+                console.error('[RisaleUserDb] Supabase client is null');
+                return null;
+            }
+            const { data, error } = await supabase
+                .from('daily_quotes')
+                .select('text, source')
+                .eq('date', todayStr)
+                .single();
+
+            if (error) {
+                // Not found or network error, return null to use fallback
+                return null;
+            }
+            return data;
+        } catch (err) {
+            console.error('[RisaleUserDb] getTodayQuote error:', err);
+            return null;
+        }
     },
 
     // --- Bookmarks ---
@@ -232,7 +265,7 @@ export const RisaleUserDb = {
         const db = await getDb();
         let contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name = ?', [name]);
         if (!contact) {
-            contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name LIKE ? OR (name || " " || surname) = ?', [`%${name}%`, name]);
+            contact = await db.getFirstAsync('SELECT * FROM contacts WHERE name LIKE ? OR (name || " " || surname) = ?', [`% ${name}% `, name]);
         }
         return contact || null;
     },
@@ -419,7 +452,7 @@ export const RisaleUserDb = {
             `SELECT cr.* FROM contact_readings cr
              JOIN contacts c ON cr.contact_id = c.id
              WHERE DATE(cr.date) = DATE(?) AND cr.pages_read = ?
-             ORDER BY cr.created_at DESC LIMIT 1`,
+    ORDER BY cr.created_at DESC LIMIT 1`,
             [readingLog.date, readingLog.pages_read]
         );
 
@@ -489,7 +522,7 @@ export const RisaleUserDb = {
             const contactReading = await db.getFirstAsync<any>(
                 `SELECT cr.* FROM contact_readings cr
                  WHERE DATE(cr.date) = DATE(?) AND cr.pages_read = ?
-                 ORDER BY cr.created_at DESC LIMIT 1`,
+    ORDER BY cr.created_at DESC LIMIT 1`,
                 [log.date, log.pages_read]
             );
             result.push({ readingLog: log, contactReading: contactReading || null });
@@ -505,16 +538,16 @@ export const RisaleUserDb = {
             // 1. Fetch Raw Rows (No Grouping/Limit yet for safe merge)
             // Modified query to get user_id and phone for merging
             let query = `
-                SELECT 
-                    c.id, 
-                    c.user_id,
-                    c.name, 
-                    c.surname, 
-                    c.phone,
-                    SUM(cr.pages_read) as total_pages 
+SELECT
+c.id,
+    c.user_id,
+    c.name,
+    c.surname,
+    c.phone,
+    SUM(cr.pages_read) as total_pages 
                 FROM contacts c 
-                JOIN contact_readings cr ON c.id = cr.contact_id 
-            `;
+                JOIN contact_readings cr ON c.id = cr.contact_id
+    `;
 
             const params: any[] = [];
 
@@ -531,12 +564,12 @@ export const RisaleUserDb = {
             // 2. JS Deduplication (Normalized Name)
             const map = new Map<string, any>();
             const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
-            const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+            const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''} `.trim();
 
             for (const row of rawRows) {
                 const displayName = buildDisplayName(row.name, row.surname);
                 const normName = normalize(displayName);
-                const key = `N:${normName}`;
+                const key = `N:${normName} `;
 
                 if (map.has(key)) {
                     const existing = map.get(key);
@@ -581,7 +614,7 @@ export const RisaleUserDb = {
             FROM assignments a
             LEFT JOIN contacts c ON a.assigned_to_id = c.id
             ORDER BY a.is_completed ASC, a.created_at DESC
-        `);
+    `);
     },
 
     async toggleAssignmentComplete(id: string) {
@@ -615,17 +648,17 @@ export const RisaleUserDb = {
         // 1. Fetch Raw Groups (by contact_id)
         // We select user_id to help with identity, though strictly we'll group by name for visual cleanup
         const rawRows = await db.getAllAsync<any>(`
-            SELECT 
-                c.id,
-                c.user_id, 
-                c.name, 
-                c.surname,
-                c.phone,
-                SUM(cr.pages_read) as total_pages 
+SELECT
+c.id,
+    c.user_id,
+    c.name,
+    c.surname,
+    c.phone,
+    SUM(cr.pages_read) as total_pages 
             FROM contacts c 
             JOIN contact_readings cr ON c.id = cr.contact_id 
             WHERE cr.date >= ?
-            GROUP BY c.id 
+    GROUP BY c.id 
         `, [dateStr]);
 
         // 2. JS Aggregation (Deduplication)
@@ -633,7 +666,7 @@ export const RisaleUserDb = {
         let mergeCount = 0;
 
         const normalize = (s: string) => s ? s.trim().toLowerCase().replace(/\s+/g, ' ') : '';
-        const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''}`.trim();
+        const buildDisplayName = (n: string, s: string) => `${n || ''} ${s || ''} `.trim();
 
         for (const row of rawRows) {
             const displayName = buildDisplayName(row.name, row.surname);
@@ -643,7 +676,7 @@ export const RisaleUserDb = {
             // To ensure "Adem Kaleoğlu" appears only once, we group by Normalized Name.
             // Ideally we would use user_id, but if local contacts lack user_id (offline/manual),
             // they would split from the synced user. Name-based merging bridges this gap.
-            const key = `N:${normName}`;
+            const key = `N:${normName} `;
 
             if (map.has(key)) {
                 mergeCount++;
@@ -677,17 +710,17 @@ export const RisaleUserDb = {
 
         // Users with NO readings at all OR max reading date is older than threshold
         return await db.getAllAsync(`
-            SELECT 
-                c.id, 
-                c.name, 
-                c.surname,
-                c.phone,
-                MAX(cr.date) as last_reading_date
+            SELECT
+c.id,
+    c.name,
+    c.surname,
+    c.phone,
+    MAX(cr.date) as last_reading_date
             FROM contacts c 
             LEFT JOIN contact_readings cr ON c.id = cr.contact_id 
             GROUP BY c.id 
             HAVING last_reading_date IS NULL OR last_reading_date < ?
-            ORDER BY last_reading_date ASC
+    ORDER BY last_reading_date ASC
         `, [dateStr]);
     },
 
@@ -832,14 +865,14 @@ export const RisaleUserDb = {
 
         // Deleting by exact name/surname pairs from the known dummy list
         await db.runAsync(`
-            DELETE FROM contacts 
-            WHERE (name = 'Ahmet' AND surname = 'Yılmaz')
-               OR (name = 'Mehmet' AND surname = 'Demir')
-               OR (name = 'Ali' AND surname = 'Kaya')
-               OR (name = 'Veli' AND surname = 'Çelik')
-               OR (name = 'Hasan' AND surname = 'Can')
-               OR (name = 'Hüseyin' AND surname = 'Ak')
-        `);
+            DELETE FROM contacts
+WHERE(name = 'Ahmet' AND surname = 'Yılmaz')
+OR(name = 'Mehmet' AND surname = 'Demir')
+OR(name = 'Ali' AND surname = 'Kaya')
+OR(name = 'Veli' AND surname = 'Çelik')
+OR(name = 'Hasan' AND surname = 'Can')
+OR(name = 'Hüseyin' AND surname = 'Ak')
+    `);
     },
 
     // --- History ---
@@ -851,7 +884,7 @@ export const RisaleUserDb = {
             const db = await getDb();
             // Upsert recent history? Or just log?
             // For now, we'll logging to console as placeholder for analytics
-            console.log(`[History] User read ${bookId} page ${pageNumber}`);
+            console.log(`[History] User read ${bookId} page ${pageNumber} `);
         } catch (e) {
             console.warn("Failed to save history", e);
         }

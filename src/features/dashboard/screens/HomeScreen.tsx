@@ -97,13 +97,13 @@ export const HomeScreen = () => {
 
     useEffect(() => {
         const fetchQuote = async () => {
-            const quote = await db.getTodayQuote();
+            const quote = await RisaleUserDb.getTodayQuote();
             if (quote) {
                 setDailyQuote(quote);
             }
         };
         fetchQuote();
-    }, [db]);
+    }, []);
 
     // Construct Name Display
     const displayName = (user as any)?.user_metadata?.full_name
