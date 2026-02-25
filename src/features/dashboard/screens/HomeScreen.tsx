@@ -15,12 +15,18 @@ import { QuranPackService } from '@/features/quran/services/QuranPackService';
 import { ReadingStatsService } from '@/services/ReadingStatsService';
 
 export const HomeScreen = () => {
-    const { user } = useAuthStore();
     const navigation = useNavigation<any>();
+    const { user } = useAuthStore();
 
     const [leaderboard, setLeaderboard] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { status, downloadProgress, detailedStatus } = useQuranStore(); // Kept for download progress overlay
+    // const { status, downloadProgress, detailedStatus } = useQuranStore(); // Kept for download progress overlay
+    const [downloadProgress, setDownloadProgress] = useState(0); // Moved from useQuranStore
+    const [status, setStatus] = useState<string>('CHECKING'); // Moved from useQuranStore, assuming string type
+    const [detailedStatus, setDetailedStatus] = useState<string>(''); // Moved from useQuranStore
+    const [dailyQuote, setDailyQuote] = useState<{ text: string, source: string } | null>(null); // Added dailyQuote state
+
+    // Get display name from user metadata or fallback
 
     const openDrawer = () => {
         navigation.dispatch(DrawerActions.openDrawer());
@@ -88,6 +94,19 @@ export const HomeScreen = () => {
 
         }
     };
+
+    useEffect(() => {
+        const fetchQuote = async () => {
+            const quote = await db.getTodayQuote();
+            if (quote) {
+                setDailyQuote(quote);
+            }
+        };
+        fetchQuote();
+    }, [db]);
+
+    // Construct Name Display
+    const displayName = user?.name ? `${user.name.split(' ')[0]} Abi` : 'Kardeşim';
 
 
     // ... existing imports
@@ -270,8 +289,10 @@ export const HomeScreen = () => {
                         <Ionicons name="chatbox-ellipses" size={24} color="#fff" />
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={styles.quoteText} numberOfLines={3}>"Güzel gören güzel düşünür. Güzel düşünen, hayatından lezzet alır."</Text>
-                        <Text style={styles.quoteSource}>- Mektubat</Text>
+                        <Text style={styles.quoteText} numberOfLines={3}>
+                            "{dailyQuote?.text || 'Güzel gören güzel düşünür. Güzel düşünen, hayatından lezzet alır.'}"
+                        </Text>
+                        <Text style={styles.quoteSource}>- {dailyQuote?.source || 'Mektubat'}</Text>
                     </View>
                 </View>
 
