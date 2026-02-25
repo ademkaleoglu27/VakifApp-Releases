@@ -106,10 +106,9 @@ export const HomeScreen = () => {
     }, [db]);
 
     // Construct Name Display
-    const displayName = user?.name ? `${user.name.split(' ')[0]} Abi` : 'Kardeşim';
-
-
-    // ... existing imports
+    const displayName = (user as any)?.user_metadata?.full_name
+        ? `${(user as any).user_metadata.full_name.split(' ')[0]} Abi`
+        : (user?.email?.split('@')[0] || 'Kardeşim');
 
     const handleAddReading = async () => {
         // PERMISSION CHECK for Proxy Entry
@@ -242,8 +241,8 @@ export const HomeScreen = () => {
 
     // ... imports match existing ...
 
-    // Construct Name Display
-    const displayName = user?.name ? `${user.name.split(' ')[0]} Abi` : 'Kardeşim';
+    // ... imports match existing ...
+
     const insets = { top: Platform.OS === 'ios' ? 50 : 30 }; // Fallback safe area
 
     return (
