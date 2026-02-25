@@ -346,11 +346,12 @@ export const RisaleUserDb = {
 
     // --- Leaderboard & Readings ---
     async addReadingLog(log: Omit<ReadingLog, 'id'>) {
-        if (
-            !log.vakifId ||
-            log.vakifId === '00000000-0000-0000-0000-000000000000'
-        ) {
-            throw new Error('[RisaleUserDb] vakifId is strictly required and cannot be a totally zero UUID. 0000...0001 is allowed.');
+        const INVALID_IDS = [
+            '00000000-0000-0000-0000-000000000000',
+        ];
+
+        if (!log.vakifId || INVALID_IDS.includes(log.vakifId)) {
+            throw new Error('[RisaleUserDb] vakifId is strictly required and cannot be a totally zero UUID.');
         }
 
         try {

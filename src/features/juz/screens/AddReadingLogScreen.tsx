@@ -58,13 +58,16 @@ export const AddReadingLogScreen = () => {
 
         const currentVakifId = useVakifStore.getState().currentVakif?.id;
 
-        // Yalnızca tamamen 0 olan sahipsiz ID'leri engelliyoruz.
-        // 0000...0001 ID'si varsayılan / genel vakıf ID'si olarak geçerlidir.
-        if (
-            !currentVakifId ||
-            currentVakifId === '00000000-0000-0000-0000-000000000000'
-        ) {
-            Alert.alert('Hatalı Vakıf Bilgisi', 'Vakıf ortamı algılanamadı (Kayıtsız veri). Lütfen gerçek bir vakfa geçiş yapıp tekrar deneyin.');
+        // ✅ Sadece tamamen boş/sıfır ID'yi engelle
+        const INVALID_IDS = [
+            '00000000-0000-0000-0000-000000000000',
+        ];
+
+        if (!currentVakifId || INVALID_IDS.includes(currentVakifId)) {
+            Alert.alert(
+                'Vakıf Bulunamadı',
+                'Lütfen uygulamadan çıkıp tekrar giriş yapın.'
+            );
             return;
         }
 
