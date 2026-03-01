@@ -68,6 +68,9 @@ export const authService = {
                     name: 'Vakfım',
                     slug: 'current-vakif'
                 });
+                // Load feature flags for this vakif
+                require('@/services/featureFlagService').featureFlagService.loadFlags()
+                    .catch((e: any) => console.warn('[FeatureFlags] Post-register load failed:', e));
             }
 
             const user: User = {
@@ -129,6 +132,9 @@ export const authService = {
                     name: 'Vakfım',
                     slug: 'current-vakif'
                 });
+                // Load feature flags for this vakif
+                require('@/services/featureFlagService').featureFlagService.loadFlags()
+                    .catch((e: any) => console.warn('[FeatureFlags] Post-login load failed:', e));
             }
 
             const user: User = {
@@ -154,6 +160,11 @@ export const authService = {
     logout: async (): Promise<void> => {
         // Clear Vakif Context
         require('@/store/vakifStore').useVakifStore.getState().clear();
+
+        // Clear Feature Flags cache & listener
+        const { featureFlagService } = require('@/services/featureFlagService');
+        featureFlagService.stopAppStateListener();
+        featureFlagService.clearFlags();
 
         const supabase = getSupabaseClient();
         if (!supabase) return; // already out effectively
@@ -186,6 +197,9 @@ export const authService = {
                 name: 'Vakfım', // Ideally fetch from DB, but this suffices for logic
                 slug: 'current-vakif'
             });
+            // Load feature flags for this vakif (session restore)
+            require('@/services/featureFlagService').featureFlagService.loadFlags()
+                .catch((e: any) => console.warn('[FeatureFlags] Session restore load failed:', e));
         }
 
         return {

@@ -13,7 +13,25 @@ export type PermissionKey =
     | 'ANNOUNCEMENTS_SCREEN'
     | 'JUZ_SCREEN'
     | 'PROFILE_SCREEN'
-    | 'DEVELOPER_TOOLS';        // Developer Tools access
+    | 'DEVELOPER_TOOLS'         // Developer Tools access
+    | 'AI_ASSISTANT'            // Gemini AI chat
+    | 'EDUCATION_MODULE'        // Elif-Ba / Eğitim
+    | 'NOBET_YONETIMI'          // Nöbet yönetimi
+    | 'GOREVLENDIRMELER';       // Görevlendirmeler
+
+// Mapping: PermissionKey → vakif_settings.feature_key
+// Bu mapping guard.ts tarafından vakıf flag kontrolü için kullanılır
+export const PERMISSION_TO_FEATURE_KEY: Partial<Record<PermissionKey, string>> = {
+    AI_ASSISTANT: 'ai_assistant',
+    MESVERET_SCREEN: 'mesveret',
+    ACCOUNTING_SCREEN: 'muhasebe',
+    EDUCATION_MODULE: 'education',
+    JUZ_SCREEN: 'okuma_takibi',
+    ANNOUNCEMENTS_SCREEN: 'duyurular',
+    NOBET_YONETIMI: 'nobet_yonetimi',
+    GOREVLENDIRMELER: 'gorevlendirmeler',
+    LIBRARY_SCREEN: 'kutüphane',
+};
 
 export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
     // Guest (Unauthenticated / No vakif)
@@ -26,7 +44,10 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'LIBRARY_SCREEN',
         'ANNOUNCEMENTS_SCREEN',
         'JUZ_SCREEN',
-        'PROFILE_SCREEN'
+        'PROFILE_SCREEN',
+        'AI_ASSISTANT',
+        'EDUCATION_MODULE',
+        'GOREVLENDIRMELER'
     ],
 
     // Accounting Admin (Full Accounting Access + Mesveret Access)
@@ -40,7 +61,11 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'LIBRARY_SCREEN',
         'ANNOUNCEMENTS_SCREEN',
         'JUZ_SCREEN',
-        'PROFILE_SCREEN'
+        'PROFILE_SCREEN',
+        'AI_ASSISTANT',
+        'EDUCATION_MODULE',
+        'NOBET_YONETIMI',
+        'GOREVLENDIRMELER'
     ],
 
     // Mesveret Admin (Full Access including Accounting now)
@@ -54,7 +79,11 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'LIBRARY_SCREEN',
         'ANNOUNCEMENTS_SCREEN',
         'JUZ_SCREEN',
-        'PROFILE_SCREEN'
+        'PROFILE_SCREEN',
+        'AI_ASSISTANT',
+        'EDUCATION_MODULE',
+        'NOBET_YONETIMI',
+        'GOREVLENDIRMELER'
     ],
 
     // Platform Admin (Superuser - Access Everything)
@@ -69,7 +98,11 @@ export const ROLE_PERMISSIONS: Record<Role, PermissionKey[]> = {
         'ANNOUNCEMENTS_SCREEN',
         'JUZ_SCREEN',
         'PROFILE_SCREEN',
-        'DEVELOPER_TOOLS' // Exclusive to this role
+        'DEVELOPER_TOOLS', // Exclusive to this role
+        'AI_ASSISTANT',
+        'EDUCATION_MODULE',
+        'NOBET_YONETIMI',
+        'GOREVLENDIRMELER'
     ]
 };
 

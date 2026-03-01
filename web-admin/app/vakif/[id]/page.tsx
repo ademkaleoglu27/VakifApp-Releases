@@ -3,8 +3,21 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, UserPlus, Shield, Trash2 } from 'lucide-react';
+import { ArrowLeft, UserPlus, Shield, Trash2, Settings2 } from 'lucide-react';
 import Link from 'next/link';
+
+// Feature key → Türkçe etiket ve icon mapping
+const FEATURE_MODULES = [
+    { key: 'ai_assistant', label: '🤖 AI Asistan', desc: 'Gemini tabanlı sohbet asistanı' },
+    { key: 'mesveret', label: '📋 Meşveret', desc: 'Kararlar ve heyet yönetimi' },
+    { key: 'muhasebe', label: '💰 Muhasebe', desc: 'Gelir/gider takibi' },
+    { key: 'education', label: '📖 Eğitim', desc: 'Elif-Ba ve eğitim modülleri' },
+    { key: 'okuma_takibi', label: '📊 Okuma Takibi', desc: 'Liderlik tablosu ve istatistikler' },
+    { key: 'duyurular', label: '🔔 Duyurular', desc: 'Vakıf duyuru sistemi' },
+    { key: 'nobet_yonetimi', label: '⏰ Nöbet Yönetimi', desc: 'Nöbet listeleri ve atamaları' },
+    { key: 'gorevlendirmeler', label: '✅ Görevlendirmeler', desc: 'Görev dağıtım sistemi' },
+    { key: 'kutüphane', label: '📚 Kütüphane', desc: 'Risale-i Nur kütüphanesi' },
+];
 
 export default function VakifDetails() {
     const params = useParams();
@@ -13,11 +26,16 @@ export default function VakifDetails() {
     const [loading, setLoading] = useState(true);
     const [assigning, setAssigning] = useState(false);
 
+    // Feature Flags State
+    const [features, setFeatures] = useState<Record<string, boolean>>({});
+    const [togglingFeature, setTogglingFeature] = useState<string | null>(null);
+
     // Form State
     const [adminEmail, setAdminEmail] = useState('');
 
     useEffect(() => {
         fetchMembers();
+        fetchFeatures();
     }, [params.id]);
 
     const fetchMembers = async () => {
@@ -36,6 +54,58 @@ export default function VakifDetails() {
             }
         }
         setLoading(false);
+    };
+
+    const fetchFeatures = async () => {
+        const { data, error } = await supabase.rpc('get_vakif_features_rpc', {
+            p_vakif_id: params.id,
+        });
+
+        if (error) {
+            console.error('Feature fetch error:', error);
+            // Fallback: tüm modüller açık varsay
+            const defaults: Record<string, boolean> = {};
+            FEATURE_MODULES.forEach(m => defaults[m.key] = true);
+            setFeatures(defaults);
+        } else {
+            // RPC returns a JSONB object like { ai_assistant: true, mesveret: false, ... }
+            const flags: Record<string, boolean> = {};
+            FEATURE_MODULES.forEach(m => {
+                flags[m.key] = data?.[m.key] ?? true; // Varsayılan açık
+            });
+            setFeatures(flags);
+        }
+    };
+
+    const toggleFeature = async (featureKey: string, currentEnabled: boolean) => {
+        const newEnabled = !currentEnabled;
+
+        // Risk mitigasyonu: Kapatma öncesi onay dialogu
+        if (!newEnabled) {
+            const module = FEATURE_MODULES.find(m => m.key === featureKey);
+            if (!confirm(`"${module?.label || featureKey}" modülünü bu vakıf için KAPATMAK istediğinize emin misiniz?\n\nBu modül vakıf üyelerinin menüsünden kaldırılacaktır.`)) {
+                return;
+            }
+        }
+
+        setTogglingFeature(featureKey);
+
+        const { data, error } = await supabase.rpc('upsert_vakif_feature_rpc', {
+            p_vakif_id: params.id,
+            p_feature_key: featureKey,
+            p_enabled: newEnabled,
+        });
+
+        if (error) {
+            alert('Hata: ' + error.message);
+        } else if (!data.success) {
+            alert('İşlem başarısız: ' + data.message);
+        } else {
+            // Optimistic update
+            setFeatures(prev => ({ ...prev, [featureKey]: newEnabled }));
+        }
+
+        setTogglingFeature(null);
     };
 
     const handleAssignAdmin = async (e: React.FormEvent) => {
@@ -79,7 +149,7 @@ export default function VakifDetails() {
 
             <div className="grid gap-6 md:grid-cols-3">
                 {/* Helper Actions / Admin Assign */}
-                <div className="md:col-span-1">
+                <div className="md:col-span-1 flex flex-col gap-6">
                     <div className="rounded-xl bg-white p-6 shadow-sm">
                         <h2 className="mb-4 text-lg font-bold text-slate-800 flex items-center gap-2">
                             <Shield size={20} className="text-indigo-600" /> Yönetici Ata
@@ -106,6 +176,51 @@ export default function VakifDetails() {
                                 {assigning ? 'Atanıyor...' : 'Yetki Ver'} <UserPlus size={18} />
                             </button>
                         </form>
+                    </div>
+
+                    {/* Modül Yönetimi (Feature Toggles) */}
+                    <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                        <h2 className="mb-2 text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <Settings2 size={20} className="text-violet-600" /> Modül Yönetimi
+                        </h2>
+                        <p className="mb-4 text-xs text-slate-400">
+                            Bu vakıf için hangi modüllerin mobil uygulamada görüneceğini kontrol edin.
+                        </p>
+
+                        <div className="flex flex-col gap-1">
+                            {FEATURE_MODULES.map((mod) => {
+                                const enabled = features[mod.key] ?? true;
+                                const isToggling = togglingFeature === mod.key;
+
+                                return (
+                                    <div
+                                        key={mod.key}
+                                        className={`flex items-center justify-between rounded-lg px-3 py-2.5 transition-colors ${enabled ? 'bg-white hover:bg-slate-50' : 'bg-red-50'
+                                            }`}
+                                    >
+                                        <div className="flex-1 min-w-0 mr-3">
+                                            <div className="text-sm font-semibold text-slate-700">{mod.label}</div>
+                                            <div className="text-xs text-slate-400 truncate">{mod.desc}</div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => toggleFeature(mod.key, enabled)}
+                                            disabled={isToggling}
+                                            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 disabled:opacity-50 ${enabled ? 'bg-emerald-500' : 'bg-gray-300'
+                                                }`}
+                                            role="switch"
+                                            aria-checked={enabled}
+                                            aria-label={`${mod.label} toggle`}
+                                        >
+                                            <span
+                                                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${enabled ? 'translate-x-5' : 'translate-x-0'
+                                                    }`}
+                                            />
+                                        </button>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
 

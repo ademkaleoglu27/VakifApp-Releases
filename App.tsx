@@ -14,6 +14,7 @@ import { ContentIntegrityScreen } from '@/screens/ContentIntegrityScreen';
 import { OTAUpdateManager } from '@/components/OTAUpdateManager';
 import { Env } from '@/config/env';
 import { syncDynamicAliases } from '@/services/lugat_aliases';
+import { featureFlagService } from '@/services/featureFlagService';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Google Fonts Imports
@@ -89,6 +90,10 @@ export default function App() {
 
       // Non-blocking: Sync dynamic lugat aliases from cloud
       syncDynamicAliases().catch(e => console.warn('[Lugat] Background sync failed:', e));
+
+      // Non-blocking: Load vakif feature flags & start AppState listener
+      featureFlagService.loadFlags().catch(e => console.warn('[FeatureFlags] Init load failed:', e));
+      featureFlagService.startAppStateListener();
     } catch (error) {
       setDbError((error as Error).message);
     }

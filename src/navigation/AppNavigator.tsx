@@ -70,6 +70,8 @@ import { QuranDownloaderScreen } from '@/features/quran-pdf/screens/QuranDownloa
 import { QuranTextMenuScreen } from '@/features/quran-text/screens/QuranTextMenuScreen';
 import { QuranTextReaderScreen } from '@/features/quran-text/screens/QuranTextReaderScreen';
 import { GeminiChatScreen } from '@/features/ai/screens/GeminiChatScreen';
+import { EducationHomeScreen } from '@/features/education/screens/EducationHomeScreen';
+import { ElifBaScreen } from '@/features/education/screens/ElifBaScreen';
 
 
 if (Platform.OS === 'android') {
@@ -152,6 +154,8 @@ export type RootStackParamList = {
     QuranTextMenuScreen: undefined;
     QuranTextReaderScreen: { surahId: number };
     GeminiChat: undefined;
+    EducationHome: undefined;
+    ElifBa: undefined;
 };
 
 export type MainTabParamList = {
@@ -164,6 +168,7 @@ export type MainTabParamList = {
 
 export type DrawerParamList = {
     MainTabs: undefined;
+    EducationHome: undefined;
     // Library: undefined; // REMOVED
     // Cevsen: undefined; // REMOVED
     // Lugat: undefined; // REMOVED
@@ -315,13 +320,25 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 color="#334155"
                             />
 
+                            {/* Eğitim */}
+                            {requireFeature('EDUCATION_MODULE') && (
+                                <DrawerItem
+                                    label="Eğitim"
+                                    icon="school-outline"
+                                    onPress={() => navigate('EducationHome')}
+                                    color="#10b981"
+                                />
+                            )}
+
                             {/* Gemini AI Assistant */}
-                            <DrawerItem
-                                label="Asistan (AI)"
-                                icon="sparkles-outline"
-                                onPress={() => navigate('GeminiChat')}
-                                color="#7c3aed"
-                            />
+                            {requireFeature('AI_ASSISTANT') && (
+                                <DrawerItem
+                                    label="Asistan (AI)"
+                                    icon="sparkles-outline"
+                                    onPress={() => navigate('GeminiChat')}
+                                    color="#7c3aed"
+                                />
+                            )}
 
                             {/* Kütüphane REMOVED */}
                             {/* (Cevsen, Lugat, Tesbihat, Dualar moved out of Library Accordion if needed, or just hidden as requested?)
@@ -339,12 +356,14 @@ const CustomDrawerContent = React.memo((props: any) => {
                                  "Bu akışlara giden tüm navigate() çağrılarını kaldır"
                                  So I will remove the entire accordion.
                             {/* Kütüphane - NEW */}
-                            <DrawerItem
-                                label="Kütüphane"
-                                icon="library-outline"
-                                onPress={() => navigate('LibraryHome')}
-                                color="#334155"
-                            />
+                            {requireFeature('LIBRARY_SCREEN') && (
+                                <DrawerItem
+                                    label="Kütüphane"
+                                    icon="library-outline"
+                                    onPress={() => navigate('LibraryHome')}
+                                    color="#334155"
+                                />
+                            )}
 
                             {/* Okuma Takibi - SADECE MEŞVERET HEYETİ */}
                             {(user?.role === 'mesveret_admin' || user?.role === 'platform_admin' || user?.role === 'accountant') && (
@@ -393,7 +412,7 @@ const CustomDrawerContent = React.memo((props: any) => {
                             )}
 
                             {/* Görevlendirmeler */}
-                            {user?.group !== 'MİSAFİR' && (
+                            {requireFeature('GOREVLENDIRMELER') && (
                                 <DrawerItem
                                     label="Görevlendirmeler"
                                     icon="checkbox-outline"
@@ -403,7 +422,7 @@ const CustomDrawerContent = React.memo((props: any) => {
                             )}
 
                             {/* Nöbet Yönetimi */}
-                            {requireFeature('MESVERET_SCREEN') && (
+                            {requireFeature('NOBET_YONETIMI') && (
                                 <DrawerItem
                                     label="Nöbet Yönetimi"
                                     icon="construct-outline"
@@ -794,6 +813,8 @@ export const AppNavigator = () => {
                             <Stack.Screen name="QuranTextMenuScreen" component={QuranTextMenuScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="QuranTextReaderScreen" component={QuranTextReaderScreen} options={{ headerShown: false }} />
                             <Stack.Screen name="GeminiChat" component={GeminiChatScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="EducationHome" component={EducationHomeScreen} options={{ headerShown: false }} />
+                            <Stack.Screen name="ElifBa" component={ElifBaScreen} options={{ headerShown: false }} />
                         </Stack.Navigator>
                         <MiniPlayer />
                     </View>
