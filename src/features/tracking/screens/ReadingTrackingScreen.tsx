@@ -1,420 +1,641 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Linking, Alert, ActivityIndicator, DeviceEventEmitter } from 'react-native';
+﻿import React, { useEffect, useState, useMemo } from 'react';
+import {
+    View, Text, StyleSheet, FlatList, TouchableOpacity,
+    Alert, ActivityIndicator, DeviceEventEmitter, Platform, ScrollView
+} from 'react-native';
 import { PremiumHeader } from '@/components/PremiumHeader';
 import { theme } from '@/config/theme';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 import { exportToExcel } from '@/utils/excelExport';
-import { ReadingStatsService, FetchMode, StatsRange } from '@/services/ReadingStatsService';
+import { useAuthStore } from '@/store/authStore';
+import { getDb } from '@/services/db/sqlite';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type TabType = 'WEEKLY' | 'MONTHLY' | 'YEARLY';
 
+interface ReadingRecord {
+    id: string;
+    book_id: string;
+    book_title?: string;
+    pages_read: number;
+    date: string;
+    created_at?: string;
+}
+
+interface BookStat {
+    bookId: string;
+    title: string;
+    pages: number;
+    percentage: number;
+}
+
 export const ReadingTrackingScreen = () => {
+    const { user } = useAuthStore();
     const [activeTab, setActiveTab] = useState<TabType>('WEEKLY');
-    const [isAlertsMode, setIsAlertsMode] = useState(false);
-    const [data, setData] = useState<any[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [records, setRecords] = useState<ReadingRecord[]>([]);
+    const [loading, setLoading] = useState(true);
     const [isExporting, setIsExporting] = useState(false);
 
     useFocusEffect(
         React.useCallback(() => {
-            loadData();
+            loadUserReadings();
 
-            // Refresh data when a new reading log is added anywhere in the app
             const subscription = DeviceEventEmitter.addListener('READING_LOG_ADDED', () => {
-                loadData();
+                loadUserReadings();
             });
 
             return () => {
                 subscription.remove();
             };
-        }, [activeTab, isAlertsMode])
+        }, [])
     );
 
-    const loadData = async () => {
-        setLoading(true);
-        setData([]);
-        setError(null);
+    const loadUserReadings = async () => {
         try {
-            // ✅ require() kaldırıldı, direkt import kullanılıyor
-            const mode: FetchMode = isAlertsMode ? 'needsAttention' : 'full';
-            const rangeMap: Record<TabType, StatsRange> = {
-                'WEEKLY': 'week',
-                'MONTHLY': 'month',
-                'YEARLY': 'year',
-            };
-            const range = rangeMap[activeTab];
-            const result = await ReadingStatsService.fetchLeaderboard(range, mode);
-            console.log('[Screen] Leaderboard geldi:', result?.length, 'kayıt');
-            setData(result || []);
-        } catch (e: any) {
-            setError(e?.message || String(e));
+            setLoading(true);
+            const db = await getDb();
+            const userId = user?.id;
+
+            let query = 'SELECT * FROM reading_logs';
+            let params: any[] = [];
+
+            if (userId) {
+                query += ' WHERE user_id = ?';
+                params.push(userId);
+            }
+            query += ' ORDER BY date DESC, created_at DESC';
+
+            const rawLogs = await db.getAllAsync<any>(query, params);
+            
+            // Map book titles
+            const mapped: ReadingRecord[] = (rawLogs || []).map(log => ({
+                id: String(log.id),
+                book_id: log.book_id || 'risale',
+                book_title: formatBookTitle(log.book_id),
+                pages_read: Number(log.pages_read) || 0,
+                date: log.date || new Date().toISOString().split('T')[0],
+                created_at: log.created_at
+            }));
+
+            setRecords(mapped);
+        } catch (e) {
+            console.warn('[ReadingTrackingScreen] Error loading logs:', e);
         } finally {
             setLoading(false);
         }
     };
 
+    // Filter records by selected period
+    const filteredRecords = useMemo(() => {
+        const now = new Date();
+        return records.filter(r => {
+            if (!r.date) return false;
+            const logDate = new Date(r.date);
+            if (isNaN(logDate.getTime())) return false;
 
-    const handleCall = (phone: string) => {
-        if (!phone) return;
-        Linking.openURL(`tel:${phone}`);
-    };
+            if (activeTab === 'WEEKLY') {
+                const diffTime = Math.abs(now.getTime() - logDate.getTime());
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                return diffDays <= 7;
+            } else if (activeTab === 'MONTHLY') {
+                return (
+                    logDate.getFullYear() === now.getFullYear() &&
+                    logDate.getMonth() === now.getMonth()
+                );
+            } else {
+                // YEARLY
+                return logDate.getFullYear() === now.getFullYear();
+            }
+        });
+    }, [records, activeTab]);
 
-    const handleWhatsApp = (phone: string) => {
-        if (!phone) return;
-        Linking.openURL(`whatsapp://send?phone=${phone}`);
-    };
+    // Aggregate statistics
+    const stats = useMemo(() => {
+        const totalPages = filteredRecords.reduce((sum, r) => sum + r.pages_read, 0);
+        
+        // Unique active reading days
+        const uniqueDays = new Set(filteredRecords.map(r => r.date)).size;
+        
+        const periodDays = activeTab === 'WEEKLY' ? 7 : activeTab === 'MONTHLY' ? 30 : 365;
+        const dailyAverage = periodDays > 0 ? (totalPages / periodDays).toFixed(1) : '0';
 
+        // Book breakdown
+        const bookMap: Record<string, { title: string; pages: number }> = {};
+        filteredRecords.forEach(r => {
+            const key = r.book_id || 'risale';
+            if (!bookMap[key]) {
+                bookMap[key] = { title: r.book_title || formatBookTitle(key), pages: 0 };
+            }
+            bookMap[key].pages += r.pages_read;
+        });
+
+        const bookStats: BookStat[] = Object.entries(bookMap).map(([bookId, data]) => ({
+            bookId,
+            title: data.title,
+            pages: data.pages,
+            percentage: totalPages > 0 ? Math.round((data.pages / totalPages) * 100) : 0,
+        })).sort((a, b) => b.pages - a.pages);
+
+        return {
+            totalPages,
+            uniqueDays,
+            dailyAverage,
+            bookStats,
+        };
+    }, [filteredRecords, activeTab]);
+
+    // Export to Excel
     const handleExport = async () => {
-        if (data.length === 0) {
-            Alert.alert("Bilgi", "Dışa aktarılacak veri bulunamadı.");
+        if (filteredRecords.length === 0) {
+            Alert.alert('Bilgi', 'Dışa aktarılacak okuma kaydı bulunamadı.');
             return;
         }
 
         setIsExporting(true);
         try {
-            const rangeMap: Record<string, string> = {
-                'WEEKLY': 'Haftalik',
-                'MONTHLY': 'Aylik',
-                'YEARLY': 'Yillik'
+            const rangeLabels = {
+                WEEKLY: 'Haftalik',
+                MONTHLY: 'Aylik',
+                YEARLY: 'Yillik'
             };
-            const fileName = `Okuma_Takibi_${rangeMap[activeTab]}${isAlertsMode ? '_Ilgilen' : ''}_${new Date().toISOString().split('T')[0]}`;
+            const fileName = `Kisisel_Okuma_Raporu_${rangeLabels[activeTab]}_${new Date().toISOString().split('T')[0]}`;
 
-            const exportData = data.map(item => {
-                const displayName = item.display_name || item.displayName || 'İsimsiz';
-                const totalPages = item.total_pages || item.totalPages || 0;
-                const lastReadingDate = item.last_reading_date || item.lastReadingDate;
-                const lastDateObj = lastReadingDate ? new Date(lastReadingDate) : null;
-                const isValidDate = lastDateObj && !isNaN(lastDateObj.getTime());
-                const formattedDate = isValidDate ? `${lastDateObj.getDate()}.${lastDateObj.getMonth() + 1}.${lastDateObj.getFullYear()}` : 'Hiç okumadı';
+            const exportData = filteredRecords.map((r, index) => ({
+                'No': index + 1,
+                'Tarih': r.date,
+                'Kitap / Eser': r.book_title || r.book_id,
+                'Okunan Sayfa': r.pages_read,
+            }));
 
-                if (isAlertsMode) {
-                    return {
-                        'Kişi Adı': displayName,
-                        'Durum': 'Bu dönemde okuma girmedi',
-                        'Son Okuma Tarihi': formattedDate,
-                        'Telefon': item.phone || ''
-                    };
-                }
-
-                return {
-                    'Kişi Adı': displayName,
-                    'Okuma Sayısı (Sayfa)': totalPages,
-                    'Son Okuma Tarihi': formattedDate,
-                    'Telefon': item.phone || ''
-                };
+            // Add summary row at the end
+            exportData.push({
+                'No': '' as any,
+                'Tarih': 'TOPLAM',
+                'Kitap / Eser': `${stats.bookStats.length} Farklı Eser`,
+                'Okunan Sayfa': stats.totalPages,
             });
 
-            await exportToExcel(exportData, fileName, 'Okuma Verileri');
-        } catch (error) {
-            Alert.alert("Hata", "Excel'e aktarım sırasında bir hata oluştu.");
-            console.error(error);
+            await exportToExcel(exportData, fileName, 'Okuma Raporum');
+        } catch (e) {
+            Alert.alert('Hata', 'Excel dosyası oluşturulurken bir hata oluştu.');
         } finally {
             setIsExporting(false);
         }
     };
 
-    const renderItem = ({ item }: { item: any }) => {
-        if (!item) return null;
-
-        // Support both snake_case (from RPC) and camelCase (legacy) field names
-        const displayName = item.display_name || item.displayName || 'İsimsiz';
-        const initials = item.initials || displayName?.[0] || '?';
-        const totalPages = item.total_pages || item.totalPages || 0;
-        const lastReadingDate = item.last_reading_date || item.lastReadingDate;
-        const phone = item.phone || '';
-
-        return (
-            <View style={styles.card}>
-                <View style={styles.avatar}>
-                    <Text style={styles.avatarText}>{initials}</Text>
-                </View>
-
-                <View style={styles.info}>
-                    <Text style={styles.name}>{displayName}</Text>
-                    {!isAlertsMode ? (
-                        <Text style={styles.stats}>{totalPages} Sayfa</Text>
-                    ) : (
-                        <Text style={styles.alertText}>
-                            {(() => {
-                                if (!lastReadingDate) return 'Hiç okuma kaydı yok';
-
-                                const now = new Date();
-                                const last = new Date(lastReadingDate);
-                                const diffTime = Math.abs(now.getTime() - last.getTime());
-                                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-                                if (diffDays < 7) return `${diffDays} gün önce okudu`;
-                                if (diffDays < 30) return `${Math.floor(diffDays / 7)} hafta önce okudu`;
-                                if (diffDays < 365) return `${Math.floor(diffDays / 30)} ay önce okudu`;
-                                return '1 yıldan uzun süredir okumadı';
-                            })()}
-                        </Text>
-                    )}
-                </View>
-
-                <View style={styles.actions}>
-                    {phone && (
-                        <>
-                            <TouchableOpacity onPress={() => handleCall(phone)} style={[styles.actionBtn, styles.callBtn]}>
-                                <Ionicons name="call" size={18} color="#0284C7" />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => handleWhatsApp(phone)} style={[styles.actionBtn, styles.whatsappBtn]}>
-                                <Ionicons name="logo-whatsapp" size={18} color="#16A34A" />
-                            </TouchableOpacity>
-                        </>
-                    )}
-                </View>
+    const renderHeader = () => (
+        <View style={styles.headerContent}>
+            {/* Period Tabs */}
+            <View style={styles.tabRow}>
+                {(['WEEKLY', 'MONTHLY', 'YEARLY'] as TabType[]).map(tab => {
+                    const labels: Record<TabType, string> = {
+                        WEEKLY: 'Haftalık',
+                        MONTHLY: 'Aylık',
+                        YEARLY: 'Yıllık',
+                    };
+                    const isActive = activeTab === tab;
+                    return (
+                        <TouchableOpacity
+                            key={tab}
+                            style={[styles.tabBtn, isActive && styles.tabBtnActive]}
+                            onPress={() => setActiveTab(tab)}
+                            activeOpacity={0.8}
+                        >
+                            <Text style={[styles.tabText, isActive && styles.tabTextActive]}>
+                                {labels[tab]}
+                            </Text>
+                        </TouchableOpacity>
+                    );
+                })}
             </View>
-        );
-    };
+
+            {/* Main Stats Hero Card */}
+            <LinearGradient
+                colors={['#064E3B', '#047857']}
+                style={styles.heroCard}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+            >
+                <View style={styles.heroTop}>
+                    <View>
+                        <Text style={styles.heroGreeting}>
+                            {user?.name ? `${user.name} • Okuma Raporu` : 'Kişisel Okuma Raporum'}
+                        </Text>
+                        <Text style={styles.heroPeriodLabel}>
+                            {activeTab === 'WEEKLY' ? 'Son 7 Günlük Toplam' : activeTab === 'MONTHLY' ? 'Bu Ayın Toplamı' : 'Bu Yılın Toplamı'}
+                        </Text>
+                    </View>
+                    <View style={styles.heroBadge}>
+                        <Ionicons name="sparkles" size={16} color="#FFD700" />
+                    </View>
+                </View>
+
+                <View style={styles.heroNumberRow}>
+                    <Text style={styles.heroBigNumber}>{stats.totalPages}</Text>
+                    <Text style={styles.heroUnit}>Sayfa</Text>
+                </View>
+
+                <View style={styles.heroFooterRow}>
+                    <View style={styles.heroMetric}>
+                        <Text style={styles.heroMetricLabel}>Günlük Ortalama</Text>
+                        <Text style={styles.heroMetricValue}>{stats.dailyAverage} s/gün</Text>
+                    </View>
+                    <View style={styles.heroDivider} />
+                    <View style={styles.heroMetric}>
+                        <Text style={styles.heroMetricLabel}>Aktif Okunan Gün</Text>
+                        <Text style={styles.heroMetricValue}>{stats.uniqueDays} Gün</Text>
+                    </View>
+                </View>
+            </LinearGradient>
+
+            {/* Book Distribution Card */}
+            {stats.bookStats.length > 0 && (
+                <View style={styles.sectionCard}>
+                    <View style={styles.sectionHeaderRow}>
+                        <Ionicons name="pie-chart-outline" size={18} color="#047857" />
+                        <Text style={styles.sectionCardTitle}>Eser Bazlı Dağılım</Text>
+                    </View>
+                    {stats.bookStats.map(book => (
+                        <View key={book.bookId} style={styles.bookRow}>
+                            <View style={styles.bookInfoRow}>
+                                <Text style={styles.bookTitle} numberOfLines={1}>{book.title}</Text>
+                                <Text style={styles.bookPages}>{book.pages} Sayfa (%{book.percentage})</Text>
+                            </View>
+                            <View style={styles.progressBarBg}>
+                                <View style={[styles.progressBarFill, { width: `${book.percentage}%` }]} />
+                            </View>
+                        </View>
+                    ))}
+                </View>
+            )}
+
+            {/* History Section Title */}
+            <View style={styles.historyTitleRow}>
+                <Text style={styles.historySectionTitle}>Okuma Geçmişi ({filteredRecords.length} Kayıt)</Text>
+            </View>
+        </View>
+    );
+
+    const renderItem = ({ item }: { item: ReadingRecord }) => (
+        <View style={styles.logCard}>
+            <View style={styles.logIconCircle}>
+                <Ionicons name="book" size={18} color="#047857" />
+            </View>
+            <View style={styles.logInfo}>
+                <Text style={styles.logBookTitle}>{item.book_title}</Text>
+                <Text style={styles.logDate}>{item.date}</Text>
+            </View>
+            <View style={styles.logBadge}>
+                <Text style={styles.logPages}>+{item.pages_read} Sayfa</Text>
+            </View>
+        </View>
+    );
 
     return (
         <View style={styles.container}>
-            <PremiumHeader title="Okuma Takibi" backButton={false} />
-
-            <View style={styles.headerActions}>
-                <Text style={styles.sectionTitle}>Liste Görünümü</Text>
-                <TouchableOpacity style={styles.exportBtn} onPress={handleExport} disabled={isExporting || data.length === 0}>
-                    {isExporting ? <ActivityIndicator size="small" color="#0284C7" /> : <Ionicons name="download-outline" size={18} color="#0284C7" />}
-                    <Text style={styles.exportBtnText}>Excel'e Aktar</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.tabsContainer}>
-                <TouchableOpacity
-                    style={[styles.tab, activeTab === 'WEEKLY' && styles.activeTab]}
-                    onPress={() => setActiveTab('WEEKLY')}
-                >
-                    <Text style={[styles.tabText, activeTab === 'WEEKLY' && styles.activeTabText]}>Haftalık</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.tab, activeTab === 'MONTHLY' && styles.activeTab]}
-                    onPress={() => setActiveTab('MONTHLY')}
-                >
-                    <Text style={[styles.tabText, activeTab === 'MONTHLY' && styles.activeTabText]}>Aylık</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.tab, activeTab === 'YEARLY' && styles.activeTab]}
-                    onPress={() => setActiveTab('YEARLY')}
-                >
-                    <Text style={[styles.tabText, activeTab === 'YEARLY' && styles.activeTabText]}>Yıllık</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.tab, isAlertsMode && styles.activeTabAlert]}
-                    onPress={() => setIsAlertsMode(!isAlertsMode)}
-                >
-                    <Text style={[styles.tabText, isAlertsMode ? styles.activeTabAlertText : { color: '#EF4444' }]}>İlgilen!</Text>
-                </TouchableOpacity>
-            </View>
+            <PremiumHeader
+                title="Okuma Takibi & İstatistikler"
+                backButton={false}
+                rightElement={
+                    <TouchableOpacity
+                        style={styles.exportBtn}
+                        onPress={handleExport}
+                        disabled={isExporting || filteredRecords.length === 0}
+                        activeOpacity={0.7}
+                    >
+                        {isExporting ? (
+                            <ActivityIndicator size="small" color="#047857" />
+                        ) : (
+                            <>
+                                <Ionicons name="download-outline" size={16} color="#047857" />
+                                <Text style={styles.exportText}>Excel'e İndir</Text>
+                            </>
+                        )}
+                    </TouchableOpacity>
+                }
+            />
 
             {loading ? (
-                <View style={styles.loadingContainer}>
-                    <ActivityIndicator size="large" color={theme.colors.primary} />
-                    <Text style={{ marginTop: 12, color: '#64748B' }}>Yükleniyor...</Text>
-                </View>
-            ) : error ? (
-                <View style={styles.errorContainer}>
-                    <Ionicons name="warning-outline" size={48} color="#EF4444" />
-                    <Text style={styles.errorTitle}>Bir Hata Oluştu</Text>
-                    <Text style={styles.errorText}>{error}</Text>
-                    <TouchableOpacity style={styles.retryBtn} onPress={loadData}>
-                        <Text style={styles.retryBtnText}>Tekrar Dene</Text>
-                    </TouchableOpacity>
+                <View style={styles.centered}>
+                    <ActivityIndicator size="large" color="#047857" />
+                    <Text style={styles.loadingText}>Okuma verileri yükleniyor...</Text>
                 </View>
             ) : (
                 <FlatList
-                    data={data}
+                    data={filteredRecords}
+                    keyExtractor={item => item.id}
                     renderItem={renderItem}
-                    keyExtractor={(item, index) => item?.user_id || item?.id?.toString() || `item-${index}`}
-                    contentContainerStyle={styles.list}
+                    ListHeaderComponent={renderHeader}
                     ListEmptyComponent={
-                        <View style={styles.empty}>
-                            <Ionicons name="documents-outline" size={48} color="#CBD5E1" />
-                            <Text style={styles.emptyText}>Kayıt bulunamadı.</Text>
+                        <View style={styles.emptyContainer}>
+                            <Ionicons name="document-text-outline" size={48} color="#94A3B8" />
+                            <Text style={styles.emptyText}>Bu dönemde henüz okuma kaydı bulunmuyor.</Text>
+                            <Text style={styles.emptySubtext}>Kütüphaneden kitap okuyarak veya 'Okuma Ekle' menüsünden kayıt girebilirsiniz.</Text>
                         </View>
                     }
+                    contentContainerStyle={styles.listContent}
+                    showsVerticalScrollIndicator={false}
                 />
             )}
         </View>
     );
 };
 
+// Helper: Format friendly book title
+function formatBookTitle(id: string): string {
+    const map: Record<string, string> = {
+        'sozler': 'Sözler',
+        'mektubat': 'Mektubat',
+        'lemalar': 'Lem’alar',
+        'sualar': 'Şualar',
+        'tarihce': 'Tarihçe-i Hayat',
+        'mesnevi': 'Mesnevî-i Nuriye',
+        'isarat': 'İşârâtü’l-İ’caz',
+        'sikke': 'Sikke-i Tasdik-i Gaybî',
+        'barla': 'Barla Lahikası',
+        'kastamonu': 'Kastamonu Lahikası',
+        'emirdag': 'Emirdağ Lahikası',
+        'asa': 'Asâ-yı Mûsâ',
+        'quran': 'Kur’an-ı Kerim',
+        'cevsen': 'Cevşen-i Kebir',
+        'tesbihat': 'Namaz Tesbihatı',
+    };
+    return map[id.toLowerCase()] || id.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#F8FAFC' },
-    headerActions: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingHorizontal: 16,
-        paddingTop: 16,
-    },
-    sectionTitle: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#1E293B',
+    container: {
+        flex: 1,
+        backgroundColor: '#F8FAFC',
     },
     exportBtn: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#F0F9FF',
-        paddingHorizontal: 12,
-        paddingVertical: 8,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#E0F2FE',
         gap: 6,
+        backgroundColor: '#ECFDF5',
+        paddingHorizontal: 12,
+        paddingVertical: 7,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#A7F3D0',
     },
-    exportBtnText: {
-        fontSize: 14,
-        fontWeight: '600',
-        color: '#0284C7',
+    exportText: {
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#047857',
     },
-    loadingContainer: {
+    listContent: {
+        paddingHorizontal: 16,
+        paddingBottom: 40,
+    },
+    headerContent: {
+        paddingTop: 12,
+        marginBottom: 8,
+    },
+    tabRow: {
+        flexDirection: 'row',
+        backgroundColor: '#E2E8F0',
+        borderRadius: 14,
+        padding: 4,
+        marginBottom: 16,
+    },
+    tabBtn: {
         flex: 1,
+        paddingVertical: 9,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    tabBtnActive: {
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 2,
+    },
+    tabText: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: '#64748B',
+    },
+    tabTextActive: {
+        color: '#047857',
+        fontWeight: '700',
+    },
+    heroCard: {
+        borderRadius: 20,
+        padding: 20,
+        marginBottom: 14,
+        shadowColor: '#064E3B',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.25,
+        shadowRadius: 12,
+        elevation: 6,
+    },
+    heroTop: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        marginBottom: 8,
+    },
+    heroGreeting: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: '#A7F3D0',
+    },
+    heroPeriodLabel: {
+        fontSize: 11,
+        color: '#E6FFFA',
+        marginTop: 2,
+    },
+    heroBadge: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    tabsContainer: {
+    heroNumberRow: {
         flexDirection: 'row',
-        padding: 16,
+        alignItems: 'baseline',
         gap: 8,
+        marginVertical: 6,
     },
-    tab: {
-        flex: 1,
-        paddingVertical: 10,
+    heroBigNumber: {
+        fontSize: 44,
+        fontWeight: '900',
+        color: '#FFFFFF',
+        fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
+    },
+    heroUnit: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#D1FAE5',
+    },
+    heroFooterRow: {
+        flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.15)',
         borderRadius: 12,
-        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 14,
+        marginTop: 10,
+    },
+    heroMetric: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    heroMetricLabel: {
+        fontSize: 10,
+        color: '#A7F3D0',
+        fontWeight: '500',
+        marginBottom: 2,
+    },
+    heroMetricValue: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+    },
+    heroDivider: {
+        width: 1,
+        height: 24,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    },
+    sectionCard: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 16,
+        padding: 16,
+        marginBottom: 16,
         borderWidth: 1,
         borderColor: '#E2E8F0',
     },
-    activeTab: {
-        backgroundColor: theme.colors.primary,
-        borderColor: theme.colors.primary,
+    sectionHeaderRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginBottom: 14,
     },
-    activeTabAlert: {
-        backgroundColor: '#EF4444',
-        borderColor: '#EF4444',
+    sectionCardTitle: {
+        fontSize: 14,
+        fontWeight: '700',
+        color: '#1E293B',
     },
-    tabText: {
+    bookRow: {
+        marginBottom: 12,
+    },
+    bookInfoRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 4,
+    },
+    bookTitle: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: '#334155',
+        flex: 1,
+    },
+    bookPages: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: '#047857',
+    },
+    progressBarBg: {
+        height: 6,
+        borderRadius: 3,
+        backgroundColor: '#E2E8F0',
+        overflow: 'hidden',
+    },
+    progressBarFill: {
+        height: '100%',
+        backgroundColor: '#047857',
+        borderRadius: 3,
+    },
+    historyTitleRow: {
+        marginBottom: 10,
+    },
+    historySectionTitle: {
+        fontSize: 14,
+        fontWeight: '700',
+        color: '#475569',
+    },
+    logCard: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 14,
+        padding: 14,
+        marginBottom: 8,
+        borderWidth: 1,
+        borderColor: '#E2E8F0',
+    },
+    logIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: '#ECFDF5',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+    },
+    logInfo: {
+        flex: 1,
+    },
+    logBookTitle: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#1E293B',
+        marginBottom: 2,
+    },
+    logDate: {
+        fontSize: 11,
+        color: '#94A3B8',
+    },
+    logBadge: {
+        backgroundColor: '#F0FDF4',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#DCFCE7',
+    },
+    logPages: {
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#15803D',
+    },
+    emptyContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 40,
+        paddingHorizontal: 20,
+    },
+    emptyText: {
         fontSize: 14,
         fontWeight: '600',
         color: '#64748B',
-    },
-    activeTabText: {
-        color: '#fff',
-    },
-    activeTabAlertText: {
-        color: '#fff',
-    },
-    list: {
-        padding: 16,
-        paddingTop: 0,
-    },
-    card: {
-        backgroundColor: '#fff',
-        borderRadius: 16,
-        padding: 16,
-        marginBottom: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 4,
-        elevation: 2,
-    },
-    avatar: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
-        backgroundColor: '#EFF6FF',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: 12,
-    },
-    avatarText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: theme.colors.primary,
-    },
-    info: {
-        flex: 1,
-    },
-    name: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#1E293B',
-        marginBottom: 4,
-    },
-    stats: {
-        fontSize: 14,
-        color: theme.colors.primary,
-        fontWeight: '500',
-    },
-    alertText: {
-        fontSize: 12,
-        color: '#EF4444',
-        fontWeight: '500',
-    },
-    actions: {
-        flexDirection: 'row',
-        gap: 8,
-    },
-    actionBtn: {
-        width: 36,
-        height: 36,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    callBtn: {
-        backgroundColor: '#E0F2FE',
-    },
-    whatsappBtn: {
-        backgroundColor: '#DCFCE7',
-    },
-    empty: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 60,
-    },
-    emptyText: {
         marginTop: 12,
-        color: '#94A3B8',
-        fontSize: 16,
+        textAlign: 'center',
     },
-    errorContainer: {
+    emptySubtext: {
+        fontSize: 12,
+        color: '#94A3B8',
+        marginTop: 6,
+        textAlign: 'center',
+        lineHeight: 18,
+    },
+    centered: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 24,
+        padding: 20,
     },
-    errorTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#1E293B',
-        marginTop: 16,
-        marginBottom: 8,
-    },
-    errorText: {
-        fontSize: 14,
+    loadingText: {
+        marginTop: 12,
+        fontSize: 13,
         color: '#64748B',
-        textAlign: 'center',
-        marginBottom: 24,
     },
-    retryBtn: {
-        backgroundColor: theme.colors.primary,
-        paddingHorizontal: 24,
-        paddingVertical: 12,
-        borderRadius: 12,
-    },
-    retryBtnText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 14,
-    }
 });

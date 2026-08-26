@@ -138,30 +138,60 @@ export const AboutScreen = (props: any) => {
     );
 
     const renderGuide = () => (
-        <ScrollView contentContainerStyle={styles.contentScroll}>
+        <ScrollView contentContainerStyle={styles.contentScroll} showsVerticalScrollIndicator={false}>
             <GuideItem
-                title="Kütüphane & Okuma"
+                title="Ana Sayfa (Dashboard)"
+                icon="home"
+                color="#047857"
+                description="Günlük okuma hedefleriniz, son okunan sayfaya anında dönen 'Kaldığım Yer' kartı, namaz vakti geri sayım sayacı ve her güne özel seçilmiş manidar vecizeler yer alır."
+            />
+            <GuideItem
+                title="Kur'an-ı Kerim (Hat & Meal)"
+                icon="book"
+                color="#059669"
+                description="İki zengin mod: Orijinal Tevafuklu Hüsrev Hattı 616 sayfa indirilebilir Mushaf ve Harekeli Uthmani Arapça metin, Diyanet Meali, Türkçe okunuş ile dünyaca ünlü hafızlardan ayet ayet sesli takip."
+            />
+            <GuideItem
+                title="Eğitim & Elif-Ba"
+                icon="school"
+                color="#10B981"
+                description="Harflerin müstakil ve birleşik sesleri, üstün/esre/ötre harekeleri, tecvid kuralları, interaktif alıştırma testleri ve ilk sureler ile adım adım Kur'an okumayı öğrenme rehberi."
+            />
+            <GuideItem
+                title="Cevşen-i Kebir & Tesbihat"
+                icon="shield-checkmark"
+                color="#1E40AF"
+                description="5 vakit namazın farz ve sünnet tesbihatları, 100 bablık Cevşen-i Kebir Arapça/Türkçe metni ve İhsan Atasoy'un seslendirmesiyle takip imkanı."
+            />
+            <GuideItem
+                title="Namaz Vakitleri & Kıble"
+                icon="time"
+                color="#064E3B"
+                description="Konumunuza göre anlık ezan saatleri, sonraki vakte kalan süre, ezan vakti bildirimleri ve manyetik sensörlü hassas Kıble pusulası."
+            />
+            <GuideItem
+                title="Kütüphane (Risale Külliyatı)"
                 icon="library"
                 color="#0EA5E9"
-                description="Risale-i Nur Külliyatı, Kur'an-ı Kerim, Cevşen ve Tesbihatlara buradan ulaşabilirsiniz. Kitap okurken kelimenin üzerine basılı tutarak lügat manasını görebilirsiniz."
+                description="Sözler, Mektubat, Lem'alar ve tüm külliyat. Okurken kelimenin üzerine dokunarak açılan 57.000 kelimelik Osmanlıca lügat, gece modu ve kişisel notlar."
             />
             <GuideItem
-                title="Okuma Takibi"
+                title="Okuma Takibi & İstatistikler"
                 icon="stats-chart"
                 color="#8B5CF6"
-                description="Günlük okumalarınızı 'Günlük Okuma' sekmesinden ekleyin. 'Okuma Takibi' ekranında haftalık, aylık ve yıllık performansınızı grafiklerle inceleyin. Pazartesi günleri haftalık sıralama yenilenir."
+                description="Haftalık, aylık ve yıllık okuma grafikleriniz, eser bazlı sayfa dağılımınız, günlük okuma geçmişiniz ve tüm dökümü Excel tablosu (.xlsx) olarak indirme özelliği."
             />
             <GuideItem
-                title="Meşveret & Kararlar"
-                icon="people"
-                color="#F59E0B"
-                description="Heyet içi iletişim için kullanılır. Alınan kararlar, yapılan görevlendirmeler ve hizmet nöbetleri bu bölümde yayınlanır. Sadece yetkili kullanıcılar görebilir."
+                title="Cüz & Hatim Takibi"
+                icon="book-outline"
+                color="#B45309"
+                description="Ses senkronizasyonlu karaoke cüz sürme motoru ve bireysel ya da toplulukla birlikte tamamlanan hatimlerin canlı takibi."
             />
             <GuideItem
-                title="Lügat & Araçlar"
-                icon="search"
-                color="#10B981"
-                description="57.000 kelimelik Osmanlıca lügat ile bilinmeyen kelime kalmasın. Ayrıca Ajanda özelliği ile hizmet programlarınızı planlayabilirsiniz."
+                title="Akıllı Zikirmatik"
+                icon="radio-button-on"
+                color="#D97706"
+                description="Özelleştirilebilir esma ve zikir sayaçları, titreşimli geri bildirim, hedef tamamlama uyarıları ve otomatik sayaç hafızası."
             />
         </ScrollView>
     );

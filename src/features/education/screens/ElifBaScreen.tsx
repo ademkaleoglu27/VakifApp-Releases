@@ -17,6 +17,7 @@ import { Audio } from 'expo-av';
 import { AudioCacheService } from '@/services/AudioCacheService';
 import { theme } from '@/config/theme';
 import { LESSONS, Lesson, QuizQuestion } from '../data/elifbaData';
+import { CelebrationConfettiModal } from '@/components/CelebrationConfettiModal';
 
 const COMPLETED_LESSONS_KEY = '@elifba_completed_lessons_v1';
 
@@ -31,6 +32,7 @@ export const ElifBaScreen: React.FC = () => {
     const [completedLessons, setCompletedLessons] = useState<number[]>([]);
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [playingText, setPlayingText] = useState<string | null>(null);
+    const [showCelebration, setShowCelebration] = useState<boolean>(false);
 
     // Quiz state
     const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
@@ -113,6 +115,7 @@ export const ElifBaScreen: React.FC = () => {
                 updated = completedLessons.filter(id => id !== lesson.id);
             } else {
                 updated = [...completedLessons, lesson.id];
+                setShowCelebration(true);
             }
             setCompletedLessons(updated);
             await AsyncStorage.setItem(COMPLETED_LESSONS_KEY, JSON.stringify(updated));
@@ -672,6 +675,23 @@ export const ElifBaScreen: React.FC = () => {
                     </View>
                 </View>
             </Modal>
+
+            {/* Celebration Modal */}
+            <CelebrationConfettiModal
+                visible={showCelebration}
+                title={`Tebrikler! ${lesson.title} Tamamlandı 🎉`}
+                subtitle="Kur'an-ı Kerim öğrenme yolculuğunda önemli bir adımı daha muvaffakiyetle bitirdiniz."
+                quote="Sizin en hayırlınız, Kur'an'ı öğrenen ve öğretendir."
+                quoteSource="Hadis-i Şerif (Buhârî)"
+                primaryButtonText={currentLessonId < LESSONS.length ? "Sonraki Derse Geç" : "Elhamdülillah"}
+                onPrimaryPress={() => {
+                    setShowCelebration(false);
+                    if (currentLessonId < LESSONS.length) {
+                        handleNextLesson();
+                    }
+                }}
+                onClose={() => setShowCelebration(false)}
+            />
         </SafeAreaView>
     );
 };
