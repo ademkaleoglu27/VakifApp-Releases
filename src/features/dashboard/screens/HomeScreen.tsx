@@ -307,12 +307,10 @@ export const HomeScreen = () => {
                         activeOpacity={0.8}
                     >
                         <View style={styles.quranIconCircle}>
-                            <Ionicons name="book" size={16} color="#047857" />
+                            <Ionicons name="book" size={20} color="#047857" />
                         </View>
-                        <View style={{ flex: 1 }}>
-                            <Text style={[styles.quickCardTitle, { color: '#047857' }]}>Kur'an</Text>
-                            <Text style={[styles.quickCardSubtitle, { color: '#065F46' }]}>Hat & Meal</Text>
-                        </View>
+                        <Text style={[styles.quickCardTitle, { color: '#047857' }]} numberOfLines={1}>Kur'an</Text>
+                        <Text style={[styles.quickCardSubtitle, { color: '#065F46' }]} numberOfLines={1}>Hat & Meal</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -321,12 +319,10 @@ export const HomeScreen = () => {
                         activeOpacity={0.8}
                     >
                         <View style={styles.prayerIconCircle}>
-                            <Ionicons name="time" size={16} color="#064E3B" />
+                            <Ionicons name="time" size={20} color="#064E3B" />
                         </View>
-                        <View style={{ flex: 1 }}>
-                            <Text style={styles.quickCardTitle}>Namaz</Text>
-                            <Text style={styles.quickCardSubtitle}>Ezan & Vakit</Text>
-                        </View>
+                        <Text style={styles.quickCardTitle} numberOfLines={1}>Namaz</Text>
+                        <Text style={styles.quickCardSubtitle} numberOfLines={1}>Ezan & Vakit</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -335,12 +331,10 @@ export const HomeScreen = () => {
                         activeOpacity={0.8}
                     >
                         <View style={styles.zikirIconCircle}>
-                            <MaterialCommunityIcons name="circle-slice-8" size={16} color="#B45309" />
+                            <MaterialCommunityIcons name="circle-slice-8" size={20} color="#B45309" />
                         </View>
-                        <View style={{ flex: 1 }}>
-                            <Text style={[styles.quickCardTitle, { color: '#78350F' }]}>Zikirmatik</Text>
-                            <Text style={[styles.quickCardSubtitle, { color: '#92400E' }]}>Evrad & Tesbih</Text>
-                        </View>
+                        <Text style={[styles.quickCardTitle, { color: '#78350F' }]} numberOfLines={1}>Zikirmatik</Text>
+                        <Text style={[styles.quickCardSubtitle, { color: '#92400E' }]} numberOfLines={1}>Evrad & Tesbih</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -514,18 +508,18 @@ const styles = StyleSheet.create({
 
     quickCardsRow: {
         flexDirection: 'row',
-        gap: 12,
+        gap: 10,
         marginBottom: 20,
     },
     quickCardItem: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
-        gap: 10,
+        justifyContent: 'center',
         backgroundColor: '#ECFDF5',
         borderRadius: 16,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
+        paddingVertical: 12,
+        paddingHorizontal: 4,
         borderWidth: 1,
         borderColor: '#A7F3D0',
         shadowColor: '#064E3B',
@@ -545,38 +539,43 @@ const styles = StyleSheet.create({
         shadowColor: '#B45309',
     },
     quranIconCircle: {
-        width: 32,
-        height: 32,
-        borderRadius: 16,
+        width: 38,
+        height: 38,
+        borderRadius: 19,
         backgroundColor: '#D1FAE5',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 6,
     },
     prayerIconCircle: {
-        width: 32,
-        height: 32,
-        borderRadius: 16,
+        width: 38,
+        height: 38,
+        borderRadius: 19,
         backgroundColor: '#D1FAE5',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 6,
     },
     zikirIconCircle: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
+        width: 38,
+        height: 38,
+        borderRadius: 19,
         backgroundColor: '#FEF3C7',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 6,
     },
     quickCardTitle: {
-        fontSize: 13,
+        fontSize: 12,
         fontWeight: 'bold',
         color: '#064E3B',
+        textAlign: 'center',
     },
     quickCardSubtitle: {
         fontSize: 10,
         color: '#047857',
-        marginTop: 1,
+        marginTop: 2,
+        textAlign: 'center',
     },
 
     dashboardContent: {

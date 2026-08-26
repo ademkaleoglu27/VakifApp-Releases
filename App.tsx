@@ -138,7 +138,6 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
           <NotificationProvider>
-            <OTAUpdateManager />
             <OfflineSyncBadge />
             <StatusBar style="auto" />
             <AppNavigator />

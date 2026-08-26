@@ -687,9 +687,8 @@ export const AppNavigator = () => {
     }, [isAuthenticated, user?.name]);
 
     return (
-        <DownloadOverlayProvider>
-            <AudioProvider>
-                <NavigationContainer
+        <AudioProvider>
+            <NavigationContainer
                     ref={navigationRef}
                     onStateChange={() => {
                         const currentRouteName = navigationRef.getCurrentRoute()?.name;
@@ -821,6 +820,5 @@ export const AppNavigator = () => {
                     </View>
                 </NavigationContainer>
             </AudioProvider>
-        </DownloadOverlayProvider>
     );
 };
