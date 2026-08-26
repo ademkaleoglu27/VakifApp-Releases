@@ -16,10 +16,13 @@ const isSupabaseConfigured = (): boolean => {
     return urlValid && keyValid;
 };
 
+export const IS_PUBLIC_RELEASE = true;
+
 export const Env = {
     supabaseUrl: RAW_SUPABASE_URL,
     supabaseAnonKey: RAW_SUPABASE_KEY,
     geminiApiKey: RAW_GEMINI_KEY,
+    isPublicRelease: IS_PUBLIC_RELEASE,
 
     isValid: isSupabaseConfigured(),
 

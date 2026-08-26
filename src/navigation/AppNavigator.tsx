@@ -8,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 import { getEnabledBooks } from '@/config/booksRegistry';
+import { IS_PUBLIC_RELEASE } from '@/config/env';
 import * as Notifications from 'expo-notifications';
 
 import { RisaleHtmlReaderHomeScreen } from '@/features/reader/html_pilot/RisaleHtmlReaderHomeScreen';
@@ -160,28 +161,22 @@ export type RootStackParamList = {
 
 export type MainTabParamList = {
     Home: undefined;
-    JuzTracking: undefined;
-    Readings: undefined;
+    Library: undefined;
     AddReading: undefined;
-    Duyurular: undefined;
+    JuzTracking: undefined;
+    Duyurular?: undefined;
 };
 
 export type DrawerParamList = {
     MainTabs: undefined;
     EducationHome: undefined;
-    // Library: undefined; // REMOVED
-    // Cevsen: undefined; // REMOVED
-    // Lugat: undefined; // REMOVED
     CouncilMeşveret: undefined;
     CouncilSohbet: undefined;
     Assignments: undefined;
     ReadingTracking: undefined;
     Agenda: undefined;
-    // Tesbihat: undefined; // REMOVED
     About: undefined;
 };
-
-
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -195,17 +190,16 @@ const MainTabs = () => {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName: keyof typeof Ionicons.glyphMap = 'home';
                     if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
-                    else if (route.name === 'JuzTracking') iconName = focused ? 'book' : 'book-outline';
-                    else if (route.name === 'Readings') iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+                    else if (route.name === 'Library') iconName = focused ? 'library' : 'library-outline';
                     else if (route.name === 'AddReading') iconName = focused ? 'add-circle' : 'add-circle-outline';
-                    else if (route.name === 'Duyurular') iconName = focused ? 'megaphone' : 'megaphone-outline';
+                    else if (route.name === 'JuzTracking') iconName = focused ? 'book' : 'book-outline';
 
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
-                tabBarActiveTintColor: theme.colors.primary, // Emerald for active
-                tabBarInactiveTintColor: '#94a3b8', // Slate-400 for inactive
+                tabBarActiveTintColor: theme.colors.primary,
+                tabBarInactiveTintColor: '#94a3b8',
                 tabBarStyle: {
-                    backgroundColor: '#ffffff', // White background
+                    backgroundColor: '#ffffff',
                     borderTopWidth: 0,
                     elevation: 20,
                     shadowColor: '#000',
@@ -222,11 +216,9 @@ const MainTabs = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Ana Sayfa' }} />
-            {useAuthStore.getState().user?.group !== 'MİSAFİR' && (
-                <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz Takibi' }} />
-            )}
+            <Tab.Screen name="Library" component={LibraryShellScreen} options={{ title: 'Kütüphane' }} />
             <Tab.Screen name="AddReading" component={AddReadingLogScreen} options={{ title: 'Okuma Ekle' }} />
-            <Tab.Screen name="Duyurular" component={AnnouncementsScreen} options={{ title: 'Duyurular' }} />
+            <Tab.Screen name="JuzTracking" component={JuzTrackingScreen} options={{ title: 'Cüz & Hatim' }} />
         </Tab.Navigator>
     );
 };
@@ -376,18 +368,16 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 color="#334155"
                             />
 
-                            {/* Okuma Takibi - SADECE MEŞVERET HEYETİ */}
-                            {(user?.role === 'mesveret_admin' || user?.role === 'platform_admin' || user?.role === 'accountant') && (
-                                <DrawerItem
-                                    label="Okuma Takibi"
-                                    icon="stats-chart-outline"
-                                    onPress={() => navigate('ReadingTracking')}
-                                    color="#334155"
-                                />
-                            )}
+                            {/* Okuma Takibi & İstatistikler - Herkese Açık */}
+                            <DrawerItem
+                                label="Okuma Takibi & İstatistikler"
+                                icon="stats-chart-outline"
+                                onPress={() => navigate('ReadingTracking')}
+                                color="#047857"
+                            />
 
-                            {/* Meşveret Accordion */}
-                            {requireFeature('MESVERET_SCREEN') && (
+                            {/* Kurumsal Modüller (Meşveret, Görevler, Nöbet, Ajanda, Muhasebe) */}
+                            {!IS_PUBLIC_RELEASE && requireFeature('MESVERET_SCREEN') && (
                                 <>
                                     <TouchableOpacity style={drawerStyles.accordionHeader} onPress={toggleCouncil} activeOpacity={0.7}>
                                         <View style={drawerStyles.row}>
@@ -422,8 +412,7 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 </>
                             )}
 
-                            {/* Görevlendirmeler */}
-                            {requireFeature('GOREVLENDIRMELER') && (
+                            {!IS_PUBLIC_RELEASE && requireFeature('GOREVLENDIRMELER') && (
                                 <DrawerItem
                                     label="Görevlendirmeler"
                                     icon="checkbox-outline"
@@ -432,8 +421,7 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 />
                             )}
 
-                            {/* Nöbet Yönetimi */}
-                            {requireFeature('NOBET_YONETIMI') && (
+                            {!IS_PUBLIC_RELEASE && requireFeature('NOBET_YONETIMI') && (
                                 <DrawerItem
                                     label="Nöbet Yönetimi"
                                     icon="construct-outline"
@@ -442,17 +430,16 @@ const CustomDrawerContent = React.memo((props: any) => {
                                 />
                             )}
 
+                            {!IS_PUBLIC_RELEASE && (
+                                <DrawerItem
+                                    label="Ajanda"
+                                    icon="calendar-outline"
+                                    onPress={() => navigate('Agenda')}
+                                    color="#334155"
+                                />
+                            )}
 
-                            {/* Ajanda */}
-                            <DrawerItem
-                                label="Ajanda"
-                                icon="calendar-outline"
-                                onPress={() => navigate('Agenda')}
-                                color="#334155"
-                            />
-
-                            {/* Muhasebe */}
-                            {requireFeature('ACCOUNTING_SCREEN') && (
+                            {!IS_PUBLIC_RELEASE && requireFeature('ACCOUNTING_SCREEN') && (
                                 <DrawerItem
                                     label="Muhasebe"
                                     icon="wallet-outline"
