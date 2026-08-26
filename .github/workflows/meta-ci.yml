@@ -1,0 +1,39 @@
+name: Meta Validation
+
+on:
+  push:
+    paths:
+      - 'meta/**'
+      - 'schema/**'
+      - 'scripts/validate-meta.mjs'
+      - 'scripts/check-integrity.mjs'
+  pull_request:
+    paths:
+      - 'meta/**'
+      - 'schema/**'
+      - 'scripts/validate-meta.mjs'
+      - 'scripts/check-integrity.mjs'
+
+jobs:
+  validate-meta:
+    name: Validate Meta JSON
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate meta schemas
+        run: npm run meta:validate
+
+      - name: Check meta integrity
+        run: npm run meta:check

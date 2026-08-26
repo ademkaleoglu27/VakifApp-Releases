@@ -1,0 +1,648 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image, LayoutAnimation, Platform, UIManager, Modal, TextInput, Alert } from 'react-native';
+import { PremiumHeader } from '@/components/PremiumHeader';
+import { theme } from '@/config/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { DevGate } from '@/utils/DevGate';
+
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
+type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS' | 'PROVENANCE';
+
+const TAP_THRESHOLD = 7;
+const TAP_TIMEOUT_MS = 2000;
+
+export const AboutScreen = (props: any) => {
+    const navigation = useNavigation<any>();
+    const [activeTab, setActiveTab] = useState<TabType>('GENERAL');
+
+    // DevTools unlock state
+    const [devToolsEnabled, setDevToolsEnabled] = useState(false);
+    const [tapCount, setTapCount] = useState(0);
+    const [showPinModal, setShowPinModal] = useState(false);
+    const [pinInput, setPinInput] = useState('');
+    const tapTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Load DevTools state on mount
+    useEffect(() => {
+        DevGate.getEnabled().then(setDevToolsEnabled);
+    }, []);
+
+    // Handle version tap for secret unlock
+    const handleVersionTap = () => {
+        // Clear existing timer
+        if (tapTimerRef.current) {
+            clearTimeout(tapTimerRef.current);
+        }
+
+        const newCount = tapCount + 1;
+        setTapCount(newCount);
+
+        if (newCount >= TAP_THRESHOLD) {
+            setTapCount(0);
+            setShowPinModal(true);
+            return;
+        }
+
+        // Reset after timeout
+        tapTimerRef.current = setTimeout(() => {
+            setTapCount(0);
+        }, TAP_TIMEOUT_MS);
+    };
+
+    // Handle PIN submission
+    const handlePinSubmit = async () => {
+        if (DevGate.verifyPin(pinInput)) {
+            await DevGate.setEnabled(true);
+            setDevToolsEnabled(true);
+            setShowPinModal(false);
+            setPinInput('');
+            Alert.alert('Başarılı', 'Developer Tools etkinleştirildi.');
+        } else {
+            Alert.alert('Hata', 'Yanlış PIN.');
+            setPinInput('');
+        }
+    };
+
+    // Handle DevTools disable
+    const handleDisableDevTools = async () => {
+        await DevGate.setEnabled(false);
+        setDevToolsEnabled(false);
+        Alert.alert('Kapatıldı', 'Developer Tools devre dışı bırakıldı.');
+    };
+
+    const renderTabButton = (id: TabType, label: string, icon: keyof typeof Ionicons.glyphMap) => (
+        <TouchableOpacity
+            style={[styles.tabBtn, activeTab === id && styles.tabBtnActive]}
+            onPress={() => setActiveTab(id)}
+        >
+            <Ionicons name={icon} size={18} color={activeTab === id ? '#fff' : '#64748B'} />
+            <Text style={[styles.tabText, activeTab === id && styles.tabTextActive]}>{label}</Text>
+        </TouchableOpacity>
+    );
+
+    const renderGeneral = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <View style={styles.card}>
+                <View style={styles.logoContainer}>
+                    <Text style={styles.logoTitle}>Nur Mektebi</Text>
+                    <Text style={styles.logoSubtitle}>Dijital Hizmet Platformu</Text>
+                </View>
+
+                <Text style={styles.paragraph}>
+                    Nur Mektebi, Risale-i Nur hizmetlerini dijital dünyada daha organize, verimli ve erişilebilir kılmak amacıyla geliştirilmiş kapsamlı bir vakıf yönetim ve takip uygulamasıdır.
+                </Text>
+
+                <Text style={styles.paragraph}>
+                    Uygulamamız; şahsi okumaların takibinden meşveret kararlarına, nöbet listelerinden lügatçeye kadar bir vakıf ehlinin ihtiyaç duyabileceği tüm araçları tek bir çatı altında toplar.
+                </Text>
+
+                <View style={[styles.infoBox, { backgroundColor: '#F0F9FF', borderColor: '#BAE6FD' }]}>
+                    <Ionicons name="heart" size={24} color="#0284C7" />
+                    <Text style={[styles.infoText, { color: '#0369A1' }]}>
+                        Bu uygulama tamamen <Text style={{ fontWeight: 'bold' }}>Allah rızası</Text> için hazırlanmış olup, hiçbir ticari amaç gütmemektedir. Reklam içermez ve ücretsizdir.
+                    </Text>
+                </View>
+
+                {/* Version - tappable for secret unlock */}
+                <TouchableOpacity onPress={handleVersionTap} activeOpacity={0.8}>
+                    <Text style={styles.versionText}>Sürüm: v2.0 Premium (build 27)</Text>
+                </TouchableOpacity>
+
+                {/* DevTools buttons - only visible when enabled */}
+                {devToolsEnabled && (
+                    <View style={styles.devToolsContainer}>
+                        <TouchableOpacity
+                            style={styles.devToolsButton}
+                            onPress={() => navigation.navigate('DeveloperTools')}
+                        >
+                            <Ionicons name="construct" size={20} color="#fff" />
+                            <Text style={styles.devToolsButtonText}>Developer Tools'a Git</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.devToolsCloseButton}
+                            onPress={handleDisableDevTools}
+                        >
+                            <Ionicons name="close-circle-outline" size={18} color="#ef4444" />
+                            <Text style={styles.devToolsCloseText}>DevTools'u Kapat</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+            </View>
+        </ScrollView>
+    );
+
+    const renderGuide = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <GuideItem
+                title="Kütüphane & Okuma"
+                icon="library"
+                color="#0EA5E9"
+                description="Risale-i Nur Külliyatı, Kur'an-ı Kerim, Cevşen ve Tesbihatlara buradan ulaşabilirsiniz. Kitap okurken kelimenin üzerine basılı tutarak lügat manasını görebilirsiniz."
+            />
+            <GuideItem
+                title="Okuma Takibi"
+                icon="stats-chart"
+                color="#8B5CF6"
+                description="Günlük okumalarınızı 'Günlük Okuma' sekmesinden ekleyin. 'Okuma Takibi' ekranında haftalık, aylık ve yıllık performansınızı grafiklerle inceleyin. Pazartesi günleri haftalık sıralama yenilenir."
+            />
+            <GuideItem
+                title="Meşveret & Kararlar"
+                icon="people"
+                color="#F59E0B"
+                description="Heyet içi iletişim için kullanılır. Alınan kararlar, yapılan görevlendirmeler ve hizmet nöbetleri bu bölümde yayınlanır. Sadece yetkili kullanıcılar görebilir."
+            />
+            <GuideItem
+                title="Lügat & Araçlar"
+                icon="search"
+                color="#10B981"
+                description="57.000 kelimelik Osmanlıca lügat ile bilinmeyen kelime kalmasın. Ayrıca Ajanda özelliği ile hizmet programlarınızı planlayabilirsiniz."
+            />
+        </ScrollView>
+    );
+
+    const renderRoles = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <View style={styles.card}>
+                <Text style={styles.sectionTitle}>Yetki Matrisi</Text>
+                <Text style={styles.paragraph}>
+                    Uygulama içerisindeki özellikler, kullanıcının hizmetteki konumuna göre açılır.
+                </Text>
+
+                <RoleItem
+                    role="MİSAFİR"
+                    desc="Sadece Risale okuma, Lügat ve Cevşen gibi temel özelliklere erişebilir. Meşveret verilerini göremez."
+                />
+                <RoleItem
+                    role="SOHBET EHLİ"
+                    desc="Misafir özelliklerine ek olarak; Duyuruları görebilir ve Cüz Takibi sistemine katılabilir."
+                />
+                <RoleItem
+                    role="VAKIF / HEYET"
+                    desc="Tüm özelliklere erişebilir. Kararları okuyabilir, nöbet listelerini görebilir ve Ajanda'yı kullanabilir."
+                />
+                <RoleItem
+                    role="YÖNETİCİ"
+                    desc="Sistemin tam yetkili kullanıcısıdır. Karar ekleyebilir, görev atayabilir ve muhasebe kayıtlarını yönetebilir."
+                />
+            </View>
+        </ScrollView>
+    );
+
+    const renderCredits = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <View style={styles.card}>
+                <Text style={styles.sectionTitle}>Teşekkür & Kaynaklar</Text>
+                <Text style={styles.paragraph}>
+                    Uygulamamızın içeriğinde ve geliştirilmesinde aşağıdaki kıymetli kaynaklardan istifade edilmiştir:
+                </Text>
+
+                <CreditCard
+                    title="Sorularla Risale"
+                    desc="Risale-i Nur izahları ve kaynakça desteği için."
+                    url="https://sorularlarisale.com/"
+                    icon="globe-outline"
+                />
+
+                <CreditCard
+                    title="İhsan Atasoy"
+                    desc="Cevşen ve Tesbihat seslendirmeleri için."
+                    url="https://www.youtube.com/channel/UCWr4bBSYyvLPrJNoQ8ltx-A"
+                    icon="logo-youtube"
+                />
+
+                <View style={styles.divider} />
+
+                <Text style={[styles.paragraph, { fontStyle: 'italic', textAlign: 'center', marginTop: 16 }]}>
+                    "Senin iktidarın kısa, bekan az, hayatın mahdut, ömrün muvakkat, lazım olan işler çok, ebede namzet olduğun halde..."
+                </Text>
+                <Text style={{ textAlign: 'center', color: theme.colors.primary, fontWeight: 'bold' }}>- Sözler</Text>
+            </View>
+        </ScrollView>
+    );
+
+    const renderProvenance = () => (
+        <ScrollView contentContainerStyle={styles.contentScroll}>
+            <View style={styles.card}>
+                <Text style={styles.sectionTitle}>Veri Kaynağı & Sürüm</Text>
+                <Text style={styles.paragraph}>
+                    Bu uygulama, doğrulanmış ve "World-Standard" formatında paketlenmiş Risale-i Nur külliyatını kullanır.
+                </Text>
+
+                <View style={[styles.infoBox, { flexDirection: 'row', alignItems: 'center', gap: 12 }]}>
+                    <Ionicons name="cube-outline" size={24} color="#64748B" />
+                    <View>
+                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Library Manifest</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 12, color: '#475569' }}>v1.0.0 (Global Registry)</Text>
+                    </View>
+                </View>
+
+                <View style={[styles.infoBox, { flexDirection: 'row', alignItems: 'center', gap: 12 }]}>
+                    <Ionicons name="book-outline" size={24} color="#64748B" />
+                    <View>
+                        <Text style={{ fontWeight: 'bold', color: '#1E293B', fontSize: 13 }}>Aktif Kitap</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 12, color: '#475569' }}>risale.sozler@diyanet.tr</Text>
+                        <Text style={{ fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace', fontSize: 10, color: '#94A3B8' }}>v1 (2025-01-13)</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.versionText}>App Build: v2.0 Premium (27)</Text>
+            </View>
+        </ScrollView>
+    );
+
+    return (
+        <View style={styles.container}>
+            <PremiumHeader title="Rehber & Hakkında" backButton={true} />
+
+            <View style={styles.tabsContainer}>
+                {renderTabButton('GENERAL', 'Genel', 'information-circle')}
+                {renderTabButton('GUIDE', 'Rehber', 'book')}
+                {renderTabButton('ROLES', 'Yetkiler', 'shield-checkmark')}
+                {renderTabButton('CREDITS', 'Kaynaklar', 'link')}
+                {renderTabButton('PROVENANCE', 'Veri', 'server')}
+            </View>
+
+            <View style={styles.contentContainer}>
+                {activeTab === 'GENERAL' && renderGeneral()}
+                {activeTab === 'GUIDE' && renderGuide()}
+                {activeTab === 'ROLES' && renderRoles()}
+                {activeTab === 'CREDITS' && renderCredits()}
+                {activeTab === 'PROVENANCE' && renderProvenance()}
+            </View>
+
+            {/* PIN Modal */}
+            <Modal
+                visible={showPinModal}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setShowPinModal(false)}
+            >
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Developer Erişimi</Text>
+                        <Text style={styles.modalSubtitle}>PIN kodunu girin</Text>
+
+                        <TextInput
+                            style={styles.pinInput}
+                            secureTextEntry
+                            keyboardType="number-pad"
+                            maxLength={4}
+                            value={pinInput}
+                            onChangeText={setPinInput}
+                            placeholder="****"
+                            placeholderTextColor="#94a3b8"
+                        />
+
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity
+                                style={styles.modalCancelBtn}
+                                onPress={() => {
+                                    setShowPinModal(false);
+                                    setPinInput('');
+                                }}
+                            >
+                                <Text style={styles.modalCancelText}>Vazgeç</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.modalConfirmBtn}
+                                onPress={handlePinSubmit}
+                            >
+                                <Text style={styles.modalConfirmText}>Aç</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+        </View>
+    );
+};
+
+// Sub-components
+const GuideItem = ({ title, icon, description, color }: any) => (
+    <View style={styles.guideCard}>
+        <View style={[styles.guideIcon, { backgroundColor: color + '20' }]}>
+            <Ionicons name={icon} size={24} color={color} />
+        </View>
+        <View style={{ flex: 1 }}>
+            <Text style={styles.guideTitle}>{title}</Text>
+            <Text style={styles.guideDesc}>{description}</Text>
+        </View>
+    </View>
+);
+
+const RoleItem = ({ role, desc }: any) => (
+    <View style={styles.roleItem}>
+        <View style={styles.roleBadge}>
+            <Text style={styles.roleBadgeText}>{role}</Text>
+        </View>
+        <Text style={styles.roleDesc}>{desc}</Text>
+    </View>
+);
+
+const CreditCard = ({ title, desc, url, icon }: any) => (
+    <TouchableOpacity style={styles.creditCard} onPress={() => Linking.openURL(url)}>
+        <View style={styles.creditIcon}>
+            <Ionicons name={icon} size={28} color={theme.colors.primary} />
+        </View>
+        <View style={{ flex: 1 }}>
+            <Text style={styles.creditTitle}>{title}</Text>
+            <Text style={styles.creditDesc}>{desc}</Text>
+            <Text style={styles.linkText}>Siteye Git→</Text>
+        </View>
+    </TouchableOpacity>
+);
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: '#F8FAFC' },
+    tabsContainer: {
+        flexDirection: 'row',
+        paddingHorizontal: 16,
+        paddingBottom: 16,
+        backgroundColor: '#fff',
+        gap: 8
+    },
+    tabBtn: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 8,
+        borderRadius: 20,
+        backgroundColor: '#F1F5F9',
+        gap: 4
+    },
+    tabBtnActive: {
+        backgroundColor: theme.colors.primary,
+    },
+    tabText: {
+        fontSize: 11,
+        fontWeight: '600',
+        color: '#64748B'
+    },
+    tabTextActive: {
+        color: '#fff'
+    },
+    contentContainer: {
+        flex: 1,
+    },
+    contentScroll: {
+        padding: 16,
+        paddingBottom: 40
+    },
+    card: {
+        backgroundColor: '#fff',
+        borderRadius: 16,
+        padding: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.05,
+        shadowRadius: 8,
+        elevation: 2
+    },
+    logoContainer: {
+        alignItems: 'center',
+        marginBottom: 24
+    },
+    logoTitle: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: theme.colors.secondary,
+        fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif'
+    },
+    logoSubtitle: {
+        fontSize: 14,
+        color: '#64748B',
+        marginTop: 4,
+        letterSpacing: 1
+    },
+    paragraph: {
+        fontSize: 15,
+        color: '#334155',
+        lineHeight: 24,
+        marginBottom: 16
+    },
+    infoBox: {
+        flexDirection: 'row',
+        padding: 16,
+        borderRadius: 12,
+        borderWidth: 1,
+        gap: 12,
+        alignItems: 'center',
+        marginTop: 8
+    },
+    infoText: {
+        flex: 1,
+        fontSize: 13,
+        lineHeight: 20
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1E293B',
+        marginBottom: 16
+    },
+    versionText: {
+        textAlign: 'center',
+        fontSize: 12,
+        color: '#94A3B8',
+        marginTop: 32
+    },
+
+    // DevTools styles
+    devToolsContainer: {
+        marginTop: 24,
+        gap: 12
+    },
+    devToolsButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        backgroundColor: '#b45309',
+        paddingVertical: 14,
+        borderRadius: 12
+    },
+    devToolsButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+    devToolsCloseButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+        paddingVertical: 10
+    },
+    devToolsCloseText: {
+        color: '#ef4444',
+        fontSize: 13,
+        fontWeight: '500'
+    },
+
+    // Modal styles
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 24
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 24,
+        width: '100%',
+        maxWidth: 320,
+        alignItems: 'center'
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#1e293b',
+        marginBottom: 4
+    },
+    modalSubtitle: {
+        fontSize: 14,
+        color: '#64748b',
+        marginBottom: 20
+    },
+    pinInput: {
+        width: 120,
+        height: 50,
+        borderWidth: 2,
+        borderColor: '#e2e8f0',
+        borderRadius: 12,
+        fontSize: 24,
+        textAlign: 'center',
+        letterSpacing: 8,
+        marginBottom: 24
+    },
+    modalButtons: {
+        flexDirection: 'row',
+        gap: 12
+    },
+    modalCancelBtn: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 10,
+        backgroundColor: '#f1f5f9',
+        alignItems: 'center'
+    },
+    modalCancelText: {
+        color: '#64748b',
+        fontWeight: '600'
+    },
+    modalConfirmBtn: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 10,
+        backgroundColor: '#b45309',
+        alignItems: 'center'
+    },
+    modalConfirmText: {
+        color: '#fff',
+        fontWeight: 'bold'
+    },
+
+    // Guide Styles
+    guideCard: {
+        flexDirection: 'row',
+        backgroundColor: '#fff',
+        padding: 16,
+        borderRadius: 16,
+        marginBottom: 12,
+        gap: 16,
+        shadowColor: '#000',
+        shadowOpacity: 0.03,
+        shadowRadius: 4,
+        elevation: 1
+    },
+    guideIcon: {
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    guideTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#1E293B',
+        marginBottom: 4
+    },
+    guideDesc: {
+        fontSize: 13,
+        color: '#64748B',
+        lineHeight: 18
+    },
+
+    // Role Styles
+    roleItem: {
+        marginBottom: 20,
+        borderLeftWidth: 3,
+        borderLeftColor: '#E2E8F0',
+        paddingLeft: 12
+    },
+    roleBadge: {
+        backgroundColor: '#F1F5F9',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderRadius: 8,
+        marginBottom: 6
+    },
+    roleBadgeText: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#475569'
+    },
+    roleDesc: {
+        fontSize: 14,
+        color: '#64748B',
+        lineHeight: 20
+    },
+
+    // Credit Styles
+    creditCard: {
+        flexDirection: 'row',
+        padding: 16,
+        backgroundColor: '#F8FAFC',
+        borderRadius: 12,
+        marginBottom: 12,
+        gap: 16,
+        borderWidth: 1,
+        borderColor: '#E2E8F0'
+    },
+    creditIcon: {
+        marginTop: 4
+    },
+    creditTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#1E293B'
+    },
+    creditDesc: {
+        fontSize: 13,
+        color: '#64748B',
+        marginTop: 2
+    },
+    linkText: {
+        fontSize: 12,
+        color: theme.colors.primary,
+        fontWeight: 'bold',
+        marginTop: 8
+    },
+    divider: {
+        height: 1,
+        backgroundColor: '#E2E8F0',
+        marginVertical: 20
+    }
+});

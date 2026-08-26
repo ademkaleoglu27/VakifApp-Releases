@@ -1,0 +1,29 @@
+﻿# Bagimliliklar (Bulutta otomatik kurulur)
+node_modules/
+
+# Yerel derleme ciktilari ve onbellekler
+android/
+ios/
+dist/
+.expo/
+
+# Gereksiz devasa yedekler ve test klasorleri
+_legacy_archive/
+web-admin/
+temp_risale_source/
+audio_release_bundle/
+test-export-semantic/
+test-export-tag-cleanup/
+test-export-semantic-fix/
+test-export-semantic-v3/
+test-export-semantic-v2/
+
+# Diger gereksizler
+*.apk
+*.aab
+build-error.txt
+
+
+# Critical massive assets and git history blocking EAS upload
+.git/
+assets/quran_pages/

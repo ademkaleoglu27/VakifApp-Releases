@@ -1,0 +1,28 @@
+name: Repo Hygiene Check
+
+on:
+  push:
+    branches: [ main, develop, 'restore/**' ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  check-hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify no blocked artifacts are tracked
+        shell: bash
+        run: |
+          BLOCKED_PATTERNS="\.apk$|\.aab$|\.jks$|\.keystore$|\.pem$|\.p12$|^builds/|^android/app/build/|^android/build/|^ios/build/"
+          VIOLATIONS=$(git ls-files | grep -Ei "$BLOCKED_PATTERNS" || true)
+          
+          if [ -n "$VIOLATIONS" ]; then
+            echo "ERROR: Blocked artifacts detected in repository:"
+            echo "$VIOLATIONS"
+            exit 1
+          else
+            echo "Repo hygiene OK. No blocked artifacts found."
+          fi

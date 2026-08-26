@@ -1,0 +1,88 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
+temp_risale_source/
+
+# builds and binary artifacts
+builds/
+**/*.apk
+**/*.aab
+android/app/build/
+android/build/
+**/build/
+*.keystore
+*.jks
+*.hprof
+*.log
+
+# SQLite artifacts
+SQLite/
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Quran local assets (do not commit)
+assets/quran_pages/
+quran-pack/
+_legacy_archive/temp_repo/
+
+
+# Local Tool & Temp Folders
+.claude/
+_bmad/
+_bmad-output/
+supabase/.temp/
+.gemini/
+_legacy_archive/
+android_res/
+
+# Environment variables
+.env
+
+# Bundles & Temp files
+index.android.bundle
+*.apk
+*.aab
+*.tmp
+__MACOSX/
+com.facebook.react.*
