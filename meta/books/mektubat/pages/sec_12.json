@@ -1,0 +1,160 @@
+{
+  "id": "sec_11",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "On Birinci Mektup",
+      "order_index": 0
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu mektup, mühim bir ilaç olup dört âyetin hazinesinden dört küçük cevherine işaret eder.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz kardeşim!",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu dört muhtelif meseleyi muhtelif vakitlerde Kur’an-ı Hakîm nefsime ders vermiş. Arzu eden kardeşlerim dahi bundan bir ders veya bir hisse almaları için yazdım. Mebhas itibarıyla başka başka dört âyet-i kerîmenin hazine-i hakaikinden birer küçük cevher numune olarak gösterilmiştir. O dört mebhastan her bir mebhasın ayrı bir sureti, ayrı bir faydası var.",
+      "order_index": 4
+    },
+    {
+      "type": "arabic_block",
+      "text": "Birinci Mebhas: اِنَّ كَيْدَ الشَّيْطَانِ كَانَ ضَعٖيفًا",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey sû-i vesveseden meyus nefsim! Tedai-yi hayalat, tahattur-u faraziyat, bir nevi irtisam-ı gayr-ı ihtiyarîdir. İrtisam ise eğer hayırdan ve nuraniyetten olsa hakikatin hükmü bir derece suretine ve misaline geçer. Güneşin ziyası ve harareti, âyinedeki misaline geçtiği gibi… Eğer şerden ve kesiften olsa aslın hükmü ve hâssası, suretine geçmez ve timsaline sirayet etmez. Mesela, necis ve murdar bir şeyin âyinedeki sureti ne necistir ne murdardır. Ve yılanın timsali ısırmaz.",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte şu sırra binaen tasavvur-u küfür, küfür değil; tahayyül-ü şetim, şetim değil. Hususan ihtiyarsız olsa ve farazî bir tahattur olsa bütün bütün zararsızdır. Hem ehl-i hak olan Ehl-i Sünnet ve Cemaat’in mezhebinde bir şeyin şer’an çirkinliği, pisliği; nehy-i İlahî sebebiyledir. Mademki ihtiyarsız ve rızasız bir tahattur-u farazîdir, bir tedai-yi hayalîdir; nehiy ona taalluk etmez. O dahi ne kadar çirkin ve pis bir şeyin sureti dahi olsa çirkin ve pis olmaz.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Mesele: Barla Yaylası, Tepelice’de çam, katran, karakavağın bir meyvesi olup Sözler mecmuasına yazıldığı için buraya yazılmamıştır.",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncü Mesele: Şu iki mesele, Yirmi Beşinci Söz’ün i’caz-ı Kur’an’a karşı medeniyetin aczini gösteren misallerinden bir kısmıdır. Kur’an’a muhalif olan hukuk-u medeniyetin ne kadar haksız olduğunu ispat eden binler misallerinden iki misal:",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "فَلِلذَّكَرِ مِثْلُ حَظِّ الْاُنْثَيَيْنِ olan hükm-ü Kur’anî, mahz-ı adalet olduğu gibi ayn-ı merhamettir.",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, adalettir. Çünkü ekseriyet-i mutlaka itibarıyla bir erkek, bir kadın alır, nafakasını taahhüd eder. Bir kadın ise bir kocaya gider, nafakasını ona yükler; irsiyetteki noksanını telafi eder.",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem merhamettir, çünkü o zaîfe kız, pederinden şefkate ve kardeşinden merhamete çok muhtaçtır. Hükm-ü Kur’an’a göre o kız, pederinden endişesiz bir şefkat görür. Pederi ona “Benim servetimin yarısını, ellerin ve yabanilerin ellerine geçmesine sebep olacak zararlı bir çocuk” nazarıyla endişe edip bakmaz. O şefkate, endişe ve hiddet karışmaz. Hem kardeşinden rekabetsiz, hasedsiz bir merhamet ve himayet görür. Kardeşi ona “Hanedanımızın yarısını bozacak ve malımızın mühim bir kısmını ellerin eline verecek bir rakip” nazarıyla bakmaz; o merhamete ve himayete bir kin, bir iğbirar katmaz.",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Şu halde o fıtraten nazik, nâzenin ve hilkaten zaîfe ve nahife kız, sureten az bir şey kaybeder fakat ona bedel akaribin şefkatinden, merhametinden, tükenmez bir servet kazanır. Yoksa rahmet-i Hak’tan ziyade ona merhamet edeceğiz diye hakkından fazla ona hak vermek, ona merhamet değil, şedit bir zulümdür. Belki zaman-ı cahiliyette gayret-i vahşiyaneye binaen kızlarını sağ olarak defnetmek gibi gaddarane bir zulmü andıracak şu zamanın hırs-ı vahşiyanesi, merhametsiz bir şenaate yol açmak ihtimali vardır.",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Bunun gibi bütün ahkâm-ı Kur’aniye وَمَا اَرْسَلْنَاكَ اِلَّا رَحْمَةً لِلْعَالَمٖينَ fermanını tasdik ediyorlar.",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Dördüncü Mesele: فَلِاُمِّهِ السُّدُسُ İşte mimsiz medeniyet, nasıl kız hakkında, hakkından fazla hak verdiğinden böyle bir haksızlığa sebep oluyor. Öyle de valide hakkında hakkını kesmekle daha dehşetli haksızlık ediyor.",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, rahmet-i Rabbaniyenin en hürmetli en halâvetli en latîf ve en şirin bir cilvesi olan şefkat-i valide, hakaik-i kâinat içinde en muhterem en mükerrem bir hakikattir. Ve valide, en kerîm en rahîm öyle fedakâr bir dosttur ki o şefkat sâikasıyla bir valide, bütün dünyasını ve hayatını ve rahatını, veledi için feda eder. Hattâ valideliğin en basit ve en edna derecesinde olan korkak tavuk, o şefkatin küçücük bir lem’asıyla yavrusunu müdafaa için ite atılır, arslana saldırır.",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte böyle muhterem ve muazzez bir hakikati taşıyan bir valideyi, veledinin malından mahrum etmek, o muhterem hakikate karşı ne kadar dehşetli bir haksızlık, ne derece vahşetli bir hürmetsizlik, ne mertebe cinayetli bir hakaret ve arş-ı rahmeti titreten bir küfran-ı nimet ve hayat-ı içtimaiye-i beşeriyenin gayet parlak ve nâfi’ bir tiryakına bir zehir katmak olduğunu, insaniyet-perverlik iddia eden insan canavarları anlamazlarsa elbette hakiki insanlar anlar. Kur’an-ı Hakîm’in فَلِاُمِّهِ السُّدُسُ hükmünü, ayn-ı hak ve mahz-ı adalet olduğunu bilirler.",
+      "order_index": 17
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلْبَاقٖى هُوَ الْبَاقٖى",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "Said Nursî",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "On İkinci Mektup",
+      "order_index": 21
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِاسْمِهٖ سُبْحَانَهُ وَ اِنْ مِنْ شَىْءٍ اِلَّا يُسَبِّحُ بِحَمْدِهٖ",
+      "order_index": 22
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَلسَّلَامُ عَلَيْكُمْ وَ عَلٰى رُفَقَائِكُمْ",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Aziz kardeşlerim!",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "O gece benden sual ettiniz, ben cevabını vermedim. Çünkü mesail-i imaniyenin münakaşa suretinde bahsi caiz değildir. Siz münakaşa suretinde bahsetmiştiniz. Şimdilik münakaşanızın esası olan üç sualinize gayet muhtasar bir cevap yazıyorum. Tafsilini, Eczacı Efendinin isimlerini yazmış olduğu Sözler’de bulursunuz. Yalnız, kader ve cüz-ü ihtiyarîye ait Yirmi Altıncı Söz hatırıma gelmemişti, size söylememiştim, ona da bakınız fakat gazete gibi okumayınız. Eczacı Efendinin o Sözler’i mütalaa etmesini havale ettiğimin sırrı şudur ki:",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "O çeşit meselelerdeki şüpheler, erkân-ı imaniyenin zaafından ileri geliyor. O Sözler ise erkân-ı imaniyeyi tamamıyla ispat ederler.",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Sualiniz: Hazret-i Âdem’in (as) cennetten ihracı ve bir kısım benî-Âdem’in cehenneme idhali ne hikmete mebnidir?",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Elcevap: Hikmeti, tavziftir. Öyle bir vazife ile memur edilerek gönderilmiştir ki bütün terakkiyat-ı maneviye-i beşeriyenin ve bütün istidadat-ı beşeriyenin inkişaf ve inbisatları ve mahiyet-i insaniyenin bütün esma-i İlahiyeye bir âyine-i câmia olması, o vazifenin netaicindendir.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer Hazret-i Âdem cennette kalsaydı melek gibi makamı sabit kalırdı, istidadat-ı beşeriye inkişaf etmezdi. Halbuki yeknesak makam sahibi olan melaikeler çoktur, o tarz ubudiyet için insana ihtiyaç yok. Belki hikmet-i İlahiye, nihayetsiz makamatı katedecek olan insanın istidadına muvafık bir dâr-ı teklifi iktiza ettiği için melaikelerin aksine olarak mukteza-yı fıtratları olan malûm günahla cennetten ihraç edildi.",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek, Hazret-i Âdem’in cennetten ihracı, ayn-ı hikmet ve mahz-ı rahmet olduğu gibi; küffarın da cehenneme idhalleri, haktır ve adalettir.",
+      "order_index": 30
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sec_64",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Dördüncü Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Ramazan-ı şerifteki oruç, nefsin terbiyesine baktığı cihetindeki çok hikmetlerinden bir hikmeti şudur ki:",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Nefis, kendini hür ve serbest ister ve öyle telakki eder. Hattâ mevhum bir rububiyet ve keyfe-mâyeşa hareketi, fıtrî olarak arzu eder. Hadsiz nimetlerle terbiye olunduğunu düşünmek istemiyor. Hususan dünyada servet ve iktidarı da varsa, gaflet dahi yardım etmiş ise bütün bütün gasıbane, hırsızcasına nimet-i İlahiyeyi hayvan gibi yutar.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte ramazan-ı şerifte en zenginden en fakire kadar herkesin nefsi anlar ki kendisi mâlik değil, memlûktür; hür değil, abddir. Emir olunmazsa en âdi ve en rahat şeyi de yapamaz, elini suya uzatamaz diye mevhum rububiyeti kırılır, ubudiyeti takınır, hakiki vazifesi olan şükre girer.",
+      "order_index": 3
+    }
+  ]
+}

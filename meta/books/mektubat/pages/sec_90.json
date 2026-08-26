@@ -1,0 +1,25 @@
+{
+  "id": "sec_89",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "DOKUZUNCU MEKTUP:",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Keramet ve ikram ve inayet ve istidraca dair mühim bir kaideyi beyan eder. Kerametin izharı zarar olduğu gibi ikramın izharı şükür olduğunu ve en selâmetli keramet ise bilmediği halde mazhar olmak olduğunu ve hakiki keramet ise kendi nefsine değil belki Rabb’ine itimadını ziyadeleştiren olduğunu, yoksa istidrac olduğunu hem hayat-ı dünyeviyeyi bahtiyarane geçirmenin çaresi, âhiret için verilen hissiyat-ı şedideyi dünyanın fâni umûruna sarf etmemek olduğunu ve aşkın mecazî ve hakiki iki nev’i olduğu gibi; hırs ve inat ve endişe-i istikbal gibi hissiyat-ı şedidenin dahi mecazî ve hakiki olarak ikişer kısmı bulunduğunu, mecazîleri gayet zararlı ve sû-i ahlâka menşe ve hakikileri gayet nâfi’ ve hüsn-ü ahlâka medar olduğunu ispat eder.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem İslâm ve imanın mühim bir farkını beyan eder. Yani İslâmiyet, hakka tarafgirlik ve iltizamdır; iman ise hakkı iz’an ve tasdiktir. Yirmi sene evvel dinsiz bir Müslüman bulunduğu gibi şimdi de gayr-ı müslim mü’min dahi bulunur gibi göründüğünü gösterir.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Hem Risale-i Nur eczaları ne derece şiddetli bir surette İslâmiyet’e tarafgirlik hissini verdiğini ve erkân-ı imaniyeyi ne derece kuvvetli ve kat’î ispat ettiğini beyan eder.",
+      "order_index": 3
+    }
+  ]
+}

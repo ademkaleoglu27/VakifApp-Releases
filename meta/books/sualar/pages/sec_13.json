@@ -1,0 +1,20 @@
+{
+  "id": "sec_12",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Dördüncü Söz’de izahı bulunan, her gün yirmi dört saat sermaye-i hayatı Hâlık’ımız bize ihsan ediyor. Tâ ki iki hayatımıza lâzım şeyler o sermaye ile alınsın.",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Biz kısacık hayat-ı dünyeviyeye yirmi üç saati sarf edip beş farz namaza kâfi gelen bir saati, pek çok uzun olan hayat-ı uhreviyemize sarf etmezsek ne kadar hilaf-ı akıl bir hata ve o hatanın cezası olarak hem kalbî hem ruhî sıkıntıları çekmek ve o sıkıntılar yüzünden ahlâkını bozmak ve meyusane hayatını geçirmek sebebiyle değil terbiye almak, belki terbiyenin aksine gitmekle ne derece hasaret ederiz, kıyas edilsin.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer, bir saati beş farz namaza sarf etsek o halde hapis ve musibet müddetinin her bir saati, bazen bir gün ibadet ve fâni bir saati bâki saatler hükmüne geçebilmesi ve kalbî ve ruhî meyusiyet ve sıkıntıların kısmen zeval bulması ve hapse sebebiyet veren hatalara keffareten affettirmesi ve hapsin hikmeti olan terbiyeyi alması ne derece kârlı bir imtihan, bir ders ve musibet arkadaşlarıyla tesellidarane bir hoşsohbet olduğu düşünülsün.",
+      "order_index": 2
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "intro",
+    "work_id": "emirdag_lahikasi_2",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "emirdag_lahikasi_2",
+    "title": "Mukaddime: Kırk seneye yakın siyaseti terk ettiğimden ve ekser hayatım bir nevi inzivada geçtiğinden, hayat-ı içtimaiye ve siyasiye ile meşgul olmadığımdan büyük bir tehlikeyi göremiyordum. Bugünlerde o tehlikenin hem millet-i İslâmiyeye ve hem de bu memleket ve hükûmet-i İslâmiyeye büyük bir zarar vermeye zemin hazırlamakta olduğunu hissettim. Mecburiyetle, İslâmiyet milliyeti ve hâkimiyeti ve memleketin selâmeti için çalışan ehl-i siyaset ve cemiyet-i beşeriyeye hamiyet ile çalışanlar için bana manevî bir ihtar edildiğinden üç noktayı beyan edeceğim:",
+    "order_index": 2,
+    "type": "main"
+  },
+  {
+    "id": "sec_2",
+    "work_id": "emirdag_lahikasi_2",
+    "title": "İkinci Nükte: Bu medeniyet-i hazıranın hârikaları, beşere birer nimet-i Rabbaniye olmasından hakiki bir şükür ve menfaat-i beşerde istimali iktiza ettiği halde, şimdi görüyoruz ki ehemmiyetli bir kısım insanı tembelliğe ve sefahete ve sa’yi ve çalışmayı bırakıp istirahat içinde hevesatı dinlemek meylini verdiği için sa’yin şevkini kırıyor. Ve kanaatsizlik ve iktisatsızlık yoluyla sefahete, israfa, zulme, harama sevk ediyor.",
+    "order_index": 3,
+    "type": "main"
+  }
+]

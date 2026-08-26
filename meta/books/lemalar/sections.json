@@ -1,0 +1,527 @@
+[
+  {
+    "id": "intro",
+    "work_id": "lemalar",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 2,
+    "type": "main"
+  },
+  {
+    "id": "sec_2",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 3,
+    "type": "main"
+  },
+  {
+    "id": "sec_3",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 4,
+    "type": "main"
+  },
+  {
+    "id": "sec_4",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte",
+    "order_index": 5,
+    "type": "main"
+  },
+  {
+    "id": "sec_5",
+    "work_id": "lemalar",
+    "title": "Beşinci Nükte",
+    "order_index": 6,
+    "type": "main"
+  },
+  {
+    "id": "sec_6",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 7,
+    "type": "main"
+  },
+  {
+    "id": "sec_7",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 8,
+    "type": "main"
+  },
+  {
+    "id": "sec_8",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 9,
+    "type": "main"
+  },
+  {
+    "id": "sec_9",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 10,
+    "type": "main"
+  },
+  {
+    "id": "sec_10",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 11,
+    "type": "main"
+  },
+  {
+    "id": "sec_11",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 12,
+    "type": "main"
+  },
+  {
+    "id": "sec_12",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte",
+    "order_index": 13,
+    "type": "main"
+  },
+  {
+    "id": "sec_13",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte münasebetiyle Şîalarla Ehl-i Sünnet ve Cemaat’in medar-ı nizâı, hattâ akaid-i imaniye kitaplarına ve esasat-ı imaniye sırasına girecek derecede büyütülmüş bir meseleye kısaca bir işaret edeceğiz.",
+    "order_index": 14,
+    "type": "main"
+  },
+  {
+    "id": "sec_14",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte: Kur’an-ı Mu’cizü’l-Beyan mefahimiyle, mana-yı sarîhiyle ifade-i hakaik ettiği gibi; üsluplarıyla, hey’atıyla çok maânî-i işariyeyi dahi ifade ediyor. Her bir âyetin çok tabaka-i manaları var. Kur’an, ilm-i muhitten geldiği için bütün manaları murad olabilir. İnsanın cüz’î fikri ve şahsî iradesiyle olan kelâmlar gibi bir iki manaya inhisar etmez.",
+    "order_index": 15,
+    "type": "main"
+  },
+  {
+    "id": "sec_15",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte: İşte bu âyet-i kerîme مِنَ النَّبِيّٖنَ وَ الصِّدّٖيقٖينَ وَ الشُّهَدَٓاءِ وَ الصَّالِحٖينَ وَ حَسُنَ اُولٰٓئِكَ رَفٖيقًا tabiriyle sırat-ı müstakimin ehli ve hakiki niam-ı İlahiyeye mazhar, nev-i beşerdeki taife-i enbiya ve kafile-i Sıddıkîn ve cemaat-i şüheda ve esnaf-ı salihîn ve enva-ı tabiînin bulunduklarını ifade etmekle beraber, âlem-i İslâmiyet’te o beş kısmın en mükemmelini dahi ayrıca sarahaten gösterdikten sonra o beş kısmın imamları ve baştaki rüesalarını sıfât-ı meşhureleriyle zikretmekle onlara delâlet edip ifade ettiği gibi ihbar-ı gayb nevinden bir lem’a-i i’caz ile o taifelerin istikbaldeki reislerinin vaziyetlerini bir vecihle tayin ediyor.",
+    "order_index": 16,
+    "type": "main"
+  },
+  {
+    "id": "sec_16",
+    "work_id": "lemalar",
+    "title": "İkinci kısım: Manileri bertaraf etmek ve muzırların şerrini def’edip onları tokatlamaktır.",
+    "order_index": 17,
+    "type": "main"
+  },
+  {
+    "id": "sec_17",
+    "work_id": "lemalar",
+    "title": "Üçüncü kısım şudur ki: Hizmette hâlisen çalışanlara fütur geldiği vakit, şefkatli bir tokat yerler, intibaha gelerek yine o hizmete girerler. Bu kısmın hâdisatı, yüzden fazladır. Yalnız yirmi hâdiseden on üç on dördü şefkatli tokat yemişler, altı yedisi zecir tokadı görmüşler.",
+    "order_index": 18,
+    "type": "main"
+  },
+  {
+    "id": "sec_18",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 19,
+    "type": "main"
+  },
+  {
+    "id": "sec_19",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 20,
+    "type": "main"
+  },
+  {
+    "id": "sec_20",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 21,
+    "type": "main"
+  },
+  {
+    "id": "sec_21",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte",
+    "order_index": 22,
+    "type": "main"
+  },
+  {
+    "id": "sec_22",
+    "work_id": "lemalar",
+    "title": "Beşinci Nükte",
+    "order_index": 23,
+    "type": "main"
+  },
+  {
+    "id": "sec_23",
+    "work_id": "lemalar",
+    "title": "Altıncı Nükte",
+    "order_index": 24,
+    "type": "main"
+  },
+  {
+    "id": "sec_24",
+    "work_id": "lemalar",
+    "title": "Yedinci Nükte",
+    "order_index": 25,
+    "type": "main"
+  },
+  {
+    "id": "sec_25",
+    "work_id": "lemalar",
+    "title": "Sekizinci Nükte",
+    "order_index": 26,
+    "type": "main"
+  },
+  {
+    "id": "sec_26",
+    "work_id": "lemalar",
+    "title": "Dokuzuncu Nükte",
+    "order_index": 27,
+    "type": "main"
+  },
+  {
+    "id": "sec_27",
+    "work_id": "lemalar",
+    "title": "Onuncu Nükte",
+    "order_index": 28,
+    "type": "main"
+  },
+  {
+    "id": "sec_28",
+    "work_id": "lemalar",
+    "title": "On Birinci Nükte",
+    "order_index": 29,
+    "type": "main"
+  },
+  {
+    "id": "sec_29",
+    "work_id": "lemalar",
+    "title": "İkinci kısım ise amelî ve fer’î olmayıp belki itikadî ve fikrî bir hükümdür. Yalnız imanın nefyini değil belki imanın zıddına gidip bir yol açmaktır. Bu ise bâtılı kabuldür, hakkın aksini ispattır. Bu kısım, imanın yalnız nefyi ve nakîzi değil, imanın zıddıdır. Adem-i kabul değil ki kolay olsun, belki kabul-ü ademdir. Ve o ademi ispat etmekle kabul edilebilir. اَلْعَدَمُ لَا يُثْبَتُ kaidesiyle: Ademin ispatı elbette kolay değildir.",
+    "order_index": 30,
+    "type": "main"
+  },
+  {
+    "id": "sec_30",
+    "work_id": "lemalar",
+    "title": "Mukaddime",
+    "order_index": 31,
+    "type": "main"
+  },
+  {
+    "id": "sec_31",
+    "work_id": "lemalar",
+    "title": "İkinci kısım: Hava gibidir, hissedilir fakat ne görünür ne de tutulur. Ona karşı sen yüzün, ağzın, ruhunla o rahmet nesîmine karşı teveccüh et, kendini mukabil tut. Tenkit elini uzatma, tutamazsın. Ruhunla teneffüs et. Tereddüt eliyle baksan, tenkit ile el atsan o yürür, gider; senin elini mesken ittihaz etmez, ona razı olmaz.",
+    "order_index": 32,
+    "type": "main"
+  },
+  {
+    "id": "sec_32",
+    "work_id": "lemalar",
+    "title": "Üçüncü kısım ise: Nur gibidir, görünür fakat ne hissedilir ne de tutulur. Öyle ise kalbinin gözüyle, ruhunun nazarıyla kendini ona mukabil tut ve gözünü ona tevcih et, bekle; belki kendi kendine gelir. Çünkü nur; el ile tutulmaz, parmaklar ile avlanmaz belki o nur ancak basîret nuruyla avlanır. Eğer harîs ve maddî elini uzatsan ve maddî mizanlarla tartsan sönmese de gizlenir. Çünkü öyle nur, maddîde hapse razı olmadığı gibi kayda da giremez, kesifi kendine mâlik ve seyyid kabul etmez.",
+    "order_index": 33,
+    "type": "main"
+  },
+  {
+    "id": "sec_33",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 34,
+    "type": "main"
+  },
+  {
+    "id": "sec_34",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 35,
+    "type": "main"
+  },
+  {
+    "id": "sec_35",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 36,
+    "type": "main"
+  },
+  {
+    "id": "sec_36",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte",
+    "order_index": 37,
+    "type": "main"
+  },
+  {
+    "id": "sec_37",
+    "work_id": "lemalar",
+    "title": "Beşinci Nükte",
+    "order_index": 38,
+    "type": "main"
+  },
+  {
+    "id": "sec_38",
+    "work_id": "lemalar",
+    "title": "Altıncı Nükte",
+    "order_index": 39,
+    "type": "main"
+  },
+  {
+    "id": "sec_39",
+    "work_id": "lemalar",
+    "title": "Yedinci Nükte",
+    "order_index": 40,
+    "type": "main"
+  },
+  {
+    "id": "sec_40",
+    "work_id": "lemalar",
+    "title": "Mukaddime: Ey insan! Bil ki insanların ağzından çıkan ve dinsizliği işmam eden dehşetli kelimeler var. Ehl-i iman, bilmeyerek istimal ediyorlar. Mühimlerinden üç tanesini beyan edeceğiz:",
+    "order_index": 41,
+    "type": "main"
+  },
+  {
+    "id": "sec_41",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte: Risale-i Nur’un en mühim bir esası şefkat olmasından nisa taifesi, şefkat kahramanları bulunmaları cihetiyle daha ziyade Risale-i Nur’la fıtraten alâkadardırlar. Ve lillahi’l-hamd, bu fıtrî alâkadarlık çok yerlerde hissediliyor. Bu şefkatteki fedakârlık, hakiki bir ihlası ve mukabelesiz bir fedakârlık manasını ifade ettiğinden şimdi bu zamanda pek çok ehemmiyeti var.",
+    "order_index": 42,
+    "type": "main"
+  },
+  {
+    "id": "sec_42",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte: Bu sene inzivada iken ve hayat-ı içtimaiyeden çekildiğim halde bazı Nurcu kardeşlerimin ve hemşirelerimin hatırları için dünyaya baktım. Benimle görüşen ekseri dostlardan, kendi ailevî hayatlarından şekvalar işittim. “Eyvah!” dedim. İnsanın hususan Müslüman’ın tahassungâhı ve bir nevi cenneti ve küçük bir dünyası aile hayatıdır. Bu da mı bozulmaya başlamış, dedim. Sebebini aradım. Bildim ki nasıl, İslâmiyet’in hayat-ı içtimaiyesine ve dolayısıyla din-i İslâm’a zarar vermek için gençleri yoldan çıkarmak ve gençlik hevesatıyla sefahete sevk etmek için bir iki komite çalışıyormuş. Aynen öyle de bîçare nisa taifesinin gafil kısmını dahi yanlış yollara sevk etmek için bir iki komitenin tesirli bir surette perde altında çalıştığını hissettim. Ve bildim ki bu millet-i İslâm’a bir dehşetli darbe, o cihetten geliyor.",
+    "order_index": 43,
+    "type": "main"
+  },
+  {
+    "id": "sec_43",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte: Aziz hemşirelerim! Kat’iyen biliniz ki daire-i meşruanın haricindeki zevklerde, lezzetlerde; on derece onlardan ziyade elemler ve zahmetler bulunduğunu Risale-i Nur yüzer kuvvetli delillerle, hâdisatlarla ispat etmiştir. Uzun tafsilatı Risale-i Nur’da bulabilirsiniz.",
+    "order_index": 44,
+    "type": "main"
+  },
+  {
+    "id": "sec_44",
+    "work_id": "lemalar",
+    "title": "Altıncı Mektup’ta izah edildiği gibi; o gece ıssız, sessiz, yalnız ağaçların hışırtılarından ve hemhemelerinden gelen hazîn bir sadâ, bir ses rikkatime, ihtiyarlığıma, gurbetime ziyade dokundu. İhtiyarlık bana ihtar etti ki gündüz nasıl şu siyah bir kabre tebeddül etti, dünya siyah kefenini giydi, öyle de senin ömrünün gündüzü de geceye ve dünya gündüzü de berzah gecesine ve hayatın yazı dahi ölümün kış gecesine inkılab edeceğini kalbimin kulağına söyledi. Nefsim bilmecburiye dedi: Evet, ben vatanımdan garib olduğum gibi bu elli sene zarfındaki ömrümde zeval bulan sevdiklerimden ayrı düştüğümden ve arkalarında onlara ağlayarak kaldığımdan bu vatan gurbetinden daha ziyade hazîn ve elîm bir gurbettir. Ve bu gece ve dağın garibane vaziyetindeki hazîn gurbetten daha ziyade hazîn ve elîm bir gurbete yakınlaşıyorum ki bütün dünyadan birden müfarakat zamanı yakınlaştığını ihtiyarlık bana haber veriyor.",
+    "order_index": 45,
+    "type": "main"
+  },
+  {
+    "id": "sec_45",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte",
+    "order_index": 46,
+    "type": "main"
+  },
+  {
+    "id": "sec_46",
+    "work_id": "lemalar",
+    "title": "İfade-i Meram",
+    "order_index": 47,
+    "type": "main"
+  },
+  {
+    "id": "sec_47",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte",
+    "order_index": 48,
+    "type": "main"
+  },
+  {
+    "id": "sec_48",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte",
+    "order_index": 49,
+    "type": "main"
+  },
+  {
+    "id": "sec_49",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte’nin Birinci Noktası: Onuncu Söz’de işaret edildiği gibi ism-i Hakem’in tecelli-i a’zamı şu kâinatı öyle bir kitap hükmüne getirmiş ki her sahifesinde yüzer kitap yazılmış ve her satırında yüzer sahife dercedilmiş ve her kelimesinde yüzer satır mevcuddur ve her harfinde yüzer kelime var ve her noktasında kitabın muhtasar bir fihristeciği bulunur bir tarza getirmiştir. O kitabın sahifeleri, satırları, tâ noktalarına kadar yüzer cihette nakkaşını, kâtibini öyle vuzuhla gösteriyor ki o kitab-ı kâinatın müşahedesi, kendi vücudundan yüz derece daha ziyade kâtibinin vücudunu ve vahdetini ispat eder. Çünkü bir harf, kendi vücudunu bir harf kadar ifade ettiği halde, kâtibini bir satır kadar ifade ediyor.",
+    "order_index": 50,
+    "type": "main"
+  },
+  {
+    "id": "sec_50",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte’nin İkinci Noktası: İki meseledir.",
+    "order_index": 51,
+    "type": "main"
+  },
+  {
+    "id": "sec_51",
+    "work_id": "lemalar",
+    "title": "İkinci kısımda, zahirî dost ve kalbi muarız olanların bilerek verdikleri zarara mukabil, zecirkârane yedikleri tokatlarından bahsedilecekti. Fakat lüzumsuz bazıların hatırlarını rencide etmemek için yüzer hâdisattan birinci kısmın yalnız on beş adedinden bahsedildi. İkinci kısım şimdilik yazılmadı.",
+    "order_index": 52,
+    "type": "main"
+  },
+  {
+    "id": "sec_52",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte: مَنْ تَمَسَّكَ بِسُنَّتٖى عِنْدَ فَسَادِ اُمَّتٖى فَلَهُ اَجْرُ مِاَةِ شَهٖيدٍ hadîs-i şerifinin sırrını beyan ediyor.",
+    "order_index": 53,
+    "type": "main"
+  },
+  {
+    "id": "sec_53",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte: İmam-ı Rabbanî (ra) “Sünnet-i seniyenin ittibaı, en haşmetli en letafetli en emniyetli tarîkattır.” demesine dairdir.",
+    "order_index": 54,
+    "type": "main"
+  },
+  {
+    "id": "sec_54",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte: Sünnet-i seniyenin ehemmiyeti hakkında İmam-ı Rabbanî’nin hükmünü tasdik ettiğini beyan ediyor.",
+    "order_index": 55,
+    "type": "main"
+  },
+  {
+    "id": "sec_55",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte: اَلْمَوْتُ حَقٌّ hakikatinin kapısıyla, gayet acib bir âlem-i manevîye ait bir seyahat-i ruhiyeyi beyan ediyor.",
+    "order_index": 56,
+    "type": "main"
+  },
+  {
+    "id": "sec_56",
+    "work_id": "lemalar",
+    "title": "Beşinci Nükte: قُلْ اِنْ كُنْتُمْ تُحِبُّونَ اللّٰهَ فَاتَّبِعُونٖى يُحْبِبْكُمُ اللّٰهُ âyetinin sarahatiyle: Muhabbetullah, kat’î bir kıyas-ı mantıkî ile sünnet-i seniyenin ittibaını intac ettiğine dairdir.",
+    "order_index": 57,
+    "type": "main"
+  },
+  {
+    "id": "sec_57",
+    "work_id": "lemalar",
+    "title": "Altıncı Nükte: كُلُّ بِدْعَةٍ ضَلَالَةٌ وَكُلُّ ضَلَالَةٍ فِى النَّارِ hadîsinin mühim bir sırrını ve اَلْيَوْمَ اَكْمَلْتُ لَكُمْ دٖينَكُمْ âyetinin bir hakikatini tefsir ediyor.",
+    "order_index": 58,
+    "type": "main"
+  },
+  {
+    "id": "sec_58",
+    "work_id": "lemalar",
+    "title": "Yedinci Nükte: Sünnet-i seniyenin her bir meselesi altında bir edep bulunduğunu beyan eder. “Allâmü’l-guyub’a karşı edep ve hicab nasıl olabilir ve ne demektir?” sualine karşı, güzel bir cevaptır.",
+    "order_index": 59,
+    "type": "main"
+  },
+  {
+    "id": "sec_59",
+    "work_id": "lemalar",
+    "title": "Sekizinci Nükte: Sünnet-i seniyenin bir kısmı şefkat-i Ahmediyenin (asm) tereşşuhatı olduğu gibi Zat-ı Ahmediye aleyhissalâtü vesselâmın nasıl bir maden-i şefkat olduğunu gösteriyor.",
+    "order_index": 60,
+    "type": "main"
+  },
+  {
+    "id": "sec_60",
+    "work_id": "lemalar",
+    "title": "Dokuzuncu Nükte: Sünnet-i seniyenin her bir nevine tamamen bilfiil ittiba etmek, ehass-ı havassa mahsus olduğu halde; herkes niyeti ile ve kasd ile ve taraftarane ve iltizamkârane ve takdirkârane talip olmakla, o ittiba-ı tammeden tam hissedar olabilir. Ehl-i tarîkatın ezkâr ve evrad ve meşrepleri, esasat-ı sünnete muhalefet etmemek şartıyla bid’ata dâhil olmadığını, olsa olsa bid’a-i hasene olduğunu beyan eder.",
+    "order_index": 61,
+    "type": "main"
+  },
+  {
+    "id": "sec_61",
+    "work_id": "lemalar",
+    "title": "Onuncu Nükte: قُلْ اِنْ كُنْتُمْ تُحِبُّونَ اللّٰهَ فَاتَّبِعُونٖى يُحْبِبْكُمُ اللّٰهُ muhabbet-i İlahiyeye ve o muhabbetin neticesinde sünnet-i seniyenin ittibaına dair, üç nokta ile gayet merak-âver ve mühim ve güzel beyanat var. Hattâ kitabın nakşında şu Onuncu Nükte’nin bir şuâ-ı kerametini, tevafukla nazara gösteriyor.",
+    "order_index": 62,
+    "type": "main"
+  },
+  {
+    "id": "sec_62",
+    "work_id": "lemalar",
+    "title": "On Birinci Nükte: Zat-ı Ahmediye’nin sünnet-i seniyesinin menbaı hem akvali hem ahvali hem ef’ali olduğunu ve her birisi hem farz hem nevafil hem âdât aksamına inkısam ettiğini ve Kur’an’da وَاِنَّكَ لَعَلٰى خُلُقٍ عَظٖيمٍ sırrıyla, nev-i beşer içinde manen ve ruhen olduğu gibi mizac-ı cismanîsinin cihetiyle dahi en mutedil noktasında ve kuva-yı cismaniye ve nefsiyede nokta-i itidalin vasatında ve kemalinde bulunan ferd-i ferîd, Resul-i Ekrem aleyhissalâtü vesselâm olduğunu ispat ediyor.",
+    "order_index": 63,
+    "type": "main"
+  },
+  {
+    "id": "sec_63",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte: Umum rızık doğrudan doğruya Kadîr-i Zülcelal’in elinde olduğunu ve hazine-i rahmetinden çıktığını beyan ederek, rızıksızlıktan ölmek olmadığını ispat eder.",
+    "order_index": 64,
+    "type": "main"
+  },
+  {
+    "id": "sec_64",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte: Küre-i arzın, münkir coğrafyacı feylesofların rağmına olarak, yedi vecihle yedi tabaka olduğunu ve semavat dahi kozmoğrafyacı feylesofların rağmına olarak, yedi vecihle yedi tabaka olduğunu ispat eder. Bu risale, öyle geveze mülhidlere bir licamdır, yani gemdir.",
+    "order_index": 65,
+    "type": "main"
+  },
+  {
+    "id": "sec_65",
+    "work_id": "lemalar",
+    "title": "Birinci Nükte: Cenab-ı Hak, beşere ihsan ettiği bi’l-cümle nimetlerin mukabilinde beşerden ancak bir “şükür” istediğini; iktisat hem nimetlere karşı bir ihtiram hem Cenab-ı Hakk’a bir şükr-ü manevî hem nimetin bereketlenmesine bir vesile olduğunu… İsraf ise Mün’im-i Hakiki’nin nimetlerine bir hürmetsizlik ve bir tahkir olmakla, vahim neticeleri bulunduğunu beyan eder.",
+    "order_index": 66,
+    "type": "main"
+  },
+  {
+    "id": "sec_66",
+    "work_id": "lemalar",
+    "title": "İkinci Nükte: Vücud-u beşer bir saray, mide bir efendi, ağızdaki kuvve-i zaika bir kapıcı, et’imenin verdiği lezzetler birer bahşiş olduğunu göstererek; vücudun idaresi iktisat ile temin edildiğini, israf ise muvazenesizliği ve hastalıkları tevlid ettiğini beyan eder.",
+    "order_index": 67,
+    "type": "main"
+  },
+  {
+    "id": "sec_67",
+    "work_id": "lemalar",
+    "title": "Üçüncü Nükte: Kuvve-i zaika, maddî cesede inhisar etmekten ziyade; akla, ruha ve kalbe baktığından israf etmemek, zillet ve sefalete düşmemek ve o kuvve-i zaikayı taşıyan lisanı şükürde istimal etmek şartıyla leziz taamların tercih ve takip edilebileceğini ve bu hakikat, hârika kuvve-i kudsiye sahibi Şah-ı Geylanî (ks) Hazretlerinin ihya-yı emvat keramet-i azîmesiyle izah edilerek ruh cesede, kalp nefse, akıl mideye hâkim olduktan sonra, şükrün münteha derecelerine vâsıl olmakla mümkün olduğunu beyan eder.",
+    "order_index": 68,
+    "type": "main"
+  },
+  {
+    "id": "sec_68",
+    "work_id": "lemalar",
+    "title": "Dördüncü Nükte: İktisat sebeb-i bereket olduğundan muktesidlerin hayatları izzetle geçtiğini; israf edenlerin her vakit sefalete, hattâ dilenciliğe kadar düştüklerini, hattâ haysiyet ve namuslarını ve hattâ mukaddesat-ı diniyelerini bile feda ettiklerini ve iktisadın menafi-i azîmesini ve israfın dehşetli zararlarını ve sehavetin güzelliği içinde bir oduncu ihtiyarın istiğnasını zikrederek, iktisadın kıymet ve izzetini, sehavetin fevkine çıkarır.",
+    "order_index": 69,
+    "type": "main"
+  },
+  {
+    "id": "sec_69",
+    "work_id": "lemalar",
+    "title": "Beşinci Nükte: Gayet merak-âver bir bal vakıasıyla, iktisattaki izzet ve bereketin ve israftaki sefalet ve mahrumiyetin bir sırrını, pek hakikatli bir surette izah eder.",
+    "order_index": 70,
+    "type": "main"
+  },
+  {
+    "id": "sec_70",
+    "work_id": "lemalar",
+    "title": "Altıncı Nükte: Hısset ile hıssetten ayrı olan iktisat haslet-i memduhasını, Hazret-i Ömer’in oğlu Hazret-i Abdullah’ın (ra) bir vakıasıyla öyle izah eder ki iktisadın hısset olmadığını ve israftan ayrı olan sehavetin derece-i kemalini gösterir.",
+    "order_index": 71,
+    "type": "main"
+  },
+  {
+    "id": "sec_71",
+    "work_id": "lemalar",
+    "title": "Yedinci Nükte: İsraf hırsı, hırs kanaatsizliği, kanaatsizlik haybet ve hasareti ve hem ihlası kaçırmakla a’mal-i uhreviyeyi zedelemek gibi üç mühim neticeyi tevlid ettiğini ve zekâvetleri yüzünden maruf ediblerin dilenciliğe kadar tenezzül ettiklerini ve bir kısım âlimlerin hırs yüzünden dıyk-ı maişete giriftar olduklarını temsillerle o kadar güzel izah eder ki fevkinde beyan ve izah tasavvur edilemez.",
+    "order_index": 72,
+    "type": "main"
+  },
+  {
+    "id": "sec_72",
+    "work_id": "lemalar",
+    "title": "Mukaddime: İnsanların ağzından çıkan ve dinsizliği işmam eden ve ehl-i imanın bilmeyerek istimal ettikleri kelimelerin en mühimlerinden üç tanesini beyan eder.",
+    "order_index": 73,
+    "type": "main"
+  },
+  {
+    "id": "sec_73",
+    "work_id": "lemalar",
+    "title": "ÜÇÜNCÜ NÜKTE:",
+    "order_index": 74,
+    "type": "main"
+  },
+  {
+    "id": "sec_74",
+    "work_id": "lemalar",
+    "title": "DÖRDÜNCÜ NÜKTE:",
+    "order_index": 75,
+    "type": "main"
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "id": "sec_7",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Mukaddime",
+      "order_index": 0
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 1
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَمَا خَلَقْتُ الْجِنَّ وَالْاِنْسَ اِلَّا لِيَعْبُدُونِ",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu âyet-i uzmanın sırrıyla, insanın bu dünyaya gönderilmesinin hikmeti ve gayesi; Hâlık-ı kâinat’ı tanımak ve ona iman edip ibadet etmektir. Ve o insanın vazife-i fıtratı ve farîza-i zimmeti, marifetullah ve iman-ı billahtır ve iz’an ve yakîn ile vücudunu ve vahdetini tasdik etmektir.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, fıtraten daimî bir hayat ve ebedî yaşamak isteyen ve hadsiz emelleri ve nihayetsiz elemleri bulunan bîçare insana, elbette o hayat-ı ebediyenin üssü’l-esası ve anahtarı olan iman-ı billah ve marifetullah ve vesilelerinden başka olan şeyler ve kemalâtlar, o insana nisbeten aşağıdır. Belki çoğunun kıymetleri yoktur.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’da bu hakikat kuvvetli bürhanlarla ispat edildiğinden, bu hakikati Risale-i Nur’a havale ederek yalnız o yakîn-i imanîyi bu asırda sarsan ve tereddüt veren iki vartayı dört mesele içinde beyan ederiz.",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci vartadan çare-i necat",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "İki meseledir.",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Mesele: Otuz Birinci Mektup’un On Üçüncü Lem’a’sında tafsilen ispat edildiği gibi umumî meselelerde ispata karşı nefyin kıymeti yoktur ve kuvveti pek azdır.",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, ramazan-ı şerifin başında hilâli görmek hususunda, iki âmî şahit hilâli ispat etseler ve binlerle eşraf ve âlimler “Görmedik.” deyip nefyetseler onların nefiyleri kıymetsiz ve kuvvetsizdir. Çünkü ispatta birbirine kuvvet verir, birbirine tesanüd ve icma var. Nefiyde ise bir olsa bin olsa farkları yoktur; herkes kendi başına kalır, infiradî olur.",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü ispat eden harice bakar ve nefsü’l-emre göre hükmeder. Mesela, misalimizde olduğu gibi biri dese: “Gökte ay vardır.” Diğer arkadaşı parmağını oraya basar, ikisi birleşip kuvvetleşirler.",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Nefiy ve inkârda ise nefsü’l-emre bakmaz ve bakamaz. Çünkü “Hususi olmayan ve has bir yere bakmayan bir nefiy ispat edilmez.” meşhur bir düsturdur. Mesela, bir şeyi dünyada var diye ben ispat etsem, sen de “Dünyada yok.” desen; benim bir işaretimle kolayca ispat edilebilen o şeyin sen nefyini yani ademini ispat etmek için bütün dünyayı aramak ve taramak ve göstermek, belki geçmiş zamanların her tarafını dahi görmek lâzım geliyor. Sonra “Yoktur, vuku bulmamıştır.” diyebilirsin.",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Madem nefiy ve inkâr edenler nefsü’l-emre bakmazlar, belki kendi nefislerine ve akıllarına ve gözlerine bakıp hükmediyorlar. Elbette birbirine kuvvet veremezler ve zahîr olmazlar. Çünkü görmeye ve bilmeye mani olan perdeler, sebepler ayrı ayrıdırlar. Herkes “Ben görmüyorum, benim yanımda ve itikadımda yoktur.” diyebilir. Yoksa “Vakide yoktur.” diyemez. Eğer dese hususan umum kâinata bakan iman meselelerinde dünya kadar büyük bir yalan olur ki doğru diyemez ve doğrultulmaz.",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl, ispatta netice birdir, vâhiddir, tesanüd olur. Nefiyde ise bir değildir, müteaddiddir. Ya “yanımda ve nazarımda” veya “itikadımda” gibi kayıtların herkese göre taaddüdü ile neticeler dahi taaddüd eder, daha tesanüd olmaz.",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu hakikat noktasında imana karşı gelen kâfirlerin ve münkirlerin kesretinin ve zahiren çokluğunun kıymeti yoktur. Ve mü’minin yakînine ve imanına hiç tereddüt vermemek lâzım iken bu asırda Avrupa feylesoflarının nefiy ve inkârları, bir kısım bedbaht meftunlarına tereddüt verip yakînlerini izale ve saadet-i ebediyelerini mahvetmiş. Ve insandan her günde otuz bin adama isabet eden ölümü, mevt ve eceli bir terhis manasından çıkarıp idam-ı ebedî suretine çevirmiş. Kapısı kapanmayan kabir, daima idamını o münkire ihtar etmekle, lezzetli hayatını elîm elemlerle zehirliyor. İşte, iman ne kadar büyük bir nimet ve hayatın hayatı olduğunu anla!",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Mesele: Bir fennin veya bir sanatın medar-ı münakaşa olmuş bir meselesinde, o fennin ve o sanatın haricindeki adamlar ne kadar büyük ve âlim ve sanatkâr da olsalar sözleri onda geçmez, hükümleri hüccet olmaz; o fennin icma-ı ulemasına dâhil sayılmazlar.",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela büyük bir mühendisin, bir hastalığın keşfinde ve tedavisinde bir küçük tabip kadar hükmü geçmez. Ve bilhassa maddiyatta çok tevaggul eden ve gittikçe maneviyattan tebâud eden ve nura karşı gabileşen ve kabalaşan ve aklı gözüne inen en büyük bir feylesofun münkirane sözü, maneviyatta nazara alınmaz ve kıymetsizdir.",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "Acaba yerde iken arş-ı a’zamı temaşa eden, hârika bir deha-yı kudsî sahibi olan ve doksan sene maneviyatta terakki edip çalışan ve hakaik-i imaniyeyi ilmelyakîn, aynelyakîn hattâ hakkalyakîn suretinde keşfeden Şeyh-i Geylanî (ks) gibi yüz binler ehl-i hakikatin ittifak ettikleri tevhidî ve kudsî ve manevî meselelerde, maddiyatın en dağınık ve kesretin en cüz’î teferruatına dalan ve sersemleşen ve boğulan feylesofların sözleri kaç para eder ve inkârları ve itirazları, gök gürültüsüne karşı sivrisineğin sesi gibi sönük olmaz mı?",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "Hakaik-i İslâmiyeye zıddiyet gösterip mübareze eden küfrün mahiyeti bir inkârdır, bir cehildir, bir nefiydir. Sureten ispat ve vücudî görülse de manası ademdir, nefiydir.",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "İman ise ilimdir, vücudîdir, ispattır, hükümdür. Her bir menfî meselesi dahi bir müsbet hakikatin unvanı ve perdesidir.",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer imana karşı mübareze eden ehl-i küfür, gayet müşkülat ile menfî itikadlarını kabul-ü adem ve tasdik-i adem suretinde ispat ve kabul etmeye çalışsalar o küfür, bir cihette yanlış bir ilim ve hata bir hüküm sayılabilir. Yoksa irtikâbı çok kolay olan yalnız adem-i kabul ve inkâr ve adem-i tasdik ise cehl-i mutlaktır, hükümsüzlüktür.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Elhasıl, itikad-ı küfriye iki kısımdır:",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "Birisi: Hakaik-i İslâmiyeye bakmıyor. Kendine mahsus yanlış bir tasdik ve bâtıl bir itikad ve hata bir kabuldür ve zalim bir hükümdür. Bu kısım bahsimizden hariçtir. O bize karışmaz, biz de ona karışmayız.",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Hakaik-i imaniyeye karşı çıkar, muaraza eder. Bu dahi iki kısımdır:",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "Birisi: Adem-i kabuldür. Yalnız ispatı tasdik etmemektir. Bu ise bir cehildir, bir hükümsüzlüktür ve kolaydır. Bu da bahsimizden hariçtir.",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Kabul-ü ademdir. Kalben, ademini tasdik etmektir. Bu kısım ise bir hükümdür, bir itikaddır, bir iltizamdır. Hem iltizamı için nefyini ispat etmeye mecburdur.",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "Nefiy dahi iki kısımdır:",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "Birisi: “Has bir mevkide ve hususi bir cihette yoktur.” der. Bu kısım ise ispat edilebilir. Bu kısım da bahsimizden hariçtir.",
+      "order_index": 27
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "intro",
+    "work_id": "kastamonu_lahikasi",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "kastamonu_lahikasi",
+    "title": "İkinci Kısım ise: 1948-1949 Afyon Cezaevinde yirmi ay mevkufen kalıp tahliyeden sonra tekrar Emirdağı’na avdet edip orada bir müddet kaldıktan sonra 1951 yılında Eskişehir’de iki ay ikameti müteakip, oradan da “Gençlik Rehberi” mahkemesi münasebetiyle iki defa İstanbul’a gelip üçer ay İstanbul’da kaldığı 1952-1953 tarihlerinde ve daha sonra yine Emirdağı’nda iken talebelerine yazdığı mektuplar ve mahkemelere ve davalara temas eden meselelere dair müteaddid bahislerdir. 1953’ten sonra ikamet eylediği Isparta’da da ara sıra yazdığı mektuplar da vardır.",
+    "order_index": 2,
+    "type": "main"
+  },
+  {
+    "id": "sec_2",
+    "work_id": "kastamonu_lahikasi",
+    "title": "Mukaddime-i Haşriye’nin makamatını istiyorsunuz. Şimdiki vaziyetim hiçbir vecihle müsaade etmediği gibi haşre dair yazılan hakikatler, bürhanlar umuma nisbeten ihtiyaca tam kâfi olduğundan çabuk yazmasına manen icbar edilmiyorum. Bir parça tehir edildi ve tacil edilmedi. Hem ben, burada kayıtlar altındayım.",
+    "order_index": 3,
+    "type": "main"
+  }
+]

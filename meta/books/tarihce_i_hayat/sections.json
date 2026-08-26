@@ -1,0 +1,149 @@
+[
+  {
+    "id": "intro",
+    "work_id": "tarihce_i_hayat",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "tarihce_i_hayat",
+    "title": "Birinci Kısım",
+    "order_index": 2,
+    "type": "main"
+  },
+  {
+    "id": "sec_2",
+    "work_id": "tarihce_i_hayat",
+    "title": "Mukaddime olarak söylüyorum: Mert olan cinayete tenezzül etmez. Şayet isnad olunsa cezadan korkmaz. Hem de haksız yere idam olunsam iki şehit sevabını kazanırım. Şayet hapiste kalsam böyle hürriyeti lafızdan ibaret bulunan gaddar bir hükûmetin en rahat mevkii hapishane olsa gerektir. Mazlumiyetle ölmek, zalimiyetle yaşamaktan daha hayırlıdır.",
+    "order_index": 3,
+    "type": "main"
+  },
+  {
+    "id": "sec_3",
+    "work_id": "tarihce_i_hayat",
+    "title": "İfade-i Meram",
+    "order_index": 4,
+    "type": "main"
+  },
+  {
+    "id": "sec_4",
+    "work_id": "tarihce_i_hayat",
+    "title": "İkinci Kısım",
+    "order_index": 5,
+    "type": "main"
+  },
+  {
+    "id": "sec_5",
+    "work_id": "tarihce_i_hayat",
+    "title": "Altıncı Mektup",
+    "order_index": 6,
+    "type": "main"
+  },
+  {
+    "id": "sec_6",
+    "work_id": "tarihce_i_hayat",
+    "title": "Altıncı Mektup’ta izah edildiği gibi; o gece ıssız, sessiz, yalnız ağaçların hışırtılarından ve hemhemelerinden gelen hazîn bir sadâ, bir ses rikkatime, ihtiyarlığıma, gurbetime ziyade dokundu. İhtiyarlık bana ihtar etti ki gündüz nasıl şu siyah bir kabre tebeddül etti, dünya siyah kefenini giydi, öyle de senin ömrünün gündüzü de geceye ve dünya gündüzü de berzah gecesine ve hayatın yazı dahi ölümün kış gecesine inkılab edeceğini kalbimin kulağına söyledi. Nefsim bilmecburiye dedi: Evet, ben vatanımdan garib olduğum gibi bu elli sene zarfındaki ömrümde zeval bulan sevdiklerimden ayrı düştüğümden ve arkalarında onlara ağlayarak kaldığımdan bu vatan gurbetinden daha ziyade hazîn ve elîm bir gurbettir. Ve bu gece ve dağın garibane vaziyetindeki hazîn gurbetten daha ziyade hazîn ve elîm bir gurbete yakınlaşıyorum ki bütün dünyadan birden müfarakat zamanı yakınlaştığını ihtiyarlık bana haber veriyor.",
+    "order_index": 7,
+    "type": "main"
+  },
+  {
+    "id": "sec_7",
+    "work_id": "tarihce_i_hayat",
+    "title": "Birinci Nükte: Yirmi Sekizinci Mektup’un Yedinci Mesele’sinde yedi sekiz küllî ve manevî inayat-ı İlahiyeden hissettiğimiz bir işaret-i gaybiyeyi “Sekizinci İnayet” namıyla “tevafukat” tabiri altındaki nakışta o işaratın cilvesini gördüğümüzü iddia etmiştik. Ve iddia ediyoruz ki: Bu yedi sekiz küllî inayatlar, o derece kuvvetli ve kat’îdirler ki her birisi tek başıyla o işarat-ı gaybiyeyi ispat eder. Farz-ı muhal olarak bir kısmı zayıf görülse hattâ inkâr edilse o işarat-ı gaybiyenin kat’iyetine halel vermez. O sekiz inayatı inkâr edemeyen, o işaratı inkâr edemez.",
+    "order_index": 8,
+    "type": "main"
+  },
+  {
+    "id": "sec_8",
+    "work_id": "tarihce_i_hayat",
+    "title": "Üçüncü Nükte: İşaret-i hâssa, işaret-i âmme münasebetiyle bir sırr-ı dakik-i rububiyet ve Rahmaniyete işaret edeceğiz:",
+    "order_index": 9,
+    "type": "main"
+  },
+  {
+    "id": "sec_9",
+    "work_id": "tarihce_i_hayat",
+    "title": "Üçüncü Kısım",
+    "order_index": 10,
+    "type": "main"
+  },
+  {
+    "id": "sec_10",
+    "work_id": "tarihce_i_hayat",
+    "title": "İkinci kısım mahremler ise Dârülhikmette ve dokuz sene evvel Avrupa itirazatına ve Doktor Abdullah Cevdet’in dinsizce hücumlarına karşı yazdığım bir iki risale ve bazı memurların bana insafsızcasına ve gaddarane tecavüzlerine karşı şekva suretinde yazdığım iki küçük risaledir ki son müdafaatımda bahsetmişim. Bu dört risalenin telifinden bir zaman sonra, serbestî kanunlarına ve hükûmetin işine hiçbir cihette temas etmemek için onların neşrini men’edip “Mahremdir.” demişim; en has bir iki kardeşime mahsus kalmıştır. Delilim de şudur ki: Bu kadar taharriyatınızda, o mahrem denilen risalelerin hiçbir yerde bulunmamasıdır. Yalnız umumunun fihristesi elinize geçmiş, o fihristeye göre bu noktalardan istizaha lüzum görülmüş; ben de cevap vermişim, o cevap da zaptınıza geçmiştir.",
+    "order_index": 11,
+    "type": "main"
+  },
+  {
+    "id": "sec_11",
+    "work_id": "tarihce_i_hayat",
+    "title": "Onuncu Söz’ün tevafukatındandır ki Onuncu Söz’ün satırları hem telif tarihine hem dini dünyadan tefrik eden lâdinî cumhuriyetin ilanına tevafuk ediyor ki haşrin inkârına bir emaredir. Yani o fıkranın meali budur: “Madem cumhuriyet dine, dinsizliğe ilişmiyor, prensibiyle bîtarafane kalıyor; ehl-i dalalet ve ilhad, cumhuriyetin bu bîtaraflığından istifade etmekle, haşrin inkârını izhar etmeleri muhtemeldir.” demektir. Yoksa hükûmete bir taarruz değildir belki hükûmetin bîtarafane vaziyetine işarettir. Elhak, bundan dokuz sene evvel Onuncu Söz, sekiz yüz nüsha yayılmasıyla ehl-i dalaletin kalplerindeki inkâr-ı haşri kalplerinde sıkıştırdı; lisanlarına getirmelerine meydan vermedi, ağızlarını tıkadı. Onuncu Söz’ün hârika bürhanlarını gözlerine soktu.",
+    "order_index": 12,
+    "type": "main"
+  },
+  {
+    "id": "sec_12",
+    "work_id": "tarihce_i_hayat",
+    "title": "Dördüncü Kısım",
+    "order_index": 13,
+    "type": "main"
+  },
+  {
+    "id": "sec_13",
+    "work_id": "tarihce_i_hayat",
+    "title": "Mukaddime",
+    "order_index": 14,
+    "type": "main"
+  },
+  {
+    "id": "sec_14",
+    "work_id": "tarihce_i_hayat",
+    "title": "Beşinci Kısım",
+    "order_index": 15,
+    "type": "main"
+  },
+  {
+    "id": "sec_15",
+    "work_id": "tarihce_i_hayat",
+    "title": "Altıncı Kısım",
+    "order_index": 16,
+    "type": "main"
+  },
+  {
+    "id": "sec_16",
+    "work_id": "tarihce_i_hayat",
+    "title": "Mukaddime",
+    "order_index": 17,
+    "type": "main"
+  },
+  {
+    "id": "sec_17",
+    "work_id": "tarihce_i_hayat",
+    "title": "Yedinci Kısım",
+    "order_index": 18,
+    "type": "main"
+  },
+  {
+    "id": "sec_18",
+    "work_id": "tarihce_i_hayat",
+    "title": "İkinci kısım tefsir ise: Kur’an’ın imanî olan hakikatlerini kuvvetli hüccetlerle beyan ve ispat ve izah etmektir. Bu kısmın pek çok ehemmiyeti var. Zahir malûm tefsirler, bu kısmı bazen mücmel bir tarzda dercediyorlar. Fakat Risale-i Nur; doğrudan doğruya bu ikinci kısmı esas tutmuş, emsalsiz bir tarzda muannid feylesofları susturan bir manevî tefsirdir.",
+    "order_index": 19,
+    "type": "main"
+  },
+  {
+    "id": "sec_19",
+    "work_id": "tarihce_i_hayat",
+    "title": "Sekizinci Kısım",
+    "order_index": 20,
+    "type": "main"
+  },
+  {
+    "id": "sec_20",
+    "work_id": "tarihce_i_hayat",
+    "title": "İkinci kısım tefsir ise: Kur’an’ın imanî olan hakikatlerini kuvvetli hüccetlerle beyan ve ispat ve izah etmektir. Bu kısmın çok ehemmiyeti var. Zahir malûm tefsirler, bu kısmı bazen mücmel bir tarzda dercediyorlar fakat Risale-i Nur, doğrudan doğruya bu ikinci kısmı esas tutmuş, emsalsiz bir tarzda muannid feylesofları da susturan bir manevî tefsirdir.",
+    "order_index": 21,
+    "type": "main"
+  }
+]

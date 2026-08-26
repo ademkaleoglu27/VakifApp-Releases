@@ -1,0 +1,16 @@
+[
+  {
+    "id": "intro",
+    "work_id": "munazarat",
+    "title": "Giriş",
+    "order_index": 1,
+    "type": "main"
+  },
+  {
+    "id": "sec_1",
+    "work_id": "munazarat",
+    "title": "İkinci kısım olan ehl-i tefriti gördüm. Dini bilmiyorlar, ehl-i İslâm’a insafsızca itiraz ediyorlar, taassubu delil gösteriyorlardı. İşte şimdi Osmanlılıktan tecerrüd edip tam tamına Avrupa’ya temessül etmek fikrinde bulunanlar, şu kısımdandır.",
+    "order_index": 2,
+    "type": "main"
+  }
+]

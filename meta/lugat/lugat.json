@@ -1,0 +1,36 @@
+{
+    "schemaVersion": "1.0.0",
+    "lang": "tr",
+    "entries": [
+        {
+            "key": "aciz",
+            "forms": [
+                "âciz",
+                "aciz"
+            ],
+            "meaning": "Güçsüz, zayıf, elinden bir şey gelmeyen.",
+            "sources": [
+                "Sözler",
+                "Mektubat"
+            ],
+            "tags": [
+                "sıfat"
+            ]
+        },
+        {
+            "key": "fakir",
+            "forms": [
+                "fakir",
+                "fukara"
+            ],
+            "meaning": "Yoksul, muhtaç, Allah'a muhtaç olduğunu bilen.",
+            "sources": [
+                "Sözler"
+            ],
+            "tags": [
+                "sıfat",
+                "isim"
+            ]
+        }
+    ]
+}

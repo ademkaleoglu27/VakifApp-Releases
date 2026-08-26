@@ -1,0 +1,35 @@
+{
+  "id": "sec_2",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "İkinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Yirmi Altıncı Söz’de sırr-ı kadere dair beyan edildiği gibi musibet ve hastalıklarda insanların şekvaya üç vecihle hakları yoktur.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Birinci Vecih: Cenab-ı Hak, insana giydirdiği vücud libasını sanatına mazhar ediyor. İnsanı bir model yapmış, o vücud libasını o model üstünde keser, biçer, tebdil eder, tağyir eder; muhtelif esmasının cilvesini gösterir. Şâfî ismi hastalığı istediği gibi Rezzak ismi de açlığı iktiza ediyor. Ve hâkeza… مَالِكُ الْمُلْكِ يَتَصَرَّفُ فٖى مُلْكِهٖ كَيْفَ يَشَٓاءُ",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "İkinci Vecih: Hayat musibetlerle, hastalıklarla tasaffi eder, kemal bulur, kuvvet bulur, terakki eder, netice verir, tekemmül eder; vazife-i hayatiyeyi yapar. Yeknesak istirahat döşeğindeki hayat, hayr-ı mahz olan vücuddan ziyade, şerr-i mahz olan ademe yakındır ve ona gider.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Üçüncü Vecih: Şu dâr-ı dünya, meydan-ı imtihandır ve dâr-ı hizmettir; lezzet ve ücret ve mükâfat yeri değildir. Madem dâr-ı hizmettir ve mahall-i ubudiyettir; hastalıklar ve musibetler, dinî olmamak ve sabretmek şartıyla o hizmete ve o ubudiyete çok muvafık oluyor ve kuvvet veriyor. Ve her bir saati, bir gün ibadet hükmüne getirdiğinden şekva değil, şükretmek gerektir.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, ibadet iki kısımdır: Bir kısmı müsbet, diğeri menfî. Müsbet kısmı malûmdur. Menfî kısmı ise hastalıklar ve musibetlerle musibetzede zaafını ve aczini hissedip Rabb-i Rahîm’ine ilticakârane teveccüh edip, onu düşünüp, ona yalvarıp hâlis bir ubudiyet yapar. Bu ubudiyete riya giremez, hâlistir. Eğer sabretse, musibetin mükâfatını düşünse, şükretse o vakit her bir saati bir gün ibadet hükmüne geçer. Kısacık ömrü uzun bir ömür olur. Hattâ bir kısmı var ki bir dakikası bir gün ibadet hükmüne geçer. Hattâ bir âhiret kardeşim, Muhacir Hâfız Ahmed isminde bir zatın müthiş bir hastalığına ziyade merak ettim. Kalbime ihtar edildi: “Onu tebrik et. Her bir dakikası bir gün ibadet hükmüne geçiyor.” Zaten o zat sabır içinde şükrediyordu.",
+      "order_index": 5
+    }
+  ]
+}

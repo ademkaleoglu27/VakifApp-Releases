@@ -1,0 +1,30 @@
+{
+  "id": "sec_34",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "İkinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Fâtır-ı Hakîm, insanın vücudunu mükemmel bir saray suretinde ve muntazam bir şehir misalinde yaratmış. Ağızdaki kuvve-i zaikayı bir kapıcı, âsab ve damarları telefon ve telgraf telleri gibi kuvve-i zaika ile merkez-i vücuddaki mide ile bir medar-ı muhabereleridir ki ağza gelen maddeyi o damarlarla haber verir. Bedene, mideye lüzumu yoksa “Yasaktır!” der, dışarı atar. Bazen de bedene menfaati olmamakla beraber zararlı ve acı ise hemen dışarı atar, yüzüne tükürür.",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte madem ağızdaki kuvve-i zaika bir kapıcıdır; mide, cesedin idaresi noktasında bir efendi ve bir hâkimdir. O saraya veyahut o şehre gelen ve sarayın hâkimine verilen hediyenin yüz derece kıymeti varsa kapıcıya bahşiş nevinden ancak beş derecesi muvafık olur, fazla olamaz. Tâ ki kapıcı gururlanıp, baştan çıkıp vazifeyi unutup fazla bahşiş veren ihtilalcileri saray dâhiline sokmasın.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu sırra binaen, şimdi iki lokma farz ediyoruz. Bir lokma, peynir ve yumurta gibi mugaddi maddeden kırk para; diğer lokma, en a’lâ baklavadan on kuruş olsa; bu iki lokma, ağza girmeden, beden itibarıyla farkları yoktur, müsavidirler; boğazdan geçtikten sonra, ceset beslemesinde yine müsavidirler belki bazen kırk paralık peynir daha iyi besler. Yalnız, ağızdaki kuvve-i zaikayı okşamak noktasında yarım dakika bir fark var. Yarım dakika hatırı için kırk paradan on kuruşa çıkmak, ne kadar manasız ve zararlı bir israf olduğu kıyas edilsin. Şimdi, saray hâkimine gelen hediye kırk para olmakla beraber, kapıcıya dokuz defa fazla bahşiş vermek, kapıcıyı baştan çıkarır “Hâkim benim.” der. Kim fazla bahşiş ve lezzet verse onu içeriye sokacak, ihtilal verecek, yangın çıkaracak “Aman doktor gelsin, hararetimi teskin etsin, ateşimi söndürsün.” dedirmeye mecbur edecek.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte iktisat ve kanaat, hikmet-i İlahiyeye tevfik-i harekettir. Kuvve-i zaikayı kapıcı hükmünde tutup ona göre bahşiş verir. İsraf ise o hikmete zıt hareket ettiği için çabuk tokat yer, mideyi karıştırır, iştiha-yı hakikiyi kaybeder. Tenevvü-ü et’imeden gelen sun’î bir iştiha-yı kâzibe ile yedirir, hazımsızlığa sebebiyet verir, hasta eder.",
+      "order_index": 4
+    }
+  ]
+}

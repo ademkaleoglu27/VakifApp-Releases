@@ -1,0 +1,25 @@
+{
+  "id": "sec_58",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Sekizinci Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Buna dair bir düstur-u hakikati beyan etmek lâzım. Şöyle ki:",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Nasıl hukuk-u şahsiye ve bir nevi hukukullah sayılan hukuk-u umumiye namıyla iki nevi hukuk var; öyle de mesail-i şer’iyede bir kısım mesail, eşhasa taalluk eder; bir kısım, umuma, umumiyet itibarıyla taalluk eder ki onlara şeair-i İslâmiye tabir edilir. Bu şeairin umuma taalluku cihetiyle umum onda hissedardır. Umumun rızası olmazsa onlara ilişmek, umumun hukukuna tecavüzdür.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "O şeairin en cüz’îsi –sünnet kabîlinden bir meselesi– en büyük bir mesele hükmünde nazar-ı ehemmiyettedir. Doğrudan doğruya umum âlem-i İslâm’a taalluk ettiği gibi; asr-ı saadetten şimdiye kadar bütün eâzım-ı İslâm’ın bağlandığı o nurani zincirleri koparmaya, tahrip ve tahrif etmeye çalışanlar ve yardım edenler düşünsünler ki ne kadar dehşetli bir hataya düşüyorlar. Ve zerre miktar şuurları varsa titresinler!..",
+      "order_index": 3
+    }
+  ]
+}

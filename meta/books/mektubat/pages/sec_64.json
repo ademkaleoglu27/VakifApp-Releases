@@ -1,0 +1,25 @@
+{
+  "id": "sec_63",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Üçüncü Nükte",
+      "order_index": 0
+    },
+    {
+      "type": "paragraph",
+      "text": "Oruç, hayat-ı içtimaiye-i insaniyeye baktığı cihetle çok hikmetlerinden bir hikmeti şudur ki:",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsanlar, maişet cihetinde muhtelif bir surette halk edilmişler. Cenab-ı Hak o ihtilafa binaen, zenginleri fukaraların muavenetine davet ediyor. Halbuki zenginler, fukaranın acınacak acı hallerini ve açlıklarını, oruçtaki açlıkla tam hissedebilirler. Eğer oruç olmazsa nefis-perest çok zenginler bulunabilir ki açlık ve fakirlik ne kadar elîm ve onlar şefkate ne kadar muhtaç olduğunu idrak edemez. Bu cihette insaniyetteki hemcinsine şefkat ise şükr-ü hakikinin bir esasıdır. Hangi fert olursa olsun, kendinden bir cihette daha fakiri bulabilir. Ona karşı şefkate mükelleftir.",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Eğer nefsine açlık çektirmek mecburiyeti olmazsa şefkat vasıtasıyla muavenete mükellef olduğu ihsanı ve yardımı yapamaz, yapsa da tam olamaz. Çünkü hakiki o haleti kendi nefsinde hissetmiyor.",
+      "order_index": 3
+    }
+  ]
+}

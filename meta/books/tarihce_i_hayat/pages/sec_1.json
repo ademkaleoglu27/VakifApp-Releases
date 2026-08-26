@@ -1,0 +1,860 @@
+{
+  "id": "intro",
+  "blocks": [
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 0
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَ بِهٖ نَسْتَعٖينُ",
+      "order_index": 1
+    },
+    {
+      "type": "paragraph",
+      "text": "Ön söz",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu ön söz, Medine-i Münevvere’de bulunan mühim bir âlim tarafından yazılmıştır.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük İkbal’e ait olan “Ön söz”de demiştim ki: Büyüklerin tarih-i hayatları okunurken, ulvi menkıbeler söylenip aziz hatıraları anılırken insan, başka bir âleme girdiğini hissediyor. Gönlünü, tertemiz sevgi hislerinin ulvi ateşi yakıyor ve İlahî feyzi sarıyor. Tarih öyle büyük insanlar kaydeder ki birçok büyükler, onlara nisbetle küçük kalır.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Tarihe şerefler veren erler anılırken",
+      "order_index": 5
+    },
+    {
+      "type": "paragraph",
+      "text": "Yükselmede ruh en geniş âlemlere yerden",
+      "order_index": 6
+    },
+    {
+      "type": "paragraph",
+      "text": "Bin rayihanın feyzi sarar ruhu derinden",
+      "order_index": 7
+    },
+    {
+      "type": "paragraph",
+      "text": "Geçmiş gibi cennetteki gül bahçelerinden.",
+      "order_index": 8
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu derin hakikati “Ön söz”ü yazarken bütün azamet ve ihtişamıyla idrak etmiş bulunuyorum. Zira aziz ve muhterem okuyucularımıza en derin bir ihlas ve samimiyetle takdim ettiğimiz bu eser, hemen bir asra yaklaşan uzun ve bereketli ömrünün her safhası, binlerle hârikaya sahne olan, gönüller fatihi büyük Üstad Bedîüzzaman Said Nursî’ye, onun yüz otuz parçadan ibaret olan Risale-i Nur Külliyatı’na ve ahlâk ve faziletleri, ihlas ve samimiyetleri, iman ve irfanları ile hayatın her safhasında sadece bir ülkeye değil, bütün insanlık âlemine tertemiz örnekler vermekte devam eden Nur talebelerine aittir.",
+      "order_index": 9
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir kitabın “Mukaddime”sini, o kitabın hülâsası diye tarif ederler. Halbuki her mevzuu müstakil bir esere sığmayacak kadar derin ve geniş olan bu muazzam kitabın muhteviyatını, böyle birkaç sahifelik mukaddimeye sığdırmak kabil midir?",
+      "order_index": 10
+    },
+    {
+      "type": "paragraph",
+      "text": "Bugüne kadar âcizane yazdığım manzum ve mensur yazılarımın hiçbirisinde bu kadar acz ve hayret içerisinde kalmamıştım. Binaenaleyh bu eseri derin bir zevk, İlahî bir neşe ve coşkun bir heyecanla okuyacak olanlar, hayranlıkla görecekler ki Bedîüzzaman, çocukluğundan beri müstesna bir şekilde yetişen ve bütün ömrü boyunca İlahî tecellilere mazhar olan bambaşka bir âlim ve mümtaz bir şahsiyettir.",
+      "order_index": 11
+    },
+    {
+      "type": "paragraph",
+      "text": "Ben bu büyük zatı, eserlerini ve talebelerini inceden inceye tetkik edip de o nur âleminde hissen, fikren ve ruhen yaşadıktan sonra, büyük ve eski bir Arap şairinin bir beytiyle, çok derin bir hakikati ifade ettiğini öğrendim: “Bütün âlemi bir şahsiyette toplamak, Cenab-ı Hakk’a zor gelmez.”",
+      "order_index": 12
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 13
+    },
+    {
+      "type": "paragraph",
+      "text": "Gayesinin ulviyetinden, davasının ihtişamından ve imanının azametinden feyz ve ilham alan bu kutbun cazibesine takılanların adedi günden güne çoğalmaktadır.",
+      "order_index": 14
+    },
+    {
+      "type": "paragraph",
+      "text": "Akıllara hayret veren bu ulvi hâdise, münkirleri kahrettiği gibi mü’minleri de şâd ve mesrur eylemekte devam edip gidiyor.",
+      "order_index": 15
+    },
+    {
+      "type": "paragraph",
+      "text": "İmanlı gönüllerde manevî bir rabıta halinde yaşayan bu İlahî hâdiseyi büyük bir mücahid, kalpleri vecd içinde bırakan bir üslupla bakınız nasıl ifade ediyor:",
+      "order_index": 16
+    },
+    {
+      "type": "paragraph",
+      "text": "“Ahlâksızlık çirkefinin bir tufan halinde her istikamete taşıp uzanarak her fazileti boğmaya koyulduğu kara günlerde, onun yani Bedîüzzaman’ın feyzini bir sır gibi kalpten kalbe, mukavemeti imkânsız bir hamle halinde intikal eder görmekle teselli buluyoruz. Gecelerimiz çok karardı ve çok kararan gecelerin sabahları pek yakın olur.”",
+      "order_index": 17
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, bir sır gibi kalpten kalbe mukavemeti imkânsız bir halde yayılıp dağılan bu nurun, memleketin her köşesinde feyiz ve tesirini görenler, hayret ve dehşetler içinde sormaya başladılar: “Şöhreti memleketimizin her tarafını kaplayan bu zat kimdir? Hayatı, eserleri, meslek ve meşrebi nedir? Tuttuğu yol bir tarîkat mı, bir cemiyet mi, yoksa siyasî bir teşekkül müdür?”",
+      "order_index": 18
+    },
+    {
+      "type": "paragraph",
+      "text": "Bununla da kalmadı; derhal gerek idarî ve gerek adlî çok mühim takipler ve pek ciddi tetkikler, uzun ve müselsel mahkemeler cereyan etti. Neticede, bu İlahî tecellinin gönüller ülkesine kurulan bir “İman ve İrfan Müessesesi”nden başka bir şey olmadığı tahakkuk edince, adaletin İlahî bir surette tecellisi şu şekilde zuhur etti: “Bedîüzzaman Said Nursî ve bütün Risale-i Nur eserlerinin beraeti” kararı resmen ilan edildi. Ve artık ruhun maddeye, hakkın bâtıla, nurun zulmete, imanın küfre her zaman galebe çalacağı; ezelden ebede değişmeyecek olan İlahî kanunların başında gelen bir hakikat olduğu, güneşler gibi belirdi.",
+      "order_index": 19
+    },
+    {
+      "type": "paragraph",
+      "text": "Herhangi bir iklimde zuhur eden bir ıslahatçının mahiyet ve hakikatini, sadakat ve samimiyetini gösteren en gerçek miyar; davasını ilana başladığı ilk günlerle, muzaffer olduğu son günler arasında ferdî ve içtimaî, uzvî ve ruhî hayatında vücuda gelen değişiklik farklarıdır, derler.",
+      "order_index": 20
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, o adam ilk günlerde mütevazi, âlîcenab, feragat ve mahviyetkâr, hülâsa; bütün ahlâk ve fazilet bakımından cidden örnek olan gayet temiz ve son derecede mümtaz bir şahsiyetti. Bakalım, cihadında muzaffer olup hislerde, emellerde, gönüllerde yer tuttuktan sonra yine o eski temiz ve örnek halinde kalabilmiş mi? Yoksa zafer neşesiyle birçok büyük sanılan kimseler gibi yere göğe sığmaz mı olmuş?",
+      "order_index": 21
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte büyük küçük herhangi bir dava ve gaye sahibinin mahiyet ve hakikatini, şahsiyet ve hüviyetini en hakiki çehresiyle aksettirecek olan en berrak âyine budur.",
+      "order_index": 22
+    },
+    {
+      "type": "paragraph",
+      "text": "Tarih boyunca, bu müthiş imtihanı kazanmanın şaheser misalini, evvela peygamberler ve bilhassa Sultanü’l-enbiya (sallallahu aleyhi vesellem) Efendimiz, sonra onun halife ve sahabeleri ve daha sonra onların nurlu yolunda yürüyen büyük zatlar vermişlerdir.",
+      "order_index": 23
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 24
+    },
+    {
+      "type": "paragraph",
+      "text": "Peygamber Efendimiz, şu اَلْعُلَمَاءُ وَرَثَةُ الْاَنْبِيَاءِ yani “Âlimler, peygamberlerin vârisleridirler.” hadîs-i şerifleriyle âlim olmanın pek kolay bir şey olmadığını, i’cazkâr belâgatları ile beyan buyuruyorlar.",
+      "order_index": 25
+    },
+    {
+      "type": "paragraph",
+      "text": "Zira mademki bir âlim, peygamberlerin vârisidir; o halde hak ve hakikatin tebliğ ve neşri hususunda, aynen onların tutmuş oldukları yolu takip etmesi lâzımdır. Her ne kadar bu yol; bütün dağ, taş, çamur, çakıl, uçurum, daha beteri takip, tevkif, muhakeme, hapis, zindan, sürgün, tecrit, zehirlenme, idam sehpaları ve daha akıl ve hayale gelmeyen nice bin zulüm ve işkencelerle dolu da olsa…",
+      "order_index": 26
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Bedîüzzaman, yarım asırdan fazla o mukaddes cihadı ile bütün ömrü boyunca bu çetin yolda yürüyen ve karşısına çıkan binlerle engeli bir yıldırım sürati ile aşan ve peygamberlerin vârisi olan bir âlim olduğunu amelî bir surette ispat eden bir zattır.",
+      "order_index": 27
+    },
+    {
+      "type": "paragraph",
+      "text": "Kendisinin ilmî, ahlâkî, edebî, birçok fazilet ve meziyetleri arasında beni en çok meftun eden şey; onun o, dağlardan daha sağlam, denizlerden daha derin, semalardan daha yüksek ve geniş olan imanıdır.",
+      "order_index": 28
+    },
+    {
+      "type": "paragraph",
+      "text": "Rabb’im, o ne muazzam iman! O ne bitmez ve tükenmez sabır! O ne çelikten irade! Hayal ve hatıralara ürpermeler veren bunca tazyik, tehdit, tazip ve işkencelere rağmen; o ne eğilmez baş ne boğulmaz ses ve nasıl kısılmaz nefestir!",
+      "order_index": 29
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük İkbal’in heyecanlı şiirlerinden aldığım coşkun bir ilham neşesi ile vaktiyle yazdığım “Mücahid” unvanını taşıyan bir manzumede, aşağıdaki mısraları okuyanlardan belki şairane bir mübalağada bulunduğumu söyleyenler olmuştur. Lâkin şu mukaddimesini yazmakla şeref duyduğum şaheseri okuyanlar, vecdle dolu bir hayranlıkla anlayacaklar ki Allah’ın ne kulları varmış. Eğer bir iman, kemalini bulursa neler yapar ve ne hârikalar doğururmuş.",
+      "order_index": 30
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir azm, eğer iman dolu bir kalbe girerse",
+      "order_index": 31
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsan da o imandaki son sırra ererse",
+      "order_index": 32
+    },
+    {
+      "type": "paragraph",
+      "text": "En azgın ölümler ona zincir vuramazlar",
+      "order_index": 33
+    },
+    {
+      "type": "paragraph",
+      "text": "Volkan gibi coşkun akıyor durduramazlar",
+      "order_index": 34
+    },
+    {
+      "type": "paragraph",
+      "text": "Rabb’imden iner azmine kuvvet veren ilham",
+      "order_index": 35
+    },
+    {
+      "type": "paragraph",
+      "text": "Peygamber’i rüyada görür belki her akşam",
+      "order_index": 36
+    },
+    {
+      "type": "paragraph",
+      "text": "Hep nur, onun iman dolu kalbindeki mihrab",
+      "order_index": 37
+    },
+    {
+      "type": "paragraph",
+      "text": "Kandil olamaz ufkuna dünyadaki mehtap",
+      "order_index": 38
+    },
+    {
+      "type": "paragraph",
+      "text": "Kar kış demez, irkilmez, üzülmez, acı duymaz",
+      "order_index": 39
+    },
+    {
+      "type": "paragraph",
+      "text": "Mevsim bütün ömrünce ılık gölgeli bir yaz",
+      "order_index": 40
+    },
+    {
+      "type": "paragraph",
+      "text": "Cennetteki âlemleri dünyada görür de",
+      "order_index": 41
+    },
+    {
+      "type": "paragraph",
+      "text": "Mahvolsa eğilmez sıradağlar gibi derde",
+      "order_index": 42
+    },
+    {
+      "type": "paragraph",
+      "text": "En sarp uçurumlar gelip etrafını sarsa",
+      "order_index": 43
+    },
+    {
+      "type": "paragraph",
+      "text": "Ay batsa güneş sönse ufuklar da kararsa",
+      "order_index": 44
+    },
+    {
+      "type": "paragraph",
+      "text": "Gökler yıkılıp çökse yolundan yine dönmez",
+      "order_index": 45
+    },
+    {
+      "type": "paragraph",
+      "text": "Ruhundaki imanla yanan meşale sönmez",
+      "order_index": 46
+    },
+    {
+      "type": "paragraph",
+      "text": "Kalbinde yanardağ gibi iman ne mukaddes",
+      "order_index": 47
+    },
+    {
+      "type": "paragraph",
+      "text": "Vicdanına her an şunu haykırmada bir ses:",
+      "order_index": 48
+    },
+    {
+      "type": "paragraph",
+      "text": "Ey yolcu! Şafaklar sökecek durma, ilerle",
+      "order_index": 49
+    },
+    {
+      "type": "paragraph",
+      "text": "Zulmetlere kan ağlatacak meşalelerle",
+      "order_index": 50
+    },
+    {
+      "type": "paragraph",
+      "text": "Yıldızlara bas, çık yüce âlemlere yüksel",
+      "order_index": 51
+    },
+    {
+      "type": "paragraph",
+      "text": "İnsanlığı kurtarmaya cennetten inen el.",
+      "order_index": 52
+    },
+    {
+      "type": "paragraph",
+      "text": "Sanki bu mısralar iman kahramanı büyük mücahid Bedîüzzaman Hazretleri için yazılmış. Zira bu yüksek sıfatlar, hep onun sıfatlarıdır. Cenab-ı Hak şu âyet-i kerîmede bakınız mücahidlere neler vaad ediyor:",
+      "order_index": 53
+    },
+    {
+      "type": "arabic_block",
+      "text": "وَالَّذٖينَ جَاهَدُوا فٖينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا وَاِنَّ اللّٰهَ لَمَعَ الْمُحْسِنٖينَ",
+      "order_index": 54
+    },
+    {
+      "type": "paragraph",
+      "text": "Meal-i şerifi: “Bizim uğrumuzda mücahede edenlere mutlaka yollarımızı gösteririz. Ve hiç şüphe yok ki Allah muhsinlerle –Allah’ı görür gibi ibadet eden mücahidlerle– beraberdir.”",
+      "order_index": 55
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek ki iman ve Kur’an uğrunda, candan ve cihandan geçen mücahidlere büyük Allah, hakikat ve hidayet yollarını göstereceğini vaad buyuruyor. Hâşâ Cenab-ı Hak vaadinde hulf etmez, yeter ki bu azîm vaad-i İlahîyi icab ettirecek şartlar tahakkuk etsin.",
+      "order_index": 56
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu âyet-i kerîme “Üstad”ın karakter ve şahsiyetini tahlil hususunda bize nurdan bir rehber oluyor ve o nurun billur ışığı altında artık en ince çizgileri ve en hassas noktaları görüp sezebiliyoruz. Zira mademki bir insan Cenab-ı Hakk’ın hıfz ve himayesinde bulunmak nimetine mazhar olmuştur. Artık onun için korku, endişe, üzüntü, yılma, usanma vesaire gibi şeyler bahis mevzuu olamaz.",
+      "order_index": 57
+    },
+    {
+      "type": "paragraph",
+      "text": "Allah’ın nuru ile nurlanan bir gönlün semasını hangi bulutlar kaplayabilir? Her an huzur-u İlahîde bulunmak bahtiyarlığına eren bir kulun ruhunu; hangi fâni emel ve arzular, hangi zavallı teveccüh ve iltifatlar ve hangi pespâye gaye ve ihtiraslar tatmin, teskin ve teselli edebilir?",
+      "order_index": 58
+    },
+    {
+      "type": "paragraph",
+      "text": "Allah’tır onun yârı, mürebbisi, velisi",
+      "order_index": 59
+    },
+    {
+      "type": "paragraph",
+      "text": "Andıkça bütün nur oluyor duygusu, hissi",
+      "order_index": 60
+    },
+    {
+      "type": "paragraph",
+      "text": "Yükselmededir marifet iklimine her an",
+      "order_index": 61
+    },
+    {
+      "type": "paragraph",
+      "text": "Bambaşka ufuklar açıyor ruhuna Kur’an",
+      "order_index": 62
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an ona yâd ettiriyor “Bezm-i Elest”i",
+      "order_index": 63
+    },
+    {
+      "type": "paragraph",
+      "text": "Âşık, o tecellinin ezelden beri mesti.",
+      "order_index": 64
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Bedîüzzaman, böyle hârikalar hârikası bir inayete mazhar olan mübarek bir şahsiyettir. Ve bunun içindir ki zindanlar ona bir gülistan olmuş; oradan ebediyetlerin nurlu ufuklarını görür. İdam sehpaları, birer vaaz ve irşad kürsüsüdür. Oradan insanlığa ulvi bir gaye uğrunda sabır ve sebat, metanet ve celadet dersleri verir. Hapishaneler birer Medrese-i Yusufiyeye inkılab eder. Oraya girerken bir profesörün üniversiteye ders vermek için girdiği gibi girer. Zira oradakiler, onun feyiz ve irşadına muhtaç olan talebeleridir. Her gün birkaç vatandaşın imanını kurtarmak ve canileri melek gibi bir insan haline getirmek, onun için dünyalara değişilmez bir saadettir.",
+      "order_index": 65
+    },
+    {
+      "type": "paragraph",
+      "text": "Böyle bir yüksek iman ve ihlas şuuruna mâlik olan insan, hiç şüphesiz ki zaman ve mekân mefhumlarının fâniler üzerinde bıraktığı yaldızlı tesirleri kesif madde âleminde bırakarak; ruhu ile maneviyat âleminin pırıl pırıl nurlar saçan ufuklarına yükselmiş bir haldedir.",
+      "order_index": 66
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük mutasavvıfların (ra) fena fillah, beka billah diye tarif ve tavsif buyurdukları yüksek mertebe, işte bu kudsî şerefe nâil olmaktır.",
+      "order_index": 67
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, her mü’minin kendine mahsus bir huzur, huşû, tefeyyüz, tecerrüd ve istiğrak hali vardır. Ve herkes iman ve irfanı, salah ve takvası, feyiz ve maneviyatı nisbetinde bu İlahî hazdan feyizyâb olabilir. Lâkin bu güzel hal, bu tatlı visal ve bu emsalsiz haz; geçen âyet-i kerîmedeki ihsan erbabı olan o büyük mücahidlerde her zaman devam ediyor. Ve işte onlar bu sebepten dolayıdır ki Mevla’yı unutmak gafletine düşmüyorlar. Nefisleri ile arslanlar gibi bütün ömürleri boyunca çarpışıyorlar. Ve hayatlarının her lahzası, en yüksek terakki ve tekâmül hatıraları kaydediyor. Ve bütün varlıkları; o cemal, kemal ve celal sıfatları ile muttasıf olan Rabbü’l-âlemîn’in rızasında erimiş bulunuyorlar.",
+      "order_index": 68
+    },
+    {
+      "type": "paragraph",
+      "text": "Mevla, bizleri de o bahtiyarlar zümresine ilhak eylesin, âmin!",
+      "order_index": 69
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 70
+    },
+    {
+      "type": "paragraph",
+      "text": "Yukarıdaki sahifelerde, büyük Üstadın, dostlarını meftun ve hayran ettiği kadar da düşmanlarını dehşetler içerisinde bırakan azametli imanından bahsettik. Biraz da mümtaz şahsiyeti, nurdan bir hâle halinde sarmakta olan üstün meziyetlerinden, ahlâk ve kemalâtından bahsedelim.",
+      "order_index": 71
+    },
+    {
+      "type": "paragraph",
+      "text": "Malûm ya, her şahsiyeti, muhtelif ve muayyen meziyetler çerçeveler. Binaenaleyh Üstadın şahsiyetini tekvin eden başlıca sıfatlar şunlardır:",
+      "order_index": 72
+    },
+    {
+      "type": "paragraph",
+      "text": "Feragati:",
+      "order_index": 73
+    },
+    {
+      "type": "paragraph",
+      "text": "Bir dava sahibinin ve bilhassa ıslahatçının muvaffakıyet şartlarının en mühimmi feragattir. Zira gözler ve gönüller, bu mühim noktayı en ince bir hassasiyetle tetkik ve takibe meyyaldirler. Üstadın bütün hayatı ise baştan başa feragatin şaheser misalleri ile dolup taşmaktadır.",
+      "order_index": 74
+    },
+    {
+      "type": "paragraph",
+      "text": "Allâme Şeyhülislâm Mustafa Sabri Efendi merhumdan, feragate ait şöyle bir söz işitmiştim: “İslâm, bugün öyle mücahidler ister ki dünyasını değil, âhiretini dahi feda etmeye hazır olacak.”",
+      "order_index": 75
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük adamdan sâdır olan bu büyük sözü tamamen kavrayamadığım için mutasavvıfların istiğrak hallerinde söyledikleri esrarlı sözlere benzeterek, herkese söylememiş ve olur olmaz yerlerde de açmamıştım.",
+      "order_index": 76
+    },
+    {
+      "type": "paragraph",
+      "text": "Vaktâ ki aynı sözü Bedîüzzaman’ın ateşler saçan heyecanlı ifadelerinde de okuyunca anladım ki büyüklere göre feragatin ölçüsü de büyüyor. Evet, İslâm için bu kadar acıklı bir feragate katlanmaya razı olan mücahidleri, Erhamü’r-Râhimîn olan Allahu Zülkerim Teâlâ ve Takaddes Hazretleri bırakır mı? O fedai kulunu lütf u kereminden, inayet ve merhametinden mahrum etmek şanına –hâşâ– yakışır mı?",
+      "order_index": 77
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Bedîüzzaman, bu müstesna tecellinin en parlak misalidir. Bütün ömrü boyunca mücerred yaşadı. Dünyanın bütün meşru lezzetlerinden tamamen mahrum kaldı. Bir yuva kurmak ve orada mesud bir aile hayatı geçirmek sevdasına düşmeye vakit ve fırsat bulamadı. Fakat Cenab-ı Hak, kendisine öyle şeyler ihsan etti ki fâni kalemlerle tarif olunamayacak kadar muazzam ve muhteşemdir.",
+      "order_index": 78
+    },
+    {
+      "type": "paragraph",
+      "text": "Bugün, dünyada hangi bir aile reisi –manen– Bedîüzzaman Hazretleri kadar mesuddur? Hangi bir baba, milyonlarla evlada sahip olmuştur? Hem de nasıl evlatlar!.. Ve hangi bir üstad, bu kadar talebe yetiştirebilmiştir?",
+      "order_index": 79
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu kudsî ve ruhî rabıta –biiznillah-i teâlâ– dünyalar durdukça duracak ve nurdan bir sel halinde ebediyetlere kadar akıp gidecektir. Çünkü bu İlahî dava, Kur’an-ı Kerîm’in nur deryasında tebellür eden bir varlık olduğu gibi Kur’an’dan doğmuş ve Kur’an’la beraber yaşayacaktır.",
+      "order_index": 80
+    },
+    {
+      "type": "paragraph",
+      "text": "Şefkat ve Merhameti:",
+      "order_index": 81
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük Üstad, hak ve hakikati tâ çocukluğunda bulmuştu. Kalbinin feryadını ve ruhunun münâcatını dinlemek için mağaralara kapandığı günlerde bile ibadet ve taatten, tefekkür ve murakabelerden feyiz ve huzur almanın zevkine ermiş olan bir “ârif-i billah” idi.",
+      "order_index": 82
+    },
+    {
+      "type": "paragraph",
+      "text": "Lâkin karanlık gece dalgalarını andıran korkunç küfür ve ilhad kâbusunun Müslüman dünyasını ve dolayısıyla memleketimizi kaplamak üzere olduğu o tehlikeli günlerde, yatağından fırlayan bir arslan gibi yanardağları andıran bir kükreyişle cihad meydanına atıldı. Bütün rahat ve huzurunu bu mukaddes davaya feda etti. Ve işte bu hikmete mebnidir ki o günden beri her sözü bir dilim lav, her fikri bir ateş parçası olmuş. Düştüğü gönülleri yakıyor; hisleri, fikirleri alevlendiriyor.",
+      "order_index": 83
+    },
+    {
+      "type": "paragraph",
+      "text": "Büyük Üstadın tam bir uzlet ve inzivadan sonra tekrar irşad ve cemiyet hayatına atılması, aynen İmam-ı Gazalî’nin hayatında geçirmiş olduğu o mühim ve tarihî merhaleye benzemektedir.",
+      "order_index": 84
+    },
+    {
+      "type": "paragraph",
+      "text": "Demek ki Cenab-ı Hak, büyük mürşidleri böyle bir müddet inzivada terbiye, tasfiye ve tezkiye ettikten sonra tenvir ve irşad vazifesiyle mükellef kılıyor. Ve bu sebebledir ki bir mâ-i mukattardan daha temiz ve berrak olan yüreklerinden kopup gelen nefesler, kalplere akseder etmez bambaşka tesirler icra ediyor.",
+      "order_index": 85
+    },
+    {
+      "type": "paragraph",
+      "text": "Arz ettiğim gibi İmam-ı Gazalî’nin bundan dokuz yüz sene evvel ahlâk ve fazilet sahasında yapmış olduğu fütuhatı; bu asırda Bedîüzzaman, iman ve ihlas vâdisinde başarmıştır.",
+      "order_index": 86
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Hazret-i Üstadı bu müthiş cihad meydanlarına sevk eden, hep bu eşsiz şefkat ve merhameti olmuştur. Ve bunu bizzat kendisinden dinleyelim:",
+      "order_index": 87
+    },
+    {
+      "type": "paragraph",
+      "text": "Bana: “Sen şuna buna niçin sataştın?” diyorlar. Farkında değilim; karşımda müthiş bir yangın var, alevleri göklere yükseliyor, içinde evladım yanıyor, imanım tutuşmuş yanıyor. O yangını söndürmeye, imanımı kurtarmaya koşuyorum. Yolda birisi beni kösteklemek istemiş de ayağım ona çarpmış, ne ehemmiyeti var? O müthiş yangın karşısında bu küçük hâdise bir kıymet ifade eder mi? Dar düşünceler, dar görüşler…",
+      "order_index": 88
+    },
+    {
+      "type": "paragraph",
+      "text": "İstiğnası:",
+      "order_index": 89
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın hayatı boyunca cemiyetimizin her tabakasına vermekte olduğu binlerle istiğna örnekleri, dillere destan olmuş bir ulviyeti haizdir.",
+      "order_index": 90
+    },
+    {
+      "type": "paragraph",
+      "text": "Mâsivadan tam manasıyla istiğna ederek, uzvî ve ruhî bütün varlığı ile Rabbü’l-âlemîn’in bitmez ve tükenmez hazinesine dayanmayı, müddet-i hayatında bir itiyad değil, âdeta bir mezhep, meşrep ve meslek olarak kabul etmiştir. Ve bunda da ne pahasına olursa olsun sebat eylemekte hâlâ devam etmektedir.",
+      "order_index": 91
+    },
+    {
+      "type": "paragraph",
+      "text": "İşin orijinal tarafı: Bu meslek, kendi şahsına münhasır kalmamış, talebelerine de kudsî bir mefkûre halinde intikal etmiştir. Nur deryasında yıkanmak şerefine mazhar olan bir Nur talebesinin istiğnasına hayran olmamak kabil değildir.",
+      "order_index": 92
+    },
+    {
+      "type": "paragraph",
+      "text": "Bakınız, Üstad; Mektubat unvanını taşıyan şaheserin İkinci Mektup’unda bu mühim noktayı altı vecih ile ne kadar asil bir iman ve irfan şuuru ile izah eder:",
+      "order_index": 93
+    },
+    {
+      "type": "paragraph",
+      "text": "“Birincisi: Ehl-i dalalet, ehl-i ilmi; ilmi vasıta-i cer etmekle ittiham ediyorlar. İlmi ve dini kendilerine medar-ı maişet yapıyorlar deyip insafsızcasına onlara hücum ediyorlar. Binaenaleyh bunları fiilen tekzip lâzımdır.",
+      "order_index": 94
+    },
+    {
+      "type": "paragraph",
+      "text": "İkincisi: Neşr-i hak için enbiyaya ittiba etmekle mükellefiz. Kur’an-ı Hakîm’de, hakkı neşredenler اِنْ اَجْرِىَ اِلَّا عَلَى اللّٰهِ ۞ اِنْ اَجْرِىَ اِلَّا عَلَى اللّٰهِ diyerek insanlardan istiğna göstermişler…”",
+      "order_index": 95
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Risale-i Nur Külliyatı’nın mazhar olduğu İlahî fütuhat, hep bu enbiya mesleğinde sebat kahramanlığının şaheser misali ve hârikulâde neticesidir. Ve bu sayede Üstad, izzet-i ilmiyesini, cihan-kıymet bir elmas gibi muhafaza eylemiştir.",
+      "order_index": 96
+    },
+    {
+      "type": "paragraph",
+      "text": "Artık herkesin uğrunda esir olduğu maaş, rütbe, servet ve daha nice bin şahsî ve maddî menfaatlerle aslâ alâkası olmayan bir insan, nasıl olur da gönüller fatihi olmaz? İmanlı gönüller, nasıl onun feyiz ve nuru ile dolmaz?",
+      "order_index": 97
+    },
+    {
+      "type": "paragraph",
+      "text": "İktisatçılığı:",
+      "order_index": 98
+    },
+    {
+      "type": "paragraph",
+      "text": "İktisat, bundan evvel bahsettiğimiz istiğnanın tefsir ve izahından başka bir şey değildir. Zaten iktisat sarayına girebilmek için evvela istiğna denilen kapıdan girmek lâzımdır. Bu sebeple iktisatla istiğna, lâzımla melzum kabîlindendir.",
+      "order_index": 99
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad gibi istiğna hususunda peygamberleri kendine örnek kabul eden bir mücahidin iktisatçılığı, kendiliğinden husule gelecek kadar tabiî bir haslet halini alır ve artık ona günde bir tas çorba, bir bardak su ve bir parça ekmek kâfi gelebilir. Zira bu büyük insan, büyük ve munsif Fransız şairi Lamartin’in dediği gibi: “Yemek için yaşamıyor belki yaşamak için yiyor.”",
+      "order_index": 100
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın meşrep ve mesleğini tamamen anladıktan sonra, artık onun yüksek iktisatçılığını böyle yemek içmek gibi basit şeylerle mukayese etmeyi çok görüyorum. Zira bu büyük insanın yüksek iktisatçılığını manevî sahalarda tatbik etmek ve maddî olmayan ölçülerle ölçmek lâzım gelir.",
+      "order_index": 101
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela Üstad, bu yüksek iktisatçılık kudretini sırf yemek, içmek, giymek gibi basit şeylerle değil; bilakis fikir, zihin, istidat, kabiliyet, vakit, zaman, nefis ve nefes gibi manevî ve mücerred kıymetlerin israf ve heder edilmemesi ile ölçen bir dâhîdir. Ve bütün ömrü boyunca bir karakter halinde takip ettiği bu titiz muhasebe ve murakabe usûlünü, bütün talebelerine de telkin etmiştir.",
+      "order_index": 102
+    },
+    {
+      "type": "paragraph",
+      "text": "Binaenaleyh bir Nur talebesine olur olmaz eseri okutturmak ve her sözü dinlettirmek kolay bir şey değildir. Zira onun gönlünün mihrak noktasında yazılı olan şu “Dikkat!” kelimesi, en hassas bir kontrol vazifesi görmektedir.",
+      "order_index": 103
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Bedîüzzaman, kudretli bir ıslahatçı ve hârikalar hârikası bir pedagog (mürebbi) olduğunu, yetiştirdiği tertemiz nesille fiilen ispat etmiş ve iktisat tarihine nurdan pırıltılarla yazılan bir atlas sahife daha ilâve eden bir nadire-i fıtrattır.",
+      "order_index": 104
+    },
+    {
+      "type": "paragraph",
+      "text": "Tevazuu ve Mahviyetkârlığı:",
+      "order_index": 105
+    },
+    {
+      "type": "paragraph",
+      "text": "Nur Risalelerinin bu kadar hârikulâde bir şekilde cihana yayılmasında, bu iki hasletin çok faydası olmuş ve pek derin tesirleri görülmüştür.",
+      "order_index": 106
+    },
+    {
+      "type": "paragraph",
+      "text": "Çünkü Üstad sohbet ve teliflerinde kendine bir kutbü’l-ârifîn ve bir gavsü’l-vâsılîn süsü vermediği için gönüller ona pek çabuk ısınmış, onu tertemiz bir samimiyetle sevmiş ve derhal ulvi gayesini benimsemiştir.",
+      "order_index": 107
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, ahlâk ve fazilete, hikmet ve ibrete ait olan birçok sohbet ve telkinlerini, doğrudan doğruya nefsine tevcih eder. Keskin ve ateşîn hitabelerinin ilk ve yegâne muhatabı öz nefsidir. Oradan –merkezden muhite yayılırcasına– bütün nur ve sürura, saadet ve huzura müştak olan gönüllere yayılır.",
+      "order_index": 108
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad hususi hayatında gayet halîm selim ve son derece mütevazidir. Bir ferdi değil, hiçbir zerreyi incitmemek için a’zamî fedakârlıklar gösterir. Sayısız zahmet ve meşakkatlere, ızdırap ve mahrumiyetlere katlanır fakat imanına, Kur’an’ına dokunulmamak şartıyla…",
+      "order_index": 109
+    },
+    {
+      "type": "paragraph",
+      "text": "Artık o zaman bakmışsınız ki o sakin deniz, dalgaları semalara yükselen bir tufan, sahillere heybet ve dehşet saçan bir umman kesilmiştir. Çünkü o, Kur’an-ı Kerîm’in sadık hizmetkârı ve iman hudutlarını bekleyen kahraman ve fedai bir neferidir. Kendisi bu hakikati veciz bir cümle ile şu şekilde ifade eder: “Bir nefer nöbette iken başkumandan da gelse silahını bırakmayacak. Ben de Kur’an’ın bir hizmetkârı ve bir neferiyim. Vazife başında iken karşıma kim çıkarsa çıksın, hak budur derim, başımı eğmem!”",
+      "order_index": 110
+    },
+    {
+      "type": "paragraph",
+      "text": "Vazife başında ve cihad meydanında iken şu mısralar, lisan-ı halidir:",
+      "order_index": 111
+    },
+    {
+      "type": "paragraph",
+      "text": "Şahlanan bir ata benzer, kırarım kanlı gemi",
+      "order_index": 112
+    },
+    {
+      "type": "paragraph",
+      "text": "Sinsi düşmanlara hâşâ satamam benliğimi",
+      "order_index": 113
+    },
+    {
+      "type": "paragraph",
+      "text": "Benliğimden uzak olmaktır esaret bence",
+      "order_index": 114
+    },
+    {
+      "type": "paragraph",
+      "text": "Böyle bir zillete düşmek ne hazîn işkence",
+      "order_index": 115
+    },
+    {
+      "type": "paragraph",
+      "text": "Ebedî vuslatın aşkıyla geçer her ânım",
+      "order_index": 116
+    },
+    {
+      "type": "paragraph",
+      "text": "Dest-i kudretle yapılmış kaledir imanım",
+      "order_index": 117
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu mukaddes emelimden ne kadar dilşâdım",
+      "order_index": 118
+    },
+    {
+      "type": "paragraph",
+      "text": "Görmek ister beni cennette şehit ecdadım",
+      "order_index": 119
+    },
+    {
+      "type": "paragraph",
+      "text": "Ruhum oldukça müebbed, ebedîdir ömrüm",
+      "order_index": 120
+    },
+    {
+      "type": "paragraph",
+      "text": "En büyük vuslata, Allah’a çıkan yoldur ölüm.",
+      "order_index": 121
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 122
+    },
+    {
+      "type": "paragraph",
+      "text": "Kitaba girmezden evvel Üstadı; ilmî, fikrî, tasavvufî ve edebî cepheleri ile de mütalaa etmek isterdim. Fakat çok derin ve pek şümullü olan bu mevzuların birkaç sahife ile hülâsa edilemeyeceğini kat’î bir surette idrak ettikten sonra, artık adı geçen mevzulara birkaç cümle ile temas etmeyi münasip gördüm.",
+      "order_index": 123
+    },
+    {
+      "type": "paragraph",
+      "text": "Rabb’im imkânlar lütfederse bu derin mevzuları, Risale-i Nur Külliyatı ve Nur talebeleri ile birlikte, büyük ve müstakil bir eserle, tahlilî bir surette tetkik ve mütalaa etmeyi bütün ruhumla arzu ediyorum. Bu hususta, büyük Üstadımızın ve aziz kardeşlerimin kıymetli dualarını niyaz eylerim.",
+      "order_index": 124
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın ilmî cephesi:",
+      "order_index": 125
+    },
+    {
+      "type": "paragraph",
+      "text": "Merhum Ziya Paşa, şu:",
+      "order_index": 126
+    },
+    {
+      "type": "paragraph",
+      "text": "Âyinesi iştir kişinin lafa bakılmaz",
+      "order_index": 127
+    },
+    {
+      "type": "paragraph",
+      "text": "Şahsın görünür rütbe-i aklı eserinde",
+      "order_index": 128
+    },
+    {
+      "type": "paragraph",
+      "text": "beyti ile nesilden nesile bir düstur halinde intikal edecek olan çok büyük bir hakikati ifade etmiştir.",
+      "order_index": 129
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, Müslüman ırkımıza Risale-i Nur Külliyatı gibi muazzam bir iman ve irfan kütüphanesini hediye eden, gönüller üzerinde mukaddes bir nur müessesesi kuran mümtaz ve müstesna zatın kudret-i ilmiyesi hakkında tafsilata girişmek, öğle vakti güneşi tarif etmek kadar fuzulî bir iştir.",
+      "order_index": 130
+    },
+    {
+      "type": "paragraph",
+      "text": "Yalnız yanık bir şairimizin:",
+      "order_index": 131
+    },
+    {
+      "type": "paragraph",
+      "text": "Hüsn olur kim, seyrederken ihtiyar elden gider",
+      "order_index": 132
+    },
+    {
+      "type": "paragraph",
+      "text": "dediği gibi hayatının her lahzasında İlahî tecellilere mazhar bulunan bu mübarek zatın; ilim ve irfanından, ahlâk ve kemalâtından bahsetmek, insana bambaşka bir zevk ve İlahî bir haz veriyor. Bunun için sözü uzatmaktan kendimi alamıyorum.",
+      "order_index": 133
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstad; Risale-i Nur Külliyatı’nda dinî, içtimaî, ahlâkî, edebî, hukukî, felsefî ve tasavvufî en mühim mevzulara temas etmiş ve hepsinde de hârikulâde bir surette muvaffak olmuştur.",
+      "order_index": 134
+    },
+    {
+      "type": "paragraph",
+      "text": "İşin asıl hayret veren noktası; birçok ulemanın tehlikeli yollara saptıkları en çetin mevzuları, gayet açık bir şekilde ve en kat’î bir surette hallettiği gibi en girdaplı derinliklerden, Ehl-i Sünnet ve Cemaat’in tuttuğu nurlu yolu takip ederek sahil-i selâmete çıkmış ve eserlerini okuyanları da öylece çıkarmıştır.",
+      "order_index": 135
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu sebeple Risale-i Nur Külliyatı’nı aziz milletimizin her tabakasına kemal-i emniyet ve samimiyetle takdim etmekle şeref duyuyoruz. Nur Risaleleri, Kur’an-ı Kerîm’in nur deryasından alınan berrak katreler ve hidayet güneşinden süzülen billur huzmelerdir.",
+      "order_index": 136
+    },
+    {
+      "type": "paragraph",
+      "text": "Binaenaleyh her Müslüman’a düşen en mukaddes vazife, imanı kurtaracak olan bu nurlu eserlerin yayılmasına çalışmaktır. Zira tarihte pek çok defalar görülmüştür ki bir eser nice fertlerin, ailelerin, cemiyetlerin ve sayısız insan kitlelerinin hidayet ve saadetine sebep olmuştur. Âh! Ne bahtiyardır o insan ki bir mü’min kardeşinin imanının kurtulmasına sebep olur.",
+      "order_index": 137
+    },
+    {
+      "type": "paragraph",
+      "text": "Üstadın Fikrî Cephesi:",
+      "order_index": 138
+    },
+    {
+      "type": "paragraph",
+      "text": "Malûm ya; her mütefekkirin kendine mahsus bir tefekkür sistemi, fikrî hayatında takip ettiği bir gayesi ve bütün gönlü ile bağlandığı bir ideali vardır. Ve onun tefekkür sisteminden, gaye ve idealinden bahsetmek için uzun mukaddimeler serdedilir. Fakat Bedîüzzaman’ın tefekkür sistemi, gaye ve ideali, uzun mukaddimelerle filan yorulmaksızın bir cümle ile hülâsa edilebilir:",
+      "order_index": 139
+    },
+    {
+      "type": "paragraph",
+      "text": "Bütün semavî kitapların ve bilumum peygamberlerin yegâne davaları olan “Hâlık-ı kâinat’ın uluhiyet ve vahdaniyetini ilan” ve bu büyük davayı da ilmî, mantıkî ve felsefî delillerle ispat eylemektir.",
+      "order_index": 140
+    },
+    {
+      "type": "paragraph",
+      "text": "— O halde Üstadın mantık, felsefe ve müsbet ilimlerle de alâkası var?",
+      "order_index": 141
+    },
+    {
+      "type": "paragraph",
+      "text": "— Evet mantık ve felsefe, Kur’an’la barışıp hak ve hakikate hizmet ettikleri müddetçe Üstad en büyük mantıkçı ve en kudretli bir feylesoftur. Mukaddes ve cihan-şümul davasını ispat vâdisinde kullandığı en parlak delilleri ve en kat’î bürhanları, Kur’an-ı Kerîm’in Allah kelâmı olduğunu her gün bir kat daha ispat ve ilan eden “müsbet ilim”dir.",
+      "order_index": 142
+    },
+    {
+      "type": "paragraph",
+      "text": "Zaten felsefe, aslında hikmet manasına geldikçe, Vâcibü’l-vücud Teâlâ ve Takaddes Hazretlerini, Zat-ı Bâri’sine lâyık sıfatlarla ispata çalışan her eser, en büyük hikmet ve o eserin sahibi de en büyük hakîmdir.",
+      "order_index": 143
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte Üstad böyle ilmî bir yolu, yani Kur’an-ı Kerîm’in nurlu yolunu takip ettiği için binlerle üniversitelinin imanını kurtarmak şerefine mazhar olmuştur. Hazretin bu hususta haiz olduğu ilmî, edebî ve felsefî daha pek çok meziyetleri vardır. Fakat onları, eserlerinden misaller getirerek inşâallah müstakil bir eserde arz etmek emelindeyim. وَ مِنَ اللهِ التَّوْفٖيقُ",
+      "order_index": 144
+    },
+    {
+      "type": "paragraph",
+      "text": "Tasavvuf Cephesi:",
+      "order_index": 145
+    },
+    {
+      "type": "paragraph",
+      "text": "Nakşibendî meşayihinden, her harekâtını Peygamber-i Zîşan Efendimiz Hazretlerinin harekâtına tatbik etmeye çalışan ve büyük bir âlim olan bir zata sordum:",
+      "order_index": 146
+    },
+    {
+      "type": "paragraph",
+      "text": "— Efendi Hazretleri, ulema ile mutasavvıfe arasındaki gerginliğin sebebi nedir?",
+      "order_index": 147
+    },
+    {
+      "type": "paragraph",
+      "text": "— Ulema, Resul-i Ekrem Efendimizin ilmine, mutasavvıflar da ameline vâris olmuşlar. İşte bu sebepten dolayıdır ki Fahr-i Cihan Efendimizin hem ilmine ve hem ameline vâris olan bir zata “zülcenaheyn” yani “iki kanatlı” deniliyor.",
+      "order_index": 148
+    },
+    {
+      "type": "paragraph",
+      "text": "Binaenaleyh tarîkattan maksat, ruhsatlarla değil, azîmetlerle amel edip ahlâk-ı Peygamberî ile ahlâklanarak bütün manevî hastalıklardan temizlenip Cenab-ı Hakk’ın rızasında fâni olmaktır. İşte bu ulvi dereceyi kazanan kimseler, şüphesiz ki ehl-i hakikattirler. Yani tarîkattan maksud ve matlub olan gayeye ermişler demektir. Fakat bu yüksek mertebeyi kazanmak, her adama müyesser olamayacağı için büyüklerimiz matlub olan hedefe kolaylıkla erebilmek için muayyen kaideler vaz’eylemişlerdir. Hülâsa; tarîkat, şeriat dairesinin içinde bir dairedir. Tarîkattan düşen, şeriata düşer fakat –maazallah– şeriattan düşen, ebedî hüsranda kalır.",
+      "order_index": 149
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu büyük zatın beyanatına göre Bedîüzzaman’ın açtığı nur yolu ile hakiki ve şaibesiz tasavvuf arasında cevherî hiçbir ihtilaf yoktur. Her ikisi de Rıza-yı Bâri’ye ve bi’n-netice cennet-i a’lâya ve dîdar-ı Mevla’ya götüren yollardır.",
+      "order_index": 150
+    },
+    {
+      "type": "paragraph",
+      "text": "Binaenaleyh bu asil gayeyi istihdaf eden herhangi mutasavvıf bir kardeşimizin, Risale-i Nur Külliyatı’nı seve seve okumasına hiçbir mani kalmadığı gibi bilakis Risale-i Nur tasavvuftaki “murakabe” dairesini, Kur’an-ı Kerîm yolu ile genişleterek ona bir de tefekkür vazifesini en mühim bir vird olarak ilâve etmiştir.",
+      "order_index": 151
+    },
+    {
+      "type": "paragraph",
+      "text": "Evet, insanın gözüne gönlüne bambaşka ufuklar açan bu “tefekkür” sebebiyle sadece kalbinin murakabesi ile meşgul olan bir sâlik, kalbi ve bütün letaifi ile birlikte zerrelerden kürelere kadar bütün kâinatı azamet ve ihtişamı ile seyir ve temaşa, murakabe ve müşahede ederek Cenab-ı Hakk’ın o âlemlerde bin bir şekilde tecelli etmekte olan esma-i hüsnasını, sıfât-ı ulyâsını kemal-i vecd ile görerek, artık sonsuz bir mabedde olduğunu aynelyakîn, ilmelyakîn ve hakkalyakîn derecesinde hisseder. Çünkü içine girdiği “mabed” öyle ulu bir mabeddir ki milyarlara sığmayan cemaatin hepsi aşk ve şevk, huşû ve istiğraklar içinde Hâlık’ını zikrediyor. Yanık, tatlı ve güzel lisanları; şive, nağme, ahenk ve besteleri ile bir ağızdan سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ اَكْبَرُ diyorlar.",
+      "order_index": 152
+    },
+    {
+      "type": "paragraph",
+      "text": "Risale-i Nur’un açtığı iman ve irfan ve Kur’an yolunu takip eden, işte böyle muazzam ve muhteşem bir mabede girer. Ve herkes de iman ve irfanı, feyiz ve ihlası nisbetinde feyizyâb olur.",
+      "order_index": 153
+    },
+    {
+      "type": "paragraph",
+      "text": "Edebî Cephesi:",
+      "order_index": 154
+    },
+    {
+      "type": "paragraph",
+      "text": "Eskiden beri lafız ve mana, üslup ve muhteva bakımından edibler ve şairler, mütefekkirler ve âlimler ikiye ayrılmışlardır. Bunlardan bazıları, sadece üslup ve ifadeye, vezin ve kafiyeye kıymet vererek manayı ifadeye feda etmişlerdir. Ve bu hal de kendini en çok şiirde gösterir.",
+      "order_index": 155
+    },
+    {
+      "type": "paragraph",
+      "text": "Diğer zümre ise en çok mana ve muhtevaya ehemmiyet vererek özü söze kurban etmemişlerdir.",
+      "order_index": 156
+    },
+    {
+      "type": "paragraph",
+      "text": "Artık Bedîüzzaman gibi büyük bir mütefekkirin edebî cephesi bu küçük mukaddime ile kolayca anlaşılır sanırım. Zira Üstad o kıymetli ve bereketli ömrünü, kulaklarda kalacak olan sözlerin tanzim ve tertibi ile değil, bilakis kalplerde, ruhlarda, vicdan ve fikirlerde kudsî bir ideal halinde insanlıkla beraber yaşayacak olan din hissinin, iman şuurunun, ahlâk ve fazilet mefhumunun asırlara, nesillere telkini ile meşgul olan bir dâhîdir. Artık bu kadar ulvi bir gayenin tahakkuku için candan ve cihandan geçen bir mücahid, pek tabiîdir ki fâni şekillerle meşgul olamaz.",
+      "order_index": 157
+    },
+    {
+      "type": "paragraph",
+      "text": "Bununla beraber Üstad zevk inceliği, gönül hassasiyeti, fikir derinliği ve hayal yüksekliği bakımından hârikulâde denecek derecede edebî bir kudret ve melekeyi haizdir. Ve bu sebeple üslup ve ifadesi, mevzuya göre değişir.",
+      "order_index": 158
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela, ilmî ve felsefî mevzularda mantıkî ve riyazî delillerle aklı ikna ederken gayet veciz terkipler kullanır. Fakat gönlü mest edip ruhu yükselteceği anlarda ifade o kadar berraklaşır ki tarif edilemez.",
+      "order_index": 159
+    },
+    {
+      "type": "paragraph",
+      "text": "Mesela semalardan, güneşlerden, yıldızlardan, mehtaplardan ve bilhassa bahar âleminden ve Cenab-ı Hakk’ın o âlemlerde tecelli etmekte olan kudret ve azametini tasvir ederken üslup o kadar latîf bir şekil alır ki artık her teşbih, en tatlı renklerle çerçevelenmiş bir levhayı andırır ve her tasvir, hârikalar hârikası bir âlemi canlandırır.",
+      "order_index": 160
+    },
+    {
+      "type": "paragraph",
+      "text": "İşte bu hikmete mebnidir ki bir Nur talebesi Risale-i Nur Külliyatı’nı mütalaası ile –üniversitenin herhangi bir fakültesine mensup da olsa– hissen, fikren, ruhen, vicdanen ve hayalen tam manasıyla tatmin edilmiş oluyor.",
+      "order_index": 161
+    },
+    {
+      "type": "paragraph",
+      "text": "Nasıl tatmin edilmez ki Risale-i Nur Külliyatı, Kur’an-ı Kerîm’in cihan-şümul bahçesinden derilen bir gül demetidir. Binaenaleyh onda, o mübarek ve İlahî bahçenin nuru, havası, ziyası ve kokusu vardır.",
+      "order_index": 162
+    },
+    {
+      "type": "paragraph",
+      "text": "Ruhun bu ihtiyacını söyler akan sular",
+      "order_index": 163
+    },
+    {
+      "type": "paragraph",
+      "text": "Kur’an’a her zaman beşerin ihtiyacı var.",
+      "order_index": 164
+    },
+    {
+      "type": "paragraph",
+      "text": "Ali Ulvi Kurucu",
+      "order_index": 165
+    },
+    {
+      "type": "paragraph",
+      "text": "***",
+      "order_index": 166
+    },
+    {
+      "type": "paragraph",
+      "text": "RİSALE-İ NUR KÜLLİYATI",
+      "order_index": 167
+    },
+    {
+      "type": "paragraph",
+      "text": "BEDÎÜZZAMAN SAİD NURSÎ  Hizmet Vakfı Diyanet İşleri Başkanlığı",
+      "order_index": 168
+    },
+    {
+      "type": "paragraph",
+      "text": "ASIL NÜSHA METNİ",
+      "order_index": 169
+    },
+    {
+      "type": "paragraph",
+      "text": "©2016",
+      "order_index": 170
+    }
+  ]
+}

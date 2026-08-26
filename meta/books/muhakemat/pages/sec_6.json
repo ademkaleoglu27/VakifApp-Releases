@@ -1,0 +1,35 @@
+{
+  "id": "sec_5",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Üçüncü Makale",
+      "order_index": 0
+    },
+    {
+      "type": "arabic_block",
+      "text": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+      "order_index": 1
+    },
+    {
+      "type": "arabic_block",
+      "text": "اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ وَ اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ",
+      "order_index": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bu kelime-i âliye, üssü’l-esas-ı İslâmiyet olduğu gibi kâinat üstünde temevvüc eden İslâmiyet’in en nurani ve en ulvi bayrağıdır. Evet, misak-ı ezeliye ile peyman ve yeminimiz olan iman, bu menşur-u mukaddeste yazılmıştır. Evet, âb-ı hayat olan İslâmiyet ise bu kelimenin aynü’l-hayatından nebean eder. Evet, ebede namzet olan nev-i beşer içinde saadet-saray-ı ebediyeye tayin ve tebşir olunanın ellerine verilmiş bir ferman-ı ezelîdir. Evet, kalp denilen avâlim-i gayba karşı olan penceresinde kurulmuş olan latîfe-i Rabbaniyenin fotoğrafıyla alınan timsal-i nuraniyle Sultan-ı ezel’i ilan eden harita-i nuraniyesidir ve tercüman-ı beliğidir. Evet, vicdanın esrarengiz olan nutk-u beliğanesini cemiyet-i kâinata karşı vekaleten inşad eden hatib-i fasihi ve kâinata Hâkim-i Ezel’i ilan eden imanın mübelliğ-i beliği olan lisanın elinde bir menşur-u lâyezalîdir.",
+      "order_index": 3
+    },
+    {
+      "type": "paragraph",
+      "text": "İşaret: Bu kelime-i şehadetin iki kelâmı birbirine şahid-i sadıktır ve birbirini tezkiye eder. Evet, uluhiyet nübüvvete bürhan-ı limmîdir. Muhammed aleyhisselâm, Sâni’-i Zülcelal’e zatıyla ve lisanıyla bürhan-ı innîdir.",
+      "order_index": 4
+    },
+    {
+      "type": "paragraph",
+      "text": "Tenbih: Hakaik-i akaid-i İslâmiye, bütün teferruatıyla kütüb-ü İslâmiyede mufassalan müberhene ve musarrahadır, görünebilir. Ve görülen şeyi göstermek, zahirin hafâsına veya muhatabın gabavetine işaret ve techil olduğundan, akidenin yalnız üç dört unsurunu beyan edeceğim. Diğer hakaikini fuhûl-ü ulemanın kitaplarına havale ederim. Zira bana hâcet bırakmamışlar.",
+      "order_index": 5
+    }
+  ]
+}
