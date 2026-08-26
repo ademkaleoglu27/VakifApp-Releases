@@ -11,7 +11,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-type TabType = 'GENERAL' | 'GUIDE' | 'ROLES' | 'CREDITS' | 'PROVENANCE';
+type TabType = 'GENERAL' | 'GUIDE' | 'CREDITS' | 'PROVENANCE';
 
 const TAP_THRESHOLD = 7;
 const TAP_TIMEOUT_MS = 2000;
@@ -196,33 +196,7 @@ export const AboutScreen = (props: any) => {
         </ScrollView>
     );
 
-    const renderRoles = () => (
-        <ScrollView contentContainerStyle={styles.contentScroll}>
-            <View style={styles.card}>
-                <Text style={styles.sectionTitle}>Yetki Matrisi</Text>
-                <Text style={styles.paragraph}>
-                    Uygulama içerisindeki özellikler, kullanıcının hizmetteki konumuna göre açılır.
-                </Text>
 
-                <RoleItem
-                    role="MİSAFİR"
-                    desc="Sadece Risale okuma, Lügat ve Cevşen gibi temel özelliklere erişebilir. Meşveret verilerini göremez."
-                />
-                <RoleItem
-                    role="SOHBET EHLİ"
-                    desc="Misafir özelliklerine ek olarak; Duyuruları görebilir ve Cüz Takibi sistemine katılabilir."
-                />
-                <RoleItem
-                    role="VAKIF / HEYET"
-                    desc="Tüm özelliklere erişebilir. Kararları okuyabilir, nöbet listelerini görebilir ve Ajanda'yı kullanabilir."
-                />
-                <RoleItem
-                    role="YÖNETİCİ"
-                    desc="Sistemin tam yetkili kullanıcısıdır. Karar ekleyebilir, görev atayabilir ve muhasebe kayıtlarını yönetebilir."
-                />
-            </View>
-        </ScrollView>
-    );
 
     const renderCredits = () => (
         <ScrollView contentContainerStyle={styles.contentScroll}>
@@ -293,7 +267,6 @@ export const AboutScreen = (props: any) => {
             <View style={styles.tabsContainer}>
                 {renderTabButton('GENERAL', 'Genel', 'information-circle')}
                 {renderTabButton('GUIDE', 'Rehber', 'book')}
-                {renderTabButton('ROLES', 'Yetkiler', 'shield-checkmark')}
                 {renderTabButton('CREDITS', 'Kaynaklar', 'link')}
                 {renderTabButton('PROVENANCE', 'Veri', 'server')}
             </View>
@@ -301,7 +274,6 @@ export const AboutScreen = (props: any) => {
             <View style={styles.contentContainer}>
                 {activeTab === 'GENERAL' && renderGeneral()}
                 {activeTab === 'GUIDE' && renderGuide()}
-                {activeTab === 'ROLES' && renderRoles()}
                 {activeTab === 'CREDITS' && renderCredits()}
                 {activeTab === 'PROVENANCE' && renderProvenance()}
             </View>

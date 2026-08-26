@@ -497,13 +497,14 @@ const DrawerItem = React.memo(({ label, icon, onPress, color, isSubItem }: any) 
 const DrawerNavigator = () => {
     return (
         <Drawer.Navigator
+            defaultStatus="closed"
             drawerContent={(props) => <CustomDrawerContent {...props} />}
             screenOptions={{
                 headerShown: false,
                 drawerStyle: { width: '80%', backgroundColor: 'transparent' },
                 swipeEnabled: false, // Disabling swipe to avoid accidental jitters, use button
                 drawerType: 'front', // Crucial for overlay performance without layout resizing
-                overlayColor: 'rgba(0,0,0,0.7)',
+                overlayColor: 'rgba(0,0,0,0.5)',
             }}
         >
             <Drawer.Screen name="MainTabs" component={MainTabs} />

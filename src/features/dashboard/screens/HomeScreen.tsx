@@ -1,98 +1,56 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, FlatList, Modal, TextInput, Alert, Platform, Image, Keyboard } from 'react-native';
+﻿import React, { useEffect, useState, useCallback } from 'react';
+import {
+    View, Text, StyleSheet, ScrollView, TouchableOpacity,
+    StatusBar, Platform, Share
+} from 'react-native';
 import { useAuthStore } from '@/store/authStore';
 import { useNavigation, useFocusEffect, DrawerActions } from '@react-navigation/native';
-import { useSync } from '@/hooks/dbHooks';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '@/config/theme';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { LinearGradient } from 'expo-linear-gradient';
-import { RISALE_BOOKS } from '@/config/risaleSources';
-import { canAccess } from '@/config/permissions';
-import { PageStepper } from '@/components/PageStepper';
-import { useQuranStore } from '@/features/quran/store/useQuranStore';
-import { QuranPackService } from '@/features/quran/services/QuranPackService';
-import { ReadingStatsService } from '@/services/ReadingStatsService';
 import { ContinueReadingCard } from '@/components/ContinueReadingCard';
+import { getDb } from '@/services/db/sqlite';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const HomeScreen = () => {
     const navigation = useNavigation<any>();
     const { user } = useAuthStore();
+    const insets = useSafeAreaInsets();
 
-    const [leaderboard, setLeaderboard] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    // const { status, downloadProgress, detailedStatus } = useQuranStore(); // Kept for download progress overlay
-    const [downloadProgress, setDownloadProgress] = useState(0); // Moved from useQuranStore
-    const [status, setStatus] = useState<string>('CHECKING'); // Moved from useQuranStore, assuming string type
-    const [detailedStatus, setDetailedStatus] = useState<string>(''); // Moved from useQuranStore
-    const [dailyQuote, setDailyQuote] = useState<{ text: string, source: string } | null>(null); // Added dailyQuote state
-
-    // Get display name from user metadata or fallback
+    const [dailyQuote, setDailyQuote] = useState<{ text: string, source: string } | null>(null);
+    const [weeklyPages, setWeeklyPages] = useState<number>(0);
+    const weeklyGoal = 50; // 50 pages weekly goal
 
     const openDrawer = () => {
         navigation.dispatch(DrawerActions.openDrawer());
     };
 
-    // Add Reading State
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [contacts, setContacts] = useState<any[]>([]);
-    const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
-    const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
-    const [pages, setPages] = useState('');
-
-    const syncMutation = useSync();
-
     useFocusEffect(
         useCallback(() => {
-            // Load data for display
-            loadLeaderboard();
-            loadContacts();
-
-            // Sync in background without blocking or aggressive refetching
-            // syncMutation.mutate(); // Removed to prevent navigation stutter. SyncService handles periodic sync.
-        }, [])
+            loadWeeklyStats();
+        }, [user])
     );
 
-    // Helper: Calculate Last Monday 12:00
-    const getLastMondayNoon = () => {
-        const now = new Date();
-        const day = now.getDay(); // 0 (Sun) to 6 (Sat)
-
-        // Days to subtract to get to Monday (1)
-        // If today is Sunday (0): (0 - 1 + 7) % 7 = 6 days ago
-        // If today is Monday (1): (1 - 1 + 7) % 7 = 0 days ago
-        // If today is Tuesday (2): (2 - 1 + 7) % 7 = 1 day ago
-        const diff = (day - 1 + 7) % 7;
-
-        const lastMonday = new Date(now);
-        lastMonday.setDate(now.getDate() - diff);
-        lastMonday.setHours(12, 0, 0, 0);
-
-        // If today is Monday but BEFORE 12:00, we fall back to PREVIOUS week's Monday
-        // Because the new week hasn't started yet (according to the rule)
-        if (now < lastMonday) {
-            lastMonday.setDate(lastMonday.getDate() - 7);
-        }
-
-        return lastMonday.toISOString();
-    };
-
-    const loadLeaderboard = async () => {
-        // Use Centralized Service (RPC + Cache)
-        const data = await ReadingStatsService.fetchLeaderboard('week', 'homeTop10');
-        setLeaderboard(data);
-        setIsLoading(false);
-    };
-
-    // seedDummyData removed.
-
-    const loadContacts = async () => {
-        if (!user || !canAccess(user.role, 'VIEW_COUNCIL_DECISIONS')) return;
+    const loadWeeklyStats = async () => {
         try {
-            const data = await RisaleUserDb.getContacts();
-            setContacts(data);
-        } catch (error) {
+            const db = await getDb();
+            const now = new Date();
+            const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const dateStr = lastWeek.toISOString().split('T')[0];
 
+            let query = 'SELECT SUM(pages_read) as total FROM reading_logs WHERE date >= ?';
+            let params: any[] = [dateStr];
+
+            if (user?.id) {
+                query += ' AND user_id = ?';
+                params.push(user.id);
+            }
+
+            const res = await db.getFirstAsync<{ total: number }>(query, params);
+            setWeeklyPages(res?.total || 0);
+        } catch (e) {
+            console.warn('[HomeScreen] Error loading weekly stats:', e);
         }
     };
 
@@ -106,163 +64,40 @@ export const HomeScreen = () => {
         fetchQuote();
     }, []);
 
-    // Construct Name Display
     const displayName = (user as any)?.user_metadata?.full_name
-        ? `${(user as any).user_metadata.full_name.split(' ')[0]} Abi`
-        : (user?.email?.split('@')[0] || 'Kardeşim');
+        || user?.name
+        || (user?.email ? user.email.split('@')[0] : 'Kıymetli Kardeşimiz');
 
-    const handleAddReading = async () => {
-        // PERMISSION CHECK for Proxy Entry
-        if (!canAccess(user?.role || 'sohbet_member', 'MESVERET_SCREEN')) {
-            Alert.alert('Yetkisiz İşlem', 'Başkası adına okuma ekleme yetkiniz yok.');
-            return;
-        }
-
-        if (!selectedContactId || !pages) {
-            Alert.alert('Hata', 'Kişi ve sayfa sayısı seçilmelidir.');
-            return;
-        }
-
-        const bookName = selectedBookId ? RISALE_BOOKS.find(b => b.id === selectedBookId)?.title : undefined;
-
+    const handleShareVerse = async () => {
         try {
-            await RisaleUserDb.addContactReading(selectedContactId, parseInt(pages || '0'));
-            setModalVisible(false);
-            setPages('');
-            setSelectedBookId(null);
-            setSelectedContactId(null);
-            setLeaderboard([]); // Clear to force reload
-            loadLeaderboard();
-            Alert.alert('Başarılı', 'Okuma eklendi.');
-        } catch (e) {
-            Alert.alert('Hata', 'Ekleme başarısız.');
-            console.error(e);
-        }
+            await Share.share({
+                message: `✨ GÜNÜN AYETİ\n\n"Şüphesiz kalpler ancak Allah'ı anmakla huzur bulur." (Ra'd Sûresi, 28)\n\n— Nur Mektebi İbadet & Okuma Rehberi`
+            });
+        } catch (e) {}
     };
 
-
-    // Data Splitting
-    const topThree = leaderboard.slice(0, 3);
-    const others = leaderboard.slice(3);
-
-    const renderPodiumItem = (item: any, rank: number) => {
-        if (!item) return <View style={styles.podiumPlace} />;
-
-        const isFirst = rank === 0;
-        const place = rank === 0 ? 1 : (rank === 1 ? 2 : 3);
-
-        // Safe name extraction with fallback
-        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
-        const nameInitial = displayName?.[0] || '?';
-        const totalPages = item.totalPages || item.total_pages || 0;
-
-        // Colors for gradients
-        const goldColors = ['#FFD700', '#FDB931', '#F59E0B'];
-        const silverColors = ['#E0E0E0', '#BDBDBD', '#9E9E9E'];
-        const bronzeColors = ['#E6A869', '#CD7F32', '#8E5A2D'];
-
-        const colors = isFirst ? goldColors : (rank === 1 ? silverColors : bronzeColors);
-        const size = isFirst ? 88 : 64; // Bigger avatar for #1
-        const stepHeight = isFirst ? 60 : (rank === 1 ? 40 : 30); // Increased height for better visibility
-        const fontSize = isFirst ? 32 : (rank === 1 ? 24 : 18); // Dynamic font size
-
-        return (
-            <View style={styles.podiumPlace}>
-                <View style={styles.avatarContainer}>
-                    {isFirst && (
-                        <View style={styles.crownContainer}>
-                            <Ionicons name="happy" size={28} color="#FFD700" />
-                        </View>
-                    )}
-
-                    <LinearGradient
-                        colors={colors as any}
-                        style={[styles.avatarBorder, { width: size + 6, height: size + 6, borderRadius: (size + 6) / 2 }]}
-                    >
-                        <View style={[styles.avatarInner, { width: size, height: size, borderRadius: size / 2 }]}>
-                            <Text style={[styles.avatarText, { fontSize: isFirst ? 28 : 20 }]}>
-                                {nameInitial}
-                            </Text>
-                        </View>
-                    </LinearGradient>
-
-                    <View style={[styles.rankBadge, { backgroundColor: colors[1], borderColor: '#fff' }]}>
-                        <Text style={styles.rankBadgeText}>{place}</Text>
-                    </View>
-                </View>
-
-                <Text style={[styles.podiumName, isFirst && styles.podiumNameFirst]} numberOfLines={1}>{displayName}</Text>
-                <Text style={styles.podiumPages}>{totalPages} sayfa</Text>
-
-                {/* The Physical Podium Step */}
-                <LinearGradient
-                    colors={[colors[2], colors[0]]}
-                    start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
-                    style={[styles.podiumStep, { height: stepHeight, justifyContent: 'center' }]}
-                >
-                    <Text style={[styles.stepNumber, { fontSize }]}>{place}</Text>
-                </LinearGradient>
-            </View>
-        );
-    };
-
-    const Podium = () => (
-        <View style={styles.podiumContainer}>
-            {/* Rank 2 (Left) */}
-            <View style={styles.podiumColumn}>{renderPodiumItem(topThree[1], 1)}</View>
-            {/* Rank 1 (Center) */}
-            <View style={[styles.podiumColumn, { marginHorizontal: 4, zIndex: 10 }]}>{renderPodiumItem(topThree[0], 0)}</View>
-            {/* Rank 3 (Right) */}
-            <View style={styles.podiumColumn}>{renderPodiumItem(topThree[2], 2)}</View>
-        </View>
-    );
-
-    const renderCompactRow = ({ item, index }: { item: any, index: number }) => {
-        if (!item) return null;
-
-        const rank = index + 4; // Since we skip top 3
-        const displayName = item.name || item.displayName || item.display_name || 'Anonim';
-        const nameInitial = displayName?.[0] || '?';
-        const totalPages = item.totalPages || item.total_pages || 0;
-
-        return (
-            <View style={styles.compactRow}>
-                <Text style={styles.compactRank}>#{rank}</Text>
-                <View style={styles.compactAvatar}>
-                    <Text style={styles.compactAvatarText}>{nameInitial}</Text>
-                </View>
-                <Text style={styles.compactName}>{displayName} {item.surname || ''}</Text>
-                <View style={{ flex: 1 }} />
-                <Text style={styles.compactPages}>{totalPages} Sayfa</Text>
-            </View>
-        );
-    };
-
-
-
-    // ... imports match existing ...
-
-    // ... imports match existing ...
-
-    const insets = { top: Platform.OS === 'ios' ? 50 : 30 }; // Fallback safe area
+    const progressPercentage = Math.min(Math.round((weeklyPages / weeklyGoal) * 100), 100);
 
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
 
-            {/* Premium Header Background */}
+            {/* Islamic Gradient Header Background with Geometric Accents */}
             <View style={styles.headerBackground} pointerEvents="none">
                 <LinearGradient
-                    colors={[theme.colors.primary, '#0f766e']}
+                    colors={['#044e3b', '#065f46', '#0f766e']}
                     style={StyleSheet.absoluteFill}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                 />
+                <View style={styles.islamicStarWatermark}>
+                    <MaterialCommunityIcons name="star-four-points" size={140} color="rgba(255,255,255,0.04)" />
+                </View>
                 <View style={styles.decorativeCircle} />
             </View>
 
-            {/* Header Content */}
-            <View style={[styles.headerArea, { paddingTop: insets.top }]}>
+            {/* Top User Bar */}
+            <View style={[styles.headerArea, { paddingTop: Math.max(insets.top, 38) }]}>
                 <View style={styles.headerLeft}>
                     <TouchableOpacity
                         onPress={openDrawer}
@@ -270,36 +105,46 @@ export const HomeScreen = () => {
                         activeOpacity={0.7}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     >
-                        <Ionicons name="menu" size={28} color="#fff" />
+                        <Ionicons name="menu" size={28} color="#FFF" />
                     </TouchableOpacity>
                     <View style={styles.welcomeContainer}>
-                        <Text style={styles.welcomeText}>Hayırlı Günler,</Text>
-                        <Text style={styles.userName}>{displayName}</Text>
+                        <Text style={styles.welcomeGreeting}>Hayırlı Günler,</Text>
+                        <Text style={styles.userNameText} numberOfLines={1}>{displayName}</Text>
                     </View>
                 </View>
-                {/* Optional: Add profile img or icon here */}
+
+                <TouchableOpacity
+                    style={styles.headerIconBtn}
+                    onPress={() => navigation.navigate('PrayerTimesScreen')}
+                    activeOpacity={0.7}
+                >
+                    <Ionicons name="compass-outline" size={22} color="#FFF" />
+                </TouchableOpacity>
             </View>
 
-            {/* Main White Card Content */}
-            <View style={styles.cardContent}>
-
-                {/* Quote of the Day */}
-                <View style={styles.quoteContainer}>
-                    <View style={styles.quoteIcon}>
-                        <Ionicons name="chatbox-ellipses" size={24} color="#fff" />
+            {/* Scrollable Spiritual Content Card */}
+            <ScrollView
+                style={styles.mainScroll}
+                contentContainerStyle={styles.scrollContent}
+                showsVerticalScrollIndicator={false}
+            >
+                {/* 1. Daily Risale Quote with Islamic Border */}
+                <View style={styles.quoteCard}>
+                    <View style={styles.quoteIconCircle}>
+                        <Ionicons name="chatbox-ellipses" size={20} color="#FFF" />
                     </View>
                     <View style={{ flex: 1 }}>
                         <Text style={styles.quoteText} numberOfLines={3}>
                             "{dailyQuote?.text || 'Güzel gören güzel düşünür. Güzel düşünen, hayatından lezzet alır.'}"
                         </Text>
-                        <Text style={styles.quoteSource}>- {dailyQuote?.source || 'Mektubat'}</Text>
+                        <Text style={styles.quoteSource}>— {dailyQuote?.source || 'Mektubat'}</Text>
                     </View>
                 </View>
 
-                {/* Kaldığım Yerden Devam Et Kartı */}
+                {/* 2. Last Read Resumption Card */}
                 <ContinueReadingCard />
 
-                {/* Hızlı Erişim 3'lü Kart (Kur'an, Namaz & Zikirmatik) */}
+                {/* 3. Quick Access 3-Pill Grid */}
                 <View style={styles.quickCardsRow}>
                     <TouchableOpacity
                         style={[styles.quickCardItem, styles.quickCardQuran]}
@@ -314,7 +159,7 @@ export const HomeScreen = () => {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.quickCardItem}
+                        style={[styles.quickCardItem, styles.quickCardPrayer]}
                         onPress={() => navigation.navigate('PrayerTimesScreen')}
                         activeOpacity={0.8}
                     >
@@ -322,7 +167,7 @@ export const HomeScreen = () => {
                             <Ionicons name="time" size={20} color="#064E3B" />
                         </View>
                         <Text style={styles.quickCardTitle} numberOfLines={1}>Namaz</Text>
-                        <Text style={styles.quickCardSubtitle} numberOfLines={1}>Ezan & Vakit</Text>
+                        <Text style={styles.quickCardSubtitle} numberOfLines={1}>Ezan & Kıble</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -338,178 +183,239 @@ export const HomeScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/* Download Progress Overlay (if actively downloading) */}
-                {status === 'DOWNLOADING' && (
-                    <View style={styles.downloadOverlay}>
-                        <View style={styles.progressHeader}>
-                            <Text style={styles.progressTitle}>Kur'an Kuruluyor...</Text>
-                            <Text style={styles.progressPercent}>%{Math.round(downloadProgress * 100)}</Text>
-                        </View>
-                        <View style={styles.progressBarBg}>
-                            <View style={[styles.progressBarFill, { width: `${downloadProgress * 100}%` }]} />
-                        </View>
-                        {detailedStatus && <Text style={styles.detailedStatusText}>{detailedStatus}</Text>}
-                    </View>
-                )}
-
-                {/* Dashboard Content */}
-                <View style={styles.dashboardContent}>
-                    <View style={styles.sectionHeader}>
-                        <Text style={styles.sectionTitle}>Haftalık Sıralama</Text>
-                        {/* Add Reading Button removed as per user request */}
-                    </View>
-
-                    {/* Podium & List */}
-                    <FlatList
-                        data={others}
-                        renderItem={renderCompactRow}
-                        keyExtractor={(item) => item.id}
-                        ListHeaderComponent={<Podium />}
-                        contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 100 }}
-                        showsVerticalScrollIndicator={false}
-                        ListEmptyComponent={
-                            <View style={styles.emptyContainer}>
-                                <Text style={styles.emptyText}>Henüz sıralama yok.</Text>
+                {/* 4. Personal Weekly Reading Goal & Progress Card */}
+                <LinearGradient
+                    colors={['#FFFDF8', '#FEF9EE']}
+                    style={styles.goalCard}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                >
+                    <View style={styles.goalTopRow}>
+                        <View style={styles.goalHeaderLeft}>
+                            <View style={styles.goalIconCircle}>
+                                <Ionicons name="ribbon-outline" size={20} color="#D97706" />
                             </View>
-                        }
-                    />
-                </View>
-            </View>
-
-            {/* Add Reading Modal (Admin Only) */}
-            <Modal visible={isModalVisible} animationType="fade" transparent>
-                <View style={styles.modalOverlay}>
-                    <View style={styles.modalContent}>
-                        <View style={styles.modalHeader}>
-                            <Text style={styles.modalTitle}>Kişi Adına Okuma Ekle</Text>
-                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
-                                <Ionicons name="close" size={20} color="#64748B" />
-                            </TouchableOpacity>
+                            <View>
+                                <Text style={styles.goalCardTitle}>Haftalık Okuma Hedefim</Text>
+                                <Text style={styles.goalCardSubtitle}>Son 7 günlük kişisel takibiniz</Text>
+                            </View>
                         </View>
-
-                        <Text style={styles.label}>Kişi Seçimi</Text>
-                        <View style={{ maxHeight: 150 }}>
-                            <FlatList
-                                data={contacts}
-                                keyExtractor={(item) => item.id}
-                                renderItem={({ item }) => (
-                                    <TouchableOpacity
-                                        style={[styles.chip, selectedContactId === item.id && styles.chipSelected, { marginBottom: 8 }]}
-                                        onPress={() => setSelectedContactId(item.id)}
-                                    >
-                                        <Text style={[styles.chipText, selectedContactId === item.id && styles.chipTextSelected]}>
-                                            {item.name} {item.surname}
-                                        </Text>
-                                    </TouchableOpacity>
-                                )}
-                                nestedScrollEnabled={true}
-                            />
+                        <View style={styles.goalBadge}>
+                            <Text style={styles.goalBadgeText}>%{progressPercentage}</Text>
                         </View>
+                    </View>
 
-                        <PageStepper
-                            value={pages}
-                            onChange={setPages}
-                            label="Sayfa Sayısı"
-                            step={10}
+                    <View style={styles.goalNumberRow}>
+                        <Text style={styles.goalBigNumber}>{weeklyPages}</Text>
+                        <Text style={styles.goalUnitText}>/ {weeklyGoal} Sayfa</Text>
+                        <Text style={styles.goalRemainingText}>
+                            {weeklyPages >= weeklyGoal ? '🎉 Hedef Tamamlandı!' : `${weeklyGoal - weeklyPages} sayfa kaldı`}
+                        </Text>
+                    </View>
+
+                    {/* Progress Bar */}
+                    <View style={styles.progressBarBg}>
+                        <LinearGradient
+                            colors={['#10B981', '#047857']}
+                            style={[styles.progressBarFill, { width: `${progressPercentage}%` }]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
                         />
+                    </View>
 
-                        <TouchableOpacity style={styles.btnSave} onPress={handleAddReading}>
-                            <Text style={styles.btnSaveText}>KAYDET</Text>
+                    {/* Quick Add Reading Button */}
+                    <View style={styles.goalActionRow}>
+                        <TouchableOpacity
+                            style={styles.goalActionBtn}
+                            onPress={() => navigation.navigate('ReadingTracking')}
+                            activeOpacity={0.8}
+                        >
+                            <Ionicons name="stats-chart-outline" size={16} color="#047857" />
+                            <Text style={styles.goalActionBtnText}>İstatistiklere Git</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.goalAddBtn}
+                            onPress={() => navigation.navigate('AddReading')}
+                            activeOpacity={0.8}
+                        >
+                            <Ionicons name="add-circle" size={16} color="#FFF" />
+                            <Text style={styles.goalAddBtnText}>Okuma Ekle</Text>
                         </TouchableOpacity>
                     </View>
+                </LinearGradient>
+
+                {/* 5. Günün Âyet-i Kerîmesi (Islamic Tezhip Ornament Box) */}
+                <View style={styles.verseCard}>
+                    <View style={styles.verseHeaderRow}>
+                        <View style={styles.verseTagBadge}>
+                            <MaterialCommunityIcons name="book-open-page-variant" size={14} color="#047857" />
+                            <Text style={styles.verseTagText}>GÜNÜN ÂYETİ</Text>
+                        </View>
+                        <TouchableOpacity onPress={handleShareVerse} activeOpacity={0.7} style={styles.shareIconBtn}>
+                            <Ionicons name="share-social-outline" size={18} color="#64748B" />
+                        </TouchableOpacity>
+                    </View>
+
+                    <Text style={styles.verseArabic}>
+                        أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
+                    </Text>
+
+                    <Text style={styles.verseMeaning}>
+                        "Bilesiniz ki, kalpler ancak Allah'ı anmakla huzur ve sükûna kavuşur."
+                    </Text>
+
+                    <View style={styles.verseFooter}>
+                        <Text style={styles.verseSurah}>— Ra'd Sûresi, 28. Âyet-i Kerîme</Text>
+                    </View>
                 </View>
-            </Modal>
+
+                {/* 6. Günün Hadîs-i Şerîfi */}
+                <View style={styles.hadithCard}>
+                    <View style={styles.hadithHeaderRow}>
+                        <View style={styles.hadithTagBadge}>
+                            <Ionicons name="sparkles" size={14} color="#B45309" />
+                            <Text style={styles.hadithTagText}>GÜNÜN HADİSİ</Text>
+                        </View>
+                    </View>
+
+                    <Text style={styles.hadithText}>
+                        "Kim Kur'an-ı Kerim'den bir harf okursa, onun için bir sevap vardır. Her bir sevabın karşılığı da on mislidir."
+                    </Text>
+
+                    <Text style={styles.hadithSource}>— Hadis-i Şerif (Tirmizî, Fedâilü'l-Kur'an, 16)</Text>
+                </View>
+
+                {/* Extra Bottom Padding */}
+                <View style={{ height: 40 }} />
+            </ScrollView>
         </View>
     );
 };
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f8fafc',
+        backgroundColor: '#F8FAFC',
     },
     headerBackground: {
-        height: '35%',
+        height: 260,
         width: '100%',
         position: 'absolute',
         top: 0,
         left: 0,
-        backgroundColor: theme.colors.primary,
-        borderBottomLeftRadius: 32,
-        borderBottomRightRadius: 32,
+        borderBottomLeftRadius: 36,
+        borderBottomRightRadius: 36,
         overflow: 'hidden',
+    },
+    islamicStarWatermark: {
+        position: 'absolute',
+        right: -20,
+        top: 30,
+        opacity: 0.8,
     },
     decorativeCircle: {
         position: 'absolute',
-        top: -100,
-        right: -100,
-        width: 300,
-        height: 300,
-        borderRadius: 150,
-        backgroundColor: 'rgba(255,255,255,0.1)',
-        transform: [{ scale: 1.5 }],
+        top: -80,
+        left: -80,
+        width: 220,
+        height: 220,
+        borderRadius: 110,
+        backgroundColor: 'rgba(255, 255, 255, 0.06)',
     },
     headerArea: {
-        paddingHorizontal: 24,
-        marginBottom: 20,
-        zIndex: 50, // Ensure it's above absolute background
-        position: 'relative', // Establish stacking context
+        paddingHorizontal: 20,
+        paddingBottom: 16,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     headerLeft: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 16
+        gap: 12,
+        flex: 1,
     },
     menuButton: {
-        padding: 8,
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        borderRadius: 12,
-        zIndex: 60, // Ensure button itself is top-most
+        width: 44,
+        height: 44,
+        borderRadius: 14,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     welcomeContainer: {
-        justifyContent: 'center'
-    },
-    welcomeText: { color: 'rgba(255,255,255,0.8)', fontSize: 13, fontWeight: '500' },
-    userName: { color: '#fff', fontSize: 24, fontWeight: 'bold', letterSpacing: 0.5 },
-
-    cardContent: {
         flex: 1,
-        backgroundColor: '#fff',
-        borderTopLeftRadius: 32,
-        borderTopRightRadius: 32,
-        paddingHorizontal: 20, // Reduced from 24
-        paddingTop: 24,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: -4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 12,
-        elevation: 10,
     },
-
-    quoteContainer: {
-        backgroundColor: '#f8fafc',
-        padding: 16,
-        borderRadius: 20,
+    welcomeGreeting: {
+        fontSize: 12,
+        color: '#A7F3D0',
+        fontWeight: '500',
+    },
+    userNameText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+        letterSpacing: 0.3,
+    },
+    headerIconBtn: {
+        width: 40,
+        height: 40,
+        borderRadius: 12,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    mainScroll: {
+        flex: 1,
+    },
+    scrollContent: {
+        paddingHorizontal: 16,
+        paddingTop: 8,
+        paddingBottom: 40,
+    },
+    quoteCard: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 16,
-        marginBottom: 24,
-        borderWidth: 1,
-        borderColor: '#e2e8f0',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        padding: 16,
+        marginBottom: 14,
+        gap: 12,
+        borderWidth: 1.5,
+        borderColor: '#FDE68A',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+        elevation: 3,
     },
-    quoteIcon: {
-        width: 44, height: 44, borderRadius: 22,
-        backgroundColor: theme.colors.primary,
-        alignItems: 'center', justifyContent: 'center',
+    quoteIconCircle: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: '#047857',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    quoteText: { fontSize: 13, color: '#334155', fontStyle: 'italic', lineHeight: 20, fontWeight: '500' },
-    quoteSource: { fontSize: 11, color: theme.colors.primary, fontWeight: 'bold', marginTop: 4, textAlign: 'right' },
-
+    quoteText: {
+        fontSize: 12.5,
+        color: '#334155',
+        fontStyle: 'italic',
+        lineHeight: 19,
+        fontWeight: '500',
+    },
+    quoteSource: {
+        fontSize: 11,
+        color: '#047857',
+        fontWeight: 'bold',
+        marginTop: 4,
+        textAlign: 'right',
+    },
     quickCardsRow: {
         flexDirection: 'row',
         gap: 10,
-        marginBottom: 20,
+        marginVertical: 14,
     },
     quickCardItem: {
         flex: 1,
@@ -517,9 +423,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#ECFDF5',
-        borderRadius: 16,
+        borderRadius: 18,
         paddingVertical: 12,
-        paddingHorizontal: 4,
+        paddingHorizontal: 2,
         borderWidth: 1,
         borderColor: '#A7F3D0',
         shadowColor: '#064E3B',
@@ -532,6 +438,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#ECFDF5',
         borderColor: '#6EE7B7',
         shadowColor: '#047857',
+    },
+    quickCardPrayer: {
+        backgroundColor: '#F0FDF4',
+        borderColor: '#86EFAC',
+        shadowColor: '#064E3B',
     },
     quickCardZikir: {
         backgroundColor: '#FFFBEB',
@@ -551,7 +462,7 @@ const styles = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 19,
-        backgroundColor: '#D1FAE5',
+        backgroundColor: '#DCFCE7',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 6,
@@ -572,157 +483,243 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     quickCardSubtitle: {
-        fontSize: 10,
+        fontSize: 9.5,
         color: '#047857',
         marginTop: 2,
         textAlign: 'center',
+        letterSpacing: -0.2,
     },
-
-    dashboardContent: {
-        flex: 1,
+    goalCard: {
+        borderRadius: 22,
+        padding: 18,
+        marginBottom: 16,
+        borderWidth: 1.5,
+        borderColor: '#FDE68A',
+        shadowColor: '#D97706',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        elevation: 4,
     },
-
-    sectionHeader: {
-        flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-        marginBottom: 16, paddingHorizontal: 4
-    },
-    sectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#1e293b', letterSpacing: 0.5 },
-    addBtnSmall: {
-        flexDirection: 'row', alignItems: 'center', gap: 4,
-        backgroundColor: theme.colors.primary, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20
-    },
-    addLink: { fontSize: 12, fontWeight: 'bold', color: '#fff' },
-
-    // Podium Styles
-    podiumContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        marginBottom: 24, // Reduced
-        paddingHorizontal: 8,
-    },
-    podiumColumn: { alignItems: 'center', justifyContent: 'flex-end', width: '31%' },
-    podiumPlace: { alignItems: 'center', width: '100%', justifyContent: 'flex-end' },
-
-    avatarContainer: { alignItems: 'center', marginBottom: 8 },
-    crownContainer: { position: 'absolute', top: -32, zIndex: 10 },
-
-    avatarBorder: {
-        alignItems: 'center', justifyContent: 'center',
-        shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 6, elevation: 3
-    },
-    avatarInner: { backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
-    avatarText: { fontWeight: '900', color: theme.colors.primary },
-
-    rankBadge: {
-        position: 'absolute', bottom: -8, width: 22, height: 22, borderRadius: 11,
-        alignItems: 'center', justifyContent: 'center', borderWidth: 2
-    },
-    rankBadgeText: { color: '#fff', fontSize: 10, fontWeight: 'bold' },
-
-    podiumName: { fontSize: 12, fontWeight: 'bold', color: '#334155', marginTop: 6, textAlign: 'center' },
-    podiumNameFirst: { fontSize: 14, color: theme.colors.primary, marginTop: 8 },
-    podiumPages: { fontSize: 10, color: '#64748b', marginBottom: 6, fontWeight: '600' },
-
-    podiumStep: {
-        width: '100%',
-        borderTopLeftRadius: 12,
-        borderTopRightRadius: 12,
-        alignItems: 'center',
-    },
-    stepNumber: { color: 'rgba(255,255,255,0.7)', fontWeight: '900', includeFontPadding: false, textAlignVertical: 'center' },
-
-    // Compact Row Styles
-    compactRow: {
-        flexDirection: 'row', alignItems: 'center',
-        backgroundColor: '#f8fafc', paddingVertical: 12, paddingHorizontal: 16,
-        borderRadius: 16, marginBottom: 8,
-        borderWidth: 1, borderColor: '#e2e8f0'
-    },
-    compactRank: { width: 30, fontSize: 14, fontWeight: 'bold', color: '#94a3b8' },
-    compactAvatar: {
-        width: 32, height: 32, borderRadius: 16, backgroundColor: '#e2e8f0',
-        alignItems: 'center', justifyContent: 'center', marginRight: 12
-    },
-    compactAvatarText: { fontSize: 14, fontWeight: 'bold', color: '#475569' },
-    compactName: { fontSize: 15, fontWeight: '600', color: '#1e293b' },
-    compactPages: { fontSize: 13, fontWeight: 'bold', color: theme.colors.primary },
-
-    emptyContainer: { alignItems: 'center', marginTop: 30 },
-    emptyText: { color: '#94a3b8' },
-
-    // Modal (Minimalist)
-    modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', padding: 24 },
-    modalContent: { backgroundColor: '#fff', borderRadius: 24, padding: 24, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 20, elevation: 10 },
-    modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-    modalTitle: { fontSize: 18, fontWeight: 'bold', color: '#1E293B' },
-    closeBtn: { padding: 4, backgroundColor: '#F8FAFC', borderRadius: 12 },
-
-    label: { fontSize: 12, fontWeight: '600', color: '#64748B', marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 },
-
-    chip: {
-        paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20,
-        backgroundColor: '#F1F5F9', marginRight: 8, borderWidth: 1, borderColor: 'transparent'
-    },
-    chipSelected: { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' },
-    chipText: { fontSize: 13, fontWeight: '500', color: '#64748B' },
-    chipTextSelected: { color: '#B45309', fontWeight: 'bold' },
-
-    btnSave: {
-        backgroundColor: theme.colors.primary, paddingVertical: 14, paddingHorizontal: 32, borderRadius: 16,
-        alignItems: 'center', alignSelf: 'center', marginTop: 20
-    },
-    btnSaveText: { color: '#fff', fontWeight: 'bold', fontSize: 14 },
-
-    quranMenuCard: { marginBottom: 24, borderRadius: 24, overflow: 'hidden', elevation: 4, shadowColor: '#b45309', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 8 },
-    quranMenuGradient: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 },
-    quranMenuLeft: { flexDirection: 'row', alignItems: 'center', gap: 16 },
-    quranMenuTitle: { fontSize: 18, fontWeight: 'bold', color: '#1e293b' },
-    quranMenuSub: { fontSize: 13, color: '#92400e', marginTop: 2, fontWeight: '500' },
-    quranMenuRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-    quranBadge: { backgroundColor: 'rgba(180, 83, 9, 0.1)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
-    quranBadgeText: { color: '#b45309', fontSize: 11, fontWeight: 'bold' },
-    quranIconCircle: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-
-    // Download Overlay
-    downloadOverlay: {
-        backgroundColor: '#f8fafc',
-        padding: 16,
-        borderRadius: 20,
-        marginBottom: 24,
-        borderWidth: 1,
-        borderColor: '#e2e8f0',
-    },
-    progressHeader: {
+    goalTopRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 8,
+        marginBottom: 10,
     },
-    progressTitle: {
+    goalHeaderLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10,
+    },
+    goalIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: '#FEF3C7',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#FDE68A',
+    },
+    goalCardTitle: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#1e293b',
+        color: '#78350F',
     },
-    progressPercent: {
-        fontSize: 14,
+    goalCardSubtitle: {
+        fontSize: 11,
+        color: '#92400E',
+    },
+    goalBadge: {
+        backgroundColor: '#047857',
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderRadius: 12,
+    },
+    goalBadgeText: {
+        fontSize: 12,
         fontWeight: 'bold',
-        color: theme.colors.primary,
+        color: '#FFF',
+    },
+    goalNumberRow: {
+        flexDirection: 'row',
+        alignItems: 'baseline',
+        gap: 6,
+        marginVertical: 6,
+    },
+    goalBigNumber: {
+        fontSize: 32,
+        fontWeight: '900',
+        color: '#78350F',
+        fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
+    },
+    goalUnitText: {
+        fontSize: 14,
+        fontWeight: '700',
+        color: '#B45309',
+    },
+    goalRemainingText: {
+        fontSize: 12,
+        color: '#047857',
+        fontWeight: '600',
+        marginLeft: 'auto',
     },
     progressBarBg: {
-        height: 6,
-        backgroundColor: '#e2e8f0',
-        borderRadius: 3,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#E5E7EB',
         overflow: 'hidden',
+        marginVertical: 10,
     },
     progressBarFill: {
         height: '100%',
-        backgroundColor: theme.colors.primary,
+        borderRadius: 4,
     },
-    detailedStatusText: {
+    goalActionRow: {
+        flexDirection: 'row',
+        gap: 10,
+        marginTop: 6,
+    },
+    goalActionBtn: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+        backgroundColor: '#ECFDF5',
+        paddingVertical: 9,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#A7F3D0',
+    },
+    goalActionBtnText: {
         fontSize: 12,
-        color: '#64748b',
-        marginTop: 8,
+        fontWeight: '700',
+        color: '#047857',
+    },
+    goalAddBtn: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+        backgroundColor: '#047857',
+        paddingVertical: 9,
+        borderRadius: 12,
+    },
+    goalAddBtnText: {
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#FFF',
+    },
+    verseCard: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 22,
+        padding: 18,
+        marginBottom: 14,
+        borderWidth: 1.5,
+        borderColor: '#A7F3D0',
+        shadowColor: '#047857',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        elevation: 3,
+    },
+    verseHeaderRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 12,
+    },
+    verseTagBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        backgroundColor: '#ECFDF5',
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderRadius: 10,
+    },
+    verseTagText: {
+        fontSize: 11,
+        fontWeight: '800',
+        color: '#047857',
+        letterSpacing: 0.5,
+    },
+    shareIconBtn: {
+        padding: 4,
+    },
+    verseArabic: {
+        fontSize: 22,
+        color: '#064E3B',
+        textAlign: 'center',
+        fontFamily: Platform.OS === 'ios' ? 'Geeza Pro' : 'serif',
+        lineHeight: 34,
+        marginVertical: 8,
+    },
+    verseMeaning: {
+        fontSize: 13,
+        color: '#334155',
+        textAlign: 'center',
+        lineHeight: 20,
         fontStyle: 'italic',
-    }
+        marginVertical: 4,
+    },
+    verseFooter: {
+        alignItems: 'center',
+        marginTop: 8,
+    },
+    verseSurah: {
+        fontSize: 11,
+        fontWeight: '700',
+        color: '#047857',
+    },
+    hadithCard: {
+        backgroundColor: '#FFFDF7',
+        borderRadius: 22,
+        padding: 18,
+        marginBottom: 14,
+        borderWidth: 1.5,
+        borderColor: '#FDE68A',
+        shadowColor: '#D97706',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+        elevation: 3,
+    },
+    hadithHeaderRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    hadithTagBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        backgroundColor: '#FEF3C7',
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderRadius: 10,
+    },
+    hadithTagText: {
+        fontSize: 11,
+        fontWeight: '800',
+        color: '#B45309',
+        letterSpacing: 0.5,
+    },
+    hadithText: {
+        fontSize: 12.5,
+        color: '#451A03',
+        lineHeight: 20,
+        fontStyle: 'italic',
+        marginVertical: 4,
+    },
+    hadithSource: {
+        fontSize: 11,
+        fontWeight: '700',
+        color: '#B45309',
+        marginTop: 6,
+        textAlign: 'right',
+    },
 });
