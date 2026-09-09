@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+<title>Unsuru'l-Akîde</title>
+
+<style>
+ :root {
+ --bg: #f5eedc;
+ --text: #2a2421;
+ --heading: #8b0000;
+ --arabic: #8b0000;
+ --base-size: 19px;
+ --line-height: 1.68;
+ --font-family: 'Barla', "Crimson Pro", "Times New Roman", serif;
+ }
+ html, body {
+ margin: 0;
+ padding: 0;
+ background: var(--bg);
+ color: var(--text);
+ box-sizing: border-box;
+ -webkit-text-size-adjust: 100%;
+ }
+ body {
+ font-family: var(--font-family);
+ font-size: var(--base-size);
+ line-height: var(--line-height);
+ padding: 24px 20px 120px;
+ text-align: justify;
+ text-justify: inter-word;
+ -webkit-hyphens: auto;
+ hyphens: auto;
+ -webkit-user-select: text;
+ user-select: text;
+ }
+ h1, h2, h3, .heading-1, .heading-2, .heading-3 {
+ font-family: var(--font-family);
+ color: var(--heading);
+ text-align: center;
+ margin: 28px 0 16px;
+ font-weight: bold;
+ letter-spacing: 0.5px;
+ }
+ .heading-2 { font-size: 1.35em; }
+ .heading-3 { font-size: 1.15em; }
+ .subtitle {
+ text-align: center;
+ font-style: italic;
+ color: #665c54;
+ margin: -8px 0 16px;
+ font-size: 0.95em;
+ }
+ .paragraph, p {
+ margin: 0 0 14px;
+ text-indent: 18px;
+ overflow-wrap: break-word;
+ }
+ .arabic-block {
+ font-family: 'ScheherazadeNew', "Noto Naskh Arabic", serif;
+ color: var(--arabic);
+ text-align: center !important;
+ font-size: 1.35em;
+ line-height: 2.0;
+ padding: 10px 0;
+ margin: 16px 0;
+ display: block;
+ direction: rtl;
+ text-indent: 0 !important;
+ }
+ .page-marker-wrap {
+ position: -webkit-sticky;
+ position: sticky;
+ top: 10px;
+ z-index: 100;
+ display: flex;
+ justify-content: flex-end;
+ pointer-events: none;
+ margin-top: -12px;
+ margin-bottom: 8px;
+ }
+ .page-marker {
+ opacity: 0.88;
+ font-size: 12px;
+ font-weight: 700;
+ letter-spacing: 0.8px;
+ padding: 3px 8px;
+ border-radius: 8px;
+ background: rgba(0,0,0,0.06);
+ color: rgba(0,0,0,0.7);
+ font-family: sans-serif;
+ backdrop-filter: blur(2px);
+ }
+ .lugat-word {
+ color: inherit;
+ border-bottom: 1px dotted rgba(139, 0, 0, 0.45);
+ cursor: pointer;
+ }
+ .lugat-word:active {
+ background-color: rgba(139, 0, 0, 0.15);
+ border-radius: 2px;
+ }
+ .fn-marker {
+ color: #1F6FEB;
+ font-weight: bold;
+ cursor: pointer;
+ font-size: 0.85em;
+ vertical-align: super;
+ padding: 0 2px;
+ }
+
+  /* Printed Sözler In-Page Divider Standard */
+  .page-marker-wrap {
+    display: block !important;
+    position: static !important;
+    margin: 28px 0 14px 0 !important;
+    border-top: 1.5px solid #8b0000 !important;
+    text-align: right !important;
+    padding-top: 2px !important;
+    pointer-events: none !important;
+  }
+  .page-marker {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #8b0000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+  }
+  strong, b {
+    font-weight: bold !important;
+    color: #111111 !important;
+  }
+
+</style>
+
+
+</head>
+<body>
+<div class="page-marker-wrap"><span class="page-marker">107</span></div>
+<h2 class="heading-2"><strong>Unsuru'l-Akîde</strong></h2>
+<div class="page-marker-wrap"><span class="page-marker">108</span></div>
+<div class="arabic-block" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+<div class="arabic-block" dir="rtl">اَشْهَدُ اَنْ لَٓااِلٰهَ اِلَّااللهُ وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللهِ</div>
+<p class="paragraph">Bu kelime-i àliye, üssü'l-esâs-ı İslâmiyet olduğu gibi, kâinât üstünde temevvüc eden İslâmiyet'in en nurânî ve en ulvî bayrağıdır.</p>
+<p class="paragraph">Evet, mîsâk-ı ezeliye ile peymân ve yemînimiz olan îmân, bu menşûr-u mukaddeste yazılmıştır.</p>
+<p class="paragraph">Evet, âb-ı hayat olan İslâmiyet ise; bu kelimenin aynü'l-hayatından nebeân eder.</p>
+<p class="paragraph">Evet, ebede namzed olan nev'-i beşer içinde, saâdet-saray-ı ebediyeye ta'yin ve tebşîr olunanın ellerine verilmiş bir fermân-ı ezelîdir.</p>
+<p class="paragraph">Evet, kalb denilen avâlim-i gayba karşı olan penceresinde kurulmuş olan latîfe-i Rabbâniye'nin fotoğrafıyla alınan timsâl-i nurâniyle Sultan-ı Ezel'i ilân eden harita-i nurâniyesidir ve tercümân-ı belîğidir.</p>
+<p class="paragraph">Evet, vicdânın esrâr-engîz olan nutk-u belîğânesini, cem'iyet-i kâinâta karşı vekâleten inşâd eden hatîb-i fasîhi ve kâinâta Hâkim-i Ezel'i ilân eden îmânın mübelliğ-i belîği olan lisânın elinde bir menşûr-u lâyezâlîdir.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Bu kelime-i şehâdetin iki kelâmı, birbirine şâhid-i sâdıktır ve birbirini tezkiye eder. Evet, ulûhiyet nübüvvete bürhân-ı limmîdir; Muhammed Aleyhisselâm Sâni'-i Zülcelâl'e zâtıyla ve lisânıyla bürhân-ı innîdir...</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Hakàik-ı akàid-i İslâmiye, bütün teferruâtıyla Kütüb-ü İslâmiye'de mufassalan müberhene ve musarrahadır, görünebilir. Ve görülen şeyi göstermek, zâhirin hafâsına veya muhâtabın gabâvetine işâret ve techil olduğundan, akîdenin yalnız üç-dört unsurunu beyân edeceğim. Diğer hakàikını fuhûl-ü ulemânın kitaplarına havâle ederim. Zîra, bana hâcet bırakmamışlar.</p>
+<div class="page-marker-wrap"><span class="page-marker">109</span></div>
+<div class="subtitle">Mukaddime</div>
+<p class="paragraph">Ehl-i dikkatin ma'lûmudur ki; makàsıd-ı Kur'âniye'nin fezlekesi dörttür:<strong>Sâni'-i Vâhid'in isbâtı ve nübüvvet ve haşr-i cismânî ve adl'dir.</strong></p>
+<p class="paragraph"><strong>Birinci Maksad:</strong> Delâil-i Sâni' beyânındadır. Bir bürhânı da, Muhammed'dir (Aleyhissalâtü Vesselâm). Sâni'in vücûd ve vahdeti, isbâta ihtiyaçtan müstağnîdir. Lâsiyyemâ, Müslümanlar'a karşı çok derece eclâ ve azhardır. Binâenaleyh hitâbımı ecânibe, bâhusus Japonya'ya tevcîh eyledim. Zîra, onlar eskide bazı suâller etmiştiler, ben de cevab vermiştim. Şimdi ihtisar ile, yalnız bir-iki suâllerine müteallik, o cevabın bir parçasını söyleyeceğim...</p>
+<p class="paragraph">Onlardan bir suâl:</p>
+<div class="arabic-block" dir="rtl">مَا الدَّلِيلُ الْوَاضِحُ عَلٰى وُجُودِ الْاِلٰهِ الَّذِي تَدْعُونَنَا اِلَيْهِ وَالْخَلْقُ مِنْ اَىِّ شَيْءٍ اَمِنَ الْعَدَمِ اَوِ الْمَادَّةِ اَوْ ذَاتِهِ اِلٰى اٰخِرِ سُؤَالَاتِهِمُ الْمُرَدَّدَةِ</div>
+<p class="paragraph">Yani: "Vücûd-u Sâni'a delil-i vâzıh nedir?"</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Gayr-ı mütenâhî olan mârifetullâh, böyle mahdûd olan kelâma sığışmaz. Binâenaleyh, kelâmımdaki iğlâkın mâzûr tutulması mercûdur.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Ber-vech-i âtî, kelâmdan maksad; muhâkeme ve muvâzenin tarîkini göstermektir. Tâ ki, mecmûunda hakikat tecellî etsin. Yoksa zihnin cüz'iyeti sebebiyle, o mecmûun herbir cüz'ünde neticenin tamamını taharrî etmek, kuvve-i vâhimenin tasallut ve tereddüdüyle hakikati evhâm içinde setretmektir.</p>
+<div class="subtitle">Mukaddime</div>
+<p class="paragraph">Hakikatin keşfine mâni olan arzu-yu hilâf ve iltizam-ı muhâlif ve tarafdâr-ı nefis cihetiyle, asılsız evhâmını bir asl'a ircâ etmekle kendini mâzûr göstermek ve müşterinin nazarı gibi, yalnız meâyibi görmek ve çocuk tabiatı gibi bahâne ile mahâne tutmak gibi emirlerden nefsini tecrid ile, şartıma mürâat edebilirsen, huzur-u kalb ile dinle.</p>
+<div class="page-marker-wrap"><span class="page-marker">110</span></div>
+<h2 class="heading-2"><strong>Birinci Maksad</strong></h2>
+<p class="paragraph">Cemî' zerrât-ı kâinât, birer birer zât ve sıfât ve sâir vücûh ile gayr-ı mahdûde olan imkânât mâbeyninde mütereddid iken; bir ciheti takib, hayret-bahşâ mesâlihi intac etmekle, Sâni'in vücûb-u vücûduna şehâdetle, avâlim-i gaybiyenin enmûzeci olan latîfe-i Rabbâniye'den ilân-ı Sâni' eden i'tikàdın misbâhını ışıklandırıyorlar.</p>
+<p class="paragraph">Evet, herbir zerre, kendi başıyla Sâni'i ilân ettiği gibi, tesâvîr-i mütedâhileye benzeyen mürekkebât-ı müteşâbike-i mütesâide-i kâinâtın herbir makam ve herbir nisbetinde, herbir zerre muvâzene-i cereyan-ı umumîyi muhâfaza ve her nisbette ayrı ayrı mesâlihi intac ettiklerinden, Sâni'in kasd ve hikmetini izhâr ve kırâat ettikleri için, Sâni'in delâili, zerrâttan kat kat ziyâdedir.</p>
+<p class="paragraph"><strong>Eğer desen:</strong> Neden herkes aklıyla göremiyor?..</p>
+<p class="paragraph"><strong>Elcevab:</strong> Kemâl-i zuhûrundan... Evet, şiddet-i zuhûrdan görünmemek derecesine gelenler vardır. Cirm-i şems gibi.</p>
+<div class="arabic-block" dir="rtl">تَاَمَّلْ سُطُورَ الْكَائِنَاتِ فَاِنَّهَا * مِنَ الْمَلَاِ الْاَعْلَى اِلَيْكَ رَسَائِلُ</div>
+<p class="paragraph">Yani: "Eb'âd-ı vâsia-i âlemin sahifesinde, Nakkàş-ı Ezelî'nin yazdığı silsile-i hâdisâtın satırlarına hikmet nazarıyla bak ve fikr-i hakikatle sarıl. Tâ ki, mele-i a'lâdan gelen selâsil-i resâil, seni a'lâ-yı illiyîn-i yakìne çıkarsın."</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Kalbinde nokta-i istimdâd, nokta-i istinâd ile vicdân-ı beşer, Sâni'i unutmamaktadır. Eğer çendan, dimağ ta'til-i eşgâl etse de, vicdân edemez. İki vazife-i mühimme ile meşguldür. Şöyle ki: Vicdâna müracaat olunsa – kalb, bedenin aktârına neşr-i hayat ettiği gibi – kalb gibi, kalbdeki ukde-i hayatiye olan mârifet-i Sâni' dahi; cesed gibi</p>
+<div class="page-marker-wrap"><span class="page-marker">111</span></div>
+<p class="paragraph">isti'dâdât-ı gayr-ı mahdûde-i insaniye ile mütenâsib olan âmâl ve müyûl-ü müteşâibeye neşr-i hayat eder; lezzeti içine atar ve kıymet verir ve bast ve temdid eder. İşte nokta-i istimdâd...</p>
+<p class="paragraph">Hem de bununla beraber, kavga ve müzâhemetin meydânı olan dağdağa-i hayata peyderpey hücum gösteren âlemin binler musîbet ve mezâhimlere karşı yegâne nokta-i istinâd, mârifet-i Sâni'dir...</p>
+<p class="paragraph">Evet, herşeyi hikmet ve intizamla gören Sâni'-i Hakîm'e i'tikàd etmezse ve ale'l-amyâ tesâdüfe havâle ederse ve o beliyyâta karşı elindeki kudretin adem-i kifâyetini düşünse; tevahhuş ve dehşet ve telâş ve havftan mürekkeb bir hâlet-i Cehennem-nümûn ve ciğer-şikâfta kaldığından, eşref ve ahsen-i mahlûk olan insan, herşeyden daha perîşan olduğundan, nizâm-ı kâmil-i kâinâtın hakikatine muhâlif oluyor. İşte nokta-i istinâd... Evet, melce' yalnız mârifet-i Sâni'dir.</p>
+<p class="paragraph">Demek, şu iki nokta ile bu derece nizâm-ı âlemde hükümfermâlık, hakikat-i nefsü'l-emriyenin hàssa-i münhasırası olduğu için, her vicdânda iki pencere olan şu iki noktadan, vücûd-u Sâni' tecellî ediyor. Akıl görmezse de, fıtrat görüyor...<strong>Vicdân nezzârdır, kalb penceresidir.</strong></p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Arş-ı kemâlât olan mârifet-i Sâni'in mi'râclarının usûlü dörttür:</p>
+<p class="paragraph"><strong>Birincisi:</strong> Tasfiye ve işrâka müesses olan, muhakkìkîn-i sofiyenin minhâcıdır.</p>
+<p class="paragraph"><strong>İkincisi:</strong> İmkân ve hudûsa mebnî olan, mütekellimînin tarîkidir.</p>
+<p class="paragraph">Bu iki asıl, filvâki Kur'ân'dan teşâub etmişlerdir. Lâkin, fikr-i beşer başka sûrete ifrâğ ettiği için, tavîlü'z-zeyl ve müşkülleşmiştir.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> Hükemânın mesleğidir.</p>
+<p class="paragraph">Üçü de taarruz-u evhâmdan masûn değildirler...</p>
+<p class="paragraph"><strong>Dördüncüsü ki:</strong> Belâğat-ı Kur'âniye'nin ulüvv-ü rütbesini ilân eden ve istikamet cihetiyle en kısası ve vuzûh cihetiyle beşerin umumuna en eşmeli olan Mi'râc-ı Kur'ânî'dir. İşte biz dahi bunu ihtiyar ettik. Bu da iki nev'idir:</p>
+<div class="page-marker-wrap"><span class="page-marker">112</span></div>
+<p class="paragraph">BİRİNCİSİ:><strong>"Delil-i inâyet"tir</strong> ki; menâfi'-i eşyayı ta'dâd eden bütün Âyât-ı Kur'âniye, bu delile îmâ ve şu bürhânı tanzim ediyorlar. Bu delilin zübdesi, kâinâtın nizâm-ı ekmelinde riâyet-i mesâlih ve hikemdir. Bu ise, Sâni'in kasd ve hikmetini isbât ve tesâdüf vehmini ortadan nefyediyor.</p>
+<p class="paragraph"><strong>Mukaddime:</strong> Eğer çendan her adam âlemdeki riâyet-i mesâlih ve intizamda istikrâ'-i tâmm edemez ve ihâta edemez; fakat nev'-i beşerdeki telâhuk-u efkâr sâyesinde, kâinâtın herbir nev'ine mahsûs kavâid-i külliye-i muntazamadan ibaret olan bir fen teşekkül etmiş ve etmektedir.</p>
+<p class="paragraph">Bununla beraber, bir emirde intizam olmazsa, hüküm, külliyetiyle cereyan edemediği için, kaidenin külliyeti, nev'in hüsn-ü intizamına delildir. Demek; cemî' fünûn-u ekvân, kaidelerinin külliyetlerine binâen, istikrâ'-i tâmmla nizâm-ı ekmeli intac eden birer bürhândırlar.</p>
+<p class="paragraph">Evet, fünûn-u kâinât, bitamâmihâ mevcûdâtın silsilelerindeki halkalardan asılmış olan mesâlih ve semerâtı ve inkılâbât-ı ahvâlin telâfifinde saklanmış olan hikem ve fevâidi göstermek ile, Sâni'in kasd ve hikmetine parmak ile şehâdet ve işâret ettikleri gibi, şeyâtîn-i evhâma karşı birer necm-i sâkıbdır.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Cehl-i mürekkebi intac eden, nazar-ı sathîyi tevlîd eden ülfetten tecrid-i nazar etsen ve akla karşı sedd-i turuk eden evhâmın âşiyânı olan mümâresât-ı ilzamiyâttan nefsini tahliye etsen; hurdebînî bir hayvanın sûreti altında olan makine-i dakîka-i bedîa-i İlâhiye'nin şuûrsuz, mecrâ ve mahrekleri tahdid olunmayan ve imkânâtında evleviyet olmayan esbâb-ı basîta-i câmide-i tabîiyeden husûl-pezir ve o destgâhın masnû'u olduğunu kendi nefsini kandırıp mutmain ve iknâ edemezsin. Meğer herbir zerrede, <strong>Eflâtun</strong> kadar bir şuûr ve <strong>Calinos</strong> kadar bir hikmeti isbât ettikten sonra, zerrât-ı sâire ile vâsıtasız muhâbereyi i'tikàd ve esbâb-ı tabîiyenin üssü'l-esâsı hükmünde olan cüz'-ü lâyetecezzâdaki kuvve-i câzibe ve kuvve-i</p>
+<div class="page-marker-wrap"><span class="page-marker">113</span></div>
+<p class="paragraph">dâfianın ictimâ'larının hortumu üzerindeki muhâliyetin damgasını kaldırabilsen...</p>
+<p class="paragraph">Eğer nefsin bu muhâlâta ihtimal verse, seni insaniyet defterinden sildirecektir. Fakat câizdir ki; herbir şeyin esâsı zannettikleri olan cezb ve def' ve hareket, âdâtullâhın kanunlarına birer isim olsun. Fakat kanun, kaidelikten tabîiliğe ve zihnîlikten haricîliğe ve itibardan hakikate ve âletiyetten müessiriyete gelmemek şartıyla kabûl ederiz...</p>
+<p class="paragraph">TENBİH:</p>
+<div class="arabic-block" dir="rtl">﴿ فَارْجِعِ الْبَصَرَ هَلْ تَرَى مِنْ فُطُورٍ ﴾</div>
+<p class="paragraph"><strong>"Nazarını âleme gezdir. Hangi yerinde noksaniyeti görebilirsin?"</strong> Kellâ... Gören, görmez; meğer kör ola veya kasr-ı nazar illetiyle mübtelâ ola. İstersen Kur'ân'a müracaat et. Delil-i inâyeti, vücûh-u mümkinenin en ekmel vechiyle bulacaksın. Zîra Kur'ân, kâinâtta tefekküre emir verdiği gibi, fevâidi tezkâr ve ni'metleri ta'dâd eder. İşte o âyât, şu bürhân-ı inâyete mezâhirdir. İcmâli budur, tut!.. Tafsîli ise; eğer meşîet-i İlâhiye taalluk ederse, âyât-ı âfâkiye ve enfüsiyeyi tefsir tarîkinde, semâ ve beşer ve arzın ilimlerine ma'kud olan kütüb-ü selâse'de tefsir edilecektir. O vakit şu bürhân, tamam-ı sûretiyle sana görünecektir.</p>
+<p class="paragraph">İKİNCİ DELİL-İ KUR'ÂNÎ:><strong>"Delil-i ihtirâ'"dır.</strong> Bunun hülâsası: Mahlûkatın her nev'ine, her ferdine ve o nev'e ve o ferde müretteb olan âsâr-ı mahsûsasını müntic ve isti'dâd-ı kemâline münâsib bir vücûdun verilmesidir. Zîra, hiçbir nev'-i müteselsil, ezelî değildir, "İmkân" bırakmaz. Hem de bizzarûre bazının "Hudûs"u, nazarın müşâhedesiyle ve sâirleri dahi, aklın hikmet nazarıyla görülür.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">İnkılâb-ı hakikat olmaz. Nev'-i mutavassıtın silsilesi devam etmez. Tahavvül-ü esnâf, inkılâb-ı hakàikın gayrısıdır.</p>
+<div class="page-marker-wrap"><span class="page-marker">114</span></div>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Herbir nev'in bir âdemi ve bir büyük pederi olduğundan, silsilelerdeki tenâsülden neş'et eden vehm-i bâtıl o âdemlerde, o evvel-pederlerinde tevehhüm olunmaz. Evet hikmet, fenn-i tabakàtü'l-arz ve ilm-i hayvanat ve nebâtât lisânıyla; ikiyüz bini mütecâviz olan envâ'ın âdemleri hükmünde olan mebde'-i evvellerinin herbirinin müstakillen hudûs'una şehâdet ettiği gibi, mevhûm ve itibarî olan kavânîn ve şuûrsuz olan esbâb-ı tabîiye ise, bu kadar hayret-fezâ silsileler ve bu silsileleri teşkil eden ve efrâd denilen dehşet-engîz hadsiz makine-i acîbe-i İlâhiye'nin tasnî' ve icâdına adem-i kàbiliyetleri cihetiyle, herbir ferd ve herbir nev'i müstakillen, Sâni'-i Hakîm'in yed-i kudretinden çıktığını ilân ve izhâr ediyor.<strong>Evet, Sâni'-i Zülcelâl herşeyin cebhesinde "hudûs" ve "imkân" damgasını koymuştur.</strong></p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Ezeliyet-i madde ve hareket-i zerrâttan teşekkül-ü envâ' gibi umûr-u bâtılaya ihtimal vermek, sırf başka şeyle nefsini iknâ etmek sadedinde olduğu için, o umûrun esâs-ı fâsidesini tebeî nazarıyla adem-i derkinden neş'et eder. Evet, nefsini iknâ etmek sûretinde müteveccih olursa, muhâliyet ve adem-i ma'kuliyetine hükmedecektir. Farazâ kabûl etse de, teğâfül-ü ani's-Sâni' sebebiyle hâsıl olan ıztırar ile kabûl edebilir.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Mükerrem olan insan, insaniyetin cevheri itibariyle, dâima hakkı satın almak istiyor ve dâima hakikati arıyor ve dâima maksadı, saâdettir. Fakat bâtıl ve dalâl ise, hakkı arıyorken haberi olmadan eline düşer. Hakikatin mâdenini kazarken, ihtiyarsız bâtıl onun başına düşer. Veyâhut hakikati bulmaktan muztar veya tahsil-i haktan hâib oldukça, aslî fıtratı ve vicdânı ve fikri; muhâl ve gayr-ı ma'kul bildiği bir emri, nazar-ı sathî ve tebeî ile kabûlüne mecbur oluyor.</p>
+<p class="paragraph">İşte bu hakikati pîş-i nazara al!.. Göreceksin ki: Bütün nizâm-ı âlemden eser-i gaflet olarak tevehhüm ettikleri ezeliyet-i madde</p>
+<div class="page-marker-wrap"><span class="page-marker">115</span></div>
+<p class="paragraph">ve hareket.. ve şu bütün akılları hayrette bırakan nakş ve san'at-ı bedîada tahayyül ettikleri tesâdüf-ü amyâ.. ve bütün hikemin şehâdâtına rağmen esbâb-ı câmideden i'tikàd ettikleri te'sir-i hakîki.. ve nefislerine muğâlata edip vehmin – istimrara istinâden – iğvâsıyla tecessüm ve tahayyül olunan tabiat-ı mevhûmeyi merci' yapmakla tesellî ettikleri.. elbette fıtratları reddeder. Fakat yalnız hakka teveccüh ve hakikate kasd ettikleri için, şu evhâm-ı bâtıla dâvetsiz olarak yolun cânibinden taarruz ettikleri için, elbette hedef-i garazına nazarını dikmiş olan adam, o evhâma tebeî ve sathî bir nazar ile bakıyor. Onun için, müzahref olan içine nüfûz edemez... Fakat ne vakit rağbet ve kasd ve satın almak nazarıyla baksa, almaya değil, belki iltifat etmeye ve bakmaya tenezzül etmez.</p>
+<p class="paragraph">Evet, şu kadar çirkin bir şeyi vicdân ve akıl muhâl görüyor. Kalb dahi kabûl etmez. İllâ ki, müşâğabe ile safsata edip, herbir zerreye hükemânın akıllarını ve hükkâmın siyasetlerini verip; tâ herbir zerre ehavâtıyla ittifak ve intizam mes'elesinde müşâvere ve muhâbere etsinler. Evet, bu sûrette bir mesleği insan değil, hayvan dahi kabûl etmez. Fakat ne çare, mesleğin lâzım-ı beyyini, meslektendir. Şu meslek ise, bu sûretten başka bir şey ile tasvir edilmez.</p>
+<p class="paragraph">Evet, bâtılın şe'ni şöyledir: Ne vakit tebeî bir nazar ile bakılırsa sıhhatine bir ihtimal verilir. Fakat im'ân-ı nazar eyledikçe, ihtimal-i sıhhat bertaraf olur.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Madde dedikleri şey ise; sûret-i müteğayyire, hem de hareket-i zâile-i hâdiseden tecerrüd etmez. Demek, hudûsu muhakkaktır. Feyâ acaba! Sâni'-i Vâcibü'l-Vücûd'un lâzime-i zarûriye-i beyyinesi olan ezeliyeti zihinlerine sığıştıramayan, nasıl oldu da, herbir cihetten ezeliyete münâfî olan maddenin ezeliyetini zihinlerine sığıştırabilirler? Hakikaten cây-i taaccübdür... Evet, insan düşündükçe, cemî' sıfât-ı kemâliye ile muttasıf olan Sâni'den istiğrab ve istinkâr ettikleri şu hayret-efzâ masnûâtı, tesâdüf-ü amyâya ve hareket-i zerrâta isnâd ettikleri için, insanı insaniyetten pişman eder...</p>
+<div class="page-marker-wrap"><span class="page-marker">116</span></div>
+<p class="paragraph">TELVİH:</p>
+<p class="paragraph">Harekât-ı zerrâttan husûlü da'vâ olunan kuvvet ve sûretler, araziyetleri cihetiyle envâ'daki mübâyenet-i cevheriyeyi teşkil edemez. Araz, cevher olamaz. Demek, bütün envâ'ın fasılları ve umum a'râzın havâss-ı mümeyyizeleri, adem-i sırftan muhtera'dırlar. Tenâsül, teselsülde şerâit-i âdiye-i itibariyedendir. İşte delil-i ihtirâînin icmâli... Eğer açık olarak, mufassalan istersen Kur'ân'ın firdevsine gir. Zîra, hiçbir ratb ve yâbis yoktur ki; o tenezzühgâhta ya çiçek veya gonca hâlinde bulunmasın. Eğer ecel müsâid ve meşîet taalluk ve tevfik refîk olursa, elfâz-ı Kur'âniye'nin esdâfında şu bürhânı tezyîn eden cevherleri, gelecek kütübde tafsîl edilecektir.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph"><strong>Eğer suâl etsen:</strong>"Nedir şu tabiat ki, dâima onun ile tın-tın ediyorlar?.. Nedir şu kavânîn ve kuvâ ki, dâima onlar ile mütedemdimdirler?"</p>
+<p class="paragraph"><strong>Cevab vereceğiz ki:</strong> Âlem-i şehâdet denilen cesed-i hilkatin anâsır ve a'zâsının ef'âllerini intizam ve rabt altına alan şerîat-ı fıtriye-i İlâhiye vardır. İşte, şu şerîat-ı fıtriyedir ki; "tabiat" veya "matbaa-i İlâhiye" ile müsemmâdır.<strong>Evet tabiat, hilkat-i kâinâtta cârî olan kavânîn-i itibariyesinin mecmû ve muhassalasından ibarettir.</strong></p>
+<p class="paragraph">İşte kuvâ dedikleri şey, herbiri şu şerîatın birer hükmüdür. Ve kavânîn dedikleri şey, herbiri şu şerîatın birer mes'elesidir. Fakat o şerîattaki ahkâmın istimrarına istinâden, hem de hayâli, hakikat sûretinde gören ve gösteren nüfûsun isti'dâdları, bir zemin-i şûre müheyyâ etmesiyle, vehim ve hayâl tasallut ederek tazyîk edip, şu tabiat-ı hevâiye tevazzu' ve tecessüm edip, mevcûd-u haricî ve hayâlden misâl sûretine girmiştir. Evet, şunun gibi vehmin çok hileleri vardır...</p>
+<div class="page-marker-wrap"><span class="page-marker">117</span></div>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Şu tabiat ve kuvâ-yı umumiye tesmiye ettikleri emirler, kat'iyyen aklı iknâ edecek ve fikre kendini beğendirecek ve nazar-ı hakikat ona ünsiyet edecek hiçbir mülâyemet ve münâsebet yok iken ve şu kâinâta illet ve masdar olmaya kàbiliyeti mefkûd iken, mahzâ Sâni'den teğâfül ve intizamın ilcâından tevellüd eden yalnız ıztırar ile veleh-resân-ı ukùl olan kudretin âsârını, şu matbaa-misâl olan tabiatın san'atından görmek, tabiatı mistar iken, masdar tahayyül etmek; "Lâzım-ı eamm"ın vücûduyla, "Melzum-u ehass"ın vücûdunu intaca çalışan, akîm bir kıyâsın neticesidir. Evet, şu kıyâs-ı akîm, dalâlet ve hayret vâdilerine çok yolları açmıştır...</p>
+<p class="paragraph">TENVİR:</p>
+<p class="paragraph">Ef'âl-i ihtiyariyenin nazzâmı olan şerîat ve kanun, şu kadar hark ve muhâlefetle beraber, birçok cühhal-i vahşiye; âdeta şerîatı, bir hâkim-i rûhâni ve nizâmı, bir sultan-ı manevî tevehhüm edip, bir te'siri tahayyül eder.</p>
+<p class="paragraph">Evet, bir taburun veya askerin muttarid olan harekâtını ve yeknesak olan etvârlarını ve birbiriyle rabtolunan ahvâllerini müşâhede eden vahşî bir adam, şu efrâd-ı adîdeyi veyâhut hey'et-i askeriyeyi, manevî bir iple merbût zannederse; acaba garîb görünecek midir?</p>
+<p class="paragraph">Veyâhut bir bedevî veya bir şâirü't-tab', nâsı bir vaz'-ı hasende ifrâğ eden ve mâbeynlerini te'lif eden nizâmı, bir mevcûd-u manevî ve şerîatı, bir halife-i rûhâni temessül ederse, çok görünecek midir? Öyle ise, kâinâtın ahvâline taalluk eden ve tabiat tesmiye olunan ve tasdik-i enbiyâ veya tekrîm-i evliyâdan başka hark olunmayan ve müstemirre olan şu şerîat-ı fıtriye-i İlâhiye, evhâmda tecessüm etsin, neden taaccüb olunsun?..</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">İnsanın zihni ve lisânı ve sem'i, cüz'î ve teâkubî oldukları gibi, fikri ve himmeti dahi cüz'îdir. Ve teâkub tarîkiyle yalnız bir şeye taalluk eder ve meşgul kalır.</p>
+<p class="paragraph">Hem de, insanın kıymet ve mâhiyeti, himmeti nisbetindedir. Himmetin derecesi ise, maksad ve iştigâl ettiği şeyin nisbetindedir.</p>
+<div class="page-marker-wrap"><span class="page-marker">118</span></div>
+<p class="paragraph">Hem de insan, teveccüh ve kasdettiği şeyde, güyâ fenâ filmaksad oluyor. İşte şu noktaya binâen, hasîs bir emir veya pek cüz'î bir şey, büyük bir adama isnâd olunmaz. Zîra, tenezzül etmez ve himmetini o küçük şeye sığıştıramaz. Himmeti ağır, o şey gayet hafif olduğundan, güyâ muvâzenet bozulur.</p>
+<p class="paragraph">Hem de insan, hangi şeye temâşâ ederse, elbette mekàyisini ve esâslarını kendi nefsinde arayacaktır. Eğer bulmazsa, etrafında ve ebnâ-yı cinsinde arayacaktır. Hattâ hiçbir cihetten mümkinâta benzemeyen Vâcibü'l-Vücûd'u tefekkür etse; yine kuvve-i vâhimesi, şu vehm-i seyyii düstur ve dûrbîn yapmak istiyor. Hâlbuki, <strong>Sâni'-i Zülcelâl, şu nokta-i nazarda temâşâ edilmez. Kudretine inhisar yoktur. Ziyâ-yı şems gibi, kudret ve ilim ve irâdesi şâmile ve âmmedir, münhasır olmaz, muvâzeneye gelmez. En büyük şeye taalluk ettiği gibi, en küçük ve en hasîs şeye dahi taalluk eder. Mikyâs-ı azameti ve mîzan-ı kemâli, mecmû-u âsârıdır.</strong> Herbir cüz'ü, mikyâs olamaz.</p>
+<p class="paragraph">İşte Vâcibü'l-Vücûd'u mümkinâta kıyâs etmek, kıyâs-ı maa'l-fârıktır. Mezbûr vehm-i bâtıl ile muhâkeme etmek, hatâ-yı mahzdır.</p>
+<p class="paragraph">İşte şu hatâ-i bîedebâne ve şu vehm-i bâtılın netice-i seyyiesidir ki; Tabîiyyûn, esbâbı müessir-i hakîki olduklarına.. ve Mu'tezile, hayvanları ef'âl-i ihtiyariyelerine hàlık olduklarına.. ve Hükemâ, cüz'iyâtta ilm-i İlâhî'nin nefyine.. ve Mecûsîler, halk-ı şer başkasının eseri olduğuna i'tikàd ettiler. Güyâ, onlarca Sâni' o kadar azametiyle beraber, nasıl şöyle umûr-u hasîseye ve cüz'iyeye tenezzül edip iştigâl etsin! Yûf!.. onların akıllarına ki, şöyle bir vehm-i bâtılın hükmüne esir oldular.</p>
+<p class="paragraph">Ey birader!.. Şu vehim, i'tikàd tarîkiyle olmazsa da, vesvese cihetiyle bazen mü'minlere musallat oluyor.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph"><strong>Eğer desen:</strong>"Delil-i ihtirâî i'tâ-i vücûddur. İ'tâ-i vücûd ise, i'dâm-ı mevcûdun refîkidir. Hâlbuki, adem-i sırftan vücûdu ve vücûd-u mahzdan adem-i sırfı, aklımız tasavvur edemiyor?"</p>
+<p class="paragraph"><strong>Cevaben derim:</strong> Yâhû!.. Sizin bu istis'âbınız ve şu mes'elenin tasavvurundaki istiğrabınız, bir kıyâs-ı hàdi'in netice-i vahîmesidir.</p>
+<div class="page-marker-wrap"><span class="page-marker">119</span></div>
+<p class="paragraph">Zîra, icâd ve ibdâ'-ı İlâhî'yi, abdin san'at ve kisbine kıyâs edersiniz. Hâlbuki, abdin elinden bir zerreyi imâte veyâhut icâd etmek gelmez. Belki, yalnız umûr-u itibariye ve terkîbiyede bir san'at ve kisbi vardır. Evet, bu kıyâs aldatıcıdır, insan kendini ondan kurtaramıyor.</p>
+<p class="paragraph"><strong>Elhâsıl:</strong> İnsan, kâinâtta mümkinâtın öyle bir kuvvet ve kudretini görmemiş ki, icâd-ı sırf ve i'dâm-ı mahz etsin. Hâlbuki hükm-ü aklîsi de dâima üssü'l-esâsı, müşâhedâttan neş'et eder. Demek âsâr-ı İlâhiye'ye, mümkinât tarafından bakıyor. Hâlbuki, hayret-efzâ âsârıyla müsbet olan kudret-i Sâni'in cânibinden temâşâ etmek gerektir. Demek, ibâdın ve kâinâtın, umûr-u itibariyeden başka te'siri olmayan kuvvet ve kudretlerin cinsinden olan bir kudret-i mevhûme içinde Sâni'i farz ederek, o noktadan şu mes'eleye temâşâ ediyor. Hâlbuki Vâcibü'l-Vücûd'un cânibinden, kudret-i tâmmesi nokta-i nazarından, bu mes'eleye temâşâ etmek gerektir.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Birinin âsârı muhâkeme olunursa, onun hàssasını nazara almak lâzımdır. İşte şu mes'elede, edilmemiştir. Zîra bu mes'eleye, acz-i abdin arkasında, kudret-i mümkinâtın tarafında, kıyâs-ı temsîlînin perdesi altında temâşâ ediyor. Hâlbuki, tekvîn-i âlemde bir kısmını maddesiz ibdâ' ve bir kısmı dahi maddeden inşâ ile, şu kadar hayret-fezâ âsâr-ı mu'cize ile kudret-i kâmile-i İlâhiye'yi göstermekle beraber, ondan sarf-ı nazar etmek; gâibi, şâhid sûretinde görmek olan kıyâs-ı hàdi' ile ve ebnâ-yı cinsini muhâkeme ettiği gibi; bir kaide-i mahdûde ile, Vâcibü'l-Vücûd'a nazar ederler. Hattâ çok mes'eleyi akl-ı selîm ma'kul gördüğü hâlde, onlar gayr-ı ma'kul tevehhüm ederler.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Muhtereattan kat'-ı nazar, masnûâtın en zâhir ve münevver ve "ziyâ" dedikleri olan nur-u ayn-ı âlemin kavânîn-i acîbesi ve onun semeresi ve misâl-i musağğarı olan nur-u basarın nevâmis-i bedîasıyla münevver ve musavver olan kemâl-i kudret-i İlâhiye'nin cânibinde; muvâzene nokta-i nazarında, gayr-ı ma'kul ve uzak</p>
+<div class="page-marker-wrap"><span class="page-marker">120</span></div>
+<p class="paragraph">tevehhüm olunan mesâile temâşâ edilirse, me'nûs ve ayn-ı aklın kirpikleri ortasında görülecektir. <span class="fn-marker">*(Hâşiye)</span></p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Nasıl ki, zarûriyâttan nazariyât istintac olunur, öyle de; âsâr-ı Sâni'in zarûriyâtı, mahfiyât-ı san'atına bürhândır. İkisi beraber bu mes'eleyi isbât eder.</p>
+<p class="paragraph">TELVİH:</p>
+<p class="paragraph">Acaba nizâm-ı âlemdeki san'attan daha dakîk, daha acîb, daha garîb; cins-i kudret-i mümkinâttan daha uzak, akıl tasavvur edebilir mi?.. Elbette edemez. Zîra fünûn, gösterdikleri fevâid ve hikem ile bizzarûre Sâni'in kasd ve san'at ve hikmetine şehâdet ettiklerinden, ukùlü kabûl etmeye muztar etmişlerdir. Yoksa, bu bedîhiyâttan en küçük bir hakikati, akıl kendi kendine kalsa idi, kabûl etmezdi.</p>
+<p class="paragraph">Evet, zemin ve âsumânı hamleden ve muallakta tutan ve ecrâm-ı kâinâtı istihdam eden ve nizâmında idhal ile hiçbir emrine isyan edilmeyen Zât-ı Akdes'ten neden istiğrab olunsun ki; ondan derecâtla eshel ve ehaff olanı hamletsin?</p>
+<p class="paragraph">Evet, bir dağı kaldıran, bir hokkayı kaldırabilmekten tereddüd etmek, sırf safsata etmektir.</p>
+<p class="paragraph"><strong>Elhâsıl:</strong> Nasıl Kur'ân'ın bazısı bazısına müfessirdir. Kezâlik, kâinât kitabı dahi, bazı sutûru arkalarındaki san'at ve hikmeti tefsir eder...</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph"><strong>Eğer desen:</strong>"Bazı mutasavvıfın kelâmından ittisal ve ittihâd ve hulûl zâhir oluyor. Ve ondan tevehhüm edilir ki; bazı maddiyûnun mesleği olan vahdetü'l-vücûda bir münâsebet gösterir."</p>
+<p class="paragraph"><strong>Elcevab:</strong> Müteşâbih hükmünde olan muhakkìkîn-i sofiyenin şatahatını ki: Vücûd-u Akdes'e hasr-ı nazar ve istiğrak ve mümkinâttan tecerrüd cihetiyle, matmah-ı nazar ettikleri delil içinde neticeyi görmek; yani, âlemden Sâni'i müşâhede etmek tarîkiyle takib ettikleri meslek olan cedâvil-i ekvânda, cereyan-ı tecelliyâtı ve melekûtiyet-i eşyada, sereyân-ı füyûzâtı ve merâyâ-yı mevcûdâta,</p>
+<div class="page-marker-wrap"><span class="page-marker">121</span></div>
+<p class="paragraph">tecellî-i esmâ ve sıfâtı ise; dıyku'l-elfâz sebebiyle, ulûhiyet-i sâriye ve hayat-ı sâriye tâbir ettikleri hakàikı, başkalar anlamadılar... Sû-i tefehhüm ile, kendi isti'dâd-ı şûrelerinden zuhûr eden evhâm-ı vâhiyeye, muhakkìkînin kelimât ve şatahatını tatbik ettiler.</p>
+<p class="paragraph">Yûhâ onların akıllarına!.. Süreyyâ derecesinde olan muhakkìkînin efkâr-ı mücerredeleri, serâ derekesinde olan mukallidîn-i maddiyûnun efkâr-ı sefîlesinden binler derece uzaktır.</p>
+<p class="paragraph">Evet, şu iki fikrin tatbikine çalışmak, şu zaman-ı terakkîde, akl-ı beşerin dûçâr-ı sekte olduğunu ve varta-i mevte düştüğünü izhâr etmektir ki; insaniyet müteessifâne nazar ederek ve isti'dâd-ı tahkîk ve terakkî lisânıyla</p>
+<div class="arabic-block" dir="rtl">كَلَّا وَاللهِ اَيْنَ الثَّرَى مِنَ الثُّرَيَّا</div>
+<div class="arabic-block" dir="rtl">وَاَيْنَ الضِّيَاءُ السَّاطِعُ مِنَ الظُّلْمَةِ الطَّامِسَةِ</div>
+<p class="paragraph">demeye mecbur oluyor.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Şunlar, ehl-i vahdetü'ş-şühûddurlar. Fakat vahdetü'l-vücûd ile mecâzen tâbir edilebilir. Fakat hakikaten vahdetü'l-vücûd, bazı hükemâ-i kadîmenin meslek-i bâtılasıdır.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Şu mutasavvifînin reis ve kebîri demiş ki: "İttisali veya ittihâdı veya hulûlü iddia eden, mârifet-i İlâhiye'den hiçbir şey istişmam etmemiştir." Evet mümkün, vâcib ile nasıl ittisal veya ittihâd edecek? Kellâ!.. Evet mümkünün ne kıymeti vardır; tâ ki, vâcib onda hulûl ede, hâşâ!..</p>
+<p class="paragraph">Neam, mümkünde Füyûzât-ı İlâhiye'den bir feyz tecellî eder. İşte bunların mesleği, ötekilerin mesleğine münâsebet ve temâs edemez. Zîra, maddiyûnun mesleği; maddiyâta hasr-ı nazar ve istiğrak ettiklerinden, efkârları fehm-i Ulûhiyet'ten tecerrüd edip uzaklaştılar. O derece maddeye kıymet verdiler ki; herşeyi maddede görmek, hattâ Ulûhiyet'i onda mezcetmek gibi, bir meslek-i müteassifeye girmişlerdir.</p>
+<div class="page-marker-wrap"><span class="page-marker">122</span></div>
+<p class="paragraph">Fakat ehl-i vahdetü'ş-şühûd olan muhakkìkîn-i sofiye; o derece Vâcib'e hasr-ı nazar etmişler ki; mümkinâtın hiçbir kıymeti kalmamıştır. "Bir vardır." derler... El-insaf... Serâ, Süreyyâ kadar birbirinden uzaktır. Maddeyi, cemî' envâ' ve eşkâliyle halk eden Hàlık-ı Zülcelâl'e kasem ederim ki; dünyada şu iki mesleğin temâsını intac eden re'y-i ahmakàneden daha kabîh ve daha hasîs ve daha sâhibinin mîzâc-ı aklının inhirafına delil olacak bir re'y yoktur.</p>
+<p class="paragraph">TENVİR:</p>
+<p class="paragraph">Küre-i arz; küçük, parça parça ve rengârenk ve mütehâlif cam parçalarından farz olunursa; herbiri başka çeşitle levnine ve cirmine ve şekline nisbetle, şemsten bir feyz alacaktır. Şu hayâlî feyz ise; ne güneşin zâtı ve ne ayn-ı ziyâsıdır. Hem de ziyânın temâsili ve elvân-ı seb'asının tesâvîri ve güneşin tecellîsi olan şu gûnâ-gûn ve rengârenk çiçeklerin elvânı, farazâ lisâna gelirse, herbiri "Güneş benim gibidir." veyâhut "Güneş benim." diyeceklerdir.</p>
+<div class="arabic-block" dir="rtl">اۤنْ خَيَالاَتِى كِه دَامِ اَوْلِيَاسْت * عَكْسِ مَهْرُويَانِ بُوسْتَانِ خُـدَا اَسْتْ</div>
+<p class="paragraph">Fakat ehl-i vahdetü'ş-şühûdun meşrebi, ehl-i mahv ve sekrin meşrebidir. Sâfî meşreb ise, meşreb-i ehl-i fark ve sahvdır.</p>
+<div class="arabic-block" dir="rtl">حَقِيقَةُ الْمَرْءِ لَيْسَ الْمَرْءُ يُدْرِكُهَا فَكَيْفَ كَيْفِيَّةُ الْجَبَّارِ ذِي الْقِدَمِ</div>
+<div class="arabic-block" dir="rtl">هُوَ الَّذِي اَبْدَعَ الْاَشْيَاءَ وَاَنْشَاَهَا فَكَيْفَ يُدْرِكُهُ مُسْتَحْدَثُ النَّسَمِ</div>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">İşte vücûd-u Sâni'in delâil-i icmâlîsi... Tafsîli ise, kütüb-ü selâse'de gelecektir.</p>
+<p class="paragraph"><strong>Eğer desen:</strong>"Delâil-i tevhid'in burada velev icmâlen olsun, beyânını isterim."</p>
+<p class="paragraph"><strong>Derim ki:</strong> Delâil-i tevhid, o kadar müştehire ve çoktur ki, bu kitapta zikirden müstağnîdirler. İşte;</p>
+<div class="arabic-block" dir="rtl">﴿ لَوْ كَانَ فِيهِمَٓا اٰلِهَةٌ اِلَّا اللّٰهُ لَفَسَدَتَا ﴾</div>
+<p class="paragraph">âyetinin sadefinde meknûn olan bürhânü't-temânü', bu minhâca bir menâr-ı neyyirdir. Evet istiklâl, Ulûhiyet'in hâsse-i zâtiyesidir ve lâzime-i zarûriyesidir.</p>
+<div class="page-marker-wrap"><span class="page-marker">123</span></div>
+<p class="paragraph">TENVİR:</p>
+<p class="paragraph">Kâinâttaki teşâbüh-ü âsâr ve etrafı birbiriyle muânaka ve el ele tutmuş, birbirine arz-ı intizam ve birbirinin suâline karşı cevab-ı savab ve birbirinin nidâ-yı ihtiyacına lebbeyk cevabı vermek ve bir nokta-i vâhideye temâşâ etmek ve bir mihver-i nizâm üzerinde deverân etmek cihetiyle, Sâni'in tevhidine telvih, belki Hâkim-i Ezel'in vahdâniyetine tasrîh ediyor.</p>
+<p class="paragraph">Evet, bir makinenin sâni'i ve muhteri'i bir olur.</p>
+<div class="arabic-block" dir="rtl">وَ فِي كُلِّ شَيْءٍ لَهُ اٰيَةٌ تَدُلُّ عَلٰى اَنَّهُ وَاحِدٌ</div>
+<p class="paragraph"><strong>Kitab-ı âlemin evrakıdır eb'âd-ı nâ-mahdûd,</strong></p>
+<p class="paragraph"><strong>Sutûr-u kâinât-ı dehrdir, a'sâr-ı nâ-ma'dûd.</strong></p>
+<p class="paragraph"><strong>Basılmış destgâh-ı levh-i mahfûz-u hakikatte,</strong></p>
+<p class="paragraph"><strong>Mücessem lafz-ı mânidârdır, âlemde her mevcûd.</strong></p>
+<p class="paragraph"><strong>Hoca Tahsin'in</strong> nâ-ma'dûd ve nâ-mahdûddan muradı nisbîdir; hakîki lâyetenâhîlik değildir.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Sâni'-i Zülcelâl, ne kadar evsâf-ı kemâliye varsa, onlarla muttasıftır. Zîra mukarrerdir ki: Masnû'da olan feyz-i kemâl, Sâni'in kemâlinden iktibas edilmiş bir zıll-i zalîlidir. Demek, kâinâtta ne kadar hüsün ve cemâl ve kemâl varsa, umumundan lâyuhadd derecede yüksek tabakada, evsâf-ı cemâliye ve kemâliye ile Sâni' muttasıftır. Evet ihsân, servetin; icâd, vücûdun; icâb, vücûbun; tahsin, hüsnün fer'idir ve delilidir.</p>
+<p class="paragraph">Hem de Sâni'-i Zülcelâl, cemî' nekàisten münezzehtir. Maddiyâtın mâhiyâtının isti'dâdsızlığından neş'et eden nekàisten müberrâdır. Kâinâtın mâhiyât-ı mümkinesinden neş'et eden evsâf ve levâzımatından mukaddestir.</p>
+<div class="arabic-block" dir="rtl">لَيْسَ كَمِثْلِهِ شَيْءٌ جَلَّ جَلَالُهُ</div>
+<div class="page-marker-wrap"><span class="page-marker">124</span></div>
+<h2 class="heading-2"><strong>İkinci Maksad</strong></h2>
+<div class="subtitle">Mukaddime</div>
+<p class="paragraph"><strong>Eğer desen:</strong>"Dibâcede demiş idin: Kelime-i şehâdetin ikinci kelâmı, birincisine şâhid ve meşhûddur."</p>
+<p class="paragraph"><strong>Elcevab:</strong> Neam, evet. Mârifetullâh denilen kâbe-i kemâlâta giden minhâcların en müstakîm ve en metîni, Sâhib-i Medine-i Münevvere Aleyhissalâtü Vesselâm'ın yaptığı tarîk-ı hadîd-i beyzâsıdır ki; rûh-u hidayet hükmünde olan Muhammed Aleyhissalâtü Vesselâm, avâlim-i gaybın mişkât ve zücâcesi hükmünde olan kalbinin ma'kes ve tercümânı makamında olan lisân-ı sâdıkı, berâhin-i Sâni'in en sâdık bir delil-i zîhayat ve bir hüccet-i nâtıka ve bir bürhân-ı fasîhtir.</p>
+<p class="paragraph">Evet hem zâtı, hem lisânı birer bürhân-ı neyyirdir. Neam, hilkat tarafından Zât-ı Muhammed bürhân-ı bâhirdir. Hakikat cânibinden lisânı, şâhid-i sâdıktır.</p>
+<p class="paragraph"><strong>Evet, Muhammed Aleyhissalâtü Vesselâm hem Sâni'a, hem nübüvvete, hem haşre, hem hakka, hem hakikate bir hüccet-i kàtıadır. Tafsîli gelecektir.</strong></p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">"Devir" lâzım gelmez. Zîra, sıdkının delâili Sâni'in delâiline tevakkuf etmez...</p>
+<div class="page-marker-wrap"><span class="page-marker">125</span></div>
+<p class="paragraph">TEMHÎD:</p>
+<p class="paragraph">Peygamberimiz Aleyhissalâtü Vesselâm, Sâni'in bir bürhânıdır. Öyleyse şu bürhânın, isbât-ı sıdkını ve intacını ve sûreten ve maddeten sıhhatini isbât etmek gerektir... Nahu:</p>
+<div class="arabic-block" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+<div class="arabic-block" dir="rtl">اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ الَّذِي دَلَّ عَلٰى وُجُوبِ وُجُودِكَ</div>
+<p class="paragraph">Emmâ ba'dü!.. Ey hakikatin âşıkı!.. Eğer vicdânımı mütâlaa etmekle hakikatleri rasad etmek istersen, kalb dedikleri latîfe-i Rabbâniye'nin pası ve zengârı hükmünde olan arzu-yu hilâf ve iltizam-ı taraf-ı muhâlif ve mâzûr tutulmak için kendi evhâmına bir hak vermek ve bir "asl"a ircâ etmek ve mecmûun neticesini, herbir ferdden istemek ki, za'fiyeti sebebiyle neticenin reddine bir isti'dâd-ı seyyie verilir. (*)</p>
+<p class="paragraph">Hem de bahâneli çocukluk tabiatı, hem de mahâneli düşman seciyesi, hem de yalnız ayıbı görmek şânında olan müşteri nazarı gibi emirlerden, o mir'âtı taskîl ve tasfiye et. Muvâzene ve mukàbele eyle; ekser emârâtın imtizacından tezâhür eden hakikatin şu'le-i cevvâlesini karîne-i münevvire et; tâ, ekaldeki evhâm-ı muzlimeyi tenvir ve def' edebilesin... Hem de, munsıfâne ve müdakkikàne ile dinle, kelâm tamam olmadan i'tirâz etme. Nihâyete kadar bir cümledir, bir hükümdür. Tamam olduktan sonra, bir vehmin kalırsa söyle...</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Şu bürhânın suğrâsı, nübüvvet-i mutlaka'dır. Kübrâsı ise, nübüvvet-i Muhammed'dir. (Aleyhissalâtü Vesselâm) İşte başlıyoruz:</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Sâni'in hikmeti ve ef'âlindeki adem-i abesiyet ve kâinâttaki en hasîs ve en kalîl şeyde nizâmın mürâatı ve adem-i ihmali ve nev'-i beşerin mürşide olan ihtiyac-ı zarûrîsi, nev'-i beşerde vücûd-u nübüvvet, kat'an istilzam ederler...</p>
+<div class="page-marker-wrap"><span class="page-marker">126</span></div>
+<p class="paragraph"><strong>Eğer desen:</strong>"Bu icmâldeki mânâyı anlamadım, tafsîl et."</p>
+<p class="paragraph"><strong>Derim:</strong> İşte dinle, görüyorsun ki; maddiye ve maneviye olan nev'-i beşerdeki nizâmâtın, hem de hâsiyet-i aklın kuvvetiyle taht-ı tasarrufuna alınan çok envâ'ın ahvâline verildiği intizamâtın merkezi ve mâdeni hükmünde olan nübüvvet-i mutlaka'nın bürhânı, insanın hayvaniyetten üç noktada olan terakkîsidir.</p>
+<p class="paragraph"><strong>Birincisi:</strong>"Fikrin evveli, amelin âhiri; amelin evveli, fikrin âhiri" olan kaidesinin zımnındaki sırr-ı acîbdir. Şöyle: Nur-u nazar ile ilel-i müterettibe-i müteselsilenin meyânında olan terettübü keşfederek, umum kemâlât-ı insaniyenin tohumu hükmünde olan mürekkebâtı, besâita tahlil ve ircâ etmekle hâsıl olan kàbiliyet-i ilim.. ve terkîb dedikleri kavânîn-i câriyeyi istimâl edip, san'atıyla tabiatı muhâkât olan kàbiliyet-i san'attan nazarının kusurunu ve evhâmın müzâhemeti ve sevk-i insaniyetin adem-i kifâyeti cihetiyle, bir mürşid-i nebîye ihtiyaç gösteriyor; tâ, âlemdeki nizâm-ı ekmelin muvâzenesi muhâfaza olunsun.</p>
+<p class="paragraph"><strong>İkincisi:</strong> Gayr-ı mütenâhî olan beşerin isti'dâdı, gayr-ı mahsur olan âmâl ve müyûlâtı ve gayr-ı mazbut olan tasavvurât ve efkârı, gayr-ı mahdûd olan kuvve-i şeheviye ve gadabiyesidir...</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Bir adama milyonlarca sene ömür ile, bütün lezâiz-i dünyeviye ve her cihetten tasallut-u tâmm verildiği hâlde; isti'dâdındaki lâyetenâhîliğin hükmünce, bir "ah!.. ah!.. leyte!.."yi çekecektir. Güyâ, o adem-i rızâ ile remz ve işâret ediyor ki;<strong>insan ebede namzeddir ve saâdet-i ebediye için halk olunmuştur. Tâ, gayr-ı mütenâhî bir zamanda, gayr-ı mahdûd ve geniş bir âlemde, gayr-ı mahsur olan isti'dâdâtını bilfiile çıkarabilsin.</strong></p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Adem-i abesiyet ve hakàik-ı eşyanın sübûtiyetleri îmâ ediyor ki; bu dar ve mahsur ve herbir lezzetinde çok a'râzın müzâhemetiyle keşmekeş ve tehâsüdden hàlî olmayan şu dünya-yı deniye içinde, kemâlât-ı insaniye yerleşmez. Belki, geniş ve müzâhemetsiz bir âlem</p>
+<div class="page-marker-wrap"><span class="page-marker">127</span></div>
+<p class="paragraph">lâzımdır; tâ insan, hakkıyla sünbüllensin ve ahvâl ve kemâlâtına nizâm vermekle, nizâm-ı âleme hemdest-i vifâk olabilsin...</p>
+<p class="paragraph">TENBİH VE İŞÂRET:</p>
+<p class="paragraph">İstitradî olarak haşre îmâ olundu. İleride zâten bürhân-ı kat'iyle isbât edilecektir. Fakat burada istediğim nokta: insandaki isti'dâd ebede nâzırdır. Eğer istersen, insaniyetin cevherine ve nâtıkıyetin kıymetine ve isti'dâdın muktezâsına teemmül ve tedkik et. Sonra da, o cevher-i insaniyetin en küçük ve en hasîs hizmetkârı olan hayâle bak, gör, yanına git ve de: "Ey hayâl ağa!.. Beşâret sana!.. Dünya ve mâfîhânın saltanatı, milyonlar sene ömür ile beraber sana verilecektir; fakat, âkıbetin dönmemeksizin fenâ ve ademdir." Acaba hayâl sana nasıl mukàbele edecek?.. Âyâ, istibşâr ve sürûr veyâhut telehhüf ve tahassürle cevab verecektir. Ecel, neam, evet, cevher-i insaniyet, a'mâk-ı vicdânın dibinde enîn ve hanîn edip bağıracak: "Eyvâh, vâ-hasretâ saâdet-i ebediyenin fıkdânına!.." diyecektir. Hayâle zecr ve ta'nif ederek: "Yâhû! Bu dünya-yı fâniye ile râzı olma."</p>
+<p class="paragraph">İşte ey birader! Hîna bu saltanat-ı fâniye, sultan-ı insaniyetin en hakîr hizmetkârı veyâhut şâiri veyâhut san'atkâr ve tasvircisini işbâ' ve râzı edemezse, nasıl o hayâl gibi çok hizmetkârların sâhibi olan sultan-ı insaniyeti işbâ' edebilir? Kellâ!.. Neam, onu işbâ' edecek, yalnız haşr-i cismânînin sadefinde meknûn olan, saâdet-i ebediyedir.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> İnsanın îtidâl-i mîzâcı ve letâfet-i tab'ı ve zînete olan meylidir. Yani, insanın insaniyete lâyık bir sûret-i taayyüşe olan meyl-i fıtrîsidir. Neam, insan hayvan gibi yaşamamalıdır ve yaşamaz. Belki, şeref-i insaniyete münâsib bir kemâl ile yaşamak gerektir. Binâenaleyh, beşer, mesken ve melbes ve me'keli, sanâyi-i kesîre ile taltif etmesine muhtaçtır.</p>
+<p class="paragraph">Bu san'atlarda, yalnızca kudretinin adem-i kifâyetine binâen; ebnâ-yı cinsiyle imtizaç etmek.. o da iştirâk etmek.. o da teâvün etmek.. o da sa'yin semerâtını mübâdele etmesini iktiza etmekle beraber, kuvâ-yı insaniyedeki inhimak ve tecâvüz sebebiyle, adâlete ihtiyaç.. o da her aklın adâlete adem-i kifâyetine binâen, onu muhâfaza edecek kavânîn-i külliyenin vaz'larına ihtiyaç..</p>
+<div class="page-marker-wrap"><span class="page-marker">128</span></div>
+<p class="paragraph">o da te'sirini muhâfaza etmek için icra edecek bir mukannine.. o mukannin dahi, zâhiren ve bâtınen hâkimiyetini muhâfaza etmek için, maddeten ve ma'nen tefevvuka.. hem de Sâni'-i âlemin tarafından bazı umûr ile muhassas olmasıyla, bir imtiyaz ve kuvvet-i nisbete.. hem de evâmirine olan itâati te'min ve te'sis eden Azamet-i Sâni'in tasavvurunu zihinlerde idâme edecek bir müzekkire-i mükerrere olan ibâdete muhtaçtır. O ibâdet dahi, Sâni'in cânibine efkârı tevcîh eder. O teveccüh ise, inkıyadı te'sis; o inkıyad dahi, nizâm-ı ekmele îsâl eder. O nizâm-ı ekmel dahi, sırr-ı hikmetten tevellüd eder. Sırr-ı hikmet dahi, ademü'l-abesiyeti ve Sâni'in hikmeti, masnû'daki teennuku kendine şâhid gösterir.</p>
+<p class="paragraph">İşte, eğer insanın hayvandan şu cihât-ı selâse ile olan temâyüzünü derk edebildin; bizzarûre netice veriyor ki: <strong>Nübüvvet-i mutlaka, nev'-i beşerde kutub, belki merkez ve bir mihverdir ki; ahvâl-i beşer onun üzerine deverân ediyor.</strong> Şöyle ki:</p>
+<p class="paragraph">Cihet-i ûlâda dikkat et! Bak, nasıl sevku'l-insaniyet ve meyl-i tabîinin adem-i kifâyeti ve nazarın kusuru ve tarîk-ı akıldaki evhâmın ihtilâtı, nasıl nev'-i beşeri eşedd-i ihtiyaçla bir mürşid ve muallime muhtaç eder. O mürşid, <strong>Peygamber'dir...</strong></p>
+<p class="paragraph">İkinci cihette tedebbür et. Şöyle: İnsandaki lâyetenâhîlik ve tabiatındaki meylü't-tecâvüz ve kuvâ ve âmâlindeki adem-i tahdid ve âlemdeki meylü'l-istikmâlin dalı hükmünde olan insandaki meylü't-terakkînin semeresi hükmünde olan kàmet-i nâmiye-i isti'dâd-ı insanîsine intibak etmeyen, belki câmid ve muvakkat olan kanun-u beşer ki; tedrîcen tecârüb ile hâsıl olan netâic-i efkârın telâhukuyla vücûda gelen o kavânîn-i beşer, şu semere-i isti'dâdın çekirdeklerinin terbiye ve imdâdına adem-i kifâyetinin sebebiyle, maddeten ve ma'nen iki âlemde saâdet-i beşeri te'min edecek, hem de kàmet-i isti'dâdının büyümesiyle tevessü' edecek, zîhayat ve ebediye bir şerîat-ı İlâhiye'ye ihtiyaç gösterir. İşte şerîatı getiren, <strong>Peygamber'dir...</strong></p>
+<p class="paragraph"><strong>Eğer desen:</strong>"Biz görüyoruz ki; dinsizlerin veya sahîh bir dini olmayanların ahvâlleri, muaddele ve munazzamadırlar."</p>
+<div class="page-marker-wrap"><span class="page-marker">129</span></div>
+<p class="paragraph"><strong>Elcevab:</strong> O adâlet ve intizam, ehl-i dinin îkazât ve irşadâtıyladır. Ve o adâlet ve faziletin esâsları, enbiyânın te'sisleriyledir. Demek enbiyâ, esâs ve maddeyi vaz' etmişlerdir. Onlar da, o esâs ve fazileti tutup, onda işlediklerini işlediler. Bundan başka nizâm ve saâdetleri, muvakkattir. Bir cihetten kàime ve müstakîme ise, çok cihâttan mâile ve münhaniyedir. Yani, ne kadar sûreten ve maddeten ve lafzan ve maâşen muntazamadır; fakat sîreten ve maneviyaten ve ma'nen fâside ve muhtelledir.</p>
+<p class="paragraph">Ey birader!.. İşte sıra üçüncü cihete geldi. İyi tefekkür et!.. Şöyle: Ahlâktaki ifrat ve tefrit ise, isti'dâdâtı ifsad ediyor. Ve şu ifsad ise, abesiyeti intac eder. Ve şu abesiyet ise, kâinâtın en küçük ve en ehemmiyetsiz şeylerinde mesâlih ve hikemin riâyetiyle, âlemde hükümfermâlığı bedîhî olan Hikmet-i İlâhiye'ye münâkızdır.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">"Meleke-i mârifet-i hukuk" dedikleri, her fenâlığın maddeten zararını ihsâs ede ede ve efkâr-ı umumiyeyi îkaz etmekle hâsıl olan "meleke-i riâyet-i hukuk" dedikleri emri, şerîat-ı İlâhiye'ye bedel olarak dinsizlerin tasavvuru ve şerîattan istiğnâları, bir tevehhüm-ü bâtıldır. Zîra, dünya ihtiyarlandı; öyle bir şeyin mukaddemâtı da zâhir olmadı. Bil'akis, mehâsinin terakkîsiyle beraber, mesâvî dahi terakkî edip, daha dehşetli ve aldatıcı bir şekle giriyor.</p>
+<p class="paragraph">Evet, nasıl ki nevâmis-i hikmet, desâtir-i hükûmetten müstağnî değildir, öyle de; vicdâna hâkim olan kavânîn-i şerîat ve fazilete, eşedd-i ihtiyaç ile muhtaçtır. İşte şöyle mevhûme olan meleke-i ta'dil-i ahlâk, kuvâ-yı selâseyi, hikmet ve iffet ve şecâatte muhâfaza etmesine kâfî değildir. Binâenaleyh, insan bizzarûre, vicdân ve tabiatlara müessir ve nâfiz olan mîzan-ı adâlet-i İlâhiye'yi tutacak bir Nebî'ye muhtaçtır.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Binlerce enbiyâ, nev'-i beşerde nübüvveti iddia ederek, binlerce mu'cizâtla müddeâyı isbât etmişlerdir. İşte, o enbiyânın cemî' mu'cizâtları, lisân-ı vâhid ile nübüvvet-i mutlaka'yı ilân eder.</p>
+<div class="page-marker-wrap"><span class="page-marker">130</span></div>
+<p class="paragraph">Bizim şu suğrâmıza dahi, bir bürhân-ı kàtı'dır. Buna, tevâtür-ü bilma'nâ veya ne tâbir ile diyorsanız deyiniz, metîn bir delildir.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Şu muhâkemâtın cihetü'l-vahdeti budur ki: Eğer cemî' fünûn ele alınırsa.. ve fünûnların kavâidinin külliyetleriyle keşfettikleri ittisak ve intizama temâşâ edilirse.. hem de, mesâlih-i cüz'iye-i müteferrikanın mâyesi ve ukde-i hayatiyesi hükmünde olan bir lezzeti veya bir muhabbeti veya bir emr-i âheri içine atılmakla – ekl ve nikâhtaki gibi – perîşan olan umûr ve ef'âl, o mâye ile irtibat ve ittisal ettiklerini, inâyet-i İlâhiye nokta-i nazarında nazar-ı dikkate alınırsa.. hem de, hikmetin şehâdetiyle sâbit olan adem-i abesiyet ve adem-i ihmali mütâlaaya alınırsa.. istikrâ'-i tâmmla netice veriyor ki: Mesâlih-i külliyenin kutub ve mihveri ve mâden-i hayatı hükmünde olan nübüvvet, nev'-i beşerde zarûrîdir... Farazâ olmazsa, perîşan olan nev'-i beşer, güyâ muhtel bir âlemden şu muntazam âleme düşüp, cereyan-ı umumînin ahengini ihlâl ettiği kabûl olunursa, biz insanlar, sâir kâinâta karşı ne yüzümüz kalacaktır?..</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Ey birader!.. Eğer bürhân-ı Sâni'in suğrâsı, senin sahife-i zihninde intikaş etmiş ise, hazır ol!.. Kübrâsı olan nübüvvet-i Muhammed'in bahsine geçiyoruz:</p>
+<p class="paragraph">İŞÂRET VE İRŞAD:</p>
+<p class="paragraph">Kübrâ, sâdıktır. Zîra, sahife-i itibar-ı âlemde menkûş olan âsâr-ı enbiyâyı mütâlaa etsen ve lisân-ı tarihte cereyan eden ahvâllerini dinlersen ve hakikati, yani cihetü'l-vahdeti, te'sir-i zaman ve mekân ile girdiği sûretlerden tecrid edebilirsen göreceksin ki; inâyet-i İlâhiye'nin ziyâsı olan mehâsin-i mücerredenin şu'lesi olan hukukullâh ve hukuk-u ibâdı; enbiyâ, düstur-u hareket ettiklerini ve nev'-i beşer tarafından enbiyâya karşı keyfiyet-i telâkkileri ve ümeme karşı sûret-i muâmeleleri ve terk-i menâfi'-i şahsiye ve sâir umûrlar ki; onlara nebî dedirmiş ve nübüvvete medâr olmuş olan</p>
+<div class="page-marker-wrap"><span class="page-marker">131</span></div>
+<p class="paragraph">esâslar ise, evlâd-ı beşerin sinn-i tekemmül ve kühûlette olan üstadı ve Medrese-i Cezîretü'l-Arab'da menba'-ı ulûm-u àliye ve muallimi olan Zât-ı Muhammed'de daha ekmel ve daha azhar bulunur.</p>
+<p class="paragraph">Demek oluyor ki: İstikrâ'-i tâmm ile, hususan nev'-i vâhidde, lâsiyyemâ, intizam-ı muttarid üzerine müesses olan kıyâs-ı hafînin iânesiyle ve kıyâs-ı evlevînin te'yidiyle, nübüvvet-i Muhammed'i netice vermekle beraber; tenkîhü'l-menât denilen, hususiyattan tecrid nokta-i nazardan cemî' enbiyâ, lisân-ı mu'cizâtlarıyla, vücûd-u Sâni'in bir bürhân-ı bâhiresi olan Muhammed'in sıdkına şehâdet ederler.</p>
+<p class="paragraph">İ'TİZAR:</p>
+<p class="paragraph">Kısa cümlelerle söylemiyorum; muğlakça oluyor. Zîra şu hakàik, her tarafa derin köklerini attıklarından, mes'ele uzunlaşıyor. Sûret-i mes'eleyi bozmak ve parça parça etmek ve hakikati incitmek istemiyorum. Hem de hakikatin etrafına bir dâireyi çekmek istiyorum; tâ, hakikat mahsur kalıp, kaçmasın. Ben tutmazsam başkası tutsun. Beni mâzûr tutsanız, febihâ... Ve illâ, hürriyet var, tahakküm yoktur. Keyfinize...</p>
+<div class="page-marker-wrap"><span class="page-marker">132</span></div>
+<div class="subtitle">Mukaddime</div>
+<p class="paragraph">Peygamber'in delil-i sıdkı; herbir hareket, herbir hâlidir... Evet; herbir hareketinde, adem-i tereddüd ve mu'terizlere, adem-i iltifat ve muârızlara, adem-i mübâlât ve muhâlif olanlardan, adem-i tahavvüfü; sıdkını ve ciddiyetini gösteriyor. Hem de; evâmirinde hakikatin rûhuna olan isabeti, hakkıyetini gösterir.</p>
+<p class="paragraph"><strong>Elhâsıl:</strong> Tahavvüf ve tereddüd ve telâş ve mübâlât gibi, hile ve adem-i vüsûkù ve itmi'nânsızlığı îmâ eden umûrlardan müberrâ iken, bilâ pervâ ve kuvvet-i itmi'nânla, en hatarlı makamlarda olan hareketi ve nihâyette olan isabeti ve iki âlemde semere verecek olan zîhayat kaideleri, harekâtıyla te'sis ettiğine binâen; herbir fiil ve herbir tavrının iki taraftan, yani bidâyet ve nihâyetten ciddiyeti ve sıdkı, nazar-ı ehl-i dikkate arz-ı dîdâr ediyor. Bâhusus, mecmû-u harekâtının imtizacından ciddiyet ve hakkıyet, şu'le-i cevvâle gibi.. ve in'ikâsâtından ve muvâzenâtından sıdk ve isabet, berk-ı lâmi' gibi tezâhür ve tecellî ediyor.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Zaman-ı mâzi ve zaman-ı hâl, yani; asr-ı saâdet ve zaman-ı istikbâl, tazammun ettikleri berâhin-i nübüvvet, lisân-ı vâhid ile mâden-i ahlâk-ı àliye olan Zât-ı Muhammed'de (Aleyhissalâtü Vesselâm) dâi-yi sıdkı ve dellâl-ı nübüvveti olan bürhân-ı zâtînin nidâsına cevab ve hemdest-i vifâk olarak nübüvvetini i'lâ ve ilân ettiklerini, kör olmayanlara gösterdiler. Şu hâlde, kitab-ı âlemden olan fasl-ı zamanın sahife-i selâsesini mütâlaa edeceğiz. Hem de, o kitaptan mes'ele-i uzmâ ve münevvere olan Zât-ı Muhammed'i (A.S.M) temâşâ ve ziyaret edeceğiz. Müddeâmız olan bürhânın kübrâsını, onun ile isbât edeceğiz.</p>
+<p class="paragraph">İşte bu noktaya binâen, mesâlik-i nübüvvet dörttür. Beşincisi, meşhûr ve mestûrdur.</p>
+<div class="page-marker-wrap"><span class="page-marker">133</span></div>
+<div class="subtitle">Birinci Meslek</div>
+<p class="paragraph">Yani: Mes'ele-i àliye-i zâtiyeyi temâşâ etmekte, dört nükteyi bilmek lâzımdır:</p>
+<p class="paragraph"><strong>Birincisi:</strong></p>
+<div class="arabic-block" dir="rtl">لَيْسَ الْكَحَلُ كَالتَّكَحُّلِ</div>
+<p class="paragraph">kaidesine binâen sun'î ve tasannuî olan şey, ne kadar mükemmel olsa da, tabîi yerini tutmadığından, hey'etinin feletâtı, müzahrefiyeti îmâ edecektir.</p>
+<p class="paragraph"><strong>İkincisi:</strong> Ahlâk-ı àliyenin, hakikatin zeminiyle olan râbıta-i ittisali, ciddiyettir. Ve deverân-ı dem gibi hayatlarını idâme eden ve imtizaçlarından tevellüd eden haysiyete kuvvet veren, hey'et-i mecmuasına intizam veren, yalnız sıdktır. Evet, şu râbıta olan sıdk ve ciddiyet kesildiği ânda, o ahlâk-ı àliye kurur ve hebâen gidiyor.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong>"Umûr-u mütenâsibede, temâyül ve tecâzüb.. ve mütezâdde olan eşyalarda, tenâfür ve tedâfü' kaide-i meşhûresi, maddiyâtta nasıl cereyan ediyor; maneviyat ve ahlâkta dahi cereyan eder.</p>
+<p class="paragraph"><strong>Dördüncüsü:</strong></p>
+<div class="arabic-block" dir="rtl">لِلْكُلِّ حُكْمٌ لَيْسَ لِكُلٍّ</div>
+<p class="paragraph">Şimdi gelelim maksada: İşte âsâr ve siyer ve tarih-i hayatı... Hattâ a'dânın şehâdetleriyle, Zât-ı Peygamberde vücûdu muhakkak olan ahlâk-ı àliyenin kesret ve ihâta ve tecemmu' ve imtizacından tevellüd eden izzet ve haysiyetten neş'et eden şeref ve vakar ve izzet-i nefis ile; ferişteler, devlerin ihtilât ve istiraklarından tenezzühleri gibi, sırr-ı tezâda binâen, o ahlâk-ı àliye dahi, hile ve kizbden tereffu' ve tenezzüh ve teberrî ederler. Hem de, hayat ve mâyeleri makamında olan sıdk ve hakkıyeti tazammun ettiklerinden, şu'le-i cevvâle gibi, nübüvveti aleniyete çıkarıyor.</p>
+<div class="page-marker-wrap"><span class="page-marker">134</span></div>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Ey birader! Görüyorsun ki; bir adam yalnız şecâatle meşhûr olursa, o şöhret ona verdiği haysiyeti ihlâl etmemek için, kolaylıkla yalana tenezzül etmez. Nerede kaldı ki, cemî' ahlâk-ı àliye birden tecemmu' ede...</p>
+<p class="paragraph">Evet, "Mecmûda bir hüküm bulunur; ferdde bulunmaz."</p>
+<p class="paragraph">İŞÂRET VE TENBİH:</p>
+<p class="paragraph">Görüyoruz: Bu zamanda sıdk ve kizbin mâbeynleri, ancak bir parmak kadar vardır. Bir çarşıda ikisi de satılır. Fakat, herbir zamanın bir hükmü var. Hiçbir zamanda asr-ı saâdet gibi sıdk ve kizbin ortasındaki mesâfe açılmamıştır. Şöyle ki:</p>
+<p class="paragraph">Sıdk, kendi hüsn-ü hakîkisini kemâl-i haşmetle izhâr ve onun ile temessük eden Muhammed'i (A.S.M) a'lâ-yı illiyîn-i şerefe i'lâ ve âlemde inkılâb-ı azîmi îka' ettiğinden, şarktan garba kadar kizbden bu'd derecesini göstermekle, kıymet-i àliyesini i'lâ etmek cihetiyle, sûku ve metâ'ını gayet nâfık ve râic etmiştir. (1)</p>
+<p class="paragraph">Ve kizb ise, teşebbüsât-ı azîmeyi, murdarların lâşeleri gibi rûhsuz bıraktığı için, nihâyet kubhunu izhâr ve onun ile temessük eden Müseylime ve emsâli, esfel-i sâfilîn-i hıssete düşürdüğü cihetle, metâ'-ı zehr-âlûdu ve sûku, gayet muattal ve kesâd etmiştir. (2)</p>
+<p class="paragraph">İşte, ehl-i izzet ve tefâhur olan Kavm-i Arab'ın tabiatlarındaki meylü'r-râic sâikasıyla müsâbaka ederek, o kâsid kizbi terk edip ve râic sıdk ile tecemmül ederek, adâletlerini âleme kabûl ettirmişlerdir. İşte sahâbelerin aklen olan adâletleri, bu sırdan neş'et eder.</p>
+<p class="paragraph">İRŞAD VE İŞÂRET:</p>
+<p class="paragraph">Tarih ve siyer ve âsâr nokta-i nazarından dikkat olunursa: Muhammed Aleyhissalâtü Vesselâm, dört yaşından kırk yaşına kadar, lâsiyyemâ; şe'ni, ahlâkı ve hileyi dışarıya atmakta olan harâret-i garîziyenin şiddet-i iltihabı zamanında, kemâl-i istikametle</p>
+<div class="page-marker-wrap"><span class="page-marker">135</span></div>
+<p class="paragraph">ve kemâl-i metânetle ve tamam-ı ıttırâd-ı ahvâl ile ve müsâvât ve muvâzenet-i etvâr ile ve nihâyet-i iffet ile ve hiçbir hâli, mestûriyeti muhâfaza etmeyen, lâsiyyemâ; öyle ehl-i inâda karşı, bir hileyi îmâ etmemekle beraber yaşadığı nazara alınırsa; sonra istimrar-ı ahlâkının zamanı olan kırk seneden sonra, o inkılâb-ı azîm nazara alınırsa; haktan geldiğini ve hakikat olduğunu tasdik etmezse, nefsine levm etsin... Zîra, zihninde bir sofestâi gizlenmiş olacaktır.</p>
+<p class="paragraph">Hem de, en hatarlı makamlarda – Gâr'da gibi – tarîk-ı halâsı mefkûd iken ve haytu'l-emel bihasebi'l-âde kesilirken, gayet metânet ve kemâl-i vüsûk ve nihâyet-i itmi'nân ile olan hareket ve hâl ve tavrı, nübüvvet ve ciddiyetine şâhid-i kâfîdir ve hak ile temessük ettiğine delildir...</p>
+<div class="page-marker-wrap"><span class="page-marker">136</span></div>
+<div class="subtitle">İkinci Meslek</div>
+<p class="paragraph">Yani: Sahife-i ûlâ, zaman-ı mâzidir. İşte şu sahifede, dört nükteyi nazar-ı dikkate almak lâzımdır:</p>
+<p class="paragraph"><strong>Birincisi:</strong> Bir fende veyâhut kasasta, bir adam, esâslarını ve rûh ve ukdelerini ahzederek, müddeâsını ona bina ederse, o fende hazâkat ve mehâretini gösterir.</p>
+<p class="paragraph"><strong>İkincisi:</strong> Ey birader!.. Eğer tabiat-ı beşere ârif isen; küçük bir haysiyetle, küçük bir da'vâda, küçük bir kavimde, küçük bir hilâfın serbestiyetle irtikâb olunmadığına nazar edersen; gayet büyük bir haysiyetle, nihâyet cesîm bir da'vâda, hasra gelmeyen bir kavimde, hadsiz bir inâda karşı, her cihetten ümmîliğiyle beraber, hiçbir cihetle akıl müstakil olmayan mes'elelerde, tam serbestiyetle, bilâ-pervâ ve kemâl-i vüsûk ile alâ ruûsi'l-eşhâd zikir ve nakilden, güneş gibi sıdkın tulû' edeceğini göreceksin.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> Bedevîlere nisbet çok ulûm-u nazariye vardır, medenîlere nisbeten lisân-ı âdât ve ef'âlin telkinâtıyla, ulûm-u müteârifenin hükümlerine geçmişlerdir. Bu nükteye binâen, bedevîlerin hâllerini muhâkeme etmek için, kendini o bâdiyede farz etmek gerektir. Eğer istersen, İkinci Mukaddime'ye müracaat et. Zîra, şu nükteyi izâh etmiştir.</p>
+<p class="paragraph"><strong>Dördüncüsü:</strong> Bir ümmî, ulemâ meyânında mütedâvil bir fende beyân-ı fikir ederse; ittifak noktalarda muvâfık olarak ve muhtelefün fîhâ olan noktalarda muhâlefet edip, musahhihâne olan söylemesi, onun tefevvukunu ve kisbî olmadığını isbât eder.</p>
+<p class="paragraph"><strong>Şu nüktelere binâen deriz ki:</strong> Resûl-i Ekrem Aleyhissalâtü Vesselâm, ma'lûm olan ümmiyetiyle beraber, güyâ gayr-ı mukayyed olan rûh-u cevvâle ile tayy-ı zaman ederek, mâzinin a'mâk-ı hafâsına girerek; hazır ve müşâhid gibi, enbiyâ-i sâlifenin ahvâllerini ve esrârlarını teşrîh etmesiyle; bütün enzâr-ı âleme karşı öyle bir da'vâ-yı azîmede – ki, bütün ezkiyâ-i âlemin nazarlarını dikkate celb eder – bilâ pervâ ve nihâyet vüsûk ile müddeâsına mukaddime olarak,</p>
+<div class="page-marker-wrap"><span class="page-marker">137</span></div>
+<p class="paragraph">o esrâr ve ahvâlin ukad-ı hayatiyeleri hükmünde olan esâslarını zikretmekle beraber; kütüb-ü sâlifenin ittifak noktalarında musaddık ve ihtilâf noktalarında musahhih olarak, kasas ve ahvâl-i enbiyâyı bize hikâye etmesi, sıdk ve nübüvvetini intac eder.</p>
+<p class="paragraph"><strong>Teznîb:</strong> Cemî' enbiyânın delâil-i nübüvvetleri, sıdk-ı Muhammed'e (A.S.M) delildir ve cemî' mu'cizâtları, Muhammed'in bir mu'cize-i maneviyesidir. (Aleyhimüsselâm) Bunda dikkat edersen anlayacaksın.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Ey birader!.. Bazen kasem, bürhânın yerini tutar; zîra bürhânı tazammun eder. Öyle ise:</p>
+<div class="arabic-block" dir="rtl">وَالَّذِي قَصَّ عَلَيْهِ الْقِصَصَ لِلْحِصَصِ وَسَيَّرَ رُوحَهُ فِي اَعْمَاقِ الْمَاضِي وَفِي شَوَاهِقِ الْمُسْتَقْبَلِ فَكَشَفَ لَهُ الْاَسْرَارَ مِنْ زَوَايَا الْوَاقِعَاتِ اِنَّ نَظَرَهُ النَّقَّادَ اَدَقُّ مِنْ اَنْ يُدَلِّسَ عَلَيْهِ وَمَسْلَكَهُ الْحَقَّ اَغْنَى مِنْ اَنْ يُدَلِّسَ عَلَى النَّاسِ</div>
+<p class="paragraph">Evet, neam...<strong>"O'nun nur-u nazarına, hayâl, kendini hakikat gösteremiyor ve hak olan mesleği, telbisten müstağnîdir."</strong></p>
+<div class="page-marker-wrap"><span class="page-marker">138</span></div>
+<div class="subtitle">Üçüncü Meslek</div>
+<p class="paragraph">Yani: Zaman-ı hâlin, yani Asr-ı Saâdet'in sahifesinde, "Dört Nükte", "Bir Nokta"yı nazar-ı dikkate almak gerektir:</p>
+<p class="paragraph"><strong>Birincisi:</strong> Küçük bir âdet, küçük bir kavimde veya zaîf bir haslet, kalîl bir tâifede; büyük bir hâkimin, büyük bir himmetle kolaylıkla kaldıramadığını nazara alırsan; acaba gayet çok, tamamen müstemirre, nihâyet derecede me'lûf ve çok da mütenevvia, tamamen râsiha olan âdât ve ahlâk, nihâyet kesîr ve me'lûfâtına gayet müteassıb ve şedîdü'ş-şekîme olan bir kavmin a'mâk-ı ervâhından az fedâkârlıkla, kısa bir zamanda kal' ve ref' ettiğini ve o âdât-ı seyyienin yerine, başka âdât ve ahlâk fidanlarını gars etmesi ve def'aten nihâyet derecede tekemmül ettiklerini nazara alırsan ve dikkat edersen, hàrikulâde olduğunu tasdik etmezsen; seni sofestâi defterinde yazacağım.</p>
+<p class="paragraph"><strong>İkincisi:</strong> Şahs-ı manevî hükmünde olan bir devletin nümûvv-ü tabîisi hükmünde olan teşekkülü ise, mütemehhildir ve devlet-i atîkaya galebesi – ki, ona inkıyad, tabiat-ı sâniye hükmüne girdiği için – tedrîcîdir. Öyle ise, maddeten ve ma'nen hâkim, hem de gayet cesîm bir devleti kısa bir zamanda teşkili, hem de düvel-i râsihaya def'î gibi galebe etmesi; maneviyat ve ahvâlde cârî olan âdâtın, bizzarûre hàrikulâde olduğunu görmezsen, körler defterinde yazılacaksın.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> Tahakküm-ü zâhirî, kahr ve cebr ile mümkündür. Fakat, efkâra galebe etmek, hem de ervâha tahabbüb ve tabâyie tasallut, hem de hâkimiyetini vicdânlar üzerine dâima muhâfaza etmek; hakikatin hàssa-i fârikasıdır. Bu hàssayı bilmezsen, hakikatten bîgânesin.</p>
+<p class="paragraph"><strong>Dördüncüsü:</strong> Terğîb veya terhîb hilesiyle, ancak yalnız bir te'sir-i sathî edip ve akla karşı sedd-i turuk edecektir. Şu hâlde, a'mâk-ı kulûbe nüfûz ve erakk-ı hissiyatı tehyîc ve şükûf-misâl</p>
+<div class="page-marker-wrap"><span class="page-marker">139</span></div>
+<p class="paragraph">olan isti'dâdâtı inkişaf ettirmek ve kâmine ve nâime olan seciyeleri îkaz ve tenbih ve cevher-i insaniyeti feverâna getirmek ve kıymet-i nâtıkıyeti izhâr etmek, şuâ-ı hakikatin hàssasıdır.</p>
+<p class="paragraph">Evet, kasâvet-i mücessemenin misâl-i müşahhası olan "ve'd-i benât" gibi umûrlardan kalblerini taskîl etmesi ve rikkat-i letâfetin lem'ası olan hayvanata merhamet, hattâ karıncaya şefkat gibi umûr ile tezyîn etmesi; öyle bir inkılâb-ı azîmdir – hususan öyle akvâm-ı bedevîde – ki; hiçbir kanun-u tabîiyeye tevfik olmadığından, hàrikulâde olduğu, musaddak-gerde-i erbâb-ı basîrettir. Basîretin varsa, tasdik edeceksin.</p>
+<p class="paragraph"><strong>Şimdi Nokta'yı dinle:</strong> İşte tarih-i âlem şehâdet eder ki, en büyük dâhî odur ki; bir veya iki hissin ve seciyenin ve isti'dâdın inkişafına ve îkazına ve feverâna getirmesine muvaffak olsun. Zîra, öyle bir hiss-i nâim îkaz edilmezse, sa'y, hebâen gider ve muvakkat olur. İşte en büyük dâhî, ancak bir veya iki hissin îkazına muvaffak olabilmiştir.</p>
+<p class="paragraph">Ezcümle; hiss-i hürriyet ve hamiyet ve muhabbet... Bu noktaya binâen, Cezîretü'l-Arab sahrâ-i vesîasında olan akvâm-ı bedevîde, kâmine ve nâime ve mestûre olan hissiyat-ı àliye – ki, binlere bâliğdir – birden inkişaf, birden îkaz, birden feverân ve galeyâna getirmek; şems-i hakikatin ziyâ-i şu'le-feşânın hàssasıdır. Bu noktayı aklına sokmayanın, biz Cezîretü'l-Arab'ı gözüne sokacağız. İşte Cezîretü'l-Arab... Onüç asır beşerin terakkiyâtından sonra, en mükemmel feylesoflardan yüz taneyi göndersin, yüz sene kadar çalışsın; acaba, bu zamana nisbeten, o zamana nisbet yaptığının yüzde birini yapabilir mi?..</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Kim tevfik isterse, âdetullâh ve hilkat ve fıtrat ile âşinâlık etmek ve dostluk etmek gerektir. Yoksa fıtrat, tevfiksizlikle bir cevab-ı red verecektir. Cereyan-ı umumî ise, muhâlif harekette bulunanları, adem-âbâd hîçâ-hîçe atacaktır. İşte buna binâen temâşâ et. Göreceksin ki, hilkatte cârî olan kavânîn-i amîka-i dakîka – ki, hurdebîn-i akıl ile görülmez – hakàik-ı şerîat, ne derecede mürâat ve muârefet</p>
+<div class="page-marker-wrap"><span class="page-marker">140</span></div>
+<p class="paragraph">ve münâsebette bulunmuşlardır ki; o kavânîn-i hilkatin muvâzenesini muhâfaza etmiştir. Evet, şu a'sâr-ı tavîlede, şu müsâdemât-ı azîme içinde, hakàikını muhâfaza, belki daha ziyâde inkişafa getirdiğinden gösterir ki; Resûl-i Ekrem Aleyhisselâm'ın mesleği, hiçbir vakit mahvolmayan hak üzerine müessestir.</p>
+<p class="paragraph">Şu nükte ve noktaları bildikten sonra, geniş ve muhâkemeli ve müdakkik bir zihinle dinle ki: Muhammed-i Hâşimî Aleyhissalâtü Vesselâm, ümmiyeti ve adem-i kuvvet-i zâhiresi ve adem-i hâkimiyeti ve adem-i meyl-i saltanat ile beraber, gayet hatarlı mevâki'de, kemâl-i vüsûk ile teşebbüs ederek, efkâra galebe etmekle, ervâha tahabbüb ve tabâyie tasallut; gayet kesîre ve müstemirre ve râsiha ve me'lûfe olan âdât ve ahlâk-ı vahşiyâneyi esâsıyla hedmederek, onların yerine ahlâk-ı àliyeyi gayet metîn bir esâs ile, lahm ve demlerine karışmış gibi te'sis etmekle beraber; zâviye-i vahşette hâmid olan bir kavimdeki kasâvet-i vahşiyeyi ihmâd ve hissiyat-ı dakikayı tehyîc... Evet, hissiyat-ı àliyeyi îkaz ve cevher-i insaniyetlerini izhâr etmekle beraber, evc-i medeniyete bir zaman-ı kasîrde is'âd ederek, şark ve garbda oturmuş bir devlet-i cesîmeyi bir zaman-ı kalîlde teşkil edip, ateş-i cevvâl gibi, belki nur-u nevvâr gibi veyâhut asâ-yı Mûsa gibi sâir devletleri bel' ve imha derecesine getirdiğinden, basar-ı basîreti kör olmayanlara sıdkını ve nübüvvetini ve hak ile temessükünü göstermiştir. İşte, eğer sen görmezsen, seni insanların defterinden sildirecektir.</p>
+<div class="page-marker-wrap"><span class="page-marker">141</span></div>
+<div class="subtitle">Dördüncü Meslek</div>
+<p class="paragraph">Sahife-i müstakbelden, lâsiyyemâ, mes'ele-i şerîattır. İşte, dört nükteyi nazar-ı dikkatten dûr etmemelisin:</p>
+<p class="paragraph"><strong>Birincisi:</strong> Bir şahıs dört veya beş fende meleke sâhibi ve mütehassıs olmaz. Meğer hàrika ola...</p>
+<p class="paragraph"><strong>İkincisi:</strong> Mes'ele-i vâhide, iki mütekellimden sudûr eder. Birisi; mebde' ve müntehâsı ve siyâk ve sibaka mülâyemetini ve ehavâtıyla nisbetini ve mevzi-i münâsibde istimâlini, yani; münbit bir zeminde sarfını nazara aldığı için, o fende olan mehâretine ve melekesine ve ilmine delâlet ettiği hâlde; öteki mütekellim, şu noktaları ihmal ettiği için, sathiyetine ve taklidiyetine delâlet eder. Hâlbuki, kelâm yine o kelâmdır. Eğer aklın bunu fark etmezse, rûhun hisseder.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> İkinci Mukaddime'de geçtiği gibi; bir-iki asır evvel hàrika sayılan keşif, bu zamana kadar mestûr kalsaydı, tekemmül-ü mebâdî cihetiyle, bir çocuk da keşfedebildiğini nazara al, onüç asır geri git, o zamanların te'sirâtından kendini tecrid et, dehşet-engîz olan Cezîretü'l-Arab'da otur, dikkatle temâşâ et, görürsün ki: Ümmî, tecrübe görmemiş, zaman ve zemin yardım etmemiş tek bir adam ki; yalnız zekâya değil, belki gayet kesîr tecârübün mahsulü olan fünûnun kavânîniyle, öyle bir nizâm ve adâleti te'sis ediyor ki; isti'dâd-ı beşerin kàmeti, netâic-i efkârı teşerrübünden tekebbür ederse, o şerîat dahi tevessü' ederek, ebede teveccüh eder. Kelâm-ı Ezelî'den geldiğini ilân etmekle beraber, iki âlemin saâdetini te'min eder. İnsaf edersen, bu ise, yalnız o zamanın insanlarının değil, belki nev'-i beşerin tavk-ı haricinde göreceksin. Meğer evhâm-ı seyyie, senin şu tarafa müteveccih olan fıtratının tarfını (*)çürütmüş ola...</p>
+<p class="paragraph"><strong>Dördüncüsü:</strong> <strong>Onuncu Mukaddime</strong>'de geçtiği gibi, hem de ikinci nokta-i i'tirâzın cevabında da geleceği gibi, şudur ki: Cumhûrun isti'dâd-ı efkârı derecesinde, şerîatın irşad etmesidir. Şöyle ki: Cumhûrun âmîliği için, hakàik-ı mücerredeyi, me'lûfları vâsıta</p>
+<div class="page-marker-wrap"><span class="page-marker">142</span></div>
+<p class="paragraph">olmaksızın adem-i telâkkileri sebebiyle, müteşâbihât ve teşbihât ve istiârât ile tasvir etmesidir. Hem de fünûn-u ekvânda, cumhûrun hiss-i zâhir sebebiyle hilâf-ı vâkii, zarûrî telâkki etmekle beraber, mebâdî basamakları adem-i in'ikad ve tekemmülünden, mağlataların vartalarına düşmemek için, şerîat öyle mesâilde ibham etti ve mutlak bıraktı; lâkin hakikati îmâdan hàlî bırakmadı.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">Resûl-i Ekrem'in herbir fiil ve herbir hâlinde sıdk lemeân eder. Fakat her fiili ve her hâli, hàrika olmak lâzım değildir. Zîra izhâr-ı hàrika, tasdik-i müddeâ içindir. Hâcet olmadığı veya münâsib olmadığı vakitte, cereyan-ı umumiyeye mütâbaatle, kavânîn-i âdâtullâha deste-dâd-ı teslîm oluyor. Hem de öyle olmak gerektir.</p>
+<p class="paragraph">Ey birader!.. Şu tenbih, Birinci Mesleğin Mukaddimesinin tâifesindendir. Nisyanın hatâsıyla yolunu şaşırmakla yerini kaybedip, şuraya girmiştir. İyice şu nükteleri tut. İşte neticeye giriyoruz:</p>
+<p class="paragraph">Bak ey birader! Fünûn ve ulûmun zübde-i hakîkiyesi, berâhin-i akliye üzerine müesses olan diyânet ve şerîat-ı İslâmiye, öyle fünûnları tazammun etmiştir...</p>
+<p class="paragraph"><strong>Ezcümle:</strong> Fenn-i tehzîb-i rûh ve riyâzetü'l-kalb ve terbiyetü'l-vicdân ve tedbirü'l cesed ve tedvîrü'l-menzil ve siyasetü'l-medeniye ve nizâmâtü'l-âlem ve fennü'l-hukuk ve sâire... Lüzum görülen yerlerde tafsîl ve lüzum olmayan veya ezhânın veya zamanın müstaîd ve müsâid olmadığı yerlerde birer fezleke ile kavâid-i esâsiyeyi vaz' ederek tenmiye ve tefrîini, ukùlün meşveret ve istinbatâtına havâle etmiştir ki; bu fünûnun mecmûuna değil, belki ekalline, onüç asır terakkîden sonra, en medenî yerlerde, en hàrika zekâ ile mevsuf olanlar, tâkat-i beşerin haricinde –bâhusus o zamanda – olduğunu tasdikten vicdân-ı munsıfâne seni men'edemiyor.</p>
+<p class="paragraph">İşte fazl odur ki; a'dâ ona şehâdet ede. Yeni Dünyanın en meşhûr feylesofu olan <strong>Carlyle</strong>(<strong>Karlayl),</strong> Almanya'nın meşhûr bir hakîminden ve ricâl-i siyâsiyesinden naklen diyor ki: "O tedkîkàtından sonra kendi kendine suâl ederek demiş: İslâmiyet böyle</p>
+<div class="page-marker-wrap"><span class="page-marker">143</span></div>
+<p class="paragraph">olursa, acaba medeniyet-i hâzıra hakàik-ı İslâmiyet'in dâiresinde yaşayabilir mi?" Kendisi kendine "Evet" ile cevab veriyor. Şimdiki muhakkìkler, o dâire içinde yaşamaktadırlar. Evvelki feylesof dahi diyor ki: "Hakàik-ı İslâmiyet çıktıkları zaman; ateş-i cevvâl gibi, hatabın parçalarına benzeyen sâir efkâr ve edyânı bel' etti. Hem de hakkı vardır. Zîra, başkaların safsatiyâtından bir şey çıkmaz, ilâahirihi..."</p>
+<p class="paragraph">Evet, onüç asırdan beri o kadar dehşetli müsâdemâta karşı, hakàikını muhâfaza etmiştir. Belki bu müsâdeme, keşmekeş; Hakikat-i İslâmiyetin omuzu üstünden türâb-ı hafâyı terkîk ve tahfif ediyor. Neam, vücûd ve hâl-i âlem buna şâhiddir. Makale-i ûlâ'daki mukaddimâtı nazara almak gerektir.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph"><strong>Eğer desen:</strong>"Herbir fende yalnız bir fezlekeyi bilmek, bir adam için mümkündür?.."</p>
+<p class="paragraph"><strong>Elcevab:</strong> Neam, lâ!.. Zîra, öyle bir fezleke ki; hüsn-ü isabet ve mevki-i münâsibde ve münbit bir zeminde istimâl gibi; sâbıkan mezkûr sâir noktalar ile cam gibi, mâverâsından ıttılâ'-ı tâmm ve melekeyi gösteren fezlekeler mümkün değildir. Evet; kelâm-ı vâhid, iki mütekellimden çıkarsa; birinin cehline ve ötekisinin ilmine, bazı umûr-u mermûze-i gayr-ı mesmûa ile delâlet eder.</p>
+<p class="paragraph">İŞÂRET VE İRŞAD VE TENBİH:</p>
+<p class="paragraph">Ey benimle şu kitabın evvel-i menâzilinden hayâliyle seyr ü sefer eden birader-i vicdân!.. Geniş bir nazar ile nazar et ve muvâzene et. Kendi hayâlinde muhâkeme etmek için, bir meclis-i àliyeyi teşkil et. Sonra da, <strong>"mukaddimât-ı isnâ aşer"den</strong> müntehabâtını dâvet et, hazır olsunlar. Sonra da, şu kaidelerle müşâvere et!.. İşte:</p>
+<p class="paragraph">Bir şahıs çok fünûnda mütehassıs ve meleke sâhibi olmaz.</p>
+<p class="paragraph">Hem de bir kelâm, iki mütekellimden mütefâvittir, başkalaşır.</p>
+<p class="paragraph">Ve hem de fünûn, mürûr-u zaman ile telâhuk-u efkârın neticesidir.</p>
+<p class="paragraph">Hem de, müstakbeldeki bedîhî bir şey, mâzide nazarî olabilir.</p>
+<div class="page-marker-wrap"><span class="page-marker">144</span></div>
+<p class="paragraph">Hem de, medenîlerin ma'lûmu, bedevîlere mechûl olabilir.</p>
+<p class="paragraph">Hem de, mâziyi müstakbele kıyâs etmek, bir kıyâs-ı hàdi'-i müsebbıttır.</p>
+<p class="paragraph">Hem de, ehl-i veber ve bâdiyenin besâteti ise, ehl-i meder ve medeniyetin hile ve desâisine mütehammil değildir. Evet, neam... Hile, medeniyetin perdesi altında tesettür edebilir.</p>
+<p class="paragraph">Hem de, pek çok ulûm, âdât ve ahvâl ve vukûâtın telkinâtıyla teşekkül edebilir.</p>
+<p class="paragraph">Hem de, beşerin nur-u nazarı, müstakbele nüfûz edemez; müstakbele mahsûs olan şeyleri göremez.</p>
+<p class="paragraph">Hem de, beşerin kanunu için, bir ömr-ü tabîi vardır; nefs-i beşer gibi o da inkıtâ' eder.</p>
+<p class="paragraph">Hem de, muhît, zaman ve mekânın, nüfûsun ahvâlinde büyük bir te'siri vardır.</p>
+<p class="paragraph">Hem de, eskide hàrikulâde olan şeyler, şimdi âdi sırasına geçebilir; zîra, mebâdî tekemmül etmişler.</p>
+<p class="paragraph">Hem de, zekâ eğer çendan hàrika olsa da, bir fennin tekmîline kâfî değildir; nasıl çok fenlerde kifâyet edecektir?</p>
+<p class="paragraph">İşte ey birader! Şu zâtlar ile müşâvere et. Sonra da müfettişlik sıfatıyla, nefsini tecrid et. Hayâlât-ı muhîtiye ve evhâm-ı zamaniyenin elbiselerini çıkart, çıplak ol. Bahr-i bîkeran olan zamanın, şu asrın sâhilinden içine gir; tâ, asr-ı saâdet olan adaya çık. İşte herşeyden evvel senin nazarına çarpacak ve tecellî edecek şudur ki:</p>
+<p class="paragraph">Vahîd, nâsırı yok, saltanatı mefkûd, tek bir şahıs.. umum âleme karşı mübâreze eder. Ve küre-i zeminden daha büyük bir hakikati omuzuna almış ve bütün nev'-i beşerin saâdetine tekeffül eden bir şerîatı ki; o şerîat, fünûn-u hakîkiye ve ulûm-u İlâhiye'nin zübdesi olarak, isti'dâd-ı beşerin nümûvvü derecesinde tevessü' edip, iki âlemde semere vererek; ahvâl-i beşeri güyâ bir meclis-i vâhid, bir zaman-ı vâhidin ehli gibi tanzim eden, öyle bir adâleti te'sis eder.</p>
+<p class="paragraph">Eğer o şerîatın nevâmisinden suâl edersen ki: "Nereden geliyorsunuz ve nereye gideceksiniz?"</p>
+<div class="page-marker-wrap"><span class="page-marker">145</span></div>
+<p class="paragraph">Sana şöyle cevab verecekler ki: "Biz Kelâm-ı Ezelî'den gelmişiz. Nev'-i beşerin selâmeti için, ebedin yolunda refâkat için ebede gideceğiz. Şu dünya-yı fâniyeyi kestikten sonra, bizim sûrî olan irtibatımız kesilirse de; dâima maneviyatımız, beşerin rehberi ve gıdâ-yı rûhânisidir."</p>
+<div class="subtitle">Hâtime</div>
+<p class="paragraph">Şübehât ve şükûkun üç menba'ları vardır. Şöyle: Eğer maksûd-u Şâri'den ve efkârın isti'datları nisbetinde olan irşaddan tecâhül edip, bütün evhâm-ı seyyienin yuvası hükmünde olan, şöyle bir mağlata ile i'tirâz edersen ki: Şerîatın başı olan Kur'ân'da "Üç Nokta" vardır:</p>
+<p class="paragraph"><strong>Birincisi:</strong> Kur'ân'ın mâbihi'l-imtiyazı ve vuzûh ve ifâde üzerine müesses olan belâğata münâfîdir ki; vücûd-u müteşâbihât ve müşkülâttır.</p>
+<p class="paragraph"><strong>İkincisi:</strong> Şerîatın maksûd-u hakîkisi olan irşad ve ta'lime münâfîdir ki; fünûn-u ekvânda bir derece ibham ve ıtlâkatıdır.</p>
+<p class="paragraph"><strong>Üçüncüsü:</strong> Tarîk-ı Kur'ân olan tahkîk ve hidayete muhâliftir; işte o da bazı zevâhiri, delil-i aklînin hilâfına imâle edip, hilâf-ı vâkıa ihtimalidir.</p>
+<p class="paragraph">Ey birader!.. Tevfik Allah'tandır. Ben de derim ki: Sebeb-i noksan gösterdiğin olan şu üç nokta, tevehhüm ettiğin gibi değildir. Belki üçü de, i'câz-ı Kur'ân'ın en sâdık şâhidleridir. İşte:</p>
+<p class="paragraph"><strong>Birinci noktaya cevab:</strong> Zâten iki def'a şu cevabı zımnen görmüşsün. Şöyle ki: Nâsın ekseri cumhûr-u avâmdır. Nazar-ı Şâri'de ekall, eksere tâbidir. Zîra, avâma müvecceh olan hitâbı, hàvâs fehm ve istifade ediyorlar. Bil'akis olursa, olamaz. İşte cumhûr-u avâm ise, me'lûf ve mütehayyelâtından tecerrüd edip, hakàik-ı mücerrede ve ma'kulât-ı sırfeyi temâşâ edemezler. Meğer mütehayyelâtları, dûrbîn gibi tevsît etseler... Fakat mütehayyelâtın sûretlerine hasr ve vakf-ı nazar etmek, cismiyet ve cihet gibi muhâl şeyleri istilzam eder. Lâkin nazar, o sûretlerden geçerek, hakàikı görüyor. Meselâ: Kâinâttaki tasarruf-u İlâhî'yi, sultanın serîr-i saltanatında olan tasarrufunun sûretinde temâşâ edebilirler.</p>
+<div class="arabic-block" dir="rtl">اِنَّ اللهَ عَلَى الْعَرْشِ اسْتَوَى</div>
+<p class="paragraph">gibi...</p>
+<div class="page-marker-wrap"><span class="page-marker">146</span></div>
+<p class="paragraph">İşte hissiyat-ı cumhûr şu merkezde olduklarından, elbette irşad ve belâğat iktiza eder ki; onların hissiyatı, riâyet ve ihtiram edilsin ve efkârları dahi bir derece mümâşât ve ihtiram edilsin. İşte riâyet ve ihtiram, ukùl-ü beşere karşı olan <strong>"tenezzülât-ı İlâhiye"</strong> ile tesmiye olunur. Evet o tenezzülât, te'nîs-i ezhân içindir. Onuncu Mukaddime'ye müracaat et.</p>
+<p class="paragraph">İşte bunun içindir ki; hakàik-ı mücerredeye temâşâ etmek için, hissiyat ve hayâl-âlûd cumhûrun nazarlarını okşayan suver-i müteşâbiheden birer dûrbîn vaz' edilmiştir. İşte şu cevabı te'yid eden meânî-i amîka veya müteferrikayı bir sûret-i sehl ve basîtada tasavvur veya tasvir etmek için, nâsın kelâmında istiârât-ı kesîreyi îrâd ederler. Demek müteşâbihât dahi, istiârâtın en ağmaz olan kısmıdır. Zîra, en hafî hakàikın suver-i misâliyesidir. Demek işkâl ise, mânânın dikkatindendir, lafzın iğlâkından değildir.</p>
+<p class="paragraph">Ey mu'teriz! İnsafla nazar et ki; fikr-i beşerin, bâhusus avâmın fikirlerinden en uzak olan hakàikı, şöyle bir tarîk ile takrib etmek; acaba tarîk-ı belâğat olan muktezâ-yı hâlin mutâbakatına muvâfık ve makamın nisbetinde kemâl-i vuzûh ve ifâdeye mutâbıktır.. yâhut tevehhüm ettiğin gibidir? Hakem sen ol...</p>
+<p class="paragraph"><strong>İkinci noktaya cevab:</strong> İkinci Mukaddime'de mufassalan geçmiştir. Âlemde meylü'l-istikmâlin dalı olan insandaki meylü't-terakkînin semerâtı ve tecârüb-ü kesîre ile ve netâic-i efkârın telâhukuyla teşekkül eden merdiven-i terakkînin basamakları hükmünde olan fünûn ise; müterettibe ve müteâvine ve müteselsiledirler. Evet, müteahhirin in'ikadı, mütekaddimin teşekkülüne vâbestedir. Demek, mukaddem olan fen, ulûm-u müteârifenin derecesine gelecek; sonra müteahhirîne mukaddime olabilir.</p>
+<p class="paragraph">Bu sırra binâendir ki; şu zamanda temahhuz-u tecârüble satha çıkıp ve tevellüd etmiş olan bir fennin, farazâ on asır evvel bir adam tefhim ve ta'limine çalışsa idi, mağlata ve safsataya düşürmekten başka bir şey yapamazdı.</p>
+<p class="paragraph">Meselâ, denilse idi: "Şemsin sükûnuyla arzın hareketine ve bir katre suda bir milyon hayvanatın bulunduklarına temâşâ edin, tâ Sâni'in azametini bilesiniz." Cumhûr-u avâm ise, hiss-i zâhir veya</p>
+<div class="page-marker-wrap"><span class="page-marker">147</span></div>
+<p class="paragraph">galat-ı hissin sebebiyle, hilâflarını zarûrî bildikleri için, ya tekzîb veya nefislerine muğâlata veya mahsûs olan şeye mükâbere etmekten başka ellerinden bir şey gelmezdi. Teşviş ise, bâhusus onuncu asra kadar, minhâc-ı irşada büyük bir vartadır.</p>
+<p class="paragraph">Ezcümle, sathiyet-i arz ve deverân-ı şems onlarca bedîhiyât-ı hissiyeden sayılırdı.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Şu gibi mes'eleler, müstakbeldeki nazariyâta kıyâs olunmaz. Zîra, müstakbele ait olan şeylere hiss-i zâhir taalluk etmediği için, iki ciheti de muhtemeldir. İ'tikàd olunabilir. İmkân derecesindedir. İtmi'nân kàbildir. Onun hakk-ı sarîhi, tasrîh etmektir. Lâkin hîna ki; hissin galatı, bizim "mâ nahnü fîh"imizi imkân derecesinden bedâhete, yani, cehl-i mürekkebe çıkardı; onun nazar-ı belâğatta hiç inkâr olunmaz olan hakkı ise, ibham ve ıtlâktır. Tâ, ezhân müşevveş olmasınlar. Fakat, hakikate telvih ve remz ve îmâ etmek gerektir. Efkâr için kapıları açmak, duhûle dâvet etmek lâzımdır. Nasıl ki, Şerîat-ı Garrâ öyle yapmıştır.</p>
+<p class="paragraph">Yâhû ey birader! İnsaf mıdır, taharrî-i hakikat böyle midir ki; sen irşad-ı mahz ve ayn-ı belâğat ve hidayetin mağzı olan şeyi, irşada münâfî ve mübâyin tevehhüm edesin ve belâğatça ayn-ı kemâl olan şeyi noksan tahayyül edesin?..</p>
+<p class="paragraph">Yâ eyyühe'l-hôto! Acaba senin zihn-i sakîminde belâğat o mudur ki; ezhânı tağlît ve efkârı teşviş ve muhîtin müsâadesizliği ve zamanın adem-i i'dâdından, ezhân müstaîd olmadıkları için, ukùle tahmil edilmeyen şeyleri teklif etmektir? Kellâ...</p>
+<div class="arabic-block" dir="rtl">كَلِّمِ النَّاسَ عَلٰى قَدَرِ عُقُولِهِمْ</div>
+<p class="paragraph">bir düstur-u hikmettir. İstersen mukaddimâta müracaat et. Bâhusus Birinci Mukaddime'de iyi tefekkür et!</p>
+<p class="paragraph">İşte bazı zevâhiri, delil-i aklînin hilâfına göstermek olan <strong>Üçüncü Nokta'ya cevab:</strong> Birinci Mukaddime'de tedebbür et, sonra bunu da dinle ki: Şâri'in irşad-ı cumhûrdan maksûd-u aslîsi; isbât-ı Sâni'-i Vâhid ve nübüvvet ve haşir ve adâlette münhasırdır. Öyle ise, Kur'ân'daki zikr-i ekvân, istitradî ve istidlâl içindir.</p>
+<div class="page-marker-wrap"><span class="page-marker">148</span></div>
+<p class="paragraph">Cumhûrun efhâmına göre san'atta zâhir olan nizâm-ı bedî' ile nazzâm-ı hakîki olan Sâni'-i Zülcelâl'e istidlâl etmek içindir. Hâlbuki, san'atın eseri ve nizâmı herşeyden tezâhür eder. Keyfiyet-i teşekkül nasıl olursa olsun, maksad-ı aslîye taalluk etmez.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">Mukarrerdir ki: Delil, müddeâdan evvel ma'lûm olması gerektir. Bunun içindir ki; bazı nusûsun zevâhiri, ittizâh-ı delil ve istînâs-ı efkâr için, cumhûrun mu'tekadât-ı hissiyelerine imâle olunmuştur. Fakat delâlet etmek için değildir. Zîra Kur'ân, âyâtının telâfifinde öyle emârât ve karâini nasb etmiştir ki; o sadeflerdeki cevâhiri ve o zevâhirdeki hakikatleri, ehl-i tahkîke parmakla gösterir ve işâret eder.</p>
+<p class="paragraph">Evet, "Kelimetullâh" olan Kitab-ı Mübîn'in bazı âyâtı, bazısına müfessirdir. Yani bazı âyâtı, ehavâtının mâfi'z-zamîrlerini izhâr eder. Öyle ise bazıları, diğer bir ba'za karîne olabilir ki; mânâ-yı zâhirî murad değildir.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">Eğer istidlâlin makamında denilse idi ki: "Elektriğin acâibi ve câzibe-i umumiyenin garâibi ve küre-i arzın yevmiye ve seneviye olan hareketi ve yetmişten ziyâde olan anâsırın imtizac-ı kimyeviyelerini ve şemsin istikrarıyla beraber sûriye olan hareketini nazara alınız, tâ Sâni'i bilesiniz!"</p>
+<p class="paragraph">İşte o vakit delil olan san'at, mârifet-i Sâni' olan neticeden daha hafî ve daha gâmız ve kaide-i istidlâle münâfî olduğundan; bazı zevâhiri, efkâra göre imâle olunmuştur. Bu ise; ya müstetbeâtü't-terâkib kabilesinden veya kinâî nev'inden olduğu için, medâr-ı sıdk ve kizb olmaz. Meselâ;</p>
+<div class="arabic-block" dir="rtl">قَالَ</div>
+<p class="paragraph">lafzındaki elif, eliftir. Aslı vav olsa, kaf olsa, ne olursa olsun te'sir etmez.</p>
+<p class="paragraph">Ey birader!.. İnsaf et... Acaba şu üç nokta-i i'tirâz; cemî' a'sârda, cemî' insanların irşadları için inzâl olunan Kur'ân'ın i'câzına, en zâhir delil değil midir?.. Evet...</p>
+<div class="page-marker-wrap"><span class="page-marker">149</span></div>
+<div class="arabic-block" dir="rtl">وَالَّذِي عَلَّمَ الْقُرْاٰنَ الْمُعْجِزَ، اِنَّ نَظَرَ الْبَشِيرِ النَّذِيرِ وَبَصِيرَتَهُ النَّقَّادَةَ اَدَقُّ وَاَجَلُّ وَاَجْلَى وَاَنْفَذُ مِنْ اَنْ يَلْتَبِسَ اَوْ يَشْتَبِهَ عَلَيْهِ الْحَقِيقَةُ بِالْخَيَالِ، وَاِنَّ مَسْلَكَهُ الْحَقَّ اَغْنَى وَاَعْلَى وَاَنْزَهُ وَاَرْفَعُ مِنْ اَنْ يُدَلِّسَ اَوْ يُغَالِطَ عَلَى النَّاسِ</div>
+<p class="paragraph">(1)<strong>"Neam, hayâlin ne haddi vardır ki; nur-efşân olan nazarına karşı, kendini hakikat gösterebilsin. Evet, mesleği nefs-i hak ve mezhebi ayn-ı sıdktır. Hak ise, tedlis ve tağlît etmekten müstağnîdir."</strong></p>
+<div class="page-marker-wrap"><span class="page-marker">150</span></div>
+<div class="subtitle">Beşinci Meslek</div>
+<p class="paragraph">Mârûfe ve meşhûre olan havârık-ı zâhire ve mu'cizât-ı mahsûsadır. Siyer ve tarihin kitapları, onlar ile meşhûndur. Ulemâ-yı kirâm (Cezâhümullâhu hayren) hakkıyla tefsir ve tedvîn etmişlerdir. Ma'lûmun ta'limi lâzım gelmemek için, biz tafsîlinden kat'-ı nazar ettik.</p>
+<p class="paragraph">İŞÂRET:</p>
+<p class="paragraph">Şu havârık-ı zâhirenin herbir ferdi, eğer çendan mütevâtir değildir, mutlaka cinsleri, belki çok envâ'ı kat'iyyen ve yakìnen mütevâtir-i bilma'nâdır. O havârık birkaç nev' üzerindedir. İşte:</p>
+<p class="paragraph"><strong>Bir nev'i:</strong> İrhâsat-ı mütenevviadır. Güyâ o asır, Peygamber'den (A.S.M) istifade ve istifaza ederek kerâmet sâhibi olduğundan, kalb-i hassâsından hiss-i kable'l-vukû'a binâen, irhâsatla Fahr-i Âlem'in geleceğini ihbar etmiştir...</p>
+<p class="paragraph"><strong>Bir nev'i dahi:</strong> Gaybdan olan ihbarât-ı kesîresidir. Güyâ, tayyar olan rûh-u mücerredi, zaman ve mekân-ı muayyenin kayıtlarını kırmış ve hudud-u mâziye ve müstakbeleyi çiğnemiş, her tarafını görerek bize söylemiş ve göstermiştir.</p>
+<p class="paragraph"><strong>Bir kısmı dahi:</strong> Tahaddî vaktinde izhâr olunan havârık-ı hissiyedir. Bine karîb ta'dâd olunmuştur. Demek söylediğimiz gibi; herbir ferdi âhâdî de olursa, mecmûu mütevâtir-i bilma'nâdır.</p>
+<p class="paragraph"><strong>Birisi:</strong> Mübârek olan parmaklarından suyun nebeânıdır. Güyâ, mâden-i sehàvet olan yed-i mübârekesinden, mâye-i hayat olan suyun nebeânıyla, menba'-ı hidayet olan lisânından, mâye-i ervâh olan zülâl-i hidayetin feverânını hissen tasvir ediyor.</p>
+<p class="paragraph"><strong>Biri de:</strong> Tekellüm-ü şecer ve hacer ve hayvandır. Güyâ, hidayetindeki hayat-ı maneviye, cemâdât ve hayvanata dahi sirâyet ederek, nutka getirmiştir.</p>
+<div class="page-marker-wrap"><span class="page-marker">151</span></div>
+<p class="paragraph"><strong>Biri de:</strong> İnşikak-ı Kamer'dir. Güyâ, kalb-i semâ hükmünde olan kamer, mübârek olan kalbiyle, inşikakta bir münâsebet peydâ etmek için, sîne-i sâf ve berrakını, mübârek parmağın işâretiyle iştiyakan şakk ve çâk etmiştir.</p>
+<p class="paragraph">TENBİH:</p>
+<p class="paragraph">İnşikak-ı kamer, mütevâtir-i bilma'nâdır.</p>
+<div class="arabic-block" dir="rtl">﴿ وَانْشَقَّ الْقَمَرُ ﴾</div>
+<p class="paragraph">olan âyet-i kerîme ile sâbittir. Zîra, hattâ Kur'ân'ı inkâr eden dahi, bu âyetin mânâsına ilişmemiştir. Hem de ihtimal vermeye şâyân olmayan bir te'vil-i zaîften başka te'vil ve tahvîl edilmemiştir.</p>
+<p class="paragraph">VEHİM VE TENBİH:</p>
+<p class="paragraph">İnşikak; hem ânî, hem gece, hem vakt-i gaflet, hem şu zaman gibi âsumâna adem-i tarassud, hem vücûd-u sehâb, hem ihtilâf-ı metâli' cihetiyle, bütün âlemin görmeleri lâzım gelmez ve lâzım değildir. Hem de, hem-matla' olanlarda sâbittir ki; görülmüştür.</p>
+<p class="paragraph">Birisi ve en birincisi ve en kübrâsı olan, Kur'ân-ı Mübîn'dir. İşte sâbıkan bir nebzesine îmâ olunan yedi cihetle i'câzı, müberhendir, ilâ âhirihî... Sâir mu'cizâtı, kütüb-ü mu'tebereye havâle ediyorum.</p>
+<div class="subtitle">Hâtime</div>
+<p class="paragraph">Ey benim kelâmımı mütâlaa eden zevât!.. Geniş bir fikir ile ve müteyakkız bir nazar ile ve muvâzeneli bir basîretle, mecmû-u kelâmımı, yani; mesâlik-i hamseyi muhît bir dâire veya müstedîr bir sûr gibi nazara alınız; Muhammed Aleyhissalâtü Vesselâm'ın nübüvvetine merkez gibi temâşâ ediniz. Veyâhut sultanın etrafına halka tutmuş olan asâkir-i müteâvinenin nazarıyla bakınız; tâ ki, bir taraftan hücum eden evhâmı, mütecâvibe ve müteâvine olan cevânib-i sâire def' edebilsin. İşte şu hâlde, Japonlar'ın suâli olan; (Hâşiye-1)</p>
+<div class="arabic-block" dir="rtl">مَا الدَّلِيلُ الْوَاضِحُ عَلٰى وُجُودِ الْاِلٰهِ الَّذِي تَدْعُونَنَا اِلَيْهِ</div>
+<p class="paragraph">ye karşı derim:</p>
+<p class="paragraph">İşte Muhammed Aleyhissalâtü Vesselâm!.. (Hâşiye-2)</p>
+<div class="page-marker-wrap"><span class="page-marker">152</span></div>
+<p class="paragraph">İŞÂRET VE İRŞAD VE TENBİH:</p>
+<p class="paragraph">Vaktâ kâinât tarafından, hükûmet-i hilkat cânibinden, müstantık ve sâil sıfatıyla gönderilen fenn-i hikmet, istikbâle teveccüh eden nev'-i beşerin talîalarına rastgelmiş; birden fenn-i hikmet, şöyle birtakım suâlleri îrâd etmiş ki:</p>
+<p class="paragraph"><strong>"Ey insan evlâdları!.. Nereden geliyorsunuz?..</strong></p>
+<p class="paragraph"><strong>Kimin emriyle?.. Ne edeceksiniz?..</strong></p>
+<p class="paragraph"><strong>Nereye gideceksiniz?..</strong></p>
+<p class="paragraph"><strong>Mebde'iniz nereden?.. Ve müntehânız nereyedir."</strong></p>
+<p class="paragraph">O vakit nev'-i beşerin hatîb ve mürşid ve reisi olan Muhammed Aleyhissalâtü Vesselâm ayağa kalkarak, hükûmet-i hilkat cânibinden gelen fenn-i hikmete, şöyle cevab vermiştir ki:</p>
+<p class="paragraph"><strong>"Ey müstantık efendi! Biz maâşir-i mevcûdât, Sultan-ı Ezel'in emriyle, kudret-i İlâhiye'nin dâiresinden, memuriyet sıfatıyla gelmişiz. Şu hulle-i vücûdu bize giydirerek ve şu sermâye-i saâdet olan isti'dâdâtı veren, cemî' evsâf-ı kemâliye ile muttasıf ve Vâcibü'l-Vücûd olan Hâkim-i Ezel'dir. Biz maâşir-i beşer dahi, şimdi saâdet-i ebediyenin esbâbını tedârik etmekle meşgulüz. Sonra birden ebede müteveccihen, şehristân-ı ebedü'l-âbâd olan haşr-i cismâniye gideceğiz."</strong></p>
+<p class="paragraph">İşte ey hikmet, halt etme ve safsata yapma!.. Gördüğün ve işittiğin gibi söyle!..</p>
+<div class="page-marker-wrap"><span class="page-marker">153</span></div>
+<h2 class="heading-2"><strong>Üçüncü Maksad</strong></h2>
+<p class="paragraph">Haşr-i cismânîdir. Evet, hilkat onsuz olmaz ve abestir. Neam, haşir haktır ve doğrudur. Bürhânın en vâzıhı, Muhammed Aleyhissalâtü Vesselâm'dır.</p>
+<div class="subtitle">Mukaddime</div>
+<p class="paragraph">Kur'ân-ı Mübîn, haşr-i cismânîyi o derece izâh etmiştir ki; ednâ bir şübheyi bırakmamış. İşte biz de kuvvetimize göre, onun berâhinini bir derece tefsir için, birkaç makàsıd ve mevâkıfına işâret edeceğiz.</p>
+<p class="paragraph">BİRİNCİ MAKSAD:>Evet, kâinâttaki nizâm-ı ekmel, hem de hilkatteki hikmet-i tâmme, hem de âlemdeki adem-i abesiyet, hem de fıtrattaki adem-i isrâf, hem de cemî' fünûn ile sâbit olan istikrâ'-i tâmm, hem de yevm ve sene gibi çok envâ'da olan birer nev'i kıyâmet-i mükerrere, hem de isti'dâd-ı beşerin cevheri, hem de insanın lâyetenâhî olan âmâli, hem de Sâni'-i Hakîm'in rahmeti, hem de Resûl-i Sâdık'ın lisânı, hem de Kur'ân-ı Mu'ciz'in beyânı; haşr-i cismânîye sâdık şâhidler ve hak ve hakîki bürhânlardır.</p>
+<div class="page-marker-wrap"><span class="page-marker">154</span></div>
+<div class="subtitle">Mevkıf ve İşâret</div>
+<p class="paragraph"><strong>1-</strong> Evet, saâdet-i ebediye olmazsa; nizâm, bir sûret-i zaîfe-i vâhiyeden ibaret kalır. Cemî' maneviyat ve revâbıt ve niseb, hebâen gider. Demek nazzâmı, saâdet-i ebediyedir.</p>
+<p class="paragraph"><strong>2-</strong> Evet, inâyet-i ezeliyenin timsâli olan Hikmet-i İlâhiye; kâinâttaki riâyet-i mesâlih ve hikem ile mücehhez olduğundan, saâdet-i ebediyeyi ilân eder. Zîra, saâdet-i ebediye olmazsa, kâinâtta bilbedâhe sâbit olan hikem ve fevâide karşı mükâbere edilecektir.</p>
+<p class="paragraph"><strong>3-</strong> Neam, akıl ve hikmet ve istikrâ'ın şehâdetleriyle sâbit olan hilkatteki adem-i abesiyet; haşr-i cismânîdeki saâdet-i ebediyeye işâret, belki delâlet eder. Zîra adem-i sırf, herşeyi abes eder.</p>
+<p class="paragraph"><strong>4-</strong> Evet, fıtratta, ezcümle âlem-i suğrâ olan insanda, fenn-i menâfiü'l-a'zânın şehâdetiyle sâbit olan adem-i isrâf gösterir ki; insanda olan isti'dâdât-ı maneviye ve âmâl ve efkâr ve müyûlâtının adem-i isrâfını isbât eder. O ise, saâdet-i ebediyeye namzed olduğunu ilân eder.</p>
+<p class="paragraph"><strong>5-</strong> Evet, öyle olmazsa; umumen kurur, hebâen gider. Feyâ li'l-aceb!.. Bir cevher-i cihan-bahânın kılıfına nihâyet derece dikkat ve i'tinâ edilirse, hattâ gubârın konmasından muhâfaza edilirse, nasıl ve ne sûretle, o cevher-i yegâneyi kırarak mahvedecektir?.. Kellâ!.. Ona i'tinâ, onun hâtırası içindir.</p>
+<p class="paragraph"><strong>6-</strong> Evet, sâbıkan beyân olunduğu gibi; cemî' fünûnla hâsıl olan istikrâ'-i tâmmla sâbit olan intizam-ı kâmil, o intizamı ihtilâlden halâs eyleyen ve tekemmül ve ömr-ü ebedîye mazhar eden haşr-i cismânînin sadefinde olan saâdet-i ebediyeyi bizzarûre iktiza eder.</p>
+<p class="paragraph"><strong>7-</strong> Evet, saatin sâniye, dakika ve saat ve günleri sayan çarklarına benzeyen yevm ve sene ve ömr-ü beşer ve deverân-ı dünya, birbirine mukaddime olarak döner, işler. Geceden sonra sabahı, kıştan sonra</p>
+<div class="page-marker-wrap"><span class="page-marker">155</span></div>
+<p class="paragraph">baharı işledikleri gibi; mevtten sonra kıyâmet dahi, o destgâhtan çıkacağını haber veriyorlar.</p>
+<p class="paragraph">Evet, insanın her ferdi, birer nev' gibidir. Zîra, nur-u fikir onun âmâline öyle bir vüs'at vermiş ki, bütün ezmânı yutsa tok olmaz. Sâir envâ'ın efrâdlarının mâhiyeti, kıymeti, nazarı, kemâli, lezzeti, elemi ise; cüz'î ve şahsî ve mahdûd ve mahsur ve ânîdir. Beşerin ise; ulvî, küllî, sermedîdir. Yevm ve senede olan çok nev'ilerde olan birer nev'i, kıyâmet-i mükerrere-i nev'iye ile, insanda bir kıyâmet-i şahsiye-i umumiyeye remz ve işâret, belki şehâdet eder.</p>
+<p class="paragraph"><strong>8-</strong> Neam, beşerin cevherinde gayr-ı mahsur isti'dâdâtında mündemic olan gayr-ı mahdûd olan kàbiliyâttan neş'et eden müyûlâttan hâsıl olan lâyetenâhî âmâlinden tevellüd eden gayr-ı mütenâhî efkâr ve tasavvurâtı; mâverâ-yı haşr-i cismânîde olan saâdet-i ebediyeye elini uzatmış ve medd-i nazar ederek, o tarafa müteveccih olmuştur.</p>
+<p class="paragraph"><strong>9-</strong> Neam, Sâni'-i Hakîm ve Rahmânürrahîm'in rahmeti ise; cemî' niamı ni'met eden ve nıkmetlikten halâs eden ve kâinâtı firâk-ı ebedîden hâsıl olan vâveylâlardan halâs eyleyen saâdet-i ebediyeyi, nev'-i beşere verecektir. Zîra, şu herbir ni'metin reisi olan saâdet-i ebediyeyi vermezse, cemî' ni'metler nıkmete tahavvül ederek, bizzarûre ve bilbedâhe ve umum kâinâtın şehâdetiyle sâbit olan rahmeti inkâr etmek lâzım gelir.</p>
+<p class="paragraph">İşte ey birader!.. Mütenevvi' olan ni'metlerden yalnız muhabbet ve aşk ve şefkate dikkat et. Sonra da, firâk-ı ebedî ve hicran-ı lâyezâlîyi nazara al! Nasıl o muhabbet, en büyük musîbet olur!.. Demek hicran-ı ebedî, muhabbete karşı çıkamaz. İşte saâdet-i ebediye, o firâk-ı ebediyeye öyle bir tokat vuracak ki; adem-âbâd hîçâ-hîçe atacaktır.</p>
+<p class="paragraph"><strong>10-</strong> Neam, sâbık olan beş mesleği ile sıdk ve hakkâniyeti müberhen olan Peygamberimiz'in lisânı, haşr-i cismânînin definesindeki saâdet-i ebediyenin anahtarıdır.</p>
+<p class="paragraph"><strong>11-</strong> Neam, yedi cihetle, onüç asırda i'câzı musaddak olan Kur'ân-ı Mu'cizü'l-Beyân, haşr-i cismânînin keşşâfıdır ve fettâhıdır ve besmele-keşidir.</p>
+<div class="page-marker-wrap"><span class="page-marker">156</span></div>
+<p class="paragraph">İKİNCİ MAKSAD:>Kur'ân'da işâret olunan Haşr'e dair iki delilin beyânındadır. İşte:</p>
+<div class="arabic-block" dir="rtl">نَخُو : بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+<p class="paragraph">Bu risalenin müellifi, Üstad Bediüzzaman Hazretleri, bu risalenin te'lifinden otuz sene sonra te'lif ettiği, Risale-i Nur Külliyatı'ndan <strong>"Dokuzuncu Şuâ"ın</strong> başında diyor ki:</p>
+<p class="paragraph"><strong>"Latîf bir inâyet-i Rabbâniye'dir ki; bundan otuz sene evvel Eski Said, yazdığı tefsir mukaddimesi 'Muhâkemât' nâmındaki eserin âhirinde: 'İkinci Maksad: Kur'ân'da Haşre işâret eden iki âyet, tefsir ve beyân edilecek.</strong></p>
+<div class="arabic-block" dir="rtl">نَخُو : بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+<p class="paragraph"><strong>' deyip durmuş, daha yazamamış. Hàlık-ı Rahîm'ime delâil ve emârât-ı haşriye adedince şükür ve hamd olsun ki; otuz sene sonra tevfik ihsân eyledi."</strong></p>
+</body>
+</html>

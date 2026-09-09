@@ -119,7 +119,7 @@ const BOOK_COVERS: Record<string, any> = {
     'risale.tarihce@diyanet.tr': require('../../../../assets/covers/buyuk-png/02_tarihceihayat.png'),
     'risale.mesnevi@diyanet.tr': require('../../../../assets/covers/buyuk-png/09_mesneviinuriye.png'),
     'risale.sikke@diyanet.tr': require('../../../../assets/covers/buyuk-png/11_sikkeitasdik.png'),
-    // --- KÜÇÜK KİTAPLAR (using kucuk-png/ with correct visual matches) ---
+    // --- KÜÇÜK KİTAPLAR (using kucuk-png/ with verified artwork matches) ---
     'risale.sunuhat@diyanet.tr': require('../../../../assets/covers/munazarat.png'),       // munazarat.png = Sünuhat/Tuluat/İşarat combined cover
     'risale.isarat_k@diyanet.tr': require('../../../../assets/covers/munazarat.png'),      // same combined cover
     'risale.tuluat@diyanet.tr': require('../../../../assets/covers/munazarat.png'),         // same combined cover
@@ -130,6 +130,34 @@ const BOOK_COVERS: Record<string, any> = {
     'risale.genclik@diyanet.tr': require('../../../../assets/covers/kucuk-png/05.png'),    // Gençlik Rehberi
     'risale.hanimlar@diyanet.tr': require('../../../../assets/covers/kucuk-png/14.png'),   // Hanımlar Rehberi
     'risale.konferans@diyanet.tr': require('../../../../assets/covers/kucuk-png/15.png'),  // Konferans
+
+    // --- KÜÇÜK KİTAPLAR (RNK IDs - Verified 1-to-1 visual matches) ---
+    'risale.rnk.mukuran@diyanet.tr': require('../../../../assets/covers/kucuk-png/01.png'),       // Mu'cizat-ı Kur'aniye
+    'risale.rnk.muahmed@diyanet.tr': require('../../../../assets/covers/kucuk-png/02.png'),       // Mu'cizat-ı Ahmediye
+    'risale.rnk.nurcesme_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/03.png'),    // Nur Çeşmesi
+    'risale.rnk.bcevab_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/04.png'),      // Bediüzzaman Cevap Veriyor
+    'risale.rnk.gencreh_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/05.png'),     // Gençlik Rehberi
+    'risale.rnk.hizmetreh_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/06.png'),   // Hizmet Rehberi
+    'risale.rnk.nurilkka_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/07.png'),    // Nur'un İlk Kapısı
+    'risale.rnk.ayetkubra_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/08.png'),   // Âyet-ül Kübrâ
+    'risale.rnk.sunnetseniye@diyanet.tr': require('../../../../assets/covers/kucuk-png/09.png'),  // Mirkat-üs Sünnet (Sünnet-i Seniyye)
+    'risale.rnk.zuhretunnur_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/10.png'), // Zühretünnur
+    'risale.rnk.meyve_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/11.png'),       // Meyve Risalesi
+    'risale.rnk.hasir_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/12.png'),       // Haşir Risalesi
+    'risale.rnk.haknurlari_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/13.png'),  // Hakikat Nurları
+    'risale.rnk.hanimreh_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/14.png'),    // Hanımlar Rehberi
+    'risale.rnk.konferans_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/15.png'),   // Konferans
+    'risale.rnk.elhuccet_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/16.png'),    // Elhüccet-üz Zehra
+    'risale.rnk.imanhak_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/17.png'),     // İman Hakikatleri
+    'risale.rnk.hutbe_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/18.png'),       // Hutbe-i Şamiye
+    'risale.rnk.rahmetsefkat_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/19.png'),// Rahmet ve Şefkat İlaçları
+    'risale.rnk.munazarat_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/20.png'),   // Münâzarât
+    'risale.rnk.ramazan_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/24.png'),     // Ramazan İktisat-Şükür Risaleleri
+    'risale.rnk.miftah_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/25.png'),      // Miftah-ul İman
+    'risale.rnk.otuzuc_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/27.png'),      // Otuzüç Pencere
+    'risale.rnk.yirmiuc_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/28.png'),      // Yirmiüçüncü Söz
+    'risale.rnk.hastalar_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/29.png'),    // Hastalar Risalesi
+    'risale.rnk.nuralemi_0@diyanet.tr': require('../../../../assets/covers/kucuk-png/33.png'),    // Nur Aleminin Bir Anahtarı
 
     // --- FAYDALI KİTAPLAR ---
     'evrad.tesbihat': require('../../../../assets/covers/tesbihat.png'),
@@ -300,7 +328,7 @@ export const LibraryCatalog = {
             id: record.bookId, // Use bookId as the UI ID
             title: record.title,
             subtitle: '', // TODO: Add subtitle if available in record
-            cover: BOOK_COVERS[record.bookId],
+            cover: BOOK_COVERS[record.bookId] || undefined,
             kind: forceKind || (record.shelfKey === 'BIG' ? 'big' : 'small'),
             status: 'ready',
             openAction: {

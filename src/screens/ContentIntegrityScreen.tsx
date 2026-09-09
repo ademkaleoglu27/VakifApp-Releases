@@ -84,8 +84,10 @@ export const ContentIntegrityScreen: React.FC<ContentIntegrityScreenProps> = (pr
                                                     {
                                                         text: 'Tamam', onPress: async () => {
                                                             try {
-                                                                const Updates = await import('expo-updates');
-                                                                await Updates.reloadAsync();
+                                                                const Updates = require('expo-updates');
+                                                                if (Updates?.reloadAsync) {
+                                                                    await Updates.reloadAsync();
+                                                                }
                                                             } catch (e) {
                                                                 // Fallback if Updates not available (dev client)
                                                             }

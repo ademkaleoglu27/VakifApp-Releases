@@ -68,7 +68,7 @@ export const QuranReaderScreen = () => {
         }
     };
 
-    const currentSurahId = QuranMeta.getSurahIdByPage ? QuranMeta.getSurahIdByPage(currentPage) : 1;
+    const currentSurahId = (QuranMeta as any).getSurahIdByPage ? (QuranMeta as any).getSurahIdByPage(currentPage) : 1;
 
     // ── If pack is not installed yet, show high quality download UI ──
     if (!isInstalled) {

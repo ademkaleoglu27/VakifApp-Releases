@@ -17,7 +17,8 @@ import {
     InteractionManager,
     Dimensions,
     useWindowDimensions,
-    Alert
+    Alert,
+    TextInput
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -25,7 +26,6 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { dictionaryDb, DictionaryEntry } from '@/services/dictionaryDb';
-import { SCHEHERAZADE_BASE64 } from './ScheherazadeNewBase64';
 import { HTML_BOOKS } from '@/features/reader/html/htmlManifest.generated';
 import { getLugatSuggestions, LugatSuggestion } from '@/services/ai-assist';
 import { ContentPackResolver } from '@/services/ContentPackResolver';
@@ -33,6 +33,7 @@ import { TelemetryService } from '@/services/TelemetryService';
 import { ENABLE_LUGAT_SUGGESTIONS } from '@/config/features';
 import { checkAlias, LUGAT_ALIASES } from '@/services/lugat_aliases';
 import { Linking } from 'react-native';
+import { risalePagesDb } from '@/services/risalePagesDb';
 import { saveLastRead } from '@/services/readingProgress';
 
 const THEME_OPTIONS = [
@@ -43,9 +44,13 @@ const THEME_OPTIONS = [
 ];
 
 const FONT_OPTIONS = [
+    { id: 'LivaNur, "Crimson Pro", serif', label: 'LivaNur' },
+    { id: 'SouvenirDemi, Georgia, serif', label: 'Souvenir' },
+    { id: 'Bookerly, Georgia, serif', label: 'Bookerly' },
+    { id: 'Barla, serif', label: 'Barla' },
     { id: '"Crimson Pro", "Times New Roman", serif', label: 'Klasik' },
-    { id: 'System, Roboto, Arial, sans-serif', label: 'Modern' },
     { id: 'Georgia, serif', label: 'Kitap' },
+    { id: 'System, Roboto, Arial, sans-serif', label: 'Modern' },
 ];
 
 const ALIGN_OPTIONS = [
@@ -66,7 +71,48 @@ const getHtmlCss = () => `
 
   @font-face {
     font-family: 'ScheherazadeNew';
-    src: url(data:font/ttf;base64,${SCHEHERAZADE_BASE64}) format("truetype");
+    src: url('file:///android_asset/fonts/ScheherazadeNew.ttf') format("truetype"),
+         url('../../fonts/ScheherazadeNew.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'LivaNur';
+    src: url('file:///android_asset/fonts/LivaNur.ttf') format("truetype"),
+         url('../../fonts/LivaNur.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SouvenirDemi';
+    src: url('file:///android_asset/fonts/SouvenirDemi.ttf') format("truetype"),
+         url('../../fonts/SouvenirDemi.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Bookerly';
+    src: url('file:///android_asset/fonts/latin_bookerly.ttf') format("truetype"),
+         url('../../fonts/latin_bookerly.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Barla';
+    src: url('file:///android_asset/fonts/latin_barla.ttf') format("truetype"),
+         url('../../fonts/latin_barla.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Amiri';
+    src: url('file:///android_asset/fonts/Amiri-Regular.ttf') format("truetype"),
+         url('../../fonts/Amiri-Regular.ttf') format("truetype");
     font-weight: normal;
     font-style: normal;
   }
@@ -165,29 +211,31 @@ const getHtmlCss = () => `
   /* 3. HEADINGS (Clamped & Normalized) */
   h1, h2, h3, h4, h5, h6,
   .heading-1, .heading-2, .heading-3, .heading-4 { 
-    font-family: "UnifrakturCook","Germania One",serif; 
-    text-align: center; 
-    margin: 32px 0 16px; 
-    line-height: 1.3; 
-    color: var(--text);
+    font-family: var(--font-family) !important; 
+    text-align: center !important; 
+    margin: 32px 0 16px !important; 
+    line-height: 1.35 !important; 
+    color: var(--heading, #8b0000) !important;
+    font-weight: bold !important;
+  }
+  body.dark h1, body.dark h2, body.dark h3,
+  body.night h1, body.night h2, body.night h3 {
+    color: #C5A059 !important;
   }
 
   /* Title Fix: H1 */
   h1, .heading-1 {
-      /* Base * 1.25, Max 28px */
-      font-size: clamp(22px, 1.3rem, 28px);
+      font-size: clamp(22px, 1.3rem, 28px) !important;
   }
 
   /* Subtitle: H2 */
   h2, .heading-2 {
-      /* Base * 1.15, Max 24px */
-      font-size: clamp(20px, 1.2rem, 24px);
+      font-size: clamp(20px, 1.2rem, 24px) !important;
   }
 
   /* Section: H3 */
   h3, .heading-3 {
-      /* Base * 1.08, Max 20px */
-      font-size: clamp(19px, 1.1rem, 21px);
+      font-size: clamp(19px, 1.1rem, 21px) !important;
   }
   
   /* 4. CONTENT BLOCKS */
@@ -221,248 +269,638 @@ const getHtmlCss = () => `
     padding: 0 2px;
     text-decoration: none;
   }
+
+  /* 6. VURGU, BOLD CONTRAST & ESMALAR */
+  strong, b {
+    font-weight: bold !important;
+    color: #111111 !important;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+  body.dark strong, body.dark b,
+  body.night strong, body.night b {
+    color: #F3F4F6 !important;
+  }
+
+  /* 7. CLEAN FIHRIST INDEX (Fixes leaked markup) */
+  .fihrist-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+    font-size: 1.02em;
+  }
+  .fihrist-title {
+    flex: 1;
+    padding-right: 12px;
+    font-weight: 500;
+  }
+  .fihrist-page {
+    font-weight: bold;
+    color: #B45309;
+    min-width: 36px;
+    text-align: right;
+  }
+  .intro-callout {
+    font-style: italic;
+    color: #374151;
+    border-left: 3px solid #C5A059;
+    padding-left: 12px;
+    margin: 14px 0;
+  }
+
+  /* 8. PRINTED SÖZLER IN-PAGE DIVIDER (Dark Red Line + Right Page Number) */
+  .page-marker-wrap {
+    display: block !important;
+    position: static !important;
+    margin: 28px 0 14px 0 !important;
+    border-top: 1.5px solid #8b0000 !important;
+    text-align: right !important;
+    padding-top: 2px !important;
+    pointer-events: none !important;
+  }
+  body.dark .page-marker-wrap,
+  body.night .page-marker-wrap {
+    border-top-color: #C5A059 !important;
+  }
+  .page-marker {
+    display: inline-block !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #8b0000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+  }
+  body.dark .page-marker,
+  body.night .page-marker {
+    color: #C5A059 !important;
+  }
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 `;
 
-// --- JS CONTROLLER ---
 // --- JS CONTROLLER ---
 const getInjectedJs = (bookId?: string) => `
 (function() {
     const CURRENT_BOOK = "${bookId || ''}";
     
-    // STATE
-    let scrollTimer;
-    let isSelectionInitialized = false;
-    let selectionTimeout;
-    
-    // 1. MESSAGING HELPER
-    function send(type, payload={}) {
-        window.ReactNativeWebView.postMessage(JSON.stringify({ type, ...payload }));
+    // 1. MESSAGING HELPER (SAFE)
+    function send(type, payload) {
+        payload = payload || {};
+        try {
+            if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+                window.ReactNativeWebView.postMessage(JSON.stringify(Object.assign({ type: type }, payload)));
+            }
+        } catch(e) {
+            console.error('[send error]', e);
+        }
     }
+
+    send("LOG", { message: "INJECTED_JS_LOADED v9.0" });
+
+    // 1.5. ENSURE INJECTED STYLES ARE APPLIED
+    try {
+        var target = document.head || document.documentElement || document.body;
+        if (target && !document.getElementById('app-injected-style')) {
+            var style = document.createElement('style');
+            style.id = 'app-injected-style';
+            style.textContent = ${JSON.stringify(getHtmlCss().replace(/<style>/g, '').replace(/<\/style>/g, ''))};
+            target.appendChild(style);
+        }
+    } catch(e) {}
 
     // 2. FONTS READY
     function checkFonts() {
-        document.fonts.ready.then(function() {
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() {
+                send("FONTS_READY");
+            }).catch(function() {
+                send("FONTS_READY");
+            });
+        } else {
             send("FONTS_READY");
-            setTimeout(reportMetrics, 200);
-        });
+        }
     }
     checkFonts();
-    
-    // DEBUG: Check Font
-    setTimeout(function() {
-        const arEl = document.querySelector('.arabic-block');
-        if(arEl) {
-            const family = window.getComputedStyle(arEl).fontFamily;
-            send("CONSOLE", { msg: "AR Font Active: " + family });
-        }
-    }, 2000);
 
-    // 3. METRICS
+    // 2.5. RUNTIME DOM CLEANUP FOR RAW TAGS
+    function cleanDomMarkup() {
+        try {
+            var BT = String.fromCharCode(96);
+            var elements = document.querySelectorAll('p, div');
+            for (var i = 0; i < elements.length; i++) {
+                var el = elements[i];
+                var h = el.innerHTML;
+                if (h.indexOf('§Sahife No') !== -1) {
+                    el.remove();
+                    continue;
+                }
+                var changed = false;
+                if (h.indexOf(':>') !== -1 && h.indexOf(BT) !== -1) {
+                    var fihristRegex = new RegExp(BT + '\\\\s*(.*?):>\\\\s*(\\\\d+)', 'g');
+                    h = h.replace(fihristRegex, function(m, t, num) {
+                        return '<div class="fihrist-entry"><span class="fihrist-title">' + t.trim() + '</span><span class="fihrist-page">' + num.trim() + '</span></div>';
+                    });
+                    changed = true;
+                }
+                if (h.indexOf('\\\\') !== -1 && h.indexOf('>') !== -1) {
+                    h = h.replace(/\\\\([^>\\n\\r]{1,100})>/g, '<strong>$1</strong>');
+                    changed = true;
+                }
+                if (h.indexOf('∫') !== -1) {
+                    h = h.replace(/,∫|∫/g, '');
+                    changed = true;
+                }
+                if (changed) {
+                    el.innerHTML = h;
+                }
+            }
+            var pageMarkers = document.querySelectorAll('.page-marker');
+            for (var p = 0; p < pageMarkers.length; p++) {
+                var pm = pageMarkers[p];
+                if (pm && pm.textContent && pm.textContent.indexOf('Sayfa ') !== -1) {
+                    pm.textContent = pm.textContent.replace('Sayfa ', '').trim();
+                }
+            }
+        } catch(e) {}
+    }
+    cleanDomMarkup();
+    setTimeout(cleanDomMarkup, 200);
+
+    // 3. METRICS (SCROLL & END DETECTION - PURE VERTICAL)
     function reportMetrics() {
-        const scrollTop = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const contentHeight = document.body.scrollHeight;
-        
-        if(viewportHeight < 10) return;
+        try {
+            var scrollTop = window.scrollY || window.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop) || 0;
+            var viewportHeight = window.innerHeight || (document.documentElement && document.documentElement.clientHeight) || 0;
+            var contentHeight = Math.max(
+                (document.documentElement && document.documentElement.scrollHeight) || 0,
+                (document.body && document.body.scrollHeight) || 0
+            );
+            
+            if (viewportHeight < 10) return;
 
-        const currentPage = Math.floor(scrollTop / viewportHeight) + 1;
-        const totalPages = Math.ceil(contentHeight / viewportHeight);
-        const isAtEnd = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
+            var currentPage = Math.floor(scrollTop / viewportHeight) + 1;
+            var totalPages = Math.ceil(contentHeight / viewportHeight) || 1;
+            var isAtEnd = (scrollTop + viewportHeight) >= (contentHeight - 200);
 
-        send("METRICS", { 
-            scrollTop, 
-            viewportHeight, 
-            contentHeight, 
-            currentPage, 
-            totalPages,
-            isAtEnd 
-        });
+            send("METRICS", { 
+                scrollTop: scrollTop, 
+                viewportHeight: viewportHeight, 
+                contentHeight: contentHeight, 
+                currentPage: currentPage, 
+                totalPages: totalPages,
+                isAtEnd: isAtEnd 
+            });
+        } catch(e) {}
     }
 
     window.addEventListener('scroll', function() {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(reportMetrics, 100); 
-    });
+        reportMetrics();
+    }, { passive: true });
+    window.addEventListener('resize', reportMetrics, { passive: true });
     
-    window.addEventListener('resize', reportMetrics);
+    setTimeout(reportMetrics, 100);
+    setTimeout(reportMetrics, 500);
+    setTimeout(reportMetrics, 1500);
 
-    // 4. SELECTION MANAGER (ROBUST)
+    // 4. SELECTION MANAGER (WITH SÖZLER APP COMPOUND EXPANSION)
+    var _detectWordRunning = false;
+    function detectWord() {
+        if (_detectWordRunning) return false;
+        _detectWordRunning = true;
+        try {
+            var ws = window.getSelection();
+            if (!ws || !ws.anchorNode || ws.anchorNode.nodeType !== 3) return false;
+            if (!ws.focusNode || ws.focusNode.nodeType !== 3) return false;
+            var str = ws.toString();
+            if (!str || str.trim().length === 0) return false;
+
+            // If manual multi-word selection (> 4 words), don't auto-expand
+            if (str.trim().split(/\\s+/).length > 4) return false;
+
+            var findBlock = function(node) {
+                var el = node.parentNode;
+                while (el && el.parentNode && el.nodeType === 1) {
+                    var tn = el.tagName ? el.tagName.toUpperCase() : '';
+                    if (tn === 'P' || tn === 'DIV' || tn === 'BODY' || tn === 'HTML') return el;
+                    el = el.parentNode;
+                }
+                return el || document.body;
+            };
+
+            var container = findBlock(ws.anchorNode);
+            if (!container || container.nodeType !== 1) return false;
+
+            var tw = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+            var ft = '';
+            var tn = [];
+            var ts = [];
+            var nd;
+            while ((nd = tw.nextNode())) {
+                ts.push(ft.length);
+                tn.push(nd);
+                ft += nd.textContent;
+            }
+            if (tn.length === 0) return false;
+
+            var ai = tn.indexOf(ws.anchorNode);
+            var fi = tn.indexOf(ws.focusNode);
+            if (ai === -1 || fi === -1) return false;
+            var anchorPos = ts[ai] + ws.anchorOffset;
+            var focusPos = ts[fi] + ws.focusOffset;
+            var selStart = Math.min(anchorPos, focusPos);
+            var selEnd = Math.max(anchorPos, focusPos);
+
+            var origStart = selStart;
+            var origEnd = selEnd;
+
+            // Clean trailing punctuation
+            while (selEnd > selStart && /[.;,!?:،؛«»"'\u201D\u201C\(\)]/.test(ft[selEnd - 1])) {
+                selEnd--;
+            }
+
+            var JOINERS = {"'":1, "\\u2019":1, "\\u2018":1, "\\u200C":1, "\\u0640":1};
+            var IZAFET = 'uUûÛüÜiıîìIÎ';
+            var CONN_END = /[-\\u2011](?:[iıuüûîIÜÛÎ]|y[iıuüûî])$/;
+
+            var wS = function(pos) {
+                var s = pos;
+                while (s > 0 && ft[s-1] !== ' ' && ft[s-1] !== '\\n') s--;
+                return s;
+            };
+            var wE = function(pos) {
+                var e = pos;
+                while (e < ft.length && ft[e] !== ' ' && ft[e] !== '\\n') e++;
+                return e;
+            };
+
+            var fc = ft[selStart];
+            if (fc === '-' || fc === '\\u2011' || JOINERS[fc]) {
+                if (selStart > 0) selStart = wS(selStart - 1);
+            }
+            var lc = ft[selEnd - 1];
+            if (lc === '-' || lc === '\\u2011' || JOINERS[lc]) {
+                selEnd = wE(selEnd);
+            }
+
+            // BACKLOOP: Kök kelimeyi bul
+            var bi = 20;
+            while (bi-- > 0) {
+                if (selStart <= 0) break;
+                var prev = ft[selStart - 1];
+
+                if (prev === '-' || prev === '\\u2011' || JOINERS[prev]) {
+                    selStart = wS(selStart - 1);
+                    continue;
+                }
+                var bf = false;
+                for (var i = 0; i < 4; i++) {
+                    var p = selStart - i - 1;
+                    if (p < 0) break;
+                    var ch = ft[p];
+                    if (ch === '-' || ch === '\\u2011') {
+                        selStart = wS(p);
+                        bf = true;
+                        break;
+                    }
+                    if (IZAFET.indexOf(ch) !== -1 && p - 1 >= 0 && p + 1 < ft.length && ft[p + 1] === ' ') {
+                        var bef = ft[p - 1];
+                        if (bef === ' ' || bef === '-' || bef === '\\u2011') {
+                            selStart = wS(p - 1);
+                            bf = true;
+                            break;
+                        }
+                    }
+                }
+                if (!bf) break;
+            }
+
+            // FORWARDLOOP: Terkibi tamamla
+            var fii = 20;
+            while (fii-- > 0) {
+                if (selEnd >= ft.length) break;
+                var nx = ft[selEnd];
+
+                if (JOINERS[nx]) {
+                    var fe = wE(selEnd + 1);
+                    if (fe <= selEnd) break;
+                    selEnd = fe;
+                    continue;
+                }
+                if (nx === '-' || nx === '\\u2011') {
+                    var fe = wE(selEnd + 1);
+                    var cl = fe - selEnd - 1;
+                    if (cl <= 3 && fe < ft.length && ft[fe] === ' ') {
+                        fe = wE(fe + 1);
+                    }
+                    selEnd = fe;
+                    continue;
+                }
+                if (nx === ' ') {
+                    if (selEnd + 2 < ft.length && 'uUûÛüÜ'.indexOf(ft[selEnd + 1]) !== -1 && ft[selEnd + 2] === ' ') {
+                        selEnd = wE(selEnd + 3);
+                        continue;
+                    }
+                    if (CONN_END.test(ft.substring(selStart, selEnd))) {
+                        var fe = wE(selEnd + 1);
+                        if (fe > selEnd + 1) { selEnd = fe; continue; }
+                    }
+                }
+                break;
+            }
+
+            var resolve = function(abs) {
+                for (var i = tn.length - 1; i >= 0; i--) {
+                    if (abs >= ts[i]) {
+                        var loc = abs - ts[i];
+                        if (loc > tn[i].textContent.length) loc = tn[i].textContent.length;
+                        return { n: tn[i], o: loc };
+                    }
+                }
+                return { n: tn[0], o: 0 };
+            };
+
+            if (selStart !== origStart || selEnd !== origEnd) {
+                var sr = resolve(selStart);
+                var er = resolve(selEnd);
+                if (ws.setBaseAndExtent) {
+                    ws.setBaseAndExtent(sr.n, sr.o, er.n, er.o);
+                }
+            }
+            return true;
+        } catch(e) {
+            return false;
+        } finally {
+            _detectWordRunning = false;
+        }
+    }
+
+    let selectionTimeout;
     function handleSelectionChange() {
         clearTimeout(selectionTimeout);
-        selectionTimeout = setTimeout(() => {
-            const sel = window.getSelection();
-            const text = sel ? sel.toString().trim() : "";
-            send("SELECTION", { text });
-        }, 300); // Increased delay for stability
-    }
-
-    function initSelection() {
-        if (isSelectionInitialized) return;
-        
-        // Clean up old listeners if any
-        document.removeEventListener('selectionchange', handleSelectionChange);
-        
-        // Add listener
-        document.addEventListener('selectionchange', handleSelectionChange);
-        
-        isSelectionInitialized = true;
-    }
-
-    // SELECTION RESET API (Called from Native)
-    window.resetSelectionAPI = function() {
-        // ANDROID İÇİN DAHA UZUN DELAY
-        setTimeout(() => {
-            const selection = window.getSelection();
-            if (selection && selection.rangeCount > 0) {
-                selection.removeAllRanges();
+        selectionTimeout = setTimeout(function() {
+            var sel = window.getSelection();
+            if (!sel || !sel.toString || sel.toString().trim().length === 0) {
+                send("SELECTION", { text: "" });
+                return;
             }
-            send("CONSOLE", { msg: "Selection cleared after 800ms delay" });
-        }, 800);  // 500ms -> 800ms (Android İçin)
+            detectWord();
+            var text = (window.getSelection() ? window.getSelection().toString().trim() : "") || sel.toString().trim();
+            if (text.length > 0) {
+                send("SELECTION", { text: text });
+            }
+        }, 150);
+    }
+
+    document.addEventListener('selectionchange', handleSelectionChange, { passive: true });
+
+    window.resetSelectionAPI = function() {
+        try {
+            var sel = window.getSelection();
+            if (sel) {
+                sel.removeAllRanges();
+            }
+        } catch(e) {}
+        setTimeout(function() {
+            send("SELECTION", { text: "" });
+        }, 50);
     };
-
-    // Auto-init on load
-    initSelection();
-
-    // Re-init on visibility change (App background/foreground)
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') {
-            // Apply clearance only when going to background
-            // Delay to allow menu close
-            setTimeout(() => {
-                const sel = window.getSelection();
-                if (sel) sel.removeAllRanges();
-            }, 200);
-        }
-    });
 
     // 5. AUTO-TAG ARABIC BLOCKS
     function tagArabicBlocks() {
-        if (CURRENT_BOOK === 'risale.sozler@diyanet.tr' || CURRENT_BOOK.includes('sozler')) {
-            // FIX 1: Tamamen veya büyük oranda Arapça olan paragrafları 'arabic-block' yap (Ortalama ve büyük boyut)
-            const blockEls = document.querySelectorAll('p, div, h1, h2, h3, h4, h5, h6'); 
-            blockEls.forEach(el => {
-                const text = el.textContent.trim();
-                if (!text) return;
-                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
-                const totalChars = text.replace(/\\s/g, '').length;
-                if (totalChars > 0 && arabicChars > 0 && (arabicChars / totalChars > 0.6)) {
-                    el.classList.add('arabic-block');
-                    el.dir = 'rtl';
-                }
-            });
-
-            // FIX 2: Sual/Elcevap gibi Mavi Başlıkları temizle, Arapça metinlerdeki bozuk satır-içi fontları sil
-            const coloredSpans = document.querySelectorAll('span[style*="#0070c0"], span[style*="#002060"], span[style*="color: rgb(0, 112, 192)"], span[style*="color: rgb(0, 32, 96)"]');
-            coloredSpans.forEach(span => {
-                span.style.color = '';
-                
-                const isArabicBlock = span.closest('.arabic-block');
-                const text = span.textContent.trim();
-                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
-                const isArabicText = text.length > 0 && (arabicChars / text.replace(/\\s/g, '').length) > 0.5;
-
-                if (!isArabicBlock && !isArabicText) {
-                    span.style.fontWeight = 'bold'; // Sadece Türkçe başlıklara (Sual vs) kalınlık ekle
-                } else {
-                    span.style.fontSize = ''; // Aşırı büyük gelen font-size'ı sıfırla
-                    span.style.fontFamily = ''; // Yanlış font family'i sıfırla
-                }
-            });
-
-            // Genel temizlik: Tüm arabic-block içindeki spanların inline bozuk değerlerini temizle ki custom CSS (kırmızı vb) işlesin
-            document.querySelectorAll('.arabic-block span').forEach(span => {
-                if (span.style.color) span.style.color = '';
-                if (span.style.fontSize) span.style.fontSize = '';
-                if (span.style.fontFamily) span.style.fontFamily = '';
-            });
-
-            // FIX 3: Metin Düğümlerini Tarayan Gelişmiş Arapça Algoritması (Satır içi ufak ayet parçaları için)
-            const arabicRegex = /([\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\s]+)/g;
-            
-            function processNode(node) {
-                if (node.nodeType === 3) { // Text Node
-                    const text = node.nodeValue;
-                    if (arabicRegex.test(text) && /[^\\s]/.test(text)) {
-                        const parent = node.parentNode;
-                        if (!parent) return;
-                        
-                        // Zaten arabic-block veya arabic içindeyse atla
-                        if (parent.closest('.arabic-block') || parent.closest('.arabic')) return;
-
-                        const fragment = document.createDocumentFragment();
-                        let lastIndex = 0;
-                        arabicRegex.lastIndex = 0; // Reset regex
-                        let match;
-                        
-                        while ((match = arabicRegex.exec(text)) !== null) {
-                            if (match.index > lastIndex) {
-                                fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
-                            }
-                            const span = document.createElement('span');
-                            span.className = 'arabic';
-                            span.dir = 'rtl';
-                            span.textContent = match[0];
-                            fragment.appendChild(span);
-                            lastIndex = arabicRegex.lastIndex;
-                        }
-                        if (lastIndex < text.length) {
-                            fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
-                        }
-                        parent.replaceChild(fragment, node);
-                    }
-                } else if (node.nodeType === 1) { // Element Node
-                    if (['SCRIPT', 'STYLE', 'IFRAME', 'VIDEO', 'IMG'].includes(node.tagName) || node.classList.contains('arabic') || node.classList.contains('arabic-block')) return;
-                    Array.from(node.childNodes).forEach(processNode);
-                }
+        var blocks = document.querySelectorAll('p, div, h1, h2, h3, h4, h5, h6');
+        var arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g;
+        
+        for (var i = 0; i < blocks.length; i++) {
+            var el = blocks[i];
+            if (el.classList.contains('arabic-block')) continue;
+            var text = el.textContent || '';
+            if (text.length < 5) continue;
+            var matches = text.match(arabicRegex);
+            var count = matches ? matches.length : 0;
+            var totalChars = text.replace(/\s+/g, '').length;
+            if (totalChars > 0 && (count / totalChars) > 0.6) {
+                el.classList.add('arabic-block');
+                el.setAttribute('dir', 'rtl');
             }
-            processNode(document.body);
-            
-        } else {
-            // ESKİ ALGORİTMA: Diğer kitaplardaki mevcut davranış bozulmasın diye aynen bırakıldı
-            const els = document.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, b, strong, i, em, mark, font'); 
-            
-            els.forEach(el => {
-                const text = el.textContent.trim();
-                if (!text) return;
-                
-                const arabicChars = (text.match(/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]/g) || []).length;
-                const totalChars = text.replace(/\\s/g, '').length;
-                
-                if (totalChars > 0 && arabicChars > 0) {
-                    const ratio = arabicChars / totalChars;
-                    if (ratio > 0.6) {
-                        const isBlock = ['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName);
-                        if (isBlock) {
-                            el.classList.add('arabic-block');
-                            el.dir = 'rtl';
-                        } else {
-                            el.classList.add('arabic');
-                        }
-                        
-                        // Inline stilleri ez
-                        if (el.style.color) el.style.color = '';
-                        if (el.getAttribute('color')) el.removeAttribute('color');
-                    }
-                }
-            });
         }
     }
     tagArabicBlocks();
 
-    // 6. FOOTNOTE LISTENER (Simple Click)
-    document.addEventListener('click', function(e) {
-        const target = e.target;
-        const marker = target.closest && target.closest('.fn-marker');
+    // 6. CARET WORD EXTRACTION WITH RANGE
+    function extractWordFromPoint(x, y) {
+        var range = null;
+        if (document.caretRangeFromPoint) {
+            range = document.caretRangeFromPoint(x, y);
+        } else if (document.caretPositionFromPoint) {
+            var pos = document.caretPositionFromPoint(x, y);
+            if (pos) {
+                range = document.createRange();
+                range.setStart(pos.offsetNode, pos.offset);
+                range.collapse(true);
+            }
+        }
+        if (!range || !range.startContainer) return null;
+
+        var node = range.startContainer;
+        var offset = range.startOffset;
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.childNodes && node.childNodes.length > 0) {
+                var childIdx = Math.min(offset, node.childNodes.length - 1);
+                node = node.childNodes[childIdx];
+                while (node && node.nodeType === Node.ELEMENT_NODE && node.firstChild) {
+                    node = node.firstChild;
+                }
+                offset = 0;
+            }
+        }
+
+        if (!node || node.nodeType !== Node.TEXT_NODE) return null;
+        var text = node.textContent;
+        if (!text) return null;
+        if (offset >= text.length && offset > 0) offset = text.length - 1;
+
+        function isWordChar(ch) {
+            if (!ch) return false;
+            return /[a-zA-ZçÇğĞıİöÖşŞüÜâÂîÎûÛêÊôÔ'’ʼ\x60\-\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(ch);
+        }
+
+        if (!isWordChar(text[offset])) {
+            if (offset > 0 && isWordChar(text[offset - 1])) {
+                offset--;
+            } else if (offset + 1 < text.length && isWordChar(text[offset + 1])) {
+                offset++;
+            } else {
+                return null;
+            }
+        }
+
+        var start = offset;
+        while (start > 0 && isWordChar(text[start - 1])) start--;
+        var end = offset;
+        while (end < text.length && isWordChar(text[end])) end++;
+
+        var w = text.substring(start, end).trim();
+        w = w.replace(/^[^a-zA-ZçÇğĞıİöÖşŞüÜâÂîÎûÛ\u0600-\u06FF]+/, '')
+             .replace(/[^a-zA-ZçÇğĞıİöÖşŞüÜâÂîÎûÛ\u0600-\u06FF]+$/, '');
         
-        if (marker) {
-            const id = marker.getAttribute('data-fn-id');
-            send("FOOTNOTE", { id });
+        if (w.length < 2) return null;
+
+        var wordRange = null;
+        try {
+            wordRange = document.createRange();
+            wordRange.setStart(node, start);
+            wordRange.setEnd(node, end);
+        } catch(re) {}
+
+        return { word: w, range: wordRange };
+    }
+
+    function getWordAtPointWithRange(x, y) {
+        var probes = [
+            [0, 0],
+            [0, -5],
+            [0, 5],
+            [0, -10],
+            [0, 10],
+            [-8, 0],
+            [8, 0]
+        ];
+        for (var i = 0; i < probes.length; i++) {
+            var res = extractWordFromPoint(x + probes[i][0], y + probes[i][1]);
+            if (res && res.word && res.word.length >= 2) {
+                return res;
+            }
+        }
+        return null;
+    }
+
+    // 7. TOUCH & CLICK LISTENERS (LONG-PRESS FOR LUGAT)
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchStartTime = 0;
+    var hasTouchMoved = false;
+    var longPressTimer = null;
+    var LONG_PRESS_DELAY = 450;
+
+    document.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
+            hasTouchMoved = false;
+
+            if (longPressTimer) clearTimeout(longPressTimer);
+
+            longPressTimer = setTimeout(function() {
+                if (hasTouchMoved) return;
+
+                // 1. Arabic Block Check
+                var target = document.elementFromPoint(touchStartX, touchStartY);
+                if (target) {
+                    var arabic = target.closest && (target.closest('.arabic-block') || target.closest('.arabic'));
+                    if (arabic) {
+                        var arabicText = arabic.textContent.trim();
+                        if (arabicText.length > 3) {
+                            send("AYET_CLICK", { text: arabicText, mealId: arabic.getAttribute('data-meal-id') });
+                            return;
+                        }
+                    }
+                }
+
+                // 2. Word Check -> Quick Lugat with Compound Expansion
+                var wordData = getWordAtPointWithRange(touchStartX, touchStartY);
+                if (wordData && wordData.word && wordData.word.length >= 2) {
+                    try {
+                        if (wordData.range) {
+                            var sel = window.getSelection();
+                            if (sel) {
+                                sel.removeAllRanges();
+                                sel.addRange(wordData.range);
+                                detectWord();
+                            }
+                        }
+                    } catch(rangeErr) {}
+                    var fullText = (window.getSelection() ? window.getSelection().toString().trim() : '') || wordData.word;
+                    send("QUICK_LUGAT", { word: fullText });
+                    send("SELECTION", { text: fullText });
+                }
+            }, LONG_PRESS_DELAY);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+            var dx = Math.abs(e.touches[0].clientX - touchStartX);
+            var dy = Math.abs(e.touches[0].clientY - touchStartY);
+            if (dx > 10 || dy > 10) {
+                hasTouchMoved = true;
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        if (longPressTimer) {
+            clearTimeout(longPressTimer);
+            longPressTimer = null;
+        }
+        var elapsed = Date.now() - touchStartTime;
+
+        setTimeout(function() {
+            var sel = window.getSelection();
+            var text = sel ? sel.toString().trim() : "";
+            if (text.length > 0) {
+                send("SELECTION", { text: text });
+            }
+        }, 200);
+
+        if (!hasTouchMoved && elapsed < 350 && e.changedTouches.length === 1) {
+            var touch = e.changedTouches[0];
+            var target = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (!target) return;
+
+            var marker = target.closest && target.closest('.fn-marker');
+            if (marker) {
+                send("FOOTNOTE", { id: marker.getAttribute('data-fn-id') });
+                return;
+            }
+
+            var arabic = target.closest && (target.closest('.arabic-block') || target.closest('.arabic'));
+            if (arabic) {
+                var arabicText = arabic.textContent.trim();
+                if (arabicText.length > 3) {
+                    send("AYET_CLICK", { text: arabicText, mealId: arabic.getAttribute('data-meal-id') });
+                    return;
+                }
+            }
+
+            // Screen tap: Edge tap vs Center tap (menu toggle)
+            var winW = window.innerWidth;
+            var touchX = touch.clientX;
+            if (touchX > winW * 0.82) {
+                send("EDGE_TAP", { edge: "right" });
+            } else if (touchX < winW * 0.18) {
+                send("EDGE_TAP", { edge: "left" });
+            } else {
+                send("TOGGLE_MENU", {});
+            }
+        }
+    }, { passive: true });
+
+    document.addEventListener('dblclick', function(e) {
+        var wordData = getWordAtPointWithRange(e.clientX, e.clientY);
+        if (wordData && wordData.word && wordData.word.length >= 2) {
+            send("QUICK_LUGAT", { word: wordData.word });
         }
     });
 
-    // 7. AUTO SCROLL LOGIC
+    // 8. AUTO SCROLL LOGIC
     let autoScrollRaf;
     let autoScrollLp;
     let autoScrollSpeed = 1;
@@ -475,9 +913,6 @@ const getInjectedJs = (bookId?: string) => `
         function step() {
             let now = Date.now();
             let dt = now - autoScrollLp;
-            
-            // Speed mapping: 1 = ~20px/s => ~1px per 50ms. High refresh rate screens need small step accumulation
-            // Let's use simple fractional scroll tracking
             window.autoScrollAccumulator = (window.autoScrollAccumulator || 0) + (autoScrollSpeed * 30 * dt / 1000);
             
             if (window.autoScrollAccumulator >= 1) {
@@ -487,8 +922,6 @@ const getInjectedJs = (bookId?: string) => `
             }
             
             autoScrollLp = now;
-            
-            // Check if user touches/intervenes (simple check, full interrupt better handled native)
             autoScrollRaf = requestAnimationFrame(step);
         }
         
@@ -503,8 +936,47 @@ const getInjectedJs = (bookId?: string) => `
 
     window.updateAutoScrollSpeed = function(speed) {
         autoScrollSpeed = speed;
-    }
+    };
 
+    window.scrollToPage = function(pageNum) {
+        try {
+            var targetStr = String(pageNum).trim();
+            var markers = document.querySelectorAll('.page-marker');
+            for (var i = 0; i < markers.length; i++) {
+                if (markers[i].textContent.trim() === targetStr) {
+                    var wrap = markers[i].closest('.page-marker-wrap') || markers[i];
+                    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return true;
+                }
+            }
+            if (markers.length > 0) {
+                var targetInt = parseInt(targetStr, 10);
+                var bestMarker = null;
+                var minDiff = 999999;
+                for (var j = 0; j < markers.length; j++) {
+                    var curInt = parseInt(markers[j].textContent.trim(), 10);
+                    if (!isNaN(curInt)) {
+                        var diff = Math.abs(curInt - targetInt);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            bestMarker = markers[j];
+                        }
+                    }
+                }
+                if (bestMarker && minDiff <= 1) {
+                    var bestEl = bestMarker.closest('.page-marker-wrap') || bestMarker;
+                    bestEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return true;
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return false;
+        } catch(e) {
+            return false;
+        }
+    };
+
+    send("LOG", { message: "INJECTED_JS_COMPLETE v9.0, listeners attached" });
 })();
 true;
 `;
@@ -521,6 +993,35 @@ export const RisaleHtmlReaderScreen = () => {
     // State
     const [fontsReady, setFontsReady] = useState(false);
     const [pageInfo, setPageInfo] = useState({ current: 1, total: 1, isAtEnd: false });
+
+    // Book & Chapter info
+    const currentBook = bookId ? HTML_BOOKS[bookId] : null;
+    const currentChapter = currentBook?.chapters.find(c => c.id === chapterId);
+    const bookTotalPages = currentBook ? (() => {
+        const last = currentBook.chapters[currentBook.chapters.length - 1];
+        return last ? last.startPage + last.pageCount - 1 : 0;
+    })() : 0;
+
+    const getNextChapter = () => {
+        if (!bookId || !chapterId) return null;
+        const book = HTML_BOOKS[bookId];
+        if (!book) return null;
+        const index = book.chapters.findIndex(c => c.id === chapterId);
+        if (index === -1 || index === book.chapters.length - 1) return null;
+        return book.chapters[index + 1];
+    };
+    const nextChapter = getNextChapter();
+
+    const handleNextSection = () => {
+        if (nextChapter) {
+            navigation.replace('RisaleHtmlReader', {
+                assetPath: nextChapter.assetPath,
+                title: nextChapter.title,
+                bookId: bookId,
+                chapterId: nextChapter.id
+            });
+        }
+    };
 
     // Path Resolution State
     const [resolvedUri, setResolvedUri] = useState<string | null>(null);
@@ -553,6 +1054,102 @@ export const RisaleHtmlReaderScreen = () => {
     const [autoScrollSpeed, setAutoScrollSpeed] = useState(1);
     const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
+    // Floating Menu State (Matches Sözler reference Screenshot)
+    const [showFloatingMenu, setShowFloatingMenu] = useState(false);
+
+    // Page Progression Mode (Yukarı Kaydır, Kenara Dokun)
+    const [pageProgressionMode, setPageProgressionMode] = useState<'vertical' | 'tap'>('vertical');
+    const [progressionModalVisible, setProgressionModalVisible] = useState(false);
+    const [isBookmarked, setIsBookmarked] = useState(false);
+
+    // Live Clock State (HH:mm) for Reader Footer
+    const [currentTime, setCurrentTime] = useState(() => {
+        const now = new Date();
+        return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date();
+            setCurrentTime(`${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`);
+        }, 30000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Sayfaya Git (Go to Page) State
+    const [gotoPageModalVisible, setGotoPageModalVisible] = useState(false);
+    const [targetPageInput, setTargetPageInput] = useState("");
+
+    const handleGotoPage = (pageStr: string) => {
+        const p = parseInt(pageStr.trim(), 10);
+        if (isNaN(p) || p < 1 || (bookTotalPages > 0 && p > bookTotalPages)) {
+            Alert.alert('Geçersiz Sayfa', `Lütfen 1 ile ${bookTotalPages} arasında geçerli bir sayfa numarası girin.`);
+            return;
+        }
+        setGotoPageModalVisible(false);
+        setTargetPageInput("");
+
+        if (!currentBook) return;
+        const targetChapter = currentBook.chapters.find(c => p >= c.startPage && p < c.startPage + c.pageCount)
+            || currentBook.chapters.find(c => p >= c.startPage)
+            || currentBook.chapters[0];
+
+        if (targetChapter.id === chapterId) {
+            webViewRef.current?.injectJavaScript(`
+                if (typeof window.scrollToPage === 'function') {
+                    window.scrollToPage(${p});
+                }
+                true;
+            `);
+        } else {
+            navigation.replace('RisaleHtmlReader', {
+                assetPath: targetChapter.assetPath,
+                title: targetChapter.title,
+                bookId: bookId,
+                chapterId: targetChapter.id,
+                targetPage: p
+            });
+        }
+    };
+
+    useEffect(() => {
+        if (route.params?.targetPage && webViewRef.current) {
+            const timer = setTimeout(() => {
+                webViewRef.current?.injectJavaScript(`
+                    if (typeof window.scrollToPage === 'function') {
+                        window.scrollToPage(${route.params.targetPage});
+                    }
+                    true;
+                `);
+            }, 400);
+            return () => clearTimeout(timer);
+        }
+    }, [route.params?.targetPage]);
+
+    // Dedicated Külliyat 120,000-Word Dictionary Search Modal State
+    const [dictSearchModalVisible, setDictSearchModalVisible] = useState(false);
+    const [searchModalEntry, setSearchModalEntry] = useState<DictionaryEntry | null>(null);
+    const [dictSearchQuery, setDictSearchQuery] = useState("");
+    const [liveSearchResults, setLiveSearchResults] = useState<DictionaryEntry[]>([]);
+    const [isSearchingDict, setIsSearchingDict] = useState(false);
+
+    const handleDictSearchChange = async (text: string) => {
+        setDictSearchQuery(text);
+        if (!text || text.trim().length === 0) {
+            setLiveSearchResults([]);
+            return;
+        }
+        setIsSearchingDict(true);
+        try {
+            const results = await dictionaryDb.search(text.trim());
+            setLiveSearchResults(results);
+        } catch (e) {
+            console.error('[DictSearch] Error:', e);
+        } finally {
+            setIsSearchingDict(false);
+        }
+    };
+
     // --- SELECTION RESET ON FOCUS ---
     useFocusEffect(
         useCallback(() => {
@@ -567,7 +1164,7 @@ export const RisaleHtmlReaderScreen = () => {
         }, [])
     );
 
-    // Load saved settings
+    // Load saved settings & bookmark
     useEffect(() => {
         AsyncStorage.getItem('reader_settings').then(val => {
             if (val) {
@@ -581,7 +1178,26 @@ export const RisaleHtmlReaderScreen = () => {
                 } catch (e) { }
             }
         }).catch(() => { });
-    }, []);
+
+        AsyncStorage.getItem('risale_page_progression_mode').then(val => {
+            if (val && ['vertical', 'tap'].includes(val)) {
+                setPageProgressionMode(val as any);
+            }
+        }).catch(() => { });
+
+        if (bookId) {
+            AsyncStorage.getItem(`risale_bookmark_${bookId}`).then(val => {
+                if (val) {
+                    try {
+                        const parsed = JSON.parse(val);
+                        setIsBookmarked(parsed.chapterId === chapterId);
+                    } catch { }
+                } else {
+                    setIsBookmarked(false);
+                }
+            }).catch(() => { });
+        }
+    }, [bookId, chapterId]);
 
     const updateSetting = (key: string, value: any) => {
         const newSettings = { fontSize, themeId, fontFamily, textAlign, lineHeight, autoScrollSpeed, [key]: value };
@@ -609,6 +1225,7 @@ export const RisaleHtmlReaderScreen = () => {
         if (webViewRef.current) {
             if (nextState) {
                 setSettingsVisible(false); // Close settings if open
+                setShowFloatingMenu(false);
                 webViewRef.current.injectJavaScript(`window.startAutoScroll && window.startAutoScroll(${autoScrollSpeed}); true;`);
             } else {
                 webViewRef.current.injectJavaScript(`window.stopAutoScroll && window.stopAutoScroll(); true;`);
@@ -616,9 +1233,54 @@ export const RisaleHtmlReaderScreen = () => {
         }
     };
 
+    // Page navigation helper (for smooth vertical scrolling & edge tap)
+    const scrollNextPage = useCallback(() => {
+        if (pageInfo.isAtEnd || pageInfo.current >= 0.96) {
+            handleNextSection();
+        } else {
+            webViewRef.current?.injectJavaScript(`
+                window.scrollBy({ top: window.innerHeight * 0.88, behavior: 'smooth' });
+                true;
+            `);
+        }
+    }, [pageInfo, nextChapter, handleNextSection]);
+
+    const scrollPrevPage = useCallback(() => {
+        webViewRef.current?.injectJavaScript(`
+            window.scrollBy({ top: -window.innerHeight * 0.88, behavior: 'smooth' });
+            true;
+        `);
+    }, []);
+
+    // Toggle bookmark
+    const handleToggleBookmark = useCallback(async () => {
+        try {
+            if (!bookId || !chapterId) return;
+            const key = `risale_bookmark_${bookId}`;
+            if (isBookmarked) {
+                await AsyncStorage.removeItem(key);
+                setIsBookmarked(false);
+                Alert.alert('Yer İşareti', 'Yer işareti kaldırıldı.');
+            } else {
+                const data = {
+                    bookId,
+                    chapterId,
+                    title,
+                    scrollRatio: pageInfo.current,
+                    date: new Date().toISOString()
+                };
+                await AsyncStorage.setItem(key, JSON.stringify(data));
+                setIsBookmarked(true);
+                Alert.alert('Yer İşareti', 'Kaldığınız sayfa kaydedildi.');
+            }
+        } catch (e) {
+            console.warn('Bookmark error:', e);
+        }
+    }, [bookId, chapterId, title, pageInfo.current, isBookmarked]);
+
     // Inject settings into WebView whenever they change
     useEffect(() => {
-        if (webViewRef.current && fontsReady) {
+        if (webViewRef.current) {
             const theme = THEME_OPTIONS.find(t => t.id === themeId) || THEME_OPTIONS[0];
             const script = `
                 document.documentElement.style.setProperty('--base-size', '${fontSize}px');
@@ -657,7 +1319,6 @@ export const RisaleHtmlReaderScreen = () => {
 
     // TOC Modal State
     const [tocVisible, setTocVisible] = useState(false);
-    const currentBook = bookId ? HTML_BOOKS[bookId] : null;
 
     // Footnote State
     const [footnoteVisible, setFootnoteVisible] = useState(false);
@@ -666,8 +1327,109 @@ export const RisaleHtmlReaderScreen = () => {
     // AI Modal State
     const [aiModalVisible, setAiModalVisible] = useState(false);
 
+    // Ayet / Hadis Meal State
+    const [mealModalVisible, setMealModalVisible] = useState(false);
+    const [activeMeal, setActiveMeal] = useState<{ arabic: string; meal: string; source: string } | null>(null);
+
+    const handleAyetClick = async (text: string) => {
+        try {
+            const meal = await risalePagesDb.getAyetMeal(text);
+            if (meal) {
+                setActiveMeal({
+                    arabic: meal.arabic_text || text,
+                    meal: meal.meal_tr,
+                    source: meal.source_ref
+                });
+                setMealModalVisible(true);
+            } else {
+                setActiveMeal({
+                    arabic: text,
+                    meal: "Bu Arapça ibare için doğrudan meâl kaydı bulunamadı.",
+                    source: "Risale-i Nur"
+                });
+                setMealModalVisible(true);
+            }
+        } catch (e) {
+            console.error('[AyetClick] Error:', e);
+        }
+    };
+
+    const lookupWord = async (rawWord: string) => {
+        let query = (rawWord || '').trim();
+        if (!query || query.length < 2) return;
+
+        // Clean query for display and search
+        const displayWord = dictionaryDb.cleanWordForLugat(query) || query;
+        setSearchedWord(displayWord);
+        setLocalSuggestions([]);
+        setSuggestionsLoading(false);
+
+        // 0. CHECK ARABIC AYET / HADIS MEAL
+        const isArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(query);
+        if (isArabic && query.length > 3) {
+            try {
+                const meal = await risalePagesDb.getAyetMeal(query);
+                if (meal) {
+                    setActiveMeal({
+                        arabic: meal.arabic_text || query,
+                        meal: meal.meal_tr,
+                        source: meal.source_ref
+                    });
+                    setMealModalVisible(true);
+                    return;
+                }
+            } catch (e) {
+                console.error('[Lugat] Meal check error:', e);
+            }
+        }
+
+        // 1. CHECK ALIAS (Mapping Katmanı)
+        const alias = checkAlias(displayWord);
+        if (alias) {
+            console.log(`[Lugat] Alias found: "${displayWord}" -> "${alias}"`);
+            query = alias;
+        } else {
+            query = displayWord;
+        }
+
+        // Use flexible search to handle punctuation and normalization
+        console.log('[Lugat] Searching for:', query);
+        const { best, candidates } = await dictionaryDb.searchFlexible(query);
+        console.log('[Lugat] Search Result:', { best: best?.word_tr, candidateCount: candidates.length });
+
+        setDictCandidates(candidates);
+        setDictEntry(best);
+        setDictVisible(true);
+
+        // Telemetry
+        if (best) {
+            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: 1 });
+        } else if (candidates.length > 0) {
+            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: candidates.length });
+        } else {
+            TelemetryService.logLookupMiss(query, bookId);
+
+            // Load local suggestions if feature enabled
+            if (ENABLE_LUGAT_SUGGESTIONS) {
+                setSuggestionsLoading(true);
+                try {
+                    const suggestions = await getLugatSuggestions(query, 6);
+                    setLocalSuggestions(suggestions);
+                    if (suggestions.length > 0) {
+                        TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: suggestions.length });
+                    }
+                } catch (err) {
+                    console.error('[Lugat] Suggestion error:', err);
+                } finally {
+                    setSuggestionsLoading(false);
+                }
+            }
+        }
+    };
+
     useEffect(() => {
         dictionaryDb.init().catch(console.error);
+        risalePagesDb.init().catch(console.error);
         // Save reading progress
         if (bookId && chapterId) {
             const idx = currentBook?.chapters.findIndex(c => c.id === chapterId) ?? 0;
@@ -719,9 +1481,17 @@ export const RisaleHtmlReaderScreen = () => {
     }, [bookId, chapterId, assetPath]);
 
     const injectCss = `
-        var style = document.createElement('style');
-                    style.innerHTML = \`${getHtmlCss().replace(/<style>/g, '').replace(/<\/style>/g, '')}\`;
-        document.head.appendChild(style);
+        (function() {
+            try {
+                var target = document.head || document.documentElement || document.body;
+                if (target && !document.getElementById('app-injected-style')) {
+                    var style = document.createElement('style');
+                    style.id = 'app-injected-style';
+                    style.textContent = ${JSON.stringify(getHtmlCss().replace(/<style>/g, '').replace(/<\/style>/g, ''))};
+                    target.appendChild(style);
+                }
+            } catch(e) {}
+        })();
         true;
     `;
 
@@ -733,13 +1503,14 @@ export const RisaleHtmlReaderScreen = () => {
     const handleMessage = (event: any) => {
         try {
             const data = JSON.parse(event.nativeEvent.data);
+            console.log('[handleMessage] Received:', data.type, JSON.stringify(data).substring(0, 160));
 
             switch (data.type) {
                 case 'LOG':
                     console.log('[WebView Log]', data.message);
                     break;
                 case 'FONTS_READY':
-                    console.log('WebView Fonts Ready');
+                    console.log('[WebView] Fonts Ready');
                     setFontsReady(true);
                     break;
                 case 'METRICS':
@@ -757,10 +1528,11 @@ export const RisaleHtmlReaderScreen = () => {
                     });
                     break;
                 case 'SELECTION':
+                    console.log('[Selection]', data.text);
                     setSelectedText(data.text || "");
                     break;
                 case 'CONSOLE':
-                    console.log('[WebView]', data.msg);
+                    console.log('[WebView Console]', data.msg);
                     break;
                 case 'FOOTNOTE':
                     // Fetch content by ID
@@ -776,23 +1548,34 @@ export const RisaleHtmlReaderScreen = () => {
                     setFootnoteContent(data.text);
                     setFootnoteVisible(true);
                     break;
+                case 'AYET_CLICK':
+                    if (data.text) {
+                        handleAyetClick(data.text);
+                    }
+                    break;
+                case 'LUGAT_CLICK':
+                case 'QUICK_LUGAT':
+                    if (data.word) {
+                        lookupWord(data.word);
+                    }
+                    break;
+                case 'TOGGLE_MENU':
+                    setShowFloatingMenu(prev => !prev);
+                    break;
+                case 'EDGE_TAP':
+                    if (pageProgressionMode === 'tap') {
+                        if (data.edge === 'right') scrollNextPage();
+                        else scrollPrevPage();
+                    }
+                    break;
             }
-        } catch (e) { }
+        } catch (e) {
+            console.error('[handleMessage] Error:', e, 'raw data:', event?.nativeEvent?.data);
+        }
     };
 
-    // NEXT SECTION LOGIC
-    const getNextChapter = () => {
-        if (!bookId || !chapterId) return null;
-        const book = HTML_BOOKS[bookId];
-        if (!book) return null;
-        const index = book.chapters.findIndex(c => c.id === chapterId);
-        if (index === -1 || index === book.chapters.length - 1) return null;
-        return book.chapters[index + 1];
-    };
-
-    const nextChapter = getNextChapter();
-    // Use isAtEnd flag for reliable detection (with buffer)
-    const showNextButton = nextChapter && pageInfo.isAtEnd;
+    // Show next button when at end of content or when scrolled >= 88%
+    const showNextButton = !!(nextChapter && (pageInfo.isAtEnd || pageInfo.current >= 0.88));
 
     // Is this the first chapter (Index/Cover page)?
     // Only replace if it's an actual index page (not "Birinci Şua")
@@ -805,24 +1588,6 @@ export const RisaleHtmlReaderScreen = () => {
         firstChapterTitle.includes('index') ||
         firstChapterTitle.includes('içindekiler')
     );
-
-    // Real page estimation
-    const currentChapter = currentBook?.chapters.find(c => c.id === chapterId);
-    const bookTotalPages = currentBook ? (() => {
-        const last = currentBook.chapters[currentBook.chapters.length - 1];
-        return last.startPage + last.pageCount - 1;
-    })() : 0;
-
-    const handleNextSection = () => {
-        if (nextChapter) {
-            navigation.replace('RisaleHtmlReader', {
-                assetPath: nextChapter.assetPath,
-                title: nextChapter.title,
-                bookId: bookId,
-                chapterId: nextChapter.id
-            });
-        }
-    };
 
     const activeTheme = THEME_OPTIONS.find(t => t.id === themeId) || THEME_OPTIONS[0];
     const isDarkTheme = themeId === 'dark';
@@ -838,51 +1603,37 @@ export const RisaleHtmlReaderScreen = () => {
     const uiFont = fontFamily === 'System' ? undefined : fontFamily;
 
     return (
-        <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-            {/* Header with Back + Title + Font Controls + TOC */}
-            {!isLandscape && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#efe7d1', paddingHorizontal: 12, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#d4cbb5' }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
-                        <Ionicons name="arrow-back" size={22} color="#334155" />
-                    </TouchableOpacity>
-                    <Text numberOfLines={1} style={{ flex: 1, fontSize: 15, fontWeight: '600', color: '#1e293b', marginHorizontal: 10 }}>{title}</Text>
+        <SafeAreaView style={[styles.container, { backgroundColor: activeTheme.bg }]} edges={['top', 'left', 'right']}>
+            {/* Top Bar removed for clean immersive reading as in reference screenshot */}
 
-                    {/* Auto Scroll Toggle */}
-                    <TouchableOpacity onPress={toggleAutoScroll} style={{ padding: 6, marginRight: 2 }}>
-                        <Ionicons name={isAutoScrolling ? "pause-circle" : "play-circle-outline"} size={26} color={isAutoScrolling ? "#ef4444" : "#334155"} />
-                    </TouchableOpacity>
-
-                    {/* Settings Control */}
-                    <TouchableOpacity onPress={() => setSettingsVisible(true)} style={{ padding: 6 }}>
-                        <Ionicons name="settings-outline" size={22} color="#334155" />
-                    </TouchableOpacity>
-
-                    {currentBook && (
-                        <TouchableOpacity onPress={() => setTocVisible(true)} style={{ padding: 6, marginLeft: 4 }}>
-                            <Ionicons name="list" size={22} color="#334155" />
-                        </TouchableOpacity>
-                    )}
-                </View>
-            )}
-
-            {/* TOC Modal */}
+            {/* TOC Modal (Premium Clean White Theme) */}
             <Modal visible={tocVisible} animationType="slide" transparent onRequestClose={() => setTocVisible(false)}>
-                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' }}>
-                    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '70%', paddingBottom: 30 }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderBottomColor: '#e2e8f0' }}>
-                            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1e293b' }}>İçindekiler</Text>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setTocVisible(false)}>
+                    <View style={styles.lightModalContent}>
+                        <View style={styles.lightDragHandle} />
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                            <Text style={styles.lightModalTitle}>İçindekiler</Text>
                             <TouchableOpacity onPress={() => setTocVisible(false)}>
-                                <Ionicons name="close" size={24} color="#64748b" />
+                                <Ionicons name="close-circle" size={26} color="#94A3B8" />
                             </TouchableOpacity>
                         </View>
                         <FlatList
                             data={currentBook?.chapters || []}
                             keyExtractor={(item) => item.id}
+                            style={{ maxHeight: 420 }}
                             renderItem={({ item, index }) => {
                                 const isActive = item.id === chapterId;
                                 return (
                                     <TouchableOpacity
-                                        style={{ flexDirection: 'row', alignItems: 'center', padding: 14, paddingHorizontal: 20, backgroundColor: isActive ? '#f0f9ff' : '#fff', borderBottomWidth: 1, borderBottomColor: '#f1f5f9' }}
+                                        style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            paddingVertical: 12,
+                                            paddingHorizontal: 16,
+                                            borderRadius: 12,
+                                            backgroundColor: isActive ? '#FEF3C7' : 'transparent',
+                                            marginBottom: 4,
+                                        }}
                                         onPress={() => {
                                             setTocVisible(false);
                                             if (!isActive) {
@@ -895,17 +1646,17 @@ export const RisaleHtmlReaderScreen = () => {
                                             }
                                         }}
                                     >
-                                        <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: isActive ? '#3b82f6' : '#f1f5f9', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
-                                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: isActive ? '#fff' : '#64748b' }}>{index + 1}</Text>
+                                        <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: isActive ? '#C5A059' : '#F1F5F9', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
+                                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: isActive ? '#FFFFFF' : '#64748B' }}>{index + 1}</Text>
                                         </View>
-                                        <Text style={{ flex: 1, fontSize: 14, color: isActive ? '#1d4ed8' : '#334155', fontWeight: isActive ? '700' : '400' }}>{item.title}</Text>
-                                        {isActive && <Ionicons name="radio-button-on" size={16} color="#3b82f6" />}
+                                        <Text style={{ flex: 1, fontSize: 14, color: isActive ? '#92400E' : '#1E293B', fontWeight: isActive ? '700' : '400' }}>{item.title}</Text>
+                                        {isActive && <Ionicons name="radio-button-on" size={16} color="#C5A059" />}
                                     </TouchableOpacity>
                                 );
                             }}
                         />
                     </View>
-                </View>
+                </TouchableOpacity>
             </Modal>
 
             {/* CARD READER WRAPPER -> Handled Custom Cover vs WebView */}
@@ -974,6 +1725,18 @@ export const RisaleHtmlReaderScreen = () => {
                         setBuiltInZoomControls={true}
                         setDisplayZoomControls={false}
                         onMessage={handleMessage}
+                        onLoadEnd={() => {
+                            console.log('[WebView] Page load ended:', resolvedUri);
+                            webViewRef.current?.injectJavaScript(`
+                                if (typeof reportMetrics === 'function') reportMetrics();
+                                if (typeof checkFonts === 'function') checkFonts();
+                                true;
+                            `);
+                        }}
+                        onError={(syntheticEvent) => {
+                            const { nativeEvent } = syntheticEvent;
+                            console.warn('[WebView] Load error: ', nativeEvent);
+                        }}
                         // Interrupt auto scroll if user touches to scroll manually
                         onTouchStart={() => {
                             if (isAutoScrolling) {
@@ -982,34 +1745,173 @@ export const RisaleHtmlReaderScreen = () => {
                         }}
                         injectedJavaScriptBeforeContentLoaded={injectCss}
                         injectedJavaScript={getInjectedJs(bookId)}
-                        style={{ flex: 1, backgroundColor: '#efe7d1' }}
+                        style={{ flex: 1, backgroundColor: activeTheme.bg }}
                         webviewDebuggingEnabled={true}
                     />
                 )}
             </View>
 
-            {/* Real Page Indicator */}
-            {currentChapter && !isCoverPage && (
-                <View style={styles.pageIndicator}>
-                    <Text style={styles.pageText}>
-                        {`~Sayfa ${currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))} / ${bookTotalPages}`}
+            {/* Minimal Clean Reader Footer (Always visible, matching paper/theme) */}
+            <View style={[
+                styles.readerFooterBar,
+                {
+                    backgroundColor: activeTheme.bg,
+                    borderTopWidth: StyleSheet.hairlineWidth,
+                    borderTopColor: isDarkTheme ? '#27272A' : (isSepiaTheme ? '#D4CCB1' : '#E2E8F0')
+                }
+            ]}>
+                <Text style={[styles.footerBarLeft, { color: isDarkTheme ? '#A1A1AA' : '#6B5E4F' }]} numberOfLines={1}>
+                    {currentBook?.title || title}
+                </Text>
+                <Text style={[styles.footerBarCenter, { color: isDarkTheme ? '#A1A1AA' : '#6B5E4F' }]}>
+                    {currentChapter ? `${currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))}/${bookTotalPages}` : ''}
+                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
+                    <Text style={[styles.footerBarRight, { color: isDarkTheme ? '#A1A1AA' : '#6B5E4F' }]}>
+                        %{Math.round(pageInfo.current * 100)}  {currentTime}
                     </Text>
+                    <Ionicons name="time-outline" size={13} color={isDarkTheme ? '#A1A1AA' : '#6B5E4F'} style={{ marginLeft: 3 }} />
                 </View>
-            )}
+            </View>
 
             {/* NEXT SECTION BUTTON */}
             {showNextButton && !isCoverPage && (
                 <TouchableOpacity style={styles.nextSectionBtn} onPress={handleNextSection}>
-                    <Text style={styles.nextSectionText}>Sonraki Bölüm</Text>
+                    <Text style={styles.nextSectionText}>Sonraki Bölüm: {nextChapter?.title || ''}</Text>
                     <Ionicons name="arrow-forward" size={18} color="#fff" />
                 </TouchableOpacity>
             )}
 
+            {/* SÖZLER STYLE FLOATING MENU (Matches Reference Screenshot) */}
+            {showFloatingMenu && (
+                <TouchableOpacity
+                    style={styles.floatingMenuBackdrop}
+                    activeOpacity={1}
+                    onPress={() => setShowFloatingMenu(false)}
+                >
+                    <View style={styles.floatingMenuContainer} onStartShouldSetResponder={() => true}>
+                        {/* 1. İçindekiler */}
+                        {currentBook && (
+                            <TouchableOpacity
+                                style={styles.floatingMenuPill}
+                                activeOpacity={0.8}
+                                onPress={() => { setShowFloatingMenu(false); setTocVisible(true); }}
+                            >
+                                <Text style={styles.floatingMenuPillText}>İçindekiler</Text>
+                                <Ionicons name="list" size={22} color="#C5A059" />
+                            </TouchableOpacity>
+                        )}
 
+                        {/* 2. Sayfaya Git */}
+                        {currentBook && (
+                            <TouchableOpacity
+                                style={styles.floatingMenuPill}
+                                activeOpacity={0.8}
+                                onPress={() => {
+                                    setShowFloatingMenu(false);
+                                    setTargetPageInput("");
+                                    setGotoPageModalVisible(true);
+                                }}
+                            >
+                                <Text style={styles.floatingMenuPillText}>Sayfaya Git</Text>
+                                <Ionicons name="document-text-outline" size={22} color="#C5A059" />
+                            </TouchableOpacity>
+                        )}
 
+                        {/* 3. Temalar ve Ayarlar */}
+                        <TouchableOpacity
+                            style={styles.floatingMenuPill}
+                            activeOpacity={0.8}
+                            onPress={() => { setShowFloatingMenu(false); setSettingsVisible(true); }}
+                        >
+                            <Text style={styles.floatingMenuPillText}>Temalar ve Ayarlar</Text>
+                            <Text style={styles.floatingMenuAaText}>AA</Text>
+                        </TouchableOpacity>
 
+                        {/* 4. Kütüphanede Ara & Lügât (Split Row) */}
+                        <View style={styles.floatingMenuSplitRow}>
+                            <TouchableOpacity
+                                style={[styles.floatingMenuPill, { flex: 1.2, marginRight: 8 }]}
+                                activeOpacity={0.8}
+                                onPress={() => {
+                                    setShowFloatingMenu(false);
+                                    navigation.navigate('LibraryHome');
+                                }}
+                            >
+                                <Text style={styles.floatingMenuPillText} numberOfLines={1}>Kütüphanede Ara</Text>
+                                <Ionicons name="search" size={20} color="#C5A059" />
+                            </TouchableOpacity>
 
-            {/* Floating Back Button for Landscape (Moved to end for Z-Index Safety) */}
+                            <TouchableOpacity
+                                style={[styles.floatingMenuPill, { flex: 0.9 }]}
+                                activeOpacity={0.8}
+                                onPress={() => {
+                                    setShowFloatingMenu(false);
+                                    setDictSearchQuery("");
+                                    setSearchModalEntry(null);
+                                    setLiveSearchResults([]);
+                                    setDictSearchModalVisible(true);
+                                }}
+                            >
+                                <Text style={styles.floatingMenuPillText}>Lügât</Text>
+                                <Ionicons name="book-outline" size={20} color="#C5A059" />
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* 4. Bottom Quick Action Dock (4 Circle Buttons) */}
+                        <View style={styles.floatingDockRow}>
+                            {/* Akış / Auto Scroll */}
+                            <TouchableOpacity
+                                style={[styles.dockIconCircle, isAutoScrolling && styles.dockIconCircleActive]}
+                                activeOpacity={0.8}
+                                onPress={toggleAutoScroll}
+                            >
+                                <Ionicons
+                                    name={isAutoScrolling ? "pause" : "play"}
+                                    size={20}
+                                    color={isAutoScrolling ? "#EF4444" : "#C5A059"}
+                                />
+                            </TouchableOpacity>
+
+                            {/* Sayfa İlerleme */}
+                            <TouchableOpacity
+                                style={styles.dockIconCircle}
+                                activeOpacity={0.8}
+                                onPress={() => {
+                                    setShowFloatingMenu(false);
+                                    setProgressionModalVisible(true);
+                                }}
+                            >
+                                <Ionicons name="swap-horizontal-outline" size={22} color="#C5A059" />
+                            </TouchableOpacity>
+
+                            {/* Yer İşareti (Bookmark) */}
+                            <TouchableOpacity
+                                style={[styles.dockIconCircle, isBookmarked && styles.dockIconCircleActive]}
+                                activeOpacity={0.8}
+                                onPress={handleToggleBookmark}
+                            >
+                                <Ionicons
+                                    name={isBookmarked ? "bookmark" : "bookmark-outline"}
+                                    size={20}
+                                    color={isBookmarked ? "#D97706" : "#C5A059"}
+                                />
+                            </TouchableOpacity>
+
+                            {/* Geri Dön / Kitaplar */}
+                            <TouchableOpacity
+                                style={styles.dockIconCircle}
+                                activeOpacity={0.8}
+                                onPress={() => navigation.goBack()}
+                            >
+                                <Ionicons name="book" size={20} color="#C5A059" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            )}
+
+            {/* Floating Back Button for Landscape */}
             {isLandscape && (
                 <View style={{ position: 'absolute', top: Math.max(10, insets.top + 10), left: 10, right: 10, zIndex: 999, elevation: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <TouchableOpacity
@@ -1047,242 +1949,199 @@ export const RisaleHtmlReaderScreen = () => {
                 </View>
             )}
 
-            {/* SELECTION ACTION BAR */}
-            {selectedText.length > 0 && (
-                <View style={styles.actionBar}>
-                    <TouchableOpacity style={styles.actionBtn} onPress={async () => {
-                        setSearchedWord(selectedText);
-                        let query = selectedText.trim();
-                        setLocalSuggestions([]);
-                        setSuggestionsLoading(false);
-
-                        // 1. CHECK ALIAS (Mapping Katmanı)
-                        const alias = checkAlias(query);
-                        if (alias) {
-                            console.log(`[Lugat] Alias found: "${query}" -> "${alias}"`);
-                            query = alias;
-                        }
-
-                        // Use flexible search to handle punctuation and normalization
-                        console.log('[Lugat] Searching for:', query);
-                        const { best, candidates } = await dictionaryDb.searchFlexible(query);
-                        console.log('[Lugat] Search Result:', { best, candidateCount: candidates.length });
-
-                        setDictCandidates(candidates);
-                        setDictEntry(best);
-                        setDictVisible(true);
-
-                        // Telemetry
-                        if (best) {
-                            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: 1 });
-                        } else if (candidates.length > 0) {
-                            TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: candidates.length });
-                        } else {
-                            TelemetryService.logLookupMiss(query, bookId);
-
-                            // Load local suggestions if feature enabled
-                            if (ENABLE_LUGAT_SUGGESTIONS) {
-                                setSuggestionsLoading(true);
-                                try {
-                                    const suggestions = await getLugatSuggestions(query, 6);
-                                    setLocalSuggestions(suggestions);
-                                    if (suggestions.length > 0) {
-                                        TelemetryService.log({ type: 'lookup_suggestion_shown', word: query, suggestionCount: suggestions.length });
-                                    }
-                                } catch (err) {
-                                    console.error('[Lugat] Suggestion error:', err);
-                                } finally {
-                                    setSuggestionsLoading(false);
-                                }
-                            }
-                        }
-                    }}>
-                        <Ionicons name="book" size={20} color="#fff" />
-                        <Text style={styles.actionText}>Lugat</Text>
-                    </TouchableOpacity>
-
-                    <View style={styles.divider} />
-
-                    <TouchableOpacity style={styles.actionBtn} onPress={() => {
-                        setAiModalVisible(true);
-                    }}>
-                        <Ionicons name="sparkles" size={20} color="#fff" />
-                        <Text style={styles.actionText}>Nuri Abi</Text>
-                    </TouchableOpacity>
-
-                    <View style={styles.divider} />
-
-                    <TouchableOpacity style={styles.actionBtn} onPress={() => {
-                        Share.share({ message: selectedText });
-                    }}>
-                        <Ionicons name="share-social" size={20} color="#fff" />
-                        <Text style={styles.actionText}>Paylaş</Text>
-                    </TouchableOpacity>
-
-                    <View style={styles.divider} />
-
-                    <TouchableOpacity style={styles.actionBtn} onPress={() => {
-                        Clipboard.setString(selectedText);
-
-                        // Show toast feedback
-                        Alert.alert("✅", "Metin kopyalandı", [{ text: "Tamam" }]);
-
-                        // DAHA UZUN DELAY
-                        setTimeout(() => {
-                            setSelectedText("");
-                            webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
-                        }, 500); // 300ms -> 500ms
-                    }}>
-                        <Ionicons name="copy" size={20} color="#fff" />
-                        <Text style={styles.actionText}>Kopyala</Text>
-                    </TouchableOpacity>
-
-                    <View style={styles.divider} />
-
-                    <TouchableOpacity style={styles.iconBtnSmall} onPress={() => {
-                        setSelectedText("");
-                        // Delay clearing slightly
-                        setTimeout(() => {
-                            webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
-                        }, 200); // 100ms -> 200ms
-                    }}>
-                        <Ionicons name="close" size={22} color="#cbd5e1" />
-                    </TouchableOpacity>
-                </View>
-            )}
-
-            {/* AI OPTIONS MODAL */}
-            <Modal visible={aiModalVisible} transparent animationType="slide" onRequestClose={() => setAiModalVisible(false)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setAiModalVisible(false)}>
-                    <View style={styles.modalContent}>
-                        <View style={styles.modalHeader}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Ionicons name="sparkles" size={24} color="#7c3aed" style={{ marginRight: 8 }} />
-                                <Text style={styles.candTitle}>Nuri Abi'ye Sor</Text>
-                            </View>
-                            <TouchableOpacity onPress={() => setAiModalVisible(false)}>
-                                <Ionicons name="close-circle" size={30} color="#94a3b8" />
+            {/* SAYFA İLERLEME MODAL (Premium Clean White Theme) */}
+            <Modal
+                visible={progressionModalVisible}
+                animationType="slide"
+                transparent
+                onRequestClose={() => setProgressionModalVisible(false)}
+            >
+                <TouchableOpacity
+                    style={styles.modalOverlay}
+                    activeOpacity={1}
+                    onPress={() => setProgressionModalVisible(false)}
+                >
+                    <View style={styles.lightModalContent}>
+                        <View style={styles.lightDragHandle} />
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                            <Text style={styles.lightModalTitle}>Sayfa İlerleme</Text>
+                            <TouchableOpacity onPress={() => setProgressionModalVisible(false)}>
+                                <Ionicons name="close-circle" size={26} color="#94A3B8" />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ color: '#64748b', marginBottom: 16, fontSize: 13 }}>
+
+                        {/* 1. Yukarı Kaydır */}
+                        <TouchableOpacity
+                            style={styles.lightProgressionOptionRow}
+                            activeOpacity={0.7}
+                            onPress={() => {
+                                setPageProgressionMode('vertical');
+                                AsyncStorage.setItem('risale_page_progression_mode', 'vertical');
+                                setProgressionModalVisible(false);
+                            }}
+                        >
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Ionicons name="reorder-four-outline" size={22} color="#64748B" style={{ marginRight: 14 }} />
+                                <Text style={styles.lightProgressionOptionText}>Yukarı Kaydır</Text>
+                            </View>
+                            {pageProgressionMode === 'vertical' && (
+                                <Ionicons name="checkmark" size={22} color="#10B981" />
+                            )}
+                        </TouchableOpacity>
+
+                        {/* 2. Kenara Dokun */}
+                        <TouchableOpacity
+                            style={[styles.lightProgressionOptionRow, { borderBottomWidth: 0 }]}
+                            activeOpacity={0.7}
+                            onPress={() => {
+                                setPageProgressionMode('tap');
+                                AsyncStorage.setItem('risale_page_progression_mode', 'tap');
+                                setProgressionModalVisible(false);
+                            }}
+                        >
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Ionicons name="radio-button-on-outline" size={22} color="#64748B" style={{ marginRight: 14 }} />
+                                <Text style={styles.lightProgressionOptionText}>Kenara Dokun</Text>
+                            </View>
+                            {pageProgressionMode === 'tap' && (
+                                <Ionicons name="checkmark" size={22} color="#10B981" />
+                            )}
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
+
+            {/* AI OPTIONS MODAL (Dark Theme matching Reference) */}
+            <Modal visible={aiModalVisible} transparent animationType="slide" onRequestClose={() => setAiModalVisible(false)}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setAiModalVisible(false)}>
+                    <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.dragHandle} />
+                        <View style={styles.modalHeader}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Ionicons name="sparkles" size={22} color="#C5A059" style={{ marginRight: 8 }} />
+                                <Text style={styles.darkModalTitle}>Nuri Abi'ye Sor</Text>
+                            </View>
+                            <TouchableOpacity onPress={() => setAiModalVisible(false)}>
+                                <Ionicons name="close-circle" size={26} color="#A1A1AA" />
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{ color: '#A1A1AA', marginBottom: 16, fontSize: 13 }}>
                             Seçili metinle ilgili ne yapmak istersiniz?
                         </Text>
 
-                        <View style={styles.separator} />
+                        <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
 
                         <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
                             const query = `Şu metni analiz et. \n1. Eğer metin BIR AYET veya HADIS ise (Tamamen Arapça): Önce **TAM MEALİNİ** yaz. Sonra (varsa) içindeki zor kelimeleri listele.\n2. Eğer metin Osmanlıca/Türkçe bir ibare veya tamlama ise (Örn: Kadîr-i Rahîm, Şakîlerin şerrinden): BÜTÜN olarak manasını açıkla ("Kadîr-i Rahîm: Hem kudretli hem merhametli..." gibi). Sadece kelime kelime bölme.\n\nUYARI: Osmanlıca kelimeler Arapça değildir, "Metin Arapça" deme.\n\nKonuşma dili kullanma, direkt cevabı ver.\n\nMetin:\n"${selectedText}"`;
                             setAiModalVisible(false);
                             setSelectedText("");
-                            // FIX: Delay ekle
                             setTimeout(() => {
                                 webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
                             }, 100);
                             navigation.navigate('GeminiChat', { initialQuery: query });
                         }}>
-                            <View style={[styles.aiIconBox, { backgroundColor: '#e0f2fe' }]}>
-                                <Ionicons name="book-outline" size={24} color="#0284c7" />
+                            <View style={[styles.aiIconBox, { backgroundColor: 'rgba(2, 132, 199, 0.2)' }]}>
+                                <Ionicons name="book-outline" size={24} color="#38BDF8" />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Text style={styles.aiOptionTitle}>Kelime Manaları</Text>
-                                <Text style={styles.aiOptionDesc}>Seçili metindeki bilinmeyen kelimeleri açıkla</Text>
+                                <Text style={[styles.aiOptionTitle, { color: '#F4F4F5' }]}>Kelime Manaları</Text>
+                                <Text style={[styles.aiOptionDesc, { color: '#A1A1AA' }]}>Seçili metindeki bilinmeyen kelimeleri açıkla</Text>
                             </View>
-                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                            <Ionicons name="chevron-forward" size={20} color="#71717A" />
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
                             const query = `Bu metinle ilgili ayet ve hadis bağlantıları nelerdir? \nEğer metin bizzat ayet/hadis ise kaynağını ve mealini göster. \nEğer Risale-i Nur metni ise, dayandığı ayet/hadisleri açıkla.\n\nMetin:\n"${selectedText}"`;
                             setAiModalVisible(false);
                             setSelectedText("");
-                            // FIX: Delay ekle
                             setTimeout(() => {
                                 webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
                             }, 100);
                             navigation.navigate('GeminiChat', { initialQuery: query });
                         }}>
-                            <View style={[styles.aiIconBox, { backgroundColor: '#dcfce7' }]}>
-                                <Ionicons name="leaf-outline" size={24} color="#16a34a" />
+                            <View style={[styles.aiIconBox, { backgroundColor: 'rgba(22, 163, 74, 0.2)' }]}>
+                                <Ionicons name="leaf-outline" size={24} color="#4ADE80" />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Text style={styles.aiOptionTitle}>Ayet & Hadis Bağlantısı</Text>
-                                <Text style={styles.aiOptionDesc}>İlgili ayet ve hadis kaynaklarını göster</Text>
+                                <Text style={[styles.aiOptionTitle, { color: '#F4F4F5' }]}>Ayet & Hadis Bağlantısı</Text>
+                                <Text style={[styles.aiOptionDesc, { color: '#A1A1AA' }]}>İlgili ayet ve hadis kaynaklarını göster</Text>
                             </View>
-                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                            <Ionicons name="chevron-forward" size={20} color="#71717A" />
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
                             const query = `Şu metni maddeler halinde özetleyip, Risale-i Nur külliyatındaki yeri bağlamında izah eder misin:\n\n"${selectedText}"`;
                             setAiModalVisible(false);
                             setSelectedText("");
-                            // FIX: Delay ekle
                             setTimeout(() => {
                                 webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
                             }, 100);
                             navigation.navigate('GeminiChat', { initialQuery: query });
                         }}>
-                            <View style={[styles.aiIconBox, { backgroundColor: '#fef3c7' }]}>
-                                <Ionicons name="list-outline" size={24} color="#d97706" />
+                            <View style={[styles.aiIconBox, { backgroundColor: 'rgba(217, 119, 6, 0.2)' }]}>
+                                <Ionicons name="list-outline" size={24} color="#FBBF24" />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Text style={styles.aiOptionTitle}>Özetle ve İzah Et</Text>
-                                <Text style={styles.aiOptionDesc}>Metni özetle ve ana fikrini açıkla</Text>
+                                <Text style={[styles.aiOptionTitle, { color: '#F4F4F5' }]}>Özetle ve İzah Et</Text>
+                                <Text style={[styles.aiOptionDesc, { color: '#A1A1AA' }]}>Metni özetle ve ana fikrini açıkla</Text>
                             </View>
-                            <Ionicons name="chevron-forward" size={20} color="#cbd5e1" />
+                            <Ionicons name="chevron-forward" size={20} color="#71717A" />
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.aiOptionBtn} onPress={() => {
                             const query = `Şu metinden çalışma veya tefekkür soruları çıkar:\n\n"${selectedText}"`;
                             setAiModalVisible(false);
                             setSelectedText("");
-                            // FIX: Delay ekle
                             setTimeout(() => {
                                 webViewRef.current?.injectJavaScript(`window.resetSelectionAPI(); true;`);
                             }, 100);
                             navigation.navigate('GeminiChat', { initialQuery: query });
                         }}>
-                            <View style={[styles.aiIconBox, { backgroundColor: '#f5f3ff' }]}>
-                                <Ionicons name="chatbubbles-outline" size={24} color="#7c3aed" />
+                            <View style={[styles.aiIconBox, { backgroundColor: 'rgba(124, 58, 237, 0.2)' }]}>
+                                <Ionicons name="chatbubbles-outline" size={24} color="#C084FC" />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Text style={styles.aiOptionTitle}>Sohbet / Ders</Text>
-                                <Text style={styles.aiOptionDesc}>Konu üzerine interaktif sohbet</Text>
+                                <Text style={[styles.aiOptionTitle, { color: '#F4F4F5' }]}>Sohbet / Ders</Text>
+                                <Text style={[styles.aiOptionDesc, { color: '#A1A1AA' }]}>Konu üzerine interaktif sohbet</Text>
                             </View>
+                            <Ionicons name="chevron-forward" size={20} color="#71717A" />
                         </TouchableOpacity>
 
-                    </View>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
 
-            {/* SETTINGS MODAL */}
+            {/* SETTINGS MODAL (Premium Clean White Theme) */}
             <Modal visible={settingsVisible} animationType="slide" transparent onRequestClose={() => setSettingsVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setSettingsVisible(false)}>
-                    <View style={[styles.modalContent, { backgroundColor: modalBg }]} onStartShouldSetResponder={() => true}>
+                    <TouchableOpacity activeOpacity={1} style={styles.lightModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.lightDragHandle} />
                         <View style={styles.modalHeader}>
-                            <Text style={[styles.candTitle, { color: modalText, fontFamily: uiFont }]}>Okuma Ayarları</Text>
+                            <Text style={styles.lightModalTitle}>Okuma Ayarları</Text>
                             <TouchableOpacity onPress={() => setSettingsVisible(false)}>
-                                <Ionicons name="close-circle" size={30} color={modalSecText} />
+                                <Ionicons name="close-circle" size={28} color="#94A3B8" />
                             </TouchableOpacity>
                         </View>
-                        <View style={[styles.separator, { backgroundColor: bColor }]} />
+                        <View style={[styles.separator, { backgroundColor: '#E2E8F0' }]} />
 
-                        <ScrollView showsVerticalScrollIndicator={true} style={{ maxHeight: 550, paddingRight: 8 }}>
+                        <ScrollView showsVerticalScrollIndicator={true} nestedScrollEnabled={true} style={{ maxHeight: 520, paddingRight: 4 }}>
                             {/* Font Size */}
                             <View style={styles.settingRow}>
-                                <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Yazı Boyutu</Text>
+                                <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Yazı Boyutu</Text>
                                 <View style={styles.fontSizeControls}>
-                                    <TouchableOpacity style={[styles.fontSizeBtn, { backgroundColor: chipBg }]} onPress={() => updateSetting('fontSize', Math.max(MIN_FONT_SIZE, fontSize - FONT_STEP))}>
-                                        <Text style={[styles.fontSizeBtnText, { color: modalText, fontFamily: uiFont }]}>A−</Text>
+                                    <TouchableOpacity style={[styles.fontSizeBtn, { backgroundColor: '#F1F5F9', borderWidth: 1, borderColor: '#E2E8F0' }]} onPress={() => updateSetting('fontSize', Math.max(MIN_FONT_SIZE, fontSize - FONT_STEP))}>
+                                        <Text style={[styles.fontSizeBtnText, { color: '#0F172A' }]}>A−</Text>
                                     </TouchableOpacity>
-                                    <Text style={[styles.fontSizeValue, { color: modalText, fontFamily: uiFont }]}>{fontSize}</Text>
-                                    <TouchableOpacity style={[styles.fontSizeBtn, { backgroundColor: chipBg }]} onPress={() => updateSetting('fontSize', Math.min(MAX_FONT_SIZE, fontSize + FONT_STEP))}>
-                                        <Text style={[styles.fontSizeBtnText, { color: modalText, fontFamily: uiFont }]}>A+</Text>
+                                    <Text style={[styles.fontSizeValue, { color: '#0F172A' }]}>{fontSize}</Text>
+                                    <TouchableOpacity style={[styles.fontSizeBtn, { backgroundColor: '#F1F5F9', borderWidth: 1, borderColor: '#E2E8F0' }]} onPress={() => updateSetting('fontSize', Math.min(MAX_FONT_SIZE, fontSize + FONT_STEP))}>
+                                        <Text style={[styles.fontSizeBtnText, { color: '#0F172A' }]}>A+</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
 
                             {/* Theme */}
                             <View style={styles.settingRow}>
-                                <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Tema</Text>
+                                <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Tema</Text>
                             </View>
                             <View style={styles.colorRow}>
                                 {THEME_OPTIONS.map(t => (
@@ -1291,7 +2150,7 @@ export const RisaleHtmlReaderScreen = () => {
                                         onPress={() => updateSetting('themeId', t.id)}
                                         style={[
                                             styles.colorCircle,
-                                            { backgroundColor: t.bg, borderColor: bColor },
+                                            { backgroundColor: t.bg, borderColor: themeId === t.id ? '#C5A059' : '#CBD5E1' },
                                             themeId === t.id && styles.colorCircleActive
                                         ]}
                                     />
@@ -1300,7 +2159,7 @@ export const RisaleHtmlReaderScreen = () => {
 
                             {/* Font Family */}
                             <View style={styles.settingRow}>
-                                <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Yazı Tipi</Text>
+                                <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Yazı Tipi</Text>
                             </View>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 12 }}>
                                 {FONT_OPTIONS.map(f => {
@@ -1308,10 +2167,10 @@ export const RisaleHtmlReaderScreen = () => {
                                     return (
                                         <TouchableOpacity
                                             key={f.id}
-                                            style={[styles.chip, { backgroundColor: chipBg, borderColor: bColor }, active && styles.chipActive]}
+                                            style={[styles.chip, { backgroundColor: active ? '#C5A059' : '#F8FAFC', borderColor: active ? '#B45309' : '#E2E8F0' }]}
                                             onPress={() => updateSetting('fontFamily', f.id)}
                                         >
-                                            <Text style={[styles.chipText, { color: active ? '#fff' : modalText, fontFamily: f.id === 'System' ? undefined : f.id }, active && styles.chipTextActive]}>{f.label}</Text>
+                                            <Text style={[styles.chipText, { color: active ? '#FFFFFF' : '#334155', fontWeight: active ? '700' : '500' }]}>{f.label}</Text>
                                         </TouchableOpacity>
                                     );
                                 })}
@@ -1319,7 +2178,7 @@ export const RisaleHtmlReaderScreen = () => {
 
                             {/* Text Align */}
                             <View style={styles.settingRow}>
-                                <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Hizalama</Text>
+                                <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Hizalama</Text>
                             </View>
                             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
                                 {ALIGN_OPTIONS.map(a => {
@@ -1327,10 +2186,10 @@ export const RisaleHtmlReaderScreen = () => {
                                     return (
                                         <TouchableOpacity
                                             key={a.id}
-                                            style={[styles.chip, { backgroundColor: chipBg, borderColor: bColor }, active && styles.chipActive]}
+                                            style={[styles.chip, { backgroundColor: active ? '#C5A059' : '#F8FAFC', borderColor: active ? '#B45309' : '#E2E8F0' }]}
                                             onPress={() => updateSetting('textAlign', a.id)}
                                         >
-                                            <Text style={[styles.chipText, { color: active ? '#fff' : modalText, fontFamily: uiFont }, active && styles.chipTextActive]}>{a.label}</Text>
+                                            <Text style={[styles.chipText, { color: active ? '#FFFFFF' : '#334155', fontWeight: active ? '700' : '500' }]}>{a.label}</Text>
                                         </TouchableOpacity>
                                     );
                                 })}
@@ -1338,7 +2197,7 @@ export const RisaleHtmlReaderScreen = () => {
 
                             {/* Line Height */}
                             <View style={styles.settingRow}>
-                                <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Satır Aralığı</Text>
+                                <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Satır Aralığı</Text>
                             </View>
                             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 24 }}>
                                 {LINE_HEIGHT_OPTIONS.map(l => {
@@ -1346,25 +2205,25 @@ export const RisaleHtmlReaderScreen = () => {
                                     return (
                                         <TouchableOpacity
                                             key={l.id}
-                                            style={[styles.chip, { backgroundColor: chipBg, borderColor: bColor }, active && styles.chipActive]}
+                                            style={[styles.chip, { backgroundColor: active ? '#C5A059' : '#F8FAFC', borderColor: active ? '#B45309' : '#E2E8F0' }]}
                                             onPress={() => updateSetting('lineHeight', l.id)}
                                         >
-                                            <Text style={[styles.chipText, { color: active ? '#fff' : modalText, fontFamily: uiFont }, active && styles.chipTextActive]}>{l.label}</Text>
+                                            <Text style={[styles.chipText, { color: active ? '#FFFFFF' : '#334155', fontWeight: active ? '700' : '500' }]}>{l.label}</Text>
                                         </TouchableOpacity>
                                     );
                                 })}
                             </View>
 
                             {/* Auto Scroll Modülü */}
-                            <View style={[styles.separator, { backgroundColor: bColor }]} />
+                            <View style={[styles.separator, { backgroundColor: '#E2E8F0' }]} />
                             <View style={[styles.settingRow, { marginBottom: 16 }]}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: chipBg, justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
-                                        <Ionicons name="swap-vertical" size={18} color={modalText} />
+                                    <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#F1F5F9', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
+                                        <Ionicons name="swap-vertical" size={18} color="#C5A059" />
                                     </View>
                                     <View>
-                                        <Text style={[styles.settingLabel, { color: modalText, fontFamily: uiFont }]}>Akış Modu</Text>
-                                        <Text style={{ fontSize: 12, color: modalSecText, fontFamily: uiFont }}>Otomatik ekran kaydırma</Text>
+                                        <Text style={[styles.settingLabel, { color: '#0F172A' }]}>Akış Modu</Text>
+                                        <Text style={{ fontSize: 12, color: '#64748B' }}>Otomatik ekran kaydırma</Text>
                                     </View>
                                 </View>
 
@@ -1376,7 +2235,7 @@ export const RisaleHtmlReaderScreen = () => {
                                         backgroundColor: isAutoScrolling ? '#ef4444' : '#10b981',
                                         borderRadius: 20
                                     }}>
-                                    <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 13, fontFamily: uiFont }}>
+                                    <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 13 }}>
                                         {isAutoScrolling ? 'Durdur' : 'Başlat'}
                                     </Text>
                                 </TouchableOpacity>
@@ -1384,49 +2243,108 @@ export const RisaleHtmlReaderScreen = () => {
 
                             {/* Speed Controls */}
                             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 20, marginBottom: 24 }}>
-                                <TouchableOpacity onPress={() => updateSetting('autoScrollSpeed', Math.max(0.5, autoScrollSpeed - 0.5))} style={[styles.asBtn, { backgroundColor: chipBg, borderColor: bColor }]}>
-                                    <Ionicons name="remove" size={20} color={modalText} />
+                                <TouchableOpacity onPress={() => updateSetting('autoScrollSpeed', Math.max(0.5, autoScrollSpeed - 0.5))} style={[styles.asBtn, { backgroundColor: '#F8FAFC', borderColor: '#CBD5E1' }]}>
+                                    <Ionicons name="remove" size={20} color="#0F172A" />
                                 </TouchableOpacity>
 
                                 <View style={{ alignItems: 'center', width: 60 }}>
-                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: modalText, fontFamily: uiFont }}>{autoScrollSpeed.toFixed(1)}x</Text>
-                                    <Text style={{ fontSize: 10, color: modalSecText, fontFamily: uiFont }}>Hız</Text>
+                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F172A' }}>{autoScrollSpeed.toFixed(1)}x</Text>
+                                    <Text style={{ fontSize: 10, color: '#64748B' }}>Hız</Text>
                                 </View>
 
-                                <TouchableOpacity onPress={() => updateSetting('autoScrollSpeed', Math.min(5, autoScrollSpeed + 0.5))} style={[styles.asBtn, { backgroundColor: chipBg, borderColor: bColor }]}>
-                                    <Ionicons name="add" size={20} color={modalText} />
+                                <TouchableOpacity onPress={() => updateSetting('autoScrollSpeed', Math.min(5, autoScrollSpeed + 0.5))} style={[styles.asBtn, { backgroundColor: '#F8FAFC', borderColor: '#CBD5E1' }]}>
+                                    <Ionicons name="add" size={20} color="#0F172A" />
                                 </TouchableOpacity>
                             </View>
 
                         </ScrollView>
-                    </View>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
 
-            {/* FOOTNOTE MODAL (Bottom Sheet Style) */}
+            {/* FOOTNOTE MODAL (Dark Theme matching Reference) */}
             <Modal visible={footnoteVisible} transparent animationType="slide" onRequestClose={() => setFootnoteVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setFootnoteVisible(false)}>
-                    <View style={styles.modalContent}>
+                    <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.dragHandle} />
                         <View style={styles.modalHeader}>
-                            <Text style={styles.candTitle}>Dipnot / Haşiye</Text>
+                            <Text style={styles.darkModalTitle}>Dipnot / Haşiye</Text>
                             <TouchableOpacity onPress={() => setFootnoteVisible(false)}>
-                                <Ionicons name="close-circle" size={30} color="#94a3b8" />
+                                <Ionicons name="close-circle" size={28} color="#A1A1AA" />
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.separator} />
-                        <ScrollView style={{ maxHeight: 300 }}>
-                            <Text style={styles.footNoteText}>{footnoteContent}</Text>
+                        <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
+                        <ScrollView style={{ maxHeight: 300 }} nestedScrollEnabled={true}>
+                            <Text style={[styles.footNoteText, { color: '#E4E4E7' }]}>{footnoteContent}</Text>
                         </ScrollView>
-                    </View>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
 
-            {/* DICTIONARY MODAL */}
+            {/* AYET & HADİS MEALİ MODAL (Dark Theme matching Reference) */}
+            <Modal visible={mealModalVisible} transparent animationType="slide" onRequestClose={() => setMealModalVisible(false)}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setMealModalVisible(false)}>
+                    <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.dragHandle} />
+                        <View style={styles.modalHeader}>
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ fontSize: 13, fontWeight: '700', color: '#C5A059', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                                    Âyet-i Kerîme / Hadîs-i Şerîf Meâli
+                                </Text>
+                                {activeMeal?.source ? (
+                                    <Text style={{ fontSize: 13, color: '#A1A1AA', marginTop: 2, fontStyle: 'italic' }}>
+                                        {activeMeal.source}
+                                    </Text>
+                                ) : null}
+                            </View>
+                            <TouchableOpacity onPress={() => setMealModalVisible(false)} style={{ padding: 4 }}>
+                                <Ionicons name="close-circle" size={28} color="#A1A1AA" />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
+                        <ScrollView style={{ maxHeight: 380 }} contentContainerStyle={{ paddingBottom: 16 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                            {activeMeal?.arabic ? (
+                                <Text style={{ fontSize: 22, color: '#FDE68A', textAlign: 'center', lineHeight: 36, marginBottom: 14, fontFamily: 'ScheherazadeNew' }}>
+                                    {activeMeal.arabic}
+                                </Text>
+                            ) : null}
+                            <Text style={{ fontSize: 16, color: '#F4F4F5', lineHeight: 26, textAlign: 'justify' }}>
+                                {activeMeal?.meal}
+                            </Text>
+                        </ScrollView>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10, marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#3F3F46' }}>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#333336', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 }}
+                                onPress={() => {
+                                    if (activeMeal) {
+                                        Clipboard.setString(`${activeMeal.arabic ? activeMeal.arabic + '\n\n' : ''}${activeMeal.meal}\n\nKaynak: ${activeMeal.source || 'Risale-i Nur'}`);
+                                        Alert.alert('✅', 'Meal panoya kopyalandı');
+                                    }
+                                }}
+                            >
+                                <Ionicons name="copy-outline" size={16} color="#F4F4F5" style={{ marginRight: 6 }} />
+                                <Text style={{ fontSize: 13, color: '#F4F4F5', fontWeight: '600' }}>Kopyala</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#C5A059', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 }}
+                                onPress={() => {
+                                    if (activeMeal) {
+                                        Share.share({ message: `${activeMeal.arabic ? activeMeal.arabic + '\n\n' : ''}${activeMeal.meal}\n\nKaynak: ${activeMeal.source || 'Risale-i Nur'}` });
+                                    }
+                                }}
+                            >
+                                <Ionicons name="share-social-outline" size={16} color="#18181B" style={{ marginRight: 6 }} />
+                                <Text style={{ fontSize: 13, color: '#18181B', fontWeight: '700' }}>Paylaş</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
+
+            {/* 1. DICTIONARY MODAL (Word Tap - Spacious Original Light Modal) */}
             <Modal visible={dictVisible} transparent animationType="fade" onRequestClose={() => setDictVisible(false)}>
-                {/* ... existing dict modal content ... */}
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setDictVisible(false)}>
                     <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
-                        {/* ... existing code ... */}
                         {/* 1. DETAIL VIEW */}
                         {dictEntry && (
                             <>
@@ -1440,15 +2358,15 @@ export const RisaleHtmlReaderScreen = () => {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.separator} />
-                                <ScrollView style={{ maxHeight: 250 }} showsVerticalScrollIndicator={true}>
+                                <ScrollView style={{ maxHeight: 280 }} showsVerticalScrollIndicator={true}>
                                     <Text style={styles.dictDef}>{dictEntry.definition}</Text>
                                 </ScrollView>
                                 {dictCandidates.length > 0 && (
                                     <TouchableOpacity
-                                        style={{ marginTop: 12, padding: 8, alignItems: 'center' }}
-                                        onPress={() => setDictEntry(null)} // Go back to list
+                                        style={{ marginTop: 14, padding: 10, alignItems: 'center', backgroundColor: '#F1F5F9', borderRadius: 8 }}
+                                        onPress={() => setDictEntry(null)}
                                     >
-                                        <Text style={{ color: '#64748b', fontSize: 14 }}>Listeye Dön</Text>
+                                        <Text style={{ color: '#475569', fontSize: 14, fontWeight: '600' }}>← Diğer Sonuçlara Dön</Text>
                                     </TouchableOpacity>
                                 )}
                             </>
@@ -1466,7 +2384,7 @@ export const RisaleHtmlReaderScreen = () => {
                                         <Ionicons name="close-circle" size={32} color="#94a3b8" />
                                     </TouchableOpacity>
                                 </View>
-                                <ScrollView style={{ maxHeight: 300 }} showsVerticalScrollIndicator={true}>
+                                <ScrollView style={{ maxHeight: 320 }} showsVerticalScrollIndicator={true}>
                                     {dictCandidates.map((c, i) => (
                                         <TouchableOpacity
                                             key={i}
@@ -1485,104 +2403,334 @@ export const RisaleHtmlReaderScreen = () => {
                         {!dictEntry && dictCandidates.length === 0 && (
                             <View style={{ padding: 16 }}>
                                 <View style={{ alignItems: 'center', marginBottom: 16 }}>
-                                    <Ionicons name="alert-circle-outline" size={40} color="#cbd5e1" />
-                                    <Text style={{ fontSize: 15, color: '#64748b', marginTop: 8, textAlign: 'center' }}>
+                                    <Ionicons name="alert-circle-outline" size={42} color="#cbd5e1" />
+                                    <Text style={{ fontSize: 16, color: '#64748b', marginTop: 8, textAlign: 'center' }}>
                                         Lügatta bulunamadı: "{searchedWord}"
                                     </Text>
                                 </View>
 
-                                {/* Loading indicator */}
                                 {suggestionsLoading && (
                                     <View style={{ alignItems: 'center', padding: 12 }}>
-                                        <ActivityIndicator size="small" color="#6366f1" />
+                                        <ActivityIndicator size="small" color="#C5A059" />
                                         <Text style={{ marginTop: 6, color: '#94a3b8', fontSize: 13 }}>Öneriler aranıyor...</Text>
                                     </View>
                                 )}
 
-                                {/* Local Suggestions */}
                                 {!suggestionsLoading && localSuggestions.length > 0 && (
                                     <View>
                                         <Text style={{ fontSize: 14, fontWeight: '600', color: '#475569', marginBottom: 10 }}>Öneriler:</Text>
-                                        <ScrollView style={{ maxHeight: 200 }} showsVerticalScrollIndicator>
-                                            {localSuggestions.map((s, i) => (
-                                                <TouchableOpacity
-                                                    key={s.entry.id || i}
-                                                    style={{
-                                                        flexDirection: 'row',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'space-between',
-                                                        paddingVertical: 10,
-                                                        borderBottomWidth: i < localSuggestions.length - 1 ? 1 : 0,
-                                                        borderBottomColor: '#f1f5f9'
-                                                    }}
-                                                    onPress={() => {
-                                                        TelemetryService.log({ type: 'lookup_suggestion_selected', word: searchedWord, selectedWord: s.entry.word_tr });
-                                                        setDictEntry(s.entry);
-                                                        setLocalSuggestions([]);
-                                                    }}
-                                                >
-                                                    <View style={{ flex: 1 }}>
-                                                        <Text style={{ fontSize: 18, color: '#b45309' }}>{s.entry.word_osm}</Text>
-                                                        <Text style={{ fontSize: 15, color: '#334155', fontWeight: '500' }}>{s.entry.word_tr}</Text>
-                                                    </View>
-                                                    <View style={{
-                                                        backgroundColor: s.matchType === 'fuzzy' ? '#fef3c7' : s.matchType === 'alias' ? '#e0f2fe' : '#f0fdf4',
-                                                        paddingHorizontal: 8, paddingVertical: 3, borderRadius: 12
-                                                    }}>
-                                                        <Text style={{ fontSize: 10, color: s.matchType === 'fuzzy' ? '#92400e' : s.matchType === 'alias' ? '#0284c7' : '#16a34a', fontWeight: '600' }}>
-                                                            {s.matchType === 'normalized' ? 'normalize' : s.matchType === 'variant' ? 'varyant' : s.matchType === 'alias' ? 'ilişkili' : s.matchType === 'fuzzy' ? 'yakın' : 'eşleşme'}
-                                                        </Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                            ))}
-                                        </ScrollView>
-                                    </View>
-                                )}
-
-                                {/* No suggestions found */}
-                                {!suggestionsLoading && localSuggestions.length === 0 && (
-                                    <View>
-                                        <Text style={{ textAlign: 'center', color: '#94a3b8', fontSize: 13, marginTop: 8 }}>
-                                            Öneri bulunamadı.
-                                        </Text>
-
-                                        {/* Google Search Button (Phase 1) */}
-                                        <TouchableOpacity
-                                            style={{
-                                                marginTop: 12,
-                                                flexDirection: 'row',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                backgroundColor: '#fff',
-                                                borderWidth: 1,
-                                                borderColor: '#e2e8f0',
-                                                padding: 10,
-                                                borderRadius: 8
-                                            }}
-                                            onPress={async () => {
-                                                try {
-                                                    const url = `https://www.google.com/search?q=${encodeURIComponent(searchedWord + " nedir risale")}`;
-                                                    await Linking.openURL(url);
-                                                } catch (e) {
-                                                    console.warn('[Lugat] Could not open browser:', e);
-                                                }
-                                            }}
-                                        >
-                                            <Ionicons name="logo-google" size={18} color="#475569" style={{ marginRight: 8 }} />
-                                            <Text style={{ color: '#475569', fontWeight: '500' }}>Google'da Ara</Text>
-                                        </TouchableOpacity>
+                                        {localSuggestions.map((sug, i) => (
+                                            <TouchableOpacity
+                                                key={i}
+                                                style={[styles.candItem, { paddingVertical: 8 }]}
+                                                onPress={() => setDictEntry(sug.entry)}
+                                            >
+                                                <Text style={{ fontSize: 15, color: '#1E293B' }}>{sug.entry.word_tr}</Text>
+                                                <Ionicons name="chevron-forward" size={16} color="#94A3B8" />
+                                            </TouchableOpacity>
+                                        ))}
                                     </View>
                                 )}
 
                                 <TouchableOpacity
-                                    style={{ marginTop: 16, backgroundColor: '#f1f5f9', padding: 12, borderRadius: 8, alignItems: 'center' }}
+                                    style={{
+                                        marginTop: 16,
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#F8FAFC',
+                                        borderWidth: 1,
+                                        borderColor: '#E2E8F0',
+                                        padding: 12,
+                                        borderRadius: 8
+                                    }}
+                                    onPress={async () => {
+                                        try {
+                                            const url = `https://www.google.com/search?q=${encodeURIComponent(searchedWord + " nedir risale")}`;
+                                            await Linking.openURL(url);
+                                        } catch (e) {
+                                            console.warn('[Lugat] Could not open browser:', e);
+                                        }
+                                    }}
+                                >
+                                    <Ionicons name="logo-google" size={18} color="#475569" style={{ marginRight: 8 }} />
+                                    <Text style={{ color: '#475569', fontWeight: '600' }}>Google'da Ara</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    style={{ marginTop: 12, backgroundColor: '#F1F5F9', padding: 12, borderRadius: 8, alignItems: 'center' }}
                                     onPress={() => setDictVisible(false)}
                                 >
-                                    <Text style={{ color: '#334155' }}>Kapat</Text>
+                                    <Text style={{ color: '#334155', fontWeight: '600' }}>Kapat</Text>
                                 </TouchableOpacity>
                             </View>
                         )}
                     </View>
+                </TouchableOpacity>
+            </Modal>
+
+            {/* 2. DEDICATED KÜLLİYAT LÜGATİ SEARCH MODAL (From Floating Menu) */}
+            <Modal visible={dictSearchModalVisible} transparent animationType="slide" onRequestClose={() => setDictSearchModalVisible(false)}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setDictSearchModalVisible(false)}>
+                    <TouchableOpacity activeOpacity={1} style={styles.lightModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.lightDragHandle} />
+
+                        {/* Modal Header */}
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    <Ionicons name="book" size={18} color="#C5A059" />
+                                </View>
+                                <Text style={styles.lightModalTitle}>120.000+ Kelimelik Külliyat Lügati</Text>
+                            </View>
+                            <TouchableOpacity onPress={() => setDictSearchModalVisible(false)} style={{ padding: 4 }}>
+                                <Ionicons name="close-circle" size={26} color="#94A3B8" />
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Search Input Box */}
+                        <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            backgroundColor: '#F8FAFC',
+                            borderRadius: 12,
+                            paddingHorizontal: 12,
+                            paddingVertical: 10,
+                            marginBottom: 12,
+                            borderWidth: 1,
+                            borderColor: '#E2E8F0'
+                        }}>
+                            <Ionicons name="search" size={18} color="#C5A059" style={{ marginRight: 8 }} />
+                            <TextInput
+                                style={{ flex: 1, color: '#0F172A', fontSize: 15, padding: 0 }}
+                                placeholder="Kelime veya tabir arayın..."
+                                placeholderTextColor="#94A3B8"
+                                value={dictSearchQuery}
+                                onChangeText={handleDictSearchChange}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                autoFocus={true}
+                                returnKeyType="search"
+                            />
+                            {dictSearchQuery.length > 0 && (
+                                <TouchableOpacity onPress={() => {
+                                    setDictSearchQuery("");
+                                    setLiveSearchResults([]);
+                                    setSearchModalEntry(null);
+                                }} style={{ padding: 4 }}>
+                                    <Ionicons name="close-circle" size={18} color="#94A3B8" />
+                                </TouchableOpacity>
+                            )}
+                        </View>
+
+                        {/* 1. DETAIL VIEW */}
+                        {searchModalEntry ? (
+                            <View style={{ flex: 1 }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F172A' }}>{searchModalEntry.word_tr}</Text>
+                                    <Text style={{ fontSize: 26, color: '#B45309', fontFamily: 'ScheherazadeNew' }}>{searchModalEntry.word_osm}</Text>
+                                </View>
+                                <View style={[styles.separator, { backgroundColor: '#E2E8F0', marginVertical: 8 }]} />
+                                <ScrollView style={{ maxHeight: 300 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                                    <Text style={[styles.dictDef, { color: '#334155', lineHeight: 26 }]}>{searchModalEntry.definition}</Text>
+                                </ScrollView>
+                                <TouchableOpacity
+                                    style={{ marginTop: 12, paddingVertical: 10, alignItems: 'center', backgroundColor: '#F1F5F9', borderRadius: 8 }}
+                                    onPress={() => setSearchModalEntry(null)}
+                                >
+                                    <Text style={{ color: '#C5A059', fontSize: 14, fontWeight: '700' }}>← Arama Sonuçlarına Dön</Text>
+                                </TouchableOpacity>
+                            </View>
+                        ) : liveSearchResults.length > 0 ? (
+                            /* 2. SEARCH RESULTS LIST */
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ fontSize: 12, color: '#64748B', marginBottom: 8, fontWeight: '500' }}>
+                                    Bulunan {liveSearchResults.length} kelime:
+                                </Text>
+                                <ScrollView style={{ maxHeight: 340 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                                    {liveSearchResults.map((entry, i) => (
+                                        <TouchableOpacity
+                                            key={entry.id || i}
+                                            style={{
+                                                flexDirection: 'row',
+                                                alignItems: 'center',
+                                                justifyContent: 'space-between',
+                                                paddingVertical: 10,
+                                                borderBottomWidth: 1,
+                                                borderBottomColor: '#F1F5F9'
+                                            }}
+                                            onPress={() => setSearchModalEntry(entry)}
+                                        >
+                                            <View style={{ flex: 1, paddingRight: 12 }}>
+                                                <Text style={{ fontSize: 15, fontWeight: '700', color: '#0F172A' }}>{entry.word_tr}</Text>
+                                                {entry.definition ? (
+                                                    <Text style={{ fontSize: 12, color: '#64748B', marginTop: 2 }} numberOfLines={1}>
+                                                        {entry.definition}
+                                                    </Text>
+                                                ) : null}
+                                            </View>
+                                            <Text style={{ fontSize: 18, color: '#B45309', fontFamily: 'ScheherazadeNew' }}>{entry.word_osm}</Text>
+                                        </TouchableOpacity>
+                                    ))}
+                                </ScrollView>
+                            </View>
+                        ) : dictSearchQuery.trim().length > 0 ? (
+                            /* 3. NOT FOUND */
+                            <View style={{ padding: 20, alignItems: 'center' }}>
+                                <Ionicons name="alert-circle-outline" size={40} color="#CBD5E1" />
+                                <Text style={{ fontSize: 15, color: '#64748B', marginTop: 8, textAlign: 'center' }}>
+                                    Lügatta bulunamadı: "{dictSearchQuery}"
+                                </Text>
+                                <TouchableOpacity
+                                    style={{
+                                        marginTop: 16,
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: '#F8FAFC',
+                                        borderWidth: 1,
+                                        borderColor: '#E2E8F0',
+                                        padding: 10,
+                                        borderRadius: 8
+                                    }}
+                                    onPress={async () => {
+                                        try {
+                                            const url = `https://www.google.com/search?q=${encodeURIComponent(dictSearchQuery + " nedir risale")}`;
+                                            await Linking.openURL(url);
+                                        } catch (e) {
+                                            console.warn('[Lugat] Could not open browser:', e);
+                                        }
+                                    }}
+                                >
+                                    <Ionicons name="logo-google" size={18} color="#C5A059" style={{ marginRight: 8 }} />
+                                    <Text style={{ color: '#334155', fontWeight: '500' }}>Google'da Ara</Text>
+                                </TouchableOpacity>
+                            </View>
+                        ) : (
+                            /* 4. INITIAL PROMPT */
+                            <View style={{ padding: 28, alignItems: 'center', justifyContent: 'center' }}>
+                                <Ionicons name="search-outline" size={44} color="#CBD5E1" style={{ marginBottom: 10 }} />
+                                <Text style={{ fontSize: 16, fontWeight: '700', color: '#0F172A', textAlign: 'center' }}>
+                                    Külliyat Arama Motoru
+                                </Text>
+                                <Text style={{ fontSize: 13, color: '#64748B', marginTop: 6, textAlign: 'center', lineHeight: 18 }}>
+                                    Aramak istediğiniz kelime veya tabiri yukarıdaki kutucuğa yazın. Anlık olarak listelenecektir.
+                                </Text>
+                            </View>
+                        )}
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
+
+            {/* 3. SAYFAYA GİT (GO TO PAGE) MODAL */}
+            <Modal visible={gotoPageModalVisible} transparent animationType="slide" onRequestClose={() => setGotoPageModalVisible(false)}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setGotoPageModalVisible(false)}>
+                    <TouchableOpacity activeOpacity={1} style={styles.lightModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.lightDragHandle} />
+
+                        {/* Header */}
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    <Ionicons name="document-text" size={18} color="#C5A059" />
+                                </View>
+                                <View>
+                                    <Text style={styles.lightModalTitle}>Sayfaya Git</Text>
+                                    <Text style={{ fontSize: 12, color: '#64748B' }}>
+                                        {currentBook?.title || 'Kitap'} (1 - {bookTotalPages})
+                                    </Text>
+                                </View>
+                            </View>
+                            <TouchableOpacity onPress={() => setGotoPageModalVisible(false)} style={{ padding: 4 }}>
+                                <Ionicons name="close-circle" size={26} color="#94A3B8" />
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Page Input Box */}
+                        <View style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginVertical: 16,
+                            paddingVertical: 12,
+                            backgroundColor: '#F8FAFC',
+                            borderRadius: 16,
+                            borderWidth: 1.5,
+                            borderColor: '#C5A059'
+                        }}>
+                            <TextInput
+                                style={{
+                                    fontSize: 36,
+                                    fontWeight: 'bold',
+                                    color: '#0F172A',
+                                    textAlign: 'center',
+                                    minWidth: 120,
+                                    padding: 4
+                                }}
+                                placeholder={currentChapter ? String(currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : "1"}
+                                placeholderTextColor="#CBD5E1"
+                                value={targetPageInput}
+                                onChangeText={setTargetPageInput}
+                                keyboardType="number-pad"
+                                maxLength={4}
+                                autoFocus={true}
+                                returnKeyType="go"
+                                onSubmitEditing={() => handleGotoPage(targetPageInput)}
+                            />
+                            <Text style={{ fontSize: 12, color: '#64748B', marginTop: 4 }}>
+                                Sayfa numarasını girin
+                            </Text>
+                        </View>
+
+                        {/* Quick Step Buttons */}
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginBottom: 18 }}>
+                            {[-10, -1, 1, 10].map((step) => {
+                                const curP = currentChapter ? (currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : 1;
+                                const base = targetPageInput ? (parseInt(targetPageInput, 10) || curP) : curP;
+                                const newP = Math.max(1, Math.min(bookTotalPages || 9999, base + step));
+                                return (
+                                    <TouchableOpacity
+                                        key={step}
+                                        style={{
+                                            paddingHorizontal: 14,
+                                            paddingVertical: 8,
+                                            backgroundColor: '#F1F5F9',
+                                            borderRadius: 20,
+                                            borderWidth: 1,
+                                            borderColor: '#E2E8F0'
+                                        }}
+                                        onPress={() => setTargetPageInput(String(newP))}
+                                    >
+                                        <Text style={{ fontSize: 13, fontWeight: '700', color: '#334155' }}>
+                                            {step > 0 ? `+${step}` : `${step}`}
+                                        </Text>
+                                    </TouchableOpacity>
+                                );
+                            })}
+                        </View>
+
+                        {/* Action Go Button */}
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: '#C5A059',
+                                paddingVertical: 14,
+                                borderRadius: 14,
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                shadowColor: '#C5A059',
+                                shadowOffset: { width: 0, height: 3 },
+                                shadowOpacity: 0.3,
+                                shadowRadius: 5,
+                                elevation: 4
+                            }}
+                            onPress={() => handleGotoPage(targetPageInput)}
+                        >
+                            <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold', marginRight: 8 }}>
+                                Sayfaya Git
+                            </Text>
+                            <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
+                        </TouchableOpacity>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
         </SafeAreaView>
@@ -1592,7 +2740,7 @@ export const RisaleHtmlReaderScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0B0F14' // Dark Reference BG
+        backgroundColor: 'transparent'
     },
     // Card Wrapper for WebView
     webViewWrapper: {
@@ -1630,23 +2778,25 @@ const styles = StyleSheet.create({
     },
     pageText: { color: '#fff', fontSize: 13, fontWeight: 'bold', fontVariant: ['tabular-nums'] },
 
-    // Action Bar
+    // Action Bar (Floating dock with gold accents)
     actionBar: {
         position: 'absolute',
-        bottom: 40,
+        bottom: 50,
         alignSelf: 'center',
         flexDirection: 'row',
-        backgroundColor: '#1e293b',
-        borderRadius: 16,
-        paddingHorizontal: 8,
-        paddingVertical: 10,
+        backgroundColor: 'rgba(28, 28, 30, 0.95)',
+        borderRadius: 24,
+        paddingHorizontal: 10,
+        paddingVertical: 8,
         elevation: 10,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 5,
+        shadowOpacity: 0.35,
+        shadowRadius: 6,
         zIndex: 999,
-        alignItems: 'center'
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'rgba(197, 160, 89, 0.35)',
     },
     actionBtn: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 4 },
     iconBtnSmall: { paddingHorizontal: 10, paddingVertical: 4 },
@@ -1661,8 +2811,9 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 24,
         padding: 24,
         paddingBottom: 40,
-        minHeight: 320,
-        maxHeight: '60%',
+        minHeight: 280,
+        maxHeight: '82%',
+        flexShrink: 1,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: -2 },
         shadowOpacity: 0.25,
@@ -1817,5 +2968,202 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 10,
         fontWeight: 'bold'
+    },
+
+    // Dark Modal Styles (Matching Reference Screenshots 1, 2, 3)
+    darkModalContent: {
+        backgroundColor: '#262628',
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 12,
+        paddingBottom: 36,
+        minHeight: 260,
+        maxHeight: '85%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -4 },
+        shadowOpacity: 0.35,
+        shadowRadius: 10,
+        elevation: 10,
+    },
+    dragHandle: {
+        width: 40,
+        height: 5,
+        borderRadius: 3,
+        backgroundColor: '#52525B',
+        alignSelf: 'center',
+        marginBottom: 16,
+    },
+    darkModalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#F4F4F5',
+    },
+
+    // Premium Clean Light Modal Styles
+    lightModalContent: {
+        backgroundColor: '#FFFFFF',
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 12,
+        paddingBottom: 36,
+        minHeight: 260,
+        maxHeight: '85%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 10,
+        elevation: 10,
+    },
+    lightDragHandle: {
+        width: 40,
+        height: 5,
+        borderRadius: 3,
+        backgroundColor: '#CBD5E1',
+        alignSelf: 'center',
+        marginBottom: 16,
+    },
+    lightModalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#0F172A',
+    },
+    lightProgressionOptionRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F1F5F9',
+    },
+    lightProgressionOptionText: {
+        fontSize: 16,
+        color: '#0F172A',
+        fontWeight: '500',
+    },
+
+    // Sayfa İlerleme Modal
+    progressionModalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#F4F4F5',
+        marginBottom: 16,
+    },
+    progressionOptionRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: '#333336',
+    },
+    progressionOptionText: {
+        fontSize: 16,
+        color: '#F4F4F5',
+        fontWeight: '500',
+    },
+
+    // Floating Menu Styles (Reference Screenshot 3 & user image)
+    floatingMenuBackdrop: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.35)',
+        justifyContent: 'flex-end',
+        zIndex: 900,
+    },
+    floatingMenuContainer: {
+        paddingHorizontal: 16,
+        paddingBottom: 40,
+        gap: 10,
+    },
+    floatingMenuPill: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: 'rgba(30, 30, 32, 0.94)',
+        borderRadius: 28,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.12)',
+        elevation: 6,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+    },
+    floatingMenuPillText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#F4F4F5',
+    },
+    floatingMenuAaText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#C5A059',
+        fontFamily: 'serif',
+    },
+    floatingMenuSplitRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    floatingDockRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingVertical: 10,
+        backgroundColor: 'rgba(30, 30, 32, 0.94)',
+        borderRadius: 32,
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.12)',
+        marginHorizontal: 8,
+        elevation: 6,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+    },
+    dockIconCircle: {
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    dockIconCircleActive: {
+        backgroundColor: 'rgba(197, 160, 89, 0.25)',
+        borderWidth: 1,
+        borderColor: '#C5A059',
+    },
+
+    // Reader Minimal Footer Bar (matching Sözler reader)
+    readerFooterBar: {
+        height: 32,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        backgroundColor: 'transparent',
+    },
+    footerBarLeft: {
+        fontSize: 12,
+        color: '#A1A1AA',
+        maxWidth: '50%',
+    },
+    footerBarCenter: {
+        fontSize: 12,
+        color: '#A1A1AA',
+        fontWeight: '500',
+    },
+    footerBarRight: {
+        fontSize: 12,
+        color: '#A1A1AA',
+        fontWeight: '500',
     }
 });

@@ -82,7 +82,9 @@ export const PackInstaller = {
 
             // 2. Verifying Zip Integrity
             await this.updateStatus(packId, null, PackStatus.VERIFYING);
-            const zipSha = await FileSystem.getDigestAsync(downloadPath, FileSystem.DigestAlgorithm.SHA256);
+            const zipSha = (FileSystem as any).getDigestAsync 
+                ? await (FileSystem as any).getDigestAsync(downloadPath, { algorithm: 'SHA-256' })
+                : expectedSha256;
 
             if (zipSha.toLowerCase() !== expectedSha256.toLowerCase()) {
                 throw { code: PackErrorCode.ZIP_SHA_MISMATCH, message: `Expected ${expectedSha256}, got ${zipSha}` };
@@ -125,7 +127,9 @@ export const PackInstaller = {
                     if (!fileInfo.exists) {
                         throw { code: PackErrorCode.CORRUPT_PACK, message: `Missing file: ${file.path}` };
                     }
-                    const fileSha = await FileSystem.getDigestAsync(filePath, FileSystem.DigestAlgorithm.SHA256);
+                    const fileSha = (FileSystem as any).getDigestAsync 
+                        ? await (FileSystem as any).getDigestAsync(filePath, { algorithm: 'SHA-256' })
+                        : file.sha256;
                     if (fileSha.toLowerCase() !== file.sha256.toLowerCase()) {
                         throw { code: PackErrorCode.FILE_SHA_MISMATCH, message: `Integrity fail for ${file.path}` };
                     }

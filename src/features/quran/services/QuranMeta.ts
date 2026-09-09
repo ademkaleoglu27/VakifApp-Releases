@@ -142,5 +142,10 @@ export const QuranMeta = {
             }
         }
         return foundSurah.name + " Suresi";
+    },
+
+    getSurahName(surahNumber: number): string {
+        const found = SURAH_START_PAGES.find(s => s.n === surahNumber);
+        return found ? `${found.name} Sûresi` : `${surahNumber}. Sûre`;
     }
 };

@@ -12,10 +12,11 @@ interface PremiumHeaderProps {
     iconName?: keyof typeof Ionicons.glyphMap;
     actionIcon?: keyof typeof Ionicons.glyphMap;
     onAction?: () => void;
+    rightElement?: React.ReactNode;
     children?: React.ReactNode;
 }
 
-export const PremiumHeader = ({ title, subtitle, backButton = false, onBackPress, iconName = "arrow-back", actionIcon, onAction, children }: PremiumHeaderProps) => {
+export const PremiumHeader = ({ title, subtitle, backButton = false, onBackPress, iconName = "arrow-back", actionIcon, onAction, rightElement, children }: PremiumHeaderProps) => {
     const navigation = useNavigation();
 
     return (
@@ -34,11 +35,13 @@ export const PremiumHeader = ({ title, subtitle, backButton = false, onBackPress
                     </View>
                 </View>
 
-                {actionIcon && (
+                {rightElement ? (
+                    rightElement
+                ) : actionIcon ? (
                     <TouchableOpacity onPress={onAction} style={styles.iconButton}>
                         <Ionicons name={actionIcon} size={24} color="#fff" />
                     </TouchableOpacity>
-                )}
+                ) : null}
             </View>
 
             {/* Extended Content (e.g., Date Picker) */}

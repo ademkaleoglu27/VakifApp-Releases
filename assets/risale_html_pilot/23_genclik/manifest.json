@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.genclik@diyanet.tr",
+  "title": "Gençlik Rehberi",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-23_genclik",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 137,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.genclik@diyanet.tr:html_01",
+      "index": 1,
+      "file": "23_01.html",
+      "title": "00 09 GENÇLİK REHBERİ",
+      "startPage": 1,
+      "pageCount": 137
+    }
+  ]
+}

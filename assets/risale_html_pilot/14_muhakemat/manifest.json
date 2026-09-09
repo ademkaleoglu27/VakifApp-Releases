@@ -1,0 +1,69 @@
+{
+  "bookId": "risale.muhakemat@diyanet.tr",
+  "title": "Muhakemat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-14_muhakemat",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 145,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_01",
+      "index": 1,
+      "file": "14_01.html",
+      "title": "00 00 MUHAKEMAT",
+      "startPage": 1,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_02",
+      "index": 2,
+      "file": "14_02.html",
+      "title": "01 00 Mukaddeme",
+      "startPage": 2,
+      "pageCount": 5
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_03",
+      "index": 3,
+      "file": "14_03.html",
+      "title": "02 01 Birinci Makale",
+      "startPage": 7,
+      "pageCount": 64
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_04",
+      "index": 4,
+      "file": "14_04.html",
+      "title": "03 02 İkinci Makale",
+      "startPage": 71,
+      "pageCount": 24
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_05",
+      "index": 5,
+      "file": "14_05.html",
+      "title": "04 03 Üçüncü Makale",
+      "startPage": 95,
+      "pageCount": 47
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_06",
+      "index": 6,
+      "file": "14_06.html",
+      "title": "05 04 Fihrist (Muhakemat)",
+      "startPage": 142,
+      "pageCount": 2
+    },
+    {
+      "sectionId": "risale.muhakemat@diyanet.tr:html_07",
+      "index": 7,
+      "file": "14_07.html",
+      "title": "06 05 Takriz",
+      "startPage": 144,
+      "pageCount": 2
+    }
+  ]
+}

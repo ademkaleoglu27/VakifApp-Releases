@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator, Dimensions, Text } from 'react-native';
 import { Image } from 'expo-image';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, withSpring, runOnJS, SharedValue, useDerivedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withSpring, runOnJS, SharedValue, useDerivedValue, useSharedValue } from 'react-native-reanimated';
 import { calculateClamp } from '../utils/zoomMath';
 import { QuranPackService } from '../services/QuranPackService';
 import * as FileSystem from 'expo-file-system';
@@ -43,13 +43,17 @@ export const ZoomablePage = React.memo(({ pageNumber, width, height, scale, tx, 
         return () => { isMounted = false; };
     }, [pageNumber]);
 
+    const savedScale = useSharedValue(1);
+    const savedTx = useSharedValue(0);
+    const savedTy = useSharedValue(0);
+
     const gestures = React.useMemo(() => Gesture.Simultaneous(
         Gesture.Pinch()
-            .onStart((_e, ctx: any) => {
-                ctx.startScale = scale.value;
+            .onStart(() => {
+                savedScale.value = scale.value;
             })
-            .onUpdate((e, ctx: any) => {
-                scale.value = Math.max(1, Math.min(ctx.startScale * e.scale, 3));
+            .onUpdate((e) => {
+                scale.value = Math.max(1, Math.min(savedScale.value * e.scale, 3));
             })
             .onEnd(() => {
                 if (scale.value < 1.05) {
@@ -61,14 +65,14 @@ export const ZoomablePage = React.memo(({ pageNumber, width, height, scale, tx, 
         Gesture.Pan()
             .minPointers(1)
             .averageTouches(true)
-            .onStart((_e, ctx: any) => {
-                ctx.startTx = tx.value;
-                ctx.startTy = ty.value;
+            .onStart(() => {
+                savedTx.value = tx.value;
+                savedTy.value = ty.value;
             })
-            .onUpdate((e, ctx: any) => {
+            .onUpdate((e) => {
                 if (scale.value > 1.01) {
-                    tx.value = ctx.startTx + e.translationX;
-                    ty.value = ctx.startTy + e.translationY;
+                    tx.value = savedTx.value + e.translationX;
+                    ty.value = savedTy.value + e.translationY;
                 }
             })
             .onEnd((e) => {

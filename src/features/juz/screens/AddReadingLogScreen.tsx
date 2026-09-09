@@ -38,7 +38,7 @@ export const AddReadingLogScreen = () => {
             );
 
             if (myStats) {
-                setTodayReading(myStats.total_pages || myStats.totalPages || 0);
+                setTodayReading(myStats.total_pages || (myStats as any).totalPages || 0);
             }
         } catch (error) {
             console.error('Failed to load today reading:', error);

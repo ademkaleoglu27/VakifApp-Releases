@@ -157,6 +157,10 @@ export type RootStackParamList = {
     QuranTextReaderScreen: { surahId: number };
     EducationHome: undefined;
     ElifBa: { lessonId?: number } | undefined;
+    PrayerTimesScreen: undefined;
+    QiblaCompassScreen: undefined;
+    PrayerSettingsScreen: undefined;
+    ZikirmatikScreen: undefined;
 };
 
 export type MainTabParamList = {

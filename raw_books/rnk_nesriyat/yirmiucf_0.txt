@@ -1,0 +1,26 @@
+Yirmiüçüncü Söz|5
+	Birinci Mebhas|5
+		Birinci Nokta|6
+		İkinci Nokta|8
+		Üçüncü Nokta|12
+		Dördüncü Nokta|15
+		Beşinci Nokta|18
+	İkinci Mebhas|24
+		Birinci Nükte|24
+		İkinci Nükte|29
+		Üçüncü Nükte|34
+		Dördüncü Nükte|43
+		Beşinci Nükte|47
+	Yirminci Mektub|53
+		BİRİNCİ KELİME|56
+		İKİNCİ KELİME|57
+		ÜÇÜNCÜ KELİME|57
+		DÖRDÜNCÜ KELİME|59
+		BEŞİNCİ KELİME|60
+		ALTINCI KELİME|61
+		YEDİNCİ KELİME|62
+		SEKİZİNCİ KELİME|62
+		DOKUZUNCU KELİME|63
+		ONUNCU KELİME|65
+		ONBİRİNCİ KELİME|67
+	Konferanstan bir parça|69

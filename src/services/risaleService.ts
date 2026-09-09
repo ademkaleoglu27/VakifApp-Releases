@@ -1,11 +1,11 @@
 import { ReadingLog, RisaleWork, WeeklyReadingStats } from '@/types/risale';
 
 const MOCK_WORKS: RisaleWork[] = [
-    { id: '1', title: 'Sözler', category: 'Külliyat' },
-    { id: '2', title: 'Mektubat', category: 'Külliyat' },
-    { id: '3', title: 'Lemalar', category: 'Külliyat' },
-    { id: '4', title: 'Şualar', category: 'Külliyat' },
-    { id: '5', title: 'Tarihçe-i Hayat', category: 'Külliyat' },
+    { id: '1', title: 'Sözler', category: 'Külliyat', order_no: 1 },
+    { id: '2', title: 'Mektubat', category: 'Külliyat', order_no: 2 },
+    { id: '3', title: 'Lemalar', category: 'Külliyat', order_no: 3 },
+    { id: '4', title: 'Şualar', category: 'Külliyat', order_no: 4 },
+    { id: '5', title: 'Tarihçe-i Hayat', category: 'Külliyat', order_no: 5 },
 ];
 
 let MOCK_LOGS: ReadingLog[] = [

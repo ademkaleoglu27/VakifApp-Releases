@@ -16,6 +16,7 @@ import { Asset } from 'expo-asset';
 import { ContentPackService, ContentPackErrorCode } from './ContentPackService';
 import { CONTENT_PACK_CONFIG, ContentPackConfig } from '@/config/booksRegistry';
 import { canonicalizeBookId } from './bookId';
+import { HTML_BOOKS } from '@/features/reader/html/htmlManifest.generated';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // TYPES
@@ -58,7 +59,21 @@ export const ContentPackResolver = {
      */
     getConfig(bookId: string): ContentPackConfig | null {
         const cid = canonicalizeBookId(bookId);
-        return CONTENT_PACK_CONFIG[cid] || null;
+        if (CONTENT_PACK_CONFIG[cid]) return CONTENT_PACK_CONFIG[cid];
+        if (CONTENT_PACK_CONFIG[bookId]) return CONTENT_PACK_CONFIG[bookId];
+
+        // Dynamic fallback from HTML_BOOKS manifest (guarantees bundled HTML books never fail)
+        const htmlBook = HTML_BOOKS[bookId] || HTML_BOOKS[cid];
+        if (htmlBook && htmlBook.chapters.length > 0) {
+            const firstChap = htmlBook.chapters[0];
+            const lastSlash = firstChap.assetPath.lastIndexOf('/');
+            const folder = lastSlash > 0 ? firstChap.assetPath.substring(0, lastSlash) : firstChap.assetPath;
+            return {
+                contentMode: 'bundled',
+                bundledAssetPath: folder
+            };
+        }
+        return null;
     },
 
     /**

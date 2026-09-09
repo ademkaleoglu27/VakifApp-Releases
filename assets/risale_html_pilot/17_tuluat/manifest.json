@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.tuluat@diyanet.tr",
+  "title": "Tulûat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-17_tuluat",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 13,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.tuluat@diyanet.tr:html_01",
+      "index": 1,
+      "file": "17_01.html",
+      "title": "00 03 TULÛAT",
+      "startPage": 1,
+      "pageCount": 13
+    }
+  ]
+}

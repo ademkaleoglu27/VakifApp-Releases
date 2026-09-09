@@ -1,0 +1,20 @@
+İHLAS RİSALELERİ|5
+	Yirminci Lem'a|5
+		BİRİNCİSİ|7
+		İKİNCİ SEBEB|9
+		ÜÇÜNCÜ SEBEB|12
+		DÖRDÜNCÜ SEBEB|15
+		BEŞİNCİ SEBEB|17
+		ALTINCI SEBEB|20
+		YEDİNCİ SEBEB|22
+	Yirmibirinci Lem'a|29
+		BİRİNCİ DÜSTURUNUZ|31
+		İKİNCİ DÜSTURUNUZ|32
+		ÜÇÜNCÜ DÜSTURUNUZ|34
+		DÖRDÜNCÜ DÜSTURUNUZ|36
+		Birinci Misal|41
+		İkinci Misal|42
+	Konuşan yalnız hakikattır|46
+	Zindan-ı atalete düştüğümüzün sebebi nedir|50
+	Nefis daima kötü şeylere sevkeder@#57|55
+	Gönüller Fâtihi Büyük Üstad'a|57

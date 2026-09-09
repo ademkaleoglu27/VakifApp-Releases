@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+<title>Nur Aleminin Bir Anahtarı</title>
+<style>
+ :root {
+ --bg: #f5eedc;
+ --text: #2a2421;
+ --heading: #8b0000;
+ --arabic: #8b0000;
+ --base-size: 19px;
+ --line-height: 1.68;
+ --font-family: 'Barla', "Crimson Pro", "Times New Roman", serif;
+ }
+ html, body {
+ margin: 0;
+ padding: 0;
+ background: var(--bg);
+ color: var(--text);
+ box-sizing: border-box;
+ -webkit-text-size-adjust: 100%;
+ }
+ body {
+ font-family: var(--font-family);
+ font-size: var(--base-size);
+ line-height: var(--line-height);
+ padding: 24px 20px 120px;
+ text-align: justify;
+ text-justify: inter-word;
+ -webkit-hyphens: auto;
+ hyphens: auto;
+ -webkit-user-select: text;
+ user-select: text;
+ }
+ h1, h2, h3, .heading-1, .heading-2, .heading-3 {
+ font-family: var(--font-family);
+ color: var(--heading);
+ text-align: center;
+ margin: 28px 0 16px;
+ font-weight: bold;
+ letter-spacing: 0.5px;
+ }
+ .heading-2 { font-size: 1.35em; }
+ .heading-3 { font-size: 1.15em; }
+ .subtitle {
+ text-align: center;
+ font-style: italic;
+ color: #665c54;
+ margin: -8px 0 16px;
+ font-size: 0.95em;
+ }
+ .paragraph, p {
+ margin: 0 0 14px;
+ text-indent: 18px;
+ overflow-wrap: break-word;
+ }
+ .arabic-block {
+ font-family: 'ScheherazadeNew', "Noto Naskh Arabic", serif;
+ color: var(--arabic);
+ text-align: center !important;
+ font-size: 1.35em;
+ line-height: 2.0;
+ padding: 10px 0;
+ margin: 16px 0;
+ display: block;
+ direction: rtl;
+ text-indent: 0 !important;
+ cursor: pointer;
+ }
+ .arabic-block:active {
+ background-color: rgba(139, 0, 0, 0.08);
+ border-radius: 6px;
+ }
+ .page-marker-wrap {
+ position: -webkit-sticky;
+ position: sticky;
+ top: 10px;
+ z-index: 100;
+ display: flex;
+ justify-content: flex-end;
+ pointer-events: none;
+ margin-top: -12px;
+ margin-bottom: 8px;
+ }
+ .page-marker {
+ opacity: 0.88;
+ font-size: 12px;
+ font-weight: 700;
+ letter-spacing: 0.8px;
+ padding: 3px 8px;
+ border-radius: 8px;
+ background: rgba(0,0,0,0.06);
+ color: rgba(0,0,0,0.7);
+ font-family: sans-serif;
+ backdrop-filter: blur(2px);
+ }
+
+  /* Printed Sözler In-Page Divider Standard */
+  .page-marker-wrap {
+    display: block !important;
+    position: static !important;
+    margin: 28px 0 14px 0 !important;
+    border-top: 1.5px solid #8b0000 !important;
+    text-align: right !important;
+    padding-top: 2px !important;
+    pointer-events: none !important;
+  }
+  .page-marker {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #8b0000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+  }
+  strong, b {
+    font-weight: bold !important;
+    color: #111111 !important;
+  }
+
+</style>
+<script>
+(function() {
+ function send(type, payload) {
+ if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+ window.ReactNativeWebView.postMessage(JSON.stringify(Object.assign({ type: type }, payload || {})));
+ }
+ }
+ document.addEventListener('click', function(e) {
+ var arabic = e.target.closest('.arabic-block');
+ if (arabic) {
+ e.preventDefault();
+ var text = arabic.innerText;
+ var mealId = arabic.getAttribute('data-meal-id');
+ send('AYET_CLICK', { text: text, mealId: mealId });
+ }
+ });
+})();
+</script>
+</head>
+<body>
+<div class="page-marker-wrap"><span class="page-marker">5</span></div>
+<div class="arabic-block" data-meal-id="127" dir="rtl">بِاسْمِهِ سُبْحَانَهُ وَاِنْ مِنْ شَيْءٍ اِلاَّ يُسَبِّحُ بِحَمْدِه۪</div>
+<div class="arabic-block" data-meal-id="2896" dir="rtl">اَلسَّلاَمُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ اَبَدًا دَٓائِمًا</div>
+<p class="paragraph"><strong>Aziz, Sıddık, Mübarek Kardeşlerim!</strong> Evvelâ: Medresetü'z-Zehra erkânlarının arzularıyla verilen bir dersin bir hülâsasını sizlere de söylemeği münâsip gördük. O dersin mevzuu da umûm kâinât mevcûdâtı hesabına Mi'râc Gecesinde, Fahr-i Kâinât ve netice-i hilkat-ı âlem Peygamber Aleyhissalâtü Vesselâm, huzûr-u İlâhîde nev'-i beşerin, belki umûm zîhayât, belki umûm mahlûkât namına selâm yerinde;</p>
+<div class="arabic-block" data-meal-id="1775" dir="rtl">اَلتَّحِيَّاتُ اَلْمُبَارَكَاتُ اَلصَّلَوَاتُ اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">demesi; ve içinde bir küllî mânâ bulunduğundan bütün ümmet her gün çok defa namazlarında zikretmesi ile ve ehl-i îmân içinde, herbir mertebe sahibinin bir hissesi içinde bulunduğu; ve bundan evvel "Hüve Nüktesi'nin Hâşiyesi"nde, radyo vasıtasıyla hava unsurunun hârika mu'cizât-ı kudreti göstermesi cihetinde kalbe ihtar edildi ki:</p>
+<div class="page-marker-wrap"><span class="page-marker">6</span></div>
+<p class="paragraph">Bir ehl-i îmân, ebedî bir saâdette, dünya kadar bir mülk-ü bâkîyi netice verecek bu kısacık ömr-ü dünyevîde ettiği ibâdette bir küllî ibâdet âdeta kendi husûsî dünyasıyla beraber ibâdet etmiş gibi kendi husûsî dünyası kadar bir mükâfât alacağı işârât-ı Kur'âniyeden anlaşılır diye; Hüccetü'z-Zehra'nın İkinci Makamında İlm-i İlahî mebhasinde</p>
+<div class="arabic-block" data-meal-id="3324" dir="rtl">اَلتَّحِيَّاتُ اَلْمُبَارَكَاتُ</div>
+<p class="paragraph">ilâ âhirenin küllî mânâları ruhuma gelip, öylece teşehhüdde</p>
+<div class="arabic-block" data-meal-id="1777" dir="rtl">اَلتَّحِيَّاتُ</div>
+<p class="paragraph">derken, birden hayâlime husûsî dünyamın dört unsuru olan "toprak, su, hava, nur" unsurları dört küllî dil oldular. Herbir dil, milyarlar hattâ trilyonlar, katrilyonlar adedince</p>
+<div class="arabic-block" data-meal-id="1775" dir="rtl">اَلتَّحِيَّاتُ اَلْمُبَارَكَاتُ اَلصَّلَوَاتُ اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">kelimelerini lisân-ı hâl ile söylüyorlar, hayâlen gördüm. Bu unsurlardan "toprak" unsuru bir dil olarak bütün zîhayâtların herbiri bir kelime-i zîhayât olup</p>
+<div class="arabic-block" data-meal-id="1777" dir="rtl">اَلتَّحِيَّاتُ</div>
+<p class="paragraph">derler. Çünkü herbir avuç toprak ekser nebâtâta saksılık edebilir ve menşe olabilir bir vaziyettedir. O halde herbir</p>
+<div class="page-marker-wrap"><span class="page-marker">7</span></div>
+<p class="paragraph">avuç toprakta, ya bütün beşerin meydana getirdikleri bütün fabrikaların adedince mânevî küçücük mikyasta fabrikalar –herbir avuç toprakta– bulunacak. Bu ise hadsiz derecede imkânsız... Veyahut bir Kadîr-i Mutlak'ın hadsiz kudreti, nihâyetsiz ilmi ve irâdesiyle olacak. Demek toprak unsuru, bütün eczâsı ile ve zerrâtı ile bu mazhariyet için hadsiz</p>
+<div class="arabic-block" data-meal-id="1776" dir="rtl">اَلتَّحِيَّاتُ لِلّٰهِ</div>
+<p class="paragraph">der. Yâni:<strong>Ezelden ebede kadar bütün zîhayatların hayât hediyeleri Zât-ı</strong> <strong>Vâcibü'l-Vücûd'a hastır.</strong> Sonra herkesin husûsî dünyasındaki gibi, benim de husûsî dünyamın ikinci unsuru olan "su" unsuru dahî, küllî bir lisan olarak bütün zerrâtı ile, husûsan zîhayatların menşe'lerine ve yaşamalarına hizmetleri noktalarında, trilyonlar, katrilyonlar adedince</p>
+<div class="arabic-block" data-meal-id="1778" dir="rtl">اَلْمُبَارَكَاتُ</div>
+<p class="paragraph">kelime-i mübârekesini lisan-ı hâl ile kâinatta neşrediyor. Çünkü suyun katrelerinin gördüğü vazifeler, husûsan nutfelerin ve çekirdeklerin ve tohumların intibâhında ve uyanıp vazife-i fıtrîyelerine mazhar olmakta ve gâyet acîb ve güzel ve hârika o küçücük mahlûkların ve</p>
+<div class="page-marker-wrap"><span class="page-marker">8</span></div>
+<p class="paragraph">yavruların büyük ve gâyet intizamlı ve mükemmel vazifelere mazhariyetlerini bütün zîşuûra tebrik ile "Bârekallâh" dediren ve hadsiz "Bârekallâh, Mâşâallah" dedirmeye vesile olmaya lâyık olan o mübâreklerin o vaziyetleri, o su unsurunun herbir zerresinin binler Eflâtun kadar ilmi ve binler Hakîm-i Lokman kadar hikmeti ve irâdesi bulunmak lâzımdır. Bu ise, suyun zerrâtı adedince muhâldir. Öyle ise bir Kadîr-i Zülcelâl'in ve bir Rahmân-ı Rahîm'in hadsiz kudret ve rahmet ve hikmet ve irâdesiyle o mübâreklerin, o hadsiz mu'cizâta mazhariyetleri cihetinde bütün o mübârekler adedince</p>
+<div class="arabic-block" data-meal-id="3325" dir="rtl">اَلْمُبَارَكَاتُ لِلّٰهِ</div>
+<p class="paragraph">kelimesini külliyetiyle söylediklerinden, bütün mahlûkât namına, Mi'râc Gecesinde, netice-i hilkat-ı âlem olan Peygamberimiz Aleyhissalâtü Vesselâm:</p>
+<div class="arabic-block" data-meal-id="3325" dir="rtl">اَلْمُبَارَكَاتُ لِلّٰهِ</div>
+<p class="paragraph">demiş. Yâni: Bütün bu medâr-ı tebrik ve mâşâallah ve bârekallâh dediren bütün hâletler ve sanatlar Zât-ı Zülcelâlin kudretine mahsus olduğundan, bütün o hadsiz</p>
+<div class="arabic-block" data-meal-id="3325" dir="rtl">اَلْمُبَارَكَاتُ لِلّٰهِ</div>
+<p class="paragraph">leri Cenâb-ı Hakk'a, huzuru ile hediye ediyor.</p>
+<div class="page-marker-wrap"><span class="page-marker">9</span></div>
+<p class="paragraph">Sonra, herkesin husûsî dünyasındaki "hava" unsuru dahî bir hüve kadar, herbir avuç havadaki herbir zerre, mazhar oldukları santrallık, âhize ve nâkilelik vazifeleri içinde bütün duaları ve salâvâtları ve ricaları ve ibâdetleri ifade eden</p>
+<div class="arabic-block" data-meal-id="3326" dir="rtl">اَلصَّلَوَاتُ لِلّٰهِ</div>
+<p class="paragraph">cümlesini lisan-ı halleriyle dedikleri için; hava unsuru küllî bir lisan olarak o hadsiz kelimatlarını katrilyonlar belki kentrilyonlar adedince söyleyerek Sâni'lerine, Hâlık'larına takdim ettiklerinden onların namlarına o küllî mânâ ile Resûl-i Ekrem Aleyhissalâtü Vesselâm Cenâb-ı Hakk'a,</p>
+<div class="arabic-block" data-meal-id="3326" dir="rtl">اَلصَّلَوَاتُ لِلّٰهِ</div>
+<p class="paragraph">diye takdim etmiştir. Yâni:<strong>"Bütün dualar ve ihtiyaçtan gelen ricalar ve nîmetten çıkan şükürler ve ibâdetler ve namazlar, Hàlık-ı Külli Şey'e mahsustur."</strong> Çünkü "Hüve Nüktesinin Hâşiyesi"nde denildiği gibi: Ya, hüve kadar bir avuç havanın herbir zerresi, umûm dilleri bilecek ve söyleyenlerin yerlerini görecek ve yakın uzak herşeyi işitecek ve her şiveyi ve her harfin tarzını tam bilecek ve çok işleri beraber, şaşırmadan görecek bir kudret-i mutlaka ve irâde-i tâmmeye mâlik olacak. Bu ise hava</p>
+<div class="page-marker-wrap"><span class="page-marker">10</span></div>
+<p class="paragraph">zerreleri adedince muhâl olmasından, elbette ve elbette şüphesiz ve kat'î bir zaruretle o zerrelerin herbiri, Sâni'-i Hakîm'i bütün sıfâtıyla gösterip şehâdet eder. Âdeta küçük bir mikyasta âlemin büyük şehâdeti kadar şehâdetleri vardır. Demek zerrât-ı havaiye adedince salâvatları ifade eden –Mi'rac-ı Ahmedî'de Aleyhissalâtü Vesselâm–</p>
+<div class="arabic-block" data-meal-id="3326" dir="rtl">اَلصَّلَوَاتُ لِلّٰهِ</div>
+<p class="paragraph">denilmiştir. Sonra</p>
+<div class="arabic-block" data-meal-id="1780" dir="rtl">اَلطَّيِّبَاتُ</div>
+<p class="paragraph">kelime-i tayyibe söylendiği vakit, birden "nâr" ile "nur" unsuru yâni, harâretli ve harâretsiz maddî ve mânevî nur unsuru bir küllî dil olarak hadsiz ve nihâyetsiz bir sûrette lisan-ı hâl ile hadsiz diller ile</p>
+<div class="arabic-block" data-meal-id="2026" dir="rtl">اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">diyor. Yâni:<strong>"Bütün güzel sözler, güzel mânâlar, hârika güzel cemâller ve bütün kâinatın yüzünde cemâlleri görünen ezelî esmâ-i hüsnânın cilveleri.. ve başta enbiyalar, evliyâlar, asfiyâlar olarak bütün ehl-i îmânın îmânları ile kâinatın ve mahlûkâtın görünen güzellikleri.. ve ehl-i îmânın îmânlarından neş'et eden güzel sözler, hamdler, şükürler, tevhidler, tehliller, tesbihler, tekbirler</strong> </p>
+<div class="page-marker-wrap"><span class="page-marker">11</span></div>
+<div class="arabic-block" data-meal-id="3297" dir="rtl">اِلَيْهِ يَصْعَدُ الْكَلِمُ الطَّيِّبُ</div>
+<p class="paragraph"><strong>sırrı ile arş-ı âzam tarafına giden o kelimât-ı tayyibeleri.. ve dünyanın üç adet yüzünden gâyet güzel olan esmâ-i İlâhiye'ye âyinelik eden birinci yüzündeki hadsiz güzellikler, tayyibeler; ve dünyanın âhiret tarlası olan ikinci yüzündeki hadsiz hasenatlar, hayırlar ve mânevî meyveler ve güzellikler, tamamıyla ezel-ebed sultanı Kadîr-i Zülcelâl'e mahsustur."</strong> diye, nâr ve nur unsurunun bu küllî dili ile bu küllî ubûdiyeti, Ma'bûd-u Zülcelâl'e takdim etmek mânâsında olarak, Fahr-i Kâinât Aleyhissalâtü Vesselâm, umûm mahlûkât hesabına</p>
+<div class="arabic-block" data-meal-id="2026" dir="rtl">اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">demiş. Çünkü maddî ve mânevî nur unsuru, mazhar oldukları vazifelerinin umûmu hem beraber, hem ayrı ayrı Zât-ı Vâcibü'l-Vücud'a işaret ve şehâdet ettikleri milyarlar nümûneleri var. Evet nur ve nâr unsuru toprak, hava ve mâ unsurları gibi gâyet kat'î ve bedihî ve zarurî bir surette o nümûnelerle gösteriyor ki: Bütün esbab yalnız bir perdedir. Bütün icadlar ve te'sirler, Zât-ı Kadîr-i Zülcelâl'indir. Çünkü, nur, aynen vücud ve hayât gibi,</p>
+<div class="page-marker-wrap"><span class="page-marker">12</span></div>
+<p class="paragraph">kudret-i İlâhiye'nin perdesiz bizzât mübaşeretine lâyık olmasından, esbab-ı zâhirî hiçbir cihette perde olamadığından, vâhidiyet içinde ehadiyeti gösterir. Gâyet cüz'î ve küçük bir vazifede, küllî ve geniş bir delil-i ehadiyete işaret eder ki "Hüve Nüktesi" hâşiyeleriyle bunu gâyet kısaca isbât ediyor. İşte milyarlar nümûnelerinden iki küçük nümûnesinden: <strong>Birisi:</strong> Mânevî nurun –ilim suretinde– beşerin kafasında cilvesinin bir cüz'îsi, tırnak kadar kuvve-i hâfızaya mâlik bir adamın kafasında, doksan kitabın kelimatı yazılmış. Ve üç ayda, her günde üç saât meşgul olarak, hâfızasının sahifesinin yalnız o kısmını ancak tamam edebilmiş. Aynı adam, seksen sene ömründe gördüğü ve işittiği ve merakını tahrik eden ve ona hoş gelen mânâları ve kelimeleri ve suretleri ve savtları o tırnak kadar kuvve-i hâfızanın sahifesinde istediği vakitte müracaât edip bir büyük kütüphâne kadar bütün mahfuzatının aynı şeylerini orada bütün istediklerini mevcut ve muntazam yazılmış ve dizilmiş görüyor. İşte bu tırnak kadar kuvve-i hâfızanın, bahr-ı umman gibi bir vüs'ati ve güneş gibi bir ihâtalı nuru ve bir ziyâ-i mânevîsi ve zemin yüzü</p>
+<div class="page-marker-wrap"><span class="page-marker">13</span></div>
+<p class="paragraph">kadar geniş sahifeleri olmazsa bu hâl olamaz. Bu ise yüzbinler derece muhâl muhâl içinde ve imkânsız olduğundan; elbette ve elbette bu küçücük tırnak kadar hâfıza, Levh-i Mahfuz, bir sahife-i kader ve kudreti olan Alîm-i Mutlak'ın, ilim ve hikmet ve kudreti ile, o Levh-i Mahfuz'un bir nümûnesini beşerin kafasında halk eylemesine kudsî bir şehâdet eder. <strong>İkinci Cüz'î ve Küçücük Bir Nümûnesi:</strong> "Elektrik"tir. Bir adam, elektrik lâmbasının acib vaziyetini tetkik etmiş. Bakıyor ki, yüzer düğmelerdeki ve merkezlerdeki ve demir ve ip tellerindeki zerreler ve maddeler câmid, şuursuz, hareketsiz oldukları halde.. yalnız gâyet cüz'î bir temas neticesinde, on kilometre yeri dolduran karanlık derhal gider ve yerini yarım saniyede dolduran bir nur vücuda gelir. Bu gözle görünen karanlığın birden kaybolması ve yine gözle görünen o zulmet kadar nurun vücuda gelmesi elbette bir hayâl değil, ya o temas eden câmid, şuursuz zerreler, hadsiz bir kuvveti ve bir nuru kendilerinde taşımakla beraber; birden yüz kilometre yerlere elini uzatıp, karanlığı süpürüp, temizleyip nurları dolduracak. Bu ise, bütün şeytanlar ve dinsizler, maddiyyunlar toplansalar; bunu bir sofestaîye de kabul ettiremezler.</p>
+<div class="page-marker-wrap"><span class="page-marker">14</span></div>
+<p class="paragraph">{(Hâşiye): Yalnız aldatmak için bâzı derin ve ehemmiyetli hakîkatlara bir isim takıp, güya o hakikat anlaşılmış gibi âdileştiriyorlar. Meselâ: Bu elektrik kuvveti imiş deyip, o ince ve derin hakîkatı ehemmiyetsiz yapıp âdi gösteriyorlar. Halbuki, kudretin o mu'cizesinin hikmetleri iki sahife ile ancak ifade edildiği halde; bir tek isim takmakla, o hakîkatı ve o küllî hikmeti gizleyip, gâyet küçük ve basit bir perdesini yerine ikame ederek; o mu'cizeli eseri, kör kuvvete ve serseri tesâdüfe ve mevhum tabiata isnad edip, Ebu Cehilden daha echel bir dereceye düşüyorlar. İşte, irâde-i İlâhiye'nin namuslarının ünvanları olan Âdetullah kanunlarının birisine beşer, aczinden mâhiyetini bilemediği o kanunun mâhiyetine elektrik namını verip, tenvirdeki hârika mu'cize-i kudreti âdileştirmekle ve malûm birşey imiş gibi elektrik kuvveti diye bir isim takmakla, bunun gibi çok hârikulâde mu'cizât-ı kudret-i İlâhiye'yi câhilâne âdileştiriyorlar.} Veyahut bütün kâinata hükmü geçen ve bütün nurlar, onun "Nur" isminden feyiz alan ve "Nure'n-Nur ve Hâlıka'n-Nur ve Müdebbire'n-Nur" olan Kadîr-i Zülcelâl'in ve Allâmü'l-Guyûb'un ve Alîm-i Mutlak'ın kudreti ile ve hikmeti ile olacak. İşte bu iki nümûneye kıyasen hadsiz nümûneler var. İşte</p>
+<div class="arabic-block" data-meal-id="2026" dir="rtl">اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">bütün kâinattaki nurları, güzellikleri, tayyibeleri ve kelimât-ı tayyibeleri ve hayırları ve kemâlâtları Zât-ı Zülcelâl'e</p>
+<div class="page-marker-wrap"><span class="page-marker">15</span></div>
+<p class="paragraph">nur unsuru diliyle kâinât takdim ettiği gibi, netice-i hilkat-ı kâinât ve sebeb-i hilkat-ı âlem olan Muhammed Aleyhissalâtü Vesselâm dahî –namlarına– meb'us olduğu kâinattaki bütün mevcudât hesabına, Mi'râc Gecesinde o küllî mânâ ile</p>
+<div class="arabic-block" data-meal-id="2026" dir="rtl">اَلطَّيِّبَاتُ لِلّٰهِ</div>
+<p class="paragraph">demiş. Resul-i Ekrem (Aleyhissalâtü Vesselâm biadedi zerrâti'l-enâm) bu dört kelimât-ı cemileyi selâm yerinde söyledikten sonra, –Risale-i Nur'da izah edildiği gibi– Cenâb-ı Hak</p>
+<div class="arabic-block" data-meal-id="1998" dir="rtl">اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِىُّ</div>
+<p class="paragraph">demesiyle, bütün ümmeti öyle diyeceklerine işaret ve manevî emr ü ferman ve kabul hükmünde mukabele etmiş. Birden Peygamber</p>
+<div class="arabic-block" data-meal-id="3327" dir="rtl">اَلسَّلاَمُ عَلَيْنَا وَ عَلٰى عِبَادِ اللّٰهِ الصَّالِح۪ينَ</div>
+<p class="paragraph">demekle, o kudsî selâmı hem kendine, hem ümmetine, hem bütün kendinden evvelki emsâllerine tâmim edip, küllî ve umûmî bir selâm suretinde gösterip; bütün mahlûkâtın meb'usu olması noktasında onlara da o selâmı teşmil etmiş. Ümmeti ise, her namazda</p>
+<div class="arabic-block" dir="rtl">اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِ4nü</div>
+<div class="page-marker-wrap"><span class="page-marker">16</span></div>
+<p class="paragraph">demeleri, o selâm-ı İlâhîdeki emir ve fermâna bir imtisaldir. Hem, ona karşı biât etmektir... Ve her gün biatını yâni memuriyetini kabul ve getirdiği fermânlara itaatlerini tecdit ve tazelemektir. Hem, risaletini bir tebriktir. Hem, umûm âlem-i İslâm her gün bu kelime ile onun getirdiği saâdet-i ebediye müjdesine karşı bir teşekkürdür. Evet her insan, kendi vücudunun mahvolması ile müteellim olduğu gibi; hânesinin harab olması ile de elem çekiyor. Ve vatanının bozulması ile gâyet müteessir oluyor. Ahbabının firak ve vefatıyla derinden derine kalbi acıyor. Dünya kadar büyük, has ve husûsî dünyasının zevâl ve firak ve âhirde tamamen mahvolmasını düşünmesi, mânevî bir cehennem gibi ruhunu ve vicdanını yandırıyor. İşte, aklı başında herbir adam ruhsuz, kalbsiz, akılsız olmamak şartıyla bilecek ki, Muhammed-i Arabî Aleyhissalâtü Vesselâm'ın Mi'râc Gecesinde gözü ile gördüğü saâdet-i ebediyenin müjdesini ve ehl-i îmânın Cennetteki hayât-ı bâkiyesinin beşaretini ve insanın</p>
+<div class="page-marker-wrap"><span class="page-marker">17</span></div>
+<p class="paragraph">alâkadar olduğu sevdiklerinin mahvolmadıklarını ve onların zevâllerinden sonra yine görüşmelerinin muhakkak olacağının gâyet sürurlu, mânevî hediyesine karşı umûm âlem-i İslâm her gün çok defa</p>
+<div class="arabic-block" data-meal-id="1998" dir="rtl">اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِىُّ</div>
+<p class="paragraph">dediği gibi; O'nun da getirdiği hediye-i mânevîyesiyle hem kâinât sahifeleri ve tabakaları mektubât-ı Samedaniye olmasına; hem mahlûkâtın hakikî kıymetleri ve kemâlâtları onun risaleti ile tezâhür etmesine mukâbil bütün mahlûkât mânen:</p>
+<div class="arabic-block" data-meal-id="1998" dir="rtl">اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِىُّ</div>
+<p class="paragraph">bu mezkûr hakikatın lisanı ile derler. Ve ümmet mabeyninde şeair-i İslâmiyeden olan birbirine</p>
+<div class="arabic-block" data-meal-id="3328" dir="rtl">اَلسَّلاَمُ عَلَيْكُمْ</div>
+<p class="paragraph">demeleri sünnet olması, bu büyük hakikatın şuaı olmasındandır.</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Said Nursî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+<div class="page-marker-wrap"><span class="page-marker">18</span></div>
+<div class="arabic-block" data-meal-id="127" dir="rtl">بِاسْمِهِ سُبْحَانَهُ وَاِنْ مِنْ شَيْءٍ اِلاَّ يُسَبِّحُ بِحَمْدِه۪</div>
+<div class="arabic-block" data-meal-id="2896" dir="rtl">اَلسَّلاَمُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ اَبَدًا دَٓائِمًا</div>
+<p class="paragraph">Aziz, Sıddık, Mütefekkir Kardeşlerim! Evvelen: Çok emarelerle kat'î kanâatım gelmiş ki; gizli dinsizler, resmî bâzı memurları aldatıp, Nur'un mahrem büyük risaleleri içinde yalnız Rehber'i musırrâne medâr-ı itham tutmalarının ve bir buçuk seneden beri bana sıkıntı vermelerinin sebebi Rehber'deki "Hüve Nüktesi" olduğunu kat'iyyen bildim. Çünkü: bu Hüve'nin keşfettiği sırr-ı tevhid, pek kat'î ve bedihî bir surette küfr-ü mutlakı kırıyor. Hattâ bir kısmında hiç bir vesvese ve şüphe bırakmıyor. Gizli dinsizler buna karşı çare bulamadıklarından, intişarına resmî yasak ile sed çekmek için çalıştılar. Bu "Hüve Nüktesi"nin bir gün evvel Medresetü'z-Zehra erkânlarına bir ders nev'inden söylediğim çok noktalarından yalnız "Üç Nokta"sını sizlere beyan ediyorum. <strong>Birinci Nokta:</strong> Hava unsurunun yüksek ve ehemmiyetli bir vazifesi</p>
+<div class="page-marker-wrap"><span class="page-marker">19</span></div>
+<div class="arabic-block" data-meal-id="3297" dir="rtl">اِلَيْهِ يَصْعَدُ الْكَلِمُ الطَّيِّبُ</div>
+<p class="paragraph">âyetinin sırrıyla; güzel ve mânidar ve îmânî ve hakîkatlı kelimelerin kalem-i kaderin istinsahıyla ve izn-i İlahî ile intişar etmesiyle bütün küre-i havada melâike ve ruhanîlere işittirmek ve Arş-ı Âzam tarafına sevketmek için kudret-i İlahî kaleminin mütebeddil bir sahifesi olmaktır. Mâdem havanın kudsî vazifesinin, hikmet-i hilkatinin en mühimmi budur. Ve rûy-i zemini radyolar vasıtasıyla bir tek menzil hükmüne getirip nev-i beşere pek büyük bir nîmet-i İlâhiye olmaktır. Elbette ve elbette beşer, bu pek büyük nîmete karşı, bir umûmî şükür olarak; o radyoları herşeyden evvel kelimât-ı tayyibe olan, Kelâmullah'ın, başta Kur'ân-ı Hakîm ve hakîkatları ve îmânın ve güzel ahlâkların dersleri ve beşerin lüzumlu ve zarurî menfaatlerine dair kelimatlar olmalı ki o nîmete şükür olsun. Yoksa nîmet –böyle– şükür görmezse, beşere zararlı düşer. Evet beşer, hakîkata muhtaç olduğu gibi, bâzı keyifli hevesata da ihtiyacı var. Fakat bu keyifli hevesât, beşte birisi olmalı. Yoksa havanın sırr-ı hikmetine münafî olur.</p>
+<div class="page-marker-wrap"><span class="page-marker">20</span></div>
+<p class="paragraph">Hem beşerin tembelliğine ve sefâhetine ve lüzumlu vazifelerinin noksan bırakılmasına sebebiyet verip, beşere büyük bir nîmet iken, büyük bir nıkmet olur. Beşere lâzım olan sa'ye şevki kırar. Şimdi gözümün önündeki makinecik ve radyo kabı, Kur'ân'ı dinlemek için odama getirilmişti. Baktım, on hissede bir hisse kelimât-ı tayyibeye veriliyor. Bunu da bir hata-yı beşerî olarak anladım. İnşâallah beşer, bu hatasını tamir edecek. Ve bütün zemin yüzünü bir meclis-i münevver, bir menzil-i âlî ve bir mekteb-i îmânî hükmüne geçirmeğe vesile olan bu radyo nîmetine bir şükür olarak, beşerin hayât-ı ebediyesine sarfedilecek kelimât-ı tayyibe, beşte dördü olacak. <strong>İkinci Nokta:</strong> Nur Risalelerinde denilmiş ki: "Kâinatı halkedemeyen, bir zerreyi halkedemez. Bir zerreyi tam yerinde halkedip muntazam vazifeleriyle çalıştıran, yalnız kâinatı halkeden zât olabilir." Bu cümlenin küllî hüccetlerinden bir cüz'î hücceti şudur ki: Kelimelerin envâının kabı ve mahfazası olan yanımdaki bu radyo makineciğindeki bir avuç hava, kat'iyyen gösteriyor ki; şimdi</p>
+<div class="page-marker-wrap"><span class="page-marker">21</span></div>
+<p class="paragraph">elimizde baktığımız radyo istasyon cedveli namındaki listede yazılı ikiyüze yakın merkezden bir saatten bir seneye kadar uzak ve muhtelif mesafelerden aynı dakikada bir tek kelime-i Kur'âniye, meselâ "Elhamdülillah" kelâmı tam hurûfâtıyla ve şivesiyle ve söyleyenin mahsus sadâsının tarzıyla, bu makinedeki bir avuç havanın zerreleriyle, hiç tegayyür etmeden kulağımıza gelmek için ve muhtelif kelimât-ı Kur'âniyeyi ayrı ayrı sadâ ile, çeşit çeşit şive ile, keza hiç tegayyür etmeden ve bozulmadan bizim kulağımıza getirmek için o bir avuç havanın her bir zerresinde öyle hadsiz bir kuvvet ve ihâtalı bir irâde ve bütün rûy-i zemindeki merkezlerde o Kur'ân'ı okuyan hâfızların ayrı ayrı şivelerini bilecek ihâtalı bir ilim ve onları bütün görecek ve işitecek muhît bir göz ve her şeyi bir anda işitebilir bir kulak olmazsa, elbette bu mu'cize-i kudret vücuda gelmeyecek. Demek bu bir avuçtaki hava zerreleri, yalnız ve yalnız bütün kâinatı ihâta eden bir ilim ve irâdenin; sem' ve basarın sahibi bir zâtın ve hiç bir şey ona ağır gelmeyen ve en büyük şey, en küçük şey gibi kudretine kolay gelen bir Kadîr-i Mutlak'ın kudreti ve irâdesi ve ilmiyle bu mu'cizât-ı kudrete mazhar</p>
+<div class="page-marker-wrap"><span class="page-marker">22</span></div>
+<p class="paragraph">oluyorlar. Yoksa, temevvücât-ı havâiyede mevcudiyeti tevehhüm edilen serseri tesâdüfün ve kör kuvvetin ve sağır tabiatın icadına yer vermek; her bir zerreyi, bütün zemin yüzündeki küre-i havaiyede bulunan her şeyi görür, bilir ve yapar hâkim-i mutlak etmektir. Bu ise, yüz bin derece akıldan uzak, muhâl muhâller içinde bir hurâfedir. Ehl-i dalâlet gelsinler, mezhebleri ne kadar akıldan uzak ve hurâfe olduklarını görsünler. <strong>Üçüncü Nokta:</strong> Bu radyo makineciğinde ve mânevî kelimât çiçeklerine saksılık eden bu kapçıktaki bir avuç havanın gösterdikleri mu'cizât-ı kudretten bu hakikat anlaşılıyor ki: Her bir zerre, Cenâb-ı Hakk'ı zâtıyla ve sıfâtıyla tarif eder ve isbât eder. Bütün kâinatı teftiş eden hükemâlar ve ulemâlar, büyük ve geniş delillerle, Zât-ı Vâcibü'l-Vücud'un vücudunu ve vahdetini isbât etmek için bütün kâinatı nazara alırlar. Sonra mârifetullahı tam elde ediyorlar. Halbuki, nasıl Güneş çıktığı vakit bir zerrecik cam, aynı deniz yüzü gibi Güneş'i gösteriyor ve o Güneş'e işaret ediyor; öyle de, bu bir avuç havadaki her bir zerre de mezkûr hakîkata binaen aynen kâinât denizindeki</p>
+<div class="page-marker-wrap"><span class="page-marker">23</span></div>
+<p class="paragraph">cilve-i tevhidi, sıfât-ı kemâliyle kendilerinde gösteriyorlar. İşte Kur'ân-ı Hakîm'in mânevî mu'cizesinin bir lem'ası olan Risale-i Nur, bu hakîkatı –izahatı ile– isbât etmesi içindir ki; müdakkik bir Nurcu huzur-u dâimî kazanmak ve mârifetullahı her vakit tahattur etmek için ve huzur-u dâimî hatırı için "Lâ mevcude illâ Hû" demeğe mecbur olmuyor. Ve yine bir kısım ehl-i hakîkatın dâimî huzuru bulmak için, "Lâ meşhude illâ Hû" dedikleri gibi, o Nurcu böyle demeye muhtaç olmuyor. Belki</p>
+<div class="arabic-block" data-meal-id="860" dir="rtl">وَ ف۪ى كُلِّ شَيْءٍ لَهُ اٰيَةٌ تَدُلُّ عَلٰى اَنَّهُ وَاحِدٌ</div>
+<p class="paragraph">parlak hakîkatının kudsî penceresi ona kâfi geliyor. Bu kudsî Arabî fıkranın kısacık bir izahı şudur ki: Evet, herkesin bu âlemde birer âlemi var; birer kâinatı var. Âdeta zîşuurlar adedince birbiri içinde hadsiz kâinatlar, âlemler var. Herkesin husûsî âleminin ve kâinatının ve dünyasının direği kendi hayatıdır. Nasıl herkesin elinde bir âyinesi bulunsa ve bir büyük saraya mukâbil tutsa, herkes bir nevi saraya, âyinesi içinde sahip olur.</p>
+<div class="page-marker-wrap"><span class="page-marker">24</span></div>
+<p class="paragraph">Öyle de, herkesin husûsî bir dünyası var. Bir kısım ehl-i hakikat, bu husûsî dünyasını "Lâ mevcude illâ Hû" diye inkâr etmekle, terk-i masiva sırrıyla Cenâb-ı Hakk'a karşı huzur-u dâimî ve mârifet-i İlâhiye'yi bulur. Ve bir kısım ehl-i hakikat da yine dâimî mârifet ve huzuru bulmak için, "Lâ meşhude illâ Hû" deyip, kendi husûsî dünyasını nisyan hapsine sokar. Fânilik perdesini üstüne çeker. Huzuru bulmakla bütün ömrünü bir nevi ibâdet hükmüne getirir. Şimdi bu zamanda, Kur'ân'ın i'caz-ı mânevîsiyle tezâhür eden</p>
+<div class="arabic-block" data-meal-id="860" dir="rtl">وَ ف۪ى كُلِّ شَيْءٍ لَهُ اٰيَةٌ تَدُلُّ عَلٰى اَنَّهُ وَاحِدٌ</div>
+<p class="paragraph">sırrı ile; yâni zerrelerden yıldızlara kadar her şeyde bir pencere-i tevhid var ve doğrudan doğruya Zât-ı Vâhid-i Ehad'i sıfâtıyla bildiren âyetleri yâni delâletleri ve işaretleri var. İşte, "Hüve Nüktesi"yle bu mezkûr hakikat-ı kudsiyeye ve îmâniyeye ve huzuriyeye icmâlen işaretler vardır. Risale-i Nur, bu hakîkatı izahatıyla isbât etmiş. Eski zamandaki ehl-i hakikat, bir derece mücmelen ve muhtasaran beyan etmişler. Demek bu dehşetli zaman, daha ziyâde bu</p>
+<div class="page-marker-wrap"><span class="page-marker">25</span></div>
+<p class="paragraph">hakîkata muhtaçtır ki; Kur'ân-ı Hakîm'in i'cazıyla, bu hakikat tafsilâtıyla ihsân edilmiş. Nur Risaleleri de bu hakîkata bir naşir olmuşlar...</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Kardeşiniz> Said Nursî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+<div class="page-marker-wrap"><span class="page-marker">26</span></div>
+<p class="paragraph">,[Ondördüncü Söz'ün Zeyli'nden kısacık bir ilâve ve ektir]> <strong>Altıncı Sualin Tetimmesi ve Hâşiyesi:</strong> Ehl-i dalâlet ve ilhad, mesleklerini muhafaza ve ehl-i îmânın intibahlarına mukâbele ve mümânaât etmek için, o derece garip bir temerrüd ve acib bir hamâkat gösteriyorlar ki, insanı insaniyetten pişman eder. Meselâ: Bu âhirde, beşerin bir derece umûmiyet şeklini alan zulümlü, zulümatlı isyanından anâsır-ı külliye kızdıklarından ve Hàlık-ı Arz ve Semâvat dahî, değil husûsî bir Rubûbiyet; belki bütün kâinatın, bütün âlemlerin Rabbi ve Hâkimi haysiyetiyle, küllî ve geniş bir tecelli ile kâinatın hey'et-i mecmuasında ve rubûbiyetin dâire-i külliyesinde nev'-i insanı uyandırmak ve dehşetli tuğyanından vazgeçirmek ve tanımak istemedikleri kâinât sultanını tanıttırmak için; emsâlsiz, kesilmeyen bir su, hava, elektrikten; zelzeleyi, fırtınayı ve harb-i umûmî gibi umûmî ve dehşetli âfâtı nev'-i insanın yüzüne çarparak onunla hikmetini, kudretini, adâletini, kayyumiyetini, irâdesini ve hâkimiyetini pek zâhir bir surette</p>
+<div class="page-marker-wrap"><span class="page-marker">27</span></div>
+<p class="paragraph">gösterdiği halde; insan suretinde bir kısım ahmak şeytanlar ise, o küllî işarât-ı Rabbâniyeye ve terbiye-i İlâhiye'ye karşı eblehâne bir temerrüd ile mukâbele edip diyorlar ki: "Tabiattır; bir mâdenin patlamasıdır; tesâdüfîdir. Güneşin harâreti ve elektrikle çarpmasıdır ki; Amerika'da beş saat bütün makineleri durdurmuş ve Kastamonu vilayeti cevvinde ve havasında semâyı kızartmış, yangın suretini vermiş." diye mânâsız hezeyanlar ediyorlar. Dalâletten gelen hadsiz bir cehâlet ve zındıkadan neş'et eden çirkin bir temerrüd sebebiyle bilmiyorlar ki: Esbab yalnız birer bahânedirler, birer perdedirler. Dağ gibi bir çam ağacının cihazatını dokumak ve yetiştirmek için, bir köy kadar yüz fabrika ve tezgâh yerine, küçücük çekirdeğini gösterir: "İşte bu ağaç bundan çıkmış." diye Sâni'inin o çamda gösterdiği bin mu'cizatı inkâr eder misillû bâzı zâhirî sebepleri irae eder. Hâlık'ın ihtiyar ve hikmet ile işlenen pek büyük bir fiil-i rubûbiyetini hiçe indirir. Bâzen, gâyet derin ve bilinmez ve çok ehemmiyetli, bin cihette de hikmeti bulunan bir hakîkata fennî bir nam takar. Güya o nam ile mâhiyeti anlaşıldı; âdileşti; hikmetsiz, mânâsız kaldı.</p>
+<div class="page-marker-wrap"><span class="page-marker">28</span></div>
+<p class="paragraph">İşte gel! Belâhet ve hamâkatın nihâyetsiz derecelerine bak ki; yüz sahife ile târif edilse ve hikmetleri beyan edilse ancak tamamıyla bilinecek derin ve geniş bir hakikat-ı meçhuleye bir nam takar; malûm bir şey gibi: "Bu, budur." der. Meselâ: "Güneşin bir maddesi, elektrikle çarpmasıdır." Hem bir irâde-i külliye ve birer ihtiyar-ı âmm ve birer hâkimiyet-i nev'iyenin ünvanları bulunan ve "Âdetullah" namıyla yâdedilen fıtrî kanunların birisine, husûsî ve kasdî bir hâdise-i rubûbiyeti irca' eder. O ircâ ile, onun nisbetini irâde-i ihtiyariyeden keser; sonra tutar, tesâdüfe, tabiata havale eder. Ebu Cehil'den ziyâde muzaaf bir eçheliyet gösterir. Bir neferin veya bir taburun zaferli harbini, bir nizam ve kanun-u askeriyeye isnat edip; kumandanından, padişahından, hükûmetinden ve kasdî harekâttan alâkasını keser misillû âsî bir dîvâne olur. Hem, meyvedar bir ağacın bir çekirdekten icadı gibi; bir tırnak kadar bir odun parçasından çok mu'cizatlı bir usta, yüz okka muhtelif taamları, yüz arşın muhtelif kumaşları yapsa; bir adam, o odun parçasını gösterip dese: "Bu işler, tabiî ve tesâdüfî olarak bundan olmuş." O ustanın hârika sanatlarını, hünerlerini</p>
+<div class="page-marker-wrap"><span class="page-marker">29</span></div>
+<p class="paragraph">hiçe indirse, ne derece bir hamakattır. Aynen öyle de... (Sükût!) (Sükûtun sebebi şimdi söylenemez.)</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Said Nursî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+<div class="page-marker-wrap"><span class="page-marker">30</span></div>
+<div class="arabic-block" data-meal-id="125" dir="rtl">بِاسْمِهِ سُبْحَانَهُ</div>
+<div class="arabic-block" data-meal-id="2896" dir="rtl">اَلسَّلاَمُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ اَبَدًا دَٓائِمًا</div>
+<p class="paragraph">Aziz, Sıddık Kardeşlerim; <strong>Evvelen:</strong> Seksen sene bir mânevî ömr-ü bâkî kazandıran şuhur-u selâsenizi ve mübarek kudsî gecelerinizi ve Leyle-i Regaibinizi ve Leyle-i Mi'râcınızı ve Leyle-i Berâtınızı ve Leyle-i Kadrinizi ruh u canımızla tebrik ve herbir Nurcunun mânevî kazançları ve duaları umûm kardeşleri hakkında makbûliyetini Rahmet-i İlâhiye'den rica ve Hizmet-i Nuriyede muvaffakıyetinizi tebrik ederiz. <strong>Sâniyen:</strong> Tesemmüm vesilesiyle nisyan-ı mutlak hastalığının musibeti, benim hakkımda bir nimet ve merhamet hükmüne ve bâzı hakâikin keşfine bir anahtar olduğunu bana çok acımamak için haber veriyorum. Fakat, yine duanızı ruh u canımla rica ediyorum. Evet, şimdi Siracü'n-Nur başındaki münâcâtı okudum. Ülfet ve âdet ve yeknesaklık perdeleri altında çok hârika hakîkatlar gizleniyor gördüm. Bilhassa ehl-i gaflet ve ehl-i tabiat ve felsefenin dinsiz kısmı, bu Âdetullah</p>
+<div class="page-marker-wrap"><span class="page-marker">31</span></div>
+<p class="paragraph">kanunlarının perdesi altında çok mu'cizât-ı kudret-i İlâhiye'yi görmeyip; dağ gibi bir hakîkatı, zerre gibi bir âdi esbaba isnad eder; yükletir. Kadîr-i Mutlak'ın, her şeydeki mârifet yolunu seddeder. Ondaki nîmetleri kör olup görmeyerek, şükür ve hamd kapısını kapıyorlar. Meselâ: Bir tek kelimeyi aynı anda milyon, belki milyar kelime olarak, cilve-i kudret sahife-i havada istinsah ettiği gibi;</p>
+<div class="arabic-block" data-meal-id="3297" dir="rtl">اِلَيْهِ يَصْعَدُ الْكَلِمُ الطَّيِّبُ</div>
+<p class="paragraph">Âyetinin remziyle her kelime-i tayyibe, bütün küre-i havada birden, âdeta zamansız, kalem-i kudret ile istinsah edildiği gibi; mânevî ve makbul hakîkatların bir yazar-bozar tahtası hükmünde olan küre-i havada kudretin acib bir mu'cizesinin zaman-ı Âdem'den beri ülfet perdesi altında ehl-i gaflet nazarında saklandığı gibi; şimdi, radyo namı verdikleri ayn-ı hakikat ile sâbit olmuş ki, içinde hadsiz bir ilim ve hikmet ve irâde bulunan gayr-ı mütenahî bir kudret-i ezeliyenin cilvesi, her zerre-i havâîde hazır ve nâzırdır ki; hadsiz ayrı ayrı kelimeler herbir zerre-i havâînin küçücük kulağına girip, incecik dilinden çıktığı halde karışmıyor, bozulmuyor, şaşırmıyor.</p>
+<div class="page-marker-wrap"><span class="page-marker">32</span></div>
+<p class="paragraph">Demek bütün esbab toplansa, tek bir zerrenin bu vazife-i fıtriyesindeki cilve-i kudret-i kudsiyeyi hiçbir cihette yapamadığı; ve bu her zerrenin hadsiz ince küçük kulağında ve dilinde gâyet hârika sanata hiçbir cihette hiçbir parmak karışmadığı için, ehl-i dalâlet ve ehl-i gaflet ülfet, âdet, kanunluk, yeknesaklık perdesi ile saklayıp; âdi bir isim takıp, muvakkat kendilerini aldatıyorlar. Meselâ: Ondördüncü Söz'ün Zeyli'nin hâşiyesinde denildiği gibi, pek çok mu'cizatlı bir usta, bir tırnak kadar bir odun parçasından yüz okka muhtelif taamları, yüz arşın muhtelif kumaşları yapsa; bir adam, o odun parçasını gösterip dese: "Bu işler tabiî ve tesâdüfî olarak bundan olmuş." O ustanın hârika sanatlarını, hünerlerini hiçe indirse; ne derece bir hamâkat ve dalâlette bir hurâfet ve hezeyan olduğu gibi... aynen öyle de: Çam ve incir ağacı gibi binler hârika sanatları tazammun eden bir mu'cize-i kudreti, nohut gibi iki çekirdeği gösterip, "Bunlar bundan olmuş." demek; veya küre-i havayı bir konferans meydanı ve zemin yüzünü bir dershâne ve bir mekteb-i irfan hükmüne getiren ve hadsiz nimetleri tazammun eden ve hadsiz</p>
+<div class="page-marker-wrap"><span class="page-marker">33</span></div>
+<p class="paragraph">şükürler ile mukâbele etmek lâzımken ve beşerin saâdet-i ebediyesindeki ihsânât-ı İlâhiyenin bir muaccel {(Hâşiye): Bu kelimede büyük bir hakikat hazinesinin anahtarına işaret var.} nümûnesi ve hiçbir şüpheyi bırakmayan ve doğrudan doğruya hazine-i rahmetten ihsân edilen bir hediye-i Rahmâniyeye radyo namını takmakla, bu elektrik ve havanın temevvücâtı namını vermekle, o yüzbin nimetlere küfran perdesini çekmek, –aynen o misâl gibi– maddiyyunların ve ehl-i dalâletin hadsiz bir dîvânelikleridir ki; hadsiz bir cinayet olup, hadsiz bir azâba onları müstehak eder. İşte kardeşlerim, hakîkaten bugün, Siracü'n-Nur'un başındaki Münâcâtı tashih niyeti ile okudum. Kuvve-i hâfızam tam söndüğü için, birden o münâcâtın hakîkatlerine karşı –güya seksen yaşında iken yeni dünyaya gelmişim gibi– birden ülfet ve âdetleri bilmiyor gibi, o malûm âdetler perde olamadı. Kemâl-i şevk ile tam istifâde edip okudum. Pek hârika gördüm. Ve anladım ki: Gizli düşmanlarımız bir kısım resmî memurları aldatıp, Siracü'n-Nur'un âhirini bahâne ederek müsaderesine; yâni başındaki münâcâtın intişar etmemesine çalıştıklarına kanâatim geldi. Rehber'deki "Hüve Nüktesi"</p>
+<div class="page-marker-wrap"><span class="page-marker">34</span></div>
+<p class="paragraph">gibi bu Münâcat da; Siracü'n-Nur'a dinsizler tarafından hücumunun bir sebebidir. Sâlisen: Size bütün ruh u canımızla müjde veriyoruz ki; Nurculardaki tam ihlâs ve hakikî sadâkat ve sarsılmaz tesânüd vesilesiyle başımıza gelen bütün musibetler, hizmet-i îmâniyemiz noktasında büyük nîmetlere çevrilmiş ve perde altında hatır ve hayâle gelmeyen Nur'un fütuhatları oluyor. Meselâ; Isparta'dan buraya mahkemeye gelmekliğim için yüz banknot, otomobile mecburiyetle verildi. Sizi temin ediyorum ki; yalnız bu mes'elede ve yalnız Rehber'e ait ve yalnız benim şahsıma ait meydana gelen ve gelmeye başlayan netice-i hizmete iki bin banknot verseydim yine ucuz sayacaktım. Umûma ait neticeleri de buna kıyas edilsin...</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Duanıza muhtaç, hasta kardeşiniz> Said Nursî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+<div class="page-marker-wrap"><span class="page-marker">35</span></div>
+<h2 class="heading-2">HÜVE NÜKTESİ</h2>
+<div class="arabic-block" data-meal-id="127" dir="rtl">بِاسْمِهِ سُبْحَانَهُ وَاِنْ مِنْ شَيْءٍ اِلاَّ يُسَبِّحُ بِحَمْدِه۪</div>
+<div class="arabic-block" data-meal-id="2896" dir="rtl">اَلسَّلاَمُ عَلَيْكُمْ وَ رَحْمَةُ اللّٰهِ وَ بَرَكَاتُهُ اَبَدًا دَٓائِمًا</div>
+<p class="paragraph">Çok aziz ve sıddık kardeşlerim! Kardeşlerim,</p>
+<div class="arabic-block" data-meal-id="130" dir="rtl">لآَ اِلٰهَ اِلاَّ هُوَ</div>
+<p class="paragraph">ve</p>
+<div class="arabic-block" data-meal-id="131" dir="rtl">قُلْ هُوَ اللّٰهُ</div>
+<p class="paragraph">deki</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" lafzında, yalnız maddî cihette bir seyâhat-ı hayâliye-i fikriyede hava sahifesinin mütâlâasıyla âni bir surette görünen bir zarif nükte-i tevhidde, meslek-i îmâniyenin hadsiz derece kolay ve vücub derecesinde suhûletli bulunmasını; ve şirk ve dalâletin mesleğinde hadsiz derecede müşkülâtlı, mümtenî binler muhâl bulunduğunu müşâhede ettim. Gâyet kısa bir işaretle, o geniş ve uzun nükteyi beyan edeceğim: Evet; nasılki bir avuç toprak, yüzer çiçeklere nöbetle saksılık eden kabında, eğer tabiata, esbaba havale edilse, lâzım gelir ki, ya o kapta küçük mikyasta yüzer, belki çiçekler adedince mânevî makineler, fabrikalar bulunsun veyahut o parçacık topraktaki herbir zerre,</p>
+<div class="page-marker-wrap"><span class="page-marker">36</span></div>
+<p class="paragraph">bütün o ayrı ayrı çiçekleri, muhtelif hâsiyetleriyle ve hayattar cihazatıyla yapmalarını bilsin. Âdeta bir ilah gibi hadsiz ilmi ve nihâyetsiz iktidarı bulunsun. Aynen öyle de, emir ve irâdenin bir arşı olan havanın, rüzgârın her bir parçası ve bir nefes ve tırnak kadar olan</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" lafzındaki havada; küçücük mikyasta, bütün dünyada mevcud telefonların, telgrafların, radyoların ve hadsiz ve muhtelif konuşmaların merkezleri, santralları, âhize ve nâkileleri bulunsun ve o hadsiz işleri beraber ve bir anda yapabilsin. Veyahut o</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" daki havanın, belki unsur-u havanın herbir parçasının herbir zerresi, bütün telefoncular ve ayrı ayrı umûm telgrafçılar ve radyo ile konuşanlar kadar mânevî şahsiyetleri ve kâbiliyetleri bulunsun ve onların umûm dillerini bilsin ve aynı zamanda başka zerrelere de bildirsin, neşretsin. Çünkü, bilfiil o vaziyet kısmen görünüyor ve havanın bütün eczasında o kâbiliyet var. İşte ehl-i küfrün ve tabiiyyun ve maddiyyunların mesleklerinde değil bir muhâl, belki zerreler adedince muhâller ve imtinalar ve müşkülatlar aşikâre görünüyor. Eğer Sâni'-i Zülcelâl'e verilse, hava bütün</p>
+<div class="page-marker-wrap"><span class="page-marker">37</span></div>
+<p class="paragraph">zerrâtıyla onun emirber neferi olur. Birtek zerrenin, muntazam birtek vazifesi kadar kolayca, hadsiz küllî vazifelerini Hâlık'ının izniyle ve kuvvetiyle ve Hâlık'a intisab ve istinat ile ve Sâni'inin cilve-i kudreti ile bir anda, şimşek sür'atinde ve</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" telaffuzu ve havanın temevvücü suhûletinde yapılır. Yâni, kalem-i kudretin hadsiz ve hârika ve muntazam yazılarına bir sahife olur ve zerreleri, o kalemin uçları; ve zerrelerin vazifeleri dahî, kalem-i kaderin noktaları bulunur. Birtek zerrenin hareketi derecesinde kolay çalışır. İşte ben,</p>
+<div class="arabic-block" data-meal-id="130" dir="rtl">لآَ اِلٰهَ اِلاَّ هُوَ</div>
+<p class="paragraph">ve</p>
+<div class="arabic-block" data-meal-id="131" dir="rtl">قُلْ هُوَ اللّٰهُ</div>
+<p class="paragraph">deki hareket-i fikriye ile seyahatimde hava âlemini temaşa ve o unsurun sahifesini mütalaa ederken, bu mücmel hakikatı tam vâzıh ve mufassal aynelyakîn müşahede ettim ve</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" nun lafzında, havasında böyle parlak bir bürhan, bir lem'a-yı Vâhidiyet bulunduğu gibi; mânâsında ve işaretinde gâyet nurânî bir cilve-i Ehadiyet ve çok kuvvetli bir hüccet-i tevhid ve "</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">‘Hû' zamirinin mutlak ve müphem işareti hangi zâta bakıyor?" işaretine bir karine-i taayyün o hüccette bulunması içindir ki; hem Kur'ân-ı Mu'cizü'l-Beyan, hem ehl-i</p>
+<div class="page-marker-wrap"><span class="page-marker">38</span></div>
+<p class="paragraph">zikir makam-ı tevhidde bu kudsî kelimeyi çok tekrar ederler diye ilmelyakîn ile bildim. Evet, meselâ; bir nokta beyaz kâğıtta, iki üç nokta konulsa karıştığı.. ve bir adam, muhtelif çok vazifeleri beraber yapmasıyla şaşıracağı.. ve bir küçük zîhayata, çok yükler yüklenmesiyle altında ezildiği.. ve bir lisan ve bir kulak, aynı anda müteaddit kelimelerin beraber çıkması ve girmesi intizamını bozup karışacağı halde, aynelyakîn gördüm ki:</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hüve" nin anahtarı ile ve pusulasıyla fikren seyâhat ettiğim hava unsurunda herbir parçası, hattâ herbir zerresi içine muhtelif binler noktalar, harfler, kelimeler konulduğu veya konulabileceği halde, karışmadığını ve intizamını bozmadığını... Hem ayrı ayrı pek çok vazifeler yaptığı halde, hiç şaşırmadan yapıldığını; ve o parçaya ve zerreye, pek çok ağır yükler yüklendiği halde, hiç zaaf göstermeyerek, geri kalmayarak intizam ile taşıdığını... Hem binler ayrı ayrı kelime, ayrı ayrı tarzda, mânâda o küçücük kulak ve lisanlara kemâl-i intizamla gelip, çıkıp, hiç karışmayarak, bozulmayarak o küçücük kulaklara girip, o gâ</p>
+<div class="page-marker-wrap"><span class="page-marker">39</span></div>
+<p class="paragraph">yet incecik lisanlardan çıktığı; ve o her zerre ve her parçacık, bu acîb vazifeleri görmekle beraber kemâl-i serbestiyet ile, cezbedarâne hâl dili ile ve mezkûr hakîkatın şehâdeti ve lisanıyla</p>
+<div class="arabic-block" data-meal-id="130" dir="rtl">لآَ اِلٰهَ اِلاَّ هُوَ</div>
+<p class="paragraph">ve</p>
+<div class="arabic-block" data-meal-id="133" dir="rtl">قُلْ هُوَ اللّٰهُ اَحَدٌ</div>
+<p class="paragraph">deyip gezer ve fırtınaların ve şimşek ve berk ve gök gürültüsü gibi havayı çarpıştırıcı dalgalar içerisinde, intizamını ve vazifelerini hiç bozmuyor ve şaşırmıyor ve bir iş diğer bir işe mâni olmuyor. Ben aynelyakîn müşâhede ettim. Demek, ya herbir zerre ve herbir parça havada nihâyetsiz bir hikmet ve nihâyetsiz bir ilmi, irâdesi ve nihâyetsiz bir kuvveti, kudreti ve bütün zerrâta hâkim-i mutlak bir hassaları bulunmak lâzımdır ki, bu işlere medâr olabilsin. Bu ise, zerreler adedince muhâl ve bâtıldır. Hiçbir şeytan dahî bunu hatıra getiremez. Öyle ise bu sahife-i havanın hakkalyakîn, aynelyakîn, ilmelyakîn derecesinde bedahetle Zât-ı Zülcelâl'in hadsiz gayr-ı mütenahî ilmi; ve hikmetle çalıştırdığı kalem-i kudret ve kaderin mütebeddil sahifesi; ve bir levh-i mahfûzun âlem-i tagayyürde ve mütebeddil şuûnatında bir levh-i mahv, isbât namında yazarbozar tahtası hükmündedir.</p>
+<div class="page-marker-wrap"><span class="page-marker">40</span></div>
+<p class="paragraph">İşte, hava unsurunun yalnız nakl-i asvât vazifesinde mezkûr cilve-i vahdaniyeti ve mezkûr acâibi gösterdiği ve dalâletin hadsiz muhâliyetini izhar ettiği gibi; unsur-u havaînin, sâir ehemmiyetli vazifelerinden biri de elektrik, câzibe, dâfia, ziyâ gibi sâir letâifin naklinde şaşırmadan muntazaman, asvât naklindeki vazifeyi gördüğü aynı zamanda, bu vazifeleri dahî gördüğü aynı zamanında, bütün nebâtât ve hayvânâta teneffüs ve telkîh gibi hayata lüzumu bulunan levazımatı kemâl-i intizam ile yetiştiriyor. Emir ve irâde-i İlahiye'nin bir arşı olduğunu kat'î bir surette isbât ediyor. Ve serseri tesâdüf ve kör kuvvet ve sağır tabiat ve karışık, hedefsiz esbab ve âciz, câmid, cahil maddeler bu sahife-i havaiyenin kitâbetine ve vazifelerine karışması hiçbir cihetle ihtimâl ve imkânı bulunmadığını aynelyakîn derecesinde isbât ettiğini kat'î kanâat getirdim ve herbir zerre ve herbir parça lisan-ı hâl ile,</p>
+<div class="arabic-block" data-meal-id="130" dir="rtl">لآَ اِلٰهَ اِلاَّ هُوَ</div>
+<p class="paragraph">ve</p>
+<div class="arabic-block" data-meal-id="133" dir="rtl">قُلْ هُوَ اللّٰهُ اَحَدٌ</div>
+<p class="paragraph">dediklerini bildim ve bu</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">anahtarı ile havanın maddî cihetindeki bu acaibini gördüğüm gibi, hava unsuru da bir</p>
+<div class="arabic-block" data-meal-id="132" dir="rtl">هُوَ</div>
+<p class="paragraph">"Hû" olarak âlem-i misâl ve âlem-i mânâya bir anahtar oldu.</p>
+<div class="page-marker-wrap"><span class="page-marker">41</span></div>
+<p class="paragraph">Gördüm ki: Âlem-i misal, nihâyetsiz fotoğraflar; ve herbir fotoğraf, hadsiz hâdisât-ı dünyeviyeyi aynı zamanda hiç karıştırmayarak alıyor. Binler dünya kadar büyük ve geniş bir sinemâ-i uhreviye; ve fâniyatın fâni ve zâil hallerini ve vaziyetlerini ve geçici hayatlarının meyvelerini, sermedî temâşâgâhlarda ve Cennet'te saâdet-i ebediye ashâblarına dünya maceralarını ve eski hatıralarını levhalarıyla gözlerine göstermek için pek büyük bir fotoğraf makinesi olarak bildim. {(Hâşiye): Fakat zâhir hakikatlar gibi kuvvetli bürhanlarla ve hüccetlerle isbat etmeğe zaman ve zemin, hâl ve vaziyet müsaade etmediğinden kısa kesildi.} Hem Levh-i Mahfûz'un, hem âlem-i misâlin iki hücceti ve iki küçük nümûnesi ve iki noktası, insanın başında olan kuvve-i hâfıza ve kuvve-i hayâliye mercimek küçüklüğünde iken, hiç karıştırmayarak, kemâl-i intizam ile içlerinde bir büyük kütüphâne kadar malûmatın yazılması kat'î isbât eder ki; o iki kuvvenin nümûne-i ekber ve âzamları, âlem-i misâl ile Levh-i Mahfûz'dur. Hava ve su unsurlarının, husûsan nutfelerin suyu ve hava unsuru, toprak unsurunun pek fevkinde daha ziyâde hikmet ve irâde ile</p>
+<div class="page-marker-wrap"><span class="page-marker">42</span></div>
+<p class="paragraph">ve kalem-i kader ve kudret ile yazıldıkları ve tesâdüf ve kör kuvvetin ve sağır tabiatın ve câmid ve hedefsiz esbabın karışması yüz derece muhâl ve hiçbir cihetle mümkün olmadığı ve Hakîm-i Zülcelâl'in kalem-i kader ve hikmetinin sahifesi olduğu ilmelyakîn ile kat'î bilindi. Mütebâkisi şimdilik yazdırılmadı. Umûma binler selâm.</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Kardeşiniz> Said Nursî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+<div class="page-marker-wrap"><span class="page-marker">43</span></div>
+<h2 class="heading-2">Nur Âleminin Bir Anahtarı'nın Bir Hâşiyesi</h2>
+<p class="paragraph">Bu Nur Anahtarı'nın radyo bahsine dair, iki üniversiteli ile, bir gün hareket etmekte olan, hiçbir telle bağlı bulunmayan bir otomobilde bulunan radyo ile, uzakta bir mevlid-i şerif dinliyorduk. O iki Nurcu üniversitelilere dedim: Nur'da dahî; hayât, vücud gibi doğrudan doğruya kudret-i İlâhiye'nin perdesiz tecellisi bedahetle göründüğüne bir delil budur ki: Şimdi bu makinecikteki tırnak kadar bir hava, mânevî az bir nur, yalnız bu mevlidden gelen kelimeleri dinler, söyler değil; belki binler, milyonlar kelimeleri aynı anda dinler, söyler ki; binler istasyondaki ayrı ayrı kelimeleri şimdiki işittiğimiz kelimeler gibi işitir ve işittirebilir, bize söyleyebilir. Demek en cüz'î en küllî olur. Hem o küçücük parçacık hava, küre-i hava kadar vazife görür. En küçük, en büyük küre-i hava kadar büyür. Eğer cilve-i kudret-i ezeliyeye verilmezse; öyle acib bir hurâfeli tezat olur ki; hiçbir hayâle gelmez. Bir şey zıddına inkılâbı muhâl olduğundan; böyle binler derece en cüz'î, zıddı olan en küllî olmak.. en küçük, en büyük olmak.. en câmid, cahil, şuursuz, âciz; en muktedir, en</p>
+<div class="page-marker-wrap"><span class="page-marker">44</span></div>
+<p class="paragraph">dirâyetli ve irâdetli ve şuurlu olmak lâzım gelir ki; yüzer tezat ve muhâller ve hurâfetler içinde, emsâli bulunmaz bir hurâfedir. Demek, bilbedâhe kudret-i ezeliyenin bir cilvesidir. Ve o cilveyi küre-i havada umûmen temsil eden bu gelen hadîs-i şerîfin meâli gösteriyor. Şöyle ki: Bir melâike var. Kırk bin başı var. Her başında, kırk bin dil var. Her bir dilde, kırk bin tesbihât yapıyor. Altmışdört trilyon tesbihât aynı anda söylüyor. Demek küre-i hava, bu melâike gibidir. Yâni; bu melâikenin tesbihâtı adedince her kelime-i tayyibe, hava sahifesinde yazılıyor. Küre-i hava diyor ki: "Bu hadîs, benden veya bana nezarete memur melekten haber veriyor. Çünkü; insandaki bütün konuşmalar ve sâir bütün hadsiz sesler; karışmaları içinde karıştırılmadan tam hûrûfatıyla ve söyleyenlerin şiveleriyle, mümtâz sesleriyle söylenmek gösterir ki; küllî bir şuurla yapılan bu iş, yalnız tek bir zerrenin vazifesi; ne bana –yâni küre-i havaya– ve ne de bütün esbaba vermesi hiç bir cihet-i imkânı yok. Demek her yerde hâzır, nâzır ehadiyet cilvesiyle ve içinde ihâtalı bir irâde, muhît bir ilim bulunan bir kudret-i ezeliyenin</p>
+<div class="page-marker-wrap"><span class="page-marker">45</span></div>
+<p class="paragraph">cilvesidir. Buna milyonlar şahitlerinden birisi radyodur." "Onüçüncü Söz"de hikmet-i Kur'âniye ile hikmet-i felsefeyi muvâzene bahsinde denilmiş olan mes'elenin meâli budur ki: Felsefe-i insaniye, gâyet hârikulâde mu'cizât-ı kudret-i İlâhiye'nin mu'cizât-ı rahmeti üstüne âdiyât perdesi çeker. O âdiyât altındaki vahdaniyet delillerini ve o hârika nîmetlerini görmüyor, göstermiyor. Fakat âdetten huruç etmiş husûsî bâzı cüz'iyâtı görür, ehemmiyet verir. Meselâ; hilkat-ı insaniyedeki kudret mu'cizelerini görmüyor, ehemmiyet vermiyor. Fakat, kaideden çıkmış iki başlı, üç ayaklı bir insanı görüp, istiğrab ve velvele-i hayret ile nazar-ı dikkati celb eder. Küllî, umûmî mu'cizâtı âdet perdesinde saklar. Cüz'î ve kanundan çıkmış ve tâifesinden ayrılmış maddeleri medâr-ı ibret yapar. Hem meselâ, –hayvandan, insandan– yavruların pek hârika, pek mu'cizâtlı iâşelerini âdi görüp ehemmiyet vermiyor. Fakat bir vakit Amerika'da bir gazetenin neşrettiği gibi: Tâifesinden çıkmış, milletinden ayrılmış, denizin dibine girmiş bir böceğin, bir yeşil yaprak rızık olarak ağzına verilmesini gören balıkçılar ağlamışlar; şa'şaa ile ilân etmişler.</p>
+<div class="page-marker-wrap"><span class="page-marker">46</span></div>
+<p class="paragraph">Halbuki, en cüz'î bir yavruda, memedeki âb-ı kevser gibi rızkında, onun gibi binler mu'cizât-ı rahmet ve ihsân var. Felsefe-i beşeriye görmüyor ki şükür etsin. O Rahmânürrahîm'i tanısın, şükür ile mukâbele etsin. İşte hikmet-i Kur'âniye, o âdiyât perdesini yırtar. O küllî, umûmî hârika mu'cizeleri ve fevkalâde nimetleri beşere ders verir; Allah'ı tanıttırır. Küllî şükür namına ubûdiyete sevkeder. İşte felsefe-i beşeriyenin en acîb, en antika hatasından birisi de şudur ki, cüz'-i ihtiyarîsi ve irâdesi, en zâhir ve küçük fiili olan "söylemeğe" kâfi gelmiyor; icad edemiyor. Yalnız havayı harflerin mahrecine sokuyor. Bu cüz'î kesb ile Cenâb-ı Hak, onun o kesbine binaen o kelimatı halkeder. Havaya da binler nüsha yazar. Bu kadar icaddan insanın eli kısa olduğu halde, bütün esbab-ı kâinât âciz kaldıkları bir hârika küllî mu'cizât-ı kudrete, beşer icadı namını vermek; ne kadar büyük bir hata olduğunu zerre kadar şuuru bulunan anlar. İşte bunun bir misâli, yüzbin hârikaları tazammun eden bir kanun-u İlâhî'yi, beşerin istifâdesine vesile olmak için bir keşfiyât, yâni fiilî dualarına bir nevi kabul hükmünde bir</p>
+<div class="page-marker-wrap"><span class="page-marker">47</span></div>
+<p class="paragraph">ilham-ı İlâhî ile keşf olan radyo ile, beşer istifâdesine vesile olan bîçare, âciz-i mutlak bir insana; "Hah!.. Radyoyu filan keşşaf icad etti ve elektrik kuvvetini buldu. Ve bâzı keşşaflar da, beşerin kafasını okumak için bir madde icad etmeye çalışıyorlar (!)" Evet Cenâb-ı Hak, –bu kâinatı, insana lâzım ve lâyık her şeyi içinde halketmiş bir misâfirhânedir– ziyâfetler nev'inde bâzı zaman ve asırlarda gizli kalmış nîmetlerini dua-yı fiilî olan telahûk-u efkârdan ileri gelen taharriyât neticesinde ellerine ihsân eder. Buna karşı şükür etmek lâzım gelirken, bir küfran-ı nîmet nev'inden âdi, âciz bir insanın icadı, hüneri nazarıyla bakıp; sonra o küllî bir şuur ve ilim ve irâde ve rahmet ve ihsânın neticesi olan o hârikaları unutturup, yalnız ince bir perdesini gösterip; şuursuz tesâdüfe, tabiata ve câmid maddelere havale edip, ahsen-i takvimde olan insaniyetin mâhiyetine zıd bir cehl-i mutlak kapısını açmaktır. Öyle ise</p>
+<div class="arabic-block" data-meal-id="860" dir="rtl">وَ ف۪ى كُلِّ شَيْءٍ لَهُ اٰيَةٌ تَدُلُّ عَلٰى اَنَّهُ وَاحِدٌ</div>
+<p class="paragraph">düsturuyla, mahlukata mana-yı harfiyle bakmak elzemdir ki insan, insan olsun.</p>
+<div class="arabic-block" data-meal-id="16" dir="rtl">سُبْحَانَكَ لاَ عِلْمَ لَنَٓا اِلاَّ مَا عَلَّمْتَنَٓا اِنَّكَ اَنْتَ الْعَل۪يمُ الْحَك۪يمُ</div>
+<div class="page-marker-wrap"><span class="page-marker">48</span></div>
+<p class="paragraph">,(Bu mektup sâbık mektuplar gibi Medresetü'z-Zehra erkânlarına aynı zamanda verdiği derslerinden olmak münâsebetiyle arkasına ilhak edildi.)></p>
+<div class="arabic-block" data-meal-id="125" dir="rtl">بِاسْمِهِ سُبْحَانَهُ</div>
+<p class="paragraph">Aziz, Sıddık Kardeşlerim; <strong>Evvelâ:</strong> Mevlid-i Şerifinizi ruh u canımızla tebrik ediyoruz ve muvaffakıyetinizi ve Nurlar'ın fevkalâde te'sirli intişarlarını sizlere müjde ediyoruz ve Nurcuları tebrik ediyoruz. <strong>Sâniyen:</strong> Bu mübarek gecede pek şiddetli bir ihtar kalbime geldi ki: İstanbul'daki Üniversiteciler Eski Said ile Yeni Said'in Tarihçe-i Hayat'ındaki hârikaları yazmaları münâsebetiyle iki fikir meydana gelmiş. <strong>Birisi:</strong> Dostlarda benim haddimden pek ziyâde, fevkalâde, bir nevi velâyet gibi bir hüsn-ü zan hasıl olmuş. Ve muarızlarda ve ehl-i felsefede de pek hârika bir deha zannı ve hattâ bâzılarında da, kuvvetli bir sihir tevehhümüyle, haddimden bin derece ziyâde bir tevehhüm hasıl olmuş. Ve bu mânâya dair çok yerlerde: "Bunun hakîkatı nedir?" diye maddî</p>
+<div class="page-marker-wrap"><span class="page-marker">49</span></div>
+<p class="paragraph">ve mânevî izahı benden istenilmişti. Ben de, bu gecedeki şiddetli ihtar için çok mukaddematlı bir hakîkatı beyan etmeye mecbur oldum. <strong>Birinci Mukaddime:</strong> Nasılki bir çam ağacının buğday tanesi kadar bir çekirdeği, koca çam ağacına bir mebde' oluyor. Kudret-i İlâhî, o acib ağacı o çekirdekten halkediyor. Milyondan ancak bir hisse o çekirdekte bulunurken; o çekirdek, kader kalemiyle yazılan mânevî bir fihriste olmuş. Yoksa, bir köy kadar fabrikalar lâzımdır ki; o acib ağaç dal ve budaklarıyla teşkil edilsin. İşte, Azamet ve Kudret-i İlâhî'nin bir delili de budur ki: Bir zerreden, dağ gibi şeyleri halkeder. İşte aynen bunun gibi; hiçbir mahviyet ve tevazu niyetiyle olmayarak, bütün kanâatimle ilân ediyorum ki: Benim hizmetim ve sergüzeşte-i hayatım, bir nevi çekirdek hükmüne geçmiş. İnayet-i İlâhiye ile, bu zamanda ehemmiyetli bir hizmet-i îmâniyeye mebde' olmak için Kur'ân'dan gelen ve meyvedar bir şecere-i âliye olan Nur Risalelerini ihsân etmiş. Ben bunu kasemle temin ediyorum ki: Bütün hayatımda geçen o hârikalardan</p>
+<div class="page-marker-wrap"><span class="page-marker">50</span></div>
+<p class="paragraph">dolayı ben kendimde kat'iyyen bir kâbiliyet ve bir meziyet ve o fevkalâdeliğe bir liyakât görmüyordum. Hayret hayret içinde kalıyordum. Değil fevkalâde bir deha veyahut fevkalâde bir velâyet, belki kendi kendimi idare edecek ve hayât-ı içtimâiye ile münâsebettar olacak bir kâbiliyet görmüyordum. Gerçi zâhiren hodfürûşluk gibi bâzı hâlât hayatımda görünmüştü. O da ihtiyarım hâricinde halkların hüsn-ü zannını tekzib etmemek için bir nevi hodfürûşluk gibi oluyordu. Fakat halkların hüsn-ü zannı gibi, hakîkatte olmadığımın hikmetini bilmediğimden ve dünyaya yaramadığımı, böyle bin derece haddimden fazla bir teveccühe mazhar olduğumu; bütün bütün hilâf-ı hakikat telakki ediyordum. Fakat Cenâb-ı Hakk'a yüzbin şükür olsun ki yetmiş seksen senelik hayatımın sonlarında onun hikmetini ihsân-ı İlâhiye ile bir derece bildik ve kısaca bir kısmına işaret edeceğim. Ve çok nümûnelerinden bir kısım nümûnelerini beyan ediyorum: <strong>Birinci Nümûne:</strong> Medrese usûlünce, hiç olmazsa onbeş sene tahsil-i ilim lâzım geliyor ki, hakâik-i diniye ve ulûm-u İslâmiye tam elde edilsin. O zamanda Said'de, değil hârika bir zekâ veya bir mânevî kuvvet; belki bütün</p>
+<div class="page-marker-wrap"><span class="page-marker">51</span></div>
+<p class="paragraph">istidad ve kâbiliyetinin hâricinde bir acib tarz ile bir-iki sene "Sarf ve Nahiv" mebâdîsini gördükten sonra, üç ayda, acib bir tarzda, kırk elli kitabı güya okumuş ve icazet almış gibi bir hâlet göründü. Bu hâl, altmış sene sonra doğrudan doğruya gösterdi ki; o vaziyet, ulûm-u îmâniyeyi üç-dört ayda, –kısa bir zamanda– ellere verebilecek bir tefsir-i Kur'ânî çıkacak ve o bîçare Said de onun hizmetinde bulunacak işaretiyle; hem bir zaman gelecek ki; değil onbeş sene; belki bir sene de ulûm-u îmâniyeyi ders alacak medreseler ele geçmeyecek ve azalacak bir zamânâ bir nevi işaret-i gaybîye gibi mânâlar hatıra geliyor. <strong>İkinci Nümûne:</strong> O eski zamanda, –Said'in o çocukluk zamanında– büyük âlimlerle münazarasını ve o âlimlerin suallerine cevap vermesini; hattâ kendisi hiç sual etmeden âlimlerin en müşkül suallerine doğru cevap vermesini, ben kat'iyyen itiraf ediyorum ve itikad ediyorum ki, o hâl ne hârika zekâvetimden ve ne de acib istidadımdan neş'et etmiş değildir. Ben de bîçare, mübtedi, sersem, gürültücü bir çocuk iken; hiç böyle değil büyük âlimlere cevap vermek; belki küçük hocalara, hattâ küçük talebelere de mağlup olur bir halde iken doğru</p>
+<div class="page-marker-wrap"><span class="page-marker">52</span></div>
+<p class="paragraph">cevap vermekliğim; kat'iyyen istidadımdan ve zekâvetimden gelmemiş olduğuna kanâât-ı kat'iyyem var. Yetmiş senedir de hayret ediyordum. Şimdi, ihsân-ı İlahî ile bir hikmetini anladım ki: Çekirdek gibi, medrese ilimlerine bir ağaç ihsân edilecek ve o ağacın hizmetinde bulunana karşı pek çok rakipleri ve muarızları bulunacak. İşte bu zamanda, İslâmlar içinde muhtelif meşrebler ve meslekler sahipleri, birbirisini tenkit etmek ve eserine mukâbil eserler neşretmek; Mu'tezile ve Ehl-i Sünnet gibi birbirini kırmak âdetiyle; bu zamanda, o "Nur" ağacının hizmetkârının başına vuracak ve rekabet veya meşreb muhâlefetiyle en tesirlisi ve en müthişi medrese hocaları olmak lâzım gelirken; Cenâb-ı Hakk'a yüz bin şükür olsun ki; eskiden beri devam etmekte olan o âdete muhâlif olarak "Risale-i Nur" en ziyâde ulemânın damarlarına dokundurduğu halde; hocaların Nurlar'a karşı tenkidkârâne eserler yazamadıklarının sebebi: O zamanda, o çocuk Said'in, ulemânın suallerine karşı doğru cevap vermesi, ulemânın cesâretini kırmış ki; hiç bir yerde, kıskanç hocalardan, hem meşrepçe Said'e çok muhâlif oldukları halde; Nur Risaleleri'ne karşı mukâbil</p>
+<div class="page-marker-wrap"><span class="page-marker">53</span></div>
+<p class="paragraph">çıkmamaları; bu halin bir hikmeti olduğuna kanâatim gelmiş. Yoksa, böyle acib bir zamanda, ehl-i medresenin itirazı başlasa idi; dinsizlik taraftarları olan gizli düşmanlarımız hem Nurları, hem ulemâyı çürütmek için ehemmiyetli bir vesile yapacaklardı. Cenâb-ı Hakk'a hadsiz şükrolsun ki, en ziyâde Nurlar'ın dokunduğu resmî ulemâ, aleyhinde bulunamadılar. <strong>Üçüncü Nümûne:</strong> Eski Said'in çocukluk zamanından beri hem kendisi, hem babası fakir oldukları halde; başkalarının sadaka ve hediyelerini almadığının ve alamadığının ve şiddetli muhtaç olduğu halde hediyeleri mukâbilsiz kabul etmediğinin ve Kürdistan âdeti, talebelerin tâyinatı ahâlinin evlerinden verildiği ve zekâtla masrafları yapıldığı halde, Said hiç bir vakit tayin almağa gitmediğinin ve zekâtı dahî bilerek almadığının bir hikmeti, şimdi kat'î kanâatımla şudur ki: Âhir ömrümde Risale-i Nur gibi sırf îmânî ve uhrevî bir hizmet-i kudsiyeyi dünyaya âlet etmemek ve menafi-i şahsiyeye vesile yapmamak için, o makbul âdete ve o zararsız seciyeye karşı bana bir nefret ve bir kaçınmak ve şiddet-i fakr ve zarureti kabul edip, elini insanlara açmamak hâleti verilmişti ki; Risale-i Nur'un hakikî bir kuvveti olan hakikî ihlâs</p>
+<div class="page-marker-wrap"><span class="page-marker">54</span></div>
+<p class="paragraph">kırılmasın. Ve bunda bir işaret-i mânevî hissediyordum ki; Gelecek zamanda maîşet derdiyle ehl-i ilmin mağlubiyeti bu ihtiyaçtan gelecektir. <strong>Dördüncü Nümûne:</strong> Yeni Said –ihtiyarlığında– bütün bütün siyasetten ve dünyadan kendini çekmeğe çalıştığı halde; ehl-i dünyanın bütün bütün kanuna ve insâfa ve vicdana, hattâ insanlığa muhâlif bir tarzda, eşedd-i zulüm ile, yirmisekiz sene işkencelerle ezdiklerine ve bir sineğin ısırmasına tahammül etmeyen o bîçare Said'in baltalarla başına vurduklarına ve ihânetin en şeni'lerini yaptıklarına karşı, emsâlsiz bir sabır ve tahammül ona ihsân olunması ve gâyet asabî ve sinirli olduğu gibi; fıtraten korkak olmadığı halde "Ecel birdir, tegayyür etmez." hakîkatına îmânından gelen büyük bir cesâretle beraber; en korkak, en miskin bir vaziyette sükût edip sabretmesi; hattâ bir miktar sonra, o işkenceler sonunda ruhuna bir ferah verilmesinin bir hikmeti, kanâat-ı kat'iyyemle budur ki: Kur'ân-ı Hakîm'in hakâik-i îmâniyesini tefsir eden Risale-i Nur'u hiç bir şeye ve şahsî menfaatlerine ve mânevî kemâlâtlarına âlet yapmamak ve hakikî ihlâsı kırmamak için ehl-i siyaset Said hakkında, dini siyasete âlet</p>
+<div class="page-marker-wrap"><span class="page-marker">55</span></div>
+<p class="paragraph">yapmak vehmini verip, tâ Said işkencelerle, hapislerle dini siyasete âlet etmesin diye ehl-i siyasetin zâlimâne hükümleri altında kader-i İlâhî Nur'daki hakikî ihlâsı kırmamak için, Said'e şefkatli tokatlar vurup; "Sakın sakın, hakâik-i îmâniyenin tefsiri olan Risale-i Nur'u kendi şahsî menfaatlerine; hattâ mânevî kemâlâtlarına ve belâlardan ve muzır şeylerden kurtulmaklığına âlet yapma. Tâ ki Nur'un en büyük kuvveti olan ihlâs-ı hakikî zedelenmesin!" diye kader-i İlahînin şefkatli tokatları olduğuna kat'î kanâat ediyorum. Hattâ her ne vakit, sırf âhiretime, şahsî ibâdetle ziyâde meşguliyetim sebebiyle Nur'un hizmetini bıraktığım aynı zamanında ehl-i dünya bana musallat olup bana azâp verdiğine kat'î kanâat getirmişim. Bu dördüncü nümûnenin izahını, en son yazılan mektuplardan, ehl-i siyaset, Said'i "Dini siyasete âlet yapar." diye hapislere atması ve sonra Said onun hikmetini, yâni kaderin şefkât tokatları olduğunu anlamasıyla onları helâl etmesi ve kendi tahammülünün hikmetini anlamasına dair olan o mektuba havale ediyoruz. <strong>Beşinci Nümûne:</strong> Bu bîçare Said'in gâyet muhtaç olduğu ve yetmiş seneden beri o</p>
+<div class="page-marker-wrap"><span class="page-marker">56</span></div>
+<p class="paragraph">sanatla meşgul olması ve bâzı gün ikiyüz sahife kadar tashihe mecbur olmasıyla beraber on yaşındaki zeki bir çocuğun on günde muvaffak olduğu yazı kadar bir yazıya mâlik olamadığına hayret ediliyordu. Halbuki Said, bütün bütün istidatsız değildir. Hem de nesebî kardeşlerinin hepsinin de güzel yazıları olduğu halde, bu kadar yazıya muhtaç iken böyle yarım ümmî vaziyetinin hikmeti, kanâat-ı kat'iyyemle şudur ki: Bir zaman gelecek ki, cüz'î ve şahsî iktidarlar ve kuvvetler mukâbele edemeyecek dehşetli mânevî düşmanların hücumu zamanında güzel yazı sahiplerini ruh u canıyla aramak ve hizmetine şerik etmek ve o çekirdeğin etrafında su, hava, nur gibi o mânevî ağaca hizmet etmek için o şahsî ve cüz'î hizmeti; küllî ve umûmî ve kuvvetli ve bir kaleme mukâbil; binler kalemi bulmak hikmetiyle ve buz parçası gibi benliğini o mübarek havuz içinde eritmesiyle hakikî ihlâsı elde etmek ve bu suretle îmâna hizmet etmek hikmetiyle olmuş.</p>
+<div class="arabic-block" data-meal-id="888" dir="rtl">اَلْبَاقِى هُوَ الْبَاقِى</div>
+<p class="paragraph">Kardeşiniz> Said Nursî></p>
+<div class="page-marker-wrap"><span class="page-marker">57</span></div>
+<h2 class="heading-2">Medine-i Münevvere'de bulunan ve Nur'un hakikatını tam anlayan ve İslâmiyet'e hizmet eden bir zâtın mektubudur</h2>
+<p class="paragraph">Gönüller fâtihi pek muhterem ve mükerrem Üstadımız Hazretleri! Mübarek ellerinizden öper, bütün aziz ve sadakatli talebelerinizle beraber sıhhat ve selâmette dâim olmanızı bârgâh-ı Kibriyâ'dan niyaz eylerim. Müslümanlar için en büyük bir bayram diye ancak vasıflandırılabilen berâatiniz, bütün Nurcuları şâd ve handan eylediği gibi, bendenizi de dünyalar kadar memnun ve mesrur eylemiştir... Nasıl memnun etmesin ki; sizin eserlerinizle birlikte berâatiniz demek, ruhun maddiyata, nurun zulmete, îmânın küfre, hakkın bâtıla, tevhidin şirke ve irfanın cehle galip gelmesi demektir. Yıllardan beri önüne sıradağlar gibi engeller, korkunç uçurumlar gibi mâniler konulan Nur Çağlayanı, en sonunda mu'cizevî bir şekilde bütün sedleri yıkmış, mânileri aşmış, nur ile bütün zulmetleri târumar eylemiştir.</p>
+<div class="page-marker-wrap"><span class="page-marker">58</span></div>
+<p class="paragraph">"Mu'cizevî hârikalarla doğan İlâhî tecellilerin vasfında kalemler kırılır, fikirler gürülder, ilhamlar yanar kül olur." derlerdi. Hakîkaten bendeniz, şimdi bu müstesna zaferin karşısında aynı aczi, bütün varlığımla hissediyorum. Zira tefekkür ve ilhamıma nihâyetsiz bir ufuk açılıyor.. cihan, muhteşem bir Nur mabedini andırıyor. Civarımdaki herşey, her yer, derin vecd ve istiğraklarla gaşyolmuş bir halde... Her zerrede</p>
+<div class="arabic-block" data-meal-id="47" dir="rtl">وَ اِنْ مِنْ شَيْءٍ اِلاَّ يُسَبِّحُ بِحَمْدِه۪</div>
+<p class="paragraph">sırr-ı Sübhanîsi tecelli ediyor. Binaenaleyh bilmiyorum, bu mesut, hâdiseyi; şanlı bir zafer, şahâne bir fetih, İlâhî bir kurtuluş, cihanşümûl bir bayram diye mi vasıflandırayım? Zira, kudsî dâvânın kazanmış olduğu bu İlâhî zafer, bütün İslâm ve insanlık dünyasındaki mücahidlerin azimlerine kuvvet, ruhlarına can, îmânlarına hız ve heyecan vermiştir. Evet, azim ve îmânları, aşk ve emelleri henüz kemâle ermemiş olan birçok müslümanlar, mâalesef acıklı bir ye's içinde idiler. Böyle bir zaferin tahakkukunu, hayâl ve muhâl görüyorlardı. Fakat bütün feyiz ve nurunu insanlığı</p>
+<div class="page-marker-wrap"><span class="page-marker">59</span></div>
+<p class="paragraph">tenvir ve irşad için İlâhî bir güneş halinde Arş-ı Âzam'ın pürnur ufuklarından inen Kur'ân-ı Kerîm'den alan Nur neşriyâtı, durgun gölleri andıran gönülleri deryalar gibi coşturmuş, kasvet ve hicran yıllarının ümit ve emellere vurduğu müthiş zincirleri kırmıştır. O nur kaynağından fışkıran o serâpa feyiz ve hikmetler saçan eserler; hislerin, fikirlerin ve bilhassa alevler içinde yanan ruh ve vicdanların ezelî ve ebedî ihtiyaçlarına cevap verdiği gibi; onları, dalga dalga boğucu karanlıklar muhîtinden, tertemiz ve pırıl pırıl nur ufuklarına çıkarmıştır. Yıllarca devam eden uzun bir sükût, derin bir gaflet ve boğucu bir zulmetten sonra İlahî bir güneş halinde parlayan bu kudsî zafer, nur için yol aramakta olan perişan beşeriyetin yakın bir gelecekte uyanacağını müjdelemektedir. Çünkü; din ihtiyacı, sırf müslümanların değil, bilumûm insanların ezelî ve ebedî ihtiyacıdır. Bugün, bedbaht insanlık, din nîmetinden mahrum olmanın sürekli hicran ve felâketlerini bağrı yanarak çekmektedir. Bu acıklı buhranın korkunç neticesidir ki, çeyrek asır zarfında iki büyük harbe girmiş ve üçüncüsünün de kapısını çalmak çılgınlığını göstermektedir.</p>
+<div class="page-marker-wrap"><span class="page-marker">60</span></div>
+<p class="paragraph">Artık bütün insanları kardeş yaparak yemyeşil cennetlerin nurlu ufuklarından esen refah ve saâdet, huzur ve âsâyiş rüzgârıyla dalgalanan âlemşümûl bir bayrak altında toplayacak olan yegâne kuvvet, İslâm'dır. Zira beşeriyetin bugünkü hali, tıpkı İslâm'dan evvelki insan cemiyetlerinin acıklı halidir. Bunun için, insanlığı o günkü ebedî felâketten kurtaran İslâm, bugün de kurtarabilir... Evet, milyonların, milyarların kalbinde asırlardan beri kanamakta olan o derin yarayı saracak yegâne müşfik el, İslâm'dır. Her ne kadar ufuklarda zaman zaman bâzı uydurma ışıklar görülüyorsa da.. müstakbel, bütün nur ve feyzini güneşlerden değil; bizzât Rabbü'l Âlemîn'den alan ezelî ve ebedî "Yıldız"ındır. O yıldız, dünyalar durdukça duracak ve onu söndürmek isteyenleri yerden yere vuracaktır. Cihan-kıymet Üstadım! Malûm-u fazılaneleridir ki; son günlerde mukaddes dâvâya hizmet eden bâzı tenvir ve irşad hareketleri doğmuş, fakat maalesef hiçbirisi "Risale-i Nur Külliyatı"nın gördüğü mühim işi görememiş ve ihraz ettiği İlahî zaferi kazanamamıştır. Zira bu yol; peygamberlerin, velilerin, âriflerin, sâlihlerin ve bilhassa canını</p>
+<div class="page-marker-wrap"><span class="page-marker">61</span></div>
+<p class="paragraph">canana seve seve feda eden ve sayısı milyonlara sığmayan kahraman şehidlerin mukaddes yoludur. Artık bu çetin yolda yürümek isteyenler, her an karşılarına dikilecek olan müthiş mâniaları dâima göz önünde tutmaları lâzımdır. Evet, bu yolda yürüyecek olanların, sizdeki sarsılmak bilmeyen îmânla, yüksek ve İlahî irfanla ve bilhassa hârikulâde ihlâs ve feragatla mücehhez olmaları gerektir. Çünkü, bu mühim vâdide Nur dâvâsının takib ettiği tebliğ, tenvir ve irşad usûlü, bambaşka husûsiyetler taşımaktadır. Artık insanın his ve fikrine, ruh ve vicdanına bambaşka ufuklar açacak olan bu derin bahsi, dua buyurun da müstakîl ve mufassal bir eserde aziz din ve gönüldaşlarımıza arzetmek şerefine nâil olayım... Çünkü, bu nurlu bahis o kadar derin ve o derece mühimdir ki, böyle birkaç sahifelik mektup ve makalelerle aslâ ifade edilemez. İman ve Kur'ân nuru ile tertemiz gönlünü fethettiğiniz gençlik, İlahî zaferinizin en parlak delilini teşkil eden en mühim varlık ve en kıymetli cevherdir... "Nurdan Sesler"in hemen her mısraında, asîl ve şuurlu ruhuna hitap ettiğim tertemiz gençlik, işte bu hak ve hakîkatın bağrı yanık âşığı olan gençliktir. Nurlu davanın kazanmış olduğu bu son</p>
+<div class="page-marker-wrap"><span class="page-marker">62</span></div>
+<p class="paragraph">zaferin verdiği bütün vecdle dolu bir ilhamla yazdığım şu manzumeyi takdim ediyorum. Kabulünü rica ve istirham eylerim. Tekrar tekrar ellerinizden öper, kıymetli dualarınızı beklerim, pek muhterem Üstadım Hazretleri. Manevî evlâdlarınızdan> Ali Ulvî></p>
+<div style="text-align:center; margin: 18px 0; color: #888; letter-spacing: 4px;">* * *</div>
+
+</body>
+</html>

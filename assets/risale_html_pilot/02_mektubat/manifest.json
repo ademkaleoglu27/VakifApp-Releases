@@ -1,0 +1,277 @@
+{
+  "bookId": "risale.mektubat@diyanet.tr",
+  "title": "Mektubat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-02_mektubat",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 590,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_01",
+      "index": 1,
+      "file": "02_01.html",
+      "title": "00 01 Birinci Mektup",
+      "startPage": 1,
+      "pageCount": 10
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_02",
+      "index": 2,
+      "file": "02_02.html",
+      "title": "01 02 İkinci Mektup",
+      "startPage": 11,
+      "pageCount": 3
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_03",
+      "index": 3,
+      "file": "02_03.html",
+      "title": "02 03 Üçüncü Mektup",
+      "startPage": 14,
+      "pageCount": 5
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_04",
+      "index": 4,
+      "file": "02_04.html",
+      "title": "03 04 Dördüncü Mektup",
+      "startPage": 19,
+      "pageCount": 3
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_05",
+      "index": 5,
+      "file": "02_05.html",
+      "title": "04 05 Beşinci Mektup",
+      "startPage": 22,
+      "pageCount": 2
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_06",
+      "index": 6,
+      "file": "02_06.html",
+      "title": "05 06 Altıncı Mektup",
+      "startPage": 24,
+      "pageCount": 4
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_07",
+      "index": 7,
+      "file": "02_07.html",
+      "title": "06 07 Yedinci Mektup",
+      "startPage": 28,
+      "pageCount": 3
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_08",
+      "index": 8,
+      "file": "02_08.html",
+      "title": "07 08 Sekizinci Mektup",
+      "startPage": 31,
+      "pageCount": 3
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_09",
+      "index": 9,
+      "file": "02_09.html",
+      "title": "08 09 Dokuzuncu Mektup",
+      "startPage": 34,
+      "pageCount": 5
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_10",
+      "index": 10,
+      "file": "02_10.html",
+      "title": "09 10 Onuncu Mektup",
+      "startPage": 39,
+      "pageCount": 4
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_11",
+      "index": 11,
+      "file": "02_11.html",
+      "title": "10 11 On Birinci Mektup",
+      "startPage": 43,
+      "pageCount": 4
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_12",
+      "index": 12,
+      "file": "02_12.html",
+      "title": "11 12 On İkinci Mektup",
+      "startPage": 47,
+      "pageCount": 6
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_13",
+      "index": 13,
+      "file": "02_13.html",
+      "title": "12 13 On Üçüncü Mektup",
+      "startPage": 53,
+      "pageCount": 6
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_14",
+      "index": 14,
+      "file": "02_14.html",
+      "title": "13 14 On Dördüncü Mektup",
+      "startPage": 59,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_15",
+      "index": 15,
+      "file": "02_15.html",
+      "title": "14 15 On Beşinci Mektup",
+      "startPage": 60,
+      "pageCount": 15
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_16",
+      "index": 16,
+      "file": "02_16.html",
+      "title": "15 16 On Altıncı Mektup",
+      "startPage": 75,
+      "pageCount": 20
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_17",
+      "index": 17,
+      "file": "02_17.html",
+      "title": "16 17 On Yedinci Mektup",
+      "startPage": 95,
+      "pageCount": 5
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_18",
+      "index": 18,
+      "file": "02_18.html",
+      "title": "17 18 On Sekizinci Mektup",
+      "startPage": 100,
+      "pageCount": 9
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_19",
+      "index": 19,
+      "file": "02_19.html",
+      "title": "18 19 On Dokuzuncu Mektup",
+      "startPage": 109,
+      "pageCount": 170
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_20",
+      "index": 20,
+      "file": "02_20.html",
+      "title": "19 20 Yirminci Mektup",
+      "startPage": 279,
+      "pageCount": 49
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_21",
+      "index": 21,
+      "file": "02_21.html",
+      "title": "20 21 Yirmi Birinci Mektup",
+      "startPage": 328,
+      "pageCount": 4
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_22",
+      "index": 22,
+      "file": "02_22.html",
+      "title": "21 22 Yirmi İkinci Mektup",
+      "startPage": 332,
+      "pageCount": 18
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_23",
+      "index": 23,
+      "file": "02_23.html",
+      "title": "22 23 Yirmi Üçüncü Mektup",
+      "startPage": 350,
+      "pageCount": 8
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_24",
+      "index": 24,
+      "file": "02_24.html",
+      "title": "23 24 Yirmi Dördüncü Mektup",
+      "startPage": 358,
+      "pageCount": 31
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_25",
+      "index": 25,
+      "file": "02_25.html",
+      "title": "24 25 Yirmi Beşinci Mektup",
+      "startPage": 389,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_26",
+      "index": 26,
+      "file": "02_26.html",
+      "title": "25 26 Yirmi Altıncı Mektup",
+      "startPage": 390,
+      "pageCount": 46
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_27",
+      "index": 27,
+      "file": "02_27.html",
+      "title": "26 27 Yirmi Yedinci Mektup",
+      "startPage": 436,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_28",
+      "index": 28,
+      "file": "02_28.html",
+      "title": "27 28 Yirmi Sekizinci Mektup",
+      "startPage": 437,
+      "pageCount": 54
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_29",
+      "index": 29,
+      "file": "02_29.html",
+      "title": "28 29 Yirmi Dokuzuncu Mektup",
+      "startPage": 491,
+      "pageCount": 96
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_30",
+      "index": 30,
+      "file": "02_30.html",
+      "title": "29 30 Otuzuncu Mektup",
+      "startPage": 587,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_31",
+      "index": 31,
+      "file": "02_31.html",
+      "title": "30 31 Otuz Birinci Mektup",
+      "startPage": 588,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_32",
+      "index": 32,
+      "file": "02_32.html",
+      "title": "31 32 Otuz İkinci Mektup",
+      "startPage": 589,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.mektubat@diyanet.tr:html_33",
+      "index": 33,
+      "file": "02_33.html",
+      "title": "32 33 Otuz Üçüncü Mektup",
+      "startPage": 590,
+      "pageCount": 1
+    }
+  ]
+}

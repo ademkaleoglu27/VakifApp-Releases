@@ -16,9 +16,26 @@ const COVER_COLORS: Record<string, string> = {
     cevsen: '#8B0000',     // Dark red
     lugat: '#2F4F4F',      // Dark slate
     big: '#1e3a5f',        // Navy blue
-    small: '#D4A5A5',      // Dusty rose
+    small: '#0F382C',      // Deep Islamic Emerald
     html_dev: '#4a5568',   // Gray
     other: '#64748b'       // Slate
+};
+
+const LEATHER_PALETTE = [
+    '#0F382C', // Deep Islamic Emerald
+    '#4A151B', // Rich Burgundy Leather
+    '#162B4D', // Royal Midnight Navy
+    '#3B2212', // Deep Saddle Brown Leather
+    '#1F2937', // Charcoal Slate Leather
+    '#44233B', // Imperial Aubergine Leather
+];
+
+const getLeatherColor = (title: string): string => {
+    let hash = 0;
+    for (let i = 0; i < title.length; i++) {
+        hash = title.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return LEATHER_PALETTE[Math.abs(hash) % LEATHER_PALETTE.length];
 };
 
 const COVER_DIMENSIONS = {
@@ -29,7 +46,7 @@ const COVER_DIMENSIONS = {
 
 export const BookCard = React.memo(({ item, size = 'medium', onPress }: BookCardProps) => {
     const dimensions = COVER_DIMENSIONS[size];
-    const coverColor = COVER_COLORS[item.kind] || COVER_COLORS.other;
+    const coverColor = item.kind === 'small' ? getLeatherColor(item.title) : (COVER_COLORS[item.kind] || COVER_COLORS.other);
 
     const isPreparing = item.status === 'preparing';
 

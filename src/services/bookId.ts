@@ -71,6 +71,11 @@ export function canonicalizeBookId(input: string): string {
         return 'quran.pdf@vakifapp';
     }
 
+    // Small books (risale.rnk.*)
+    if (id.startsWith('risale.rnk.')) {
+        return id;
+    }
+
     // Default: return as-is (already short or unknown)
     if (id.startsWith('risale.') && __DEV__) {
         console.warn(`[bookId] Unmapped risale id detected: ${id}`);

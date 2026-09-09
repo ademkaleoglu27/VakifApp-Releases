@@ -31,6 +31,9 @@ import { GermaniaOne_400Regular } from '@expo-google-fonts/germania-one';
 import { Tinos_400Regular, Tinos_700Bold, Tinos_400Regular_Italic } from '@expo-google-fonts/tinos';
 import { ScheherazadeNew_400Regular, ScheherazadeNew_700Bold } from '@expo-google-fonts/scheherazade-new';
 
+import { risalePagesDb } from '@/services/risalePagesDb';
+import { dictionaryDb } from '@/services/dictionaryDb';
+
 // React Query Client oluştur
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -70,7 +73,16 @@ export default function App() {
     ScheherazadeNewBold: ScheherazadeNew_700Bold,
   });
 
-  const fontsReady = fontsLoaded || !!fontError;
+  // Fail-safe font timeout: max 1.5s wait so the app NEVER hangs
+  const [fontTimeout, setFontTimeout] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFontTimeout(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const fontsReady = fontsLoaded || !!fontError || fontTimeout;
 
   const initAppData = async () => {
     try {
@@ -102,7 +114,9 @@ export default function App() {
 
       setIsDbReady(true);
 
-      // Non-blocking background tasks
+      // Non-blocking background tasks & database warmups
+      risalePagesDb.init().catch(e => console.warn('[RisalePagesDb] Warmup warning:', e));
+      dictionaryDb.init().catch(e => console.warn('[DictionaryDb] Warmup warning:', e));
       syncDynamicAliases().catch(e => console.warn('[Lugat] Background sync failed:', e));
       featureFlagService.loadFlags().catch(e => console.warn('[FeatureFlags] Init load failed:', e));
       featureFlagService.startAppStateListener();

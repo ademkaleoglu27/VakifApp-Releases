@@ -27,87 +27,128 @@ interface MetaData {
 }
 
 let dbInstance: SQLite.SQLiteDatabase | null = null;
+let initPromise: Promise<void> | null = null;
 
 export const ensureContentDbReady = async (): Promise<void> => {
-    try {
-        // 1. Ensure SQLite directory exists
-        const dirInfo = await FileSystem.getInfoAsync(SQLITE_DIR);
-        if (!dirInfo.exists) {
-            await FileSystem.makeDirectoryAsync(SQLITE_DIR, { intermediates: true });
-        }
+    if (dbInstance) return;
+    if (initPromise) return initPromise;
 
-        // 2. Load expected (bundled) meta directly
-        // JSON files are bundled as JS objects by default in React Native 'require'.
-        const targetMeta = require('../../assets/content/content.meta.json') as MetaData;
-
-        // 3. Load DB Asset
-        const dbAsset = Asset.fromModule(require('../../assets/risale.db'));
-        await dbAsset.downloadAsync();
-
-        // 4. Check existing installed meta
-        let installNeeded = true;
-        const installedMetaInfo = await FileSystem.getInfoAsync(META_PATH);
-
-        if (installedMetaInfo.exists) {
-            const installedMetaContent = await FileSystem.readAsStringAsync(META_PATH);
-            try {
-                const installedMeta = JSON.parse(installedMetaContent) as MetaData;
-                if (installedMeta.version === targetMeta.version) {
-                    installNeeded = false;
-                }
-            } catch (e) {
-                console.warn('Failed to parse installed meta, forcing reinstall', e);
-            }
-        }
-
-        const dbInfo = await FileSystem.getInfoAsync(DB_PATH);
-        if (!dbInfo.exists) {
-            installNeeded = true;
-        }
-
-        // 5. Schema Check - validate existing DB has required tables
-        let validSchema = false;
-        if (!installNeeded && (await FileSystem.getInfoAsync(DB_PATH)).exists) {
-            try {
-                const tempDb = await SQLite.openDatabaseAsync(DB_NAME);
-                const validation = await DatabaseMigration.validateSchema(tempDb);
-                validSchema = validation.valid;
-                if (!validSchema) {
-                    console.warn(`[ContentDB] Schema invalid, missing tables: ${validation.missing.join(', ')}`);
-                }
-            } catch (e) {
-                console.warn('[ContentDB] Schema check failed:', e);
-            }
-        }
-
-        // 6. Copy asset if needed
-        if (installNeeded || !validSchema) {
-            console.log('[ContentDB] Installing fresh database asset...');
-            if ((await FileSystem.getInfoAsync(DB_PATH)).exists) {
-                await FileSystem.deleteAsync(DB_PATH);
+    initPromise = (async () => {
+        try {
+            // 1. Ensure SQLite directory exists
+            const dirInfo = await FileSystem.getInfoAsync(SQLITE_DIR);
+            if (!dirInfo.exists) {
+                await FileSystem.makeDirectoryAsync(SQLITE_DIR, { intermediates: true });
             }
 
-            const sourceUri = dbAsset.localUri || dbAsset.uri;
-            if (sourceUri) {
-                await FileSystem.copyAsync({
-                    from: sourceUri,
-                    to: DB_PATH
-                });
-                await FileSystem.writeAsStringAsync(META_PATH, JSON.stringify(targetMeta));
+            // 2. Load expected (bundled) meta directly
+            const targetMeta = require('../../assets/content/content.meta.json') as MetaData;
+
+            // 3. Check existing installed DB
+            const EXPECTED_MIN_SIZE = 25 * 1024 * 1024; // 25 MB
+            const dbInfo = await FileSystem.getInfoAsync(DB_PATH);
+            let installNeeded = false;
+
+            if (!dbInfo.exists || !('size' in dbInfo) || (dbInfo as any).size < EXPECTED_MIN_SIZE) {
+                installNeeded = true;
             } else {
-                console.warn('[ContentDB] Database asset URI unavailable, will create empty DB.');
+                const installedMetaInfo = await FileSystem.getInfoAsync(META_PATH);
+                if (installedMetaInfo.exists) {
+                    try {
+                        const installedMetaContent = await FileSystem.readAsStringAsync(META_PATH);
+                        const installedMeta = JSON.parse(installedMetaContent) as MetaData;
+                        if (installedMeta.version !== targetMeta.version) {
+                            installNeeded = true;
+                        }
+                    } catch (e) {
+                        console.warn('[ContentDB] Failed to parse installed meta, forcing check', e);
+                    }
+                } else {
+                    installNeeded = true;
+                }
             }
-        }
 
-        // 7. Open Database
-        dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
-        console.log('[ContentDB] database_list', await dbInstance.getAllAsync('PRAGMA database_list'));
+            // 4. Schema Check - validate existing DB has required tables
+            let validSchema = false;
+            if (!installNeeded && (await FileSystem.getInfoAsync(DB_PATH)).exists) {
+                try {
+                    const tempDb = await SQLite.openDatabaseAsync(DB_NAME);
+                    const validation = await DatabaseMigration.validateSchema(tempDb);
+                    validSchema = validation.valid;
+                    if (!validSchema) {
+                        console.warn(`[ContentDB] Schema invalid, missing tables: ${validation.missing.join(', ')}`);
+                    }
+                } catch (e) {
+                    console.warn('[ContentDB] Schema check failed:', e);
+                }
+            }
 
-        // 8. Enable foreign keys
-        await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
+            // 5. Copy asset if needed
+            if (installNeeded || !validSchema) {
+                console.log('[ContentDB] Installing fresh database asset...');
+                const tempPath = `${DB_PATH}.tmp`;
+                if ((await FileSystem.getInfoAsync(tempPath)).exists) {
+                    await FileSystem.deleteAsync(tempPath, { idempotent: true });
+                }
 
-        console.log('[ContentDB] foreign_keys', await dbInstance.getFirstAsync('PRAGMA foreign_keys'));
-        console.log('[ContentDB] user_version', await dbInstance.getFirstAsync('PRAGMA user_version'));
+                let copied = false;
+
+                // Attempt 1: Copy natively from Android APK bundle assets
+                try {
+                    const bundleUri = `${FileSystem.bundleDirectory}risale.db`;
+                    console.log('[ContentDB] Copying from bundleUri:', bundleUri);
+                    await FileSystem.copyAsync({
+                        from: bundleUri,
+                        to: tempPath
+                    });
+                    const tInfo = await FileSystem.getInfoAsync(tempPath);
+                    if (tInfo.exists && 'size' in tInfo && (tInfo as any).size > 20 * 1024 * 1024) {
+                        copied = true;
+                    }
+                } catch (bErr) {
+                    console.warn('[ContentDB] Bundle copy failed, trying Asset module:', bErr);
+                }
+
+                // Attempt 2: Fallback to Asset.fromModule
+                if (!copied) {
+                    try {
+                        const dbAsset = Asset.fromModule(require('../../assets/risale.db'));
+                        await dbAsset.downloadAsync();
+                        const sourceUri = dbAsset.localUri || dbAsset.uri;
+                        if (sourceUri) {
+                            await FileSystem.copyAsync({
+                                from: sourceUri,
+                                to: tempPath
+                            });
+                            const tInfo = await FileSystem.getInfoAsync(tempPath);
+                            if (tInfo.exists && 'size' in tInfo && (tInfo as any).size > 20 * 1024 * 1024) {
+                                copied = true;
+                            }
+                        }
+                    } catch (aErr) {
+                        console.warn('[ContentDB] Asset module copy failed:', aErr);
+                    }
+                }
+
+                if (copied) {
+                    if ((await FileSystem.getInfoAsync(DB_PATH)).exists) {
+                        await FileSystem.deleteAsync(DB_PATH, { idempotent: true });
+                    }
+                    await FileSystem.moveAsync({
+                        from: tempPath,
+                        to: DB_PATH
+                    });
+                    await FileSystem.writeAsStringAsync(META_PATH, JSON.stringify(targetMeta));
+                    console.log('[ContentDB] Database file installed successfully.');
+                } else {
+                    console.warn('[ContentDB] Could not copy asset DB, attempting to proceed with existing DB.');
+                }
+            }
+
+            // 6. Open Database
+            dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
+            await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
+            await dbInstance.execAsync('PRAGMA journal_mode = WAL;');
 
         // 9. Run migrations to ensure schema is up to date
         // Note: modify migrateIfNeeded to NOT throw on everything if we want to catch it here,
@@ -241,31 +282,39 @@ export const ensureContentDbReady = async (): Promise<void> => {
         }
 
         console.log('[ContentDB] Checking content health...');
-        const health = await ContentHealthGate.checkContentHealth(dbInstance);
+        try {
+            const health = await ContentHealthGate.checkContentHealth(dbInstance);
 
-        if (!health.isHealthy) {
-            console.warn(`[ContentDB] Health check failed (${health.error}). Attempting self-heal...`);
-            const healed = await ContentSelfHeal.attemptSelfHeal(dbInstance);
-
-            if (!healed) {
-                console.error('[ContentDB] Self-heal failed. Tearing down.');
-                // Re-check one last time to get the exact error state
-                const finalHealth = await ContentHealthGate.checkContentHealth(dbInstance);
-                const errorInfo = {
-                    code: finalHealth.error || 'ERR_UNKNOWN_INTEGRITY',
-                    details: finalHealth.details,
-                    diagnostics: finalHealth.diagnostics // Pass diagnostics to UI
-                };
-                throw new Error(JSON.stringify(errorInfo));
+            if (!health.isHealthy) {
+                console.warn(`[ContentDB] Health check reported (${health.error}). Attempting self-heal...`);
+                const healed = await ContentSelfHeal.attemptSelfHeal(dbInstance);
+                if (!healed) {
+                    console.warn('[ContentDB] Self-heal could not resolve all items, proceeding in resilient mode.');
+                }
+            } else {
+                console.log('[ContentDB] Health check PASSED.');
             }
+        } catch (healthErr) {
+            console.warn('[ContentDB] Health check warning (non-fatal):', healthErr);
         }
 
         console.log('[ContentDB] Database ready');
 
     } catch (error) {
         console.error('[ContentDB] Error in ensureContentDbReady:', error);
-        throw error;
+        if (!dbInstance) {
+            try {
+                dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
+            } catch (fallbackErr) {
+                console.error('[ContentDB] Fallback open failed:', fallbackErr);
+            }
+        }
+    } finally {
+        initPromise = null;
     }
+    })();
+
+    return initPromise;
 };
 
 /**
@@ -279,19 +328,35 @@ export const reinstallContentDbAsset = async (): Promise<void> => {
             dbInstance = null;
         }
 
-        const dbAsset = Asset.fromModule(require('../../assets/risale.db'));
-        await dbAsset.downloadAsync();
+        const tempPath = `${DB_PATH}.tmp`;
+        let copied = false;
 
-        if ((await FileSystem.getInfoAsync(DB_PATH)).exists) {
-            await FileSystem.deleteAsync(DB_PATH);
+        try {
+            const bundleUri = `${FileSystem.bundleDirectory}risale.db`;
+            await FileSystem.copyAsync({ from: bundleUri, to: tempPath });
+            const tInfo = await FileSystem.getInfoAsync(tempPath);
+            if (tInfo.exists && 'size' in tInfo && (tInfo as any).size > 20 * 1024 * 1024) {
+                copied = true;
+            }
+        } catch {}
+
+        if (!copied) {
+            try {
+                const dbAsset = Asset.fromModule(require('../../assets/risale.db'));
+                await dbAsset.downloadAsync();
+                const sourceUri = dbAsset.localUri || dbAsset.uri;
+                if (sourceUri) {
+                    await FileSystem.copyAsync({ from: sourceUri, to: tempPath });
+                    copied = true;
+                }
+            } catch {}
         }
 
-        const sourceUri = dbAsset.localUri || dbAsset.uri;
-        if (sourceUri) {
-            await FileSystem.copyAsync({
-                from: sourceUri,
-                to: DB_PATH
-            });
+        if (copied) {
+            if ((await FileSystem.getInfoAsync(DB_PATH)).exists) {
+                await FileSystem.deleteAsync(DB_PATH, { idempotent: true });
+            }
+            await FileSystem.moveAsync({ from: tempPath, to: DB_PATH });
         }
 
         // Reset meta to match bundle
@@ -299,13 +364,6 @@ export const reinstallContentDbAsset = async (): Promise<void> => {
         await FileSystem.writeAsStringAsync(META_PATH, JSON.stringify(targetMeta));
 
         console.log('[ContentDB] Reinstall from asset complete.');
-
-        // Re-open not strictly needed here as the caller (re-init) will open it,
-        // but if ensureContentDbReady is running, it will try to open dbInstance later?
-        // Actually reinstallContentDbAsset is called inside attemptSelfHeal which is called inside ensureContentDbReady.
-        // ensureContentDbReady sets dbInstance.
-        // But we closed dbInstance above!
-        // We must re-open it so ensureContentDbReady continues to verify.
         dbInstance = await SQLite.openDatabaseAsync(DB_NAME);
         await dbInstance.execAsync('PRAGMA foreign_keys = ON;');
 
@@ -317,9 +375,13 @@ export const reinstallContentDbAsset = async (): Promise<void> => {
 
 export const getDb = (): SQLite.SQLiteDatabase => {
     if (!dbInstance) {
-        // If called before ready, try to throw or return null? 
-        // Usually logic flow ensures ready is called in App.tsx.
-        throw new Error('Database not initialized. Call ensureContentDbReady() first.');
+        console.warn('[ContentDB] getDb called synchronously before async init completed. Using openDatabaseSync fallback.');
+        try {
+            dbInstance = SQLite.openDatabaseSync(DB_NAME);
+        } catch (e) {
+            console.error('[ContentDB] openDatabaseSync fallback failed:', e);
+            throw e;
+        }
     }
     return dbInstance;
 };

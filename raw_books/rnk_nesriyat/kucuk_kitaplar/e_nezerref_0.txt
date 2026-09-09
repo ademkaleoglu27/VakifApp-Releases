@@ -1,0 +1,13 @@
+ENE VE ZERRE RİSALESİ|5
+	Birinci Maksad|5
+		Meselâ|18
+		İkinci Misal|19
+		Üçüncü Misal|19
+		Dördüncü Misal|20
+	İkinci Maksad|30
+		Mukaddime|31
+		BİRİNCİ NOKTA|34
+			Birinci Mebhas|34
+			İkinci Mebhas|38
+		İKİNCİ NOKTA|42
+		ÜÇÜNCÜ NOKTA|46

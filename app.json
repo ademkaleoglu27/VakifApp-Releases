@@ -56,7 +56,8 @@
       }
     },
     "updates": {
-      "url": "https://u.expo.dev/529acc6b-58aa-422c-a75e-66c937c63fba"
+      "enabled": false,
+      "checkAutomatically": "NEVER"
     }
   }
 }

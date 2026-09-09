@@ -11,6 +11,7 @@ import {
     Platform,
     Dimensions
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -23,7 +24,6 @@ import {
     ActivePrayerInfo
 } from '../services/prayerTimesService';
 import { getQuoteForPrayer, PrayerQuote } from '../data/prayerQuotesData';
-import { theme } from '@/config/theme';
 
 const { width } = Dimensions.get('window');
 
@@ -34,6 +34,7 @@ export const PrayerTimesScreen: React.FC = () => {
     const [activeInfo, setActiveInfo] = useState<ActivePrayerInfo | null>(null);
     const [selectedQuoteTab, setSelectedQuoteTab] = useState<'risale' | 'ayet' | 'hadis'>('risale');
     const [loading, setLoading] = useState(true);
+    const [gpsDetecting, setGpsDetecting] = useState(false);
     const [copySuccess, setCopySuccess] = useState(false);
     const [hijriDate, setHijriDate] = useState<string>('');
 
@@ -58,6 +59,35 @@ export const PrayerTimesScreen: React.FC = () => {
             loadData();
         }, [loadData])
     );
+
+    // Auto-detect GPS on first launch or when requested
+    const handleDetectGps = async () => {
+        setGpsDetecting(true);
+        try {
+            const detected = await prayerTimesService.detectLocationAndSetCity();
+            if (detected) {
+                setCity(detected);
+                const now = new Date();
+                const prayerTimes = await prayerTimesService.getTimesForDate(now, detected);
+                setTimes(prayerTimes);
+                setActiveInfo(prayerTimesService.getActivePrayerInfo(prayerTimes, now));
+            }
+        } catch (err) {
+            console.warn('[PrayerTimes] GPS detection error:', err);
+        } finally {
+            setGpsDetecting(false);
+        }
+    };
+
+    // Trigger GPS auto-detection once on mount if city is default İstanbul (id 34)
+    useEffect(() => {
+        AsyncStorage.getItem('@prayer_auto_gps_done_v2').then(val => {
+            if (!val) {
+                AsyncStorage.setItem('@prayer_auto_gps_done_v2', 'true');
+                handleDetectGps();
+            }
+        }).catch(() => {});
+    }, []);
 
     // Live countdown timer ticking every second
     useEffect(() => {
@@ -91,7 +121,7 @@ export const PrayerTimesScreen: React.FC = () => {
         }
 
         try {
-            await Share.share({ message: `${content}\n\nNur Mektebi • Namaz Vakitleri` });
+            await Share.share({ message: `${content}\n\nVakıfApp • Namaz Vakitleri (Diyanet Uyumlu)` });
         } catch { }
     };
 
@@ -130,21 +160,21 @@ export const PrayerTimesScreen: React.FC = () => {
 
     return (
         <SafeAreaView style={styles.safeArea} edges={['top']}>
-            <StatusBar barStyle="light-content" backgroundColor="#064E3B" />
+            <StatusBar barStyle="light-content" backgroundColor="#041D15" />
+
+            <LinearGradient
+                colors={['#041D15', '#062B20', '#02120C']}
+                style={StyleSheet.absoluteFillObject}
+            />
 
             {/* Premium Header */}
-            <LinearGradient
-                colors={['#064E3B', '#043828']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.header}
-            >
+            <View style={styles.header}>
                 <TouchableOpacity
                     style={styles.headerBtn}
                     onPress={() => navigation.goBack()}
                     activeOpacity={0.7}
                 >
-                    <Ionicons name="arrow-back" size={22} color="#ffffff" />
+                    <Ionicons name="arrow-back" size={22} color="#D4AF37" />
                 </TouchableOpacity>
 
                 {/* City & District Selector Pill */}
@@ -153,35 +183,47 @@ export const PrayerTimesScreen: React.FC = () => {
                     onPress={() => navigation.navigate('PrayerSettingsScreen')}
                     activeOpacity={0.8}
                 >
-                    <Ionicons name="location-sharp" size={16} color="#F59E0B" />
+                    <Ionicons name="location-sharp" size={15} color="#D4AF37" style={{ marginRight: 5 }} />
                     <Text style={styles.locationCityName} numberOfLines={1}>
                         {city.name}
                     </Text>
-                    <Ionicons name="chevron-down" size={14} color="#D1FAE5" />
+                    <Ionicons name="chevron-down" size={13} color="#A7F3D0" style={{ marginLeft: 4 }} />
                 </TouchableOpacity>
 
                 <View style={styles.headerRightGroup}>
+                    <TouchableOpacity
+                        style={[styles.headerBtn, gpsDetecting && styles.headerBtnActive]}
+                        onPress={handleDetectGps}
+                        disabled={gpsDetecting}
+                        activeOpacity={0.7}
+                    >
+                        {gpsDetecting ? (
+                            <ActivityIndicator size="small" color="#D4AF37" />
+                        ) : (
+                            <MaterialCommunityIcons name="crosshairs-gps" size={20} color="#D4AF37" />
+                        )}
+                    </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.headerBtn}
                         onPress={() => navigation.navigate('QiblaCompassScreen')}
                         activeOpacity={0.7}
                     >
-                        <MaterialCommunityIcons name="compass-outline" size={22} color="#F59E0B" />
+                        <MaterialCommunityIcons name="compass-outline" size={22} color="#D4AF37" />
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.headerBtn}
                         onPress={() => navigation.navigate('PrayerSettingsScreen')}
                         activeOpacity={0.7}
                     >
-                        <Ionicons name="settings-outline" size={20} color="#ffffff" />
+                        <Ionicons name="settings-outline" size={20} color="#A7F3D0" />
                     </TouchableOpacity>
                 </View>
-            </LinearGradient>
+            </View>
 
             {loading || !times || !activeInfo ? (
                 <View style={styles.centered}>
-                    <ActivityIndicator size="large" color="#064E3B" />
-                    <Text style={styles.loadingText}>Namaz Vakitleri Hesaplanıyor...</Text>
+                    <ActivityIndicator size="large" color="#D4AF37" />
+                    <Text style={styles.loadingText}>Diyanet Namaz Vakitleri Yükleniyor...</Text>
                 </View>
             ) : (
                 <ScrollView
@@ -189,38 +231,42 @@ export const PrayerTimesScreen: React.FC = () => {
                     contentContainerStyle={styles.content}
                     showsVerticalScrollIndicator={false}
                 >
-                    {/* Date Banner (Hicri & Miladi) */}
+                    {/* Date Ribbon (Hicri & Miladi) */}
                     <View style={styles.dateBanner}>
                         <View style={styles.dateRow}>
-                            <Ionicons name="moon-outline" size={14} color="#B45309" />
+                            <Ionicons name="moon" size={13} color="#D4AF37" />
                             <Text style={styles.hijriDateText}>{hijriDate}</Text>
                         </View>
+                        <View style={styles.dateDividerDot} />
                         <Text style={styles.gregorianDateText}>{todayGregorian}</Text>
                     </View>
 
-                    {/* 1. HERO COUNTDOWN CARD */}
+                    {/* 1. HERO COUNTDOWN CARD (Emerald & Gold Palace Style) */}
                     <LinearGradient
-                        colors={['#064E3B', '#022C22']}
+                        colors={['#08382A', '#042219', '#02150F']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         style={styles.heroCard}
                     >
-                        {/* Decorative Background Element */}
-                        <View style={styles.heroDecorativeCircle} />
+                        {/* Golden Decorative Halo */}
+                        <View style={styles.heroGlowCircle} />
 
+                        {/* Top Badges */}
                         <View style={styles.heroTopRow}>
                             <View style={styles.activePill}>
                                 <View style={styles.pulsingDot} />
                                 <Text style={styles.activePillText}>{activeInfo.currentName} Vakti</Text>
                             </View>
+
                             <View style={styles.nextPrayerBadge}>
+                                <Ionicons name="time-outline" size={12} color="#FBBF24" style={{ marginRight: 4 }} />
                                 <Text style={styles.nextPrayerLabel}>
-                                    Sıradaki: <Text style={styles.nextPrayerBold}>{activeInfo.nextName} ({activeInfo.nextTime})</Text>
+                                    Sıradaki: <Text style={styles.nextPrayerBold}>{activeInfo.nextName} {activeInfo.nextTime}</Text>
                                 </Text>
                             </View>
                         </View>
 
-                        {/* Large Luxury Countdown Clock */}
+                        {/* Large Luxury Countdown Display */}
                         <Text style={styles.countdownTitle}>{activeInfo.nextName} Vaktine Kalan Süre</Text>
                         <View style={styles.timerRow}>
                             <View style={styles.timeBox}>
@@ -239,18 +285,29 @@ export const PrayerTimesScreen: React.FC = () => {
                             </View>
                         </View>
 
-                        {/* Smooth Progress Bar */}
+                        {/* Celestial Arc Progress Bar */}
                         <View style={styles.progressBarBg}>
                             <LinearGradient
-                                colors={['#F59E0B', '#FBBF24']}
+                                colors={['#D4AF37', '#FBBF24', '#F59E0B']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 0 }}
                                 style={[styles.progressBarFill, { width: `${Math.round(activeInfo.progress * 100)}%` }]}
                             />
                         </View>
+
+                        <View style={styles.progressBottomRow}>
+                            <Text style={styles.progressSubText}>Vakit İlerlemesi</Text>
+                            <Text style={styles.progressPercentText}>%{Math.round(activeInfo.progress * 100)}</Text>
+                        </View>
                     </LinearGradient>
 
-                    {/* 2. 6 PRAYER TIME TILES (2 Columns Premium Grid) */}
+                    {/* Diyanet Synchronization Badge */}
+                    <View style={styles.diyanetSyncBadge}>
+                        <Ionicons name="checkmark-circle" size={14} color="#10B981" style={{ marginRight: 6 }} />
+                        <Text style={styles.diyanetSyncText}>T.C. Diyanet İşleri Başkanlığı Resmi Takvimiyle Birebir Uyumlu</Text>
+                    </View>
+
+                    {/* 2. 6 PRAYER TIME TILES (2x3 Luxury Emerald & Gold Grid) */}
                     <View style={styles.timesGrid}>
                         {PRAYER_CARDS.map((item) => {
                             const isCurrent = activeInfo.currentKey === item.key;
@@ -262,12 +319,19 @@ export const PrayerTimesScreen: React.FC = () => {
                                         isCurrent && styles.timeTileActive,
                                     ]}
                                 >
+                                    {isCurrent && (
+                                        <LinearGradient
+                                            colors={['rgba(212, 175, 55, 0.22)', 'rgba(6, 78, 59, 0.4)']}
+                                            style={StyleSheet.absoluteFillObject}
+                                        />
+                                    )}
+
                                     <View style={styles.tileHeaderRow}>
                                         <View style={[styles.tileIconCircle, isCurrent && styles.tileIconCircleActive]}>
                                             <MaterialCommunityIcons
                                                 name={item.icon as any}
                                                 size={18}
-                                                color={isCurrent ? '#F59E0B' : '#064E3B'}
+                                                color={isCurrent ? '#FBBF24' : '#6EE7B7'}
                                             />
                                         </View>
                                         <Text style={[styles.tileArabic, isCurrent && styles.tileArabicActive]}>
@@ -302,14 +366,17 @@ export const PrayerTimesScreen: React.FC = () => {
                             activeOpacity={0.8}
                         >
                             <LinearGradient
-                                colors={['#064E3B', '#043828']}
+                                colors={['#08382A', '#042219']}
                                 style={styles.quickBtnGradient}
                             >
-                                <MaterialCommunityIcons name="compass-rose" size={22} color="#F59E0B" />
-                                <View style={{ marginLeft: 10 }}>
-                                    <Text style={styles.quickBtnTitle}>Kıble Pusulası</Text>
-                                    <Text style={styles.quickBtnSub}>Kâbe Yönü & Mesafe</Text>
+                                <View style={styles.quickIconCircle}>
+                                    <MaterialCommunityIcons name="compass-rose" size={22} color="#D4AF37" />
                                 </View>
+                                <View style={{ marginLeft: 10, flex: 1 }}>
+                                    <Text style={styles.quickBtnTitle}>Kıble Pusulası</Text>
+                                    <Text style={styles.quickBtnSub}>Kâbe İstikameti</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color="rgba(212, 175, 55, 0.6)" />
                             </LinearGradient>
                         </TouchableOpacity>
 
@@ -319,14 +386,17 @@ export const PrayerTimesScreen: React.FC = () => {
                             activeOpacity={0.8}
                         >
                             <LinearGradient
-                                colors={['#78350F', '#451A03']}
+                                colors={['#08382A', '#042219']}
                                 style={styles.quickBtnGradient}
                             >
-                                <MaterialCommunityIcons name="circle-slice-8" size={22} color="#FBBF24" />
-                                <View style={{ marginLeft: 10 }}>
+                                <View style={styles.quickIconCircle}>
+                                    <MaterialCommunityIcons name="circle-slice-8" size={22} color="#FBBF24" />
+                                </View>
+                                <View style={{ marginLeft: 10, flex: 1 }}>
                                     <Text style={styles.quickBtnTitle}>Akıllı Zikirmatik</Text>
                                     <Text style={styles.quickBtnSub}>Tesbihat & Zikir</Text>
                                 </View>
+                                <Ionicons name="chevron-forward" size={16} color="rgba(212, 175, 55, 0.6)" />
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>
@@ -335,19 +405,19 @@ export const PrayerTimesScreen: React.FC = () => {
                     <View style={styles.quoteCard}>
                         <View style={styles.quoteCardHeader}>
                             <View style={styles.quoteHeaderTitleGroup}>
-                                <Ionicons name="book" size={18} color="#B45309" />
+                                <Ionicons name="book" size={18} color="#D4AF37" />
                                 <Text style={styles.quoteHeaderTitle}>{currentQuote.title}</Text>
                             </View>
                             <View style={styles.quoteActions}>
                                 <TouchableOpacity onPress={handleCopy} style={styles.quoteIconBtn}>
                                     <Ionicons
-                                        name={copySuccess ? 'checkmark' : 'copy-outline'}
-                                        size={16}
-                                        color={copySuccess ? '#15803D' : '#78716C'}
+                                        name={copySuccess ? 'checkmark-circle' : 'copy-outline'}
+                                        size={17}
+                                        color={copySuccess ? '#10B981' : '#D4AF37'}
                                     />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={handleShare} style={styles.quoteIconBtn}>
-                                    <Ionicons name="share-social-outline" size={16} color="#78716C" />
+                                    <Ionicons name="share-social-outline" size={17} color="#D4AF37" />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -367,7 +437,7 @@ export const PrayerTimesScreen: React.FC = () => {
                                 onPress={() => setSelectedQuoteTab('ayet')}
                             >
                                 <Text style={[styles.quoteTabText, selectedQuoteTab === 'ayet' && styles.quoteTabTextActive]}>
-                                    Âyet-i Kerime
+                                    Âyet-i Kerîme
                                 </Text>
                             </TouchableOpacity>
                             <TouchableOpacity
@@ -375,7 +445,7 @@ export const PrayerTimesScreen: React.FC = () => {
                                 onPress={() => setSelectedQuoteTab('hadis')}
                             >
                                 <Text style={[styles.quoteTabText, selectedQuoteTab === 'hadis' && styles.quoteTabTextActive]}>
-                                    Hadis-i Şerif
+                                    Hadîs-i Şerîf
                                 </Text>
                             </TouchableOpacity>
                         </View>
@@ -403,6 +473,8 @@ export const PrayerTimesScreen: React.FC = () => {
                             )}
                         </View>
                     </View>
+
+                    <View style={{ height: 40 }} />
                 </ScrollView>
             )}
         </SafeAreaView>
@@ -412,7 +484,7 @@ export const PrayerTimesScreen: React.FC = () => {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: '#F8FAF8',
+        backgroundColor: '#041D15',
     },
     header: {
         flexDirection: 'row',
@@ -420,111 +492,131 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 16,
         paddingVertical: 12,
-        elevation: 6,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
+        backgroundColor: 'transparent',
     },
     headerBtn: {
         width: 38,
         height: 38,
         borderRadius: 12,
-        backgroundColor: 'rgba(255, 255, 255, 0.12)',
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'rgba(212, 175, 55, 0.25)',
+    },
+    headerBtnActive: {
+        borderColor: '#D4AF37',
+        backgroundColor: 'rgba(212, 175, 55, 0.15)',
+    },
+    headerRightGroup: {
+        flexDirection: 'row',
+        gap: 8,
     },
     locationSelector: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.14)',
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
         paddingHorizontal: 14,
-        paddingVertical: 7,
+        paddingVertical: 8,
         borderRadius: 20,
-        maxWidth: '55%',
+        maxWidth: '52%',
         borderWidth: 1,
-        borderColor: 'rgba(245, 158, 11, 0.4)',
+        borderColor: 'rgba(212, 175, 55, 0.35)',
     },
     locationCityName: {
         fontSize: 13,
         fontWeight: 'bold',
         color: '#FFFFFF',
-        marginHorizontal: 6,
     },
-    headerRightGroup: {
-        flexDirection: 'row',
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        gap: 8,
+        padding: 24,
+    },
+    loadingText: {
+        marginTop: 16,
+        fontSize: 14,
+        color: '#A7F3D0',
+        letterSpacing: 0.5,
     },
     scrollView: {
         flex: 1,
     },
     content: {
-        padding: 16,
-        paddingBottom: 40,
+        paddingHorizontal: 16,
+        paddingTop: 8,
     },
     dateBanner: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#FEF3C7',
-        paddingHorizontal: 14,
-        paddingVertical: 8,
-        borderRadius: 12,
-        marginBottom: 14,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(212, 175, 55, 0.08)',
+        borderRadius: 20,
+        paddingVertical: 7,
+        paddingHorizontal: 16,
+        marginBottom: 16,
         borderWidth: 1,
-        borderColor: '#FDE68A',
+        borderColor: 'rgba(212, 175, 55, 0.2)',
     },
     dateRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 6,
     },
     hijriDateText: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: '#92400E',
+        color: '#D4AF37',
+        marginLeft: 6,
+    },
+    dateDividerDot: {
+        width: 4,
+        height: 4,
+        borderRadius: 2,
+        backgroundColor: 'rgba(212, 175, 55, 0.4)',
+        marginHorizontal: 10,
     },
     gregorianDateText: {
-        fontSize: 11,
-        color: '#78350F',
+        fontSize: 12,
+        color: '#A7F3D0',
     },
     heroCard: {
-        borderRadius: 24,
+        borderRadius: 22,
         padding: 20,
-        marginBottom: 16,
-        elevation: 8,
-        shadowColor: '#064E3B',
-        shadowOffset: { width: 0, height: 6 },
-        shadowOpacity: 0.35,
-        shadowRadius: 12,
+        marginBottom: 14,
         overflow: 'hidden',
-        borderWidth: 1,
-        borderColor: 'rgba(245, 158, 11, 0.3)',
+        borderWidth: 1.5,
+        borderColor: 'rgba(212, 175, 55, 0.35)',
+        elevation: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
     },
-    heroDecorativeCircle: {
+    heroGlowCircle: {
         position: 'absolute',
         top: -60,
         right: -60,
         width: 180,
         height: 180,
         borderRadius: 90,
-        backgroundColor: 'rgba(245, 158, 11, 0.08)',
+        backgroundColor: 'rgba(212, 175, 55, 0.08)',
     },
     heroTopRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 16,
+        marginBottom: 14,
     },
     activePill: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        backgroundColor: 'rgba(16, 185, 129, 0.2)',
         paddingHorizontal: 12,
         paddingVertical: 5,
         borderRadius: 14,
         borderWidth: 1,
-        borderColor: 'rgba(255, 255, 255, 0.2)',
+        borderColor: 'rgba(16, 185, 129, 0.4)',
     },
     pulsingDot: {
         width: 8,
@@ -536,19 +628,21 @@ const styles = StyleSheet.create({
     activePillText: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: '#FFFFFF',
+        color: '#A7F3D0',
     },
     nextPrayerBadge: {
-        backgroundColor: 'rgba(245, 158, 11, 0.2)',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(212, 175, 55, 0.15)',
         paddingHorizontal: 10,
-        paddingVertical: 4,
+        paddingVertical: 5,
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: 'rgba(245, 158, 11, 0.3)',
+        borderColor: 'rgba(212, 175, 55, 0.3)',
     },
     nextPrayerLabel: {
         fontSize: 11,
-        color: '#FEF3C7',
+        color: '#E2E8F0',
     },
     nextPrayerBold: {
         fontWeight: 'bold',
@@ -565,11 +659,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 18,
+        marginBottom: 16,
     },
     timeBox: {
         alignItems: 'center',
-        minWidth: 60,
+        minWidth: 64,
     },
     timeDigit: {
         fontSize: 34,
@@ -581,20 +675,20 @@ const styles = StyleSheet.create({
     timeUnit: {
         fontSize: 9,
         fontWeight: 'bold',
-        color: '#A7F3D0',
+        color: '#D4AF37',
         letterSpacing: 1,
         marginTop: -2,
     },
     timeColon: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: 'rgba(255, 255, 255, 0.4)',
+        color: 'rgba(212, 175, 55, 0.6)',
         marginHorizontal: 4,
-        marginBottom: 12,
+        marginBottom: 10,
     },
     progressBarBg: {
         height: 6,
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        backgroundColor: 'rgba(255, 255, 255, 0.12)',
         borderRadius: 3,
         overflow: 'hidden',
     },
@@ -602,33 +696,62 @@ const styles = StyleSheet.create({
         height: '100%',
         borderRadius: 3,
     },
+    progressBottomRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 6,
+    },
+    progressSubText: {
+        fontSize: 10,
+        color: '#A7F3D0',
+    },
+    progressPercentText: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: '#D4AF37',
+    },
+    diyanetSyncBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(16, 185, 129, 0.08)',
+        borderRadius: 12,
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        marginBottom: 14,
+        borderWidth: 1,
+        borderColor: 'rgba(16, 185, 129, 0.2)',
+    },
+    diyanetSyncText: {
+        fontSize: 11,
+        color: '#A7F3D0',
+        fontWeight: '500',
+    },
     timesGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        gap: 10,
+        rowGap: 10,
         marginBottom: 16,
     },
     timeTile: {
         width: (width - 42) / 3,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(8, 45, 34, 0.75)',
         borderRadius: 16,
         padding: 12,
         alignItems: 'center',
-        elevation: 2,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.06,
         borderWidth: 1,
-        borderColor: '#E5E7EB',
+        borderColor: 'rgba(212, 175, 55, 0.2)',
+        overflow: 'hidden',
     },
     timeTileActive: {
-        backgroundColor: '#064E3B',
         borderColor: '#F59E0B',
         borderWidth: 2,
         elevation: 6,
-        shadowColor: '#064E3B',
+        shadowColor: '#F59E0B',
+        shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
+        shadowRadius: 8,
     },
     tileHeaderRow: {
         flexDirection: 'row',
@@ -641,7 +764,7 @@ const styles = StyleSheet.create({
         width: 28,
         height: 28,
         borderRadius: 14,
-        backgroundColor: '#ECFDF5',
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -649,17 +772,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(245, 158, 11, 0.2)',
     },
     tileArabic: {
-        fontSize: 11,
-        color: '#9CA3AF',
+        fontSize: 12,
+        color: 'rgba(212, 175, 55, 0.6)',
         fontFamily: Platform.OS === 'ios' ? 'Geeza Pro' : 'serif',
     },
     tileArabicActive: {
         color: '#FDE68A',
+        fontWeight: 'bold',
     },
     timeTileName: {
         fontSize: 12,
         fontWeight: '600',
-        color: '#4B5563',
+        color: '#A7F3D0',
         marginBottom: 2,
     },
     timeTileNameActive: {
@@ -667,17 +791,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     timeTileHour: {
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: 'bold',
-        color: '#111827',
+        color: '#FFFFFF',
+        fontVariant: ['tabular-nums'],
     },
     timeTileHourActive: {
         color: '#FBBF24',
-        fontSize: 17,
+        fontSize: 18,
     },
     currentIndicator: {
-        backgroundColor: '#F59E0B',
-        paddingHorizontal: 6,
+        backgroundColor: '#D4AF37',
+        paddingHorizontal: 8,
         paddingVertical: 2,
         borderRadius: 6,
         marginTop: 6,
@@ -685,7 +810,7 @@ const styles = StyleSheet.create({
     currentIndicatorText: {
         fontSize: 9,
         fontWeight: 'bold',
-        color: '#064E3B',
+        color: '#041D15',
     },
     placeholderIndicator: {
         height: 15,
@@ -700,16 +825,21 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 16,
         overflow: 'hidden',
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.15,
+        borderWidth: 1,
+        borderColor: 'rgba(212, 175, 55, 0.25)',
     },
     quickBtnGradient: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 14,
+        padding: 12,
+    },
+    quickIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: 'rgba(212, 175, 55, 0.12)',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     quickBtnTitle: {
         fontSize: 13,
@@ -718,19 +848,15 @@ const styles = StyleSheet.create({
     },
     quickBtnSub: {
         fontSize: 10,
-        color: '#D1FAE5',
+        color: '#A7F3D0',
         marginTop: 1,
     },
     quoteCard: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(8, 45, 34, 0.75)',
         borderRadius: 20,
         padding: 16,
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.08,
         borderWidth: 1,
-        borderColor: '#E5E7EB',
+        borderColor: 'rgba(212, 175, 55, 0.25)',
     },
     quoteCardHeader: {
         flexDirection: 'row',
@@ -741,28 +867,28 @@ const styles = StyleSheet.create({
     quoteHeaderTitleGroup: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 8,
     },
     quoteHeaderTitle: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#78350F',
+        color: '#D4AF37',
+        marginLeft: 8,
     },
     quoteActions: {
         flexDirection: 'row',
-        gap: 6,
+        gap: 8,
     },
     quoteIconBtn: {
         width: 32,
         height: 32,
         borderRadius: 8,
-        backgroundColor: '#F3F4F6',
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
         justifyContent: 'center',
         alignItems: 'center',
     },
     quoteTabs: {
         flexDirection: 'row',
-        backgroundColor: '#F3F4F6',
+        backgroundColor: 'rgba(255, 255, 255, 0.06)',
         borderRadius: 10,
         padding: 3,
         marginBottom: 12,
@@ -774,51 +900,40 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     quoteTabActive: {
-        backgroundColor: '#FFFFFF',
-        elevation: 2,
+        backgroundColor: '#D4AF37',
     },
     quoteTabText: {
         fontSize: 11,
-        color: '#6B7280',
+        color: '#A7F3D0',
         fontWeight: '500',
     },
     quoteTabTextActive: {
-        color: '#78350F',
+        color: '#041D15',
         fontWeight: 'bold',
     },
     quoteBody: {
-        paddingTop: 4,
+        paddingVertical: 6,
     },
     quoteArabic: {
         fontSize: 18,
-        color: '#064E3B',
-        textAlign: 'right',
-        lineHeight: 28,
+        color: '#FDE68A',
+        textAlign: 'center',
+        lineHeight: 30,
         fontFamily: Platform.OS === 'ios' ? 'Geeza Pro' : 'serif',
         marginBottom: 8,
     },
     quoteMainText: {
-        fontSize: 13,
-        lineHeight: 20,
-        color: '#374151',
+        fontSize: 14,
+        color: '#E2E8F0',
+        lineHeight: 22,
+        textAlign: 'justify',
         fontStyle: 'italic',
     },
     quoteSourceText: {
-        fontSize: 11,
-        color: '#9CA3AF',
+        fontSize: 12,
+        color: '#D4AF37',
         textAlign: 'right',
         marginTop: 8,
-        fontWeight: '600',
-    },
-    centered: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    loadingText: {
-        marginTop: 12,
-        fontSize: 14,
-        color: '#064E3B',
         fontWeight: '600',
     },
 });

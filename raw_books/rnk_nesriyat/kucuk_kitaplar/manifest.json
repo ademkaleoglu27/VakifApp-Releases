@@ -1,0 +1,412 @@
+[
+  {
+    "id": "rnk.ayetkubra_0",
+    "title": "Âyet-ül Kübra",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "ayetkubra_0.txt",
+    "fihrist": "ayetkubraf_0.txt",
+    "baslangic": 5,
+    "bitis": 198
+  },
+  {
+    "id": "rnk.bcevab_0",
+    "title": "B.Cevap Veriyor",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "bcevab_0.txt",
+    "fihrist": "bcevabf_0.txt",
+    "baslangic": 5,
+    "bitis": 265
+  },
+  {
+    "id": "rnk.dvan_0",
+    "title": "Divan-ı Harb-i Örfî",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "dvan_0.txt",
+    "fihrist": "dvanf_0.txt",
+    "baslangic": 5,
+    "bitis": 75
+  },
+  {
+    "id": "rnk.elhuccet_0",
+    "title": "Elhüccetüzzehra",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "elhuccet_0.txt",
+    "fihrist": "elhuccetf_0.txt",
+    "baslangic": 5,
+    "bitis": 151
+  },
+  {
+    "id": "rnk.e_nezerre_0",
+    "title": "Ene ve Zerre",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "e_nezerre_0.txt",
+    "fihrist": "e_nezerref_0.txt",
+    "baslangic": 5,
+    "bitis": 54
+  },
+  {
+    "id": "rnk.gencreh_0",
+    "title": "Gençlik Rehberi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "gencreh_0.txt",
+    "fihrist": "gencrehf_0.txt",
+    "baslangic": 4,
+    "bitis": 272
+  },
+  {
+    "id": "rnk.haknurlari_0",
+    "title": "Hakikat Nurları",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "haknurlari_0.txt",
+    "fihrist": "haknurlarif_0.txt",
+    "baslangic": 5,
+    "bitis": 155
+  },
+  {
+    "id": "rnk.hanimreh_0",
+    "title": "Hanımlar Rehberi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "hanimreh_0.txt",
+    "fihrist": "hanimrehf_0.txt",
+    "baslangic": 5,
+    "bitis": 159
+  },
+  {
+    "id": "rnk.hasir_0",
+    "title": "Haşir Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "hasir_0.txt",
+    "fihrist": "hasirf_0.txt",
+    "baslangic": 5,
+    "bitis": 143
+  },
+  {
+    "id": "rnk.hastalar_0",
+    "title": "Hastalar Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "hastalar_0.txt",
+    "fihrist": "hastalarf_0.txt",
+    "baslangic": 5,
+    "bitis": 69
+  },
+  {
+    "id": "rnk.hizmetreh_0",
+    "title": "Hizmet Rehberi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "hizmetreh_0.txt",
+    "fihrist": "hizmetrehf_0.txt",
+    "baslangic": 5,
+    "bitis": 288
+  },
+  {
+    "id": "rnk.hutbe_0",
+    "title": "Hutbe-i Şamiye",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "hutbe_0.txt",
+    "fihrist": "hutbef_0.txt",
+    "baslangic": 5,
+    "bitis": 162
+  },
+  {
+    "id": "rnk.ihlas_0",
+    "title": "İhlas Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "ihlas_0.txt",
+    "fihrist": "ihlasf_0.txt",
+    "baslangic": 5,
+    "bitis": 60
+  },
+  {
+    "id": "rnk.ikincisua",
+    "title": "İkinci Şua",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "ikincisua.txt",
+    "fihrist": "ikincisuaf.txt",
+    "baslangic": 3,
+    "bitis": 76
+  },
+  {
+    "id": "rnk.imanhak_0",
+    "title": "İman Hakikatleri",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "imanhak_0.txt",
+    "fihrist": "imanhakf_0.txt",
+    "baslangic": 5,
+    "bitis": 149
+  },
+  {
+    "id": "rnk.konferans_0",
+    "title": "Konferans",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "konferans_0.txt",
+    "fihrist": "konferansf_0.txt",
+    "baslangic": 5,
+    "bitis": 184
+  },
+  {
+    "id": "rnk.ksozler_0",
+    "title": "Küçük Sözler",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "ksozler_0.txt",
+    "fihrist": "ksozlerf_0.txt",
+    "baslangic": 5,
+    "bitis": 93
+  },
+  {
+    "id": "rnk.latifnukte_0",
+    "title": "Latif Nükteler",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "latifnukte_0.txt",
+    "fihrist": "latifnuktef_0.txt",
+    "baslangic": 5,
+    "bitis": 79
+  },
+  {
+    "id": "rnk.meyve_0",
+    "title": "Meyve Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "meyve_0.txt",
+    "fihrist": "meyvef_0.txt",
+    "baslangic": 5,
+    "bitis": 170
+  },
+  {
+    "id": "rnk.miftah_0",
+    "title": "Miftah-ul İman",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "miftah_0.txt",
+    "fihrist": "miftahf_0.txt",
+    "baslangic": 5,
+    "bitis": 101
+  },
+  {
+    "id": "rnk.mirackamer_0",
+    "title": "Mirac ve Şakk-ı Kamer",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "mirackamer_0.txt",
+    "fihrist": "mirackamerf_0.txt",
+    "baslangic": 5,
+    "bitis": 90
+  },
+  {
+    "id": "rnk.muahmed",
+    "title": "Mu'cizât-ı Ahmediye",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "muahmed.txt",
+    "fihrist": "muahmedf.txt",
+    "baslangic": 5,
+    "bitis": 299
+  },
+  {
+    "id": "rnk.mukuran",
+    "title": "Mu'cizat-ı Kur'âniye",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "mukuran.txt",
+    "fihrist": "mukuranf.txt",
+    "baslangic": 5,
+    "bitis": 370
+  },
+  {
+    "id": "rnk.munacat_0",
+    "title": "Münâcât",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "munacat_0.txt",
+    "fihrist": "munacatf_0.txt",
+    "baslangic": 5,
+    "bitis": 48
+  },
+  {
+    "id": "rnk.munazarat_0",
+    "title": "Münâzarât",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "munazarat_0.txt",
+    "fihrist": "munazaratf_0.txt",
+    "baslangic": 5,
+    "bitis": 105
+  },
+  {
+    "id": "rnk.nurcesme_0",
+    "title": "Nur Çeşmesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "nurcesme_0.txt",
+    "fihrist": "nurcesmef_0.txt",
+    "baslangic": 5,
+    "bitis": 244
+  },
+  {
+    "id": "rnk.nuralemi_0",
+    "title": "Nur Aleminin Bir Anahtarı",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "nuralemi_0.txt",
+    "fihrist": "nuralemif_0.txt",
+    "baslangic": 5,
+    "bitis": 62
+  },
+  {
+    "id": "rnk.nurilkka_0",
+    "title": "Nur'un İlk Kapısı",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "nurilkka_0.txt",
+    "fihrist": "nurilkkaf_0.txt",
+    "baslangic": 5,
+    "bitis": 220
+  },
+  {
+    "id": "rnk.onucsua",
+    "title": "On Üçüncü Şua",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "onucsua.txt",
+    "fihrist": "onucsuaf.txt",
+    "baslangic": 5,
+    "bitis": 112
+  },
+  {
+    "id": "rnk.otuzuc_0",
+    "title": "Otuzüç Pencere",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "otuzuc_0.txt",
+    "fihrist": "otuzucf_0.txt",
+    "baslangic": 5,
+    "bitis": 82
+  },
+  {
+    "id": "rnk.otuzlema",
+    "title": "Otuzuncu Lem'a",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "otuzlema.txt",
+    "fihrist": "otuzlemaf.txt",
+    "baslangic": 3,
+    "bitis": 127
+  },
+  {
+    "id": "rnk.rahmetsefkat_0",
+    "title": "Rahmet ve Şefkat İlaçları",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "rahmetsefkat_0.txt",
+    "fihrist": "rahmetsefkatf_0.txt",
+    "baslangic": 5,
+    "bitis": 171
+  },
+  {
+    "id": "rnk.ramazan_0",
+    "title": "Ramazan İktisad Şükür",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "ramazan_0.txt",
+    "fihrist": "ramazanf_0.txt",
+    "baslangic": 5,
+    "bitis": 87
+  },
+  {
+    "id": "rnk.sunuhat_0",
+    "title": "Sünuhat Tüluhat İşârat",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "sunuhat_0.txt",
+    "fihrist": "sunuhatf_0.txt",
+    "baslangic": 4,
+    "bitis": 109
+  },
+  {
+    "id": "rnk.sunnetseniye",
+    "title": "Sünnet-i Seniyye Ris.",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "sunnetseniye.txt",
+    "fihrist": "sunnetseniyef.txt",
+    "baslangic": 5,
+    "bitis": 217
+  },
+  {
+    "id": "rnk.tabiat_0",
+    "title": "Tabiat Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "tabiat_0.txt",
+    "fihrist": "tabiatf_0.txt",
+    "baslangic": 5,
+    "bitis": 47
+  },
+  {
+    "id": "rnk.uhuvvet_0",
+    "title": "Uhuvvet Risalesi",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "uhuvvet_0.txt",
+    "fihrist": "uhuvvetf_0.txt",
+    "baslangic": 5,
+    "bitis": 48
+  },
+  {
+    "id": "rnk.vesvese",
+    "title": "Vesvese ve Hikmetü'l-İstiâze",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "vesvese.txt",
+    "fihrist": "vesvesef.txt",
+    "baslangic": 5,
+    "bitis": 65
+  },
+  {
+    "id": "rnk.yirmidortmek",
+    "title": "Yirmi Dördüncü Mektub",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "yirmidortmek.txt",
+    "fihrist": "yirmidortmekf.txt",
+    "baslangic": 4,
+    "bitis": 60
+  },
+  {
+    "id": "rnk.yirmiuc_0",
+    "title": "Yirmi Üçüncü Söz",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "yirmiuc_0.txt",
+    "fihrist": "yirmiucf_0.txt",
+    "baslangic": 5,
+    "bitis": 76
+  },
+  {
+    "id": "rnk.zuhretunnur_0",
+    "title": "Zühret-ün Nur",
+    "publisher": "rnk",
+    "category": "Küçük Kitaplar",
+    "metin": "zuhretunnur_0.txt",
+    "fihrist": "zuhretunnurf_0.txt",
+    "baslangic": 5,
+    "bitis": 206
+  }
+]

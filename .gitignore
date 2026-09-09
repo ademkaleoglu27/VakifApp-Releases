@@ -86,3 +86,8 @@ index.android.bundle
 *.tmp
 __MACOSX/
 com.facebook.react.*
+Sozler_2.6.3_APKPure/
+temp_sozler_apk/
+temp_zakir_analysis/
+scratch/
+scratch_pack_entries.txt

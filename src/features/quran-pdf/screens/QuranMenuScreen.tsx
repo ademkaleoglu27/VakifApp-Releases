@@ -142,7 +142,7 @@ export const QuranMenuScreen = () => {
                     <View style={styles.dialog}>
                         <Text style={styles.dialogTitle}>Sayfaya Git</Text>
                         <TextInput
-                            style={styles.pageInput}
+                            style={styles.input}
                             placeholder="1"
                             placeholderTextColor="#94a3b8"
                             keyboardType="number-pad"

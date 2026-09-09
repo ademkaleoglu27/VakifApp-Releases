@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+<title>Nükte-i İ'câziye</title>
+
+<style>
+ :root {
+ --bg: #f5eedc;
+ --text: #2a2421;
+ --heading: #8b0000;
+ --arabic: #8b0000;
+ --base-size: 19px;
+ --line-height: 1.68;
+ --font-family: 'Barla', "Crimson Pro", "Times New Roman", serif;
+ }
+ html, body {
+ margin: 0;
+ padding: 0;
+ background: var(--bg);
+ color: var(--text);
+ box-sizing: border-box;
+ -webkit-text-size-adjust: 100%;
+ }
+ body {
+ font-family: var(--font-family);
+ font-size: var(--base-size);
+ line-height: var(--line-height);
+ padding: 24px 20px 120px;
+ text-align: justify;
+ text-justify: inter-word;
+ -webkit-hyphens: auto;
+ hyphens: auto;
+ -webkit-user-select: text;
+ user-select: text;
+ }
+ h1, h2, h3, .heading-1, .heading-2, .heading-3 {
+ font-family: var(--font-family);
+ color: var(--heading);
+ text-align: center;
+ margin: 28px 0 16px;
+ font-weight: bold;
+ letter-spacing: 0.5px;
+ }
+ .heading-2 { font-size: 1.35em; }
+ .heading-3 { font-size: 1.15em; }
+ .subtitle {
+ text-align: center;
+ font-style: italic;
+ color: #665c54;
+ margin: -8px 0 16px;
+ font-size: 0.95em;
+ }
+ .paragraph, p {
+ margin: 0 0 14px;
+ text-indent: 18px;
+ overflow-wrap: break-word;
+ }
+ .arabic-block {
+ font-family: 'ScheherazadeNew', "Noto Naskh Arabic", serif;
+ color: var(--arabic);
+ text-align: center !important;
+ font-size: 1.35em;
+ line-height: 2.0;
+ padding: 10px 0;
+ margin: 16px 0;
+ display: block;
+ direction: rtl;
+ text-indent: 0 !important;
+ }
+ .page-marker-wrap {
+ position: -webkit-sticky;
+ position: sticky;
+ top: 10px;
+ z-index: 100;
+ display: flex;
+ justify-content: flex-end;
+ pointer-events: none;
+ margin-top: -12px;
+ margin-bottom: 8px;
+ }
+ .page-marker {
+ opacity: 0.88;
+ font-size: 12px;
+ font-weight: 700;
+ letter-spacing: 0.8px;
+ padding: 3px 8px;
+ border-radius: 8px;
+ background: rgba(0,0,0,0.06);
+ color: rgba(0,0,0,0.7);
+ font-family: sans-serif;
+ backdrop-filter: blur(2px);
+ }
+ .lugat-word {
+ color: inherit;
+ border-bottom: 1px dotted rgba(139, 0, 0, 0.45);
+ cursor: pointer;
+ }
+ .lugat-word:active {
+ background-color: rgba(139, 0, 0, 0.15);
+ border-radius: 2px;
+ }
+ .fn-marker {
+ color: #1F6FEB;
+ font-weight: bold;
+ cursor: pointer;
+ font-size: 0.85em;
+ vertical-align: super;
+ padding: 0 2px;
+ }
+
+  /* Printed Sözler In-Page Divider Standard */
+  .page-marker-wrap {
+    display: block !important;
+    position: static !important;
+    margin: 28px 0 14px 0 !important;
+    border-top: 1.5px solid #8b0000 !important;
+    text-align: right !important;
+    padding-top: 2px !important;
+    pointer-events: none !important;
+  }
+  .page-marker {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #8b0000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+  }
+  strong, b {
+    font-weight: bold !important;
+    color: #111111 !important;
+  }
+
+</style>
+
+
+</head>
+<body>
+<div class="page-marker-wrap"><span class="page-marker">189</span></div>
+<div class="arabic-block" dir="rtl">﴿ اِنَّ اللّٰهَ لَا يَسْتَحْي۪ٓ اَنْ يَضْرِبَ مَثَلًا مَابَعُوضَةً فَمَا فَوْقَهَاۜ فَاَمَّا الَّذ۪ينَ اٰمَنُوا فَيَعْلَمُونَ اَنَّهُ الْحَقُّ مِنْ رَبِّهِمْۚ وَاَمَّا الَّذ۪ينَ كَفَرُوا فَيَقُولُونَ مَا ذَٓا اَرَادَ اللّٰهُ بِهٰذَا مَثَلًاۢ يُضِلُّ بِه۪ كَث۪يرًا ويَهْد۪ي بِه۪ كَث۪يرًاۜ وَمَا يُضِلُّ بِه۪ٓ اِلَّا الْفَاسِق۪ينَۙ * اَلَّذ۪ينَ يَنْقُضُونَ عَهْدَ اللّٰهِ مِنْ بَعْدِ م۪يثَاقِه۪ۖ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِه۪ٓ اَنْ يُوصَلَ وَيُفْسِدُونَ فِي الْاَرْضِۜ اُو۬لٰٓئِكَ هُمُ الْخَاسِرُونَ ﴾</div>
+<p class="paragraph">Gayet kısacık bir meâli; yani:"Cenâb-ı Hak, kullarını irşad ve îkaz etmek üzere, sivrisinek gibi hakîr, kıymetsiz bir hayvanla veya bir mahlûkla misâl getirmeyi, kâfirlerin keyfî için terketmez. Îmânı olanlar, onun, Rablerinden hak olduğunu bilirler. Amma kâfirler, 'Allah bu gibi hakîr misâllerden neyi irâde etmiştir' diyorlar. Allah, onun ile çoklarını dalâlete atar ve çoklarını da hidayete götürür. Fakat fâsıklardan mâadâ dalâlete attığı yoktur. Fâsıklar da ol adamlardır ki; Allah'ın tâatinden hurûcla, mîsâk-ı ezelîden sonra ahidlerini bozarlar ve Allah'ın akrabalar arasında veya mü'minler beyninde emrettiği hatt-ı muvâsalayı keserler; yeryüzünde işleri ifsaddır; dünya ve âhirette zarar ve hüsrana ma'rûz kalan ancak onlardır."</p>
+<p class="paragraph">Bu âyetin de sâir arkadaşları gibi mevzû-i bahs olacak vücûh-u irtibatı ve cihât-ı nazmiyesi üçtür. Maahazâ, bu âyetin meâli, hem mâkabline, hem mâba'dine, hem Kur'ânın tamamına bakıyor.</p>
+<p class="paragraph"><strong>Mâba'dine olan vech-i irtibatı:</strong></p>
+<p class="paragraph">Evet, vaktâ ki Kur'ân-ı Azîmü'ş-Şân; sinekten, ankebûttan misâl getirdi; karınca ile bal arısından bahsetti; müşrikler, münâfıklar, Yahudîler i'tirâz için fırsat bularak ahmakàne dediler ki:</p>
+<p class="paragraph">"Allah, azametiyle beraber, böyle hasîs, hakîr şeylerden bahsetmeye tenezzül eder mi? Hâlbuki ashâb-ı kemâl, bu gibi kıymetsiz şeylerden bahsetmeye tenezzül etmezler, hayâ ederler." Kur'ân-ı Kerîm, bu âyetle ağızlarına vurarak kapattı.</p>
+<p class="paragraph"><strong>Mâkabline cihet-i nazm ve irtibatı:</strong></p>
+<p class="paragraph">Evet, Kur'ânın ihtiva ettiği sıfât ve mezâyânın hiçbir kelâmda, hiçbir kitapta, hiçbir şahısta bulunmadığı, sûre başında isbât edildiği gibi, Hazret-i Muhammed Aleyhissalâtü Vesselâm'ın nübüvveti de Kur'ânın i'câzıyla</p>
+<div class="page-marker-wrap"><span class="page-marker">190</span></div>
+<p class="paragraph">isbât edildi. Kur'ânın i'câzı dahi tahaddî ile, yani muhâlifleri muâraza, mübâreze meydânına dâvet etmekle isbât edildi. Çünkü muârazaya yapılan dâvet, sükût ile cevablandırıldı. Böyle cihan-şümûl bir inkılâbı söndürmek için yapılan dâvet üzerine mübâreze meydânına gitmeyip sükût etmek, elbette eser-i aczdir. Kur'ân-ı Kerîm'in bu isbâtlarına karşı kâfirler habt olup ağızlarını açamadıkları gibi, nabızları bile felce uğradı. Yalnız, Kur'ân, her hususta hadd-i kemâle bâliğ olduğundan uzaktan uzağa bazı ufak i'tirâz taşlarını atmışlardır.</p>
+<p class="paragraph"><strong>Ezcümle:</strong></p>
+<div class="arabic-block" dir="rtl">﴿ كَمَثَلِ الَّذِي اسْتَوْقَدَ نَارًا ﴾</div>
+<p class="paragraph">ve</p>
+<div class="arabic-block" dir="rtl">﴿ اَوْ كَصَيِّبٍ مِنَ السَّمَٓاءِ ﴾</div>
+<p class="paragraph">gibi âdi, kıymetsiz misâllerden Kur'ânın getirdiği temsîller, yüksek kelâmların kemâline yakışmaz. Bu gibi temsîller, beyne'n-nâs yapılan mükâlemelere, konuşmalara benziyorlar." diye muğâlata ile haltetmişlerdir. Kur'ân-ı Kerîm, onların o haltlarını bu âyetle başlarına vurmuştur.</p>
+<p class="paragraph"><strong>Arkadaş!</strong> Acele etme, burada bir parça durmak icâb eder. Onların pek vâhî ve zaîf şübheleri vardır. Bu şübheler, müteselsil bazı vehimlerden neş'et etmiştir. O vehimler de, bazı muğâlatalardan husûle gelmişlerdir.</p>
+<p class="paragraph">Onların, Kur'ânın kemâlini tenzîl etmek için, Kur'ânın temsîllerini insanların temsîllerine kıyâs etmeleri, kıyâs-ı maa'l-fârıktır; aralarında dünyalar kadar fark vardır. Onları muğâlata ile bu kıyâsa sevkeden noktalar:</p>
+<p class="paragraph">1. Onlar, herşeye, me'lûflarına baktıkları nazar ile bakıyorlar.</p>
+<p class="paragraph">2. Onlar, insanın zihninin, fikrinin, lisânının, sem'inin cüz'î olduklarını ve cüz'î olduklarından, kasden ve bizzat iki şeye beraber taalluk edemediklerini nazara almışlardır.</p>
+<p class="paragraph">3. Himmetin yüksek ve alçak kısımlarını tefrik eden mikyâsın, iştigâl ve ihtimamdan ibaret olduğunu düşünmüşlerdir. Yani, yüksek şeylere ihtimam edenin himmeti yüksektir, alçak işlerde iştigâl edenin himmeti alçaktır.</p>
+<p class="paragraph">4. Kıymet ve azametin, himmet nisbetinde olduğunu zannetmişlerdir. Hattâ küçük veya alçak bir şeyi, yüksek ve büyük şahıslara isnâd etmezler. Güyâ azîm insanlar, kıymeti olmayan şeylere tenezzül etmezler ve zaîf, küçük bir şey, o büyük himmet ve azameti tahammül edemez.</p>
+<p class="paragraph">İşte o boş kafalılar, bu noktalara istinâden, Cenâb-ı Hakk'ı da insanlara kıyâs ederek diyorlar ki: "Allah, celâl ve azametiyle insanların konuştukları gibi nasıl insanlar ile tekellüm etmeye tenezzül eder? Ve bu cüz'î ve hakîr şeylerden nasıl bahseder? Azametine yakışır mı?"</p>
+<p class="paragraph">Acaba o süfehâ takımı; Allah'ın irâdesi, ilmi, kudreti gibi sâir sıfatlarının da küllî, umumî, şâmil, muhît olduklarını bilmezler mi? Ve yine</p>
+<div class="page-marker-wrap"><span class="page-marker">191</span></div>
+<p class="paragraph">bilmezler mi ki; Cenâb-ı Hakk'ın azametine mikyâs, ancak mecmû âsârıdır; yalnız bir eser mikyâs olamaz! Ve yine bilmezler mi ki, Cenâb-ı Hakk'ın tecellîsine mîzan olacak, kâffe-i kelimâtıdır ki; eşcâr kalem, denizler mürekkeb olsa, o kelimâtı yazıp bitiremezler. <span class="fn-marker">*(Hâşiye)</span></p>
+<p class="paragraph">Meselâ, Şems; âkıl, ihtiyar ve irâde sâhibi farzedilse, ziyâsını bütün âleme neşrettiği bir sırada, pis, mülevves bir zerre de onun ziyâsından istifade ettiği vakit, şemse karşı "Niçin bu pis, bu mülevves zerre ile meşgul oldu ve niçin ona ziyâsını verdi." diye i'tirâz edilebilir mi? Hâşâ! Şemsin azametine bir nâkìsa gelir mi? Yok. Binâenaleyh, gayet büyük olan bu âlemi, büyük bir san'at ile ve büyük bir ihtimamla halkettiği gibi, cevher-i ferd ile tâbir edilen zerre de Onun destgâh-ı kudretinden çıkan bir eser-i san'atıdır. Çünkü o büyük Kudretin nazarında; cevâhir-i ferd, yani zerrelerle nücûm-u seyyâre, yani gezici yıldızlar müsâvîdirler. Zîra o büyük Allah'ın kudreti, ilmi, irâdesi, kelâmı; zâtî sıfatlarıdır; Zât-ı Akdes'e lâzımdırlar. Onlarda teceddüd yok, ziyâde ve noksan olmaya kàbiliyet yok, tağayyürleri yok ki mertebeleri olsun. Maahazâ acz bu sıfatların zıddı olduğundan, onların içine girip oturamaz. Binâenaleyh, Kudret-i İlâhiye'de zerre ile şems arasında fark yoktur.</p>
+<p class="paragraph">Meselâ, terâzinin her iki gözünde iki güneş veya iki zerre bulunduğu farzedilse; aralarında müsâvât ve muvâzene bulunduğundan hariçten bir kuvvet bir gözüne basarsa, öteki göz havaya kalkar. İster o gözde zerre olsun, ister güneş olsun, o kuvvete göre farkları yoktur; ikisi de birdir.</p>
+<p class="paragraph">Kezâlik, mümkün olan bir şeyin tarafeyni, yani vücûd ve ademi arasında, terâzinin gözleri gibi müsâvât olduğundan, Kudret-i Ezeliye hangi</p>
+<div class="page-marker-wrap"><span class="page-marker">192</span></div>
+<p class="paragraph">tarafa basarsa, öteki taraf hebâ gibi havaya kalkar. Güneş, sinek, zerre.. bu hususta hepsi de birdir.</p>
+<p class="paragraph"><strong>Hülâsa:</strong> Zerre gibi küçük şeyler veya âdi fiiller, Hàlık'ın halkıyla vücûda geldikleri için, onun dâire-i ilminde dâhil oldukları bedîhîdir. Bu itibarla, onlardan bahsetmekte bilbedâhe, müşâhhat (münâkaşa etmek) yoktur. Kur'ân-ı Kerîm,</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ ﴾</div>
+<p class="paragraph">âyetiyle bu sırra işâret etmiştir. Yani; halkeden Hàlık, mahlûkunu bilmez mi? Ve bilmemesinin imkânı var mı? Öyle ise mahlûkundan niçin bahsetmesin, niçin mahlûkuyla konuşmasın?</p>
+<p class="paragraph"><strong>İkinci Muğâlata:</strong> Onlar, "Kur'ânın üslûbları ve şîvesi altında bir insanın timsâli görünür." diyorlar. Çünkü Kur'ânda bahsedilen âdi işler ve hakîr şeyler, insanların arasında yapılan muhâvere ve konuşmalar gibidir. Bu câhil herifler bilmezler mi ki söylenilen bir kelâm, bir cihetten mütekellimine bakarsa birkaç cihetten de muhâtabına bakar. Çünkü muhâtabın ahvâlini nazara almak lâzımdır ki söylenilen söz o ahvâlin iktizası üzerine söylensin. Binâenaleyh, Kur'ânın muhâtabı beşerdir. Kur'ânın maksadı da tefhimdir. Yani, beşerin bilmediği şeyleri bildirmektir. Buna binâendir ki, belâğatın iktizası üzerine Kur'ân, beşerin hissiyatıyla memzûc olan üslûblarını giyer ve şîvesiyle söyler ki, beşerin fehmi söylenilen sözden tevahhuş edip ürkmesin.</p>
+<p class="paragraph">Evet, yüksek bir insan, bir çocukla konuştuğu zaman çocukların şîvesiyle konuşursa, çocuğun zihnini okşamış olur. Çocuğun fehmi, onun çat-pat söylediği sözler ile ünsiyet peydâ eder; söylediklerini dinler ve anlar. Aksi hâlde, o insan ile o çocuk arasında bir ma'lûmât alışverişi olamaz. Allah ile beşer arasındaki ahz ve i'tâlar da böyledir. Eğer Cenâb-ı Hak beşere i'tâ edeceği ma'lûmâtı beşerin terâzisiyle tartıp vermezse, beşer, kat'iyyen ne bakar ve ne de alır. Çünkü beşer, ancak alışmış olduğu terâzisinin dilinden anlar, bu fennî terâzilerin dilinden anlamaz.</p>
+<p class="paragraph">S— Hakikaten, eşyanın hakareti, hısseti; kudretin azametine, kelâmın nezâhet ve nezâketine münâfîdir?</p>
+<p class="paragraph">C— Bazı şeylerde veya işlerde görünen hakaret, çirkinlik; eşyanın mülk cihetine aittir. Yani dış yüzüne nâzırdır ve bizim nazarımızda öyle görünür. Ve bunun için, eşya ile yed-i Kudret arasına perde olarak esbâb-ı zâhiriye vaz'edilmiştir ki, sathî nazarımızda yed-i Kudretin o gibi eşya ile mübâşereti görünmesin. Fakat melekût ciheti, yani iç yüzü ise şeffâf ve yüksektir. Kudretin taalluk ettiği bu cihette, hiçbir şey Kudretin taallukundan hariç değildir.</p>
+<div class="page-marker-wrap"><span class="page-marker">193</span></div>
+<p class="paragraph">Evet, azamet-i İlâhiye esbâb-ı zâhiriyenin vaz'ını iktiza ettiği gibi, vahdet ve izzet-i İlâhiye de kudretin bütün eşyaya şümûlünü ve kelâmın herşeye ihâtasını iktiza ederler. Maahazâ, bir zerre üstünde zerreler ile yazılan bir Kur'ân, sahife-i semâda yıldızlar ile yazılacak Kur'ândan hüsün (güzellik)te aşağı değildir. Ve kezâ (Hâşiye-1), bir sivrisineğin yaratılışı, san'atça fîlin hilkatinden dûn değildir.</p>
+<p class="paragraph">Kelâm sıfatı da aynen kudret sıfatı gibidir. Bir çocukla konuşup söz anlatmak, bir feylesofla konuşmaktan aşağı değildir.</p>
+<p class="paragraph">S— Şu temsîllerde görünen hakaret-i zâhiriye neye aittir?</p>
+<p class="paragraph">C— O gibi hâller temsîl getirene ait değildir, ancak "mümessel-i leh"e aittir. Yani; kime ve ne şeye temsîl getirilmişse, ona aittir. Zâten kelâmın güzelliği, belâğatı; mümessel-i lehe mutâbakatı nisbetindedir. Evet bir pâdişah bir çobana, çobanlara mahsûs bir abâ, bir palto ve kelbine de bir kemik verirse, "Pâdişah iyi yapmadı." diye kimse i'tirâz edemez. Çünkü herşeyi lâyıkına vermiştir. Binâenaleyh, mümessel-i leh ne kadar hakîr olursa, temsîli de o kadar hakîr olur ve ne kadar büyük olursa, temsîli de o kadar büyük olur.</p>
+<p class="paragraph">Evet, sanemler pek âdi, hakîr olduklarından Cenâb-ı Hak, sineği (Hâşiye-2) onlara musallat kılmıştır ve ibâdetleri de o kadar çirkindir ki,</p>
+<div class="arabic-block" dir="rtl">نَسْجُ الْعَنْكَبُوتِ</div>
+<p class="paragraph">ile örümceğin ağıyla tâbir edilmiştir.</p>
+<p class="paragraph"><strong>Üçüncü Muğâlata:</strong> Onlar diyorlar ki: "Hakikati izhâr etmekte, aczi îmâ eden bu gibi temsîlâta ne ihtiyaç vardır?"</p>
+<p class="paragraph"><strong>Elcevab:</strong> Kur'ânı inzâl etmekten maksad, cumhûr-u nâsı irşad etmektir. Cumhûr ise avâmdır. Avâm-ı nâs, çıplak olan hakàikı göremez; ülfet peydâ etmedikleri akliyât-ı mahzâyı ve mücerredâtı fehimleri alamaz. Bunun için Cenâb-ı Hak, lütûf ve ihsânıyla hakikatleri onların ülfet ettikleri bir libâs ile, bir şîve ile göstermiştir ki, tevahhuş edip ürkmesinler. Bu bahis, müteşâbihât bahsinde geçmiştir.</p>
+<div class="page-marker-wrap"><span class="page-marker">194</span></div>
+<p class="paragraph"><strong>Bu âyetin cümleleri arasındaki irtibata gelelim:</strong></p>
+<p class="paragraph">Evet,</p>
+<div class="arabic-block" dir="rtl">﴿ اِنَّ اللّٰهَ لَا يَسْتَحْي۪ٓ اَنْ يَضْرِبَ مَثَلًا مَا بَعُوضَةً فَمَا فَوْقَهَا ﴾</div>
+<p class="paragraph">cümlesi onların îrâd ettikleri aşağıdaki müteselsil i'tirâzları reddediyor.</p>
+<p class="paragraph">1. Allah'ın beşer ile konuşmasında ve onlara kahr ve itâb etmekte ve onlardan şikâyet etmekte ne hikmet vardır? Hâlbuki bu gibi şeylerden anlaşılır ki; âlemde insanın da başka bir tasarrufu, bir te'siri vardır?..</p>
+<p class="paragraph">2. İnsanlar arasında cereyan eden konuşmalar gibi temsîllerin getirilmesi... Zîra bu, Kur'ânın beşer kelâmı olduğuna alâmettir?..</p>
+<p class="paragraph">3. Kelâmın arkasında, üslûbların arasında insanın timsâli görünür?</p>
+<p class="paragraph">4. Hakàik, temsîlâtla tasvir ediliyor. Bu ise, hakikati izhâr etmekten âciz olduğuna delâlet eder?..</p>
+<p class="paragraph">5. Getirilen temsîller, âdi temsîllerdir. Bu ise, Mütekellimin zihni, inhisar altında olduğuna emâredir?</p>
+<p class="paragraph">6. Hakîr ve kıymetsiz şeylerden temsîller getiriliyor. Bu da mütekellimin zaîf olduğuna delildir?</p>
+<p class="paragraph">7. Getirilen temsîllere mecburiyet olmadığından; terki zikrinden evlâdır?</p>
+<p class="paragraph">8. Bilhassa, ehl-i izzetin hayâ ederek tenezzül etmedikleri şeylerden temsîl getirilmiştir?</p>
+<p class="paragraph">Kur'ân-ı Kerîm, bu i'tirâz silsilesini,</p>
+<div class="arabic-block" dir="rtl">﴿ اِنَّ اللّٰهَ لَا يَسْتَحْي۪ٓ اَنْ يَضْرِبَ مَثَلًا مَا.. الخ ﴾</div>
+<p class="paragraph">cümlesiyle bir darbede kırmış ve yıkmıştır:</p>
+<p class="paragraph">1. Eşyanın iç yüzleri yüksek ve şeffâf olduğundan, bu yüzlerden bahsetmek azamet ve celâle münâfî olmadığı gibi; Ulûhiyetin iktizası üzerine dış yüzleri çirkin görünenlerin bahsedilmekten, zikredilmekten hariç tutulmaları, Ulûhiyet kanununa muhâliftir. Çünkü bir hâkim, teb'asından Çingeneleri hukuk-u medeniyeden ihrac etmez.</p>
+<p class="paragraph">2. Belâğat ve hikmetin iktizası üzerine, hakîr mânâları ifâde için hakîr temsîllerin zikrinde bir muhâlefet yoktur.</p>
+<p class="paragraph">3. Âdi temsîllerde bir beis yoktur, terbiye ve irşad öyle ister.</p>
+<p class="paragraph">4. İnâyet-i İlâhiye'nin iktizası üzerine; hakàik, temsîlâtla tasvir edilir.</p>
+<p class="paragraph">5. Rubûbiyet ve terbiyenin iktizasına binâen, insanları, kendi aralarında cereyan eden muhâvereleri, üslûbları, şîveleriyle irşad etmek lâzımdır.</p>
+<p class="paragraph">6. Hikmet ve nizâmın iktizası üzerine, Cenâb-ı Hakk'ın insanlar ile konuşması zarûrîdir.</p>
+<div class="page-marker-wrap"><span class="page-marker">195</span></div>
+<p class="paragraph"><strong>Hülâsa:</strong> Cenâb-ı Hak, insanlara cüz'-i ihtiyarî vermekle, onları âlem-i ef'âle masdar yaptı. O âlem-i ef'âli bir nizâm altına almak üzere kelâmını, yani Kur'ânını da o âlem-i ef'âle gönderdi. Binâenaleyh, tanzîf ve tanzim için yapılan İlâhî bir program, i'tirâzlara mahal olamaz.</p>
+<div class="arabic-block" dir="rtl">﴿ فَاَمَّا الَّذ۪ينَ اٰمَنُوا فَيَعْلَمُونَ اَنَّهُ الْحَقُّ مِنْ رَبِّهِمْ ﴾</div>
+<p class="paragraph"><strong>Bu cümleyi evvelki cümle ile bağlayan alâkaya gelince:</strong></p>
+<p class="paragraph">Evvelki cümledeki hükmü isbât için bu cümle, bir delilin yolunu gösteriyor ve zihne gelen vehimleri de def'ediyor. Şöyle ki:</p>
+<p class="paragraph">Her kim inâyet-i ezeliye ile Rubûbiyet-i İlâhiye'yi göz önüne getirip Allah cânibinden kudretin azameti altında bakarsa,</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">ve emsâliyle getirilen temsîllerin, belâğat kanunlarına muvâfık ve Cenâb-ı Hak'tan hak olduğunu tasdik eder.</p>
+<p class="paragraph">Fakat her kim nefsinin emri altında mümkinâtı nazara alarak bakarsa, şübhesiz vehimler onu havalandırır, dalâletin bataklığına atar. Bu iki tâife insanların meseli, şöyle iki şahsın meseline benzer ki; onlardan birisi yukarıya, diğeri aşağıya gider. Her ikisi de pek çok su arklarını görürler. Yukarıya giden şahıs, doğru çeşmenin başına gider, suyun menba'ını bulur; tatlı, temiz bir su olduğunu anlar. Sonra o çeşmeden teşâub edip dağılan bütün arkların temiz ve tatlı olduklarına hükmeder ve hangi arka tesâdüf ederse, tatlı ve temiz olduğunda tereddüd etmez. İşte bu itibarla, kendisine vehimler tasallut etmezler.</p>
+<p class="paragraph">Aşağıya giden öteki şahıs ise; arklara bakar, suyun menba'ını göremediğinden, her rastgeldiği ark suyunun tatlı olup olmadığını anlamak için delilleri, emâreleri aramaya mecbur olur. Bundan dolayı vehimlere ma'rûz kalır. Ednâ bir vehim, o kafasızı yoldan çıkarır.</p>
+<p class="paragraph">Yâhut o iki tâifenin misâli, ellerinde bir âyine bulunan iki şahsın misâline benzer ki; birisi âyinenin şeffâf yüzüne bakar, içinde kendisini gördüğü gibi çok şeyleri de görebilir. Öteki adam ise, âyinenin renkli yüzüne bakar, bir şey anlayamaz.</p>
+<p class="paragraph"><strong>Hülâsa:</strong> Allah'ın sun'una, ef'âline, kelâmına, temsîlâtına, üslûblarına; inâyet ve rubûbiyetini mülâhaza etmekle beraber, Allah'ın cânibinden bakmak lâzımdır. Bu bakış da, ancak nur-u îmânla olur. Bu itibarla, vehimler olsa bile, ancak örümcek ağının kıymet ve kuvvetinde olur. Eğer mümkinât cihetinden cüz'î fikriyle müşteri nazarıyla bakarsa, zaîf bir vehim bile onun nazarında bir dağ gibi olur. Cûdî Dağı'nı gözün rü'yetinden men'eden sineğin kanadı gibi; zaîf, küçük bir vehim de, hakikati onun gözünün görmesinden setreder.</p>
+<div class="page-marker-wrap"><span class="page-marker">196</span></div>
+<div class="arabic-block" dir="rtl">﴿ وَاَمَّا الَّذ۪ينَ كَفَرُوا... الخ ﴾</div>
+<p class="paragraph"><strong>Bu cümlenin evvelki cümle ile cihet-i irtibatı:</strong></p>
+<p class="paragraph">Evet, temsîlât-ı Kur'âniyedeki hikmeti fehmetmek için Allah cânibinden nur-u îmânla bakmak lâzım olduğuna evvelki cümle ile işâret edilmiştir. Bu cümlede ise, mezkûr temsîlâttaki hikmetin adem-i fehmini intac eden ve aynı zamanda evhâm ve bahâneler yuvasına giden yol gösterilmiştir. Şöyle ki:</p>
+<p class="paragraph">Alçak nefis tarafından herşeyi karanlıklı gösteren küfür zulmetiyle temsîlât-ı Kur'âniyeye bakan olursa; tabîi o temsîlâtın hikmetini anlayamaz, evhâma kapılır. Kalbindeki marazın yardımıyla, her vehim onun nazarında bir dev kesilir; tarîk-ı hakkı kaybeder; tereddüdlere ma'rûz kalır. Sonra istifhâma, yani sorup suâl etmeye başlar; içinden çıkamaz, en nihâyet iş inkâra dayanır, inkârın içinde kalır. Kur'ân-ı Kerîm, ihtisar ve kinâye tarîkiyle onların inkârı tazammun eden istifhâmlarına,</p>
+<div class="arabic-block" dir="rtl">﴿ مَاذَٓا اَرَادَ اللّٰهُ بِهٰذَا مَثَلًا ﴾</div>
+<p class="paragraph">cümlesiyle işâret etmiştir. Ve bu işâret içindir ki, evvelki cümlede mezkûr olan</p>
+<div class="arabic-block" dir="rtl">يَعْلَمُونَ</div>
+<p class="paragraph">ye mutâbakat için, burada</p>
+<div class="arabic-block" dir="rtl">لَا يَعْلَمُونَ</div>
+<p class="paragraph">nin zikri lâzım iken</p>
+<div class="arabic-block" dir="rtl">﴿ مَاذَٓا اَرَادَ اللّٰهُ بِهٰذَا مَثَلًا... الخ ﴾</div>
+<p class="paragraph">denilmiştir.</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ كَث۪يرًا وَيَهْد۪ي بِه۪ كَث۪يرًا ﴾</div>
+<p class="paragraph">Bu cümle, onların temsîlâtının sebebini, ille-i gâiyesini anlamak üzere</p>
+<div class="arabic-block" dir="rtl">مَا ذَا</div>
+<p class="paragraph">ile yaptıkları istifhâma cevaptır. Fakat Kur'ân-ı Kerîm, usûl ittihàz ettiği îcâz ve ihtisara binâen, temsîlâtın âkıbetini, yani temsîlâta terettüb eden dalâlet ve hidayeti, ille-i gâiye menzilesinde göstermiştir. Evet, dalâlet ve hidayet, temsîlâta illet olamaz. Eğer illet olsa, cebir olur. Ancak, temsîlâtın sebeb ve ille-i gâiyesi, cumhûr-u avâmı îkaz ve irşaddır. Sanki onlar, "Ne için böyle oldu? Ne için i'câz bedîhî olmadı? Ne için Allah'ın kelâmı olduğu zarûrî olmadı? Ne için bu temsîlât yüzünden vehimlere meydân verildi?" diye bir çok suâlleri ortaya çıkardılar. Kur'ân-ı Kerîm,</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ كَث۪يرًا وَيَهْد۪ي بِه۪ كَث۪يرًا ﴾</div>
+<p class="paragraph">cümlesiyle, o suâl kümesini dağıttı. Şöyle ki:</p>
+<p class="paragraph">O temsîlâtı, nur-u îmân ile tefekkür edenin nur-u îmânı inkişaf eder, kuvvet bulur. Küfür zulmetiyle ve tenkid hırsıyla bakanın da, zulmeti ziyâdeleşir ve gözü kör olur. Çünkü nazarîdir, bedîhî değildir. Evet, bu temsîlât, temiz ve yüksek rûhları, mülevves ve alçak rûhlardan tefrik içindir. Bu da, yüksek isti'datları neşv ü nemâlandırmakla pis isti'datlardan temyiz içindir. Bu dahi, sağlam fıtratları, mücâhede ile bozuk ve hasta fıtratlardan ayırmak içindir. Bunu da, imtihan-ı beşer istilzam ediyor.</p>
+<div class="page-marker-wrap"><span class="page-marker">197</span></div>
+<p class="paragraph">Bunu dahi, sırr-ı teklif iktiza etmiştir. Teklif ise saâdet-i beşer içindir. Saâdet ise tekemmülden sonradır.</p>
+<p class="paragraph">S— Diyorsun ki: "Teklif, saâdet içindir." Hâlbuki ekser-i nâsın şekàvetine sebeb, tekliftir. Teklif olmasaydı, bu kadar tefâvüt-ü şekàvet de olmazdı?</p>
+<p class="paragraph">C— Cenâb-ı Hak, verdiği cüz'-i ihtiyarî ile ef'âl-i ihtiyariye âlemini kesbiyle teşkil etmeye insanı mükellef kıldığı gibi, rûh-u beşerde vedîa olarak ekilen gayr-ı mütenâhî tohumları sulamak ve neşv ü nemâlandırmak için de beşeri teklif ile mükellef kılmıştır. Eğer teklif olmasaydı, rûhlardaki o tohumlar neşv ü nemâ bulamazdı.</p>
+<p class="paragraph">Evet, nev'-i beşerin ahvâline dikkatle bakılırsa görülür ki; rûhun ma'nen terakkîsini, vicdânın tekâmülünü, akıl ve fikrin inkişaf ve terakkîsini telkîh eden, yani aşılayan, şerîatlardır; vücûd veren, tekliftir; hayat veren, Peygamberlerin gönderilmesidir; ilhâm eden dinlerdir. Eğer bu noktalar olmasaydı, insan hayvan olarak kalacaktı ve insandaki bu kadar kemâlât-ı vicdâniye ve ahlâk-ı hasene tamamen yok olurlardı. Fakat insanların bir kısmı, arzu ve ihtiyarıyla teklifi kabûl etmiştir. Bu kısım, saâdet-i şahsiyeyi elde ettiği gibi nev'in saâdetine de sebeb olmuştur.</p>
+<p class="paragraph">Amma insanların büyük bir kısmı, ihtiyarı ile küfrü kabûl ve tekâlif-i İlâhiyeyi reddetmişlerse de, teklifin bazı nev'ilerinden süzülen terbiyevî, ahlâkî vesâire güzel şeyleri aldıklarından, teklifin o nev'ilerini zımnen ve ıztıraren kabûl etmiş bulunurlar. İşte bu itibarla, kâfirin her sıfatı ve her hâli kâfir değildir.</p>
+<p class="paragraph">S— İnsanlardan büyük bir kısmın şekàveti meydânda iken, yalnız küçük bir kısmın saâdeti nasıl nev'in saâdetine sebeb olur ki, "Şerîat rahmettir" diyorsunuz. Hâlbuki nev'in saâdeti, ya bütün efrâdın veya kısm-ı ekserîsinin saâdetiyle olabilir?</p>
+<p class="paragraph">C— Altına yüz yumurta bırakılan tavuk, o yumurtadan yirmisini civciv çıkarıp seksenini ifsad etse, bu tavuk, yumurta nev'ine hizmet etmiş olur. Çünkü bir civciv, bin yumurtanın annesi olabilir.</p>
+<p class="paragraph">Veya yüz tane çekirdek toprağa ekilse ve su ile sulanıp bilâhare yirmisi neşv ü nemâ bulup hurma ağacı olsa ve sekseni çürüyüp mahvolsa, yirmi çekirdeğin sünbüllenip ağaç olmasına sebeb olan su, elbette çekirdek nev'ine hizmet etmiş olur.</p>
+<p class="paragraph">Veyâhut bir mâden ateşte eritilse, beşte biri altın, mütebâkisi toprak çıksa; elbette ateş, o mâdenin kemâline, saâdetine sebeb olur. Binâenaleyh teklif de insanların beşte birini kurtarsa, o beşte birin saâdet-i nev'iyeye sebeb ve âmil olduğuna kat'iyyetle hükmedilebilir. Maahazâ, yüksek hissiyat ile güzel ahlâkın neşv ü nemâsı, ancak mücâhede ve ictihâdla olur.</p>
+<div class="page-marker-wrap"><span class="page-marker">198</span></div>
+<p class="paragraph">Evet sağ el, dâima çalıştığı için, sol elden daha kuvvetlidir. Ve bir hükûmet, mücâhede ettikçe cesâreti artar, terkettiği zaman cesâreti azalır ve binnetice; cesâret de, hükûmet de söner, mahvolur.</p>
+<p class="paragraph">Ve kezâ, herşeyin ve her işin tekâmülü, zıdlarının mukàbele ve rekabet etmeleriyle olur. Meselâ hidayetin tekâmülüne dalâlet yardım ettiği gibi, îmânın tekâmülüne de küfür yardım eder. Çünkü küfür ve dalâletin ne derece pis ve zararlı olduklarını gören bir mü'minin îmânı ve hidayeti, birden bine çıkar. Bu iki cihet, teklifin eser ve semeresidir. Ve bu iki cihet itibariyle teklif, saâdet-i nev'iyenin yegâne âmilidir.</p>
+<div class="arabic-block" dir="rtl">﴿ وَمَا يُضِلُّ بِه۪ٓ اِلَّا الْفَاسِق۪ينَ ﴾</div>
+<p class="paragraph"><strong>Bu cümlenin mâkabliyle münâsebeti:</strong></p>
+<p class="paragraph">Evet, Kur'ân-ı Kerîm</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ كَث۪يرًا ﴾</div>
+<p class="paragraph">cümlesinde dalâlete atılanlar kimler olduğunu beyân etmeyip mübhem bıraktığından, sâmi' korktu. "Acaba o dalâlete atılanlar kimlerdir? Sebeb nedir? Kur'ânın nurundan zulmet nasıl geliyor?" diye sorduğu bu üç suâl, şu cümle ile cevablandırılmıştır ki: "Onlar, fâsıklardır. Dalâlete atılmaları, fısklarının cezasıdır. Fısk sebebiyle, fâsıklar hakkında nur nâra, ziyâ zulmete inkılâb eder." Evet, şemsin ziyâsıyla, pis maddeler taaffün eder, kokar, berbat olur.</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ يَنْقُضُونَ عَهْدَ اللّٰهِ مِنْ بَعْدِ م۪يثَاقِه۪ۖ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِه۪ٓ اَنْ يُوصَلَ وَيُفْسِدُونَ فِي الْاَرْضِ ﴾</div>
+<p class="paragraph"><strong>Bu cümlenin evvelki cümle ile vech-i nazmı:</strong></p>
+<p class="paragraph">Evet, bu cümle ile fısk, şerh ve beyân edilmiştir. Şöyle ki:</p>
+<p class="paragraph">Fısk; haktan udûl, ayrılmak; hadden tecâvüz; hayat-ı ebediyeden çıkıp terketmektir. Fıskın menşe'i; kuvve-i akliye, kuvve-i gadabiye, kuvve-i şeheviye denilen üç kuvvetin ifrat ve tefritinden neş'et eder. Evet ifrat veya tefrit, delillere karşı bir isyandır. Yani sahife-i âlemde yaratılan delâil, uhûd-u İlâhiye hükmündedir. O delâile muhâlefet eden, Cenâb-ı Hak'la fıtraten yapmış olduğu ahdini bozmuş olur.</p>
+<p class="paragraph">Ve kezâ ifrat ve tefrit, hayat-ı nefsiye ve rûhiyenin maraz ve hastalığını intac eden esbâbdandır. Buna, fıskın birinci sıfatı olan</p>
+<div class="arabic-block" dir="rtl">﴿ يَنْقُضُونَ عَهْدَ اللّٰهِ ﴾</div>
+<p class="paragraph">cümlesiyle işâret edilmiştir.</p>
+<p class="paragraph">Ve kezâ, ifrat ve tefrit, hayat-ı ictimâiyeye karşı isyan ateşini yakan iki âmildir. Evet, bu âmiller hayat-ı ictimâiyeyi nizâm ve intizam altına alan râbıtaları, kanunları keser atar. Evet şehvet veya gazab, haddini aşarsa, ırz ve nâmuslar pâyimal olur, masûmlar mahvolur. Buna da, fıskın ikinci sıfatı olan</p>
+<div class="arabic-block" dir="rtl">﴿ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِه۪ٓ اَنْ يُوصَلَ ﴾</div>
+<p class="paragraph">cümlesiyle işâret edilmiştir.</p>
+<div class="page-marker-wrap"><span class="page-marker">199</span></div>
+<p class="paragraph">Ve kezâ, dünya nizâmının bozulmasını intac edip fesâd ve ihtilâle sebebiyet veren iki ihtilâlcidirler. Buna dahi, fıskın üçüncü sıfatı olan</p>
+<div class="arabic-block" dir="rtl">﴿ وَيُفْسِدُونَ فِي الْاَرْضِ ﴾</div>
+<p class="paragraph">cümlesiyle işâret edilmiştir.</p>
+<p class="paragraph">Evet, fâsık olan kimsenin kuvve-i akliye ve fikriyesi îtidâli kaybedip safsatalara düşerse, i'tikàdata ait râbıtaları kesmekle, hayat-ı ebediyesini yırtar atar.</p>
+<p class="paragraph">Ve kezâ, kuvve-i gadabiyesi hadd-i vasatı tecâvüz ederse, hayat-ı ictimâiyenin hem yüzünü, hem astarını yırtar, altüst eder.</p>
+<p class="paragraph">Ve kezâ, kuvve-i şeheviyesi haddi aşarsa, hevâ-i nefse tâbi olur, kalbinden şefkat-i cinsiye zâil olur, kendisi berbat olacağı gibi başkalarını da berbat edecektir. Bu itibarla, fâsıklar hem nev'inin zararına, hem arzın fesâdına çalışmış olur.</p>
+<div class="arabic-block" dir="rtl">﴿ اُو۬لٰٓئِكَ هُمُ الْخَاسِرُونَ ﴾</div>
+<p class="paragraph">Bu cümle, evvelki cümlenin neticesi ve aynı zamanda te'kididir. Şöyle ki:</p>
+<p class="paragraph">Evvelki cümlede ahdi bozmak, sıla-i rahmi kesmek, arzda fesâd yapmak gibi fâsıkın cinayetlerini korkunç bir şekilde söyledikten sonra, bu cümlede evvelki tehdid ve korkuyu te'kid için, fâsıkın cinayetlerinin netice ve cezasını şöyle beyân etmiştir: "O fâsıklar, âhiretlerini verip dünyayı aldıkları gibi, hidayeti dalâletle tebdil eden kafasız adamlardır!"</p>
+<p class="paragraph"><strong>Şimdi üçüncü vazifeye geldik. Yani bu âyetin ihtiva ettiği cümlelerin hey'etlerinden bahsedeceğiz.</strong></p>
+<p class="paragraph">Evvelâ bunu bilmek lâzımdır ki, Kur'ân-ı Kerîm'in âyetleri ve âyetlerin cümleleri ve cümlelerin hey'etleri; sâniye, dakika, saatleri sayan saatin milleri gibidirler. Millerin her ikincisi birincisine yardım ettiği gibi, bir âyet bir maksadı takib ettiği zaman, cümleleri de o maksadın etrafında dolaşırlar; cümlelerin hey'etleri dahi, cümlelerin izini, takib ediyorlar. Vaziyetleri öyle bir noktaya gelir ki; hâlleri, lisân-ı hâl ile şu beyti okuyor:</p>
+<div class="arabic-block" dir="rtl">عِبَارَاتُنَا شَتَّى وَحُسْنُكَ وَاحِدٌ * وَكُلٌّ اِلٰى ذَاكَ الْجَمَالِ يُشِيرُ</div>
+<p class="paragraph">Yani: <strong>"Söylediğimiz sözler ayrı ayrı ise de, senin hüsnün birdir. Bütün sözlerimiz, o hüsn-ü cemâle işâret ediyorlar."</strong> Bunun içindir ki, Kur'ân-ı Kerîm'in selâseti ve yüksek belâğatı ve nakşındaki inceliği tabaka-i i'câza vâsıl olmuştur.</p>
+<div class="arabic-block" dir="rtl">﴿ اِنَّ اللّٰهَ لَا يَسْتَحْي۪ٓ اَنْ يَضْرِبَ مَثَلًا مَا بَعُوضَةً فَمَا فَوْقَهَا ﴾</div>
+<p class="paragraph"><strong>Bu cümledeki kelimelerin nüktelerinden bahsedeceğiz:</strong></p>
+<div class="page-marker-wrap"><span class="page-marker">200</span></div>
+<div class="arabic-block" dir="rtl">اِنَّ</div>
+<p class="paragraph">kelimesi, hem hükmün hakikate bağlı olduğuna, hem hükümde vâki olan tereddüd ve inkârların def'ine delâlet eder. Öyle ise bu</p>
+<div class="arabic-block" dir="rtl">اِنَّ</div>
+<p class="paragraph">âyetin başında zikredilen müteselsil tereddüdlere işârettir.</p>
+<div class="arabic-block" dir="rtl">اَللّٰهَ</div>
+<p class="paragraph">kelimesi, bundan önce zikredilen Cenâb-ı Hak ile mümkinât arasında yaptıkları kıyâstaki hatâyı, zihnin gözüne sokuyor. Yani: "Nasıl Allah diyorsunuz ve nasıl Allah'ı mümkinâta kıyâs ediyorsunuz, Allah ünvânını taşıyan zât, mümkinâta kıyâs edilebilir mi?"</p>
+<p class="paragraph">S—</p>
+<div class="arabic-block" dir="rtl">﴿ لَا يَسْتَحْي۪ ﴾</div>
+<p class="paragraph">Hayâ, nefsin sıkılmasıyla yüzde peydâ olan kızartıdan ibaret olduğundan, Cenâb-ı Hak hakkında bu kelimenin kullanılması muhâldir; muhâli nefyetmekte fâide yoktur. Binâenaleyh</p>
+<div class="arabic-block" dir="rtl">﴿ لَا يَسْتَحْي۪ ﴾</div>
+<p class="paragraph">yerinde</p>
+<div class="arabic-block" dir="rtl">لَا يَتْرُكُ</div>
+<p class="paragraph">denilmiş olsaydı, muhâliyete mahal kalmazdı?</p>
+<p class="paragraph">C—</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">ile yapılan temsîli iktiza eden ve hüsnünü takdir eden hikmet, belâğat vesâire gibi esbâba karşı temsîli terketmek isteyen, hayâdan mâadâ tek bir esbâb yoktur. Hayâ da Cenâb-ı Hak hakkında muhâldir. Öyle ise; o temsîli terketmeye asla sebeb bulunmadığına işâreten,</p>
+<div class="arabic-block" dir="rtl">﴿ لَا يَسْتَحْي۪ ﴾</div>
+<p class="paragraph">kelimesi,</p>
+<div class="arabic-block" dir="rtl">لَا يَتْرُكُ</div>
+<p class="paragraph">kelimesine tercih edilmiştir. Çünkü</p>
+<div class="arabic-block" dir="rtl">لَا يَتْرُكُ</div>
+<p class="paragraph">kelimesi, bu mânâyı ifâde edemez.</p>
+<p class="paragraph">Yâhut</p>
+<div class="arabic-block" dir="rtl">يَسْتَحْي۪</div>
+<p class="paragraph">nin zikri, onların ahmakçasına söyledikleri</p>
+<div class="arabic-block" dir="rtl">اَمَا يَسْتَحْيِى رَبُّ مُحَمَّدٍ اَنْ يُمَثِّلَ بِهٰذِهِ الْمُحَقَّرَاتِ</div>
+<p class="paragraph">Yani: "Muhammed'in Rabbi bu hakîr şeylerden temsîl getirmeye hayâ etmez mi?" diye söyledikleri sözlerindeki</p>
+<div class="arabic-block" dir="rtl">يَسْتَحْي۪</div>
+<p class="paragraph">kelimesine müşâkelet ve müşâbehet içindir. Kur'ân-ı Kerîm, belâğatça kıymetli olan</p>
+<div class="arabic-block" dir="rtl">مُشَاكَلَةً فِى الصُّحْبَةِ</div>
+<p class="paragraph">üslûbuna binâen, onların kullandıkları</p>
+<div class="arabic-block" dir="rtl">يَسْتَحْي۪</div>
+<p class="paragraph">kelimesini aynen kullanmıştır. Onların bu sözlerine müşâkelet ve müşâbehet nokta-i nazarından</p>
+<div class="arabic-block" dir="rtl">﴿ اَنْ يَضْرِبَ ﴾</div>
+<p class="paragraph">yerinde</p>
+<div class="arabic-block" dir="rtl">مِنَ الْمَثَلِ الْحَقِيرِ</div>
+<p class="paragraph">denilmesi, müşâbeheti saklamak için daha münâsib olurdu. Fakat bu münâsebetin nazara alınmaması, latîf bir üslûba işârettir ki; temsîller, mühür veya imzalar gibi tasdik ve isbât içindir. Nasıl ki yazılan bir şey mühürlenmekle tasdik edilmiş olur; aynen bunun gibi, söylenilen bir söz de, bir misâl ile tasdik ve isbât edilmiş olur.</p>
+<p class="paragraph">Yâhut</p>
+<div class="arabic-block" dir="rtl">﴿ اَنْ يَضْرِبَ ﴾</div>
+<p class="paragraph">ile paranın darbına îmâ edilmiştir; yani temsîllerin darbı ve darb-ı meseller, sikkenin darbı kadar kelâma kıymet veriyor.</p>
+<div class="page-marker-wrap"><span class="page-marker">201</span></div>
+<p class="paragraph">Yani nasıl ki sikke; gümüş ve altına kıymet veriyor, darb-ı meseller de kelâmlara o nisbette kıymet ve itibar veriyor. Ve bu işâretle, vehimleri def'etmek için temsîllerin güzel bir vâsıta olduklarına ve temsîllerin bid'a olmayıp belâğat sahasında işlek ve güzel bir cadde olduğuna îmâ edilmiştir. Evet durûb-u emsâl, ma'lûm kaidelerdendir.</p>
+<p class="paragraph">Daha kısa ve muhtasar olan</p>
+<div class="arabic-block" dir="rtl">ضَرْبٌ</div>
+<p class="paragraph">masdarı üzerine</p>
+<div class="arabic-block" dir="rtl">﴿ اَنْ يَضْرِبَ ﴾</div>
+<p class="paragraph">nin fiil sîgasıyla tercihen zikredilmesi, i'tirâzlarının menşe'i bizzat temsîl olmayıp,</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">nin hakareti olduğuna işârettir. Çünkü temsîller hadd-i zâtında kıymetli olup, i'tirâzlara mahal değildirler. Zîra</p>
+<div class="arabic-block" dir="rtl">﴿ اَنْ يَضْرِبَ ﴾</div>
+<p class="paragraph">fiildir. Fiil, müstakil ve sâbit olmadığından, sanki latîftir. Mütekellimin kasdı onda durmuyor, mef'ûle geçiyor. Masdar olan</p>
+<div class="arabic-block" dir="rtl">ضَرْبٌ</div>
+<p class="paragraph">ise, isimdir. İsim, müstakil ve sâbit olduğu için, sanki kesiftir. Mütekellimin kasdını cezbedip, mef'ûle vermemesi ihtimali vardır. Binâenaleyh,</p>
+<div class="arabic-block" dir="rtl">اِنَّ اللّٰهَ لَا يَسْتَحْيِى ضَرْبَ الْبَعُوضَةِ مَثَلًا</div>
+<p class="paragraph">denilmiş olsaydı;</p>
+<div class="arabic-block" dir="rtl">اِسْتِحْيَا</div>
+<p class="paragraph">mahalli</p>
+<div class="arabic-block" dir="rtl">ضَرْبٌ</div>
+<p class="paragraph">olurdu. Hâlbuki istihyânın mahalli,</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">dir.</p>
+<div class="arabic-block" dir="rtl">مَثَلًا</div>
+<p class="paragraph">Bundan murad, temsîlin hâsiyeti olan aklî bir şeyi hissî bir şeyle ve aslı olmayan mevhûm bir şeyi muhakkak ve mevcûd olan bir şeyle ve gâib olan bir şeyi, hazır bir şeyle tasvir etmektir.</p>
+<div class="arabic-block" dir="rtl">مَثَلًا</div>
+<p class="paragraph">'deki tenkîrden anlaşılır ki, burada medâr-ı nazar, bizzat meselin zâtıdır, sıfatları değildir. Sıfatları ise makamın iktizasına veya "mümessel-i leh"in hâline havâle edilmiştir.</p>
+<div class="arabic-block" dir="rtl">مَا</div>
+<p class="paragraph">ta'mîmi ifâde ettiğinden, kaidenin umumî olduğuna işârettir ki, cevab yalnız onların i'tirâz ettikleri şeye münhasır kalmasın.</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">Pek çok küçük ve hakîr şeyler ve hayvanlar bulunduğu hâlde</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">nin tahsîsi, inde'l-büleğâ temsîl için istimâli çok olduğuna binâendir.</p>
+<div class="arabic-block" dir="rtl">﴿ فَمَا فَوْقَهَا ﴾</div>
+<p class="paragraph">Yani; kıymet ve belâğatça baûdanın (sinek) mâfevki veya küçüklükte baûdanın mâdûnu veyâhut hem kıymette hem küçüklükte baûdanın mâdûnu olan şeyler... Fakat</p>
+<div class="arabic-block" dir="rtl">﴿ مَا فَوْقَهَا ﴾</div>
+<p class="paragraph">tâbiri, küçük şeyin belâğatça daha garîb, hilkatçe daha acîb olduğuna işârettir.</p>
+<div class="arabic-block" dir="rtl">﴿ فَاَمَّا الَّذ۪ينَ اٰمَنُوا فَيَعْلَمُونَ اَنَّهُ الْحَقُّ مِنْ رَبِّهِمْۚ وَاَمَّا الَّذ۪ينَ كَفَرُوا فَيَقُولُونَ مَاذَٓا اَرَادَ اللّٰهُ بِهٰذَا مَثَلًاۢ ﴾</div>
+<div class="page-marker-wrap"><span class="page-marker">202</span></div>
+<p class="paragraph">Bu cümlenin evvelki cümleden teferru' ve teşâub ettiğini ifâde eden</p>
+<div class="arabic-block" dir="rtl">ف</div>
+<p class="paragraph">bu cümleyi her iki şıkkıyla intac eden zımnî ve gizli bir delile işârettir. Tasviri şöyle olsa gerektir:</p>
+<p class="paragraph">Cenâb-ı Hak, temsîli terketmez. Zîra belâğatın iktiza ettiği bir temsîldir, belâğatın iktiza ettiği şey terkedilmez. Öyle ise Cenâb-ı Hak bu temsîli terketmez. Binâenaleyh, insafı olan, o temsîlin belîğ, hak ve Allah'tan olduğunu bilir. İnâd ile bakan adam ise hikmetini bilmez, tereddüde düşer; sorar, suâl eder, en nihâyet istihkar ile inkâra girer.</p>
+<p class="paragraph"><strong>Hülâsa:</strong> Mü'min, insaflı olduğu için Allah'tan olduğunu tasdik eder. Kâfir olan adam inatçı olduğundan, "Bunda ne fâide var?" der.</p>
+<div class="arabic-block" dir="rtl">اَمَّا</div>
+<p class="paragraph">Bu</p>
+<div class="arabic-block" dir="rtl">اَمَّا</div>
+<p class="paragraph">şart edatıdır. Dâhil olduğu her iki cümleyi birincisi melzum, ikincisi lâzım veya evvelkisi şart, ötekisi meşrût olmak üzere, ikincisini birinci ile bağlar.</p>
+<p class="paragraph">Evet bu</p>
+<div class="arabic-block" dir="rtl">اَمَّا</div>
+<p class="paragraph">iki cümle arasında lüzumu te'sis etmek için vaz'edilmiştir. Binâenaleyh, burada</p>
+<div class="arabic-block" dir="rtl">﴿ فَيَعْلَمُونَ اَنَّهُ الْحَقُّ ﴾</div>
+<p class="paragraph">cümlesinin</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ اٰمَنُوا ﴾</div>
+<p class="paragraph">cümlesine lâzım ve zarûrî olduğuna delâlet eder. Yani îmânı olanın şe'ni, onun hak olduğunu bilmektir.</p>
+<p class="paragraph">Kendisinden daha kısa olan</p>
+<div class="arabic-block" dir="rtl">اَلْمُؤْمِنُونَ</div>
+<p class="paragraph">kelimesine bedel</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ اٰمَنُوا ﴾</div>
+<p class="paragraph">denilmesi, onun hak olduğunu bilmek îmân sebebiyle olduğuna ve kezâ onun hak olduğunu bilmek îmân olduğuna işârettir.</p>
+<p class="paragraph">Belâğat nokta-i nazarından makama daha münâsib olan</p>
+<div class="arabic-block" dir="rtl">اَنَّهُ الْبَلِيغُ</div>
+<p class="paragraph">cümlesine tercihen</p>
+<div class="arabic-block" dir="rtl">﴿ اَنَّهُ الْحَقُّ ﴾</div>
+<p class="paragraph">denilmesi onların i'tirâzlarından kasdettikleri son neticeye işârettir. Çünkü onların maksadları, Allah'tan olduğunu nefyetmektir.</p>
+<div class="arabic-block" dir="rtl">﴿ اَنَّهُ الْحَقُّ ﴾</div>
+<p class="paragraph">Hakkâniyetin o temsîle hasredilmesinden anlaşılır ki, takbih edilmeyip istihsân edilen yalnız</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">temsîlidir.</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">nin gayrısı ve</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">den daha iyisi, ayıplardan hàlî olsa bile, belâğatça</p>
+<div class="arabic-block" dir="rtl">بَعُوضَةً</div>
+<p class="paragraph">nin yerini tutamaz. Çünkü yalnız ayıplardan selâmet, kemâle delil olamaz.</p>
+<div class="arabic-block" dir="rtl">﴿ مِنْ رَبِّهِمْ ﴾</div>
+<p class="paragraph">O temsîlin, Rablerinden nâzil olduğunu ifâde eden bu kayıt, onlar i'tirâzlarına hedef ittihàz ettikleri, o temsîlin nüzûlü olduğuna işârettir.</p>
+<div class="arabic-block" dir="rtl">﴿ وَاَمَّا الَّذ۪ينَ كَفَرُوا ﴾</div>
+<p class="paragraph">Bu</p>
+<div class="arabic-block" dir="rtl">اَمَّا</div>
+<p class="paragraph">evvelki</p>
+<div class="arabic-block" dir="rtl">اَمَّا</div>
+<p class="paragraph">gibi mâkabllerindeki icmâli tafsîl etmekle, tahkîk ve te'kidi ifâde ediyor.</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ كَفَرُوا ﴾</div>
+<p class="paragraph">nun</p>
+<div class="arabic-block" dir="rtl">اَلْكَافِرُونَ</div>
+<p class="paragraph">kelimesine tercihen zikredilmesi, onların bu inkârı, kalblerinde rüsuh peydâ eden küfürden neş'et ettiğine ve onun için onları yine küfre götürdüğüne işârettir.</p>
+<div class="page-marker-wrap"><span class="page-marker">203</span></div>
+<p class="paragraph"><strong>Evvelki</strong> cümledeki</p>
+<div class="arabic-block" dir="rtl">يَعْلَمُونَ</div>
+<p class="paragraph">nin mutâbakatı için burada</p>
+<div class="arabic-block" dir="rtl">فَلَا يَعْلَمُونَ</div>
+<p class="paragraph">denmesi münâsib iken, onun yerine zikredilen</p>
+<div class="arabic-block" dir="rtl">فَيَقُولُونَ</div>
+<p class="paragraph">îcâz ve ihtisar için mukadder olan hâllerden kinâyedir.</p>
+<p class="paragraph">Takdir-i kelâm:<strong>"Küfrü olan adam, hakikati bilmez, tereddüde düşer, inkâra girer, istifhâm şeklinde istihkar eder, hakîr görür."</strong></p>
+<p class="paragraph">Ve kezâ, kendileri dalâlette oldukları gibi, ağızlarıyla halkı da dalâlete sürüklediklerine işârettir.</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ كَث۪يرًا وَيَهْد۪ي بِه۪ كَث۪يرًا ﴾</div>
+<p class="paragraph">Bu cümleden evvelki cümlede</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ اٰمَنُوا ﴾</div>
+<p class="paragraph">mukaddem olduğuna nazaran, burada ona münâsib olan</p>
+<div class="arabic-block" dir="rtl">﴿ يَهْد۪ي بِه۪ ﴾</div>
+<p class="paragraph">nin takdimi lâzım iken,</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ ﴾</div>
+<p class="paragraph">takdim edilmiştir. Çünkü bu kelâmdan maksad, inkâr edenlerin i'tirâzlarını reddetmektir. Buna binâen,</p>
+<div class="arabic-block" dir="rtl">﴿ يُضِلُّ بِه۪ ﴾</div>
+<p class="paragraph">kesb-i ehemmiyet ettiğinden, takdim hakkını kazanmıştır.</p>
+<p class="paragraph">S— Dalâlet yerine</p>
+<div class="arabic-block" dir="rtl">يُضِلُّ</div>
+<p class="paragraph">hidayet yerine</p>
+<div class="arabic-block" dir="rtl">يَهْد۪ي</div>
+<p class="paragraph">yani masdardan fiile olan udûlden maksad nedir?</p>
+<p class="paragraph">C— Fiil-i muzârî, teceddüd ve istimrara delâlet ettiğinden; yirmiüç sene devam eden nüzûl-ü Kur'ânın parça parça teceddüdü nisbetinde, onların zulmet-i küfriyelerine kat kat zulmetlerin ilâvesine sebebiyet verdiğine; mü'minlerin de nüzûlün teceddüdü nisbetinde nur-u îmânlarının derece derece yükselmesine bâis olduğuna işârettir.</p>
+<p class="paragraph">Ve kezâ, bu cümle</p>
+<div class="arabic-block" dir="rtl">﴿ مَا ذَٓا اَرَادَ اللّٰهُ... اِلٰى اٰخِرِهِ ﴾</div>
+<p class="paragraph">cümlesiyle işâret edilen istifhâma cevab olduğu için, her iki fırkanın vaziyetlerini beyân etmek icâb etmiştir. Ve bu icâba binâen, masdara tercihen fiil zikredilmiştir. Yani bir fırkanın vaziyeti dalâlet, ötekisinin de hidayettir.</p>
+<div class="arabic-block" dir="rtl">كَث۪يرًا</div>
+<p class="paragraph"><strong>Evvelki</strong></p>
+<div class="arabic-block" dir="rtl">كَث۪يرًا</div>
+<p class="paragraph">dan kemiyet ve adedce çokluk irâde edilmiştir.</p>
+<p class="paragraph"><strong>İkinci</strong></p>
+<div class="arabic-block" dir="rtl">كَث۪يرًا</div>
+<p class="paragraph">dan keyfiyet ve kıymetçe çokluk kasdedilmiştir. Ve aynı zamanda, Kur'ânın nev'-i beşere rahmet olduğunun sırrına işârettir.</p>
+<p class="paragraph">Evet insanların az bir kısmının fazilet ve hidayetlerini çok görmek ve göstermek, Kur'ânın beşere karşı merhametli ve lütûfkâr olduğunu gösterir.</p>
+<p class="paragraph">Ve kezâ, bir fazilet sâhibi, bin faziletsize mukâbildir. Bu itibarla, fazileti taşıyan az olsa da, çok görünür.</p>
+<div class="arabic-block" dir="rtl">﴿ وَمَا يُضِلُّ بِه۪ٓ اِلَّا الْفَاسِق۪ينَ ﴾</div>
+<p class="paragraph"><strong>Evvelki</strong> cümlede mutlak ve mübhem olarak zikredilen</p>
+<div class="arabic-block" dir="rtl">كَث۪يرًا</div>
+<p class="paragraph">dan hâsıl olan vesveseleri, korkuları, tereddüdleri</p>
+<div class="page-marker-wrap"><span class="page-marker">204</span></div>
+<p class="paragraph">bu cümle ile şöyle def'etmiştir ki: "Dalâlete gidenler, fâsıklardır. Dalâletlerinin menşe'i de fısktır. Fıskın sebebi ise, kisbleridir. Suç onlarda olup, Kur'ânda değildir. Dalâleti halketmek, yaptıklarının cezası içindir."</p>
+<p class="paragraph">Yine bilinmesi lâzımdır ki; bu cümlelerin herbirisi mâkablini şerh ve beyân eder; mâba'di de onu tefsir eder. Demek her cümle, mâkabline delil, mâba'dine neticedir. İki silsile ile bunu izâh edeceğiz.</p>
+<p class="paragraph">l. Allah, o temsîlden hayâ etmez. Çünkü O, temsîli terketmez. Hem o temsîl, belîğdir. Hem o temsîl, haktır. Hem o temsîl, Allah'ın kelâmıdır. Bunu da, mü'min olan kimseler bilir.</p>
+<p class="paragraph">2. Allah, münkirlerin dedikleri gibi, o temsîlden hayâ etmez. O münkirler, "O temsîlin terki lâzımdır." diyorlar. Zîra o temsîlin hikmetini bilmezler, hem "Bunda ne fâide var." derler. Hem, inkâr ediyorlar; zîra hakîr görüyorlar. Hem, işitmeleriyle dalâlete girdiler; zîra Kur'ân, onları dalâlete attı. Hem onlar, fıskla kabuklarından çıktılar, hem Allah'a olan ahidlerini bozdular, hem sıla-i rahmi kestiler, hem arzda Allah'ın nizâm ve intizamını ifsad ettiler. Binâenaleyh, hâsir ve zararlı onlardır. Dünyada vicdân, kalb ve rûhun azâbı ile, âhirette de Allah'ın gadabıyla ebedî bir azab içinde kalan onlardır.</p>
+<div class="arabic-block" dir="rtl">﴿ اَلَّذ۪ينَ يَنْقُضُونَ عَهْدَ اللّٰهِ مِنْ بَعْدِ م۪يثَاقِه۪ۖ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِه۪ٓ اَنْ يُوصَلَ وَيُفْسِدُونَ فِي الْاَرْضِۜ ﴾</div>
+<p class="paragraph">Evvelâ bilinmesi lâzımdır ki; Kur'ân-ı Kerîm'in i'câz ve nazmında şek ve şübheleri îka' eden fâsıkların, bilhassa bu makamda, bu cümlede mezkûr sıfatlar ile tavsifleri, pek yüksek ve latîf bir münâsebeti taşıyor. Evet, sanki Kur'ân-ı Kerîm diyor ki;</p>
+<p class="paragraph">"Kur'ân-ı Ekber denilen kâinâtın nizâmında Kudret-i Ezeliyenin i'câzını göremeyen veya görmek istemeyen o fâsıkların; Kur'ân-ı Kerîm'in de nazm ve i'câzında tereddüdleri ve kör gözleriyle i'câzını göremeyip inkâr etmeleri, baîd ve garîb değildir. Zîra onlar, kâinâttaki nizâm ve intizamı, tesâdüfe ve tahavvülât-ı garîbeyi ve inkılâbât-ı acîbeyi, abesiyete ve tesâdüfe isnâd ettiklerinden, bozulmuş olan rûhlarının gözünden o nizâm tesettür edip görünmediği gibi, pis fıtratlarıyla da, Kur'ânın mu'ciz olan nazmını karışık, mukaddimelerini akîm, semerelerini acı gördüler."</p>
+<div class="arabic-block" dir="rtl">يَنْقُضُونَ</div>
+<p class="paragraph"><strong>"Örülmüş kalın bir şeridi açıp dağıtmak"</strong> mânâsını ifâde eden</p>
+<div class="arabic-block" dir="rtl">نَقَضَ</div>
+<p class="paragraph">tâbiri, yüksek bir üslûba işârettir. Sanki Cenâb-ı Hakk'ın ahdi; "Meşîet", "Hikmet", "İnâyet"in ipleriyle örülmüş nurânî bir şerittir ki; ezelden ebede kadar uzanmıştır. Bu nurânî şerit, kâinâtta nizâm-ı umumî şeklinde tecellî ederek, silsilelerini kâinâtın envâ'ına dağıtır iken, en acîb</p>
+<div class="page-marker-wrap"><span class="page-marker">205</span></div>
+<p class="paragraph">silsilesini nev'-i beşere uzatmıştır; ve rûh-u beşerde pek çok isti'dat ve kàbiliyetlerin tohumlarını ekmiştir. Fakat o isti'datların terbiyesini ve neticesini, cüz'-ü ihtiyarînin eline vermiştir. O cüz'-ü ihtiyarînin yuları da, şerîatın ve delâil-i nakliyenin eline verilmiştir. Binâenaleyh, Cenâb-ı Hakk'ın ahdini bozmamak ve îfâ etmek, ancak o isti'datları lâyık ve münâsib yerlerine sarfetmekle olur.</p>
+<p class="paragraph">Ahdin nakzı ise, bozmak ve parçalamaktan ibarettir. Meselâ; bazı enbiyâyı îmân ve tasdik, bazılarını inkâr ve tekzîb; bazı hükümleri kabûl, bazılarını red; bazı âyetleri tahsin, bazılarını kabîh ve çirkin görmek gibi. Zîra böylece yapılan nakz-ı ahd; nazmı, nizâmı, intizamı ihlâl eder, bozar.</p>
+<div class="arabic-block" dir="rtl">﴿ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِه۪ٓ اَنْ يُوصَلَ ﴾</div>
+<p class="paragraph">Bu cümledeki emir, iki kısımdır.</p>
+<p class="paragraph"><strong>Birisi,</strong> teşriîdir ki; sıla-i rahîm ile tâbir edilen akraba ve mü'minler arasında Şer'an emredilen muvâsala hattıdır.</p>
+<p class="paragraph"><strong>Diğeri,</strong> emr-i tekvînîdir ki, fıtrî kanunlar ile âdetullâhın tazammun ettiği emirlerdir. Meselâ; ilmin i'tâsı, ma'nen ameli emrediyor; zekânın i'tâsı, ilmi emrediyor; isti'dâdın bulunması, zekâyı; aklın verilmesi, mârifetullâhı; kudretin verilmesi, çalışmayı; cesâretin verilmesi, cihadı ma'nen ve tekvînen emrediyor.</p>
+<p class="paragraph">İşte o fâsıklar, bu gibi şeylerin arasında şer'an ve tekvînen te'sis edilen muvâsala hattını kesiyorlar. Meselâ akılları mârifetullâha, zekâları ilme küs olduğu gibi; akrabalara ve mü'minlere dahi dargın olup, gidip gelmiyorlar.</p>
+<div class="arabic-block" dir="rtl">﴿ وَيُفْسِدُونَ فِي الْاَرْضِ ﴾</div>
+<p class="paragraph">Evet fıskla bozulan bir adam, bataklığa düşüp çıkamayan bir şahıs gibi çokların da o bataklığa düşmelerini istiyor ki, ma'rûz kaldığı o dehşetli hâlet, bir parça hafif olsun. Çünkü musîbet umumî olursa, hafif olur.</p>
+<p class="paragraph">Ve kezâ, bir şahsın kalbinde bir ihtilâl, bir fenâlık hissi uyanırsa; yüksek hissiyatı, kemâlâtı sukùt etmeye başlar; kalbinde tahribâta, fenâlığa bir meyil, bir zevk peydâ olur. Yavaş yavaş o meyil kalbinde büyür; sonra o şahıs, bütün lezzetini, zevkini tahribâtta, fenâlıkta bulur. İşte o vakit, o şahıs, tam mânâsıyla arzda yırtıcı bir hayvan, ihtilâli çıkarıp büyüten bir belâ, fesâdı durmayıp karıştıran bir âfet kesilir.</p>
+<p class="paragraph">S — Bir fâsıkın fıskıyla arzın müteessir olması akıldan uzaktır?</p>
+<p class="paragraph">C — Mâdemki arzda nizâm var; muvâzene de olmalıdır. Hattâ nizâm, muvâzeneye tâbidir. Binâenaleyh, bir makinenin dişleri arasına küçük bir şey düşerse; makine müteessir olur, belki fa'âliyeti de durur. Veya farazâ iki dağ bir terâziyle tartılır iken, terâzi muvâzi olduğu vakit bir gözüne bir ceviz ilâve edilirse, muvâzenesi bozulur. Dünyanın da manevî</p>
+<div class="page-marker-wrap"><span class="page-marker">206</span></div>
+<p class="paragraph">nizâm makinesi böyledir. Mütemerrid bir fâsıkın fıskı, arzın muvâzene-i maneviyesinin bozulmasına vesile olabilir.</p>
+<div class="arabic-block" dir="rtl">﴿ اُو۬لٰٓئِكَ : ﴿ اُو۬لٰٓئِكَ هُمُ الْخَاسِرُونَ</div>
+<p class="paragraph">üç şeyi ifâde ediyor:</p>
+<p class="paragraph"><strong>Birisi</strong> ihzar, <strong>ikincisi</strong> mahsûsiyet, <strong>üçüncüsü</strong> uzaklıktır.</p>
+<p class="paragraph">Demek bu</p>
+<div class="arabic-block" dir="rtl">اُو۬لٰٓئِكَ</div>
+<p class="paragraph">gâib olan o fâsıkları ihzar eder, mahsûs bir şekilde gösterir.</p>
+<p class="paragraph">S — Onların ihzarını icâb eden sebeb nedir?</p>
+<p class="paragraph">C — Sâmi'in taleb ve isteğidir. Evet, onlzarın pis ahvâlini işiten sâmi', onlara karşı hissettiği hiddet ve nefretini izâle için; hüsran ile tecziye ve tavsiflerinde, sanki onları karşısında hazır olarak görmek istiyor, tâ "Oh!.., oh!.." demekle kalbi rahat olsun.</p>
+<p class="paragraph">Müşâhedeleri mümkün olmadığı hâlde</p>
+<div class="arabic-block" dir="rtl">اُو۬لٰٓئِكَ</div>
+<p class="paragraph">ile mahsûs gösterilmeleri, güyâ pis ahvâlleri, habîs sıfatları ve şöhret ve kesretleri öyle bir hadde bâliğdir ki, herkesin nazar-ı nefreti önünde onların o hâllerini tecessüm ettirerek mahsûs bir şekilde gösterir. Ve bu işâretten, hasârete mahkûm olduklarının sebebi de anlaşılmış olur.</p>
+<p class="paragraph">O fâsıklara râci' olan</p>
+<div class="arabic-block" dir="rtl">اُو۬لٰٓئِكَ</div>
+<p class="paragraph">nin ifâde ettiği uzaklık ise, onların tarîk-ı haktan uzaklıkları öyle bir dereceye bâliğdir ki, bir daha tarîk-ı hakka rücûları mümkün olmayıp, bu yüzden zemme, tahkîre müstehak olduklarına işârettir.</p>
+<p class="paragraph">Hasrı ifâde eden</p>
+<div class="arabic-block" dir="rtl">هُمْ</div>
+<p class="paragraph">hasâretin onlara münhasır olduğuna delâlet eder.</p>
+<p class="paragraph">Hattâ mü'minlerin bazı dünya lezzetlerinde hasâretleri, hasâret sayılmaz ve yine mü'minlerden ehl-i ticâretin ticâretlerinde vâki olan zararları hasâret değildir.</p>
+<div class="arabic-block" dir="rtl">اَلْخَاسِرُونَ</div>
+<p class="paragraph">'deki harf-i ta'rif, cinsi ve hakikati ifâde eder. Yani: "Hüsran görenlerin hakikatini, cinslerini görmek isteyen varsa, onlara baksın."</p>
+<p class="paragraph">Ve kezâ, onların meslekleri mahz-ı hasârettir, başka hasâretlere benzemiyor.</p>
+<div class="arabic-block" dir="rtl">اَلْخَاسِرُونَ</div>
+<p class="paragraph">Hasâretin mutlak bırakılması, yani bir şeyle takyid edilmemesi, hasâretin bütün envâ'ına şâmil olduğuna işârettir. Meselâ; vefâ-i ahidde nakz ile hasâret ettiler; sıla-i rahîmde kat' ile, ıslahta ifsad ile, îmânda küfür ile, saâdet-i ebediyede şekàvetle yaptıkları hasâretler gibi.</p>
+<p class="paragraph">—oOo—</p>
+</body>
+</html>

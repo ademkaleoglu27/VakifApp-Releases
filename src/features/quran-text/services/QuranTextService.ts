@@ -5,6 +5,7 @@
 import * as FileSystem from 'expo-file-system';
 import METADATA from '../../quran-pdf/data/quran_metadata.json';
 import { getAyahsBySurah, getSurahById } from '@/services/quranRepo';
+import { risalePagesDb } from '@/services/risalePagesDb';
 
 // ─── Constants ──────────────────────────────────────────────
 const CACHE_DIR = (FileSystem.documentDirectory ?? '') + 'quran_text/';
@@ -183,6 +184,56 @@ export const QuranTextService = {
         const surahName = surahMeta?.name || `Sure ${safeSurahId}`;
         const pageNumber = surahMeta?.page || 1;
 
+        // 1. Try local offline database (quran_mealler.db)
+        try {
+            const localAyahs = await risalePagesDb.getQuranAyahs(safeSurahId);
+            if (localAyahs && localAyahs.length > 0) {
+                const verses: Verse[] = localAyahs.map((a) => ({
+                    id: a.id || (safeSurahId * 1000 + a.ayah_number),
+                    surah_id: safeSurahId,
+                    verse_number: a.ayah_number,
+                    verse: a.text_ar || '',
+                    verse_simplified: a.text_ar || '',
+                    page: a.page_number || pageNumber,
+                    juz_number: a.juz_number || Math.ceil((a.page_number || pageNumber) / 20),
+                    transcription: a.transcription_tr || '',
+                    transcription_en: a.transcription_tr || '',
+                    translation: {
+                        id: a.ayah_number,
+                        text: a.text_tr || '',
+                        author: {
+                            id: DEFAULT_AUTHOR_ID,
+                            name: 'Diyanet İşleri',
+                            language: 'tr',
+                            description: 'Diyanet İşleri Meali'
+                        },
+                        footnotes: null
+                    }
+                }));
+
+                const detail: SurahDetail = {
+                    id: safeSurahId,
+                    name: surahName,
+                    name_en: surahName,
+                    name_original: (surahMeta as any)?.name_ar || surahName,
+                    name_translation_tr: surahName,
+                    name_translation_en: surahName,
+                    slug: surahName.toLowerCase(),
+                    verse_count: verses.length,
+                    page_number: pageNumber,
+                    audio: {
+                        mp3: `https://everyayah.com/data/Alafasy_128kbps/${String(safeSurahId).padStart(3, '0')}001.mp3`,
+                        duration: 0
+                    },
+                    verses
+                };
+
+                return detail;
+            }
+        } catch (dbErr) {
+            console.warn('[QuranTextService] Local DB error, falling back to online API:', dbErr);
+        }
+
         // 2. Try AlQuran Cloud (Multi-edition: Uthmani Arabic + Diyanet Meal + Turkish Transliteration)
         try {
             const controller = new AbortController();
@@ -235,7 +286,7 @@ export const QuranTextService = {
                             id: safeSurahId,
                             name: surahName,
                             name_en: surahName,
-                            name_original: surahMeta?.name_ar || surahName,
+                            name_original: (surahMeta as any)?.name_ar || surahName,
                             name_translation_tr: surahName,
                             name_translation_en: surahName,
                             slug: surahName.toLowerCase(),
@@ -303,7 +354,7 @@ export const QuranTextService = {
                         id: safeSurahId,
                         name: surahName,
                         name_en: surahName,
-                        name_original: surahMeta?.name_ar || surahName,
+                        name_original: (surahMeta as any)?.name_ar || surahName,
                         name_translation_tr: surahName,
                         name_translation_en: surahName,
                         slug: surahName.toLowerCase(),
@@ -355,7 +406,7 @@ export const QuranTextService = {
                     id: safeSurahId,
                     name: surahName,
                     name_en: surahName,
-                    name_original: surahMeta?.name_ar || surahName,
+                    name_original: (surahMeta as any)?.name_ar || surahName,
                     name_translation_tr: surahName,
                     name_translation_en: surahName,
                     slug: surahName.toLowerCase(),

@@ -1,0 +1,49 @@
+ÂYET-ÜL KÜBRA|4
+	Mühim bir ihtar ve bir ifade-i meram|7
+	Mukaddeme|8
+	Âyet-ül Kübra|19
+		1.Mertebe@Evet bu|20
+		2.Mertebe@Sonra, dünya|22
+		3.Mertebe@Sonra o seyahat|28
+		4.Mertebe@Sonra o mütefekkir|30
+		5.Mertebe@Sonra dağlar|33
+		6.Mertebe@Sonra, o yolcu|35
+		7.Mertebe@Sonra, seyahat|38
+		8.Mertebe@Sonra o mütefekkir|41
+		9.Mertebe@Sonra imanın|43
+		10.Mertebe@Sonra, imanın|44
+		11.Mertebe@Sonra, kema|46
+		12-13.Mertebe@Sonra, pür|48
+		14-15.Mertebe@Sonra âlem|50
+		16.Mertebe@Sonra o dünya|58
+		17.Mertebe@Sonra, bu|69
+		18.Mertebe@Sonra, bir|81
+		19.Mertebe@Sonra, dünyaya|89
+	İkinci Bâb|99
+		Birinci menzil@Beraber gittiler|99
+			Birinci Hakikat|99
+			İkinci Hakikat|100
+			Üçüncü Hakikat|101
+			Dördüncü Hakikat|102
+		Ef'al ve Âsâr menzili@Sonra o sük|105
+			Birincisi|106
+			İkinci Hakikat|108
+			Üçüncü Hakikat|112
+				Birinci Sır|114
+				İkinci Sır|116
+			Dördüncü Hakikat|120
+			Beşinci Hakikat|122
+		Üçüncü menzil@Sonra, o|128
+			Birinci Hakikat|130
+			İkinci Hakikat|132
+			Üçüncü Hakikat|137
+			Dördüncü Hakikat|140
+		SUAL - CEVAB|154
+		23.Söz'ün 1.Mebhasının 4 noktası@İmanda|164
+			Birinci Nokta|164
+			İkinci Nokta|167
+			Üçüncü Nokta|171
+			Dördüncü Nokta|173
+		32.Söz'den 2.Noktanın 2.Mebhası@Otuzikinci|177
+		TAKRİZ|192
+		Ceylan'ın müdafaasıdır|196

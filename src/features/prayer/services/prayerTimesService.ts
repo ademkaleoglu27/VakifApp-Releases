@@ -262,18 +262,18 @@ class PrayerTimesService {
         // Elevation correction (Dip of horizon)
         const dip = 0.0347 * Math.sqrt(elevation);
 
-        // 1. İmsak (Fajr): Solar angle -18° + Diyanet temkin offset
+        // 1. İmsak (Fajr): Solar angle -18.0° with Diyanet temkin
         const hFajr = getHourAngle(-18.0);
-        const imsakMinutes = hFajr ? solarNoonMinutes - hFajr * 4 - 2 : solarNoonMinutes - 100;
+        const imsakMinutes = hFajr ? solarNoonMinutes - hFajr * 4 : solarNoonMinutes - 100;
 
-        // 2. Güneş (Sunrise): Solar angle -0.833° - dip - temkin offset
+        // 2. Güneş (Sunrise): Solar angle -0.833° - dip - 4 min temkin offset
         const hSunrise = getHourAngle(-0.833 - dip);
-        const gunesMinutes = hSunrise ? solarNoonMinutes - hSunrise * 4 - 6 : solarNoonMinutes - 80;
+        const gunesMinutes = hSunrise ? solarNoonMinutes - hSunrise * 4 - 4 : solarNoonMinutes - 80;
 
         // 3. Öğle (Dhuhr): Solar Noon + 5 min Diyanet temkin offset
         const ogleMinutes = solarNoonMinutes + 5;
 
-        // 4. İkindi (Asr): Hanafi/Standard shadow ratio 1:1 + temkin offset
+        // 4. İkindi (Asr): Standard shadow ratio 1:1 + 4 min temkin offset
         const asrAltitude = deg(Math.atan(1 / (1 + Math.tan(rad(Math.abs(lat - declination))))));
         const hAsr = getHourAngle(asrAltitude);
         const ikindiMinutes = hAsr ? solarNoonMinutes + hAsr * 4 + 4 : solarNoonMinutes + 180;
@@ -282,7 +282,7 @@ class PrayerTimesService {
         const hSunset = getHourAngle(-0.833 - dip);
         const aksamMinutes = hSunset ? solarNoonMinutes + hSunset * 4 + 7 : solarNoonMinutes + 300;
 
-        // 6. Yatsı (Isha): Solar angle -17° + 2 min Diyanet temkin offset
+        // 6. Yatsı (Isha): Solar angle -17.0° + 2 min Diyanet temkin offset
         const hIsha = getHourAngle(-17.0);
         const yatsiMinutes = hIsha ? solarNoonMinutes + hIsha * 4 + 2 : solarNoonMinutes + 400;
 
@@ -310,6 +310,45 @@ class PrayerTimesService {
     }
 
     /**
+     * Fetch authentic Diyanet prayer times from Aladhan API (Method 13: Diyanet İşleri Başkanlığı, Turkey).
+     * Returns null if offline or request fails.
+     */
+    public async fetchDiyanetOnlineTimes(date: Date, city: CityInfo): Promise<PrayerTimes | null> {
+        try {
+            const timestamp = Math.floor(date.getTime() / 1000);
+            const url = `https://api.aladhan.com/v1/timings/${timestamp}?latitude=${city.lat}&longitude=${city.lng}&method=13`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3500);
+
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!res.ok) return null;
+            const json = await res.json();
+            if (json?.code === 200 && json?.data?.timings) {
+                const t = json.data.timings;
+                const clean = (val: string) => val ? val.split(' ')[0].substring(0, 5) : '';
+                const yearStr = date.getFullYear();
+                const monthStr = String(date.getMonth() + 1).padStart(2, '0');
+                const dayStr = String(date.getDate()).padStart(2, '0');
+
+                return {
+                    imsak: clean(t.Fajr),
+                    gunes: clean(t.Sunrise),
+                    ogle: clean(t.Dhuhr),
+                    ikindi: clean(t.Asr),
+                    aksam: clean(t.Maghrib),
+                    yatsi: clean(t.Isha),
+                    date: `${yearStr}-${monthStr}-${dayStr}`
+                };
+            }
+        } catch {
+            // Offline or timeout, safely fall back
+        }
+        return null;
+    }
+
+    /**
      * Get times for a specific date (Cached with fallback)
      */
     public async getTimesForDate(date: Date = new Date(), city: CityInfo = this.selectedCity): Promise<PrayerTimes> {
@@ -326,6 +365,16 @@ class PrayerTimesService {
             }
         } catch { }
 
+        // Try online official Diyanet API first
+        const onlineDiyanet = await this.fetchDiyanetOnlineTimes(date, city);
+        if (onlineDiyanet) {
+            try {
+                await AsyncStorage.setItem(cacheKey, JSON.stringify(onlineDiyanet));
+            } catch { }
+            return onlineDiyanet;
+        }
+
+        // Offline calibrated mathematical fallback
         const calculated = this.calculateTimes(date, city);
         try {
             await AsyncStorage.setItem(cacheKey, JSON.stringify(calculated));

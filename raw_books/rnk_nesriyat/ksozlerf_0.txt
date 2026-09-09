@@ -1,0 +1,14 @@
+KÜÇÜK SÖZLER|4
+	Birinci Söz|6
+	İkinci Söz|11
+	Üçüncü Söz|15
+	Dördüncü Söz|20
+	Beşinci Söz|23
+	Altıncı Söz|27
+	Yedinci Söz|36
+	Sekizinci Söz|44
+	Dokuzuncu Söz|57
+	Yirmibirinci Söz|72
+	Hâtime|83
+	Mukaddime|88
+	İbadetin şahsî kemalâta sebeb olduğunun izahı|92

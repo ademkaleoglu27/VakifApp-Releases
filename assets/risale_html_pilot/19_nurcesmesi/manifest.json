@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.nurcesmesi@diyanet.tr",
+  "title": "Nur Çeşmesi",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-19_nurcesmesi",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 142,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.nurcesmesi@diyanet.tr:html_01",
+      "index": 1,
+      "file": "19_01.html",
+      "title": "00 05 NUR ÇEŞMESİ",
+      "startPage": 1,
+      "pageCount": 142
+    }
+  ]
+}

@@ -158,7 +158,7 @@ const ReadingView = ({
             id: 'cevsen_reader',
             type: 'cevsen',
             title: 'Cevşen-ül Kebir',
-            subtitle: `${group.label} • ${group.start}-${group.end}. Bab`,
+            subtitle: `${(group as any).label || 'Bab'} • ${group.start}-${group.end}. Bab`,
             screenName: 'CevsenScreen',
             params: { initialGroupIndex: groupIndex },
         }).catch(() => { });

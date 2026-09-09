@@ -1,0 +1,17 @@
+TABİAT RİSALESİ|5
+	AMMA BİRİNCİ YOL Kİ|10
+		BİRİNCİSİ|10
+		İKİNCİ MUHAL|12
+		ÜÇÜNCÜ MUHAL|13
+	AMMA İKİNCİ MES'ELE|14
+		BİRİNCİSİ|15
+		İKİNCİ MUHAL|16
+		ÜÇÜNCÜ MUHAL|17
+	ÜÇÜNCÜ KELİME|18
+		BİRİNCİSİ|19
+		İKİNCİ MUHAL|20
+		ÜÇÜNCÜ MUHAL|25
+	Hâtime|36
+		Birinci Sual|36
+		İkinci Sual|40
+		Üçüncü Sual|44

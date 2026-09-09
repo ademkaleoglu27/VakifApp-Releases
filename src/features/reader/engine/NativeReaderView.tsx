@@ -39,6 +39,7 @@ import type {
 // ═══════════════════════════════════════════════════════════════
 
 interface NativeReaderViewProps {
+    ref?: any;
     style?: ViewStyle;
 
     // Content

@@ -1,0 +1,85 @@
+{
+  "bookId": "risale.sikke@diyanet.tr",
+  "title": "Sikke-i Tasdik-i Gaybî",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-08_sikke",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 282,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_01",
+      "index": 1,
+      "file": "08_01.html",
+      "title": "00 00 SİKKE-İ TASDİK-İ GAYBÎ",
+      "startPage": 1,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_02",
+      "index": 2,
+      "file": "08_02.html",
+      "title": "01 01 Parlak Fıkralar ve Güzel Mektuplar 1",
+      "startPage": 2,
+      "pageCount": 68
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_03",
+      "index": 3,
+      "file": "08_03.html",
+      "title": "02 02 Birinci Şuâ",
+      "startPage": 70,
+      "pageCount": 47
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_04",
+      "index": 4,
+      "file": "08_04.html",
+      "title": "03 03 Sekizinci Şuâ",
+      "startPage": 117,
+      "pageCount": 31
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_05",
+      "index": 5,
+      "file": "08_05.html",
+      "title": "04 04 On Sekizinci Lem’a",
+      "startPage": 148,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_06",
+      "index": 6,
+      "file": "08_06.html",
+      "title": "05 05 Yirmi Sekizinci Lem’a",
+      "startPage": 149,
+      "pageCount": 1
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_07",
+      "index": 7,
+      "file": "08_07.html",
+      "title": "06 06 Sekizinci Lem’a",
+      "startPage": 150,
+      "pageCount": 25
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_08",
+      "index": 8,
+      "file": "08_08.html",
+      "title": "07 07 Parlak Fıkralar ve Güzel Mektuplar 2",
+      "startPage": 175,
+      "pageCount": 107
+    },
+    {
+      "sectionId": "risale.sikke@diyanet.tr:html_09",
+      "index": 9,
+      "file": "08_09.html",
+      "title": "08 08 Dua (Sikke-i Tasdik-i Gaybî)",
+      "startPage": 282,
+      "pageCount": 1
+    }
+  ]
+}

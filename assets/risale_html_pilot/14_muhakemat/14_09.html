@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+<title>LÜGATÇE</title>
+
+<style>
+ :root {
+ --bg: #f5eedc;
+ --text: #2a2421;
+ --heading: #8b0000;
+ --arabic: #8b0000;
+ --base-size: 19px;
+ --line-height: 1.68;
+ --font-family: 'Barla', "Crimson Pro", "Times New Roman", serif;
+ }
+ html, body {
+ margin: 0;
+ padding: 0;
+ background: var(--bg);
+ color: var(--text);
+ box-sizing: border-box;
+ -webkit-text-size-adjust: 100%;
+ }
+ body {
+ font-family: var(--font-family);
+ font-size: var(--base-size);
+ line-height: var(--line-height);
+ padding: 24px 20px 120px;
+ text-align: justify;
+ text-justify: inter-word;
+ -webkit-hyphens: auto;
+ hyphens: auto;
+ -webkit-user-select: text;
+ user-select: text;
+ }
+ h1, h2, h3, .heading-1, .heading-2, .heading-3 {
+ font-family: var(--font-family);
+ color: var(--heading);
+ text-align: center;
+ margin: 28px 0 16px;
+ font-weight: bold;
+ letter-spacing: 0.5px;
+ }
+ .heading-2 { font-size: 1.35em; }
+ .heading-3 { font-size: 1.15em; }
+ .subtitle {
+ text-align: center;
+ font-style: italic;
+ color: #665c54;
+ margin: -8px 0 16px;
+ font-size: 0.95em;
+ }
+ .paragraph, p {
+ margin: 0 0 14px;
+ text-indent: 18px;
+ overflow-wrap: break-word;
+ }
+ .arabic-block {
+ font-family: 'ScheherazadeNew', "Noto Naskh Arabic", serif;
+ color: var(--arabic);
+ text-align: center !important;
+ font-size: 1.35em;
+ line-height: 2.0;
+ padding: 10px 0;
+ margin: 16px 0;
+ display: block;
+ direction: rtl;
+ text-indent: 0 !important;
+ }
+ .page-marker-wrap {
+ position: -webkit-sticky;
+ position: sticky;
+ top: 10px;
+ z-index: 100;
+ display: flex;
+ justify-content: flex-end;
+ pointer-events: none;
+ margin-top: -12px;
+ margin-bottom: 8px;
+ }
+ .page-marker {
+ opacity: 0.88;
+ font-size: 12px;
+ font-weight: 700;
+ letter-spacing: 0.8px;
+ padding: 3px 8px;
+ border-radius: 8px;
+ background: rgba(0,0,0,0.06);
+ color: rgba(0,0,0,0.7);
+ font-family: sans-serif;
+ backdrop-filter: blur(2px);
+ }
+ .lugat-word {
+ color: inherit;
+ border-bottom: 1px dotted rgba(139, 0, 0, 0.45);
+ cursor: pointer;
+ }
+ .lugat-word:active {
+ background-color: rgba(139, 0, 0, 0.15);
+ border-radius: 2px;
+ }
+ .fn-marker {
+ color: #1F6FEB;
+ font-weight: bold;
+ cursor: pointer;
+ font-size: 0.85em;
+ vertical-align: super;
+ padding: 0 2px;
+ }
+
+  /* Printed Sözler In-Page Divider Standard */
+  .page-marker-wrap {
+    display: block !important;
+    position: static !important;
+    margin: 28px 0 14px 0 !important;
+    border-top: 1.5px solid #8b0000 !important;
+    text-align: right !important;
+    padding-top: 2px !important;
+    pointer-events: none !important;
+  }
+  .page-marker {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #8b0000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+  }
+  strong, b {
+    font-weight: bold !important;
+    color: #111111 !important;
+  }
+
+</style>
+
+
+</head>
+<body>
+<div class="page-marker-wrap"><span class="page-marker">168</span></div>
+<p class="paragraph">< — A —</p>
+<p class="paragraph"><strong>Abdülkahir Cürcânî:</strong> H. 5. asrın ikinci yarısında yaşamış büyük bir âlim ve Arab belâğat ve gramercisi. En meşhûr eserleri belâğat üzerine yazılan "Delâilü'l-İ'câz" ve "Esrâru'l-Belâğa"dır.</p>
+<p class="paragraph"><strong>A'câm:</strong>(Acem'in C.) İranlılar, Arab olmayanlar.</p>
+<p class="paragraph"><strong>Acûze-i Şemtâ:</strong> Saçı ağarmış koca karı.</p>
+<p class="paragraph"><strong>Adem-Âbâd Hîçâ-hîç:</strong> Ademistan, yokluk ülkesi.</p>
+<p class="paragraph"><strong>Adem-i Mübâlât:</strong> Aldırış etmemek, ehemmiyet vermemek, dikkat etmemek.</p>
+<p class="paragraph"><strong>Âfâkî:</strong> Nefsin haricindeki âleme dair. Haricî. Kâinâta ait.</p>
+<p class="paragraph"><strong>Ağrâz:</strong> Gayeler, maksadlar.</p>
+<p class="paragraph"><strong>Ağmaz:</strong> Kolayca anlaşılmayan, pek derin.</p>
+<p class="paragraph"><strong>Ahadi:</strong> Mütevâtir ve meşhûr olmayan bir hadîs nev'i.</p>
+<p class="paragraph"><strong>Alâ Ruûsi'l-Eşhâd:</strong> Âlemin gözü önünde, herkes göre göre.</p>
+<p class="paragraph"><strong>Ale'l-Amyâ:</strong> Körü körüne.</p>
+<p class="paragraph"><strong>A'mâk:</strong> Derinlikler.</p>
+<p class="paragraph"><strong>A'mâk-ı Hafâ:</strong> Gizlilik derinlikleri.</p>
+<p class="paragraph"><strong>Amm Lafızlar:</strong> Aynı cinsin birçok ferdlerine birden delâlet eden lafızdır. Kavim, cemâat, nisâ lafızları gibi.</p>
+<p class="paragraph"><strong>Amûd-u Nurânî:</strong> Nurânî sütun.</p>
+<p class="paragraph"><strong>Amya:</strong> Çok kör olan.</p>
+<p class="paragraph"><strong>Araz:</strong> Herhangi bir cevhere ârız olan ve bu cevherin zâtından hariç bulunan bir vasıf.</p>
+<p class="paragraph"><strong>Arzu-yu Hilâf:</strong> Muhâlefet etme, karşı koyma arzusu.</p>
+<p class="paragraph"><strong>Avzen:</strong> Suların biriktiği yer. Havuz.</p>
+<p class="paragraph"><strong>Azhar:</strong> Çok zâhir ve açık.</p>
+<p class="paragraph">< — B —</p>
+<p class="paragraph"><strong>Bâhir:</strong> Âşikâr, açık.</p>
+<p class="paragraph"><strong>Bahr-i Bîkeran:</strong> Dipsiz, sâhilsiz deniz.</p>
+<p class="paragraph"><strong>Bahs:</strong> Kur'ân'ın tâbirlerinden olup, nâkıs (eksik) mânâsına gelir.</p>
+<p class="paragraph"><strong>Basit:</strong> Mücerred ve münferid olup mürekkeb olmayan. Tahlili ve dağılması düşünülemeyen; eşyanın yalın hâli.</p>
+<p class="paragraph"><strong>Bast-ı Özür etmek:</strong> Bir hatâ işleyerek başkalarına da nümûne olmak, aynı hatâyı işlemelerine zemin hazırlamak.</p>
+<p class="paragraph"><strong>Bedîhiyât:</strong> Delil ile isbâtına lüzum olmayan sarîh ve açık şeyler.</p>
+<p class="paragraph"><strong>Berâatü'l-İstihlâl:</strong> İyi bir alâmet. Mütekellimin, kelâmına tatlı bir ifâde, güzel bir diziliş ile başlaması ve maksada latîf işâretlerde bulunmasına denir. Bu eserin giriş kısmı buna güzel bir misâldir.</p>
+<p class="paragraph"><strong>Berk-ı Lâmi':</strong> Parlak şimşek.</p>
+<p class="paragraph"><strong>Ber-vech-i âtî:</strong> Aşağıda geleceği gibi.</p>
+<p class="paragraph"><strong>Bid'atü'z-zaman:</strong> Zamanın görülmemiş ve acîb olanı.</p>
+<p class="paragraph"><strong>Bilcümle:</strong> Tamamen.</p>
+<p class="paragraph"><strong>Biselâmeti'l-emir:</strong> İşin kolaylıkla ve zahmetsiz yapılması.</p>
+<p class="paragraph"><strong>Busayrî:</strong>(Şerefü'd-din) M. 1213-1295. Busayr'da doğdu. Meşhûr Arab şâir ve hattatıdır. "Kaside-i Bürde" sâhibidir. Esâs ismi "El-Kevakibü'd-Dürriye Fi Medh-i Hayri'l-Beriye." olan kasidesine; tutulmuş olduğu hastalıktan, rüyasında Resûlullâh'ın hırkasını (bürde) üzerine örtüp şifâ bulması sebebiyle "Kaside-i bürde" ismini vermiştir.</p>
+<p class="paragraph"><strong>Bürhân-ı İnnî:</strong> Eserden müessire, neticelerden sebeblere olan istidlâl şeklidir. Dumanın ateşe olan delâleti gibi.</p>
+<p class="paragraph"><strong>Bürhân-ı Limmî:</strong> Sebeblerden neticelere, müessirden esere olan istidlâl şeklidir. Ateşin dumana olan delâleti gibi.</p>
+<p class="paragraph"><strong>Bürhânü't-Temânü':</strong> İstiklâliyet, ulûhiyetin zâtî bir hàssası ve zarûrî bir lâzımı olduğuna dair ve şirkin butlânını isbât eden delil ki, eşyanın yaratılışı, müteaddid ellere ve esbâba verilse, âlemdeki nizâm bozulup karışıklıklar çıkacağını gösterir, isbât eder.</p>
+<div class="page-marker-wrap"><span class="page-marker">169</span></div>
+<p class="paragraph">< — C —</p>
+<p class="paragraph"><strong>Carlyle (Karlayl):</strong> M. 1795-1880 İskoçya'da doğdu. Tarihçi ve filozoftur. Verdiği serî konferanslarından birinde Peygamber Efendimizi medhetmiştir.</p>
+<p class="paragraph"><strong>Cedâvil:</strong> Cetveller. Su kanalları.</p>
+<p class="paragraph"><strong>Celâlet:</strong> Büyüklük, azamet.</p>
+<p class="paragraph"><strong>Cevher:</strong> Bir şeyin o olmasını te'min eden esâsı, mayası, özü ve aslı.</p>
+<p class="paragraph"><strong>Ciğer-şikâf:</strong> Ciğer parçalayan, çok acı veren.</p>
+<p class="paragraph"><strong>Cihetü'l-Vahdet:</strong> Birlik ciheti. Ayrı ayrı şeylerin birleştikleri, müşterek oldukları cihet.</p>
+<p class="paragraph"><strong>Cilveger:</strong> Cilve ve nâz eden.</p>
+<p class="paragraph"><strong>Cüz'-ü Lâyetecezzâ:</strong> Bir daha bölünemeyen en küçük parça. Atom.</p>
+<p class="paragraph">< — Ç —</p>
+<p class="paragraph"><strong>Çak:</strong> Parça. Yarık, çatlak.</p>
+<p class="paragraph"><strong>Çal at:</strong> Hareketli, yerinde duramayıp şahlanan at.</p>
+<p class="paragraph"><strong>Çele-çepe:</strong> Sağa-sola.</p>
+<p class="paragraph"><strong>Çiznok:</strong> Kürtçede küçük tane.</p>
+<p class="paragraph">< — D —</p>
+<p class="paragraph"><strong>Dahîl:</strong> Bir işe salâhiyeti ve hakkı olmadan hariçten giren, yabancı.</p>
+<p class="paragraph"><strong>Dâhiye-i edeb:</strong> Edebiyâtta dâhî olan, eşine az rastlanan büyük edîb.</p>
+<p class="paragraph"><strong>Dâll bilfehvâ:</strong> Kelâmın, mefhûmu ile delâlet etmesi.</p>
+<p class="paragraph"><strong>Dâll bil'ibare:</strong> İbarenin zâhiri ile delâlet etmesi.</p>
+<p class="paragraph"><strong>Dâll bil'iktiza:</strong> Kelâmın, zarûrî olarak ve gerektirmesi ile delâlet etmesi.</p>
+<p class="paragraph"><strong>Dâll bil'işâret:</strong> Kelâmın işâret yoluyla delâlet etmesi.</p>
+<p class="paragraph"><strong>Dekk:</strong> Ufalanmak, parça parça olmak.</p>
+<p class="paragraph"><strong>Delâlet-i selâse:</strong> Üç çeşit delâlet.</p>
+<p class="paragraph">Delâlet-i mutâbıkıye, Delâlet-i tazammuniye, Delâlet-i iltizamiye.</p>
+<p class="paragraph"><strong>1- Delâlet-i mutâbıkıye:</strong> Bir kelâmın vaz'olunduğu, yani kasdedilen mânânın tamamına delâletidir. Meselâ: İnsan lafzı, insanın tam mâhiyeti olan, hayvan-ı nâtık, (yani; konuşan, hayat sâhibi varlık) mânâsına delâleti gibi.</p>
+<p class="paragraph"><strong>2- Delâlet-i tazammuniye:</strong> Bir lafzın vaz'olunduğu mânânın bir cüz'üne delâletidir.</p>
+<p class="paragraph"><strong>3- Delâlet-i iltizamiye:</strong> Bir lafzın vaz'olunduğu mânânın lâzımına, yani o mânâ ile beraber bulunması zarûrî olan diğer bir mânâya delâletidir.</p>
+<p class="paragraph">Mezkûr delâlet-i selâseye ait şöyle bir misâl dahi verilir: "Zekât, Müslümanların fakirlerine verilir, hiçbir zengine verilmez." ibaresi, zekâtın yalnız Müslüman fakirlere verileceğine delâlet-i mutâbıkıye ile, zengin olan Ahmed ve Mehmed gibi belli şahıslara verilemeyeceğine delâlet-i tazammuniye ile, zekât hususunda zenginler ile fakirler arasında fark bulunduğuna da delâlet-i iltizamiye ile delâlet eder.</p>
+<p class="paragraph"><strong>Delil-i ihtirâ':</strong> Cenâb-ı Hakk'ın yoktan icâd ederek yarattığı şeylerin mükemmel ve maslahatlı olarak hiçlikten yaratılışları ile vücûd-u İlâhiyeye delâletleri.</p>
+<p class="paragraph"><strong>Delv burcu:</strong> Kova burcu.</p>
+<p class="paragraph"><strong>Dest be-dest:</strong> El ele.</p>
+<p class="paragraph"><strong>Deste-dâd-ı teslîm:</strong> Teslîm elini veren, itâat eden, uyan.</p>
+<p class="paragraph"><strong>Destgâh:</strong> Tezgâh.</p>
+<p class="paragraph"><strong>Dev:</strong> Şeytan, ifrit, cin.</p>
+<p class="paragraph"><strong>Deverân:</strong> Birinin diğerine illet ve sebeb zannedilecek şekilde iki şeyin devamlı sûrette beraber var veya yok olması. İktiran.</p>
+<p class="paragraph"><strong>Devir:</strong> Bir şeyin vücûdu veya hakkâniyeti, ikinci bir şeyin vücûduna veya hakkâniyetine mütevakkıf olması ki, bir şey varken yokluğunu, yokken varlığını kabûl etmek lâzım gelir. Bu ise muhâldir ve devr-i bâtıldır. Meselâ: Bu yumurtayı yapan</p>
+<div class="page-marker-wrap"><span class="page-marker">170</span></div>
+<p class="paragraph">bu tavuktur. Bu tavuğu da çıkaran bu yumurtadır denilse; tavuğun yaptığı o yumurta, tavuktan önce var olması lâzım gelir. Amma, o yumurtadan başka bir tavuk çıkması ise, teselsülle alâkalı başka bir mes'eledir.</p>
+<p class="paragraph"><strong>Dibâce:</strong> Önsöz.</p>
+<p class="paragraph"><strong>Dîde-bân:</strong> Gözcü, murâkıb.</p>
+<p class="paragraph"><strong>Dıyku'l-elfâz:</strong> İfâde zorluğu. Gayet ince ve derin ve rûhen hissedilen bazı mânâların ifâde edilemeyişi. (Bkz: Ulûhiyet-i sâriye)</p>
+<p class="paragraph"><strong>Dikkat-i nazar:</strong> İnceden inceye düşünme ve bakma.</p>
+<p class="paragraph"><strong>Dürr:</strong> İnci tanesi.</p>
+<p class="paragraph"><strong>Düşâb:</strong> Pekmez.</p>
+<p class="paragraph">< — E —</p>
+<p class="paragraph"><strong>Ebâtıl:</strong> Bâtıl, hurâfe, mantıksız, hakikatsiz şeyler.</p>
+<p class="paragraph"><strong>Ebnâ-yı mâzi:</strong> Mâzinin insanları.</p>
+<p class="paragraph"><strong>Ebû Tayyib El-Mütenebbi:</strong> H. 915-965. Kûfe'de doğdu. Bağdat'ta öldü. Büyük şâirlerden olup, dîvânı vardır.</p>
+<p class="paragraph"><strong>Eclâ:</strong> Çok âşikâr ve belli.</p>
+<p class="paragraph"><strong>Ecvibe:</strong> Cevablar.</p>
+<p class="paragraph"><strong>Edeb:</strong> Edebiyât. Terbiye.</p>
+<p class="paragraph"><strong>Efrâd-ı adîde:</strong> Çok kalabalık ferdler.</p>
+<p class="paragraph"><strong>Eğerçi:</strong> İse de, olsa da, gerçi, her ne kadar.</p>
+<p class="paragraph"><strong>Ehaff:</strong> Çok hafif ve kolay.</p>
+<p class="paragraph"><strong>Ehavâtının mâfi'z-zamîrleri:</strong> Kardeşlerinin içinde gizli olan şeyler.</p>
+<p class="paragraph"><strong>Ehl-i gâret:</strong> Yağmacı, çapulcu.</p>
+<p class="paragraph"><strong>Ehl-i hadâret:</strong> Şehirlerde yaşayan. Medenî.</p>
+<p class="paragraph"><strong>Ehl-i hey'et:</strong> Astronomlar.</p>
+<p class="paragraph"><strong>Ehl-i kurâ:</strong> Köylerde, kasabalarda yaşayan.</p>
+<p class="paragraph"><strong>Ehl-i meder:</strong> Evde oturan, medenî.</p>
+<p class="paragraph"><strong>Ehl-i veber ve bâdiye:</strong> Çadırda oturan, bedevî Arab, çöl ahâlisi.</p>
+<p class="paragraph"><strong>Emmâ Ba'dü:</strong>"Bundan sonra" mânâsına gelmektedir. Bütün İslâmî eserlerde hamd ve salavât gibi bir başlangıçtan sonra "Emmâ ba'dü" denilerek asıl maksada geçilmektedir.</p>
+<p class="paragraph"><strong>Emsâl:</strong> Atasözleri.</p>
+<p class="paragraph"><strong>Emzice:</strong> Mîzâclar.</p>
+<p class="paragraph"><strong>Enfüsi:</strong> İnsanların kendi iç âlemine ait. Dâhilî.</p>
+<p class="paragraph"><strong>Enmûzec:</strong> Nümûne, hülâsa.</p>
+<p class="paragraph"><strong>Erakk-ı hissiyat:</strong> Duyguların en inceleri. Gizli hisler, ince duygular.</p>
+<p class="paragraph"><strong>Erbaiyet:</strong> Dört olmak.</p>
+<p class="paragraph"><strong>Esâtîr:</strong>(Ustûre'nin C.) Eski zamana ait uydurma hikâyeler. Mitoloji.</p>
+<p class="paragraph"><strong>Esfel-i sâfilîn-i hısset:</strong> Alçaklığın en aşağı derecesi.</p>
+<p class="paragraph"><strong>Eşi'a:</strong> Şuâlar, aydınlıklar.</p>
+<p class="paragraph"><strong>Evânî:</strong> Kaplar.</p>
+<p class="paragraph"><strong>Evhâmın Müdafaası:</strong> Vehimlerin def' edilmesi, kovulması.</p>
+<p class="paragraph"><strong>Ezâhir-i efkâr:</strong> Fikir çiçekleri.</p>
+<p class="paragraph">< — F —</p>
+<p class="paragraph"><strong>Fahreddin-i Râzî:</strong>(M. 1149-1209) Re'y'de doğmuştur. Mefâtihü'l-Gayb isminde meşhûr büyük bir tefsiri vardır.</p>
+<p class="paragraph"><strong>Fahrü'l-İslâm:</strong>(Pezdevi) Mâverâü'n-Nehir'deki Hanefî fukahâsının meşhûrlarındandır. H. 482 tarihinde Semerkant'ta vefât etmiştir.</p>
+<p class="paragraph"><strong>Fasl-ı zamanın sahife-i selâsesi:</strong> Geçmiş, şimdiki ve gelecek zaman. (Asr-ı Saâdet'ten evvelki devir, Asr-ı Saâdet ve ondan sonraki zamanlar kasdediliyor)</p>
+<p class="paragraph"><strong>Febihâ:</strong> Ne a'lâ.</p>
+<p class="paragraph"><strong>Fehvâ:</strong> Mefhûm, mânâ.</p>
+<p class="paragraph"><strong>Feletât:</strong> Sürçmeler, falsolar, acemîlikler. (Bkz. Hey'etin feletâtı)</p>
+<p class="paragraph"><strong>Fels:</strong> Bakır para. (Füls de okunur)</p>
+<p class="paragraph"><strong>Felsefe-i Beyân:</strong> Beyân İlmindeki kaidelerin vaz' ediliş sebeb ve gayelerinin açıklanması.</p>
+<p class="paragraph"><strong>Fenn-i Beyân:</strong> İlm-i Belâğatın üç bölümünden ikinci bölümüdür. İfâde</p>
+<div class="page-marker-wrap"><span class="page-marker">171</span></div>
+<p class="paragraph">etme yolları olan teşbih, mecâz ve kinâyeden bahseder.</p>
+<p class="paragraph"><strong>Fenn-i Maânî:</strong> İlm-i Belâğatın üç bölümünden birinci bölümüdür. Lafzın, muktezâ-yı hâle uygun olup olmadığı bu ilmin düstur ve kaideleriyle bilinir.</p>
+<p class="paragraph"><strong>Fenn-i Menâfiü'l-A'zâ:</strong> Canlılardaki bütün uzuvların ayrı ayrı fâidelerinden bahseden, bugün tıbda tam karşılığı olmayan bir ilim.</p>
+<p class="paragraph"><strong>Fenn-i Tabakàtü'l-Arz:</strong> Jeoloji ilmi.</p>
+<p class="paragraph"><strong>Ferîd:</strong> Eşi, benzeri az bulunan, yektâ.</p>
+<p class="paragraph"><strong>Ferişte:</strong> Melek.</p>
+<p class="paragraph"><strong>Feth-i Bâb:</strong> Kapı açmak.</p>
+<p class="paragraph"><strong>Fevatih:</strong>(Fâtiha'nın C.) Başlangıçlar, evveller.</p>
+<p class="paragraph"><strong>Feyâ li'l-aceb:</strong> Hayret ve taaccüb ifâdesi için kullanılır.</p>
+<p class="paragraph"><strong>Fırfıra:</strong> Topaç.</p>
+<p class="paragraph"><strong>Fidda:</strong> Gümüş.</p>
+<p class="paragraph"><strong>Filcümle:</strong> Kısmen.</p>
+<p class="paragraph"><strong>Fuhûl-ü Ulemâ:</strong> Büyük âlimlerin ileri gelenleri.</p>
+<p class="paragraph"><strong>Fustât:</strong> Kıldan yapılan büyük çadır.</p>
+<p class="paragraph"><strong>Fülüs:</strong>(Füls'ün C.) Bakır paralar.</p>
+<p class="paragraph">< — G —</p>
+<p class="paragraph"><strong>Gâr:</strong> Mağara. Hicret esnâsında Hz. Peygamber (A.S.M.) ile Hz. Ebû Bekir'in (R.A.) sığındıkları meşhûr mağara.</p>
+<p class="paragraph"><strong>Gârât:</strong> Yağma etmek, çapulculuk etmek.</p>
+<p class="paragraph"><strong>Garsetmek:</strong> Ağaç fidanı dikmek.</p>
+<p class="paragraph"><strong>Gavr-ı in'idâm:</strong> Yokluk çukurunun dibi.</p>
+<p class="paragraph"><strong>Gavvâs:</strong> Dalgıç.</p>
+<p class="paragraph"><strong>Gayr-ı Mebzûl:</strong> Çok kullanılmayan. Az bulunan şey.</p>
+<p class="paragraph"><strong>Gayr-ı Mer'î:</strong> Görünür olmayan, görünmeyen.</p>
+<p class="paragraph"><strong>Gerd:</strong> Baht, talih, fayda. Toz, toprak. Hüzün, keder, gam, tasa. Tarlayı sürmek.</p>
+<p class="paragraph"><strong>Gışâvet:</strong> Körlük yapan perde.</p>
+<p class="paragraph"><strong>Gıtâ:</strong> Örtü, perde.</p>
+<p class="paragraph"><strong>Gubâr:</strong> Toz-toprak.</p>
+<p class="paragraph"><strong>Gul-yabânî:</strong> İnsanı felâkete attığına inanılan muhayyel bir mahlûk. Umacı.</p>
+<p class="paragraph">< — H —</p>
+<p class="paragraph"><strong>Hablü'l-metîn:</strong> Sağlam, kopmaz ip.</p>
+<p class="paragraph"><strong>Hacz etmek:</strong> Mâni olmak. İki şeyin arasını ayırmak. Borcunu vermeyenin malına hukuken el koymak.</p>
+<p class="paragraph"><strong>Had:</strong> Bkz: Muttala'.</p>
+<p class="paragraph"><strong>Hadd-i Asğar:</strong> Mantıkta, bir hükmün veya neticenin mevzûu. (Küçük Kaziye). Meselâ: "Âlem, hâdistir. Çünkü: Mütegayyerdir." cümlesinde "Âlem" hadd-i asğar; "Hâdis" hadd-i ekber; "Mütegayyer" hadd-i evsat olur.</p>
+<p class="paragraph"><strong>Hadd-i ekber:</strong> Bir hükmün veya neticenin mahmûlü, yani sıfatı. "Büyük Kaziye."</p>
+<p class="paragraph"><strong>Hadd-i Evsat:</strong> İfrat ve tefritten âzade, istikametli yol. (Istılah mânâsı için Bkz: Hadd-i asğar)</p>
+<p class="paragraph"><strong>Hadîd:</strong> Demir.</p>
+<p class="paragraph"><strong>Hâib:</strong> Mahrum, bîbehre. Ümîdsiz, kederli.</p>
+<p class="paragraph"><strong>Hakàik-ı Mücerrede:</strong> Bkz. Mücerredât-ı Sırfa.</p>
+<p class="paragraph"><strong>Hâlet-i Cehennem-nümûn:</strong> Cehennem gibi çok azâb verici hâl.</p>
+<p class="paragraph"><strong>Haltetmek:</strong> Karıştırmak.</p>
+<p class="paragraph"><strong>Hâmid:</strong> Sönük.</p>
+<p class="paragraph"><strong>Hanîn:</strong> Sızlanmak.</p>
+<p class="paragraph"><strong>Harâret-i garîziyenin iltihabı zamanı:</strong> İnsanda şehevânî ve nefsânî hislerin galeyânda olduğu devre.</p>
+<p class="paragraph"><strong>Harfiye:</strong> Kendi başına müstakillen bir mânâsı ve te'siri olmadığı hâlde, kendi cinsinden bir topluluğun içinde olduğu zaman ancak bir vazife gören şeylere denir.</p>
+<p class="paragraph"><strong>Harice temessül:</strong> Zihnî olan kelâmın haricî âlemdeki kanunlara uygun şekilde tanzim edilişi.</p>
+<p class="paragraph"><strong>Harîrî:</strong>(Kasım B. Ali) M. 1054-1122. Irak'ta doğdu. İnhitat (çöküş) devrinin edîblerindendir. "Makàmât" adlı eseriyle şöhret bulmuştur. Bediüzzaman-ı Hemedânî'nin Makame</p>
+<div class="page-marker-wrap"><span class="page-marker">172</span></div>
+<p class="paragraph">leri misâl alınarak yazılmış elli makameyi (nutukları) ihtiva eder.</p>
+<p class="paragraph"><strong>Hark:</strong> Herhangi bir kanunun delinmesi, yırtılması, kanunu devre dışı bırakarak yaratma..</p>
+<p class="paragraph"><strong>Hàs Lafızlar:</strong> Bir mânâya mahsûs olan lafızdır. Hasan, Mehmed, insan, erkek lafızları gibi.</p>
+<p class="paragraph"><strong>Hasnâ:</strong> Dilber, hüsün ve cemâl sâhibi genç kadın.</p>
+<p class="paragraph"><strong>Hàssa-i Fârika:</strong> Ayırıcı özellik. Vasf-ı Farık.</p>
+<p class="paragraph"><strong>Hatab:</strong> Odun.</p>
+<p class="paragraph"><strong>Hatt-ı Şâkul:</strong> Çekül doğrultusu.</p>
+<p class="paragraph"><strong>Havâtim:</strong>(Hâtime'nin C.) Sonlar, nihâyetler.</p>
+<p class="paragraph"><strong>Hayâl-gûl:</strong> Boş ve vîrâne yerlerde bulunan ve helâk edici bir cin tâifesini hayâl etme.</p>
+<p class="paragraph"><strong>Hayâl-i hâil:</strong> Korku ve dehşet veren hayâl.</p>
+<p class="paragraph"><strong>Hayâliyyûn mezhebi:</strong> Aslı olmayan ve hayâlde tasavvur edilen şeyleri, gerçek olduğunu vehm edenlerin mesleği.</p>
+<p class="paragraph"><strong>Hayâl-perestlik:</strong> Kelâmda hakikati rencîde edecek şekilde lüzumsuz hayâllere yer vermek.</p>
+<p class="paragraph"><strong>Hayfâ:</strong> Vah! Vah! Yazıklar olsun! meâlinde söylenir.</p>
+<p class="paragraph"><strong>Haylûlet:</strong> Araya girip perde olma.</p>
+<p class="paragraph"><strong>Haylûlet-i arz:</strong> Ay tutulması. Dünyanın güneşle ay arasına girerek güneş ışığına perde olması.</p>
+<p class="paragraph"><strong>Hayme-nişîn:</strong> Çadırda oturan, göçebe.</p>
+<p class="paragraph"><strong>Hayret-bahşâ:</strong> Hayret veren.</p>
+<p class="paragraph"><strong>Hayse-beyse:</strong> Öyle mi, böyle mi? diye tereddüd.</p>
+<p class="paragraph"><strong>Hazâkat:</strong> İhtisas, mehâret, üstadlık.</p>
+<p class="paragraph"><strong>Hemdest-i vifâk:</strong> Bir fikir ve mes'elede anlaşarak el ele vermek, hep birden aynı sözü söylemek.</p>
+<p class="paragraph"><strong>Hemec:</strong> Övez denilen at sineği.</p>
+<p class="paragraph"><strong>Hem-matla':</strong> Güneş, ay gibi gök cisimlerinin ufukta doğdukları yerin veya zamanların aynı oluşu. Aynı meridyen üzerinde olup, ay ve güneşi aynı saatlerde gören ülkeler.</p>
+<p class="paragraph"><strong>Hevâiye:</strong> Hava gibi hafif ve latîf karakterde olan şeyler.</p>
+<p class="paragraph"><strong>Hey'etin feletâtı:</strong> Birini taklid eden kimsenin taklidciliğini gösterip ilân eden sürçmeleri, falsoları, kemâlât-ı rûhiye veya mükemmelliğin iktizası olan umum ahvâldeki fıtrîlik ve muvâzeneyi o seviyede olmayanın sun'î takliddeki gayr-ı fıtrîliği.</p>
+<p class="paragraph"><strong>Hısas:</strong> Hisseler, kıssadan alınan dersler.</p>
+<p class="paragraph"><strong>Hikem:</strong>(Hikmet'in C.) Eşyanın hâllerinden ve keyfiyetlerinden ve gaye ve maslahatlarından bahseden ilim.</p>
+<p class="paragraph"><strong>Hikmet-i atîka:</strong> Eski hikmet.</p>
+<p class="paragraph"><strong>Hîna ki:</strong> Vaktâ ki, ne zaman ki.</p>
+<p class="paragraph"><strong>Hôto:</strong> Anlayışsız, kaba.</p>
+<p class="paragraph"><strong>Hudûs:</strong> Mahlûkatın sonradan meydâna gelmesi hâli. Ezelî olmamak.</p>
+<p class="paragraph"><strong>Hulel-i fâhire:</strong> Kıymetli, şa'şaalı, parlak elbiseler.</p>
+<p class="paragraph"><strong>Hulûl:</strong> Bkz. Ulûhiyet-i Sâriye.</p>
+<p class="paragraph"><strong>Hurdebîn:</strong> Mikroskop.</p>
+<p class="paragraph"><strong>Hurdebînî:</strong> Mikroskobik.</p>
+<p class="paragraph"><strong>Husûl-pezir:</strong> Meydâna gelen.</p>
+<p class="paragraph"><strong>Hücciyet:</strong> Hüccetlik, delil sayılabilme. Sağlam delil kabûl edilebilir olma.</p>
+<p class="paragraph"><strong>Hükemâ:</strong>(Hakîm'in C.) Filozoflar. Hikmet ilminde, felsefede mütebahhir ve mütehassıs olanlar.</p>
+<p class="paragraph"><strong>Hükemâ-i Kadîme:</strong> Eski filozoflar.</p>
+<p class="paragraph"><strong>Hükkâm:</strong>(Hâkim'in C.) Büyük devlet adamları. Mahkeme reisleri.</p>
+<p class="paragraph"><strong>Hüseyin-i Cisrî:</strong>(M. 1845-1909) Lübnan'da doğup, Ezher Üniversitesinde okumuştur. "Risale-i Hamîdiye" adlı eseri çok meşhûrdur. Bu eser Manastırlı İsmail Hakkı tarafından Türkçeye çevrilmiştir.</p>
+<p class="paragraph"><strong>Hüsn-ü Küllî:</strong> Bütün ferdleri içine alan kapsamlı, şümûllü güzellik.</p>
+<p class="paragraph"><strong>Hüsn-ü Mücerred:</strong> Gayr olsun olmasın bizzat güzel olan şey. Bazı a'zâ veya çizgilerin mütenâsib terkîb</p>
+<div class="page-marker-wrap"><span class="page-marker">173</span></div>
+<p class="paragraph">ve tertibiyle hâsıl olan hüsün, hüsn-ü mücerred değildir. Şartları zâil olsa, hüsün de zâil olur. Fakat, vücûd, hayat, îmân gibi varlıklar hüsn-ü mücerreddir ve bizzat güzeldirler. Güzellikleri başka şeylere bağlı değildir. Hariçte maddî vücûdu olmayan, ancak aklen mevsufsuz düşünülebilen hüsün ve zihnen anlaşılan güzellik.</p>
+<p class="paragraph">< – I –</p>
+<p class="paragraph"><strong>Itlâk:</strong> Bir hususu bir kayda bağlamamak, mutlak bırakmak. (Bkz: Mutlak).</p>
+<p class="paragraph">< – İ –</p>
+<p class="paragraph"><strong>İbham:</strong> Üstü kapalı ifâde etmek.</p>
+<p class="paragraph"><strong>İbn-i Fârıd:</strong> Bkz: Ömer B. Fârıd.</p>
+<p class="paragraph"><strong>İbn-i Hümam:</strong>(H. 788-861) (M. 1386-1456) Hanefî fukahâsından meşhûr bir zâttır. Şer'î ilimlerde, edebiyâtta mütehassıs idi.</p>
+<p class="paragraph"><strong>İbrahim Hakkı:</strong> H. 12. asırda yaşamıştır. Büyük âlim ve mutasavvıftır. Hasankaleli olup "Mârifetnâme" adlı eseri ile meşhûrdur.</p>
+<p class="paragraph"><strong>İcmâ-ı Ümmet:</strong> Aynı asırda yaşamış İslâm müçtehidlerinin, Kitab ve Sünnette açık hükmü bulunmayan bir mes'elede hüküm bakımından ittifak etmeleri. İcmâ, Şerîatta Kitab ve Sünnet'ten sonra en kuvvetli delildir.</p>
+<p class="paragraph"><strong>İctinâ:</strong> Meyve toplamak.</p>
+<p class="paragraph"><strong>İ'dâd:</strong> Hazırlama, yetiştirme, geliştirme.</p>
+<p class="paragraph"><strong>İfrâğ etmek:</strong> Bir hâlden başka bir hâle getirmek ve yükseltmek.</p>
+<p class="paragraph"><strong>İğlâk:</strong> Muğlak olmak, kapalı ve anlaşılmaz olmak.</p>
+<p class="paragraph"><strong>İğvâ:</strong> Azdırma, baştan çıkarma, saptırma.</p>
+<p class="paragraph"><strong>İhtilâf-ı Metâli':</strong> Güneş, ay gibi gök cisimlerinin ufukta doğdukları yerin farklı oluşu.</p>
+<p class="paragraph"><strong>İhtisasât:</strong> Hislenmeler, duygulanmalar.</p>
+<p class="paragraph"><strong>Îka':</strong> Meydâna getirmek.</p>
+<p class="paragraph"><strong>İknâiyât-ı Hitâbiye:</strong> Kelâm ilmine ait bir ıstılahtır. Zannî olan aklî delil demektir. Bürhânın aşağı mertebesidir. Aklı, muhâlif fikirlerle karışmamış ve bürhânı anlayamayacak kimseler için kullanılır. İsbâttan çok iknâ vasfı taşır.</p>
+<p class="paragraph"><strong>İktiham:</strong> Dayanmak, tahammül etmek, katlanmak.</p>
+<p class="paragraph"><strong>İlm-i Bedî':</strong> İlm-i Beyân'ın üç bölümünden üçüncü bölümüdür. Muktezâ-yı hâle uygun bir kelâmın lafız ve mânâ bakımından daha da güzelleştirilmesinin kaidelerinden bahseder. Bu kaidelere Edebî San'atlar da denir. İki kısma ayrılır:</p>
+<p class="paragraph"><strong>1- Muhassinât-ı maneviye:</strong> Kelâmın mânâsına ait san'atlar. Tevriye, hüsn-ü ta'lîl, üslûb-u hakîm.. gibi.</p>
+<p class="paragraph"><strong>2- Muhassinât-ı lafziye:</strong> Kelâmın lafzına ait san'atlar. Seci', cinâs.. gibi.</p>
+<p class="paragraph"><strong>İltihab:</strong> Alevlenmek.</p>
+<p class="paragraph"><strong>İm'ân-ı Nazar:</strong> Bir işi dikkatle düşünmek; inceden inceye bakmak ve tedkik etmek.</p>
+<p class="paragraph"><strong>İmkân:</strong> Bir şeyin varlığı ile yokluğunun müsâvî olması. Vâcib ve muhâl olmamak.</p>
+<p class="paragraph"><strong>İndirâs:</strong> Bozulmak, mahvolmak.</p>
+<p class="paragraph"><strong>İnhimak:</strong> Bir şeye fazla düşkün olma.</p>
+<p class="paragraph"><strong>İn'ikad:</strong> Kurulma, teşekkül etme, meydâna gelme.</p>
+<p class="paragraph"><strong>İnkılâb-ı Hakikat:</strong> Hakikatin kendi mâhiyetinin değişmesi, başkalaşması.</p>
+<p class="paragraph"><strong>İntifâ:</strong> Sönmek, ortadan kalkmak.</p>
+<p class="paragraph"><strong>İntizamın ilcâı:</strong> İntizamın zorlaması, mecbur etmesi, muztar kılması.</p>
+<p class="paragraph"><strong>İrhâsat:</strong> Peygamber Efendimizin (A.S.M.) nübüvvet ve hakkâniyetine delâlet eden, Peygamberliğinden evvelki hàrikulâde vâkıa ve hâdiseler.</p>
+<p class="paragraph"><strong>İrsâ:</strong> Sağlamlaştırmak, sâbit kılmak.</p>
+<p class="paragraph"><strong>İs'âd:</strong> Yukarı çıkarmak, yükseltmek.</p>
+<p class="paragraph"><strong>İsâle:</strong> Akıtmak.</p>
+<p class="paragraph"><strong>İşbâ' :</strong> Doyurmak.</p>
+<p class="paragraph"><strong>İskât:</strong> Susturmak, teskin etmek.</p>
+<p class="paragraph"><strong>İskender:</strong>(M.Ö: 356-323) Aristo'dan ders almış bir hükümdardır. Buna İskender-i Rûmî de denir.</p>
+<p class="paragraph"><strong>İsrailiyât:</strong>(İsrailiyenin C.) Bazı dinî kitaplara veya hadîslere karışan yahudîlikten gelme bazı hikâye ve haberler.</p>
+<div class="page-marker-wrap"><span class="page-marker">174</span></div>
+<p class="paragraph"><strong>İstiâre:</strong> Bir şeyi ödünç almak. Edb: Benzerlik alâkası ve karîne-i mânâ dolayısıyla bir kelimeyi hakîki mânâsının dışında bir mânâda kullanmaya "istiâre" denir.</p>
+<p class="paragraph"><strong>İstibşâr:</strong> Sevinmek.</p>
+<p class="paragraph"><strong>İstifsar:</strong> İzâh istemek. Sormak.</p>
+<p class="paragraph"><strong>İstiftâ:</strong> Fetvâ istemek, Şerîat'a ait bir mes'ele hakkında salâhiyetli zâtlardan şer'î hükmü öğrenmek.</p>
+<p class="paragraph"><strong>İstiğrak:</strong> Aşk-ı İlâhî ile dünyayı unutup kendinden geçmek. Maneviyattan gelen rûhî coşkunluk hâli.</p>
+<p class="paragraph"><strong>İstikrâ':</strong> Etraflı bilgi. Ayrı ayrı hâdiselerdeki müşterek vasıflara dikkat ederek umumî bir netice çıkarmak.</p>
+<p class="paragraph"><strong>İstikrâ'-i tâmm:</strong> Ayrı ayrı hâdiselerdeki müşterek vasıfları tesbit ede ede umumî bir netice çıkarmak. Umumî bir araştırma.</p>
+<p class="paragraph"><strong>İstilhak:</strong> Kendine almak, kendine katmak.</p>
+<p class="paragraph"><strong>İstînâs-ı efkâr:</strong> Fikirlerin ürkekliğinin kalkması, alışması, dost olması.</p>
+<p class="paragraph"><strong>İstirak-ı sem':</strong> Haber çalmak, kulak hırsızlığı. Burada mecâzîdir. Âyete telmih vardır.</p>
+<p class="paragraph"><strong>İstis'âb:</strong> Güç saymak, zor addetmek.</p>
+<p class="paragraph"><strong>İstişmam:</strong> Koklamak. Hassas olmak. Anlayışlı olmak.</p>
+<p class="paragraph"><strong>İstitrad:</strong> Bir söz ve yazıda esâs maksadla tebeî ve dolayısıyla alâkası bulunan başka bir bahis nakletmek.</p>
+<p class="paragraph"><strong>İstitradî:</strong> Asıl mevzûdan olmayıp, münâsebet gelmişken mevzû arasında söylenen söz.</p>
+<p class="paragraph"><strong>İstizhar etmek:</strong> Yardım taleb etmek.</p>
+<p class="paragraph"><strong>İşkâl:</strong> Müşkül bırakma. (Bkz. Müşkülât).</p>
+<p class="paragraph"><strong>İşrâk:</strong> Parlatma, ışıklandırma. Mc. Kalbe mânâların doğması.</p>
+<p class="paragraph"><strong>İştibâh:</strong> Kolay kolay farkedilmeyecek derecede benzerlik.</p>
+<p class="paragraph"><strong>İştibâk:</strong> Şebekelenmek, karşılıklı birbirine geçmek, örgülenmek.</p>
+<p class="paragraph"><strong>İştirâk:</strong> Bir lafzın muhtelif mânâlar arasında müşterek olması. Meselâ: İnsan kelimesinin bütün insan ferdleri arasındaki müşterekliği gibi. Veya bir kelimenin birkaç mânâ arasında müşterek olması. Meselâ: "Ayn" kelimesi hem göz, hem pınar, hem altun, hem maddeye delâleti gibi. Buna "lafz-ı müşterek" de denir.</p>
+<p class="paragraph"><strong>İtâb:</strong> Tekdir etmek, azarlamak.</p>
+<p class="paragraph"><strong>İ'tizâl:</strong> Mu'tezile mezhebine girmek.</p>
+<p class="paragraph"><strong>İttihâd:</strong> Bkz. Ulûhiyet-i Sâriye.</p>
+<p class="paragraph"><strong>İttisak:</strong> Nizâmlı ve intizamlı diziliş.</p>
+<p class="paragraph"><strong>İttisal:</strong> Bkz: Ulûhiyet-i sâriye.</p>
+<p class="paragraph"><strong>İttizah-ı delil:</strong> Delilin açık, vâzıh ve âşikâr olması.</p>
+<p class="paragraph"><strong>İzdiyâd etmek:</strong> Ziyâdeleştirmek, fazlalaştırmak, çoğaltmak.</p>
+<p class="paragraph">< — K —</p>
+<p class="paragraph"><strong>Kâ'b:</strong>(Ölm: H. 32) Yahudî âlimlerinden olup İsrailiyâtı İslâmiyet'e en çok aktaranlardan biridir. Hz. Ebû Bekir devrinde Müslüman olmuştur. Sa'lebi ve Kisâî gibi İslâm tarihçileri ondan çok rivâyetlerde bulunmuşlardır.</p>
+<p class="paragraph"><strong>Kafiye-perestlik:</strong> Kafiye için, sâfiyeyi fedâ edecek derecede kafiyeye ehemmiyet vermek. Birinci derecede kafiyeyi düşünüp, mânâyı arka plâna atmak.</p>
+<p class="paragraph"><strong>Kàl u kìl:</strong>"Dedi, denildi" şeklindeki nakiller.</p>
+<p class="paragraph"><strong>Kalak:</strong> Zahmet, meşakkat, gönül darlığı.</p>
+<p class="paragraph"><strong>Kalb:</strong> Sahte para.</p>
+<p class="paragraph"><strong>Kàmet-i Nâmiye:</strong> Gelişme ve büyüme kàbiliyetinde olan endâm, boy.</p>
+<p class="paragraph"><strong>Kâmine:</strong> Saklı, gizli, pusuda duran, belirsiz.</p>
+<p class="paragraph"><strong>Kar'ul-asâ:</strong> Doktorun, hastanın bedenine vurup muayene etmesi. Mc: Hatâyı hatırlatmak için işâret vermek ve îkaz etmek.</p>
+<p class="paragraph"><strong>Karafî:</strong>(Şihabüddin Ahmed El-Karafî) Mâlikî Mezhebi'nin büyük âlimle</p>
+<div class="page-marker-wrap"><span class="page-marker">175</span></div>
+<p class="paragraph">rindendir. Milâdî 1285'de vefât etmiştir.</p>
+<p class="paragraph"><strong>Karîha:</strong> Fikir kàbiliyeti, zihin kudreti, düşünme isti'dâdı.</p>
+<p class="paragraph"><strong>Karîne:</strong> Bilinmeyen bir şeyin anlaşılmasına yarayan ipucu, işâret.</p>
+<p class="paragraph"><strong>Karîne-i mecâz:</strong> Mecâza ait işâret. Kelimenin mecâz olmasını gerektiren, hakîki mânâsına alınmasına mâni olan kayıt. Buna karîne-i mânia da denir.</p>
+<p class="paragraph"><strong>Karn-ı Evvel:</strong> Hicretin birinci asrı.</p>
+<p class="paragraph"><strong>Kasas:</strong> Mâceralar, hikâyeler, kıssalar.</p>
+<p class="paragraph"><strong>Kâsid:</strong> Kesâd olan, sürümsüz mal, rağbet görmeyen.</p>
+<p class="paragraph"><strong>Kat'iyyü'd-delâle:</strong> Bir ibarenin ifâde ettiği mânâya veya hükme delâletinin kat'î, şeksiz olması.</p>
+<p class="paragraph"><strong>Kat'iyyü'l-metin:</strong> İbarenin, ilk merci'inden aynen sâdır olduğunun kat'î ve şeksiz olarak sâbit olması.</p>
+<p class="paragraph"><strong>Keennehu:</strong> Sanki odur, hemen hemen odur.</p>
+<p class="paragraph"><strong>Kelâm-ı Mudarî:</strong> Arab kabilelerinden Mudar Kabilesinin konuştuğu Arapça, Kur'ân-ı Kerîm bu lehçe üzerine nâzil olmuştur. En fasîh Arapça'dır.</p>
+<p class="paragraph"><strong>Kelâmın kuyûdâtı ve keyfiyâtı:</strong> Kelâmın küllünü meydâna getiren harf, kelime gibi parçalarıyla, bunların sarf ve nahiv yönünden hususiyetleri. Meselâ: Müzekkerlik-müenneslik, mârifelik-nekrelik, mübtedâ-haber, sıfat-mevsuf gibi.</p>
+<p class="paragraph"><strong>Kelime-i hamkâ:</strong> Ahmakça söz.</p>
+<p class="paragraph"><strong>Kellâ:</strong> Hayır, asla, öyle değil.</p>
+<p class="paragraph"><strong>Kemâl-i vüsûk:</strong> Tam bir i'timâd ve inanç.</p>
+<p class="paragraph"><strong>Keşf-i râz:</strong> Sır toplamak, câsusluk etmek.</p>
+<p class="paragraph"><strong>Ketf:</strong> Omuz.</p>
+<p class="paragraph"><strong>Kır'av:</strong> Çorak tarla.</p>
+<p class="paragraph"><strong>Kıssîs:</strong> Keşiş, papaz. Hıristiyan din adamı.</p>
+<p class="paragraph"><strong>Kıyâs-ı akîm:</strong>(Man.) Neticesiz veya doğru netice vermeyen kıyâs.</p>
+<p class="paragraph"><strong>Kıyâs-ı hàdi':</strong>(Man.) Aldatıcı kıyâs.</p>
+<p class="paragraph"><strong>Kıyâs-ı hafî:</strong>(Man.) İlleti kolay anlaşılmayan kıyâs.</p>
+<p class="paragraph"><strong>Kıyâs-ı maa'l-fârık:</strong>(Man.) Birbirine benzemeyen şeyler arasında yapılan kıyâs. Doğru olmayan ve hakikate uymayan mukayese.</p>
+<p class="paragraph"><strong>Kıyâs-ı mürekkeb:</strong>(Man.) İkiden fazla mukaddimeden mürekkeb kıyâs.</p>
+<p class="paragraph"><strong>"Kìle"ler:</strong>"Denildiler" demek olup bir mes'ele hakkındaki muhtelif rivâyetleri ifâde eder.</p>
+<p class="paragraph"><strong>Kînedâr:</strong> Kin güden, düşmanlık besleyen.</p>
+<p class="paragraph"><strong>Kin-i muzmer:</strong> Gizli kin.</p>
+<p class="paragraph"><strong>Kuvâ-yı selâse:</strong> Üç kuvvet. Kuvve-i şeheviye, kuvve-i gadabiye, kuvve-i akliye.</p>
+<p class="paragraph"><strong>Kuvâ-yı umumiye:</strong> Umumî kuvvetler.</p>
+<p class="paragraph"><strong>Kuvve-i vâhime:</strong> İnsanda vehim ve vesvese veren kuvvet.</p>
+<p class="paragraph"><strong>Kübrâ:</strong> İkinci kaziye. (Büyük önerme) Yani, hadd-i ekberin bulunduğu cümle. Hükmün mahmûlü. (Bkz. Hadd-i Asğar)</p>
+<p class="paragraph"><strong>Kühûlet:</strong> Olgunluk çağı.</p>
+<p class="paragraph"><strong>Küvar:</strong> Bal peteği.</p>
+<p class="paragraph">< — L —</p>
+<p class="paragraph"><strong>Lâ-edrîler:</strong> Sofestâilerin bir koludur. Eşyanın var mı, yok mu olduğunun bilinmeyeceğini iddia ederler. Bunlar kendilerinden şübhe ederler. Aynı zamanda şübhe ettiklerinden de şübhe ederler.</p>
+<p class="paragraph"><strong>Lafız-perestlik:</strong> Kelâmın mânâsından çok, sözlerine önem vermek ve meşgul olmak.</p>
+<p class="paragraph"><strong>Lafz-perdâzâne:</strong> Çeşitli ve çok çok söyleyerek.</p>
+<p class="paragraph"><strong>Lâsiyyemâ:</strong> Hususan, bilhassa.</p>
+<p class="paragraph"><strong>Latîfe-i Rabbâniye:</strong> İnsanın kalbine bağlı ve bütün duygularının sultanı olan ince bir duygudur ki, İlâhi hakikatler onunla hissedilip zevkedilir.</p>
+<p class="paragraph"><strong>Lâzım-ı beyyin:</strong> Bu tâbirin masdariyet şekli "Lüzum-u beyyin" olup ikisi aynı mânâya gelir. Herhangi bir şey</p>
+<div class="page-marker-wrap"><span class="page-marker">176</span></div>
+<p class="paragraph">hâtıra gelince hiçbir delil ve emâreye ihtiyaç olmadan o şeyle beraber düşünülmesi zarûrî olan diğer bir şey. Meselâ: İnsan denildiği zaman, kàbiliyet-i ilim ve san'at akla gelmesi gibi...</p>
+<p class="paragraph"><strong>Lem'a-nisâr:</strong> Parlaklık saçma.</p>
+<p class="paragraph"><strong>Lenger-endâz:</strong> Demir atmış, demirlemiş.</p>
+<p class="paragraph"><strong>Levâzım:</strong>(Lâzım'ın C.) Bir şeyden asla ayrılmayan şeyler. Bir işte beraber bulunmasına ihtiyaç olan şeyler.</p>
+<p class="paragraph"><strong>Leyte:</strong> Keşke olsaydı, ne olaydı.</p>
+<p class="paragraph">< — M —</p>
+<p class="paragraph"><strong>Maâşen:</strong> Yaşayış bakımından.</p>
+<p class="paragraph"><strong>Mâbihi'l-imtiyaz:</strong> Kendisi ile imtiyaz kazanılan şey.</p>
+<p class="paragraph"><strong>Mağlata:</strong> Zihni yanıltmak için ustaca ve şeytancasına söylenen boş, asılsız ve karıştırıcı söz.</p>
+<p class="paragraph"><strong>Mağlata-i vehmiye:</strong> Vehmin, insanı yanıltmak için yanlışı doğru göstermesi.</p>
+<p class="paragraph"><strong>Mağmure:</strong> Adı sanı silinmiş, yerinde yeller esen.</p>
+<p class="paragraph"><strong>Mağz:</strong> Öz, iç, lübb.</p>
+<p class="paragraph"><strong>Mahâmil-i Sahîha:</strong> Bir söze yüklenen sahih, doğru ve güvenilir mânâlar.</p>
+<p class="paragraph"><strong>Mahv ve sekir:</strong> Fenâ fillâh makamında kendi varlığını hiç görmek ve bu manevî hâlin zevk ve te'sirinden rûhî bir coşkunlukla kendinden geçme hâli.</p>
+<p class="paragraph"><strong>Mahkî-anh:</strong> Kendisinden bahsedilen.</p>
+<p class="paragraph"><strong>Mahmil:</strong>(C. Mahâmil) Bir ibareye hamledilen mânâ ihtimallerinden herbirisi.</p>
+<p class="paragraph"><strong>Mahmül:</strong> Bir cümlede fâile yükletilen işi, oluşu veya hâli gösteren fiil. Mantıkta, müsned. Meselâ: İnsan nâtıktır, cümlesinde "insan" mevzû, "nâtık" mahmûldür. Burada "nâtık" (konuşan) vasfı, insan kelimesine hamledilmiş, yükletilmiştir.</p>
+<p class="paragraph"><strong>Mahrek-i Senevî:</strong> Medâr. Bir seyyârenin bağlı olduğu kürenin etrafında dönmesiyle hâsıl olan farazî dâire.</p>
+<p class="paragraph"><strong>Mâil-i Kamer:</strong> Ayın yörüngesi. Ayın dünya etrafında dolaştığı dâire. Ayın mahreki.</p>
+<p class="paragraph"><strong>Mâile:</strong> Eğri, eğilmiş.</p>
+<p class="paragraph"><strong>Maksad ve müstakarrın temeyyüzü:</strong> Kelâmın maksadının ve karar kıldığı yerin açık olarak belli olması.</p>
+<p class="paragraph"><strong>Ma'kud:</strong> Bağlı.</p>
+<p class="paragraph"><strong>Ma nahnü fîh:</strong> Üzerinde durduğumuz şey. Mes'elemiz.</p>
+<p class="paragraph"><strong>Ma'raz-ı Kelâm:</strong> Kelâmın teşhîrgâhı. (Kitaplar)</p>
+<p class="paragraph"><strong>Mâsadak:</strong> Bir sözü veya hükmü tasdik eden husus, vaziyet, hâdise. Mânânın ferdlerine de mâsadak denilebilir.</p>
+<p class="paragraph"><strong>Masdar:</strong> Bir şeyin sudûr ettiği, çıktığı yer, kaynak, menba', temel.</p>
+<p class="paragraph"><strong>Matmah-ı nazar:</strong> Hırs, tamah veya dikkatle bakılan şey veya yer.</p>
+<p class="paragraph"><strong>Mâverâ:</strong> Geri, ard, arka.</p>
+<p class="paragraph"><strong>Mazanne:</strong>(Mazınne) Herhangi bir mânâ veya vasfın kendisinde var olduğu zan ve tahmin olunan yer veya kimse.</p>
+<p class="paragraph"><strong>Mebâdî:</strong> Mebde'ler. Bir şeyi neticeye ulaştıran mukaddimeler. İlk unsurlar. (Bkz. Tekemmül-ü mebâdî)</p>
+<p class="paragraph"><strong>Meder:</strong> Çakıl taşı.</p>
+<p class="paragraph"><strong>Mefâhim:</strong> Anlaşılan mânâ ve mefhûmlar.</p>
+<p class="paragraph"><strong>Mehâlik:</strong> Tehlikeler, tehlikeli işler.</p>
+<p class="paragraph"><strong>Mekâtı':</strong>(Makta'ın C.) Kelâmın sonları. Şiirin durak yerleri.</p>
+<p class="paragraph"><strong>Meknûn:</strong> Gizli, örtülü.</p>
+<p class="paragraph"><strong>Mele-i a'lâ:</strong> Melekler âlemi. Kerrûbiyûn ve melekler cemâati.</p>
+<p class="paragraph"><strong>Me'lûf:</strong> Alışılmış, huy edinilmiş, ülfet olunmuş.</p>
+<p class="paragraph"><strong>Me'mun:</strong>(M. 786-833) Abbâsî Halifesi Hârun Reşid'in oğludur. Zamanında Yunan felsefesi Arapça'ya tercüme edilmiştir.</p>
+<p class="paragraph"><strong>Menâr:</strong> Işık tutucu.</p>
+<p class="paragraph"><strong>Mensûbât:</strong> Nisbet ve isnâd edilen şeyler.</p>
+<p class="paragraph"><strong>Mensûh:</strong> Neshedilmiş, hükmü yürürlükten kaldırılmış.</p>
+<div class="page-marker-wrap"><span class="page-marker">177</span></div>
+<p class="paragraph"><strong>Menşûr-u mukaddes:</strong> Mukaddes fermân (Kelime-i şehâdet kasdedilmektedir)</p>
+<p class="paragraph"><strong>Mercû:</strong> Ricâ olunan, ümîd edilen.</p>
+<p class="paragraph"><strong>Mermüze:</strong> Dolaylı yoldan işâret ve remizle anlatılmış.</p>
+<p class="paragraph"><strong>Mesaha:</strong> Genişlik ölçme. Genişlik.</p>
+<p class="paragraph"><strong>Mesâk-ı kelâm:</strong> Kelâmın sevk edildiği yer, maksad.</p>
+<p class="paragraph"><strong>Mesâmât:</strong> Delikler, gözenekler.</p>
+<p class="paragraph"><strong>Mesîl-i garazda sedâd:</strong> Maksadın mecrâında istikamet üzere olup sağa-sola sapmamak.</p>
+<p class="paragraph"><strong>Meslek-i müteassife:</strong> Sapık meslek.</p>
+<p class="paragraph"><strong>Mesnevî:</strong> Mevlâna Celâleddin-i Rûmî'nin Farsça te'lif ettiği altı cildlik manzûm eseri.</p>
+<p class="paragraph">Birçok ulvî hakikatler, temsîlî hikâyelerle anlatılmaktadır.</p>
+<p class="paragraph"><strong>Mesûk-u Lehü'l-kelâm:</strong> Kelâmın söyleniş gayesi, garazı ve maksadı.</p>
+<p class="paragraph"><strong>Meşşâta:</strong> Süsleyen, tarayan.</p>
+<p class="paragraph"><strong>Mevâkıf:</strong> Abdurrahman İci'nin te'lif ettiği meşhûr bir kelâm kitabıdır. Birçok şerhleri yapılmıştır.</p>
+<p class="paragraph"><strong>Mevcûd-u haricî:</strong> Maddî vücûdu bulunan eşya.</p>
+<p class="paragraph"><strong>Mevkib-i ikbâl:</strong> Tâlihli kafile.</p>
+<p class="paragraph"><strong>Mevzû:</strong> Bkz. Mahmûl.</p>
+<p class="paragraph"><strong>Meylü't-tezeyyüd:</strong> Tekellüfle sözü uzatma, artırma arzusu.</p>
+<p class="paragraph"><strong>Mezbûr:</strong> Mezkûr, yukarıda bahsi geçmiş olan.</p>
+<p class="paragraph"><strong>Mıntıkatü'l-burûc:</strong> Burçlar mıntıkası, oniki burcun bulunduğu "tutulma" dâiresi.</p>
+<p class="paragraph"><strong>Mısdak:</strong> Bir şeyin doğru olduğunu isbâta yarayan şey.</p>
+<p class="paragraph"><strong>Minhâc:</strong> Meslek, yol.</p>
+<p class="paragraph"><strong>Min haysü la yeş'ur:</strong> Nereden ve ne sebeble geleceği hissedilmeksizin.</p>
+<p class="paragraph"><strong>Mîsâk-ı ezeliye:</strong>(Bezm-i Elest veya Kàlû-Belâ ile de tâbir edilir) Ezelî sözleşme. Allah'ın rûhları yarattığı zaman, onlara: "Ben sizin Rabbiniz değil miyim?" dediğinde, onların: "Evet Rabbimizsin." diye cevab vermeleri hâdisesi.</p>
+<p class="paragraph"><strong>Misbâh:</strong> Lamba, kandil.</p>
+<p class="paragraph"><strong>Mistar:</strong> Yazının veya herhangi bir şeklin düzgün çizilmesine yarayan âlet.</p>
+<p class="paragraph"><strong>Mişkât:</strong> Kandil.</p>
+<p class="paragraph"><strong>Muâteb:</strong> Azarlanmış, itâb olunmuş.</p>
+<p class="paragraph"><strong>Muhâkât etmek:</strong> Taklid etmek, benzerini yapmak.</p>
+<p class="paragraph"><strong>Muhâkî:</strong> Benzer.</p>
+<p class="paragraph"><strong>Muhakkìk:</strong> Bir şeyin iç yüzünü inceleyerek vâkıf olan. Hakikatlere hakkıyla vâkıf olan büyük İslâm Âlimi.</p>
+<p class="paragraph"><strong>Muhakkìkîn-i Sofiye:</strong> Tasavvuf ilminin hakikatine vâkıf olarak gerçek mârifete eren yüksek âlimler.</p>
+<p class="paragraph"><strong>Muhtelefün Fîhâ:</strong> Hakkında ihtilâf olunan mes'ele.</p>
+<p class="paragraph"><strong>Muhtelle:</strong> Bozuk, nizâmsız, karışık.</p>
+<p class="paragraph"><strong>Muhtera':</strong> Yoktan var edilmiş, icâd edilmiş.</p>
+<p class="paragraph"><strong>Mukaddimât-ı İsnâ Aşer:</strong> Oniki mukaddime.</p>
+<p class="paragraph"><strong>Mukannin:</strong> Kanun koyan, intizama koyan.</p>
+<p class="paragraph"><strong>Mumâtala:</strong> Karşılıklı mübâhase tarzında konuşmak.</p>
+<p class="paragraph"><strong>Munsarif:</strong> Geri dönen. Gr. Yerine göre her türlü hareke alabilen kelime.</p>
+<p class="paragraph"><strong>Musaddak-gerde-i erbâb-ı basîret:</strong> Erbâb-ı basîretin tasdik ve kabûlüne mazhar olmuş.</p>
+<p class="paragraph"><strong>Mutaffifin:</strong> Ticârette noksan veren, hakkını tam vermeyen.</p>
+<p class="paragraph"><strong>Mutasallıf:</strong> Bilgiçlik ve haddinden fazla incelik taslayan, şarlatan.</p>
+<p class="paragraph"><strong>Mu'tekadât-ı hissiye:</strong> Hislerle kazanılan i'tikàdlar, inançlar.</p>
+<p class="paragraph"><strong>Muttala':</strong> Ittılâ'dan ism-i mekândır. Ittılâ' olunacak semt ve mahal. Bir işin, başlanacak ve onu kolaylaştıracak münâsib yer. Yüksek yerden aşağıya bakıp muttali' olunacak mevzie denir. Kamus tercümesinden kısmen alınan şu ma'lûmât var: "Nâzil olan herbir âyet, bir vech-i zâhirîyi</p>
+<div class="page-marker-wrap"><span class="page-marker">178</span></div>
+<p class="paragraph">ve bir vech-i bâtinîyi müştemildir. Ve bunlardan herbirinin bir haddi ve her haddin bir muttala' olacak semt ve mahalli vardır ki, onu bilmeye, o semt ve mahalden hareket edilir."</p>
+<p class="paragraph"><strong>Mübâlağa-cûyâne:</strong> Haddini aşarak izâh edercesine. Mübâlağa edercesine.</p>
+<p class="paragraph"><strong>Mübâşeret:</strong> Bizzat meşgul olma. Temâs etme.</p>
+<p class="paragraph"><strong>Mübâyenet-i cevheriye:</strong> Her nev'in cevherinin ve fıtrat-ı asliyesinin birbirinden farklı ve ayrı oluşu.</p>
+<p class="paragraph"><strong>Mücâzefe:</strong> Söz ile karşısındakinin hakkını örtmek, aldatmak. Fık. Tartıp ölçmeden göz kararı ile yapılan tahminî satış. Götürü almak, toptan satmak.</p>
+<p class="paragraph"><strong>Mücerredât-ı sırfe:</strong> Mücerredin tâ kendisi, en mücerred olan. Mücerred ise, felsefede; maddî mevcûdlardan ayrı olarak sâdece zihinde düşünülen veya nisbetle bilinen mefhûmlar. Bunun zıddı müşahhastır ki; eşyanın bütün vasıflarıyla zihinde ve hariçte husûlüdür.</p>
+<p class="paragraph"><strong>Müdevveriyet:</strong> Yuvarlaklık.</p>
+<p class="paragraph"><strong>Müeyyed min İndillâh:</strong> Allah tarafından te'yid edilen.</p>
+<p class="paragraph"><strong>Mühezzebe:</strong> Islah edilmiş, lüzumsuzu çıkarılarak temizlenmiş.</p>
+<p class="paragraph"><strong>Mükâbere:</strong> Münâkaşada ağız kalabalığı ile karşısındakini yenmeye çalışma.</p>
+<p class="paragraph"><strong>Mühec:</strong> Rûhlar, canlar.</p>
+<p class="paragraph"><strong>Mülâbeset:</strong> Karışma, münâsebet, ihtilât.</p>
+<p class="paragraph"><strong>Mültekâ:</strong> Kavuşup buluşulan yer. Kavşak.</p>
+<p class="paragraph"><strong>Mümâresât-ı ilzamiyât:</strong> Sırf hakkı kabûl etmemek için karşısındakini ilzam etmeğe çalışma gayretleri.</p>
+<p class="paragraph"><strong>Mümâs:</strong> Temâs eden, dokunan.</p>
+<p class="paragraph"><strong>Mümâşât:</strong> Birlikte hoş geçinmek. Bir maslahat yolunu takib etmek. Meslek işlerinde tesviye, tervîc ve idare etmek. Karışmamak. Başkalarının zarar vermeyen fikirlerine uyarcasına hareket etmek ve sulh u salâh üzere durmak. Uygunluk.</p>
+<p class="paragraph"><strong>Mümehhed:</strong> Hazırlanmış, tanzim ve tasfiye olunmuş.</p>
+<p class="paragraph"><strong>Mümevveh:</strong> Sahte, bâtıl.</p>
+<p class="paragraph"><strong>Mümidd:</strong> Yardım eden, imdâd eden. Uzatan, uzatıcı.</p>
+<p class="paragraph"><strong>Münâfât:</strong> Bir birinin aksine olmak, aykırılık.</p>
+<p class="paragraph"><strong>Mün'atıf:</strong> Bir tarafa doğru teveccüh etmiş, meyletmiş.</p>
+<p class="paragraph"><strong>Münekker:</strong> Bilinmeyen, mechûl.</p>
+<p class="paragraph"><strong>Münhaniye:</strong> Eğri ve çarpık.</p>
+<p class="paragraph"><strong>Münhasif:</strong> Gölgelenip sönükleşen. Görünmez hâle gelen. (Ay için kullanılır)</p>
+<p class="paragraph"><strong>Müntefî:</strong> Sönen, yok olan.</p>
+<p class="paragraph"><strong>Mürekkeb:</strong> Terkîb edilmiş, birkaç maddeden yapılmış, tahlili mümkün olan. Basit olmayan.</p>
+<p class="paragraph"><strong>Müsâvât ve muvâzene-i etvâr:</strong> Bir kimsenin tavır ve hareketlerinin ölçülü ve dengeli olması.</p>
+<p class="paragraph"><strong>Müsebbıt:</strong> Ayak kaydıran, tehlikeye atan. İşten alıkoyup geciktirmek.</p>
+<p class="paragraph"><strong>Müselleme:</strong> Doğruluğu şeksiz kabûl edilen, emniyet ve i'timâd edilen.</p>
+<p class="paragraph"><strong>Müstantık:</strong> Soran, suâl eden, sorgu hâkimi.</p>
+<p class="paragraph"><strong>Müstedîr:</strong> Dâire şeklinde olan.</p>
+<p class="paragraph"><strong>Müstemid:</strong> Yardım isteyen, meded isteyen.</p>
+<p class="paragraph"><strong>Müstemirre:</strong> Sağlam bir şekilde devamlı ve değişmez bir hâle gelen.</p>
+<p class="paragraph"><strong>Müstetbeât:</strong> Söze, kelâma tâbi olan mânâlar... Sözdeki telvihler, telmihler gibi.</p>
+<p class="paragraph"><strong>Müsül-ü faraziye:</strong> Farazî temsîller, hikâyeler.</p>
+<p class="paragraph"><strong>Müşâğabe:</strong> Aldatma. Fels. Münâkaşayı gaye sayanların yolu ve usûlü.</p>
+<p class="paragraph"><strong>Müşâhhat:</strong> Kavga etmek, nizâ' etmek, çekişmek.</p>
+<p class="paragraph"><strong>Müşâkil:</strong> Şeklen benzer.</p>
+<p class="paragraph"><strong>Müşeyyed:</strong> Tahkîm edilmiş, kuvvetli kılınmış, muhkem.</p>
+<p class="paragraph"><strong>Müşkülât-ı Kur'âniye:</strong> Mânâsının incelik ve derinliği veya istiâre-i bedîiye</p>
+<div class="page-marker-wrap"><span class="page-marker">179</span></div>
+<p class="paragraph">ile ifâde edilmiş olması gibi sebeblerden dolayı derin tetebbu' ve tefekkür neticesi ancak anlaşılabilen âyetler.</p>
+<p class="paragraph"><strong>Müteânik:</strong> Birbirinin boynuna sarılmış vaziyette olan.</p>
+<p class="paragraph"><strong>Mütekallid:</strong> Bir vazifeyi üzerine alan, derûhde eden, kılınç kuşanmış, takınmış.</p>
+<p class="paragraph"><strong>Mütemehhil:</strong> Zamana muhtaç, büyüyüp gelişmesi belli bir zaman içinde olan şey, tedrîc kanununa tâbi olan.</p>
+<p class="paragraph"><strong>Mütemessil:</strong> Bir şeyin sûretine giren.</p>
+<p class="paragraph"><strong>Mütenasika:</strong> Birbirine uygun şekilde olan.</p>
+<p class="paragraph"><strong>Müteşa'ab:</strong> Şûbe ve kısımlara ayrılmış olan.</p>
+<p class="paragraph"><strong>Müteşâbih:</strong> Zâhirî mânâsı kasdedilmeyen ve teşbih ve temsîl yoluyla hakikatlerin beyânında kullanılan ifâde.</p>
+<p class="paragraph"><strong>Müteşâbihât-ı Kur'âniye:</strong> Beşer lisânının lûgatını vaz' etmediği, sezip düşünemediği, misâlini görmediği hakikatlerin teşbih ve temsîller ile anlatıldığı Âyet-i Kerîmeler.</p>
+<p class="paragraph"><strong>Müteşâbike:</strong> Birbirine karışmış ve girmiş vaziyette olan. Girift.</p>
+<p class="paragraph"><strong>Müteşâib:</strong> Şûbelenen, birbirine karışmadan dallı budaklı kollara ayrılmış olan.</p>
+<p class="paragraph"><strong>Mütevâtir:</strong> Yalan üzerine birleşmeleri aklen mümkün olmayan bir cemâatin bir hâdise hakkında verdikleri haber.</p>
+<p class="paragraph"><strong>Mütevâtir-i bilma'nâ:</strong> Bir haberin veya hâdisenin farklı ifâdelerle başka başka şahıs veya topluluklar tarafından nakledilmiş olması.</p>
+<p class="paragraph"><strong>Müzahrefiyet:</strong> Tabîi ve fıtrî olmayan, yapmacık.</p>
+<p class="paragraph"><strong>Müzehhebe:</strong> Yaldızlanmış, parlatılmış.</p>
+<p class="paragraph"><strong>Müzekkire-i mükerrere:</strong> Tekrar tekrar hatırlatan.</p>
+<p class="paragraph">< — N —</p>
+<p class="paragraph"><strong>Nâfık:</strong> Geçer akçe.</p>
+<p class="paragraph"><strong>Nahu:</strong> Öyle ise, şöyle ki, işte.</p>
+<p class="paragraph"><strong>Nâkil:</strong> Nakleden, işittiğini anlatan.</p>
+<p class="paragraph"><strong>Nakkàd:</strong> Bir şeyin iyisini kötüsünü, doğrusunu ve yanlışını seçen kimse.</p>
+<p class="paragraph"><strong>Nazar-ı san'at-perverâne:</strong> San'atkârâne bakış.</p>
+<p class="paragraph"><strong>Nazar-ı Şâri':</strong> İlâhi nazar.</p>
+<p class="paragraph"><strong>Nazm-ı Lafz:</strong> Kelâmın lafız esâs alınarak düzenlenmesi.</p>
+<p class="paragraph"><strong>Neam, lâ:</strong> Evet, hayır. "Doğru fakat, mes'elenin içinde senin hâtırına gelmeyen şu da var." mânâsınadır.</p>
+<p class="paragraph"><strong>Nebe':</strong> Haber.</p>
+<p class="paragraph"><strong>Necm-i sâkıb:</strong> Karanlığı delerek geçen parlak yıldız.</p>
+<p class="paragraph"><strong>Nemmâm:</strong> Koğucu, bozgunculuk yapan, dedikodu yapan.</p>
+<p class="paragraph"><strong>Nev'un münhasırun fi'ş-şahs:</strong> Nev'-i şahsına münhasır. Başka bir benzeri olmayan.</p>
+<p class="paragraph"><strong>Neyyir:</strong> Parlak, nurlu.</p>
+<p class="paragraph"><strong>Nekâl:</strong> Şiddetli ve işkenceli azâb.</p>
+<p class="paragraph"><strong>Nıkmet:</strong> Ezâ vererek cezalandırma. Dehşetli ceza verme, intikam alma.</p>
+<p class="paragraph"><strong>Nokta-i istimdâd:</strong> Yardım isteme noktası. İnsanın kalbindeki, sonsuz emel ve arzuların yerine getirilmesine olan ihtiyaç.</p>
+<p class="paragraph"><strong>Nokta-i istinâd:</strong> Dayanma ve güvenme noktası. Kâinâtta cereyan eden ve insana dehşet verip âciz bırakan hâdiseler karşısında insanın çok kuvvetli bir yere dayanmaya ve güvenmeye olan fıtrî ihtiyacı.</p>
+<p class="paragraph"><strong>Nücûm-u Sâkıbe:</strong> Işığıyla karanlığı delip geçen yıldızlar.</p>
+<p class="paragraph"><strong>Nümûvv-ü Tabîi:</strong> Normal şartlar altında büyüyüp gelişme.</p>
+<p class="paragraph">< — Ö —</p>
+<p class="paragraph"><strong>Ömer b. Fârıd:</strong>(M. 1180-1234) Kahire'de doğdu ve orada vefât etti. Mütefekkir ve mutasavvıf olup büyük şâirlerdendir. Dîvânı vardır.</p>
+<p class="paragraph">< — P —</p>
+<p class="paragraph"><strong>Pertev-efşân:</strong> Işık saçan.</p>
+<p class="paragraph"><strong>Peymân:</strong> Yemîn, karşılıklı sözleşme, anlaşma, muâhede.</p>
+<div class="page-marker-wrap"><span class="page-marker">180</span></div>
+<p class="paragraph"><strong>Pîş-i nazara getirmek:</strong> Göz önünde bulundurmak.</p>
+<p class="paragraph"><strong>Pûşîde:</strong> Örtülü, gizli.</p>
+<p class="paragraph"><strong>— R —</strong></p>
+<p class="paragraph"><strong>Rahmet-i bîpâyân:</strong> Sonsuz rahmet.</p>
+<p class="paragraph"><strong>Raic:</strong> Revâcda olan, sürümlü mal.</p>
+<p class="paragraph"><strong>Rasas:</strong> Kurşun.</p>
+<p class="paragraph"><strong>Râsiha:</strong> İyice oturmuş, dem ve damarlarına yerleşmiş, temeli sağlam ve kuvvetli olan.</p>
+<p class="paragraph"><strong>Ratb:</strong> Rutûbetli, yaş.</p>
+<p class="paragraph"><strong>Redm-i Azîm:</strong> Zülkarneyn seddinin ismi.</p>
+<p class="paragraph"><strong>Reh-nümâ:</strong> Yol gösteren, rehber, kılavuz.</p>
+<p class="paragraph"><strong>Remz:</strong> İşâretle ifâde etmek.</p>
+<p class="paragraph"><strong>Rendeçlenme:</strong> Rendeleme.</p>
+<p class="paragraph"><strong>Re's:</strong> Baş.</p>
+<p class="paragraph"><strong>Revnâk:</strong> Zînet, güzellik.</p>
+<p class="paragraph"><strong>Ruhban:</strong> Râhib, keşiş. Hıristiyan din adamı.</p>
+<p class="paragraph">< — S —</p>
+<p class="paragraph"><strong>Saâdet-saray-ı ebediye:</strong> Ebediyetin saâdetli sarayı. (Cennet kasdediliyor)</p>
+<p class="paragraph"><strong>Saâdet-saray-ı istikbâl:</strong> İstikbâlin saâdetli sarayı.</p>
+<p class="paragraph"><strong>Sa'b:</strong> Güç, zor.</p>
+<p class="paragraph"><strong>Sabâvet:</strong> Çocukluk.</p>
+<p class="paragraph"><strong>Sâbiha:</strong> Yüzen.</p>
+<p class="paragraph"><strong>Sa'd-ı Taftazanî:</strong>(M. 1322-1389) Horasan'da doğmuş büyük bir İlm-i Kelâm âlimidir. En meşhûr eseri, "Makàsıd" adlı kelâm kitabıdır.</p>
+<p class="paragraph"><strong>Sa'dî:</strong>(M. 1193-1291) Şiraz'da doğmuş büyük bir İran şâiridir Gülistan ve Dîvân'ında bol bol temsîlî hikâyeler kullanmıştır.</p>
+<p class="paragraph"><strong>Sadîk-ı ahmak:</strong> Ahmak dost.</p>
+<p class="paragraph"><strong>Saf-beste:</strong> Saf bağlamış, saf olmuş.</p>
+<p class="paragraph"><strong>Saf-beste-i hareket:</strong> Harekete geçmek üzere saf bağlayıp hazır olan.</p>
+<p class="paragraph"><strong>Sahî:</strong> Cömert.</p>
+<p class="paragraph"><strong>Sakf-ı merfu':</strong> Yükseltilmiş dam, tavan.</p>
+<p class="paragraph"><strong>Sâyebân:</strong> Himâye eden, koruyan, gölgelik.</p>
+<p class="paragraph"><strong>Saykal vurmak:</strong> Cilâ vurmak, parlatmak.</p>
+<p class="paragraph"><strong>Sebe':</strong> Yemen'de eski tarihlerden beri bilinen bir medeniyet merkezidir. Ayrıca, bir Arab kavminin de adıdır.</p>
+<p class="paragraph"><strong>Secde-ber-zemin-i hayret ve muhabbet:</strong> Hayret ve muhabbetle yere secde etmek.</p>
+<p class="paragraph"><strong>Sehâb :</strong> Bulut.</p>
+<p class="paragraph"><strong>Sehhâr:</strong> Büyüleyici, sihirbâz.</p>
+<p class="paragraph">Büyü gibi bir kuvvetle çeken.</p>
+<p class="paragraph"><strong>Sekkâb:</strong> Delici, delen.</p>
+<p class="paragraph"><strong>Sekkâkî:</strong>(M. 1160-1228) Otuz yaşından sonra ilim öğrenmeye başladı. Beyânda, sözü hüccet bir âlimdir. "Miftâhü'l-ulûm"u çok meşhûr eseridir.</p>
+<p class="paragraph"><strong>Senâhan:</strong> Alkışlayan, öven.</p>
+<p class="paragraph"><strong>Ser-efrâz:</strong> Başı dik, alnı açık. Haklı ve gâlib.</p>
+<p class="paragraph"><strong>Serîr-i tedrîs:</strong> Ders verme makamı.</p>
+<p class="paragraph"><strong>Ser-meşk:</strong> Örnek, nümûne.</p>
+<p class="paragraph"><strong>Seyyid Şerîf Cürcânî:</strong>(M. 1339-1413) Meşhûr ve büyük bir İlm-i Kelâm âlimi ve filozoftur.</p>
+<p class="paragraph"><strong>Sımah:</strong> Kulak.</p>
+<p class="paragraph"><strong>Sihr-i Beyânî:</strong> Beyân'ın büyü gibi olan te'siri. (Hadîs-i Şerîfe telmih var)</p>
+<p class="paragraph"><strong>Sinematoğraf:</strong> Sinema.</p>
+<p class="paragraph"><strong>Siyâk ve sibaka mülâyemet:</strong> Sözün, evveline güzel bir netice, sonrasına iyi bir başlangıç olması.</p>
+<p class="paragraph"><strong>Sofestâi:</strong> Müsbet veya menfî hiç bir hükme varmayan, dâima şübhe içinde kalmayı esâs alan felsefî bir doktrinin (Septisizm) mensûbu, septik. Âlemde hakikat nâmına hiçbir şey tanımayan ve hakikati araştırmaktan sarf-ı nazar ederek zevk ü safâ, şiir ve edebiyâtla eğlenen safsatacılar.</p>
+<p class="paragraph"><strong>Suğrâ:</strong>(Man.) Birinci kaziye. (Küçük önerme) Hadd-i asğarın bulunduğu cümle. Hükmün mevzûu (Bkz. Hadd-i Asğar)</p>
+<div class="page-marker-wrap"><span class="page-marker">181</span></div>
+<p class="paragraph"><strong>Sûret-perestlik:</strong> Bir şeyin dış görünüşüne ve tertibine önem verip, rûhuna ve mânâsına kıymet vermemek.</p>
+<p class="paragraph"><strong>Süha Yıldızı:</strong> Büyük ayı yıldız kümesinden gözü kuvvetli olanların görebileceği en küçük yıldız.</p>
+<p class="paragraph">< — Ş —</p>
+<p class="paragraph"><strong>Şakk:</strong> Yarmak, ikiye bölmek.</p>
+<p class="paragraph"><strong>Şâkul:</strong> Çekül.</p>
+<p class="paragraph"><strong>Şâpe:</strong> Çığ. Yuvarlandıkça büyüyen kar yığını.</p>
+<p class="paragraph"><strong>Şarab:</strong> İçilen şey, su. Haram olan içki.</p>
+<p class="paragraph"><strong>Şatahat:</strong> İstiğrak hâlindeki muvâzenesiz sözler.</p>
+<p class="paragraph"><strong>Şedîdü'ş-Şekîme:</strong> Başkasına kolay kolay boyun eğmeyen. Çok izzet-i nefis sâhibi.</p>
+<p class="paragraph"><strong>Şitâb:</strong> Koşmak.</p>
+<p class="paragraph"><strong>Şu'le-i Cevvâl:</strong> Dâim hareket ederek etrafına ışık saçan parıltı.</p>
+<p class="paragraph"><strong>Şûre:</strong> Çorak, bitkisiz, işe yaramayan, kıymetsiz.</p>
+<p class="paragraph"><strong>Şûristan:</strong> Çorak arâzi.</p>
+<p class="paragraph"><strong>Şükûf-misâl:</strong> Gonca gibi, tomurcuk gibi.</p>
+<p class="paragraph">< — T —</p>
+<p class="paragraph"><strong>Taallül:</strong> Bahâne aramak. Yeni bir delil ihdâs edip ona temessük etmek.</p>
+<p class="paragraph"><strong>Tabiat:</strong> Herşeyin fıtrî hâli, vaziyeti ve karakteri.</p>
+<p class="paragraph"><strong>Tabiat-ı Belâğat:</strong> Belâğat ilminin kendine mahsûs şekil ve karakteri.</p>
+<p class="paragraph"><strong>Tabiatı taklid:</strong> Tabiatta cârî olan kanunları Kelâm'da da kendine göre tatbik etme.</p>
+<p class="paragraph"><strong>Tadlîl-i gayr:</strong> Başkalarını dalâlete nisbet etmek. Sapıklığına hükmetmek.</p>
+<p class="paragraph"><strong>Tafralık:</strong> Uzaklık. Yukarıya sıçrama, atlama.</p>
+<p class="paragraph"><strong>Tağlît:</strong> Yanıltma, karıştırma, bulandırma.</p>
+<p class="paragraph"><strong>Tahaddî:</strong> Âleme meydân okuma, cihanı münâzaraya dâvet etme.</p>
+<p class="paragraph"><strong>Tahammül-sûz:</strong> Tahammülü yıkan, sabırsızlık veren.</p>
+<p class="paragraph"><strong>Taht-nişîn:</strong> Tahta oturan.</p>
+<p class="paragraph"><strong>Takallüd etmek:</strong> Üzerine almak, derûhde etmek. Kuşanmak.</p>
+<p class="paragraph"><strong>Taksimü'l-a'mâl:</strong> İş bölümü.</p>
+<p class="paragraph"><strong>Talia:</strong> Öncü, rehber, kılavuz; kafilenin önünde giden.</p>
+<p class="paragraph"><strong>Tamam-ı ıttırâd-ı ahvâl:</strong> Bir kimsede mevcûd huy ve hasletlerin sekteye uğramadan biteviye devam etmesi, her zaman aynı durumu arzetmesi.</p>
+<p class="paragraph"><strong>Tams etmek:</strong> Belirsiz kılmak, yok etmek, kör etmek.</p>
+<p class="paragraph"><strong>Ta'nif:</strong> Şiddetli azarlamak, şiddetle muâmele etmek.</p>
+<p class="paragraph"><strong>Tanîn:</strong> Arının vız! vız! diye ses çıkarması.</p>
+<p class="paragraph"><strong>Tanîn-endâz:</strong> Çınlayan, tınlayan. Velveleli ses çıkaran.</p>
+<p class="paragraph"><strong>Tansîs:</strong> En zâhir mânâyı, en kat'î ifâde ile delile dayandırarak ifâde etmek.</p>
+<p class="paragraph"><strong>Tarf:</strong> Göz, bakış, nazar.</p>
+<p class="paragraph"><strong>Tasfiye:</strong> Sâflaştırma, temizleme. Nefsi kötü hissiyatlardan temizleme.</p>
+<p class="paragraph"><strong>Taskîl:</strong> Cilâlamak.</p>
+<p class="paragraph"><strong>Tavk-ı Beşer:</strong> Beşer tâkatinin, güç ve kudretinin son haddi.</p>
+<p class="paragraph"><strong>Tavsif-i bilfezâil:</strong> Faziletlerini zikrederek tavsif etmek.</p>
+<p class="paragraph"><strong>Teâkubî:</strong> Birbirini takib etme.</p>
+<p class="paragraph"><strong>Tecemmül:</strong> Zînetlenmek, süslenmek.</p>
+<p class="paragraph"><strong>Tederrüc:</strong> Derece derece, adım adım ilerleme.</p>
+<p class="paragraph"><strong>Tedlis:</strong> Sattığı şeyin ayıbını müşteriden gizlemek. Aldatmak.</p>
+<p class="paragraph"><strong>Tedvîn:</strong> Aynı mevzûa ait bahisleri bir araya toplayarak tasnif edip kitab hâline getirmek.</p>
+<p class="paragraph"><strong>Teennuk:</strong> İttikan. Eşyanın hikmetli, kusursuz ve pürüzsüz yapılışı.</p>
+<p class="paragraph"><strong>Tefârîku'l-asâ:</strong> Bir darb-ı meseldir. Bu darb-ı mesel hakkında meşhûr Kamus Tercümesi'nde hülâsaten şu ma'lûmât var: Arab'dan fakir bir kadının zaîf ve gayet huysuz bir oğlu varmış. Yaptığı müteaddid kavgalarda meselâ bir defasında burnunu, bir defasında kulağını, bir defasında dudaklarını kesmişler.</p>
+<div class="page-marker-wrap"><span class="page-marker">182</span></div>
+<p class="paragraph">Herbir defasında da annesi çocuğunun kesilen a'zâlarına bedelen diyet alarak zenginleşti. Bu sebeble oğluna: "Sen tefârîku'l-asâdan daha faydalısın." Zîra o asâ ki, bir cins ağaç olup, parçalandıkça herbir parçasından yine faydalı şeyler yapılırdı. Onun gibi oğlunun da vücûd parçaları daha faydalı oldu. Yani, bir (şey) olmakla beraber, muhtelif fayda cihetleri bulunan şeyler için mecâzen bu tâbir kullanılır.</p>
+<p class="paragraph"><strong>Tefâsir:</strong>(Tefsir'in C.) Tefsirler.</p>
+<p class="paragraph"><strong>Tefrî:</strong> Şûbelendirmek, kısım kısım ayırmak.</p>
+<p class="paragraph"><strong>Teğalğül:</strong> Zorluk, çetinlik, güçlük.</p>
+<p class="paragraph"><strong>Tehvil:</strong> Tahvif, korkutma.</p>
+<p class="paragraph"><strong>Tehvin:</strong> Hafifleştirme.</p>
+<p class="paragraph"><strong>Tekemmül-ü mebâdî:</strong> Bir şeyi netice veren ilk unsur ve sebeblerin ibtidâîlikten mükemmelliğe doğru gitmesi.</p>
+<p class="paragraph"><strong>Tekàtu':</strong> Kesişme.</p>
+<p class="paragraph"><strong>Telâfif:</strong> Birbirine girmiş ve sarmaşmış vaziyette olma. Lif lif olma.</p>
+<p class="paragraph"><strong>Telâhuk-u efkâr:</strong> Fikirlerin birbiri arkasından gelip birbirine katılması, birbirine yardımcı olması.</p>
+<p class="paragraph"><strong>Telbis:</strong> Sûret-i haktan görünerek hile yapmak, ayb ve kusurunu örtüp kusursuz göstermek.</p>
+<p class="paragraph"><strong>Telehhüf:</strong> Mahzûn ve mükedder olmak.</p>
+<p class="paragraph"><strong>Tele'lü':</strong> Parlamak.</p>
+<p class="paragraph"><strong>Telemmu':</strong> Parıldamak.</p>
+<p class="paragraph"><strong>Telemmüz:</strong> Talebelik etmek.</p>
+<p class="paragraph"><strong>Telvih:</strong> Açıklamak. Zâhir ve âşikâre kılmak. Edb: Lüzumlu şeylerden bahsetmek sûretiyle olan kinâye.</p>
+<p class="paragraph"><strong>Telmih:</strong> İbarede bahsi geçmeyen bir kıssaya, fıkraya, atasözüne veya meşhûr bir şiire işâret etmek sûretiyle temâs etmek.</p>
+<p class="paragraph"><strong>Temhîd:</strong> Mukaddime yapma. Hazırlama.</p>
+<p class="paragraph"><strong>Temahhuz-u tecârüb:</strong> Çeşitli tecrübelerle bir şeyin sâfîleşip kemâle gelmesi.</p>
+<p class="paragraph"><strong>Tenâtüc:</strong> Neticelenme. Birbirini netice vermek.</p>
+<p class="paragraph"><strong>Tenezzüh:</strong> Uzak, beri olmak.</p>
+<p class="paragraph"><strong>Te'nîs:</strong> Alıştırma.</p>
+<p class="paragraph"><strong>Te'nîs-i ezhân:</strong> Zihinlerin ürkekliğini giderme, alıştırma. Anlayışı kolaylaştırma.</p>
+<p class="paragraph"><strong>Tenkîhü'l-menât:</strong> Menatın, yani illetin ayıklanması. Usûl-ü Fıkıh'ın kıyâs bahsine ait bir ıstılahtır. Kıyâsın dört rüknünden biri olan illetin, diğer benzeri hususiyetlerden ayıklanmasıdır. Şöyle ki: Şâri' (Allah C.C.) bir hükmü bir sebebe bina eder. Fakat o illetle beraber hükme te'siri olmayan birçok özellikler de bulunur. Bu yabancı özellikleri ayıklamak ve esâs sebebi meydâna çıkarmak gerektir. İşte bu, bir tenkîhü'l-menât çalışmasıdır.</p>
+<p class="paragraph"><strong>Tenmiye:</strong> Büyütmek, artırmak, nemâlandırmak ve geliştirmek.</p>
+<p class="paragraph"><strong>Tenzîl:</strong> Kur'ân'ın bir diğer ismi.</p>
+<p class="paragraph"><strong>Terâdüf:</strong> İki veya daha fazla kelimenin aynı veya yakın mânâda olması.</p>
+<p class="paragraph"><strong>Terbiye-gerde:</strong> Terbiye edilmiş, yetiştirilmiş.</p>
+<p class="paragraph"><strong>Tereffu':</strong> Yükseğe çıkmak, yükselmek.</p>
+<p class="paragraph"><strong>Teressüb:</strong> Süzülmek, dibe çökmek.</p>
+<p class="paragraph"><strong>Teşbih-perestlik:</strong> Kelâmda lüzumundan fazla teşbihe yer vermek.</p>
+<p class="paragraph"><strong>Teşkîkât:</strong> Şübhede bırakmalar.</p>
+<p class="paragraph"><strong>Teşrîhât:</strong> Açıklamak, tafsilât vermek, inceden inceye araştırmak.</p>
+<p class="paragraph"><strong>Teşrîhât-ı hikemiye:</strong> Hikmet ve felsefe nazarıyla yapılan araştırma, açıklama,</p>
+<p class="paragraph"><strong>Tevâbi':</strong> Tâbi ve bağlı olanlar.</p>
+<p class="paragraph"><strong>Tevağğul:</strong> Çok meşgul olmak, uğraşmak, kendini bir şeye tamamen vermek.</p>
+<p class="paragraph"><strong>Tevazzu':</strong> Madde gibi yer işgal etmek ve cisimleşmek.</p>
+<p class="paragraph"><strong>Tevsît:</strong> Birini araya koymak, vâsıta etmek.</p>
+<p class="paragraph"><strong>Tezâhum:</strong> Sıkışmak, kalabalık etmek.</p>
+<div class="page-marker-wrap"><span class="page-marker">183</span></div>
+<p class="paragraph"><strong>Teznîb:</strong> Ek, ilâve, zeyl.</p>
+<p class="paragraph"><strong>Tezyînât-ı lafziye:</strong>(Muhassinât-ı lafziye de denir. İlm-i Bedî'in iki bölümünden ikinci bölümüdür) Kelâmın lafzında olan ve göze hitâb eden edebî san'atlar. Cinâs, seci' gibi.</p>
+<p class="paragraph">< — U —</p>
+<p class="paragraph"><strong>Ukad-ı Hayatiye:</strong> Can alıcı noktalar, hayat düğümleri. Bir şeyi meydâna getiren aslî rükünler.</p>
+<p class="paragraph"><strong>Ulûhiyet-i Sâriye ve Hayat-ı Sâriye:</strong> Vahdetü'l-vücûd ehlince kullanılan tasavvufî tâbirler olup; İlâhi sıfatların ve hayatiyetin eşyaya sirâyet etmesi, yani tecellî etmesi mânâsında olan bu tâbirlerden, ehil olmayanlar:</p>
+<p class="paragraph">Allah'ın tecessümünü veya eşyaya hulûlünü veya eşya ile ittihâd ve ittisalini zu'metmek gibi bâtıl vehimlere düştüler. Bu mes'eleye dair Mesnevî-i Nuriye'den nakledeceğimiz vecîz bir paragraftan bu tâbirler daha iyi anlaşılabilir:</p>
+<p class="paragraph">"Evet, delil içinde neticeyi görmek, âlemde Sâni'i müşâhede etmek, tarîk-ı istiğrakkârâne cihetiyle cedâvil-i ekvânda, cereyan-ı Tecelliyât-ı İlâhiye'yi; ve melekûtiyet-i eşyada, sereyân-ı füyûzâtı; ve merâyâ-yı mevcûdâtta, tecellî-i esmâ ve sıfâtı – yalnız zevken anlaşılır birer hakikat iken – dıyk-ı elfâz sebebiyle, Ulûhiyet-i Sâriye ve hayat-ı sâriye tâbir ettiler. Ehl-i fikir, o hakàik-ı zevkiyeyi nazarın mekàyisine sıkıştırdığından, çok evhâm-ı bâtılaya menşe' oldu."</p>
+<p class="paragraph"><strong>Ulûm-u Müteârife:</strong> Herkes tarafından bilinen, gizli, kapalı bir tarafı kalmayan bilgiler. (Dünyanın yuvarlaklığı gibi)</p>
+<p class="paragraph"><strong>Ulûm-u Nazariye:</strong> Yalnız görüş hâlinde kalmış, tatbikata konulmamış ilimler, teoriler.</p>
+<p class="paragraph"><strong>Umûr-u Mermûze-i Gayr-ı Mesmûa:</strong> Duyulmayıp sadece işâretle bilinen hususlar.</p>
+<p class="paragraph"><strong>Umûr-u Mütenâsibe:</strong> Aralarında uygunluk ve münâsebet bulunan şeyler.</p>
+<p class="paragraph"><strong>Umûr-u Mütezâdde:</strong> Aralarında uygunluk olmayan, birbirine zıt şeyler.</p>
+<p class="paragraph"><strong>Urûc:</strong> Yükselme.</p>
+<p class="paragraph"><strong>Urûk:</strong> Kök ve damarlar.</p>
+<p class="paragraph">< — Ü —</p>
+<p class="paragraph"><strong>Üslûb-u àlî:</strong> Üstün ifâde tarzı. Bu üslûbda, şiddet, kuvvet ve heybet vardır. Bu üslûb, İlâhiyât ve usûl bahis ve tasvirinde kullanılır.</p>
+<p class="paragraph"><strong>Üslûb-u Hakîm:</strong> Edebî san'atlardan biridir. Sorulan bir suâle, soranın hâlini nazara alarak başka bir suâl gibi telâkki edip, ona göre cevab vermek demektir. Meselâ: Bazı Ashâb, Resûlullâh'a (A.S.M.) hilâlin ince başlayıp, kalınlaşarak bedr şekline gelip, sonra yine başladığı şekle dönmesinin sebebini sordular. Bunun cevabı onlara lâzım olmadığı için, Kur'ân-ı Kerîm o vaziyetin neticesine terettüb eden hikmeti, yani ayın takvimcilik yaptığını söylemiştir. Çünkü bu, soranlar için daha mühim ve anlaşılması daha kolaydır.</p>
+<p class="paragraph"><strong>Üslûb-u Mücerred:</strong>(Sâde üslûb) Bu üslûbda tabîilik, akıcılık, selâmet, kısalık, mânâ ve maksada kifâyet sıfatları vardır. Bu üslûb, âlet ilimlerinde, ders kitaplarında, konuşmalarda ve beşerî muâmelelerde kullanılır.</p>
+<p class="paragraph"><strong>Üslûb-u Müzeyyen:</strong> Zînetli ve parlak üslûb. Bu üslûb terğîb ve terhîb (teşvik etme ve sakındırma) gibi hususları tazammun eder. Hitâbiyât ve iknâiyâtta kullanılır.</p>
+<p class="paragraph"><strong>Üslûb-perestlik:</strong> Kelâmın mânâ ve maksada uygunluğuna değil de ifâde tarzının güzelliğine önem vermek.</p>
+<div class="page-marker-wrap"><span class="page-marker">184</span></div>
+<p class="paragraph">< — V —</p>
+<p class="paragraph"><strong>Vahîd:</strong> Yalnız, tek başına.</p>
+<p class="paragraph"><strong>Vahşet-âbâd:</strong> Issız, korku ve ürkeklik veren yer.</p>
+<p class="paragraph"><strong>Ve'd-i benât:</strong> İslâmiyet'ten evvel Arabların kız çocuklarını diri diri toprağa gömme adedi.</p>
+<p class="paragraph"><strong>Vehb:</strong>(<strong>H.</strong>...-110) Tâbiînden olan bu şahıs, İsrailî rivâyetlerin en mühim kaynağı addolunur. Birçok İsrailiyâtı hâvî kitapları okumuş ve tefsire de aktarmıştır.</p>
+<p class="paragraph"><strong>Vehm-i seyyi':</strong> Kötü kuruntu.</p>
+<p class="paragraph"><strong>Ve illâ:</strong> Yoksa, aksi takdirde.</p>
+<p class="paragraph"><strong>Veleh-resân-ı Ukùl:</strong> Akılları hayrette bırakan.</p>
+<p class="paragraph"><strong>Verâ:</strong> Arka.</p>
+<p class="paragraph"><— Y —</p>
+<p class="paragraph"><strong>Ya eyyühe'l-hôto:</strong> Ey vahşî, kaba dağ adamı.</p>
+<p class="paragraph"><strong>Yâbis:</strong> Kuru.</p>
+<p class="paragraph"><strong>Ratb ve Yâbis:</strong> Mc. Her ne ki. Herşey.</p>
+<p class="paragraph"><strong>Yâfes:</strong> Hz. Nuh'un (A.S.) üçüncü oğlu. Tûfândan sonra Hazar Denizi'nin kuzeyinde yerleşmiştir.</p>
+<p class="paragraph"><strong>Yed-i beyzâ:</strong> Beyaz el, Hz. Mûsa'nın (A.S.) elini cebine sokup çıkardığı zaman elinin nur gibi parlayıp ışık vermesi mu'cizesi.</p>
+<p class="paragraph"><strong>Yemîn:</strong> Sağ el.</p>
+<p class="paragraph"><strong>Yenâbî-i Ulûm:</strong> İlim kaynakları, çeşmeleri.</p>
+<p class="paragraph"><strong>Yesâr:</strong> Sol el.</p>
+<p class="paragraph">< — Z —</p>
+<p class="paragraph"><strong>Zeheb-i zâib:</strong> Erimiş altın.</p>
+<p class="paragraph"><strong>Zemin-i şûre:</strong> Çorak yer.</p>
+<p class="paragraph"><strong>Zenâv:</strong> Suların biriktiği yer. Havuz.</p>
+<p class="paragraph"><strong>Zeneb:</strong> Kuyruk.</p>
+<p class="paragraph"><strong>Zengâr:</strong> Pas.</p>
+<p class="paragraph"><strong>Zıll-i Zalîl:</strong> Koyu gölge.</p>
+<p class="paragraph"><strong>Ziyy:</strong>(Zeyy) Dış görünüş. Libâs.</p>
+<p class="paragraph">Hey'et. Kılık, kıyafet.</p>
+<p class="paragraph"><strong>Zülâl:</strong> Sâf, berrak, tatlı.</p>
+</body>
+</html>

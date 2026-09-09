@@ -1,0 +1,344 @@
+LEM'ALAR|1
+	Birinci Lem'a|5
+	İkinci Lem'a|8
+		BİRİNCİ NÜKTE|8
+		İKİNCİ NÜKTE|9
+		ÜÇÜNCÜ NÜKTE|10
+		DÖRDÜNCÜ NÜKTE|11
+		BEŞİNCİ NÜKTE|12
+		Hâtime|14
+	Üçüncü Lem'a|15
+		BİRİNCİ NÜKTE|15
+		İKİNCİ NÜKTE|16
+		ÜÇÜNCÜ NÜKTE|17
+	Dördüncü Lem'a|20
+		Birinci Makam |20
+			BİRİNCİ NÜKTE|20
+			İKİNCİ NÜKTE  |21
+			ÜÇÜNCÜ NÜKTE|22
+			DÖRDÜNCÜ NÜKTE|23
+		İkinci Makam|27
+	Beşinci Lem'a|28
+	Altıncı Lem'a|28
+	Yedinci Lem'a|29
+		BİRİNCİSİ|30
+		İKİNCİSİ|30
+		ÜÇÜNCÜSÜ|30
+		DÖRDÜNCÜSÜ|31
+		BEŞİNCİSİ|31
+		ALTINCISI|32
+		YEDİNCİSİ|32
+			Birincisi|32
+			İkinci Vecih|33
+		Bir Tetimme|35
+			BİRİNCİ NÜKTE|35
+			İKİNCİ NÜKTE|35
+		Bu Tetimmeye İkinci Bir İzâh|37
+		Hâtime|39
+	Sekizinci Lem'a|40
+	Dokuzuncu Lem'a |40
+	Onuncu Lem'a|41
+		BİRİNCİSİ |42
+		İKİNCİSİ|42
+		ÜÇÜNCÜSÜ|43
+		DÖRDÜNCÜSÜ|43
+		BEŞİNCİSİ|44
+		ALTINCISI|44
+		YEDİNCİSİ|44
+		SEKİZİNCİSİ|45
+		DOKUZUNCUSU|46
+		ONUNCUSU|46
+		ONBİRİNCİSİ|46
+		ONİKİNCİSİ|46
+		ONÜÇÜNCÜSÜ|47
+		ONDÖRDÜNCÜSÜ|47
+	Onbirinci Lem'a|50
+		BİRİNCİ NÜKTE|50
+		İKİNCİ NÜKTE|51
+		ÜÇÜNCÜ NÜKTE|51
+		DÖRDÜNCÜ NÜKTE|52
+		BEŞİNCİ NÜKTE|53
+		ALTINCI NÜKTE|54
+		YEDİNCİ NÜKTE|55
+		SEKİZİNCİ NÜKTE|56
+		DOKUZUNCU NÜKTE|57
+		ONUNCU NÜKTE|58
+			Birinci Nokta|58
+			İkinci Nokta|59
+			Üçüncü Nokta|60
+		ONBİRİNCİ NÜKTE|60
+			Birinci Mes'ele|60
+			İkinci Mes'ele|61
+			Üçüncü Mes'ele|61
+	Onikinci Lem'a|63
+		BİRİNCİ NÜKTE|63
+			Birinci Nokta|63
+			İkinci Nokta|65
+		İKİNCİ SUÂL MÜNÂSEBETİYLE İKİ MES'ELE-İ MÜHİMME|65
+			Birinci Mes'ele-i Mühimme|65
+			İkinci Mes'ele-i Mühimmedir|67
+	Onüçüncü Lem'a|71
+		BİRİNCİ İŞÂRET|71
+		İKİNCİ İŞÂRET|72
+		ÜÇÜNCÜ İŞÂRET|73
+		DÖRDÜNCÜ İŞÂRET|74
+		BEŞİNCİ İŞÂRET|74
+		ALTINCI İŞÂRET|75
+		YEDİNCİ İŞÂRET|77
+		SEKİZİNCİ İŞÂRET|79
+		DOKUZUNCU İŞÂRET|81
+		ONUNCU İŞÂRET|83
+		ONBİRİNCİ İŞÂRET|84
+		ONİKİNCİ İŞÂRET |85
+			Birinci Suâl|85
+			İkinci Suâl|85
+			Üçüncü Suâl|86
+			Dördüncü Suâl|86
+		ONÜÇÜNCÜ İŞÂRET|88
+			Birinci Nokta|88
+			İkinci Nokta|89
+			Üçüncü Nokta|89
+	Ondördüncü Lem'a|91
+		BİRİNCİ ESÂS|92
+		İKİNCİ ESÂS|92
+		ÜÇÜNCÜ ESÂS|92
+			Birincisi|93
+			İkinci Vecih|93
+			Üçüncü Vecih|94
+		İKİNCİ SUÂL |95
+		İkinci Makam|96
+			İHTAR|96
+			BİRİNCİ SIR|96
+			İKİNCİ SIR|97
+			ÜÇÜNCÜ SIR|97
+			DÖRDÜNCÜ SIR|100
+			BEŞİNCİ SIR|101
+			ALTINCI SIR|102
+	Onbeşinci Lem'a|103
+	Onaltıncı Lem'a|104
+		BİRİNCİSİ|104
+		İKİNCİ MERAKLI SUÂL|105
+		ÜÇÜNCÜ MERAKLI SUÂL|105
+		DÖRDÜNCÜ MERAKLI SUÂL|106
+		Hâtime |107
+			BİRİNCİSİ|108
+			İKİNCİSİ|108
+			ÜÇÜNCÜSÜ|108
+		İKİNCİ SUÂLİNİZ|110
+		ÜÇÜNCÜ SUÂLİNİZ|111
+		KALDI İKİNCİ MES'ELE|113
+	Onyedinci Lem'a|115
+		Mukaddime|115
+		BİRİNCİ NOTA|115
+		İKİNCİ NOTA|116
+		ÜÇÜNCÜ NOTA|116
+		DÖRDÜNCÜ NOTA|117
+		BEŞİNCİ NOTA|117
+		ALTINCI NOTA|123
+		YEDİNCİ NOTA|124
+		SEKİZİNCİ NOTA|125
+		DOKUZUNCU NOTA|129
+		ONUNCU NOTA|130
+		ONBİRİNCİ NOTA|131
+		ONİKİNCİ NOTA|131
+		ONÜÇÜNCÜ NOTA|133
+			Birincisi|133
+			İkinci Mes'ele|134
+			Üçüncü Mes'ele|135
+			Dördüncü Mes'ele|136
+			Beşinci Mes'ele|137
+		ONDÖRDÜNCÜ NOTA|138
+			Birinci Remiz|138
+			İkinci Remiz|139
+			Üçüncü Remiz|139
+			Dördüncü Remiz|139
+		ONBEŞİNCİ NOTA|140
+			Birinci Mes'ele|140
+	Onsekizinci Lem'a|141
+	Ondokuzuncu Lem'a|142
+		İktisad Risalesi|142
+		BİRİNCİ NÜKTE|142
+		İKİNCİ NÜKTE|142
+		ÜÇÜNCÜ NÜKTE|143
+		DÖRDÜNCÜ NÜKTE|144
+		BEŞİNCİ NÜKTE|146
+		ALTINCI NÜKTE|147
+		YEDİNCİ NÜKTE|148
+			Birincisi|148
+			Hırsın İkinci Neticesi|148
+			Üçüncü Netice|149
+	Yirminci Lem'a|152
+		İhlâs Hakkında|152
+		BİRİNCİ NOKTA|153
+			Birincisi|153
+			İkinci Sebeb|154
+			Üçüncü Sebeb|155
+			Dördüncü Sebeb|157
+			Beşinci Sebeb|158
+			Altıncı Sebeb|159
+			Yedinci Sebeb|160
+	Yirmibirinci Lem'a|164
+		İhlâs Hakkında|164
+		BİRİNCİ DÜSTURUNUZ|165
+		İKİNCİ DÜSTURUNUZ|165
+		ÜÇÜNCÜ DÜSTURUNUZ|167
+		DÖRDÜNCÜ DÜSTURUNUZ|168
+		Bir Kısım Kardeşlerime Hususî Bir Mektûbdur|173
+			BİRİNCİSİ|173
+			İKİNCİSİ|173
+	Yirmiikinci Lem'a|174
+		BİRİNCİ İŞÂRET|174
+		İKİNCİ İŞÂRET|176
+		ÜÇÜNCÜ İŞÂRET|178
+		CÂY-İ HAYRET BİR TARZ-I MUÂMELE|180
+		Hâtime|180
+	Yirmiüçüncü Lem'a|182
+		İhtar|182
+		Mukaddime|183
+		AMMA BİRİNCİ YOL|184
+		AMMA İKİNCİ MES'ELE|186
+		ÜÇÜNCÜ KELİME|188
+		Hâtime|197
+			BİRİNCİ SUÂL|197
+			İKİNCİ SUÂL|198
+			ÜÇÜNCÜ SUÂL|200
+	Yirmidördüncü Lem'a|203
+		Tesettür hakkındadır|203
+		BİRİNCİ HİKMET|204
+		İKİNCİ HİKMET|205
+		ÜÇÜNCÜ HİKMET|205
+		DÖRDÜNCÜ HİKMET|206
+		EHL-İ ÎMÂN ÂHİRET HEMŞİRELERİM OLAN KADINLAR TÂİFESİ İLE BİR MUHÂVEREDİR|208
+				BİRİNCİ NÜKTE|208
+				İKİNCİ NÜKTE|210
+				ÜÇÜNCÜ NÜKTE|212
+	Yirmibeşinci Lem'a|214
+		İhtar ve İ'TİZAR|214
+		BİRİNCİ DEVÂ|215
+		İKİNCİ DEVÂ|215
+		ÜÇÜNCÜ DEVÂ|215
+		DÖRDÜNCÜ DEVÂ|216
+		BEŞİNCİ DEVÂ|216
+		ALTINCI DEVÂ|217
+		ALTINCI DEVÂ|218
+		YEDİNCİ DEVÂ|218
+		SEKİZİNCİ DEVÂ|219
+		DOKUZUNCU DEVÂ|219
+		ONUNCU DEVÂ|220
+		ONBİRİNCİ DEVÂ|221
+		ONİKİNCİ DEVÂ|221
+		ONÜÇÜNCÜ DEVÂ|222
+		ONDÖRDÜNCÜ DEVÂ|222
+		ONBEŞİNCİ DEVÂ|223
+		ONALTINCI DEVÂ|224
+		ONYEDİNCİ DEVÂ|224
+		ONSEKİZİNCİ DEVÂ|225
+		ONDOKUZUNCU DEVÂ|226
+		YİRMİNCİ DEVÂ|228
+		YİRMİBİRİNCİ DEVÂ|228
+		YİRMİİKİNCİ DEVÂ|229
+		YİRMİÜÇÜNCÜ DEVÂ|230
+		YİRMİDÖRDÜNCÜ DEVÂ|230
+		YİRMİBEŞİNCİ DEVÂ|231
+		Yirmibeşinci Lem'anın Zeyli|232
+	Yirmialtıncı Lem'a |233
+		İHTAR|233
+		BİRİNCİ RİCÂ|234
+		İKİNCİ RİCÂ|234
+		ÜÇÜNCÜ RİCÂ|234
+		DÖRDÜNCÜ RİCÂ|235
+		BEŞİNCİ RİCÂ|236
+		ALTINCI RİCÂ|238
+		YEDİNCİ RİCÂ|239
+		SEKİZİNCİ RİCÂ|242
+		DOKUZUNCU RİCÂ|245
+		ONUNCU RİCÂ|248
+		ONBİRİNCİ RİCÂ|250
+		ONİKİNCİ RİCÂ|254
+		ONÜÇÜNCÜ RİCÂ|258
+		ONDÖRDÜNCÜ RİCÂ|264
+			BİRİNCİ MERTEBE-İ NURİYE-İ HASBİYE|265
+			İKİNCİ MERTEBE-İ NURİYE-İ HASBİYE|265
+			ÜÇÜNCÜ MERTEBE-İ NURİYE-İ HASBİYE|266
+			DÖRDÜNCÜ MERTEBE-İ NURİYE-İ HASBİYE|267
+			BEŞİNCİ MERTEBE-İ NURİYE-İ HASBİYE|267
+			ALTINCI MERTEBE-İ NURİYE-İ HASBİYE|268
+		ONBEŞİNCİ RİCÂ|269
+			BİRİNCİSİ|272
+			İKİNCİ HAKİKAT|273
+		ONALTINCI RİCÂ|274
+			BİRİNCİ HİKMET VE FÂİDE|278
+			İKİNCİ HİKMET VE FÂİDE|278
+			ÜÇÜNCÜ HİKMET VE FÂİDE|278
+		Yirmialtıncı Lem'anın Zeyli|279
+	Yirmiyedinci Lem'a|279
+	Yirmisekizinci Lem'a|280
+		İkinci Nükte|280
+			BİRİNCİSİ|280
+			İKİNCİ VECİH|281
+			ÜÇÜNCÜ VECİH|281
+				BİRİNCİSİ|282
+				İKİNCİSİ|282
+				ÜÇÜNCÜSÜ|282
+		BU DA GÜZELDİR|283
+			BİRİNCİSİ|284
+			İKİNCİSİ|284
+			ÜÇÜNCÜSÜ|285
+		BİR SUÂLE CEVAB|285
+		MÂNİDÂR BİR TEVÂFUK-U LATÎFE|288
+		ZEKÂİ'NİN RüyaSI|290
+		TARAFGİRÂNE VE RİSALE-İ NUR’A RAKÌBÂNE SÖYLENEN SÖZLERE MukâbilDİR|291
+		Yirmisekizinci Lem'anın Yirmisekizinci Nüktesi|292
+	Yirmidokuzuncu Lem'a|296
+		İfâde-i Merâm|296
+	Otuzuncu Lem'a|317
+		Birinci Nükte|317
+		Otuzuncu Lem'anın İkinci Nüktesi|321
+		Üçüncü Nükte|324
+			ÜÇÜNCÜ NÜKTENİN BİRİNCİ NOKTASI|324
+			ÜÇÜNCÜ NÜKTENİN İKİNCİ NOKTASI|325
+			ÜÇÜNCÜ NOKTA|326
+			DÖRDÜNCÜ NOKTA|328
+			BEŞİNCİ NOKTA|329
+		Otuzuncu Lem'anın Dördüncü Nüktesi|331
+			BİRİNCİ İŞÂRET|331
+				Birinci Sikke|331
+				İkinci Sikke|331
+				Üçüncü Sikke|332
+			İKİNCİ İŞÂRET|332
+			ÜÇÜNCÜ İŞÂRET|333
+			DÖRDÜNCÜ İŞÂRET|333
+				Birincisi|334
+				İkinci Nokta|335
+				Üçüncü Nokta|336
+			BEŞİNCİ İŞÂRET|338
+			ALTINCI İŞÂRET|339
+			YEDİNCİ İŞÂRET|340
+				Birincisi|340
+				İkincisi|341
+				Üçüncüsü|341
+		Otuzuncu Lem'anın Beşinci Nüktesi|342
+			BİRİNCİ REMİZ|342
+			İKİNCİ REMİZ|344
+			ÜÇÜNCÜ REMİZ|345
+			DÖRDÜNCÜ REMİZ|346
+			BEŞİNCİ REMİZ|351
+			Hâtime|353
+		Otuzuncu Lem'anın Altıncı Nüktesi|354
+			İ'TİZAR|354
+			İHTAR|354
+			BİRİNCİ ŞUÂ|355
+			İKİNCİ ŞUÂ|358
+			ÜÇÜNCÜ ŞUÂ|361
+			DÖRDÜNCÜ ŞUÂ|363
+			BEŞİNCİ ŞUÂ|366
+	Otuzbirinci Lem'a|372
+	Otuzikinci Lem'a|372
+	Otuzüçüncü Lem'a|372
+	Münâcât|373
+	Fihrist|388
+	Sekizinci Lem'anın Fihristesinden Bir Parça|452
+	İşârât-ı gaybiye hakkında bir yazı ve bir takriz|452
+	YİRMİSEKİZİNCİ LEM'ANIN FİHRİSTESİNDEN BİR PARÇA |454
+		BİRİNCİ NÜKTE|454
+		NETİCE|455

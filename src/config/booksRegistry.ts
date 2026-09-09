@@ -329,153 +329,371 @@ export interface ContentPackConfig {
  */
 export const CONTENT_PACK_CONFIG: Record<string, ContentPackConfig> = {
     // ═══════════════════════════════════════════════════════════════════════
-    // BUNDLED (Included in APK)
+    // ALL 66 RISALE BOOKS (BUNDLED HTML PILOT IN APK)
     // ═══════════════════════════════════════════════════════════════════════
     'sozler': {
         contentMode: 'bundled',
         bundledAssetPath: 'risale_html_pilot/01_sozler'
     },
-
-    // ═══════════════════════════════════════════════════════════════════════
-    // DOWNLOADABLE (Must be downloaded)
-    // ═══════════════════════════════════════════════════════════════════════
+    'risale.sozler@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/01_sozler'
+    },
     'mektubat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.mektubat.v2',
-        estimatedSizeMb: 6.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.mektubat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/02_mektubat'
+    },
+    'risale.mektubat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/02_mektubat'
     },
     'lemalar': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.lemalar.v2',
-        estimatedSizeMb: 6.6,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.lemalar.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/03_lemalar'
+    },
+    'risale.lemalar@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/03_lemalar'
     },
     'sualar': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.sualar.v2',
-        estimatedSizeMb: 3.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sualar.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/04_sualar'
+    },
+    'risale.sualar@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/04_sualar'
     },
     'tarihce': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.tarihce.v2',
-        estimatedSizeMb: 3.0,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.tarihce.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/05_tarihce'
+    },
+    'risale.tarihce@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/05_tarihce'
     },
     'mesnevi': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.mesnevi.v2',
-        estimatedSizeMb: 3.4,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.mesnevi.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/06_mesnevi'
+    },
+    'risale.mesnevi@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/06_mesnevi'
     },
     'isarat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.isarat.v2',
-        estimatedSizeMb: 5.5,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.isarat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/07_isarat'
+    },
+    'risale.isarat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/07_isarat'
     },
     'sikke': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.sikke.v2',
-        estimatedSizeMb: 1.9,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sikke.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/08_sikke'
+    },
+    'risale.sikke@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/08_sikke'
     },
     'barla': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.barla.v2',
-        estimatedSizeMb: 4.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.barla.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/09_barla'
+    },
+    'risale.barla@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/09_barla'
     },
     'kastamonu': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.kastamonu.v2',
-        estimatedSizeMb: 2.9,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.kastamonu.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/10_kastamonu'
+    },
+    'risale.kastamonu@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/10_kastamonu'
     },
     'emirdag1': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.emirdag1.v2',
-        estimatedSizeMb: 3.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.emirdag1.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/11_emirdag1'
+    },
+    'risale.emirdag1@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/11_emirdag1'
     },
     'emirdag2': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.emirdag2.v2',
-        estimatedSizeMb: 2.7,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.emirdag2.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/12_emirdag2'
+    },
+    'risale.emirdag2@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/12_emirdag2'
     },
     'asayi': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.asayi.v2',
-        estimatedSizeMb: 5.1,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.asayi.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/13_asayi'
+    },
+    'risale.asayi@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/13_asayi'
     },
     'muhakemat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.muhakemat.v2',
-        estimatedSizeMb: 1.4,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.muhakemat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/14_muhakemat'
+    },
+    'risale.muhakemat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/14_muhakemat'
+    },
+    'imankufur': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/15_imankufur'
+    },
+    'risale.imankufur@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/15_imankufur'
     },
     'sunuhat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.sunuhat.v2',
-        estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.sunuhat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/15_sunuhat'
+    },
+    'risale.sunuhat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/15_sunuhat'
     },
     'isarat_k': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.isarat_k.v2',
-        estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.isarat_k.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/16_isarat_k'
+    },
+    'risale.isarat_k@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/16_isarat_k'
     },
     'tuluat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.tuluat.v2',
-        estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.tuluat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/17_tuluat'
+    },
+    'risale.tuluat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/17_tuluat'
     },
     'nurcesmesi': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.nurcesmesi.v2',
-        estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.nurcesmesi.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/19_nurcesmesi'
+    },
+    'risale.nurcesmesi@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/19_nurcesmesi'
     },
     'divaniharbi': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.divaniharbi.v2',
-        estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.divaniharbi.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/20_divaniharbi'
+    },
+    'risale.divaniharbi@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/20_divaniharbi'
     },
     'hutbe': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.hutbe.v2',
-        estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.hutbe.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/21_hutbe'
+    },
+    'risale.hutbe@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/21_hutbe'
     },
     'munazarat': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.munazarat.v2',
-        estimatedSizeMb: 0.2,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.munazarat.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/22_munazarat'
+    },
+    'risale.munazarat@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/22_munazarat'
     },
     'genclik': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.genclik.v2',
-        estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.genclik.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/23_genclik'
+    },
+    'risale.genclik@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/23_genclik'
     },
     'hanimlar': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.hanimlar.v2',
-        estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.hanimlar.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/24_hanimlar'
+    },
+    'risale.hanimlar@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/24_hanimlar'
     },
     'konferans': {
-        contentMode: 'downloadable',
-        contentPackId: 'risale.konferans.v2',
-        estimatedSizeMb: 0.3,
-        downloadUrl: 'https://github.com/ademkaleoglu27/VakifApp-Releases/releases/download/content-packs-v2/contentpack-risale.konferans.v2-v1.0.0.zip'
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/25_konferans'
+    },
+    'risale.konferans@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/25_konferans'
+    },
+    'risale.rnk.ayetkubra_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_ayetkubra_0'
+    },
+    'risale.rnk.bcevab_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_bcevab_0'
+    },
+    'risale.rnk.dvan_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_dvan_0'
+    },
+    'risale.rnk.e_nezerre_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_e_nezerre_0'
+    },
+    'risale.rnk.elhuccet_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_elhuccet_0'
+    },
+    'risale.rnk.gencreh_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_gencreh_0'
+    },
+    'risale.rnk.haknurlari_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_haknurlari_0'
+    },
+    'risale.rnk.hanimreh_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_hanimreh_0'
+    },
+    'risale.rnk.hasir_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_hasir_0'
+    },
+    'risale.rnk.hastalar_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_hastalar_0'
+    },
+    'risale.rnk.hizmetreh_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_hizmetreh_0'
+    },
+    'risale.rnk.hutbe_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_hutbe_0'
+    },
+    'risale.rnk.ihlas_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_ihlas_0'
+    },
+    'risale.rnk.ikincisua@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_ikincisua'
+    },
+    'risale.rnk.imanhak_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_imanhak_0'
+    },
+    'risale.rnk.konferans_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_konferans_0'
+    },
+    'risale.rnk.ksozler_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_ksozler_0'
+    },
+    'risale.rnk.latifnukte_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_latifnukte_0'
+    },
+    'risale.rnk.meyve_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_meyve_0'
+    },
+    'risale.rnk.miftah_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_miftah_0'
+    },
+    'risale.rnk.mirackamer_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_mirackamer_0'
+    },
+    'risale.rnk.muahmed@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_muahmed'
+    },
+    'risale.rnk.mukuran@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_mukuran'
+    },
+    'risale.rnk.munacat_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_munacat_0'
+    },
+    'risale.rnk.munazarat_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_munazarat_0'
+    },
+    'risale.rnk.nuralemi_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_nuralemi_0'
+    },
+    'risale.rnk.nurcesme_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_nurcesme_0'
+    },
+    'risale.rnk.nurilkka_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_nurilkka_0'
+    },
+    'risale.rnk.onucsua@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_onucsua'
+    },
+    'risale.rnk.otuzlema@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_otuzlema'
+    },
+    'risale.rnk.otuzuc_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_otuzuc_0'
+    },
+    'risale.rnk.rahmetsefkat_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_rahmetsefkat_0'
+    },
+    'risale.rnk.ramazan_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_ramazan_0'
+    },
+    'risale.rnk.sunnetseniye@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_sunnetseniye'
+    },
+    'risale.rnk.sunuhat_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_sunuhat_0'
+    },
+    'risale.rnk.tabiat_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_tabiat_0'
+    },
+    'risale.rnk.uhuvvet_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_uhuvvet_0'
+    },
+    'risale.rnk.vesvese@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_vesvese'
+    },
+    'risale.rnk.yirmidortmek@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_yirmidortmek'
+    },
+    'risale.rnk.yirmiuc_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_yirmiuc_0'
+    },
+    'risale.rnk.zuhretunnur_0@diyanet.tr': {
+        contentMode: 'bundled',
+        bundledAssetPath: 'risale_html_pilot/kucuk_rnk_zuhretunnur_0'
     },
 };
 

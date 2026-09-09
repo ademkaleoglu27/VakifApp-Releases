@@ -18,23 +18,23 @@ async function logSearchDiagnostics(db: any, query: string, source: string) {
     try {
         // 1. Total row count
         const tableName = source === 'fts' ? 'fts_text' : 'paragraphs';
-        const totalRows = await db.getFirstAsync<{ c: number }>(`SELECT COUNT(*) as c FROM ${tableName}`);
+        const totalRows = (await (db as any).getFirstAsync(`SELECT COUNT(*) as c FROM ${tableName}`)) as { c: number } | null;
         console.log(`[SearchService] Total ${tableName} rows: ${totalRows?.c || 0}`);
 
         // 2. LIKE count
         const likeField = source === 'fts' ? 'text' : 'text';
-        const likeCount = await db.getFirstAsync<{ c: number }>(
+        const likeCount = (await (db as any).getFirstAsync(
             `SELECT COUNT(*) as c FROM ${tableName} WHERE ${likeField} LIKE ?`,
             [`%${query}%`]
-        );
+        )) as { c: number } | null;
         console.log(`[SearchService] LIKE '%${query}%': ${likeCount?.c || 0} rows`);
 
         // 3. Sample rows (first 2)
         if ((likeCount?.c || 0) > 0) {
-            const samples = await db.getAllAsync<any>(
+            const samples = (await (db as any).getAllAsync(
                 `SELECT section_id, substr(text, 1, 80) as preview FROM ${tableName} WHERE ${likeField} LIKE ? LIMIT 2`,
                 [`%${query}%`]
-            );
+            )) as any[];
             console.log('[SearchService] Sample matches:');
             samples.forEach((s: any, i: number) => {
                 console.log(`  [${i + 1}] ${s.section_id} → "${s.preview}..."`);

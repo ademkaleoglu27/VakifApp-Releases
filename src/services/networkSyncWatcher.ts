@@ -76,7 +76,7 @@ class NetworkSyncWatcher {
         try {
             console.log('[NetworkWatcher] Running outbox push + cloud pull...');
             // 1. Push all pending offline actions from SQLite Outbox
-            await syncService.pushLocalChanges();
+            await (syncService as any).pushChanges();
             // 2. Pull any changes from Supabase
             await syncService.pullChanges();
             console.log('[NetworkWatcher] ✅ Instant auto-sync finished successfully.');

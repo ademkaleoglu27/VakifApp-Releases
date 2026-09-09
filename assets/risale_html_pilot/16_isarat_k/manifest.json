@@ -1,0 +1,21 @@
+{
+  "bookId": "risale.isarat_k@diyanet.tr",
+  "title": "İşarat",
+  "lang": "tr",
+  "readerContractVersion": "HTML_READER_CONTRACT_v1",
+  "contentRevision": "2026-01-18-html-golden-16_isarat_k",
+  "isGolden": true,
+  "allowAutoRewrite": false,
+  "totalGlobalPages": 8,
+  "threshold": 1500,
+  "sections": [
+    {
+      "sectionId": "risale.isarat_k@diyanet.tr:html_01",
+      "index": 1,
+      "file": "16_01.html",
+      "title": "00 02 İŞARAT",
+      "startPage": 1,
+      "pageCount": 8
+    }
+  ]
+}

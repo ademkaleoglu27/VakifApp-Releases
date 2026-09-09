@@ -1,0 +1,717 @@
+{
+  "downloadedAt": "2026-09-07T20:54:47.734Z",
+  "sozler": [
+    {
+      "nid": 138,
+      "name": "Sözler",
+      "kisaad": "Söz",
+      "baslangic": 3,
+      "bitis": 765,
+      "metin_file": "soz_sozler.txt",
+      "fihrist_file": "soz_sozlerf_0.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 139,
+      "name": "Mektubat",
+      "kisaad": "M",
+      "baslangic": 3,
+      "bitis": 507,
+      "metin_file": "soz_mektubat.txt",
+      "fihrist_file": "soz_mektubatf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 144,
+      "name": "Lem'alar",
+      "kisaad": "L",
+      "baslangic": 3,
+      "bitis": 456,
+      "metin_file": "soz_lemalar.txt",
+      "fihrist_file": "soz_lemalarf_0.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 151,
+      "name": "Şualar",
+      "kisaad": "Ş",
+      "baslangic": 3,
+      "bitis": 656,
+      "metin_file": "soz_sualar.txt",
+      "fihrist_file": "soz_sualarf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 152,
+      "name": "İşârât-ül İ'caz",
+      "kisaad": "İ.İ.",
+      "baslangic": 3,
+      "bitis": 255,
+      "metin_file": "soz_isarat_0.txt",
+      "fihrist_file": "soz_isaratf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 153,
+      "name": "Mesnevi-i Nuriye",
+      "kisaad": "Mn",
+      "baslangic": 3,
+      "bitis": 235,
+      "metin_file": "soz_mesnevi.txt",
+      "fihrist_file": "soz_mesnevif.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 154,
+      "name": "Tarihçe-i Hayat",
+      "kisaad": "T.H.",
+      "baslangic": 4,
+      "bitis": 683,
+      "metin_file": "soz_tarihce.txt",
+      "fihrist_file": "soz_tarihcef_0.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 155,
+      "name": "Asâ-yı Mûsa",
+      "kisaad": "A.M.",
+      "baslangic": 3,
+      "bitis": 238,
+      "metin_file": "soz_asamusa.txt",
+      "fihrist_file": "soz_asamusaf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 156,
+      "name": "Barla Lâhikası",
+      "kisaad": "B.L.",
+      "baslangic": 2,
+      "bitis": 348,
+      "metin_file": "soz_barla.txt",
+      "fihrist_file": "soz_barlaf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 157,
+      "name": "Emirdağ Lâhikası 1",
+      "kisaad": "EL1",
+      "baslangic": 3,
+      "bitis": 267,
+      "metin_file": "soz_emirdag1.txt",
+      "fihrist_file": "soz_emirdag1f.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 158,
+      "name": "İman ve Küfür Müv.",
+      "kisaad": "İKM",
+      "baslangic": 3,
+      "bitis": 215,
+      "metin_file": "soz_imankufur.txt",
+      "fihrist_file": "soz_imankufurf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 159,
+      "name": "Kastamonu Lâhikası",
+      "kisaad": "KL",
+      "baslangic": 1,
+      "bitis": 218,
+      "metin_file": "soz_kastamonu.txt",
+      "fihrist_file": "soz_kastamonuf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 160,
+      "name": "Sikke-i Tasdiki Gaybî",
+      "kisaad": "STG",
+      "baslangic": 3,
+      "bitis": 231,
+      "metin_file": "soz_stg.txt",
+      "fihrist_file": "soz_stgf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 161,
+      "name": "Muhâkemat",
+      "kisaad": "Muh",
+      "baslangic": 2,
+      "bitis": 188,
+      "metin_file": "soz_muhakemat.txt",
+      "fihrist_file": "soz_muhakematf.txt",
+      "raf": "Büyük Boy Eserler"
+    },
+    {
+      "nid": 249,
+      "name": "Emirdağ Lâhikası 2",
+      "kisaad": "EL2",
+      "baslangic": 1,
+      "bitis": 218,
+      "metin_file": "soz_emirdag2.txt",
+      "fihrist_file": "soz_emirdag2f.txt",
+      "raf": "Büyük Boy Eserler"
+    }
+  ],
+  "rnk": [
+    {
+      "nid": 354,
+      "name": "İman ve Küfür Muvazeneleri",
+      "kisaad": "İKM",
+      "baslangic": 4,
+      "bitis": 208,
+      "metin_file": "rnk_imankufur_2018.txt",
+      "fihrist_file": "rnk_imankufur_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 355,
+      "name": "Asâ-yı Mûsa",
+      "kisaad": "A.M.",
+      "baslangic": 3,
+      "bitis": 251,
+      "metin_file": "rnk_asamusa_2018.txt",
+      "fihrist_file": "rnk_asamusa_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 356,
+      "name": "Sözler",
+      "kisaad": "S",
+      "baslangic": 4,
+      "bitis": 862,
+      "metin_file": "rnk_sozler_2018.txt",
+      "fihrist_file": "rnk_sozler_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 357,
+      "name": "Mektubat",
+      "kisaad": "M",
+      "baslangic": 4,
+      "bitis": 575,
+      "metin_file": "rnk_mektubat_2018.txt",
+      "fihrist_file": "rnk_mektubat_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 358,
+      "name": "Lemalar",
+      "kisaad": "L",
+      "baslangic": 4,
+      "bitis": 498,
+      "metin_file": "rnk_lemalar_2018.txt",
+      "fihrist_file": "rnk_lemalar_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 359,
+      "name": "Şualar",
+      "kisaad": "Ş",
+      "baslangic": 4,
+      "bitis": 653,
+      "metin_file": "rnk_sualar_2018.txt",
+      "fihrist_file": "rnk_sualar_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 360,
+      "name": "Mesnevî-i Nuriye",
+      "kisaad": "MN",
+      "baslangic": 4,
+      "bitis": 271,
+      "metin_file": "rnk_mesnevi_2018.txt",
+      "fihrist_file": "rnk_mesnevi_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 361,
+      "name": "İşârât-ül İ'caz",
+      "kisaad": "İİ",
+      "baslangic": 4,
+      "bitis": 324,
+      "metin_file": "rnk_isarat_2018.txt",
+      "fihrist_file": "rnk_isarat_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 362,
+      "name": "Barla Lâhikası",
+      "kisaad": "BL",
+      "baslangic": 4,
+      "bitis": 397,
+      "metin_file": "rnk_barla_2018.txt",
+      "fihrist_file": "rnk_barla_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 363,
+      "name": "Kastamonu Lâhikası",
+      "kisaad": "KL",
+      "baslangic": 4,
+      "bitis": 254,
+      "metin_file": "rnk_kastamonu_2018.txt",
+      "fihrist_file": "rnk_kastamonu_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 364,
+      "name": "Emirdağ Lâhikası 1",
+      "kisaad": "EM1",
+      "baslangic": 4,
+      "bitis": 302,
+      "metin_file": "rnk_emirdag1_2018.txt",
+      "fihrist_file": "rnk_emirdag1_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 365,
+      "name": "Emirdağ Lâhikası 2",
+      "kisaad": "EL2",
+      "baslangic": 4,
+      "bitis": 257,
+      "metin_file": "rnk_emirdag2_2018.txt",
+      "fihrist_file": "rnk_emirdag2_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 366,
+      "name": "Sikke-i Tasdiki Gaybî",
+      "kisaad": "STG",
+      "baslangic": 4,
+      "bitis": 269,
+      "metin_file": "rnk_sikke_2018.txt",
+      "fihrist_file": "rnk_sikke_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 367,
+      "name": "Tarihçe-i Hayat",
+      "kisaad": "TH",
+      "baslangic": 4,
+      "bitis": 719,
+      "metin_file": "rnk_tarihce_2018.txt",
+      "fihrist_file": "rnk_tarihce_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 368,
+      "name": "Muhâkemat",
+      "kisaad": "Muh",
+      "baslangic": 5,
+      "bitis": 143,
+      "metin_file": "rnk_muhakemat_2018.txt",
+      "fihrist_file": "rnk_muhakemat_2018f.txt",
+      "raf": "Büyük Boy Eserler (2018)"
+    },
+    {
+      "nid": 192,
+      "name": "Âyet-ül Kübra",
+      "kisaad": "Ak",
+      "baslangic": 5,
+      "bitis": 198,
+      "metin_file": "ayetkubra_0.txt",
+      "fihrist_file": "ayetkubraf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 193,
+      "name": "B.Cevap Veriyor",
+      "kisaad": "Bcv",
+      "baslangic": 5,
+      "bitis": 265,
+      "metin_file": "bcevab_0.txt",
+      "fihrist_file": "bcevabf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 194,
+      "name": "Divan-ı Harb-i Örfî",
+      "kisaad": "DHÖrf",
+      "baslangic": 5,
+      "bitis": 75,
+      "metin_file": "dvan_0.txt",
+      "fihrist_file": "dvanf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 195,
+      "name": "Elhüccetüzzehra",
+      "kisaad": "EHZeh",
+      "baslangic": 5,
+      "bitis": 151,
+      "metin_file": "elhuccet_0.txt",
+      "fihrist_file": "elhuccetf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 196,
+      "name": "Ene ve Zerre",
+      "kisaad": "EZ",
+      "baslangic": 5,
+      "bitis": 54,
+      "metin_file": "e_nezerre_0.txt",
+      "fihrist_file": "e_nezerref_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 197,
+      "name": "Gençlik Rehberi",
+      "kisaad": "GReh",
+      "baslangic": 4,
+      "bitis": 272,
+      "metin_file": "gencreh_0.txt",
+      "fihrist_file": "gencrehf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 198,
+      "name": "Hakikat Nurları",
+      "kisaad": "HaNur",
+      "baslangic": 5,
+      "bitis": 155,
+      "metin_file": "haknurlari_0.txt",
+      "fihrist_file": "haknurlarif_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 199,
+      "name": "Hanımlar Rehberi",
+      "kisaad": "HaReh",
+      "baslangic": 5,
+      "bitis": 159,
+      "metin_file": "hanimreh_0.txt",
+      "fihrist_file": "hanimrehf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 200,
+      "name": "Haşir Risalesi",
+      "kisaad": "Haş",
+      "baslangic": 5,
+      "bitis": 143,
+      "metin_file": "hasir_0.txt",
+      "fihrist_file": "hasirf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 201,
+      "name": "Hastalar Risalesi",
+      "kisaad": "Has",
+      "baslangic": 5,
+      "bitis": 69,
+      "metin_file": "hastalar_0.txt",
+      "fihrist_file": "hastalarf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 202,
+      "name": "Hizmet Rehberi",
+      "kisaad": "HiReh",
+      "baslangic": 5,
+      "bitis": 288,
+      "metin_file": "hizmetreh_0.txt",
+      "fihrist_file": "hizmetrehf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 203,
+      "name": "Hutbe-i Şamiye",
+      "kisaad": "HuŞam",
+      "baslangic": 5,
+      "bitis": 162,
+      "metin_file": "hutbe_0.txt",
+      "fihrist_file": "hutbef_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 204,
+      "name": "İhlas Risalesi",
+      "kisaad": "İhRis",
+      "baslangic": 5,
+      "bitis": 60,
+      "metin_file": "ihlas_0.txt",
+      "fihrist_file": "ihlasf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 205,
+      "name": "İkinci Şua",
+      "kisaad": "İkŞua",
+      "baslangic": 3,
+      "bitis": 76,
+      "metin_file": "ikincisua.txt",
+      "fihrist_file": "ikincisuaf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 206,
+      "name": "İman Hakikatleri",
+      "kisaad": "İmHak",
+      "baslangic": 5,
+      "bitis": 149,
+      "metin_file": "imanhak_0.txt",
+      "fihrist_file": "imanhakf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 207,
+      "name": "Konferans",
+      "kisaad": "Konf",
+      "baslangic": 5,
+      "bitis": 184,
+      "metin_file": "konferans_0.txt",
+      "fihrist_file": "konferansf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 208,
+      "name": "Küçük Sözler",
+      "kisaad": "KüSöz",
+      "baslangic": 5,
+      "bitis": 93,
+      "metin_file": "ksozler_0.txt",
+      "fihrist_file": "ksozlerf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 209,
+      "name": "Latif Nükteler",
+      "kisaad": "LNük",
+      "baslangic": 5,
+      "bitis": 79,
+      "metin_file": "latifnukte_0.txt",
+      "fihrist_file": "latifnuktef_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 210,
+      "name": "Meyve Risalesi",
+      "kisaad": "Mey",
+      "baslangic": 5,
+      "bitis": 170,
+      "metin_file": "meyve_0.txt",
+      "fihrist_file": "meyvef_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 211,
+      "name": "Miftah-ul İman",
+      "kisaad": "Miİm",
+      "baslangic": 5,
+      "bitis": 101,
+      "metin_file": "miftah_0.txt",
+      "fihrist_file": "miftahf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 212,
+      "name": "Mirac ve Şakk-ı Kamer",
+      "kisaad": "Mir",
+      "baslangic": 5,
+      "bitis": 90,
+      "metin_file": "mirackamer_0.txt",
+      "fihrist_file": "mirackamerf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 213,
+      "name": "Mu'cizât-ı Ahmediye",
+      "kisaad": "MuAh",
+      "baslangic": 5,
+      "bitis": 299,
+      "metin_file": "muahmed.txt",
+      "fihrist_file": "muahmedf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 214,
+      "name": "Mu'cizat-ı Kur'âniye",
+      "kisaad": "MuKur",
+      "baslangic": 5,
+      "bitis": 370,
+      "metin_file": "mukuran.txt",
+      "fihrist_file": "mukuranf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 215,
+      "name": "Münâcât",
+      "kisaad": "Mün",
+      "baslangic": 5,
+      "bitis": 48,
+      "metin_file": "munacat_0.txt",
+      "fihrist_file": "munacatf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 216,
+      "name": "Münâzarât",
+      "kisaad": "Münz",
+      "baslangic": 5,
+      "bitis": 105,
+      "metin_file": "munazarat_0.txt",
+      "fihrist_file": "munazaratf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 217,
+      "name": "Nur Çeşmesi",
+      "kisaad": "NurÇe",
+      "baslangic": 5,
+      "bitis": 244,
+      "metin_file": "nurcesme_0.txt",
+      "fihrist_file": "nurcesmef_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 218,
+      "name": "Nur Aleminin Bir Anahtarı",
+      "kisaad": "NurAl",
+      "baslangic": 5,
+      "bitis": 62,
+      "metin_file": "nuralemi_0.txt",
+      "fihrist_file": "nuralemif_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 219,
+      "name": "Nur'un İlk Kapısı",
+      "kisaad": "Nuİlk",
+      "baslangic": 5,
+      "bitis": 220,
+      "metin_file": "nurilkka_0.txt",
+      "fihrist_file": "nurilkkaf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 220,
+      "name": "On Üçüncü Şua",
+      "kisaad": "OnüçŞ",
+      "baslangic": 5,
+      "bitis": 112,
+      "metin_file": "onucsua.txt",
+      "fihrist_file": "onucsuaf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 221,
+      "name": "Otuzüç Pencere",
+      "kisaad": "OtüçP",
+      "baslangic": 5,
+      "bitis": 82,
+      "metin_file": "otuzuc_0.txt",
+      "fihrist_file": "otuzucf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 222,
+      "name": "Otuzuncu Lem'a",
+      "kisaad": "OtuzL",
+      "baslangic": 3,
+      "bitis": 127,
+      "metin_file": "otuzlema.txt",
+      "fihrist_file": "otuzlemaf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 223,
+      "name": "Rahmet ve Şefkat İlaçları",
+      "kisaad": "RahŞe",
+      "baslangic": 5,
+      "bitis": 171,
+      "metin_file": "rahmetsefkat_0.txt",
+      "fihrist_file": "rahmetsefkatf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 224,
+      "name": "Ramazan İktisad Şükür",
+      "kisaad": "RamİŞ",
+      "baslangic": 5,
+      "bitis": 87,
+      "metin_file": "ramazan_0.txt",
+      "fihrist_file": "ramazanf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 225,
+      "name": "Sünuhat Tüluhat İşârat",
+      "kisaad": "Sünû",
+      "baslangic": 4,
+      "bitis": 109,
+      "metin_file": "sunuhat_0.txt",
+      "fihrist_file": "sunuhatf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 226,
+      "name": "Sünnet-i Seniyye Ris.",
+      "kisaad": "SünnS",
+      "baslangic": 5,
+      "bitis": 217,
+      "metin_file": "sunnetseniye.txt",
+      "fihrist_file": "sunnetseniyef.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 227,
+      "name": "Tabiat Risalesi",
+      "kisaad": "Tabia",
+      "baslangic": 5,
+      "bitis": 47,
+      "metin_file": "tabiat_0.txt",
+      "fihrist_file": "tabiatf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 228,
+      "name": "Uhuvvet Risalesi",
+      "kisaad": "Uhuv",
+      "baslangic": 5,
+      "bitis": 48,
+      "metin_file": "uhuvvet_0.txt",
+      "fihrist_file": "uhuvvetf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 229,
+      "name": "Vesvese ve Hikmetü'l-İstiâze",
+      "kisaad": "Vesve",
+      "baslangic": 5,
+      "bitis": 65,
+      "metin_file": "vesvese.txt",
+      "fihrist_file": "vesvesef.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 230,
+      "name": "Yirmi Dördüncü Mektub",
+      "kisaad": "YiDöM",
+      "baslangic": 4,
+      "bitis": 60,
+      "metin_file": "yirmidortmek.txt",
+      "fihrist_file": "yirmidortmekf.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 231,
+      "name": "Yirmi Üçüncü Söz",
+      "kisaad": "YiÜçS",
+      "baslangic": 5,
+      "bitis": 76,
+      "metin_file": "yirmiuc_0.txt",
+      "fihrist_file": "yirmiucf_0.txt",
+      "raf": "Küçük Kitaplar"
+    },
+    {
+      "nid": 232,
+      "name": "Zühret-ün Nur",
+      "kisaad": "ZühNu",
+      "baslangic": 5,
+      "bitis": 206,
+      "metin_file": "zuhretunnur_0.txt",
+      "fihrist_file": "zuhretunnurf_0.txt",
+      "raf": "Küçük Kitaplar"
+    }
+  ]
+}

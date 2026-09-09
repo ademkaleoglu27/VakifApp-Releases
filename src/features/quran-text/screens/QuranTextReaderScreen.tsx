@@ -87,7 +87,40 @@ export const QuranTextReaderScreen = () => {
     const [error, setError] = useState<string | null>(null);
     const [showSettings, setShowSettings] = useState(false);
     const flatListRef = useRef<FlatList>(null);
+    const mushafScrollRef = useRef<ScrollView>(null);
     const { playTrack, currentTrack, isPlaying, togglePlayPause, isLoading: audioLoading, position, duration, seekTo } = useAudio();
+
+    // Mode: Mushaf (continuous text like printed Quran) vs List (verse-by-verse with meal)
+    const [isMushafMode, setIsMushafMode] = useState<boolean>(isLandscape);
+    // Landscape Fullscreen (Distraction-Free) Toggle
+    const [isLandscapeHeaderVisible, setIsLandscapeHeaderVisible] = useState<boolean>(true);
+
+    useEffect(() => {
+        if (isLandscape) {
+            setIsMushafMode(true);
+        }
+    }, [isLandscape]);
+
+    // Red Lafzatullah helper (matches printed Mushaf style - Reference Screenshot 4)
+    const renderQuranVerseWithLafzatullah = useCallback((verseText: string, textColor: string) => {
+        if (!verseText) return null;
+        const regex = /((?:[اوبف]?لِ?ل[َّّٰ\u0670]*ه[\u064B-\u0652]?))/g;
+        const parts = verseText.split(regex);
+        return parts.map((part, index) => {
+            if (part && regex.test(part)) {
+                return (
+                    <Text key={index} style={{ color: '#D32F2F', fontWeight: 'bold' }}>
+                        {part}
+                    </Text>
+                );
+            }
+            return (
+                <Text key={index} style={{ color: textColor }}>
+                    {part}
+                </Text>
+            );
+        });
+    }, []);
 
     const trackId = `quran-surah-${surahId}-r${selectedReciterId || 7}`;
     const isCurrentSurahPlaying = currentTrack?.id === trackId && isPlaying;
@@ -346,7 +379,7 @@ export const QuranTextReaderScreen = () => {
                         {surah.verse_count || surah.verses?.length || 0} Ayet • {surah.name_translation_tr || surah.name_en || ''}
                     </Text>
                 </LinearGradient>
-                {surahId !== 9 && (
+                {surahId !== 9 && surahId !== 1 && (
                     <View style={styles.bismillahContainer}>
                         <Text style={styles.bismillahText}>{BISMILLAH}</Text>
                     </View>
@@ -442,6 +475,14 @@ export const QuranTextReaderScreen = () => {
                             <Text style={styles.topBarTitleText} numberOfLines={1}>{surah ? `${surah.name} Suresi` : 'Yükleniyor...'}</Text>
                             <Ionicons name="chevron-down" size={14} color="#8B7355" />
                         </TouchableOpacity>
+                        {/* Mode Toggle: Mushaf Akışı vs Âyet Listesi */}
+                        <TouchableOpacity
+                            onPress={() => setIsMushafMode(!isMushafMode)}
+                            style={[styles.topBarBtn, isMushafMode && styles.topBarBtnActive]}
+                            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                        >
+                            <Ionicons name={isMushafMode ? "book" : "list"} size={20} color={isMushafMode ? "#fff" : "#5D4037"} />
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => { const page = surah?.page_number || 1; navigation.navigate('QuranReaderScreen', { initialPage: page }); }} style={styles.topBarBtn}>
                             <Ionicons name="images-outline" size={20} color="#5D4037" />
                         </TouchableOpacity>
@@ -456,9 +497,49 @@ export const QuranTextReaderScreen = () => {
                     </View>
                 )}
 
-                {isLandscape && (
-                    <TouchableOpacity style={styles.floatingLandscapeBack} onPress={() => navigation.goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-                        <Ionicons name="arrow-back" size={20} color="#5D4037" />
+                {isLandscape && isLandscapeHeaderVisible && (
+                    <View style={styles.landscapeHeader}>
+                        <TouchableOpacity style={styles.landscapeBtn} onPress={() => navigation.goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+                            <Ionicons name="arrow-back" size={20} color="#5D4037" />
+                        </TouchableOpacity>
+                        <Text style={styles.landscapeTitle} numberOfLines={1}>
+                            {surah ? `(${surah.id}) ${surah.name} Sûresi` : ''}
+                        </Text>
+                        <View style={{ flexDirection: 'row', gap: 8 }}>
+                            <TouchableOpacity
+                                onPress={() => setIsMushafMode(!isMushafMode)}
+                                style={[styles.landscapeBtn, isMushafMode && styles.topBarBtnActive]}
+                            >
+                                <Ionicons name={isMushafMode ? "book" : "list"} size={18} color={isMushafMode ? "#fff" : "#5D4037"} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setShowSettings(!showSettings)} style={styles.landscapeBtn}>
+                                <Ionicons name={showSettings ? 'settings' : 'settings-outline'} size={20} color="#5D4037" />
+                            </TouchableOpacity>
+                            {surah?.audio?.mp3 && (
+                                <TouchableOpacity onPress={handlePlaySurah} style={[styles.landscapeBtn, isCurrentSurahPlaying && styles.topBarBtnActive]} disabled={audioLoading}>
+                                    <Ionicons name={isCurrentSurahPlaying ? 'pause' : 'play'} size={18} color={isCurrentSurahPlaying ? '#fff' : '#5D4037'} />
+                                </TouchableOpacity>
+                            )}
+                            {/* Fullscreen Toggle Button */}
+                            <TouchableOpacity
+                                onPress={() => setIsLandscapeHeaderVisible(false)}
+                                style={styles.landscapeBtn}
+                                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                            >
+                                <Ionicons name="expand-outline" size={18} color="#5D4037" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                )}
+
+                {/* Floating button to restore menu in landscape fullscreen */}
+                {isLandscape && !isLandscapeHeaderVisible && (
+                    <TouchableOpacity
+                        onPress={() => setIsLandscapeHeaderVisible(true)}
+                        style={styles.landscapeFloatingToggle}
+                        activeOpacity={0.8}
+                    >
+                        <Ionicons name="contract-outline" size={20} color="#5D4037" />
                     </TouchableOpacity>
                 )}
 
@@ -475,6 +556,73 @@ export const QuranTextReaderScreen = () => {
                         <Text style={styles.errorText}>{error}</Text>
                         <TouchableOpacity style={styles.retryBtn} onPress={loadSurah}><Text style={styles.retryBtnText}>Tekrar Dene</Text></TouchableOpacity>
                     </View>
+                ) : isMushafMode ? (
+                    /* CONTINUOUS MUSHAF FLOW (Matches Sözler Landscape Reference Screenshot 4) */
+                    <ScrollView
+                        ref={mushafScrollRef}
+                        contentContainerStyle={[styles.mushafScrollContent, isLandscape && styles.mushafScrollContentLandscape]}
+                        showsVerticalScrollIndicator={false}
+                    >
+                        <SurahHeader />
+
+                        <View style={[styles.mushafCard, isLandscape && styles.mushafCardLandscape]}>
+                            <Text
+                                style={[
+                                    styles.mushafParagraph,
+                                    {
+                                        fontSize: Math.round(28 * Math.max(0.7, Math.min(2.0, fontSize || 1))),
+                                        lineHeight: Math.round(54 * Math.max(0.7, Math.min(2.0, fontSize || 1))),
+                                        fontFamily: arabicFont || 'ScheherazadeNew',
+                                    }
+                                ]}
+                                selectable
+                            >
+                                {(surah?.verses || []).map((v) => {
+                                    const isActive = isCurrentSurahPlaying && activeVerseNumber === v.verse_number;
+                                    return (
+                                        <Text
+                                            key={v.verse_number}
+                                            onPress={() => handleVerseTap(v.verse_number)}
+                                            style={isActive ? styles.mushafActiveVerse : undefined}
+                                        >
+                                            {renderQuranVerseWithLafzatullah(
+                                                v.verse || '',
+                                                isActive ? '#B45309' : (arabicColor || '#1B1B1B')
+                                            )}
+                                            {' '}
+                                            <Text
+                                                style={[
+                                                    styles.mushafVerseStop,
+                                                    {
+                                                        fontSize: Math.round(28 * Math.max(0.7, Math.min(2.0, fontSize || 1)) * 0.58),
+                                                        fontFamily: arabicFont || 'ScheherazadeNew'
+                                                    },
+                                                    isActive && { color: '#D97706' }
+                                                ]}
+                                            >
+                                                ﴿{toArabicNum(v.verse_number)}﴾
+                                            </Text>
+                                            {'  '}
+                                        </Text>
+                                    );
+                                })}
+                            </Text>
+                        </View>
+
+                        {/* Selected verse quick meal preview in Mushaf mode */}
+                        {showTranslation && activeVerseNumber && (
+                            <View style={styles.mushafActiveMealBox}>
+                                <Text style={styles.mushafActiveMealTitle}>
+                                    {activeVerseNumber}. Âyet Meali:
+                                </Text>
+                                <Text style={styles.mushafActiveMealContent}>
+                                    {surah?.verses?.find(v => v.verse_number === activeVerseNumber)?.translation?.text || ''}
+                                </Text>
+                            </View>
+                        )}
+
+                        <SurahFooter />
+                    </ScrollView>
                 ) : (
                     <FlatList
                         ref={flatListRef}
@@ -505,6 +653,88 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFF8E7',
+    },
+    landscapeHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        backgroundColor: '#FFF3CC',
+        borderBottomWidth: 1,
+        borderBottomColor: '#E8D5A3',
+    },
+    landscapeBtn: {
+        width: 34,
+        height: 34,
+        borderRadius: 10,
+        backgroundColor: 'rgba(139,69,19,0.08)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    landscapeTitle: {
+        fontSize: 15,
+        fontWeight: '700',
+        color: '#5D4037',
+        fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
+    },
+    mushafScrollContent: {
+        paddingHorizontal: 12,
+        paddingBottom: 40,
+    },
+    mushafScrollContentLandscape: {
+        paddingHorizontal: 28,
+        paddingBottom: 40,
+    },
+    mushafCard: {
+        backgroundColor: '#FFFDF5',
+        borderRadius: 16,
+        paddingHorizontal: 16,
+        paddingVertical: 20,
+        borderWidth: 1,
+        borderColor: '#E8DFCC',
+        marginVertical: 8,
+        elevation: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
+    },
+    mushafCardLandscape: {
+        paddingHorizontal: 28,
+        paddingVertical: 22,
+        marginHorizontal: 8,
+    },
+    mushafParagraph: {
+        textAlign: 'justify',
+        writingDirection: 'rtl',
+    },
+    mushafActiveVerse: {
+        backgroundColor: '#FEF3C7',
+    },
+    mushafVerseStop: {
+        color: '#8B4513',
+        fontWeight: 'bold',
+    },
+    mushafActiveMealBox: {
+        backgroundColor: '#FFF9E6',
+        borderRadius: 12,
+        padding: 14,
+        marginVertical: 10,
+        borderWidth: 1,
+        borderColor: '#E8D5A3',
+    },
+    mushafActiveMealTitle: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#8B4513',
+        marginBottom: 4,
+    },
+    mushafActiveMealContent: {
+        fontSize: 14,
+        color: '#4B3621',
+        lineHeight: 22,
+        fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
     },
     floatingLandscapeBack: {
         position: 'absolute',
@@ -826,5 +1056,24 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 3,
         elevation: 4,
+    },
+    landscapeFloatingToggle: {
+        position: 'absolute',
+        top: 12,
+        right: 16,
+        zIndex: 999,
+        backgroundColor: 'rgba(255, 255, 255, 0.88)',
+        borderRadius: 20,
+        width: 38,
+        height: 38,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#E2D9C2',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
     },
 });
