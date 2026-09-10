@@ -18,7 +18,8 @@ import {
     Dimensions,
     useWindowDimensions,
     Alert,
-    TextInput
+    TextInput,
+    KeyboardAvoidingView
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -868,7 +869,14 @@ const getInjectedJs = (bookId?: string, targetPage?: number) => `
 
             var marker = target.closest && target.closest('.fn-marker');
             if (marker) {
-                send("FOOTNOTE", { id: marker.getAttribute('data-fn-id') });
+                var fnId = marker.getAttribute('data-fn-id');
+                var contentEl = fnId ? document.querySelector('#footnotes [data-fn-id="' + fnId + '"]') : null;
+                var fnText = contentEl ? (contentEl.innerText || contentEl.textContent || "").trim() : "";
+                if (fnText) {
+                    send("FOOTNOTE_CONTENT", { text: fnText });
+                } else {
+                    send("FOOTNOTE", { id: fnId });
+                }
                 return;
             }
 
@@ -1570,11 +1578,15 @@ export const RisaleHtmlReaderScreen = () => {
                     console.log('[WebView Console]', data.msg);
                     break;
                 case 'FOOTNOTE':
-                    // Fetch content by ID
+                    // Fetch content by ID from DOM or fallback
                     webViewRef.current?.injectJavaScript(`
                         (function(){
-                            const text = window.FOOTNOTES["${data.id}"];
-                            window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'FOOTNOTE_CONTENT', text: text }));
+                            var fnId = "${data.id}";
+                            var el = document.querySelector('#footnotes [data-fn-id="' + fnId + '"]');
+                            var text = el ? (el.innerText || el.textContent) : (window.FOOTNOTES ? window.FOOTNOTES[fnId] : "");
+                            if (text) {
+                                window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'FOOTNOTE_CONTENT', text: text.trim() }));
+                            }
                         })();
                         true;
                     `);
@@ -2311,14 +2323,19 @@ export const RisaleHtmlReaderScreen = () => {
                     <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
                         <View style={styles.dragHandle} />
                         <View style={styles.modalHeader}>
-                            <Text style={styles.darkModalTitle}>Dipnot / Haşiye</Text>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ width: 28, height: 28, borderRadius: 6, backgroundColor: 'rgba(31, 110, 235, 0.2)', justifyContent: 'center', alignItems: 'center', marginRight: 8 }}>
+                                    <Ionicons name="information-circle" size={18} color="#58A6FF" />
+                                </View>
+                                <Text style={styles.darkModalTitle}>Hâşiye / Dipnot</Text>
+                            </View>
                             <TouchableOpacity onPress={() => setFootnoteVisible(false)}>
                                 <Ionicons name="close-circle" size={28} color="#A1A1AA" />
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
-                        <ScrollView style={{ maxHeight: 300 }} nestedScrollEnabled={true}>
-                            <Text style={[styles.footNoteText, { color: '#E4E4E7' }]}>{footnoteContent}</Text>
+                        <ScrollView style={{ maxHeight: 360 }} nestedScrollEnabled={true} showsVerticalScrollIndicator={true}>
+                            <Text style={[styles.footNoteText, { color: '#E4E4E7', lineHeight: 26, fontSize: 16 }]}>{footnoteContent}</Text>
                         </ScrollView>
                     </TouchableOpacity>
                 </TouchableOpacity>
@@ -2512,22 +2529,29 @@ export const RisaleHtmlReaderScreen = () => {
                 </TouchableOpacity>
             </Modal>
 
-            {/* 2. DEDICATED KÜLLİYAT LÜGATİ SEARCH MODAL (From Floating Menu) */}
+            {/* 2. DEDICATED KÜLLİYAT LÜGATİ SEARCH MODAL (Spacious & Responsive) */}
             <Modal visible={dictSearchModalVisible} transparent animationType="slide" onRequestClose={() => setDictSearchModalVisible(false)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setDictSearchModalVisible(false)}>
-                    <TouchableOpacity activeOpacity={1} style={styles.lightModalContent} onPress={(e) => e.stopPropagation()}>
+                <KeyboardAvoidingView 
+                    behavior={Platform.OS === 'ios' ? 'padding' : undefined} 
+                    style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' }}
+                >
+                    <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={() => setDictSearchModalVisible(false)} />
+                    <View style={styles.dictModalContent}>
                         <View style={styles.lightDragHandle} />
 
                         {/* Modal Header */}
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
-                                    <Ionicons name="book" size={18} color="#C5A059" />
+                                <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    <Ionicons name="book" size={20} color="#C5A059" />
                                 </View>
-                                <Text style={styles.lightModalTitle}>120.000+ Kelimelik Külliyat Lügati</Text>
+                                <View>
+                                    <Text style={[styles.lightModalTitle, { fontSize: 17 }]}>120.000+ Kelimelik Külliyat Lügati</Text>
+                                    <Text style={{ fontSize: 11, color: '#94A3B8', marginTop: 1 }}>Canlı Arama ve Osmanlıca İzahlar</Text>
+                                </View>
                             </View>
                             <TouchableOpacity onPress={() => setDictSearchModalVisible(false)} style={{ padding: 4 }}>
-                                <Ionicons name="close-circle" size={26} color="#94A3B8" />
+                                <Ionicons name="close-circle" size={28} color="#94A3B8" />
                             </TouchableOpacity>
                         </View>
 
@@ -2538,14 +2562,14 @@ export const RisaleHtmlReaderScreen = () => {
                             backgroundColor: '#F8FAFC',
                             borderRadius: 12,
                             paddingHorizontal: 12,
-                            paddingVertical: 10,
+                            paddingVertical: Platform.OS === 'ios' ? 10 : 8,
                             marginBottom: 12,
-                            borderWidth: 1,
+                            borderWidth: 1.5,
                             borderColor: '#E2E8F0'
                         }}>
-                            <Ionicons name="search" size={18} color="#C5A059" style={{ marginRight: 8 }} />
+                            <Ionicons name="search" size={20} color="#C5A059" style={{ marginRight: 8 }} />
                             <TextInput
-                                style={{ flex: 1, color: '#0F172A', fontSize: 15, padding: 0 }}
+                                style={{ flex: 1, color: '#0F172A', fontSize: 16, padding: 0 }}
                                 placeholder="Kelime veya tabir arayın..."
                                 placeholderTextColor="#94A3B8"
                                 value={dictSearchQuery}
@@ -2555,13 +2579,16 @@ export const RisaleHtmlReaderScreen = () => {
                                 autoFocus={true}
                                 returnKeyType="search"
                             />
+                            {isSearchingDict ? (
+                                <ActivityIndicator size="small" color="#C5A059" style={{ marginRight: 4 }} />
+                            ) : null}
                             {dictSearchQuery.length > 0 && (
                                 <TouchableOpacity onPress={() => {
                                     setDictSearchQuery("");
                                     setLiveSearchResults([]);
                                     setSearchModalEntry(null);
                                 }} style={{ padding: 4 }}>
-                                    <Ionicons name="close-circle" size={18} color="#94A3B8" />
+                                    <Ionicons name="close-circle" size={20} color="#94A3B8" />
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -2569,28 +2596,63 @@ export const RisaleHtmlReaderScreen = () => {
                         {/* 1. DETAIL VIEW */}
                         {searchModalEntry ? (
                             <View style={{ flex: 1 }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F172A' }}>{searchModalEntry.word_tr}</Text>
-                                    <Text style={{ fontSize: 26, color: '#B45309', fontFamily: 'ScheherazadeNew' }}>{searchModalEntry.word_osm}</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                                    <TouchableOpacity
+                                        style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F1F5F9', paddingVertical: 6, paddingHorizontal: 12, borderRadius: 8 }}
+                                        onPress={() => setSearchModalEntry(null)}
+                                    >
+                                        <Ionicons name="arrow-back" size={16} color="#C5A059" style={{ marginRight: 6 }} />
+                                        <Text style={{ color: '#C5A059', fontSize: 13, fontWeight: '700' }}>Sonuçlara Dön</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        style={{ flexDirection: 'row', alignItems: 'center', padding: 6 }}
+                                        onPress={async () => {
+                                            try {
+                                                const url = `https://www.google.com/search?q=${encodeURIComponent(searchModalEntry.word_tr + " nedir risale")}`;
+                                                await Linking.openURL(url);
+                                            } catch (e) {}
+                                        }}
+                                    >
+                                        <Ionicons name="logo-google" size={16} color="#94A3B8" style={{ marginRight: 4 }} />
+                                        <Text style={{ fontSize: 12, color: '#94A3B8' }}>Google</Text>
+                                    </TouchableOpacity>
                                 </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 8, paddingHorizontal: 4 }}>
+                                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F172A', flex: 1 }}>{searchModalEntry.word_tr}</Text>
+                                    {searchModalEntry.word_osm ? (
+                                        <Text style={{ fontSize: 28, color: '#B45309', fontFamily: 'ScheherazadeNew', marginLeft: 12 }}>
+                                            {searchModalEntry.word_osm}
+                                        </Text>
+                                    ) : null}
+                                </View>
+
                                 <View style={[styles.separator, { backgroundColor: '#E2E8F0', marginVertical: 8 }]} />
-                                <ScrollView style={{ maxHeight: 300 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
-                                    <Text style={[styles.dictDef, { color: '#334155', lineHeight: 26 }]}>{searchModalEntry.definition}</Text>
+
+                                <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true} contentContainerStyle={{ paddingBottom: 24 }}>
+                                    <Text style={[styles.dictDef, { color: '#334155', lineHeight: 28, fontSize: 16 }]}>
+                                        {searchModalEntry.definition}
+                                    </Text>
                                 </ScrollView>
-                                <TouchableOpacity
-                                    style={{ marginTop: 12, paddingVertical: 10, alignItems: 'center', backgroundColor: '#F1F5F9', borderRadius: 8 }}
-                                    onPress={() => setSearchModalEntry(null)}
-                                >
-                                    <Text style={{ color: '#C5A059', fontSize: 14, fontWeight: '700' }}>← Arama Sonuçlarına Dön</Text>
-                                </TouchableOpacity>
                             </View>
                         ) : liveSearchResults.length > 0 ? (
-                            /* 2. SEARCH RESULTS LIST */
+                            /* 2. SEARCH RESULTS LIST (Spacious, full height) */
                             <View style={{ flex: 1 }}>
-                                <Text style={{ fontSize: 12, color: '#64748B', marginBottom: 8, fontWeight: '500' }}>
-                                    Bulunan {liveSearchResults.length} kelime:
-                                </Text>
-                                <ScrollView style={{ maxHeight: 340 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, paddingHorizontal: 2 }}>
+                                    <Text style={{ fontSize: 13, color: '#64748B', fontWeight: '600' }}>
+                                        Bulunan {liveSearchResults.length} kelime:
+                                    </Text>
+                                    <Text style={{ fontSize: 11, color: '#94A3B8' }}>
+                                        Detay için kelimeye dokunun
+                                    </Text>
+                                </View>
+                                <ScrollView 
+                                    style={{ flex: 1 }} 
+                                    showsVerticalScrollIndicator={true} 
+                                    nestedScrollEnabled={true}
+                                    keyboardShouldPersistTaps="handled"
+                                    contentContainerStyle={{ paddingBottom: 20 }}
+                                >
                                     {liveSearchResults.map((entry, i) => (
                                         <TouchableOpacity
                                             key={entry.id || i}
@@ -2598,43 +2660,59 @@ export const RisaleHtmlReaderScreen = () => {
                                                 flexDirection: 'row',
                                                 alignItems: 'center',
                                                 justifyContent: 'space-between',
-                                                paddingVertical: 10,
+                                                paddingVertical: 12,
+                                                paddingHorizontal: 8,
+                                                borderRadius: 8,
                                                 borderBottomWidth: 1,
-                                                borderBottomColor: '#F1F5F9'
+                                                borderBottomColor: '#F1F5F9',
+                                                backgroundColor: i % 2 === 0 ? '#FFFFFF' : '#FAFAFA'
                                             }}
                                             onPress={() => setSearchModalEntry(entry)}
                                         >
                                             <View style={{ flex: 1, paddingRight: 12 }}>
-                                                <Text style={{ fontSize: 15, fontWeight: '700', color: '#0F172A' }}>{entry.word_tr}</Text>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <Text style={{ fontSize: 16, fontWeight: '700', color: '#0F172A' }}>{entry.word_tr}</Text>
+                                                </View>
                                                 {entry.definition ? (
-                                                    <Text style={{ fontSize: 12, color: '#64748B', marginTop: 2 }} numberOfLines={1}>
+                                                    <Text style={{ fontSize: 13, color: '#64748B', marginTop: 4, lineHeight: 18 }} numberOfLines={2}>
                                                         {entry.definition}
                                                     </Text>
                                                 ) : null}
                                             </View>
-                                            <Text style={{ fontSize: 18, color: '#B45309', fontFamily: 'ScheherazadeNew' }}>{entry.word_osm}</Text>
+                                            <View style={{ alignItems: 'flex-end' }}>
+                                                {entry.word_osm ? (
+                                                    <Text style={{ fontSize: 20, color: '#B45309', fontFamily: 'ScheherazadeNew', marginBottom: 4 }}>
+                                                        {entry.word_osm}
+                                                    </Text>
+                                                ) : null}
+                                                <Ionicons name="chevron-forward" size={16} color="#CBD5E1" />
+                                            </View>
                                         </TouchableOpacity>
                                     ))}
                                 </ScrollView>
                             </View>
                         ) : dictSearchQuery.trim().length > 0 ? (
                             /* 3. NOT FOUND */
-                            <View style={{ padding: 20, alignItems: 'center' }}>
-                                <Ionicons name="alert-circle-outline" size={40} color="#CBD5E1" />
-                                <Text style={{ fontSize: 15, color: '#64748B', marginTop: 8, textAlign: 'center' }}>
+                            <View style={{ padding: 24, alignItems: 'center' }}>
+                                <Ionicons name="alert-circle-outline" size={44} color="#CBD5E1" />
+                                <Text style={{ fontSize: 16, color: '#64748B', marginTop: 10, textAlign: 'center' }}>
                                     Lügatta bulunamadı: "{dictSearchQuery}"
+                                </Text>
+                                <Text style={{ fontSize: 12, color: '#94A3B8', marginTop: 4, textAlign: 'center' }}>
+                                    Farklı bir kök veya Osmanlıca imlâ ile arayabilir veya internette bulabilirsiniz.
                                 </Text>
                                 <TouchableOpacity
                                     style={{
-                                        marginTop: 16,
+                                        marginTop: 18,
                                         flexDirection: 'row',
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         backgroundColor: '#F8FAFC',
                                         borderWidth: 1,
                                         borderColor: '#E2E8F0',
-                                        padding: 10,
-                                        borderRadius: 8
+                                        paddingHorizontal: 20,
+                                        paddingVertical: 12,
+                                        borderRadius: 10
                                     }}
                                     onPress={async () => {
                                         try {
@@ -2646,23 +2724,23 @@ export const RisaleHtmlReaderScreen = () => {
                                     }}
                                 >
                                     <Ionicons name="logo-google" size={18} color="#C5A059" style={{ marginRight: 8 }} />
-                                    <Text style={{ color: '#334155', fontWeight: '500' }}>Google'da Ara</Text>
+                                    <Text style={{ color: '#334155', fontWeight: '600' }}>Google'da Detaylı Ara</Text>
                                 </TouchableOpacity>
                             </View>
                         ) : (
                             /* 4. INITIAL PROMPT */
                             <View style={{ padding: 28, alignItems: 'center', justifyContent: 'center' }}>
-                                <Ionicons name="search-outline" size={44} color="#CBD5E1" style={{ marginBottom: 10 }} />
-                                <Text style={{ fontSize: 16, fontWeight: '700', color: '#0F172A', textAlign: 'center' }}>
+                                <Ionicons name="search-outline" size={48} color="#CBD5E1" style={{ marginBottom: 12 }} />
+                                <Text style={{ fontSize: 17, fontWeight: '700', color: '#0F172A', textAlign: 'center' }}>
                                     Külliyat Arama Motoru
                                 </Text>
-                                <Text style={{ fontSize: 13, color: '#64748B', marginTop: 6, textAlign: 'center', lineHeight: 18 }}>
-                                    Aramak istediğiniz kelime veya tabiri yukarıdaki kutucuğa yazın. Anlık olarak listelenecektir.
+                                <Text style={{ fontSize: 13, color: '#64748B', marginTop: 6, textAlign: 'center', lineHeight: 20, maxWidth: 300 }}>
+                                    Aramak istediğiniz kelime veya tabiri yukarıdaki kutucuğa yazın. Anlık olarak 120.000 kelime taranır ve listelenir.
                                 </Text>
                             </View>
                         )}
-                    </TouchableOpacity>
-                </TouchableOpacity>
+                    </View>
+                </KeyboardAvoidingView>
             </Modal>
 
             {/* 3. SAYFAYA GİT (GO TO PAGE) MODAL */}
@@ -3134,6 +3212,21 @@ const styles = StyleSheet.create({
         paddingBottom: 36,
         minHeight: 260,
         maxHeight: '85%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 10,
+        elevation: 10,
+    },
+    dictModalContent: {
+        backgroundColor: '#FFFFFF',
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 12,
+        paddingBottom: Platform.OS === 'ios' ? 36 : 20,
+        height: '88%',
+        maxHeight: '94%',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: -4 },
         shadowOpacity: 0.15,
