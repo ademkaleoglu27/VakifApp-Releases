@@ -1,5 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from 'expo-location';
+import { TURKEY_CITIES, DIYANET_CITY_MAPPING } from '../data/diyanetCities';
+
+export { TURKEY_CITIES };
 
 export interface PrayerTimes {
     imsak: string;    // Sabah başlangıcı / Fecr
@@ -9,6 +12,8 @@ export interface PrayerTimes {
     aksam: string;    // Akşam / İftar
     yatsi: string;    // Yatsı namazı
     date: string;     // YYYY-MM-DD
+    hijriDate?: string; // Resmi Diyanet Hicrî Tarih (ör. "28 Rebiülevvel 1448")
+    source?: 'diyanet_official' | 'diyanet_mirror' | 'aladhan_diyanet' | 'calculated';
 }
 
 export interface CityInfo {
@@ -20,6 +25,8 @@ export interface CityInfo {
     lat: number;
     lng: number;
     elevation?: number;
+    diyanetDistrictId?: string;
+    diyanetStateId?: string;
 }
 
 export interface ActivePrayerInfo {
@@ -32,93 +39,8 @@ export interface ActivePrayerInfo {
     progress: number; // 0 to 1
 }
 
-// 81 Türkiye İli Resmi Koordinatları
-export const TURKEY_CITIES: CityInfo[] = [
-    { id: '34', name: 'İstanbul', lat: 41.0082, lng: 28.9784, elevation: 40 },
-    { id: '06', name: 'Ankara', lat: 39.9334, lng: 32.8597, elevation: 938 },
-    { id: '35', name: 'İzmir', lat: 38.4192, lng: 27.1287, elevation: 5 },
-    { id: '01', name: 'Adana', lat: 37.0000, lng: 35.3213, elevation: 23 },
-    { id: '02', name: 'Adıyaman', lat: 37.7648, lng: 38.2786, elevation: 669 },
-    { id: '03', name: 'Afyonkarahisar', lat: 38.7507, lng: 30.5567, elevation: 1034 },
-    { id: '04', name: 'Ağrı', lat: 39.7191, lng: 43.0503, elevation: 1632 },
-    { id: '05', name: 'Amasya', lat: 40.6534, lng: 35.8333, elevation: 411 },
-    { id: '07', name: 'Antalya', lat: 36.8969, lng: 30.7133, elevation: 30 },
-    { id: '08', name: 'Artvin', lat: 41.1828, lng: 41.8183, elevation: 345 },
-    { id: '09', name: 'Aydın', lat: 37.8560, lng: 27.8416, elevation: 65 },
-    { id: '10', name: 'Balıkesir', lat: 39.6484, lng: 27.8826, elevation: 139 },
-    { id: '11', name: 'Bilecik', lat: 40.1451, lng: 29.9799, elevation: 513 },
-    { id: '12', name: 'Bingöl', lat: 38.8854, lng: 40.4983, elevation: 1151 },
-    { id: '13', name: 'Bitlis', lat: 38.4006, lng: 42.1095, elevation: 1545 },
-    { id: '14', name: 'Bolu', lat: 40.7350, lng: 31.6061, elevation: 726 },
-    { id: '15', name: 'Burdur', lat: 37.7203, lng: 30.2908, elevation: 950 },
-    { id: '16', name: 'Bursa', lat: 40.1885, lng: 29.0610, elevation: 155 },
-    { id: '17', name: 'Çanakkale', lat: 40.1553, lng: 26.4142, elevation: 10 },
-    { id: '18', name: 'Çankırı', lat: 40.6013, lng: 33.6134, elevation: 730 },
-    { id: '19', name: 'Çorum', lat: 40.5506, lng: 34.9556, elevation: 801 },
-    { id: '20', name: 'Denizli', lat: 37.7765, lng: 29.0864, elevation: 354 },
-    { id: '21', name: 'Diyarbakır', lat: 37.9144, lng: 40.2306, elevation: 675 },
-    { id: '22', name: 'Edirne', lat: 41.6768, lng: 26.5603, elevation: 42 },
-    { id: '23', name: 'Elazığ', lat: 38.6810, lng: 39.2264, elevation: 1067 },
-    { id: '24', name: 'Erzincan', lat: 39.7500, lng: 39.5000, elevation: 1185 },
-    { id: '25', name: 'Erzurum', lat: 39.9043, lng: 41.2679, elevation: 1890 },
-    { id: '26', name: 'Eskişehir', lat: 39.7767, lng: 30.5206, elevation: 788 },
-    { id: '27', name: 'Gaziantep', lat: 37.0662, lng: 37.3833, elevation: 850 },
-    { id: '28', name: 'Giresun', lat: 40.9128, lng: 38.3895, elevation: 10 },
-    { id: '29', name: 'Gümüşhane', lat: 40.4600, lng: 39.4814, elevation: 1210 },
-    { id: '30', name: 'Hakkari', lat: 37.5833, lng: 43.7333, elevation: 1720 },
-    { id: '31', name: 'Hatay', lat: 36.4018, lng: 36.3498, elevation: 85 },
-    { id: '32', name: 'Isparta', lat: 37.7648, lng: 30.5566, elevation: 1035 },
-    { id: '33', name: 'Mersin', lat: 36.8000, lng: 34.6333, elevation: 6 },
-    { id: '36', name: 'Kars', lat: 40.6167, lng: 43.1000, elevation: 1768 },
-    { id: '37', name: 'Kastamonu', lat: 41.3887, lng: 33.7827, elevation: 774 },
-    { id: '38', name: 'Kayseri', lat: 38.7312, lng: 35.4787, elevation: 1054 },
-    { id: '39', name: 'Kırklareli', lat: 41.7333, lng: 27.2167, elevation: 203 },
-    { id: '40', name: 'Kırşehir', lat: 39.1425, lng: 34.1709, elevation: 985 },
-    { id: '41', name: 'Kocaeli', lat: 40.8533, lng: 29.8815, elevation: 100 },
-    { id: '42', name: 'Konya', lat: 37.8667, lng: 32.4833, elevation: 1016 },
-    { id: '43', name: 'Kütahya', lat: 39.4167, lng: 29.9833, elevation: 969 },
-    { id: '44', name: 'Malatya', lat: 38.3552, lng: 38.3095, elevation: 964 },
-    { id: '45', name: 'Manisa', lat: 38.6191, lng: 27.4289, elevation: 62 },
-    { id: '46', name: 'Kahramanmaraş', lat: 37.5858, lng: 36.9371, elevation: 568 },
-    { id: '47', name: 'Mardin', lat: 37.3212, lng: 40.7245, elevation: 1083 },
-    { id: '48', name: 'Muğla', lat: 37.2153, lng: 28.3636, elevation: 660 },
-    { id: '49', name: 'Muş', lat: 38.7432, lng: 41.5064, elevation: 1334 },
-    { id: '50', name: 'Nevşehir', lat: 38.6244, lng: 34.7144, elevation: 1224 },
-    { id: '51', name: 'Niğde', lat: 37.9667, lng: 34.6833, elevation: 1229 },
-    { id: '52', name: 'Ordu', lat: 40.9839, lng: 37.8764, elevation: 5 },
-    { id: '53', name: 'Rize', lat: 41.0201, lng: 40.5234, elevation: 6 },
-    { id: '54', name: 'Sakarya', lat: 40.7569, lng: 30.3783, elevation: 31 },
-    { id: '55', name: 'Samsun', lat: 41.2928, lng: 36.3313, elevation: 4 },
-    { id: '56', name: 'Siirt', lat: 37.9333, lng: 41.9500, elevation: 895 },
-    { id: '57', name: 'Sinop', lat: 42.0231, lng: 35.1531, elevation: 25 },
-    { id: '58', name: 'Sivas', lat: 39.7477, lng: 37.0179, elevation: 1275 },
-    { id: '59', name: 'Tekirdağ', lat: 40.9833, lng: 27.5167, elevation: 37 },
-    { id: '60', name: 'Tokat', lat: 40.3167, lng: 36.5500, elevation: 623 },
-    { id: '61', name: 'Trabzon', lat: 41.0015, lng: 39.7178, elevation: 30 },
-    { id: '62', name: 'Tunceli', lat: 39.1079, lng: 39.5401, elevation: 915 },
-    { id: '63', name: 'Şanlıurfa', lat: 37.1591, lng: 38.7969, elevation: 518 },
-    { id: '64', name: 'Uşak', lat: 38.6823, lng: 29.4082, elevation: 907 },
-    { id: '65', name: 'Van', lat: 38.4891, lng: 43.4089, elevation: 1727 },
-    { id: '66', name: 'Yozgat', lat: 39.8181, lng: 34.8147, elevation: 1300 },
-    { id: '67', name: 'Zonguldak', lat: 41.4564, lng: 31.7987, elevation: 135 },
-    { id: '68', name: 'Aksaray', lat: 38.3687, lng: 34.037, elevation: 980 },
-    { id: '69', name: 'Bayburt', lat: 40.2552, lng: 40.2249, elevation: 1550 },
-    { id: '70', name: 'Karaman', lat: 37.1759, lng: 33.2287, elevation: 1033 },
-    { id: '71', name: 'Kırıkkale', lat: 39.8468, lng: 33.5153, elevation: 750 },
-    { id: '72', name: 'Batman', lat: 37.8812, lng: 41.1293, elevation: 570 },
-    { id: '73', name: 'Şırnak', lat: 37.5164, lng: 42.4594, elevation: 1350 },
-    { id: '74', name: 'Bartın', lat: 41.6344, lng: 32.3375, elevation: 25 },
-    { id: '75', name: 'Ardahan', lat: 41.1105, lng: 42.7022, elevation: 1829 },
-    { id: '76', name: 'Iğdır', lat: 39.9196, lng: 44.0454, elevation: 858 },
-    { id: '77', name: 'Yalova', lat: 40.65, lng: 29.2667, elevation: 30 },
-    { id: '78', name: 'Karabük', lat: 41.2061, lng: 32.6204, elevation: 280 },
-    { id: '79', name: 'Kilis', lat: 36.7184, lng: 37.1212, elevation: 660 },
-    { id: '80', name: 'Osmaniye', lat: 37.0742, lng: 36.2467, elevation: 125 },
-    { id: '81', name: 'Düzce', lat: 40.8438, lng: 31.1565, elevation: 160 },
-];
-
-const SELECTED_CITY_KEY = '@selected_prayer_city_v1';
-const PRAYER_CACHE_KEY_PREFIX = '@prayer_times_cache_';
+const SELECTED_CITY_KEY = '@selected_prayer_city_v2';
+const PRAYER_CACHE_KEY_PREFIX = '@prayer_times_diyanet_v2_';
 
 class PrayerTimesService {
     private selectedCity: CityInfo = TURKEY_CITIES[0]; // Default: İstanbul
@@ -131,19 +53,61 @@ class PrayerTimesService {
         try {
             const saved = await AsyncStorage.getItem(SELECTED_CITY_KEY);
             if (saved) {
-                this.selectedCity = JSON.parse(saved);
+                const parsed: CityInfo = JSON.parse(saved);
+                // Ensure diyanetDistrictId is populated
+                if (!parsed.diyanetDistrictId) {
+                    parsed.diyanetDistrictId = this.resolveDiyanetDistrictId(parsed);
+                }
+                this.selectedCity = parsed;
             }
         } catch { }
         return this.selectedCity;
     }
 
     public async setSelectedCity(city: CityInfo): Promise<void> {
+        if (!city.diyanetDistrictId) {
+            city.diyanetDistrictId = this.resolveDiyanetDistrictId(city);
+        }
         this.selectedCity = city;
         await AsyncStorage.setItem(SELECTED_CITY_KEY, JSON.stringify(city));
     }
 
     public getSelectedCity(): CityInfo {
         return this.selectedCity;
+    }
+
+    /**
+     * Resolve official Diyanet district ID for a city/district
+     */
+    public resolveDiyanetDistrictId(city: CityInfo): string {
+        if (city.diyanetDistrictId) return city.diyanetDistrictId;
+
+        const norm = (s: string) => s.toLocaleUpperCase('tr-TR').trim();
+        const candidateNames = [
+            city.district,
+            city.city,
+            city.name,
+            city.name.split(',')[0],
+        ].filter(Boolean) as string[];
+
+        for (const name of candidateNames) {
+            const n = norm(name);
+            const entry = DIYANET_CITY_MAPPING[n] || Object.entries(DIYANET_CITY_MAPPING).find(([k]) => norm(k) === n)?.[1];
+            if (entry) return entry.districtId;
+        }
+
+        // Closest city in Turkey by coordinates
+        let closest = TURKEY_CITIES[0];
+        let minDist = Infinity;
+        for (const c of TURKEY_CITIES) {
+            const dist = Math.hypot(c.lat - city.lat, c.lng - city.lng);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = c;
+            }
+        }
+
+        return closest.diyanetDistrictId || '9541'; // Fallback Istanbul (9541)
     }
 
     /**
@@ -194,7 +158,6 @@ class PrayerTimesService {
                 console.warn('[PrayerTimesService] Reverse geocode error:', geoErr);
             }
 
-            // Format human-friendly name: "İstanbul, Fatih (Akşemsettin Mah.)" or "Ankara, Çankaya"
             let formattedName = resolvedCity;
             if (resolvedDistrict && resolvedDistrict.toLowerCase() !== resolvedCity.toLowerCase()) {
                 formattedName = `${resolvedCity}, ${resolvedDistrict}`;
@@ -214,7 +177,12 @@ class PrayerTimesService {
                 lat,
                 lng,
                 elevation,
+                diyanetDistrictId: closest.diyanetDistrictId,
+                diyanetStateId: closest.diyanetStateId
             };
+
+            // If resolvedCity or resolvedDistrict matches a Diyanet city, resolve its district ID
+            gpsCity.diyanetDistrictId = this.resolveDiyanetDistrictId(gpsCity);
 
             await this.setSelectedCity(gpsCity);
             return gpsCity;
@@ -225,32 +193,184 @@ class PrayerTimesService {
     }
 
     /**
-     * Calculate pinpoint Diyanet-aligned prayer times for a given date and coordinates.
-     * Uses high-precision solar algorithms + Diyanet Temkin calibration.
+     * Primary Source: Fetch authentic monthly Diyanet prayer times from ezanvakti.imsakiyem.com API
+     * Caches the entire month (30 days) in one single network call.
+     */
+    public async fetchOfficialDiyanetTimes(date: Date, districtId: string): Promise<PrayerTimes | null> {
+        try {
+            const url = `https://ezanvakti.imsakiyem.com/api/prayer-times/${districtId}/monthly`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!res.ok) return null;
+            const json = await res.json();
+            const list: any[] = json.data || [];
+            if (!Array.isArray(list) || list.length === 0) return null;
+
+            const targetDateStr = this.formatDateKey(date);
+            let matchedTarget: PrayerTimes | null = null;
+
+            // Cache all 30 days locally in AsyncStorage
+            for (const item of list) {
+                if (!item.times || !item.date) continue;
+                const dKey = item.date.substring(0, 10);
+                const pTimes: PrayerTimes = {
+                    imsak: item.times.imsak,
+                    gunes: item.times.gunes,
+                    ogle: item.times.ogle,
+                    ikindi: item.times.ikindi,
+                    aksam: item.times.aksam,
+                    yatsi: item.times.yatsi,
+                    date: dKey,
+                    hijriDate: item.hijri_date?.full_date || '',
+                    source: 'diyanet_official'
+                };
+
+                const cacheKey = `${PRAYER_CACHE_KEY_PREFIX}${districtId}_${dKey}`;
+                AsyncStorage.setItem(cacheKey, JSON.stringify(pTimes)).catch(() => {});
+
+                if (dKey === targetDateStr) {
+                    matchedTarget = pTimes;
+                }
+            }
+
+            return matchedTarget;
+        } catch (e) {
+            console.warn('[PrayerTimesService] Official Diyanet fetch error:', e);
+            return null;
+        }
+    }
+
+    /**
+     * Secondary Mirror Source: Fetch Diyanet prayer times from namazvakti.mtopal.dev
+     */
+    public async fetchDiyanetMirrorTimes(date: Date, districtId: string): Promise<PrayerTimes | null> {
+        try {
+            const url = `https://namazvakti.mtopal.dev/vakitler/${districtId}`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!res.ok) return null;
+            const list = await res.json();
+            if (!Array.isArray(list) || list.length === 0) return null;
+
+            const targetDateStr = this.formatDateKey(date);
+            let matchedTarget: PrayerTimes | null = null;
+
+            for (const item of list) {
+                const rawIso = item.MiladiTarihUzunIso8601 || '';
+                const dKey = rawIso ? rawIso.substring(0, 10) : '';
+                if (!dKey) continue;
+
+                const pTimes: PrayerTimes = {
+                    imsak: item.Imsak,
+                    gunes: item.Gunes,
+                    ogle: item.Ogle,
+                    ikindi: item.Ikindi,
+                    aksam: item.Aksam,
+                    yatsi: item.Yatsi,
+                    date: dKey,
+                    hijriDate: item.HicriTarihUzun || item.HicriTarihKisa || '',
+                    source: 'diyanet_mirror'
+                };
+
+                const cacheKey = `${PRAYER_CACHE_KEY_PREFIX}${districtId}_${dKey}`;
+                AsyncStorage.setItem(cacheKey, JSON.stringify(pTimes)).catch(() => {});
+
+                if (dKey === targetDateStr) {
+                    matchedTarget = pTimes;
+                }
+            }
+
+            return matchedTarget;
+        } catch (e) {
+            console.warn('[PrayerTimesService] Mirror Diyanet fetch error:', e);
+            return null;
+        }
+    }
+
+    /**
+     * Tertiary Fallback: Aladhan API with direct DD-MM-YYYY format (no 302 redirect!)
+     * and calibrated with Diyanet official temkin offsets.
+     */
+    public async fetchAladhanTimes(date: Date, city: CityInfo): Promise<PrayerTimes | null> {
+        try {
+            const dayStr = String(date.getDate()).padStart(2, '0');
+            const monthStr = String(date.getMonth() + 1).padStart(2, '0');
+            const yearStr = date.getFullYear();
+            const dateFormatted = `${dayStr}-${monthStr}-${yearStr}`;
+
+            const url = `https://api.aladhan.com/v1/timings/${dateFormatted}?latitude=${city.lat}&longitude=${city.lng}&method=13`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!res.ok) return null;
+            const json = await res.json();
+            if (json?.code === 200 && json?.data?.timings) {
+                const t = json.data.timings;
+                const clean = (val: string) => val ? val.split(' ')[0].substring(0, 5) : '';
+
+                const addMin = (timeStr: string, mins: number) => {
+                    const [h, m] = timeStr.split(':').map(Number);
+                    const total = h * 60 + m + mins;
+                    const nh = Math.floor((total % 1440) / 60);
+                    const nm = total % 60;
+                    return `${String(nh).padStart(2, '0')}:${String(nm).padStart(2, '0')}`;
+                };
+
+                const fajr = clean(t.Fajr);
+                const sunrise = clean(t.Sunrise);
+                const dhuhr = clean(t.Dhuhr);
+                const asr = clean(t.Asr);
+                const maghrib = addMin(clean(t.Maghrib), 1);
+                const isha = addMin(clean(t.Isha), 1);
+
+                return {
+                    imsak: fajr,
+                    gunes: sunrise,
+                    ogle: dhuhr,
+                    ikindi: asr,
+                    aksam: maghrib,
+                    yatsi: isha,
+                    date: `${yearStr}-${monthStr}-${dayStr}`,
+                    source: 'aladhan_diyanet'
+                };
+            }
+        } catch { }
+        return null;
+    }
+
+    /**
+     * Offline Mathematical Fallback: Calibrated with Diyanet 1982 rules.
      */
     public calculateTimes(date: Date = new Date(), city: CityInfo = this.selectedCity): PrayerTimes {
         const lat = city.lat;
         const lng = city.lng;
         const elevation = city.elevation || 50;
 
-        // Day of Year
         const start = new Date(date.getFullYear(), 0, 0);
         const diff = date.getTime() - start.getTime();
         const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-        // Sun Declination & Equation of Time
         const B = (360 / 365) * (dayOfYear - 81) * (Math.PI / 180);
-        const eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B); // in minutes
-        const declination = 23.45 * Math.sin(((360 / 365) * (dayOfYear - 81) * Math.PI) / 180); // in degrees
+        const eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
+        const declination = 23.45 * Math.sin(((360 / 365) * (dayOfYear - 81) * Math.PI) / 180);
 
         const rad = (degVal: number) => (degVal * Math.PI) / 180;
         const deg = (radVal: number) => (radVal * 180) / Math.PI;
 
-        // Timezone (Turkey is UTC+3 permanently)
         const timezone = 3;
         const solarNoonMinutes = 720 - 4 * lng - eot + timezone * 60;
 
-        // Hour angle for a given solar altitude angle
         const getHourAngle = (altitudeAngle: number) => {
             const num = Math.sin(rad(altitudeAngle)) - Math.sin(rad(lat)) * Math.sin(rad(declination));
             const den = Math.cos(rad(lat)) * Math.cos(rad(declination));
@@ -259,30 +379,23 @@ class PrayerTimesService {
             return deg(Math.acos(cosH));
         };
 
-        // Elevation correction (Dip of horizon)
         const dip = 0.0347 * Math.sqrt(elevation);
 
-        // 1. İmsak (Fajr): Solar angle -18.0° with Diyanet temkin
         const hFajr = getHourAngle(-18.0);
         const imsakMinutes = hFajr ? solarNoonMinutes - hFajr * 4 : solarNoonMinutes - 100;
 
-        // 2. Güneş (Sunrise): Solar angle -0.833° - dip - 4 min temkin offset
         const hSunrise = getHourAngle(-0.833 - dip);
-        const gunesMinutes = hSunrise ? solarNoonMinutes - hSunrise * 4 - 4 : solarNoonMinutes - 80;
+        const gunesMinutes = hSunrise ? solarNoonMinutes - hSunrise * 4 : solarNoonMinutes - 80;
 
-        // 3. Öğle (Dhuhr): Solar Noon + 5 min Diyanet temkin offset
-        const ogleMinutes = solarNoonMinutes + 5;
+        const ogleMinutes = solarNoonMinutes + 4;
 
-        // 4. İkindi (Asr): Standard shadow ratio 1:1 + 4 min temkin offset
         const asrAltitude = deg(Math.atan(1 / (1 + Math.tan(rad(Math.abs(lat - declination))))));
         const hAsr = getHourAngle(asrAltitude);
         const ikindiMinutes = hAsr ? solarNoonMinutes + hAsr * 4 + 4 : solarNoonMinutes + 180;
 
-        // 5. Akşam (Maghrib/Sunset): Sunset -0.833° - dip + 7 min Diyanet temkin offset
         const hSunset = getHourAngle(-0.833 - dip);
         const aksamMinutes = hSunset ? solarNoonMinutes + hSunset * 4 + 7 : solarNoonMinutes + 300;
 
-        // 6. Yatsı (Isha): Solar angle -17.0° + 2 min Diyanet temkin offset
         const hIsha = getHourAngle(-17.0);
         const yatsiMinutes = hIsha ? solarNoonMinutes + hIsha * 4 + 2 : solarNoonMinutes + 400;
 
@@ -294,9 +407,7 @@ class PrayerTimesService {
             return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
         };
 
-        const yearStr = date.getFullYear();
-        const monthStr = String(date.getMonth() + 1).padStart(2, '0');
-        const dayStr = String(date.getDate()).padStart(2, '0');
+        const dateKey = this.formatDateKey(date);
 
         return {
             imsak: formatMinutes(imsakMinutes),
@@ -305,76 +416,61 @@ class PrayerTimesService {
             ikindi: formatMinutes(ikindiMinutes),
             aksam: formatMinutes(aksamMinutes),
             yatsi: formatMinutes(yatsiMinutes),
-            date: `${yearStr}-${monthStr}-${dayStr}`,
+            date: dateKey,
+            source: 'calculated',
         };
     }
 
-    /**
-     * Fetch authentic Diyanet prayer times from Aladhan API (Method 13: Diyanet İşleri Başkanlığı, Turkey).
-     * Returns null if offline or request fails.
-     */
-    public async fetchDiyanetOnlineTimes(date: Date, city: CityInfo): Promise<PrayerTimes | null> {
-        try {
-            const timestamp = Math.floor(date.getTime() / 1000);
-            const url = `https://api.aladhan.com/v1/timings/${timestamp}?latitude=${city.lat}&longitude=${city.lng}&method=13`;
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3500);
-
-            const res = await fetch(url, { signal: controller.signal });
-            clearTimeout(timeoutId);
-
-            if (!res.ok) return null;
-            const json = await res.json();
-            if (json?.code === 200 && json?.data?.timings) {
-                const t = json.data.timings;
-                const clean = (val: string) => val ? val.split(' ')[0].substring(0, 5) : '';
-                const yearStr = date.getFullYear();
-                const monthStr = String(date.getMonth() + 1).padStart(2, '0');
-                const dayStr = String(date.getDate()).padStart(2, '0');
-
-                return {
-                    imsak: clean(t.Fajr),
-                    gunes: clean(t.Sunrise),
-                    ogle: clean(t.Dhuhr),
-                    ikindi: clean(t.Asr),
-                    aksam: clean(t.Maghrib),
-                    yatsi: clean(t.Isha),
-                    date: `${yearStr}-${monthStr}-${dayStr}`
-                };
-            }
-        } catch {
-            // Offline or timeout, safely fall back
-        }
-        return null;
-    }
-
-    /**
-     * Get times for a specific date (Cached with fallback)
-     */
-    public async getTimesForDate(date: Date = new Date(), city: CityInfo = this.selectedCity): Promise<PrayerTimes> {
+    private formatDateKey(date: Date): string {
         const yearStr = date.getFullYear();
         const monthStr = String(date.getMonth() + 1).padStart(2, '0');
         const dayStr = String(date.getDate()).padStart(2, '0');
-        const dateKey = `${yearStr}-${monthStr}-${dayStr}`;
-        const cacheKey = `${PRAYER_CACHE_KEY_PREFIX}${city.id}_${dateKey}`;
+        return `${yearStr}-${monthStr}-${dayStr}`;
+    }
 
+    /**
+     * Get times for a specific date (Cached with Multi-Tier Diyanet Resolution)
+     */
+    public async getTimesForDate(date: Date = new Date(), city: CityInfo = this.selectedCity): Promise<PrayerTimes> {
+        const dateKey = this.formatDateKey(date);
+        const districtId = this.resolveDiyanetDistrictId(city);
+        const cacheKey = `${PRAYER_CACHE_KEY_PREFIX}${districtId}_${dateKey}`;
+
+        // 1. Check local cache
         try {
             const cached = await AsyncStorage.getItem(cacheKey);
             if (cached) {
-                return JSON.parse(cached);
+                const parsed: PrayerTimes = JSON.parse(cached);
+                if (parsed && parsed.imsak && parsed.source !== 'calculated') {
+                    return parsed;
+                }
             }
         } catch { }
 
-        // Try online official Diyanet API first
-        const onlineDiyanet = await this.fetchDiyanetOnlineTimes(date, city);
-        if (onlineDiyanet) {
+        // 2. Try Primary Source: Official Diyanet Monthly API
+        const official = await this.fetchOfficialDiyanetTimes(date, districtId);
+        if (official) return official;
+
+        // 3. Try Secondary Mirror: Diyanet Mirror API
+        const mirror = await this.fetchDiyanetMirrorTimes(date, districtId);
+        if (mirror) return mirror;
+
+        // 4. Try Tertiary: Calibrated Aladhan Diyanet
+        const aladhan = await this.fetchAladhanTimes(date, city);
+        if (aladhan) {
             try {
-                await AsyncStorage.setItem(cacheKey, JSON.stringify(onlineDiyanet));
+                await AsyncStorage.setItem(cacheKey, JSON.stringify(aladhan));
             } catch { }
-            return onlineDiyanet;
+            return aladhan;
         }
 
-        // Offline calibrated mathematical fallback
+        // 5. Check if we had an older calculated cache
+        try {
+            const cached = await AsyncStorage.getItem(cacheKey);
+            if (cached) return JSON.parse(cached);
+        } catch { }
+
+        // 6. Complete Offline Calibrated Fallback
         const calculated = this.calculateTimes(date, city);
         try {
             await AsyncStorage.setItem(cacheKey, JSON.stringify(calculated));
@@ -540,9 +636,13 @@ class PrayerTimesService {
     }
 
     /**
-     * Approximate Hijri Calendar Date
+     * Official Hijri Calendar Date
      */
-    public getHijriDate(date: Date = new Date()): string {
+    public getHijriDate(date: Date = new Date(), times?: PrayerTimes | null): string {
+        if (times?.hijriDate) {
+            return times.hijriDate;
+        }
+
         const day = date.getDate();
         const month = date.getMonth();
         const year = date.getFullYear();

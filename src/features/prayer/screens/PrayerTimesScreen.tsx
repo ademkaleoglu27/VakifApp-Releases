@@ -46,7 +46,7 @@ export const PrayerTimesScreen: React.FC = () => {
             const prayerTimes = await prayerTimesService.getTimesForDate(now, currentCity);
             setTimes(prayerTimes);
             setActiveInfo(prayerTimesService.getActivePrayerInfo(prayerTimes, now));
-            setHijriDate(prayerTimesService.getHijriDate(now));
+            setHijriDate(prayerTimesService.getHijriDate(now, prayerTimes));
         } catch (e) {
             console.warn('[PrayerTimes] Load error:', e);
         } finally {
@@ -71,11 +71,48 @@ export const PrayerTimesScreen: React.FC = () => {
                 const prayerTimes = await prayerTimesService.getTimesForDate(now, detected);
                 setTimes(prayerTimes);
                 setActiveInfo(prayerTimesService.getActivePrayerInfo(prayerTimes, now));
+                setHijriDate(prayerTimesService.getHijriDate(now, prayerTimes));
             }
         } catch (err) {
             console.warn('[PrayerTimes] GPS detection error:', err);
         } finally {
             setGpsDetecting(false);
+        }
+    };
+
+    const getSkyGradient = (key?: string): [string, string, string] => {
+        switch (key) {
+            case 'imsak':
+                return ['#0B1B2B', '#112D44', '#07121E'];
+            case 'gunes':
+                return ['#112A2D', '#1A4045', '#0A1B1D'];
+            case 'ogle':
+                return ['#042E22', '#074837', '#021B14'];
+            case 'ikindi':
+                return ['#291E0C', '#3E2E12', '#171106'];
+            case 'aksam':
+                return ['#321122', '#45162E', '#180710'];
+            case 'yatsi':
+            default:
+                return ['#041D15', '#062B20', '#02120C'];
+        }
+    };
+
+    const getHeroGradient = (key?: string): [string, string, string] => {
+        switch (key) {
+            case 'imsak':
+                return ['#112A42', '#0A1D2E', '#05111C'];
+            case 'gunes':
+                return ['#173B3F', '#0F292D', '#071618'];
+            case 'ogle':
+                return ['#084232', '#04281E', '#021510'];
+            case 'ikindi':
+                return ['#3B2E15', '#261D0C', '#140F05'];
+            case 'aksam':
+                return ['#451B32', '#2E1020', '#180710'];
+            case 'yatsi':
+            default:
+                return ['#08382A', '#042219', '#02150F'];
         }
     };
 
@@ -163,7 +200,7 @@ export const PrayerTimesScreen: React.FC = () => {
             <StatusBar barStyle="light-content" backgroundColor="#041D15" />
 
             <LinearGradient
-                colors={['#041D15', '#062B20', '#02120C']}
+                colors={getSkyGradient(activeInfo?.currentKey)}
                 style={StyleSheet.absoluteFillObject}
             />
 
@@ -243,7 +280,7 @@ export const PrayerTimesScreen: React.FC = () => {
 
                     {/* 1. HERO COUNTDOWN CARD (Emerald & Gold Palace Style) */}
                     <LinearGradient
-                        colors={['#08382A', '#042219', '#02150F']}
+                        colors={getHeroGradient(activeInfo?.currentKey)}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         style={styles.heroCard}

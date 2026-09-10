@@ -1,0 +1,407 @@
+{
+  "ADANA": {
+    "stateId": "500",
+    "districtId": "9146",
+    "districtName": "ADANA"
+  },
+  "ADIYAMAN": {
+    "stateId": "501",
+    "districtId": "9158",
+    "districtName": "ADIYAMAN"
+  },
+  "AFYONKARAHİSAR": {
+    "stateId": "502",
+    "districtId": "9167",
+    "districtName": "AFYONKARAHİSAR"
+  },
+  "AKSARAY": {
+    "stateId": "504",
+    "districtId": "9193",
+    "districtName": "AKSARAY"
+  },
+  "AMASYA": {
+    "stateId": "505",
+    "districtId": "9198",
+    "districtName": "AMASYA"
+  },
+  "ANKARA": {
+    "stateId": "506",
+    "districtId": "9206",
+    "districtName": "ANKARA"
+  },
+  "ANTALYA": {
+    "stateId": "507",
+    "districtId": "9225",
+    "districtName": "ANTALYA"
+  },
+  "ARDAHAN": {
+    "stateId": "508",
+    "districtId": "9238",
+    "districtName": "ARDAHAN"
+  },
+  "ARTVİN": {
+    "stateId": "509",
+    "districtId": "9246",
+    "districtName": "ARTVİN"
+  },
+  "AYDIN": {
+    "stateId": "510",
+    "districtId": "9252",
+    "districtName": "AYDIN"
+  },
+  "AĞRI": {
+    "stateId": "503",
+    "districtId": "9185",
+    "districtName": "AĞRI"
+  },
+  "BALIKESİR": {
+    "stateId": "511",
+    "districtId": "9270",
+    "districtName": "BALIKESİR"
+  },
+  "BARTIN": {
+    "stateId": "512",
+    "districtId": "9285",
+    "districtName": "BARTIN"
+  },
+  "BATMAN": {
+    "stateId": "513",
+    "districtId": "9288",
+    "districtName": "BATMAN"
+  },
+  "BAYBURT": {
+    "stateId": "514",
+    "districtId": "9295",
+    "districtName": "BAYBURT"
+  },
+  "BOLU": {
+    "stateId": "518",
+    "districtId": "9315",
+    "districtName": "BOLU"
+  },
+  "BURDUR": {
+    "stateId": "519",
+    "districtId": "9327",
+    "districtName": "BURDUR"
+  },
+  "BURSA": {
+    "stateId": "520",
+    "districtId": "9335",
+    "districtName": "BURSA"
+  },
+  "BİLECİK": {
+    "stateId": "515",
+    "districtId": "9297",
+    "districtName": "BİLECİK"
+  },
+  "BİNGÖL": {
+    "stateId": "516",
+    "districtId": "9303",
+    "districtName": "BİNGÖL"
+  },
+  "BİTLİS": {
+    "stateId": "517",
+    "districtId": "9311",
+    "districtName": "BİTLİS"
+  },
+  "DENİZLİ": {
+    "stateId": "524",
+    "districtId": "9392",
+    "districtName": "DENİZLİ"
+  },
+  "DÜZCE": {
+    "stateId": "526",
+    "districtId": "9414",
+    "districtName": "DÜZCE"
+  },
+  "DİYARBAKIR": {
+    "stateId": "525",
+    "districtId": "9402",
+    "districtName": "DİYARBAKIR"
+  },
+  "EDİRNE": {
+    "stateId": "527",
+    "districtId": "9419",
+    "districtName": "EDİRNE"
+  },
+  "ELAZIĞ": {
+    "stateId": "528",
+    "districtId": "9432",
+    "districtName": "ELAZIĞ"
+  },
+  "ERZURUM": {
+    "stateId": "530",
+    "districtId": "9451",
+    "districtName": "ERZURUM"
+  },
+  "ERZİNCAN": {
+    "stateId": "529",
+    "districtId": "9440",
+    "districtName": "ERZİNCAN"
+  },
+  "ESKİŞEHİR": {
+    "stateId": "531",
+    "districtId": "9470",
+    "districtName": "ESKİŞEHİR"
+  },
+  "GAZİANTEP": {
+    "stateId": "532",
+    "districtId": "9479",
+    "districtName": "GAZİANTEP"
+  },
+  "GÜMÜŞHANE": {
+    "stateId": "534",
+    "districtId": "9501",
+    "districtName": "GÜMÜŞHANE"
+  },
+  "GİRESUN": {
+    "stateId": "533",
+    "districtId": "9494",
+    "districtName": "GİRESUN"
+  },
+  "HAKKARİ": {
+    "stateId": "535",
+    "districtId": "9507",
+    "districtName": "HAKKARİ"
+  },
+  "HATAY": {
+    "stateId": "536",
+    "districtId": "20089",
+    "districtName": "HATAY"
+  },
+  "ISPARTA": {
+    "stateId": "538",
+    "districtId": "9528",
+    "districtName": "ISPARTA"
+  },
+  "IĞDIR": {
+    "stateId": "537",
+    "districtId": "9522",
+    "districtName": "IĞDIR"
+  },
+  "KAHRAMANMARAŞ": {
+    "stateId": "541",
+    "districtId": "9577",
+    "districtName": "KAHRAMANMARAŞ"
+  },
+  "KARABÜK": {
+    "stateId": "542",
+    "districtId": "9581",
+    "districtName": "KARABÜK"
+  },
+  "KARAMAN": {
+    "stateId": "543",
+    "districtId": "9587",
+    "districtName": "KARAMAN"
+  },
+  "KARS": {
+    "stateId": "544",
+    "districtId": "9594",
+    "districtName": "KARS"
+  },
+  "KASTAMONU": {
+    "stateId": "545",
+    "districtId": "9609",
+    "districtName": "KASTAMONU"
+  },
+  "KAYSERİ": {
+    "stateId": "546",
+    "districtId": "9620",
+    "districtName": "KAYSERİ"
+  },
+  "KIRIKKALE": {
+    "stateId": "548",
+    "districtId": "9635",
+    "districtName": "KIRIKKALE"
+  },
+  "KIRKLARELİ": {
+    "stateId": "549",
+    "districtId": "9638",
+    "districtName": "KIRKLARELİ"
+  },
+  "KIRŞEHİR": {
+    "stateId": "550",
+    "districtId": "9646",
+    "districtName": "KIRŞEHİR"
+  },
+  "KOCAELİ": {
+    "stateId": "551",
+    "districtId": "9654",
+    "districtName": "KOCAELİ"
+  },
+  "KONYA": {
+    "stateId": "552",
+    "districtId": "9676",
+    "districtName": "KONYA"
+  },
+  "KÜTAHYA": {
+    "stateId": "553",
+    "districtId": "9689",
+    "districtName": "KÜTAHYA"
+  },
+  "KİLİS": {
+    "stateId": "547",
+    "districtId": "9629",
+    "districtName": "KİLİS"
+  },
+  "MALATYA": {
+    "stateId": "554",
+    "districtId": "9703",
+    "districtName": "MALATYA"
+  },
+  "MANİSA": {
+    "stateId": "555",
+    "districtId": "9716",
+    "districtName": "MANİSA"
+  },
+  "MARDİN": {
+    "stateId": "556",
+    "districtId": "9726",
+    "districtName": "MARDİN"
+  },
+  "MERSİN": {
+    "stateId": "557",
+    "districtId": "9737",
+    "districtName": "MERSİN"
+  },
+  "MUĞLA": {
+    "stateId": "558",
+    "districtId": "9747",
+    "districtName": "MUĞLA"
+  },
+  "MUŞ": {
+    "stateId": "559",
+    "districtId": "9755",
+    "districtName": "MUŞ"
+  },
+  "NEVŞEHİR": {
+    "stateId": "560",
+    "districtId": "9760",
+    "districtName": "NEVŞEHİR"
+  },
+  "NİĞDE": {
+    "stateId": "561",
+    "districtId": "9766",
+    "districtName": "NİĞDE"
+  },
+  "ORDU": {
+    "stateId": "562",
+    "districtId": "9782",
+    "districtName": "ORDU"
+  },
+  "OSMANİYE": {
+    "stateId": "563",
+    "districtId": "9788",
+    "districtName": "OSMANİYE"
+  },
+  "RİZE": {
+    "stateId": "564",
+    "districtId": "9799",
+    "districtName": "RİZE"
+  },
+  "SAKARYA": {
+    "stateId": "565",
+    "districtId": "9807",
+    "districtName": "SAKARYA"
+  },
+  "SAMSUN": {
+    "stateId": "566",
+    "districtId": "9819",
+    "districtName": "SAMSUN"
+  },
+  "SİNOP": {
+    "stateId": "569",
+    "districtId": "9847",
+    "districtName": "SİNOP"
+  },
+  "SİVAS": {
+    "stateId": "571",
+    "districtId": "9868",
+    "districtName": "SİVAS"
+  },
+  "SİİRT": {
+    "stateId": "568",
+    "districtId": "9839",
+    "districtName": "SİİRT"
+  },
+  "TEKİRDAĞ": {
+    "stateId": "572",
+    "districtId": "9879",
+    "districtName": "TEKİRDAĞ"
+  },
+  "TOKAT": {
+    "stateId": "573",
+    "districtId": "9887",
+    "districtName": "TOKAT"
+  },
+  "TRABZON": {
+    "stateId": "574",
+    "districtId": "9905",
+    "districtName": "TRABZON"
+  },
+  "TUNCELİ": {
+    "stateId": "575",
+    "districtId": "9914",
+    "districtName": "TUNCELİ"
+  },
+  "UŞAK": {
+    "stateId": "576",
+    "districtId": "9919",
+    "districtName": "UŞAK"
+  },
+  "VAN": {
+    "stateId": "577",
+    "districtId": "9930",
+    "districtName": "VAN"
+  },
+  "YALOVA": {
+    "stateId": "578",
+    "districtId": "9935",
+    "districtName": "YALOVA"
+  },
+  "YOZGAT": {
+    "stateId": "579",
+    "districtId": "9949",
+    "districtName": "YOZGAT"
+  },
+  "ZONGULDAK": {
+    "stateId": "580",
+    "districtId": "9955",
+    "districtName": "ZONGULDAK"
+  },
+  "ÇANAKKALE": {
+    "stateId": "521",
+    "districtId": "9352",
+    "districtName": "ÇANAKKALE"
+  },
+  "ÇANKIRI": {
+    "stateId": "522",
+    "districtId": "9359",
+    "districtName": "ÇANKIRI"
+  },
+  "ÇORUM": {
+    "stateId": "523",
+    "districtId": "9370",
+    "districtName": "ÇORUM"
+  },
+  "İSTANBUL": {
+    "stateId": "539",
+    "districtId": "9541",
+    "districtName": "İSTANBUL"
+  },
+  "İZMİR": {
+    "stateId": "540",
+    "districtId": "9560",
+    "districtName": "İZMİR"
+  },
+  "ŞANLIURFA": {
+    "stateId": "567",
+    "districtId": "9831",
+    "districtName": "ŞANLIURFA"
+  },
+  "ŞIRNAK": {
+    "stateId": "570",
+    "districtId": "9854",
+    "districtName": "ŞIRNAK"
+  }
+}

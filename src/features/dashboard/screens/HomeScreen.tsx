@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
     View, Text, StyleSheet, ScrollView, TouchableOpacity,
     StatusBar, Platform, Share
@@ -10,6 +10,7 @@ import { theme } from '@/config/theme';
 import { RisaleUserDb } from '@/services/risaleUserDb';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ContinueReadingCard } from '@/components/ContinueReadingCard';
+import { HomePrayerCard } from '../components/HomePrayerCard';
 import { getDb } from '@/services/db/sqlite';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -128,6 +129,9 @@ export const HomeScreen = () => {
                 contentContainerStyle={styles.scrollContent}
                 showsVerticalScrollIndicator={false}
             >
+                {/* 0. Live Diyanet Prayer Times Widget */}
+                <HomePrayerCard />
+
                 {/* 1. Daily Risale Quote with Islamic Border */}
                 <View style={styles.quoteCard}>
                     <View style={styles.quoteIconCircle}>

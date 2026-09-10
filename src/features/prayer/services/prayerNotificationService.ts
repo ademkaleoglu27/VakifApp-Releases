@@ -138,6 +138,7 @@ class PrayerNotificationService {
             // 2. 45-Minute (or configured minutes) Early Warning Notification Before Prayer Exits
             if (this.settings.earlyWarningEnabled && prayer.nextTimeKey) {
                 const nextTimeStr = times[prayer.nextTimeKey];
+                if (!nextTimeStr) continue;
                 const [nextH, nextM] = nextTimeStr.split(':').map(Number);
                 let nextPrayerDate = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), nextH, nextM, 0);
 
