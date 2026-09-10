@@ -889,16 +889,15 @@ const getInjectedJs = (bookId?: string, targetPage?: number) => `
                 }
             }
 
-            // Screen tap: Edge tap vs Center tap (menu toggle)
+            // Screen tap: Edge tap navigation (left/right edges)
             var winW = window.innerWidth;
             var touchX = touch.clientX;
             if (touchX > winW * 0.82) {
                 send("EDGE_TAP", { edge: "right" });
             } else if (touchX < winW * 0.18) {
                 send("EDGE_TAP", { edge: "left" });
-            } else {
-                send("TOGGLE_MENU", {});
             }
+            // Note: Center tap menu toggle is removed in favor of the Sözler-style floating grid button
         }
     }, { passive: true });
 
@@ -1833,6 +1832,17 @@ export const RisaleHtmlReaderScreen = () => {
                 </View>
             </View>
 
+            {/* SÖZLER STYLE FLOATING GRID BUTTON (Izgara Menü Tuşu - Image 2) */}
+            {!showFloatingMenu && selectedText.length === 0 && (
+                <TouchableOpacity
+                    style={styles.floatingGridButton}
+                    activeOpacity={0.7}
+                    onPress={() => setShowFloatingMenu(true)}
+                >
+                    <Ionicons name="grid-outline" size={21} color="#FFFFFF" />
+                </TouchableOpacity>
+            )}
+
             {/* NEXT SECTION BUTTON */}
             {showNextButton && !isCoverPage && (
                 <TouchableOpacity style={styles.nextSectionBtn} onPress={handleNextSection}>
@@ -2324,7 +2334,7 @@ export const RisaleHtmlReaderScreen = () => {
             {/* FOOTNOTE MODAL (Risale Book Warm Theme) */}
             <Modal visible={footnoteVisible} transparent animationType="slide" onRequestClose={() => setFootnoteVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setFootnoteVisible(false)}>
-                    <TouchableOpacity activeOpacity={1} style={styles.bookModalContent} onPress={(e) => e.stopPropagation()}>
+                    <View style={styles.bookModalContent} onStartShouldSetResponder={() => true}>
                         <View style={styles.bookDragHandle} />
                         <View style={styles.modalHeader}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -2338,7 +2348,7 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.separator, { backgroundColor: '#E7E5E4' }]} />
-                        <ScrollView style={{ maxHeight: 360 }} nestedScrollEnabled={true} showsVerticalScrollIndicator={true}>
+                        <ScrollView style={{ maxHeight: 400 }} contentContainerStyle={{ paddingBottom: 30 }} nestedScrollEnabled={true} showsVerticalScrollIndicator={true} bounces={true} overScrollMode="always">
                             <Text style={[styles.footNoteText, { color: '#1C1917', lineHeight: 28, fontSize: 17 }]}>{footnoteContent}</Text>
                         </ScrollView>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#E7E5E4' }}>
@@ -2353,14 +2363,14 @@ export const RisaleHtmlReaderScreen = () => {
                                 <Text style={{ fontSize: 13, color: '#292524', fontWeight: '600' }}>Kopyala</Text>
                             </TouchableOpacity>
                         </View>
-                    </TouchableOpacity>
+                    </View>
                 </TouchableOpacity>
             </Modal>
 
             {/* AYET & HADİS MEALİ MODAL (Risale Book Warm Theme with Tabs) */}
             <Modal visible={mealModalVisible} transparent animationType="slide" onRequestClose={() => setMealModalVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setMealModalVisible(false)}>
-                    <TouchableOpacity activeOpacity={1} style={styles.bookModalContent} onPress={(e) => e.stopPropagation()}>
+                    <View style={styles.bookModalContent} onStartShouldSetResponder={() => true}>
                         <View style={styles.bookDragHandle} />
 
                         {/* Header */}
@@ -2424,8 +2434,8 @@ export const RisaleHtmlReaderScreen = () => {
 
                         <View style={[styles.separator, { backgroundColor: '#E7E5E4', marginBottom: 12 }]} />
 
-                        {/* Tab Content */}
-                        <ScrollView style={{ maxHeight: 380 }} contentContainerStyle={{ paddingBottom: 16 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                        {/* Tab Content - Smooth scrollable */}
+                        <ScrollView style={{ maxHeight: 420 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true} bounces={true} overScrollMode="always">
                             {mealTab === 'meal' ? (
                                 <Text style={{ fontSize: 17, color: '#1C1917', lineHeight: 28, textAlign: 'justify', fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }}>
                                     {activeMeal?.meal}
@@ -2463,7 +2473,7 @@ export const RisaleHtmlReaderScreen = () => {
                                 <Text style={{ fontSize: 13, color: '#FFFFFF', fontWeight: '700' }}>Paylaş</Text>
                             </TouchableOpacity>
                         </View>
-                    </TouchableOpacity>
+                    </View>
                 </TouchableOpacity>
             </Modal>
 
@@ -3372,6 +3382,25 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#F4F4F5',
         fontWeight: '500',
+    },
+
+    // Floating Grid Button (Izgara Menü Tuşu - Image 2)
+    floatingGridButton: {
+        position: 'absolute',
+        bottom: 42,
+        right: 16,
+        width: 44,
+        height: 44,
+        borderRadius: 14,
+        backgroundColor: 'rgba(0, 0, 0, 0.28)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 100,
+        elevation: 6,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
     },
 
     // Floating Menu Styles (Reference Screenshot 3 & user image)
