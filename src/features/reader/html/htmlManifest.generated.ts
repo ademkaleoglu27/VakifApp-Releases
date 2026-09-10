@@ -1343,29 +1343,29 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.isarat@diyanet.tr:html_25",
                 "title": "Ecnebi Feylesofların Kur’an’ı Tasdiklerine Dair Şehadetleri",
                 "assetPath": "risale_html_pilot/07_isarat/07_25.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 12,
+                "startPage": 330
             },
             {
                 "id": "risale.isarat@diyanet.tr:html_26",
                 "title": "Birkaç defa beraet kazanan Risale-i Nur’un birkaç vilayette haksız müsaderesine dair, Nur’un yüksek bir talebesinin mahkemesindeki müdafaasından bir parçadır",
                 "assetPath": "risale_html_pilot/07_isarat/07_26.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 8,
+                "startPage": 342
             },
             {
                 "id": "risale.isarat@diyanet.tr:html_27",
                 "title": "Bölüm 27",
                 "assetPath": "risale_html_pilot/07_isarat/07_27.html",
                 "pageCount": 1,
-                "startPage": 1
+                "startPage": 350
             },
             {
                 "id": "risale.isarat@diyanet.tr:html_28",
                 "title": "Fihrist",
                 "assetPath": "risale_html_pilot/07_isarat/07_28.html",
                 "pageCount": 1,
-                "startPage": 1
+                "startPage": 351
             }
         ]
     },
@@ -1539,64 +1539,64 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.barla@diyanet.tr:html_13",
                 "title": "Bölüm 13",
                 "assetPath": "risale_html_pilot/09_barla/09_13.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 224
             },
             {
                 "id": "risale.barla@diyanet.tr:html_14",
                 "title": "Bölüm 14",
                 "assetPath": "risale_html_pilot/09_barla/09_14.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 245
             },
             {
                 "id": "risale.barla@diyanet.tr:html_15",
                 "title": "Bölüm 15",
                 "assetPath": "risale_html_pilot/09_barla/09_15.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 23,
+                "startPage": 266
             },
             {
                 "id": "risale.barla@diyanet.tr:html_16",
                 "title": "MESAİL-İ MÜTEFERRİKA",
                 "assetPath": "risale_html_pilot/09_barla/09_16.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 289
             },
             {
                 "id": "risale.barla@diyanet.tr:html_17",
                 "title": "Bölüm 17",
                 "assetPath": "risale_html_pilot/09_barla/09_17.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 22,
+                "startPage": 310
             },
             {
                 "id": "risale.barla@diyanet.tr:html_18",
                 "title": "Yirmi Altıncı Mektup’un Dördüncü Mebhası’nın Birinci Mesele’sinin evveli ve âhiri",
                 "assetPath": "risale_html_pilot/09_barla/09_18.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 24,
+                "startPage": 332
             },
             {
                 "id": "risale.barla@diyanet.tr:html_19",
                 "title": "On Beşinci Nota’nın Üçüncü Meselesi",
                 "assetPath": "risale_html_pilot/09_barla/09_19.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 356
             },
             {
                 "id": "risale.barla@diyanet.tr:html_20",
                 "title": "Mesleğimizin bir medar-ı şevki ve zevki olan tevafuk letaifinden üç dört numune:",
                 "assetPath": "risale_html_pilot/09_barla/09_20.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 24,
+                "startPage": 377
             },
             {
                 "id": "risale.barla@diyanet.tr:html_21",
                 "title": "Onuncu Lem’a",
                 "assetPath": "risale_html_pilot/09_barla/09_21.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 33,
+                "startPage": 401
             }
         ]
     },
@@ -1672,36 +1672,36 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.kastamonu@diyanet.tr:html_10",
                 "title": "Lemaat’tan",
                 "assetPath": "risale_html_pilot/10_kastamonu/10_10.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 19,
+                "startPage": 165
             },
             {
                 "id": "risale.kastamonu@diyanet.tr:html_11",
                 "title": "Küçük Hüsrev Feyzi’nin bir istihracıdır",
                 "assetPath": "risale_html_pilot/10_kastamonu/10_11.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 26,
+                "startPage": 184
             },
             {
                 "id": "risale.kastamonu@diyanet.tr:html_12",
                 "title": "Karadağ’ın Bir Meyvesi",
                 "assetPath": "risale_html_pilot/10_kastamonu/10_12.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 25,
+                "startPage": 210
             },
             {
                 "id": "risale.kastamonu@diyanet.tr:html_13",
                 "title": "Bölüm 13",
                 "assetPath": "risale_html_pilot/10_kastamonu/10_13.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 24,
+                "startPage": 235
             },
             {
                 "id": "risale.kastamonu@diyanet.tr:html_14",
                 "title": "(Medar-ı ibret ve hayret bir hâdisedir.)",
                 "assetPath": "risale_html_pilot/10_kastamonu/10_14.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 29,
+                "startPage": 259
             }
         ]
     },
@@ -1791,36 +1791,36 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.emirdag1@diyanet.tr:html_12",
                 "title": "Beş türlü ibadet",
                 "assetPath": "risale_html_pilot/11_emirdag1/11_12.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 25,
+                "startPage": 215
             },
             {
                 "id": "risale.emirdag1@diyanet.tr:html_13",
                 "title": "Dâhiliye Vekili ile hasbihalden bir parçadır",
                 "assetPath": "risale_html_pilot/11_emirdag1/11_13.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 23,
+                "startPage": 240
             },
             {
                 "id": "risale.emirdag1@diyanet.tr:html_14",
                 "title": "Bölüm 14",
                 "assetPath": "risale_html_pilot/11_emirdag1/11_14.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 25,
+                "startPage": 263
             },
             {
                 "id": "risale.emirdag1@diyanet.tr:html_15",
                 "title": "“Hüve Nüktesi”nin âhirinde bu parça yazılacak",
                 "assetPath": "risale_html_pilot/11_emirdag1/11_15.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 23,
+                "startPage": 288
             },
             {
                 "id": "risale.emirdag1@diyanet.tr:html_16",
                 "title": "Kanunca ifademi almak lâzımken ifademi almadılar. Ben de ifademi şimdi adliyenin şahs-ı manevîsine ve dâhiliye vekiline bera-yı malûmat beyan ediyorum:",
                 "assetPath": "risale_html_pilot/11_emirdag1/11_16.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 311
             }
         ]
     },
@@ -1896,29 +1896,29 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.emirdag2@diyanet.tr:html_10",
                 "title": "Risale-i Nur’un vatana, millete ve İslâmiyet’e büyük hizmetini kabul ve takdir eden Başvekil Adnan Menderes’e Üstadın yazdığı bir mektup",
                 "assetPath": "risale_html_pilot/12_emirdag2/12_10.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 21,
+                "startPage": 193
             },
             {
                 "id": "risale.emirdag2@diyanet.tr:html_11",
                 "title": "Nur Talebeleri Asayişçidirler",
                 "assetPath": "risale_html_pilot/12_emirdag2/12_11.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 24,
+                "startPage": 214
             },
             {
                 "id": "risale.emirdag2@diyanet.tr:html_12",
                 "title": "İmanın dünyada dahi bir nevi cennet lezzetini benim hayatımda temin ettiğine dair",
                 "assetPath": "risale_html_pilot/12_emirdag2/12_12.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 22,
+                "startPage": 238
             },
             {
                 "id": "risale.emirdag2@diyanet.tr:html_13",
                 "title": "(Müddeiumumîler hakkında Üstadımızın garib bir halet-i ruhiyesini beyan etmek zamanı geldi.)",
                 "assetPath": "risale_html_pilot/12_emirdag2/12_13.html",
-                "pageCount": 1,
-                "startPage": 1
+                "pageCount": 22,
+                "startPage": 260
             }
         ]
     },
@@ -2547,7 +2547,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.sunuhat@diyanet.tr:html_01",
                 "title": "İfade-i meram",
                 "assetPath": "risale_html_pilot/15_sunuhat/15_01.html",
-                "pageCount": 1,
+                "pageCount": 36,
                 "startPage": 1
             }
         ]
@@ -2561,7 +2561,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.isarat_k@diyanet.tr:html_01",
                 "title": "Kapak & Takdim",
                 "assetPath": "risale_html_pilot/16_isarat_k/16_01.html",
-                "pageCount": 1,
+                "pageCount": 8,
                 "startPage": 1
             }
         ]
@@ -2575,7 +2575,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.tuluat@diyanet.tr:html_01",
                 "title": "Kapak & Takdim",
                 "assetPath": "risale_html_pilot/17_tuluat/17_01.html",
-                "pageCount": 1,
+                "pageCount": 13,
                 "startPage": 1
             }
         ]
@@ -2589,7 +2589,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.nurcesmesi@diyanet.tr:html_01",
                 "title": "NUR ÇEŞMESİ",
                 "assetPath": "risale_html_pilot/19_nurcesmesi/19_01.html",
-                "pageCount": 1,
+                "pageCount": 142,
                 "startPage": 1
             }
         ]
@@ -2603,7 +2603,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.divaniharbi@diyanet.tr:html_01",
                 "title": "DİVAN-I HARB-İ ÖRFÎ",
                 "assetPath": "risale_html_pilot/20_divaniharbi/20_01.html",
-                "pageCount": 1,
+                "pageCount": 43,
                 "startPage": 1
             }
         ]
@@ -2617,7 +2617,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.hutbe@diyanet.tr:html_01",
                 "title": "HUTBE-İ ŞAMİYE",
                 "assetPath": "risale_html_pilot/21_hutbe/21_01.html",
-                "pageCount": 1,
+                "pageCount": 83,
                 "startPage": 1
             }
         ]
@@ -2631,7 +2631,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.munazarat@diyanet.tr:html_01",
                 "title": "Kapak & Takdim",
                 "assetPath": "risale_html_pilot/22_munazarat/22_01.html",
-                "pageCount": 1,
+                "pageCount": 63,
                 "startPage": 1
             }
         ]
@@ -2645,7 +2645,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.genclik@diyanet.tr:html_01",
                 "title": "GENÇLİK REHBERİ",
                 "assetPath": "risale_html_pilot/23_genclik/23_01.html",
-                "pageCount": 1,
+                "pageCount": 137,
                 "startPage": 1
             }
         ]
@@ -2659,7 +2659,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.hanimlar@diyanet.tr:html_01",
                 "title": "HANIMLAR REHBERİ",
                 "assetPath": "risale_html_pilot/24_hanimlar/24_01.html",
-                "pageCount": 1,
+                "pageCount": 88,
                 "startPage": 1
             }
         ]
@@ -2673,7 +2673,7 @@ export const HTML_BOOKS: Record<string, HtmlBook> = {
                 "id": "risale.konferans@diyanet.tr:html_01",
                 "title": "Kapak & Takdim",
                 "assetPath": "risale_html_pilot/25_konferans/25_01.html",
-                "pageCount": 1,
+                "pageCount": 96,
                 "startPage": 1
             }
         ]

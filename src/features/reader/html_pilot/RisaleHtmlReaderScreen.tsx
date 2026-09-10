@@ -34,6 +34,7 @@ import { ENABLE_LUGAT_SUGGESTIONS } from '@/config/features';
 import { checkAlias, LUGAT_ALIASES } from '@/services/lugat_aliases';
 import { Linking } from 'react-native';
 import { risalePagesDb } from '@/services/risalePagesDb';
+import { getSozlerPageFromRnk, getRnkPageFromSozler, getRnkBookTotalPages } from '@/services/crossEditionMap';
 import { saveLastRead } from '@/services/readingProgress';
 
 const THEME_OPTIONS = [
@@ -341,7 +342,7 @@ const getHtmlCss = () => `
 `;
 
 // --- JS CONTROLLER ---
-const getInjectedJs = (bookId?: string) => `
+const getInjectedJs = (bookId?: string, targetPage?: number) => `
 (function() {
     const CURRENT_BOOK = "${bookId || ''}";
     
@@ -942,14 +943,14 @@ const getInjectedJs = (bookId?: string) => `
         try {
             var targetStr = String(pageNum).trim();
             var markers = document.querySelectorAll('.page-marker');
+            var matchedEl = null;
             for (var i = 0; i < markers.length; i++) {
                 if (markers[i].textContent.trim() === targetStr) {
-                    var wrap = markers[i].closest('.page-marker-wrap') || markers[i];
-                    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    return true;
+                    matchedEl = markers[i].closest('.page-marker-wrap') || markers[i];
+                    break;
                 }
             }
-            if (markers.length > 0) {
+            if (!matchedEl && markers.length > 0) {
                 var targetInt = parseInt(targetStr, 10);
                 var bestMarker = null;
                 var minDiff = 999999;
@@ -963,18 +964,35 @@ const getInjectedJs = (bookId?: string) => `
                         }
                     }
                 }
-                if (bestMarker && minDiff <= 1) {
-                    var bestEl = bestMarker.closest('.page-marker-wrap') || bestMarker;
-                    bestEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    return true;
+                if (bestMarker) {
+                    matchedEl = bestMarker.closest('.page-marker-wrap') || bestMarker;
                 }
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (matchedEl) {
+                var rect = matchedEl.getBoundingClientRect();
+                var targetY = window.pageYOffset + rect.top - 15;
+                window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+                // Second pass check in case layout/fonts shift after 250ms
+                setTimeout(function() {
+                    var r2 = matchedEl.getBoundingClientRect();
+                    if (Math.abs(r2.top) > 50) {
+                        var y2 = window.pageYOffset + r2.top - 15;
+                        window.scrollTo({ top: Math.max(0, y2), behavior: 'auto' });
+                    }
+                }, 250);
+                return true;
+            }
             return false;
         } catch(e) {
             return false;
         }
     };
+
+    var initialTarget = ${targetPage ? Number(targetPage) : 'null'};
+    if (initialTarget) {
+        setTimeout(function() { window.scrollToPage(initialTarget); }, 120);
+        setTimeout(function() { window.scrollToPage(initialTarget); }, 450);
+    }
 
     send("LOG", { message: "INJECTED_JS_COMPLETE v9.0, listeners attached" });
 })();
@@ -998,9 +1016,10 @@ export const RisaleHtmlReaderScreen = () => {
     const currentBook = bookId ? HTML_BOOKS[bookId] : null;
     const currentChapter = currentBook?.chapters.find(c => c.id === chapterId);
     const bookTotalPages = currentBook ? (() => {
-        const last = currentBook.chapters[currentBook.chapters.length - 1];
-        return last ? last.startPage + last.pageCount - 1 : 0;
+        if (!currentBook.chapters || currentBook.chapters.length === 0) return 0;
+        return Math.max(...currentBook.chapters.map(c => (c.startPage || 1) + (c.pageCount || 1) - 1));
     })() : 0;
+    const rnkBookTotalPages = bookId ? getRnkBookTotalPages(bookId) : null;
 
     const getNextChapter = () => {
         if (!bookId || !chapterId) return null;
@@ -1079,19 +1098,35 @@ export const RisaleHtmlReaderScreen = () => {
     // Sayfaya Git (Go to Page) State
     const [gotoPageModalVisible, setGotoPageModalVisible] = useState(false);
     const [targetPageInput, setTargetPageInput] = useState("");
+    const [gotoEdition, setGotoEdition] = useState<'sozler' | 'rnk'>('sozler');
 
-    const handleGotoPage = (pageStr: string) => {
-        const p = parseInt(pageStr.trim(), 10);
-        if (isNaN(p) || p < 1 || (bookTotalPages > 0 && p > bookTotalPages)) {
-            Alert.alert('Geçersiz Sayfa', `Lütfen 1 ile ${bookTotalPages} arasında geçerli bir sayfa numarası girin.`);
+    const handleGotoPage = (pageStr: string, edition: 'sozler' | 'rnk' = gotoEdition) => {
+        const rawP = parseInt(pageStr.trim(), 10);
+        if (isNaN(rawP) || rawP < 1) {
+            Alert.alert('Geçersiz Sayfa', 'Lütfen geçerli bir sayfa numarası girin.');
             return;
         }
+
+        let p = rawP;
+        if (edition === 'rnk' && bookId) {
+            if (rnkBookTotalPages && rawP > rnkBookTotalPages) {
+                Alert.alert('Geçersiz Sayfa', `Lütfen 1 ile ${rnkBookTotalPages} arasında bir RNK sayfa numarası girin.`);
+                return;
+            }
+            p = getSozlerPageFromRnk(bookId, rawP);
+        } else {
+            if (bookTotalPages > 0 && rawP > bookTotalPages) {
+                Alert.alert('Geçersiz Sayfa', `Lütfen 1 ile ${bookTotalPages} arasında geçerli bir sayfa numarası girin.`);
+                return;
+            }
+        }
+
         setGotoPageModalVisible(false);
         setTargetPageInput("");
 
         if (!currentBook) return;
         const targetChapter = currentBook.chapters.find(c => p >= c.startPage && p < c.startPage + c.pageCount)
-            || currentBook.chapters.find(c => p >= c.startPage)
+            || [...currentBook.chapters].reverse().find(c => p >= c.startPage)
             || currentBook.chapters[0];
 
         if (targetChapter.id === chapterId) {
@@ -1121,7 +1156,7 @@ export const RisaleHtmlReaderScreen = () => {
                     }
                     true;
                 `);
-            }, 400);
+            }, 300);
             return () => clearTimeout(timer);
         }
     }, [route.params?.targetPage]);
@@ -1730,6 +1765,7 @@ export const RisaleHtmlReaderScreen = () => {
                             webViewRef.current?.injectJavaScript(`
                                 if (typeof reportMetrics === 'function') reportMetrics();
                                 if (typeof checkFonts === 'function') checkFonts();
+                                ${route.params?.targetPage ? `if (typeof window.scrollToPage === 'function') { window.scrollToPage(${route.params.targetPage}); }` : ''}
                                 true;
                             `);
                         }}
@@ -1744,7 +1780,7 @@ export const RisaleHtmlReaderScreen = () => {
                             }
                         }}
                         injectedJavaScriptBeforeContentLoaded={injectCss}
-                        injectedJavaScript={getInjectedJs(bookId)}
+                        injectedJavaScript={getInjectedJs(bookId, route.params?.targetPage)}
                         style={{ flex: 1, backgroundColor: activeTheme.bg }}
                         webviewDebuggingEnabled={true}
                     />
@@ -1764,7 +1800,14 @@ export const RisaleHtmlReaderScreen = () => {
                     {currentBook?.title || title}
                 </Text>
                 <Text style={[styles.footerBarCenter, { color: isDarkTheme ? '#A1A1AA' : '#6B5E4F' }]}>
-                    {currentChapter ? `${currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))}/${bookTotalPages}` : ''}
+                    {currentChapter ? (() => {
+                        const curSoz = currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1));
+                        const mappedRnk = bookId ? getRnkPageFromSozler(bookId, curSoz) : null;
+                        if (mappedRnk && mappedRnk !== curSoz) {
+                            return `sf. ${curSoz} (RNK: ${mappedRnk})`;
+                        }
+                        return `${curSoz}/${bookTotalPages}`;
+                    })() : ''}
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
                     <Text style={[styles.footerBarRight, { color: isDarkTheme ? '#A1A1AA' : '#6B5E4F' }]}>
@@ -2629,15 +2672,15 @@ export const RisaleHtmlReaderScreen = () => {
                         <View style={styles.lightDragHandle} />
 
                         {/* Header */}
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
-                                    <Ionicons name="document-text" size={18} color="#C5A059" />
+                                <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    <Ionicons name="document-text" size={19} color="#C5A059" />
                                 </View>
                                 <View>
                                     <Text style={styles.lightModalTitle}>Sayfaya Git</Text>
                                     <Text style={{ fontSize: 12, color: '#64748B' }}>
-                                        {currentBook?.title || 'Kitap'} (1 - {bookTotalPages})
+                                        {currentBook?.title || 'Kitap'} (1 - {gotoEdition === 'rnk' && rnkBookTotalPages ? rnkBookTotalPages : bookTotalPages})
                                     </Text>
                                 </View>
                             </View>
@@ -2646,12 +2689,56 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         </View>
 
+                        {/* Edition Selector Tabs */}
+                        <View style={{ flexDirection: 'row', backgroundColor: '#F1F5F9', borderRadius: 12, padding: 3, marginBottom: 14 }}>
+                            <TouchableOpacity
+                                style={{
+                                    flex: 1,
+                                    paddingVertical: 9,
+                                    borderRadius: 9,
+                                    backgroundColor: gotoEdition === 'sozler' ? '#FFFFFF' : 'transparent',
+                                    alignItems: 'center',
+                                    shadowColor: '#000',
+                                    shadowOffset: { width: 0, height: 1 },
+                                    shadowOpacity: gotoEdition === 'sozler' ? 0.08 : 0,
+                                    shadowRadius: 2,
+                                    elevation: gotoEdition === 'sozler' ? 2 : 0,
+                                }}
+                                onPress={() => setGotoEdition('sozler')}
+                            >
+                                <Text style={{ fontSize: 13, fontWeight: gotoEdition === 'sozler' ? '700' : '500', color: gotoEdition === 'sozler' ? '#0F172A' : '#64748B' }}>
+                                    Sözler Neşriyat
+                                </Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={{
+                                    flex: 1,
+                                    paddingVertical: 9,
+                                    borderRadius: 9,
+                                    backgroundColor: gotoEdition === 'rnk' ? '#FFFFFF' : 'transparent',
+                                    alignItems: 'center',
+                                    shadowColor: '#000',
+                                    shadowOffset: { width: 0, height: 1 },
+                                    shadowOpacity: gotoEdition === 'rnk' ? 0.08 : 0,
+                                    shadowRadius: 2,
+                                    elevation: gotoEdition === 'rnk' ? 2 : 0,
+                                }}
+                                onPress={() => setGotoEdition('rnk')}
+                            >
+                                <Text style={{ fontSize: 13, fontWeight: gotoEdition === 'rnk' ? '700' : '500', color: gotoEdition === 'rnk' ? '#0F172A' : '#64748B' }}>
+                                    RNK Neşriyat
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
                         {/* Page Input Box */}
                         <View style={{
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginVertical: 16,
+                            marginVertical: 10,
                             paddingVertical: 12,
+                            paddingHorizontal: 16,
                             backgroundColor: '#F8FAFC',
                             borderRadius: 16,
                             borderWidth: 1.5,
@@ -2666,7 +2753,14 @@ export const RisaleHtmlReaderScreen = () => {
                                     minWidth: 120,
                                     padding: 4
                                 }}
-                                placeholder={currentChapter ? String(currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : "1"}
+                                placeholder={(() => {
+                                    if (!currentChapter) return "1";
+                                    const curSoz = currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1));
+                                    if (gotoEdition === 'rnk' && bookId) {
+                                        return String(getRnkPageFromSozler(bookId, curSoz));
+                                    }
+                                    return String(curSoz);
+                                })()}
                                 placeholderTextColor="#CBD5E1"
                                 value={targetPageInput}
                                 onChangeText={setTargetPageInput}
@@ -2676,17 +2770,47 @@ export const RisaleHtmlReaderScreen = () => {
                                 returnKeyType="go"
                                 onSubmitEditing={() => handleGotoPage(targetPageInput)}
                             />
-                            <Text style={{ fontSize: 12, color: '#64748B', marginTop: 4 }}>
-                                Sayfa numarasını girin
+                            <Text style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
+                                {gotoEdition === 'rnk' ? 'RNK Neşriyat sayfa numarasını girin' : 'Sözler Neşriyat sayfa numarasını girin'}
                             </Text>
+
+                            {/* Dynamic RNK to Sözler Live Conversion Banner */}
+                            {gotoEdition === 'rnk' && targetPageInput.trim().length > 0 && (() => {
+                                const rnkP = parseInt(targetPageInput.trim(), 10);
+                                if (!isNaN(rnkP) && rnkP > 0) {
+                                    const mappedSozlerP = bookId ? getSozlerPageFromRnk(bookId, rnkP) : rnkP;
+                                    return (
+                                        <View style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            backgroundColor: '#FEF3C7',
+                                            borderWidth: 1,
+                                            borderColor: '#FDE68A',
+                                            borderRadius: 10,
+                                            paddingHorizontal: 12,
+                                            paddingVertical: 9,
+                                            marginTop: 10,
+                                            width: '100%'
+                                        }}>
+                                            <Ionicons name="swap-horizontal" size={17} color="#B45309" style={{ marginRight: 8 }} />
+                                            <Text style={{ fontSize: 12.5, color: '#92400E', fontWeight: '600', flexShrink: 1 }}>
+                                                💡 Bu sayfa Sözler Neşriyat'ta <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline' }}>sf. {mappedSozlerP}</Text>'e denk gelir.
+                                            </Text>
+                                        </View>
+                                    );
+                                }
+                                return null;
+                            })()}
                         </View>
 
                         {/* Quick Step Buttons */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginBottom: 18 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
                             {[-10, -1, 1, 10].map((step) => {
-                                const curP = currentChapter ? (currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : 1;
-                                const base = targetPageInput ? (parseInt(targetPageInput, 10) || curP) : curP;
-                                const newP = Math.max(1, Math.min(bookTotalPages || 9999, base + step));
+                                const curSoz = currentChapter ? (currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : 1;
+                                const maxLimit = (gotoEdition === 'rnk' && rnkBookTotalPages ? rnkBookTotalPages : (bookTotalPages || 9999));
+                                const curActiveP = (gotoEdition === 'rnk' && bookId) ? getRnkPageFromSozler(bookId, curSoz) : curSoz;
+                                const base = targetPageInput ? (parseInt(targetPageInput, 10) || curActiveP) : curActiveP;
+                                const newP = Math.max(1, Math.min(maxLimit, base + step));
                                 return (
                                     <TouchableOpacity
                                         key={step}
@@ -2726,7 +2850,7 @@ export const RisaleHtmlReaderScreen = () => {
                             onPress={() => handleGotoPage(targetPageInput)}
                         >
                             <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold', marginRight: 8 }}>
-                                Sayfaya Git
+                                {gotoEdition === 'rnk' ? 'RNK Sayfasına Git' : 'Sayfaya Git'}
                             </Text>
                             <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
                         </TouchableOpacity>
