@@ -4,6 +4,7 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     Text,
     Platform,
     Share,
@@ -19,7 +20,8 @@ import {
     useWindowDimensions,
     Alert,
     TextInput,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Animated
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -1365,6 +1367,10 @@ export const RisaleHtmlReaderScreen = () => {
     // Footnote State
     const [footnoteVisible, setFootnoteVisible] = useState(false);
     const [footnoteContent, setFootnoteContent] = useState("");
+    const footnoteScrollRef = useRef<ScrollView>(null);
+    const footnoteScrollY = useRef(new Animated.Value(0)).current;
+    const [footnoteContentHeight, setFootnoteContentHeight] = useState(1);
+    const [footnoteContainerHeight, setFootnoteContainerHeight] = useState(1);
 
     // AI Modal State
     const [aiModalVisible, setAiModalVisible] = useState(false);
@@ -1373,9 +1379,21 @@ export const RisaleHtmlReaderScreen = () => {
     const [mealModalVisible, setMealModalVisible] = useState(false);
     const [mealTab, setMealTab] = useState<'meal' | 'arabic'>('meal');
     const [activeMeal, setActiveMeal] = useState<{ arabic: string; meal: string; source: string } | null>(null);
+    const mealScrollRef = useRef<ScrollView>(null);
+    const mealScrollY = useRef(new Animated.Value(0)).current;
+    const [mealContentHeight, setMealContentHeight] = useState(1);
+    const [mealContainerHeight, setMealContainerHeight] = useState(1);
+
+    const handleSetMealTab = (tab: 'meal' | 'arabic') => {
+        setMealTab(tab);
+        mealScrollY.setValue(0);
+        mealScrollRef.current?.scrollTo({ y: 0, animated: false });
+    };
 
     const handleAyetClick = async (text: string) => {
         try {
+            mealScrollY.setValue(0);
+            mealScrollRef.current?.scrollTo({ y: 0, animated: false });
             const meal = await risalePagesDb.getAyetMeal(text);
             if (meal) {
                 setActiveMeal({
@@ -1595,6 +1613,8 @@ export const RisaleHtmlReaderScreen = () => {
                     `);
                     break;
                 case 'FOOTNOTE_CONTENT':
+                    footnoteScrollY.setValue(0);
+                    footnoteScrollRef.current?.scrollTo({ y: 0, animated: false });
                     setFootnoteContent(data.text);
                     setFootnoteVisible(true);
                     break;
@@ -1650,7 +1670,36 @@ export const RisaleHtmlReaderScreen = () => {
     const chipBg = isDarkTheme ? '#27272a' : (isSepiaTheme ? '#e6dec1' : '#f1f5f9');
     const bColor = isDarkTheme ? '#3f3f46' : (isSepiaTheme ? '#d4ccb1' : '#e2e8f0');
     // Using simple undefined for system to not crash non-loaded fonts in Native
-    const uiFont = fontFamily === 'System' ? undefined : fontFamily;
+    // Scrollbar indicators for meal and footnote modals
+    const mealThumbHeight = Math.max(
+        36,
+        Math.min(
+            Math.max(36, mealContainerHeight - 16),
+            (mealContainerHeight / Math.max(1, mealContentHeight)) * mealContainerHeight
+        )
+    );
+    const mealTrackTravel = Math.max(0, mealContainerHeight - mealThumbHeight);
+    const mealMaxScroll = Math.max(1, mealContentHeight - mealContainerHeight);
+    const mealThumbTranslateY = mealScrollY.interpolate({
+        inputRange: [0, mealMaxScroll],
+        outputRange: [0, mealTrackTravel],
+        extrapolate: 'clamp',
+    });
+
+    const footnoteThumbHeight = Math.max(
+        36,
+        Math.min(
+            Math.max(36, footnoteContainerHeight - 16),
+            (footnoteContainerHeight / Math.max(1, footnoteContentHeight)) * footnoteContainerHeight
+        )
+    );
+    const footnoteTrackTravel = Math.max(0, footnoteContainerHeight - footnoteThumbHeight);
+    const footnoteMaxScroll = Math.max(1, footnoteContentHeight - footnoteContainerHeight);
+    const footnoteThumbTranslateY = footnoteScrollY.interpolate({
+        inputRange: [0, footnoteMaxScroll],
+        outputRange: [0, footnoteTrackTravel],
+        extrapolate: 'clamp',
+    });
 
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: activeTheme.bg }]} edges={['top', 'left', 'right']}>
@@ -2331,10 +2380,15 @@ export const RisaleHtmlReaderScreen = () => {
                 </TouchableOpacity>
             </Modal>
 
-            {/* FOOTNOTE MODAL (Risale Book Warm Theme) */}
+            {/* FOOTNOTE MODAL (Risale Book Warm Theme with Visible Scrollbar) */}
             <Modal visible={footnoteVisible} transparent animationType="slide" onRequestClose={() => setFootnoteVisible(false)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setFootnoteVisible(false)}>
-                    <View style={styles.bookModalContent} onStartShouldSetResponder={() => true}>
+                <View style={styles.modalOverlay}>
+                    <TouchableOpacity
+                        style={StyleSheet.absoluteFill}
+                        activeOpacity={1}
+                        onPress={() => setFootnoteVisible(false)}
+                    />
+                    <View style={styles.bookModalContent}>
                         <View style={styles.bookDragHandle} />
                         <View style={styles.modalHeader}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -2348,9 +2402,53 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <View style={[styles.separator, { backgroundColor: '#E7E5E4' }]} />
-                        <ScrollView style={{ maxHeight: 400 }} contentContainerStyle={{ paddingBottom: 30 }} nestedScrollEnabled={true} showsVerticalScrollIndicator={true} bounces={true} overScrollMode="always">
-                            <Text style={[styles.footNoteText, { color: '#1C1917', lineHeight: 28, fontSize: 17 }]}>{footnoteContent}</Text>
-                        </ScrollView>
+                        <View style={{ flexShrink: 1, maxHeight: 420, position: 'relative' }}>
+                            <Animated.ScrollView
+                                ref={footnoteScrollRef}
+                                showsVerticalScrollIndicator={true}
+                                persistentScrollbar={true}
+                                indicatorStyle="black"
+                                nestedScrollEnabled={true}
+                                bounces={true}
+                                overScrollMode="always"
+                                scrollEventThrottle={16}
+                                onScroll={Animated.event(
+                                    [{ nativeEvent: { contentOffset: { y: footnoteScrollY } } }],
+                                    { useNativeDriver: false }
+                                )}
+                                onContentSizeChange={(_, h) => setFootnoteContentHeight(h)}
+                                onLayout={(e) => setFootnoteContainerHeight(e.nativeEvent.layout.height)}
+                                contentContainerStyle={{ paddingRight: 16, paddingBottom: 30 }}
+                            >
+                                <Text style={[styles.footNoteText, { color: '#1C1917', lineHeight: 28, fontSize: 17 }]}>{footnoteContent}</Text>
+                            </Animated.ScrollView>
+
+                            {/* Prominent Custom Scrollbar on Right Side */}
+                            {footnoteContentHeight > footnoteContainerHeight + 8 && (
+                                <View
+                                    pointerEvents="none"
+                                    style={{
+                                        position: 'absolute',
+                                        right: 0,
+                                        top: 2,
+                                        bottom: 2,
+                                        width: 6,
+                                        backgroundColor: '#E7E5E4',
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <Animated.View
+                                        style={{
+                                            width: 6,
+                                            height: footnoteThumbHeight,
+                                            backgroundColor: '#B45309',
+                                            borderRadius: 3,
+                                            transform: [{ translateY: footnoteThumbTranslateY }],
+                                        }}
+                                    />
+                                </View>
+                            )}
+                        </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#E7E5E4' }}>
                             <TouchableOpacity
                                 style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F5F5F4', borderWidth: 1, borderColor: '#E7E5E4', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8 }}
@@ -2364,18 +2462,23 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </TouchableOpacity>
+                </View>
             </Modal>
 
-            {/* AYET & HADİS MEALİ MODAL (Risale Book Warm Theme with Tabs) */}
+            {/* AYET & HADİS MEALİ MODAL (Risale Book Warm Theme with Tabs & Visible Scrollbar) */}
             <Modal visible={mealModalVisible} transparent animationType="slide" onRequestClose={() => setMealModalVisible(false)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setMealModalVisible(false)}>
-                    <View style={styles.bookModalContent} onStartShouldSetResponder={() => true}>
+                <View style={styles.modalOverlay}>
+                    <TouchableOpacity
+                        style={StyleSheet.absoluteFill}
+                        activeOpacity={1}
+                        onPress={() => setMealModalVisible(false)}
+                    />
+                    <View style={styles.bookModalContent}>
                         <View style={styles.bookDragHandle} />
 
                         {/* Header */}
                         <View style={styles.modalHeader}>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, paddingRight: 8 }}>
                                 <Text style={{ fontSize: 13, fontWeight: '700', color: '#B45309', textTransform: 'uppercase', letterSpacing: 0.5 }}>
                                     Âyet-i Kerîme / Hadîs-i Şerîf Meâli
                                 </Text>
@@ -2405,7 +2508,7 @@ export const RisaleHtmlReaderScreen = () => {
                                     shadowRadius: 2,
                                     elevation: mealTab === 'meal' ? 2 : 0,
                                 }}
-                                onPress={() => setMealTab('meal')}
+                                onPress={() => handleSetMealTab('meal')}
                             >
                                 <Text style={{ fontSize: 14, fontWeight: mealTab === 'meal' ? '700' : '500', color: mealTab === 'meal' ? '#B45309' : '#57534E' }}>
                                     📖 Türkçe Meâl
@@ -2424,7 +2527,7 @@ export const RisaleHtmlReaderScreen = () => {
                                     shadowRadius: 2,
                                     elevation: mealTab === 'arabic' ? 2 : 0,
                                 }}
-                                onPress={() => setMealTab('arabic')}
+                                onPress={() => handleSetMealTab('arabic')}
                             >
                                 <Text style={{ fontSize: 14, fontWeight: mealTab === 'arabic' ? '700' : '500', color: mealTab === 'arabic' ? '#B45309' : '#57534E' }}>
                                     📜 Arapça Metin
@@ -2434,18 +2537,62 @@ export const RisaleHtmlReaderScreen = () => {
 
                         <View style={[styles.separator, { backgroundColor: '#E7E5E4', marginBottom: 12 }]} />
 
-                        {/* Tab Content - Smooth scrollable */}
-                        <ScrollView style={{ maxHeight: 420 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true} bounces={true} overScrollMode="always">
-                            {mealTab === 'meal' ? (
-                                <Text style={{ fontSize: 17, color: '#1C1917', lineHeight: 28, textAlign: 'justify', fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }}>
-                                    {activeMeal?.meal}
-                                </Text>
-                            ) : (
-                                <Text style={{ fontSize: 24, color: '#8B0000', textAlign: 'center', lineHeight: 42, fontFamily: 'ScheherazadeNew' }}>
-                                    {activeMeal?.arabic}
-                                </Text>
+                        {/* Tab Content - Smooth scrollable with visible right scrollbar */}
+                        <View style={{ flexShrink: 1, maxHeight: 420, position: 'relative' }}>
+                            <Animated.ScrollView
+                                ref={mealScrollRef}
+                                showsVerticalScrollIndicator={true}
+                                persistentScrollbar={true}
+                                indicatorStyle="black"
+                                nestedScrollEnabled={true}
+                                bounces={true}
+                                overScrollMode="always"
+                                scrollEventThrottle={16}
+                                onScroll={Animated.event(
+                                    [{ nativeEvent: { contentOffset: { y: mealScrollY } } }],
+                                    { useNativeDriver: false }
+                                )}
+                                onContentSizeChange={(_, h) => setMealContentHeight(h)}
+                                onLayout={(e) => setMealContainerHeight(e.nativeEvent.layout.height)}
+                                contentContainerStyle={{ paddingRight: 16, paddingBottom: 40 }}
+                            >
+                                {mealTab === 'meal' ? (
+                                    <Text style={{ fontSize: 17, color: '#1C1917', lineHeight: 28, textAlign: 'justify', fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }}>
+                                        {activeMeal?.meal}
+                                    </Text>
+                                ) : (
+                                    <Text style={{ fontSize: 24, color: '#8B0000', textAlign: 'center', lineHeight: 42, fontFamily: 'ScheherazadeNew' }}>
+                                        {activeMeal?.arabic}
+                                    </Text>
+                                )}
+                            </Animated.ScrollView>
+
+                            {/* Prominent Custom Scrollbar on Right Side */}
+                            {mealContentHeight > mealContainerHeight + 8 && (
+                                <View
+                                    pointerEvents="none"
+                                    style={{
+                                        position: 'absolute',
+                                        right: 0,
+                                        top: 2,
+                                        bottom: 2,
+                                        width: 6,
+                                        backgroundColor: '#E7E5E4',
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <Animated.View
+                                        style={{
+                                            width: 6,
+                                            height: mealThumbHeight,
+                                            backgroundColor: '#B45309',
+                                            borderRadius: 3,
+                                            transform: [{ translateY: mealThumbTranslateY }],
+                                        }}
+                                    />
+                                </View>
                             )}
-                        </ScrollView>
+                        </View>
 
                         {/* Action Buttons */}
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10, marginTop: 12, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#E7E5E4' }}>
@@ -2474,13 +2621,18 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </TouchableOpacity>
+                </View>
             </Modal>
 
             {/* 1. DICTIONARY MODAL (Word Tap - Spacious Original Light Modal) */}
             <Modal visible={dictVisible} transparent animationType="fade" onRequestClose={() => setDictVisible(false)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setDictVisible(false)}>
-                    <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
+                <View style={styles.modalOverlay}>
+                    <TouchableOpacity
+                        style={StyleSheet.absoluteFill}
+                        activeOpacity={1}
+                        onPress={() => setDictVisible(false)}
+                    />
+                    <View style={styles.modalContent}>
                         {/* 1. DETAIL VIEW */}
                         {dictEntry && (
                             <>
@@ -2494,7 +2646,7 @@ export const RisaleHtmlReaderScreen = () => {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.separator} />
-                                <ScrollView style={{ maxHeight: 280 }} showsVerticalScrollIndicator={true}>
+                                <ScrollView style={{ maxHeight: 280 }} showsVerticalScrollIndicator={true} persistentScrollbar={true} nestedScrollEnabled={true}>
                                     <Text style={styles.dictDef}>{dictEntry.definition}</Text>
                                 </ScrollView>
                                 {dictCandidates.length > 0 && (
@@ -2520,7 +2672,7 @@ export const RisaleHtmlReaderScreen = () => {
                                         <Ionicons name="close-circle" size={32} color="#94a3b8" />
                                     </TouchableOpacity>
                                 </View>
-                                <ScrollView style={{ maxHeight: 320 }} showsVerticalScrollIndicator={true}>
+                                <ScrollView style={{ maxHeight: 320 }} showsVerticalScrollIndicator={true} persistentScrollbar={true} nestedScrollEnabled={true}>
                                     {dictCandidates.map((c, i) => (
                                         <TouchableOpacity
                                             key={i}
@@ -2602,7 +2754,7 @@ export const RisaleHtmlReaderScreen = () => {
                             </View>
                         )}
                     </View>
-                </TouchableOpacity>
+                </View>
             </Modal>
 
             {/* 2. DEDICATED KÜLLİYAT LÜGATİ SEARCH MODAL (Spacious & Responsive) */}
