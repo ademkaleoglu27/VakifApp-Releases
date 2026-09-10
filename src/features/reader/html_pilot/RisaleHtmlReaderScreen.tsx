@@ -39,6 +39,7 @@ import { Linking } from 'react-native';
 import { risalePagesDb } from '@/services/risalePagesDb';
 import { getSozlerPageFromRnk, getRnkPageFromSozler, getRnkBookTotalPages } from '@/services/crossEditionMap';
 import { saveLastRead } from '@/services/readingProgress';
+import { lastReadService } from '@/services/lastReadService';
 
 const THEME_OPTIONS = [
     { id: 'classic', label: 'Klasik', bg: '#efe7d1', text: '#111' },
@@ -1167,8 +1168,18 @@ export const RisaleHtmlReaderScreen = () => {
                 `);
             }, 300);
             return () => clearTimeout(timer);
+        } else if (route.params?.scrollRatio !== undefined && webViewRef.current) {
+            const timer = setTimeout(() => {
+                webViewRef.current?.injectJavaScript(`
+                    var r = ${Number(route.params.scrollRatio)};
+                    var maxS = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                    window.scrollTo({ top: maxS * r, behavior: 'smooth' });
+                    true;
+                `);
+            }, 350);
+            return () => clearTimeout(timer);
         }
-    }, [route.params?.targetPage]);
+    }, [route.params?.targetPage, route.params?.scrollRatio]);
 
     // Dedicated Külliyat 120,000-Word Dictionary Search Modal State
     const [dictSearchModalVisible, setDictSearchModalVisible] = useState(false);
@@ -1296,31 +1307,94 @@ export const RisaleHtmlReaderScreen = () => {
         `);
     }, []);
 
-    // Toggle bookmark
+    // Toggle bookmark & Synchronize with lastReadService and Home Screen
     const handleToggleBookmark = useCallback(async () => {
         try {
             if (!bookId || !chapterId) return;
             const key = `risale_bookmark_${bookId}`;
+            const globalKey = '@risale_global_last_bookmark';
+
             if (isBookmarked) {
                 await AsyncStorage.removeItem(key);
+                await AsyncStorage.removeItem(globalKey).catch(() => {});
                 setIsBookmarked(false);
                 Alert.alert('Yer İşareti', 'Yer işareti kaldırıldı.');
             } else {
+                const curSoz = currentChapter ? (currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : undefined;
+                const bookTitle = currentBook?.title || title || 'Risale-i Nur';
+                const chapterTitle = currentChapter?.title || title || '';
+
                 const data = {
                     bookId,
                     chapterId,
-                    title,
+                    title: bookTitle,
+                    chapterTitle,
+                    assetPath,
+                    targetPage: curSoz,
                     scrollRatio: pageInfo.current,
                     date: new Date().toISOString()
                 };
                 await AsyncStorage.setItem(key, JSON.stringify(data));
+                await AsyncStorage.setItem(globalKey, JSON.stringify(data));
                 setIsBookmarked(true);
-                Alert.alert('Yer İşareti', 'Kaldığınız sayfa kaydedildi.');
+
+                // Notify lastReadService so Home Screen updates immediately!
+                await lastReadService.recordLastRead({
+                    id: `risale_${bookId}`,
+                    type: 'risale',
+                    title: bookTitle,
+                    subtitle: `${chapterTitle}${curSoz ? ` • Sayfa ${curSoz}` : ''}`,
+                    screenName: 'RisaleHtmlReader',
+                    params: {
+                        assetPath,
+                        title: chapterTitle,
+                        bookId,
+                        chapterId,
+                        targetPage: curSoz,
+                        scrollRatio: pageInfo.current,
+                    },
+                    icon: 'library-outline'
+                });
+
+                Alert.alert('Yer İşareti', `Kaldığınız yer kaydedildi.\n${bookTitle}${curSoz ? ` • Sayfa ${curSoz}` : ''}`);
             }
         } catch (e) {
             console.warn('Bookmark error:', e);
         }
-    }, [bookId, chapterId, title, pageInfo.current, isBookmarked]);
+    }, [bookId, chapterId, title, assetPath, pageInfo.current, isBookmarked, currentBook, currentChapter]);
+
+    // Automatically record reading progress to lastReadService (debounced by 1500ms)
+    useEffect(() => {
+        if (!bookId || !chapterId || !assetPath) return;
+
+        const timer = setTimeout(() => {
+            const curSoz = currentChapter ? (currentChapter.startPage + Math.round(pageInfo.current * Math.max(0, currentChapter.pageCount - 1))) : undefined;
+            const bookTitle = currentBook?.title || title || 'Risale-i Nur';
+            const chapterTitle = currentChapter?.title || title || '';
+
+            const chapterIndex = currentBook ? currentBook.chapters.findIndex(c => c.id === chapterId) : 0;
+            saveLastRead(bookId, chapterId, Math.max(0, chapterIndex)).catch(() => {});
+
+            lastReadService.recordLastRead({
+                id: `risale_${bookId}`,
+                type: 'risale',
+                title: bookTitle,
+                subtitle: `${chapterTitle}${curSoz ? ` • Sayfa ${curSoz}` : ''}`,
+                screenName: 'RisaleHtmlReader',
+                params: {
+                    assetPath,
+                    title: chapterTitle,
+                    bookId,
+                    chapterId,
+                    targetPage: curSoz,
+                    scrollRatio: pageInfo.current,
+                },
+                icon: 'library-outline'
+            }).catch(() => {});
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, [bookId, chapterId, assetPath, pageInfo.current, currentBook, currentChapter, title]);
 
     // Inject settings into WebView whenever they change
     useEffect(() => {
@@ -1829,7 +1903,15 @@ export const RisaleHtmlReaderScreen = () => {
                             webViewRef.current?.injectJavaScript(`
                                 if (typeof reportMetrics === 'function') reportMetrics();
                                 if (typeof checkFonts === 'function') checkFonts();
-                                ${route.params?.targetPage ? `if (typeof window.scrollToPage === 'function') { window.scrollToPage(${route.params.targetPage}); }` : ''}
+                                ${route.params?.targetPage 
+                                    ? `if (typeof window.scrollToPage === 'function') { window.scrollToPage(${route.params.targetPage}); }` 
+                                    : (route.params?.scrollRatio !== undefined 
+                                        ? `setTimeout(function() {
+                                            var r = ${Number(route.params.scrollRatio)};
+                                            var maxS = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                                            window.scrollTo({ top: maxS * r, behavior: 'smooth' });
+                                           }, 250);` 
+                                        : '')}
                                 true;
                             `);
                         }}
@@ -1936,7 +2018,28 @@ export const RisaleHtmlReaderScreen = () => {
                             </TouchableOpacity>
                         )}
 
-                        {/* 3. Temalar ve Ayarlar */}
+                        {/* 3. Kaldığım Yer Olarak İşaretle */}
+                        <TouchableOpacity
+                            style={[
+                                styles.floatingMenuPill,
+                                isBookmarked && { backgroundColor: 'rgba(217, 119, 6, 0.12)', borderColor: '#D97706' }
+                            ]}
+                            activeOpacity={0.8}
+                            onPress={() => {
+                                handleToggleBookmark();
+                            }}
+                        >
+                            <Text style={[styles.floatingMenuPillText, isBookmarked && { color: '#D97706', fontWeight: 'bold' }]}>
+                                {isBookmarked ? 'Kaldığım Yer İşaretlendi' : 'Kaldığım Yer Olarak İşaretle'}
+                            </Text>
+                            <Ionicons
+                                name={isBookmarked ? "bookmark" : "bookmark-outline"}
+                                size={22}
+                                color={isBookmarked ? "#D97706" : "#C5A059"}
+                            />
+                        </TouchableOpacity>
+
+                        {/* 4. Temalar ve Ayarlar */}
                         <TouchableOpacity
                             style={styles.floatingMenuPill}
                             activeOpacity={0.8}

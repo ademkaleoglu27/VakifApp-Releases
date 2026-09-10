@@ -3,6 +3,7 @@ import {
     View, Text, StyleSheet, ScrollView, TouchableOpacity,
     StatusBar, Platform, Share
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuthStore } from '@/store/authStore';
 import { useNavigation, useFocusEffect, DrawerActions } from '@react-navigation/native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -13,6 +14,7 @@ import { ContinueReadingCard } from '@/components/ContinueReadingCard';
 import { HomePrayerCard } from '../components/HomePrayerCard';
 import { getDb } from '@/services/db/sqlite';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { lastReadService } from '@/services/lastReadService';
 
 export const HomeScreen = () => {
     const navigation = useNavigation<any>();
@@ -21,15 +23,31 @@ export const HomeScreen = () => {
 
     const [dailyQuote, setDailyQuote] = useState<{ text: string, source: string } | null>(null);
     const [weeklyPages, setWeeklyPages] = useState<number>(0);
+    const [risaleBookmark, setRisaleBookmark] = useState<any>(null);
     const weeklyGoal = 50; // 50 pages weekly goal
 
     const openDrawer = () => {
         navigation.dispatch(DrawerActions.openDrawer());
     };
 
+    const loadRisaleProgress = async () => {
+        try {
+            const item = await lastReadService.getLastRead();
+            if (item && item.type === 'risale') {
+                setRisaleBookmark(item);
+                return;
+            }
+            const saved = await AsyncStorage.getItem('@risale_global_last_bookmark');
+            if (saved) {
+                setRisaleBookmark(JSON.parse(saved));
+            }
+        } catch {}
+    };
+
     useFocusEffect(
         useCallback(() => {
             loadWeeklyStats();
+            loadRisaleProgress();
         }, [user])
     );
 
@@ -76,6 +94,39 @@ export const HomeScreen = () => {
             });
         } catch (e) {}
     };
+
+    const handleOpenRisale = async () => {
+        try {
+            const item = await lastReadService.getLastRead();
+            if (item && item.type === 'risale' && item.params?.assetPath) {
+                navigation.navigate('RisaleHtmlReader', item.params);
+                return;
+            }
+            const saved = await AsyncStorage.getItem('@risale_global_last_bookmark');
+            if (saved) {
+                const bm = JSON.parse(saved);
+                if (bm.assetPath) {
+                    navigation.navigate('RisaleHtmlReader', {
+                        assetPath: bm.assetPath,
+                        title: bm.chapterTitle || bm.title,
+                        bookId: bm.bookId,
+                        chapterId: bm.chapterId,
+                        targetPage: bm.targetPage,
+                        scrollRatio: bm.scrollRatio,
+                    });
+                    return;
+                }
+            }
+        } catch {}
+        navigation.navigate('RisaleHtmlReaderHome');
+    };
+
+    const risaleSubtitle = (() => {
+        if (!risaleBookmark) return 'Külliyat';
+        const rawTitle = risaleBookmark.title || '';
+        const cleanTitle = rawTitle.replace(/^Risale-i\s*Nur\s*[-–—:]\s*/i, '').trim();
+        return cleanTitle || 'Kaldığın Yer';
+    })();
 
     const progressPercentage = Math.min(Math.round((weeklyPages / weeklyGoal) * 100), 100);
 
@@ -148,39 +199,57 @@ export const HomeScreen = () => {
                 {/* 2. Last Read Resumption Card */}
                 <ContinueReadingCard />
 
-                {/* 3. Quick Access 3-Pill Grid */}
+                {/* 3. Quick Access 4-Pill Grid */}
                 <View style={styles.quickCardsRow}>
+                    {/* 1. Risale-i Nur */}
+                    <TouchableOpacity
+                        style={[styles.quickCardItem, styles.quickCardRisale]}
+                        onPress={handleOpenRisale}
+                        activeOpacity={0.8}
+                    >
+                        <View style={styles.risaleIconCircle}>
+                            <Ionicons name="library" size={19} color="#B45309" />
+                        </View>
+                        <Text style={[styles.quickCardTitle, { color: '#78350F' }]} numberOfLines={1}>Risale</Text>
+                        <Text style={[styles.quickCardSubtitle, { color: '#92400E' }]} numberOfLines={1}>
+                            {risaleSubtitle}
+                        </Text>
+                    </TouchableOpacity>
+
+                    {/* 2. Kur'an */}
                     <TouchableOpacity
                         style={[styles.quickCardItem, styles.quickCardQuran]}
                         onPress={() => navigation.navigate('QuranTextMenuScreen')}
                         activeOpacity={0.8}
                     >
                         <View style={styles.quranIconCircle}>
-                            <Ionicons name="book" size={20} color="#047857" />
+                            <Ionicons name="book" size={19} color="#047857" />
                         </View>
                         <Text style={[styles.quickCardTitle, { color: '#047857' }]} numberOfLines={1}>Kur'an</Text>
                         <Text style={[styles.quickCardSubtitle, { color: '#065F46' }]} numberOfLines={1}>Hat & Meal</Text>
                     </TouchableOpacity>
 
+                    {/* 3. Namaz */}
                     <TouchableOpacity
                         style={[styles.quickCardItem, styles.quickCardPrayer]}
                         onPress={() => navigation.navigate('PrayerTimesScreen')}
                         activeOpacity={0.8}
                     >
                         <View style={styles.prayerIconCircle}>
-                            <Ionicons name="time" size={20} color="#064E3B" />
+                            <Ionicons name="time" size={19} color="#064E3B" />
                         </View>
                         <Text style={styles.quickCardTitle} numberOfLines={1}>Namaz</Text>
                         <Text style={styles.quickCardSubtitle} numberOfLines={1}>Ezan & Kıble</Text>
                     </TouchableOpacity>
 
+                    {/* 4. Zikirmatik */}
                     <TouchableOpacity
                         style={[styles.quickCardItem, styles.quickCardZikir]}
                         onPress={() => navigation.navigate('ZikirmatikScreen')}
                         activeOpacity={0.8}
                     >
                         <View style={styles.zikirIconCircle}>
-                            <MaterialCommunityIcons name="circle-slice-8" size={20} color="#B45309" />
+                            <MaterialCommunityIcons name="circle-slice-8" size={19} color="#B45309" />
                         </View>
                         <Text style={[styles.quickCardTitle, { color: '#78350F' }]} numberOfLines={1}>Zikirmatik</Text>
                         <Text style={[styles.quickCardSubtitle, { color: '#92400E' }]} numberOfLines={1}>Evrad & Tesbih</Text>
@@ -418,7 +487,7 @@ const styles = StyleSheet.create({
     },
     quickCardsRow: {
         flexDirection: 'row',
-        gap: 10,
+        gap: 6,
         marginVertical: 14,
     },
     quickCardItem: {
@@ -427,9 +496,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#ECFDF5',
-        borderRadius: 18,
-        paddingVertical: 12,
-        paddingHorizontal: 2,
+        borderRadius: 16,
+        paddingVertical: 10,
+        paddingHorizontal: 1,
         borderWidth: 1,
         borderColor: '#A7F3D0',
         shadowColor: '#064E3B',
@@ -437,6 +506,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.05,
         shadowRadius: 4,
         elevation: 2,
+    },
+    quickCardRisale: {
+        backgroundColor: '#FFFBEB',
+        borderColor: '#FDE68A',
+        shadowColor: '#B45309',
     },
     quickCardQuran: {
         backgroundColor: '#ECFDF5',
@@ -453,41 +527,50 @@ const styles = StyleSheet.create({
         borderColor: '#FDE68A',
         shadowColor: '#B45309',
     },
-    quranIconCircle: {
-        width: 38,
-        height: 38,
-        borderRadius: 19,
-        backgroundColor: '#D1FAE5',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 6,
-    },
-    prayerIconCircle: {
-        width: 38,
-        height: 38,
-        borderRadius: 19,
-        backgroundColor: '#DCFCE7',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 6,
-    },
-    zikirIconCircle: {
-        width: 38,
-        height: 38,
-        borderRadius: 19,
+    risaleIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
         backgroundColor: '#FEF3C7',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 6,
+        marginBottom: 5,
+    },
+    quranIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: '#D1FAE5',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    prayerIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: '#DCFCE7',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    zikirIconCircle: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: '#FEF3C7',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
     },
     quickCardTitle: {
-        fontSize: 12,
+        fontSize: 11.5,
         fontWeight: 'bold',
         color: '#064E3B',
         textAlign: 'center',
     },
     quickCardSubtitle: {
-        fontSize: 9.5,
+        fontSize: 9,
         color: '#047857',
         marginTop: 2,
         textAlign: 'center',
