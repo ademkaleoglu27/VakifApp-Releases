@@ -135,8 +135,14 @@ class DictionaryDb {
         if (!text) return "";
         let s = text.toLocaleLowerCase('tr-TR');
 
-        // Normalize circumflex vowels
-        s = s.replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u').replace(/ê/g, 'e').replace(/ô/g, 'o');
+        // Normalize all accented/diacritic vowels to base ASCII
+        s = s.replace(/[àáâãäåāǎ]/g, 'a')
+             .replace(/[èéêëē]/g, 'e')
+             .replace(/[ìíîïī]/g, 'i')
+             .replace(/[òóôõöō]/g, 'o')
+             .replace(/[ùúûüū]/g, 'u')
+             .replace(/[\u0300-\u036f]/g, '');
+
         // Normalize Turkish specific characters to plain ascii
         s = s.replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c');
         s = s.replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ı/g, 'i');
@@ -164,7 +170,7 @@ class DictionaryDb {
         // 2. Remove trailing punctuation: .,;:!?...
         s = s.replace(/[.,;:!?…]+$/g, '');
         // 3. Remove Turkish possessive/case suffixes attached with apostrophe
-        // e.g., Sâni'-i Zülcelâl'in -> Sâni'-i Zülcelâl, Rahmân'a -> Rahmân, Güneş'in -> Güneş
+        // e.g., Sâni'-i Zülcelâl'in -> Sâni'-i Zülcelâl, Rahmân'a -> Rahmân, Güneş'in -> Güneş, Müstağnî-i Ale'l-Itlâk'ın -> Müstağnî-i Ale'l-Itlâk
         s = s.replace(/['’ʼ`](?:in|ın|ün|un|nin|nın|nün|nun|den|dan|ten|tan|e|a|ye|ya|i|ı|u|ü|yi|yı|yu|yü|de|da|te|ta|le|la|yle|yla|dir|dır|dür|dur|tir|tır|tür|tur|deki|daki)$/i, '');
         // 4. Strip trailing punctuation again
         s = s.replace(/[.,;:!?…]+$/g, '');
@@ -177,8 +183,10 @@ class DictionaryDb {
         const keys = new Set<string>();
         if (!cleaned) return [];
 
-        // Common attached suffixes without apostrophe
+        // Comprehensive attached suffixes without apostrophe
         const attachedSuffixes = [
+            /(?:lerinin|larının|lerinden|larından|lerine|larına|leriyle|larıyla)$/i,
+            /(?:lerimiz|larımız|lerimizi|larımızı|lerimize|larımıza|lerimizde|larımızda)$/i,
             /(?:lar|ler)(?:ın|in|un|ün|ı|i|u|ü|a|e|da|de|dan|den)?$/i,
             /(?:ını|ini|unu|ünü|nı|ni|nu|nü)$/i,
             /(?:ında|inde|unda|ünde|nda|nde)$/i,
@@ -187,62 +195,115 @@ class DictionaryDb {
             /(?:ıyla|iyle|uyla|üyle|yla|yle)$/i,
             /(?:ımız|imiz|umuz|ümüz|mız|miz|muz|müz)$/i,
             /(?:ınız|iniz|unuz|ünüz)$/i,
+            /(?:nın|nin|nun|nün)$/i,
             /(?:dan|den|tan|ten)$/i,
             /(?:da|de|ta|te)$/i,
             /(?:ya|ye)$/i,
             /(?:yı|yi|yu|yü)$/i,
+            /(?:sı|si|su|sü)$/i,
             /(?:ın|in|un|ün)$/i,
+            /(?:ım|im|um|üm)$/i,
+            /(?<=[aeıioöuüâîûàèìù])m$/i,
+            /(?<=[aeıioöuüâîûàèìù])n$/i,
             /(?:ı|i|u|ü)$/i,
         ];
 
-        const forms = [cleaned];
-        for (const pat of attachedSuffixes) {
-            if (pat.test(cleaned)) {
-                const stripped = cleaned.replace(pat, '');
-                if (stripped.length >= 3) {
-                    forms.push(stripped);
+        const stripSuffix = (w: string) => {
+            for (const pat of attachedSuffixes) {
+                if (pat.test(w)) {
+                    const stripped = w.replace(pat, '');
+                    if (stripped.length >= 3) return stripped;
                 }
             }
+            return w;
+        };
+
+        const rawForms = [cleaned];
+
+        // If compound, also strip suffix from the last component:
+        // e.g. "Harekât-ı sâbıkam" -> "Harekât-ı sâbıka", "lemeât-ı bekàiyenin" -> "lemeât-ı bekàiye"
+        const parts = cleaned.split(/(\s+|-)/);
+        if (parts.length > 1) {
+            const lastWord = parts[parts.length - 1];
+            const strippedLast = stripSuffix(lastWord);
+            if (strippedLast !== lastWord) {
+                const compoundStripped = parts.slice(0, parts.length - 1).join('') + strippedLast;
+                rawForms.push(compoundStripped);
+            }
+        } else {
+            const singleStripped = stripSuffix(cleaned);
+            if (singleStripped !== cleaned) rawForms.push(singleStripped);
         }
 
-        for (const form of forms) {
-            // Form in lowercase with Turkish locale
-            const trLower = form.toLocaleLowerCase('tr-TR');
+        for (const form of rawForms) {
+            // Form in lowercase with Turkish locale + normalize accents to base vowels
+            const trLower = form.toLocaleLowerCase('tr-TR')
+                .replace(/[àáâãäåāǎ]/g, 'a')
+                .replace(/[èéêëē]/g, 'e')
+                .replace(/[ìíîïī]/g, 'i')
+                .replace(/[òóôõöō]/g, 'o')
+                .replace(/[ùúûüū]/g, 'u')
+                .replace(/[\u0300-\u036f]/g, '');
+
             keys.add(trLower);
 
             // Strip circumflex: â->a, î->i, û->u, ô->o, ê->e
             const noCirc = trLower.replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u').replace(/ô/g, 'o').replace(/ê/g, 'e');
             keys.add(noCirc);
 
-            // Turkish izafet hyphen handling: kelâm-ı -> kelamı (with dotless ı)
-            let izafetTr = noCirc.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ');
-            keys.add(izafetTr.replace(/\s+/g, ' ').trim());
+            // Arabic prefix merges (ale'l- -> alel, bi'l- -> bil, fi'l- -> fil, li'l- -> lil)
+            const arabicMergeTr = trLower
+                .replace(/ale['’]l[- ]+/gi, 'alel')
+                .replace(/bi['’]l[- ]+/gi, 'bil')
+                .replace(/fi['’]l[- ]+/gi, 'fil')
+                .replace(/li['’]l[- ]+/gi, 'lil');
+            const arabicMergeNoCirc = noCirc
+                .replace(/ale['’]l[- ]+/gi, 'alel')
+                .replace(/bi['’]l[- ]+/gi, 'bil')
+                .replace(/fi['’]l[- ]+/gi, 'fil')
+                .replace(/li['’]l[- ]+/gi, 'lil');
 
-            // Izafet joined without space: semere-i -> semerei, sâni-i -> sanii
-            let izafetJoined = noCirc.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1');
-            keys.add(izafetJoined.replace(/\s+/g, ' ').trim());
+            [trLower, noCirc, arabicMergeTr, arabicMergeNoCirc].forEach(base => {
+                keys.add(base);
+                // Turkish izafet hyphen handling: kelâm-ı -> kelamı (with dotless ı)
+                keys.add(base.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 '));
+                // Izafet joined without space: semere-i -> semerei, sâni-i -> sanii
+                keys.add(base.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1'));
+                // Izafet yi/yı variant: müstağnî-i -> mustagniyi
+                keys.add(base.replace(/-i(?:\s+|$)/gi, 'yi '));
+                keys.add(base.replace(/-ı(?:\s+|$)/gi, 'yı '));
+                keys.add(base.replace(/-i(?:\s+|$)/gi, 'yi'));
+                keys.add(base.replace(/-ı(?:\s+|$)/gi, 'yı'));
+                // Replace hyphen with space
+                keys.add(base.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+                // Remove hyphen directly
+                keys.add(base.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+                // Apostrophe variants removed (e.g. sâni' -> sani)
+                const noApos = base.replace(/[’'ʿʾ`]/g, '');
+                keys.add(noApos);
+                keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ').replace(/\s+/g, ' ').trim());
+                keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1').replace(/\s+/g, ' ').trim());
+                keys.add(noApos.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+                keys.add(noApos.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+            });
 
-            // Replace hyphen with space
-            keys.add(noCirc.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+            // Generate both Turkish-character versions (preserving dotless ı) AND full ASCII normalized versions
+            const currentKeys = Array.from(keys);
+            for (const k of currentKeys) {
+                // Version keeping dotless ı but converting ğ, ş, ç, ö, ü
+                const trPlain = k
+                    .replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u')
+                    .replace(/[’'ʿʾ`]/g, '');
+                keys.add(trPlain);
+                keys.add(trPlain.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+                keys.add(trPlain.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
 
-            // Remove hyphen directly
-            keys.add(noCirc.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
-
-            // Apostrophe variants removed (e.g. sâni' -> sani)
-            const noApos = noCirc.replace(/[’'ʿʾ`]/g, '');
-            keys.add(noApos);
-            keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ').replace(/\s+/g, ' ').trim());
-            keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1').replace(/\s+/g, ' ').trim());
-            keys.add(noApos.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
-            keys.add(noApos.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
-
-            // Also ascii normalized variants (ı->i, ğ->g, ş->s, ç->c, ö->o, ü->u)
-            const ascii = noApos.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
-            keys.add(ascii);
-            keys.add(ascii.replace(/-([iueya])(?:\s+|$)/gi, '$1 ').replace(/\s+/g, ' ').trim());
-            keys.add(ascii.replace(/-([iueya])(?:\s+|$)/gi, '$1').replace(/\s+/g, ' ').trim());
-            keys.add(ascii.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
-            keys.add(ascii.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+                // Version with ı -> i
+                const asciiPlain = trPlain.replace(/ı/g, 'i');
+                keys.add(asciiPlain);
+                keys.add(asciiPlain.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+                keys.add(asciiPlain.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+            }
         }
 
         return Array.from(keys).filter(k => k.length > 0);
@@ -271,10 +332,23 @@ class DictionaryDb {
             );
 
             if (exactMatches && exactMatches.length > 0) {
+                // Prioritize entries that match the query's initial character without diacritic downgrade (e.g. Ş vs S)
+                const qLowerTr = query.toLocaleLowerCase('tr-TR');
+                const sortedExact = [...exactMatches].sort((a, b) => {
+                    const aOsm = (a.word_osm || '').toLocaleLowerCase('tr-TR');
+                    const bOsm = (b.word_osm || '').toLocaleLowerCase('tr-TR');
+                    const aTr = (a.word_tr || '').toLocaleLowerCase('tr-TR');
+                    const bTr = (b.word_tr || '').toLocaleLowerCase('tr-TR');
+
+                    const aExact = (aOsm.startsWith(qLowerTr.slice(0, 2)) || aTr.startsWith(qLowerTr.slice(0, 2))) ? 1 : 0;
+                    const bExact = (bOsm.startsWith(qLowerTr.slice(0, 2)) || bTr.startsWith(qLowerTr.slice(0, 2))) ? 1 : 0;
+                    return bExact - aExact;
+                });
+
                 // Deduplicate by word_plain to keep results tidy
                 const seen = new Set<string>();
                 const uniqueExact: DictionaryEntry[] = [];
-                for (const em of exactMatches) {
+                for (const em of sortedExact) {
                     const key = (em.word_tr || '').toLowerCase();
                     if (!seen.has(key)) {
                         seen.add(key);
@@ -323,7 +397,14 @@ class DictionaryDb {
             }
 
             // 3. Sub-word fallback for compound phrases where the phrase itself is not in dictionary
-            const words = query.split(/[\s\-]+/).filter(w => w.length >= 3);
+            const noiseWords = new Set(['ve', 'ile', 'ise', 'bir', 'o', 'bu', 'şu', 'de', 'da', 'ki', 'ale', 'alel', 'bi', 'bil', 'fi', 'fil', 'li', 'lil']);
+            // If query contains ale'l-X, bi'l-X, etc., also add the merged token (e.g. alel-ıtlak -> alelıtlak)
+            const normalizedQuery = query
+                .replace(/ale['’]l[- ]+/gi, 'alel')
+                .replace(/bi['’]l[- ]+/gi, 'bil')
+                .replace(/fi['’]l[- ]+/gi, 'fil');
+
+            const words = normalizedQuery.split(/[\s\-']+/).filter(w => w.length >= 3 && !noiseWords.has(w.toLowerCase()));
             let wordCandidates: DictionaryEntry[] = [];
             if (words.length > 1) {
                 const subKeys: string[] = [];
