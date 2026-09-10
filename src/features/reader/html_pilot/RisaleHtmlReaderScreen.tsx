@@ -1372,6 +1372,7 @@ export const RisaleHtmlReaderScreen = () => {
 
     // Ayet / Hadis Meal State
     const [mealModalVisible, setMealModalVisible] = useState(false);
+    const [mealTab, setMealTab] = useState<'meal' | 'arabic'>('meal');
     const [activeMeal, setActiveMeal] = useState<{ arabic: string; meal: string; source: string } | null>(null);
 
     const handleAyetClick = async (text: string) => {
@@ -1381,8 +1382,9 @@ export const RisaleHtmlReaderScreen = () => {
                 setActiveMeal({
                     arabic: meal.arabic_text || text,
                     meal: meal.meal_tr,
-                    source: meal.source_ref
+                    source: meal.source_ref || "Risale-i Nur Meâli"
                 });
+                setMealTab('meal');
                 setMealModalVisible(true);
             } else {
                 setActiveMeal({
@@ -1390,6 +1392,7 @@ export const RisaleHtmlReaderScreen = () => {
                     meal: "Bu Arapça ibare için doğrudan meâl kaydı bulunamadı.",
                     source: "Risale-i Nur"
                 });
+                setMealTab('meal');
                 setMealModalVisible(true);
             }
         } catch (e) {
@@ -1416,8 +1419,9 @@ export const RisaleHtmlReaderScreen = () => {
                     setActiveMeal({
                         arabic: meal.arabic_text || query,
                         meal: meal.meal_tr,
-                        source: meal.source_ref
+                        source: meal.source_ref || "Risale-i Nur Meâli"
                     });
+                    setMealTab('meal');
                     setMealModalVisible(true);
                     return;
                 }
@@ -2317,84 +2321,146 @@ export const RisaleHtmlReaderScreen = () => {
                 </TouchableOpacity>
             </Modal>
 
-            {/* FOOTNOTE MODAL (Dark Theme matching Reference) */}
+            {/* FOOTNOTE MODAL (Risale Book Warm Theme) */}
             <Modal visible={footnoteVisible} transparent animationType="slide" onRequestClose={() => setFootnoteVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setFootnoteVisible(false)}>
-                    <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
-                        <View style={styles.dragHandle} />
+                    <TouchableOpacity activeOpacity={1} style={styles.bookModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.bookDragHandle} />
                         <View style={styles.modalHeader}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <View style={{ width: 28, height: 28, borderRadius: 6, backgroundColor: 'rgba(31, 110, 235, 0.2)', justifyContent: 'center', alignItems: 'center', marginRight: 8 }}>
-                                    <Ionicons name="information-circle" size={18} color="#58A6FF" />
+                                <View style={{ width: 30, height: 30, borderRadius: 8, backgroundColor: 'rgba(197, 160, 89, 0.18)', justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    <Ionicons name="information-circle" size={20} color="#B45309" />
                                 </View>
-                                <Text style={styles.darkModalTitle}>Hâşiye / Dipnot</Text>
+                                <Text style={{ fontSize: 18, fontWeight: '700', color: '#1C1917' }}>Hâşiye / Dipnot</Text>
                             </View>
-                            <TouchableOpacity onPress={() => setFootnoteVisible(false)}>
-                                <Ionicons name="close-circle" size={28} color="#A1A1AA" />
+                            <TouchableOpacity onPress={() => setFootnoteVisible(false)} style={{ padding: 4 }}>
+                                <Ionicons name="close-circle" size={28} color="#78716C" />
                             </TouchableOpacity>
                         </View>
-                        <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
+                        <View style={[styles.separator, { backgroundColor: '#E7E5E4' }]} />
                         <ScrollView style={{ maxHeight: 360 }} nestedScrollEnabled={true} showsVerticalScrollIndicator={true}>
-                            <Text style={[styles.footNoteText, { color: '#E4E4E7', lineHeight: 26, fontSize: 16 }]}>{footnoteContent}</Text>
+                            <Text style={[styles.footNoteText, { color: '#1C1917', lineHeight: 28, fontSize: 17 }]}>{footnoteContent}</Text>
                         </ScrollView>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#E7E5E4' }}>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F5F5F4', borderWidth: 1, borderColor: '#E7E5E4', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8 }}
+                                onPress={() => {
+                                    Clipboard.setString(footnoteContent);
+                                    Alert.alert('✅', 'Hâşiye panoya kopyalandı');
+                                }}
+                            >
+                                <Ionicons name="copy-outline" size={16} color="#292524" style={{ marginRight: 6 }} />
+                                <Text style={{ fontSize: 13, color: '#292524', fontWeight: '600' }}>Kopyala</Text>
+                            </TouchableOpacity>
+                        </View>
                     </TouchableOpacity>
                 </TouchableOpacity>
             </Modal>
 
-            {/* AYET & HADİS MEALİ MODAL (Dark Theme matching Reference) */}
+            {/* AYET & HADİS MEALİ MODAL (Risale Book Warm Theme with Tabs) */}
             <Modal visible={mealModalVisible} transparent animationType="slide" onRequestClose={() => setMealModalVisible(false)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setMealModalVisible(false)}>
-                    <TouchableOpacity activeOpacity={1} style={styles.darkModalContent} onPress={(e) => e.stopPropagation()}>
-                        <View style={styles.dragHandle} />
+                    <TouchableOpacity activeOpacity={1} style={styles.bookModalContent} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.bookDragHandle} />
+
+                        {/* Header */}
                         <View style={styles.modalHeader}>
                             <View style={{ flex: 1 }}>
-                                <Text style={{ fontSize: 13, fontWeight: '700', color: '#C5A059', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                                <Text style={{ fontSize: 13, fontWeight: '700', color: '#B45309', textTransform: 'uppercase', letterSpacing: 0.5 }}>
                                     Âyet-i Kerîme / Hadîs-i Şerîf Meâli
                                 </Text>
                                 {activeMeal?.source ? (
-                                    <Text style={{ fontSize: 13, color: '#A1A1AA', marginTop: 2, fontStyle: 'italic' }}>
+                                    <Text style={{ fontSize: 13, color: '#78716C', marginTop: 2, fontStyle: 'italic' }}>
                                         {activeMeal.source}
                                     </Text>
                                 ) : null}
                             </View>
                             <TouchableOpacity onPress={() => setMealModalVisible(false)} style={{ padding: 4 }}>
-                                <Ionicons name="close-circle" size={28} color="#A1A1AA" />
+                                <Ionicons name="close-circle" size={28} color="#78716C" />
                             </TouchableOpacity>
                         </View>
-                        <View style={[styles.separator, { backgroundColor: '#3F3F46' }]} />
-                        <ScrollView style={{ maxHeight: 380 }} contentContainerStyle={{ paddingBottom: 16 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
-                            {activeMeal?.arabic ? (
-                                <Text style={{ fontSize: 22, color: '#FDE68A', textAlign: 'center', lineHeight: 36, marginBottom: 14, fontFamily: 'ScheherazadeNew' }}>
-                                    {activeMeal.arabic}
-                                </Text>
-                            ) : null}
-                            <Text style={{ fontSize: 16, color: '#F4F4F5', lineHeight: 26, textAlign: 'justify' }}>
-                                {activeMeal?.meal}
-                            </Text>
-                        </ScrollView>
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10, marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#3F3F46' }}>
+
+                        {/* Tabs: [ 📖 Türkçe Meâl ] | [ 📜 Arapça Metin ] */}
+                        <View style={{ flexDirection: 'row', backgroundColor: '#E7E5E4', borderRadius: 10, padding: 3, marginBottom: 12 }}>
                             <TouchableOpacity
-                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#333336', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 }}
+                                style={{
+                                    flex: 1,
+                                    paddingVertical: 8,
+                                    borderRadius: 8,
+                                    alignItems: 'center',
+                                    backgroundColor: mealTab === 'meal' ? '#FFFFFF' : 'transparent',
+                                    shadowColor: mealTab === 'meal' ? '#000' : 'transparent',
+                                    shadowOffset: { width: 0, height: 1 },
+                                    shadowOpacity: 0.1,
+                                    shadowRadius: 2,
+                                    elevation: mealTab === 'meal' ? 2 : 0,
+                                }}
+                                onPress={() => setMealTab('meal')}
+                            >
+                                <Text style={{ fontSize: 14, fontWeight: mealTab === 'meal' ? '700' : '500', color: mealTab === 'meal' ? '#B45309' : '#57534E' }}>
+                                    📖 Türkçe Meâl
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    flex: 1,
+                                    paddingVertical: 8,
+                                    borderRadius: 8,
+                                    alignItems: 'center',
+                                    backgroundColor: mealTab === 'arabic' ? '#FFFFFF' : 'transparent',
+                                    shadowColor: mealTab === 'arabic' ? '#000' : 'transparent',
+                                    shadowOffset: { width: 0, height: 1 },
+                                    shadowOpacity: 0.1,
+                                    shadowRadius: 2,
+                                    elevation: mealTab === 'arabic' ? 2 : 0,
+                                }}
+                                onPress={() => setMealTab('arabic')}
+                            >
+                                <Text style={{ fontSize: 14, fontWeight: mealTab === 'arabic' ? '700' : '500', color: mealTab === 'arabic' ? '#B45309' : '#57534E' }}>
+                                    📜 Arapça Metin
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={[styles.separator, { backgroundColor: '#E7E5E4', marginBottom: 12 }]} />
+
+                        {/* Tab Content */}
+                        <ScrollView style={{ maxHeight: 380 }} contentContainerStyle={{ paddingBottom: 16 }} showsVerticalScrollIndicator={true} nestedScrollEnabled={true}>
+                            {mealTab === 'meal' ? (
+                                <Text style={{ fontSize: 17, color: '#1C1917', lineHeight: 28, textAlign: 'justify', fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' }}>
+                                    {activeMeal?.meal}
+                                </Text>
+                            ) : (
+                                <Text style={{ fontSize: 24, color: '#8B0000', textAlign: 'center', lineHeight: 42, fontFamily: 'ScheherazadeNew' }}>
+                                    {activeMeal?.arabic}
+                                </Text>
+                            )}
+                        </ScrollView>
+
+                        {/* Action Buttons */}
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 10, marginTop: 12, paddingTop: 10, borderTopWidth: 1, borderTopColor: '#E7E5E4' }}>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F5F5F4', borderWidth: 1, borderColor: '#E7E5E4', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 }}
                                 onPress={() => {
                                     if (activeMeal) {
                                         Clipboard.setString(`${activeMeal.arabic ? activeMeal.arabic + '\n\n' : ''}${activeMeal.meal}\n\nKaynak: ${activeMeal.source || 'Risale-i Nur'}`);
-                                        Alert.alert('✅', 'Meal panoya kopyalandı');
+                                        Alert.alert('✅', 'Meâl panoya kopyalandı');
                                     }
                                 }}
                             >
-                                <Ionicons name="copy-outline" size={16} color="#F4F4F5" style={{ marginRight: 6 }} />
-                                <Text style={{ fontSize: 13, color: '#F4F4F5', fontWeight: '600' }}>Kopyala</Text>
+                                <Ionicons name="copy-outline" size={16} color="#292524" style={{ marginRight: 6 }} />
+                                <Text style={{ fontSize: 13, color: '#292524', fontWeight: '600' }}>Kopyala</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#C5A059', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 }}
+                                style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#C5A059', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8 }}
                                 onPress={() => {
                                     if (activeMeal) {
                                         Share.share({ message: `${activeMeal.arabic ? activeMeal.arabic + '\n\n' : ''}${activeMeal.meal}\n\nKaynak: ${activeMeal.source || 'Risale-i Nur'}` });
                                     }
                                 }}
                             >
-                                <Ionicons name="share-social-outline" size={16} color="#18181B" style={{ marginRight: 6 }} />
-                                <Text style={{ fontSize: 13, color: '#18181B', fontWeight: '700' }}>Paylaş</Text>
+                                <Ionicons name="share-social-outline" size={16} color="#FFFFFF" style={{ marginRight: 6 }} />
+                                <Text style={{ fontSize: 13, color: '#FFFFFF', fontWeight: '700' }}>Paylaş</Text>
                             </TouchableOpacity>
                         </View>
                     </TouchableOpacity>
@@ -3170,6 +3236,33 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 10,
         fontWeight: 'bold'
+    },
+
+    // Risale-i Nur Book Warm Theme Modal Styles (Matching reader page theme)
+    bookModalContent: {
+        backgroundColor: '#FBF9F4',
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 12,
+        paddingBottom: Platform.OS === 'ios' ? 36 : 24,
+        minHeight: 280,
+        maxHeight: '86%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 10,
+        elevation: 10,
+        borderWidth: 1,
+        borderColor: '#E7E5E4',
+    },
+    bookDragHandle: {
+        width: 40,
+        height: 5,
+        borderRadius: 3,
+        backgroundColor: '#D6D3D1',
+        alignSelf: 'center',
+        marginBottom: 16,
     },
 
     // Dark Modal Styles (Matching Reference Screenshots 1, 2, 3)

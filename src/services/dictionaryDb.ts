@@ -206,28 +206,46 @@ class DictionaryDb {
         }
 
         for (const form of forms) {
-            // 1. Izafet joined with hyphen: sâni-i -> sanii, huzur-u -> huzuru
-            let joined = form.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ');
-            joined = joined.replace(/-([iıuüeeya])-/gi, '$1-');
-            let jNorm = this.normalizeBase(joined).replace(/[.,;!?:"'“”(){}\[\]\-\/\\\\]/g, ' ').replace(/\s+/g, ' ').trim();
-            if (jNorm) keys.add(jNorm);
+            // Form in lowercase with Turkish locale
+            const trLower = form.toLocaleLowerCase('tr-TR');
+            keys.add(trLower);
 
-            // 2. Izafet joined with space: sani i -> sanii, huzur u -> huzuru
-            let spJoined = form.replace(/\b([a-zA-ZçÇğĞıİöÖşŞüÜâÂîÎûÛ]+)\s+([iıuüeeya])\b/gi, '$1$2');
-            let spNorm = this.normalizeBase(spJoined).replace(/[.,;!?:"'“”(){}\[\]\-\/\\\\]/g, ' ').replace(/\s+/g, ' ').trim();
-            if (spNorm) keys.add(spNorm);
+            // Strip circumflex: â->a, î->i, û->u, ô->o, ê->e
+            const noCirc = trLower.replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u').replace(/ô/g, 'o').replace(/ê/g, 'e');
+            keys.add(noCirc);
 
-            // 3. User typing "iz" instead of "i": sani iz zülcelal -> sanii zulcelal
-            let izJoined = form.replace(/\s+iz\s+/gi, 'i ');
-            let izNorm = this.normalizeBase(izJoined).replace(/[.,;!?:"'“”(){}\[\]\-\/\\\\]/g, ' ').replace(/\s+/g, ' ').trim();
-            if (izNorm) keys.add(izNorm);
+            // Turkish izafet hyphen handling: kelâm-ı -> kelamı (with dotless ı)
+            let izafetTr = noCirc.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ');
+            keys.add(izafetTr.replace(/\s+/g, ' ').trim());
 
-            // 4. Standard spaced
-            let spaced = this.normalizeBase(form).replace(/[.,;!?:"'“”(){}\[\]\-\/\\\\]/g, ' ').replace(/\s+/g, ' ').trim();
-            if (spaced) keys.add(spaced);
+            // Izafet joined without space: semere-i -> semerei, sâni-i -> sanii
+            let izafetJoined = noCirc.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1');
+            keys.add(izafetJoined.replace(/\s+/g, ' ').trim());
+
+            // Replace hyphen with space
+            keys.add(noCirc.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+
+            // Remove hyphen directly
+            keys.add(noCirc.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+
+            // Apostrophe variants removed (e.g. sâni' -> sani)
+            const noApos = noCirc.replace(/[’'ʿʾ`]/g, '');
+            keys.add(noApos);
+            keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1 ').replace(/\s+/g, ' ').trim());
+            keys.add(noApos.replace(/-([iıuüeeya])(?:\s+|$)/gi, '$1').replace(/\s+/g, ' ').trim());
+            keys.add(noApos.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+            keys.add(noApos.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
+
+            // Also ascii normalized variants (ı->i, ğ->g, ş->s, ç->c, ö->o, ü->u)
+            const ascii = noApos.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
+            keys.add(ascii);
+            keys.add(ascii.replace(/-([iueya])(?:\s+|$)/gi, '$1 ').replace(/\s+/g, ' ').trim());
+            keys.add(ascii.replace(/-([iueya])(?:\s+|$)/gi, '$1').replace(/\s+/g, ' ').trim());
+            keys.add(ascii.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim());
+            keys.add(ascii.replace(/[-]/g, '').replace(/\s+/g, ' ').trim());
         }
 
-        return Array.from(keys);
+        return Array.from(keys).filter(k => k.length > 0);
     }
 
     // --- MAIN SEARCH: Flexible with Suffix Stripping & Izafet Normalization ---
@@ -238,28 +256,74 @@ class DictionaryDb {
         const searchKeys = this.getSearchKeys(query);
         if (searchKeys.length === 0) return { best: null, candidates: [] };
 
-        console.log('[DictionaryDb] searchFlexible query:', query, 'keys:', searchKeys);
+        console.log('[DictionaryDb] searchFlexible query:', query, 'keys count:', searchKeys.length);
 
         try {
-            // 1. Try exact match on all generated keys (using SQL IN)
+            // 1. Try exact match on all generated keys (checking both word_plain AND word)
             const placeholders = searchKeys.map(() => '?').join(',');
             const exactMatches = await this.db.getAllAsync<DictionaryEntry>(
                 `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
                  FROM dictionary 
                  WHERE lower(word_plain) IN (${placeholders}) 
+                    OR lower(word) IN (${placeholders})
                  ORDER BY length(word_plain) ASC`,
-                searchKeys
+                [...searchKeys, ...searchKeys]
             );
 
             if (exactMatches && exactMatches.length > 0) {
+                // Deduplicate by word_plain to keep results tidy
+                const seen = new Set<string>();
+                const uniqueExact: DictionaryEntry[] = [];
+                for (const em of exactMatches) {
+                    const key = (em.word_tr || '').toLowerCase();
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        uniqueExact.push(em);
+                    }
+                }
                 return {
-                    best: exactMatches[0],
-                    candidates: exactMatches.slice(1)
+                    best: uniqueExact[0],
+                    candidates: uniqueExact.slice(1)
                 };
             }
 
-            // 2. If no exact match and query has multiple words, also search individual words
-            const words = query.split(/\s+/).filter(w => w.length >= 3);
+            // 2. If no exact match and query is a compound phrase (contains space or hyphen),
+            // try a compound prefix/phrase search before splitting into isolated words!
+            const isCompound = /[\s\-]/.test(query);
+            if (isCompound) {
+                const primaryKey = searchKeys[0];
+                const cleanKey = primaryKey.replace(/[-]/g, ' ').replace(/\s+/g, ' ').trim();
+                const compoundMatches = await this.db.getAllAsync<DictionaryEntry>(
+                    `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
+                     FROM dictionary 
+                     WHERE word_plain LIKE ? OR word LIKE ? 
+                        OR word_plain LIKE ? OR word LIKE ?
+                     ORDER BY length(word_plain) ASC 
+                     LIMIT 15`,
+                    [`${primaryKey}%`, `${primaryKey}%`, `${cleanKey}%`, `${cleanKey}%`]
+                );
+
+                if (compoundMatches && compoundMatches.length > 0) {
+                    const seen = new Set<string>();
+                    const uniqueCompound: DictionaryEntry[] = [];
+                    for (const cm of compoundMatches) {
+                        const key = (cm.word_tr || '').toLowerCase();
+                        if (!seen.has(key)) {
+                            seen.add(key);
+                            uniqueCompound.push(cm);
+                        }
+                    }
+                    if (uniqueCompound.length > 0) {
+                        return {
+                            best: uniqueCompound[0],
+                            candidates: uniqueCompound.slice(1)
+                        };
+                    }
+                }
+            }
+
+            // 3. Sub-word fallback for compound phrases where the phrase itself is not in dictionary
+            const words = query.split(/[\s\-]+/).filter(w => w.length >= 3);
             let wordCandidates: DictionaryEntry[] = [];
             if (words.length > 1) {
                 const subKeys: string[] = [];
@@ -272,9 +336,10 @@ class DictionaryDb {
                         `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
                          FROM dictionary 
                          WHERE lower(word_plain) IN (${subPh}) 
+                            OR lower(word) IN (${subPh})
                          ORDER BY length(word_plain) ASC 
-                         LIMIT 10`,
-                        subKeys
+                         LIMIT 15`,
+                        [...subKeys, ...subKeys]
                     );
                     if (wordMatches && wordMatches.length > 0) {
                         wordCandidates = wordMatches;
@@ -282,41 +347,44 @@ class DictionaryDb {
                 }
             }
 
-            // 3. Try prefix matches on the primary search key
+            // 4. Prefix matches on the primary search key
             const primaryKey = searchKeys[0];
             const prefixMatches = await this.db.getAllAsync<DictionaryEntry>(
                 `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
                  FROM dictionary 
-                 WHERE word_plain LIKE ? 
+                 WHERE word_plain LIKE ? OR word LIKE ?
                  ORDER BY length(word_plain) ASC 
                  LIMIT 20`,
-                [`${primaryKey}%`]
+                [`${primaryKey}%`, `${primaryKey}%`]
             );
 
-            // 4. If few prefix matches, try contains matches
+            // 5. If few prefix matches, try contains matches
             let containsMatches: DictionaryEntry[] = [];
             if (prefixMatches.length < 5) {
                 containsMatches = await this.db.getAllAsync<DictionaryEntry>(
                     `SELECT rowid as id, word as word_osm, word_plain as word_tr, definition 
                      FROM dictionary 
-                     WHERE word_plain LIKE ? AND word_plain NOT LIKE ?
+                     WHERE (word_plain LIKE ? OR word LIKE ?) 
+                       AND word_plain NOT LIKE ?
                      ORDER BY length(word_plain) ASC 
                      LIMIT 20`,
-                    [`%${primaryKey}%`, `${primaryKey}%`]
+                    [`%${primaryKey}%`, `%${primaryKey}%`, `${primaryKey}%`]
                 );
             }
 
-            // Combine all unique candidates
-            const candidateMap = new Map<number, DictionaryEntry>();
+            // Combine all unique candidates by word_plain (avoiding duplicate KELÂM / kelam)
+            const seenWords = new Set<string>();
+            const allCandidates: DictionaryEntry[] = [];
             for (const item of [...wordCandidates, ...prefixMatches, ...containsMatches]) {
-                if (!candidateMap.has(item.id)) {
-                    candidateMap.set(item.id, item);
+                const normWord = (item.word_tr || '').toLowerCase().trim();
+                if (!seenWords.has(normWord)) {
+                    seenWords.add(normWord);
+                    allCandidates.push(item);
                 }
             }
 
-            const allCandidates = Array.from(candidateMap.values());
             return {
-                best: wordCandidates.length === 1 ? wordCandidates[0] : null,
+                best: allCandidates.length === 1 ? allCandidates[0] : null,
                 candidates: allCandidates
             };
         } catch (error) {

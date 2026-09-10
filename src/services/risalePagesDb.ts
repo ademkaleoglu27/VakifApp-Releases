@@ -240,43 +240,54 @@ class RisalePagesDb {
         }
     }
 
-    async getAyetMeal(arabicText: string): Promise<AyetMeal | null> {
-        if (!this.initialized) await this.init();
+    private async lookupSingleAyetMeal(arabicText: string): Promise<AyetMeal | null> {
         if (!this.db || !arabicText) return null;
 
         // Robust Arabic cleaning:
-        // 1. Strip all non-Arabic characters: brackets ﴿ (U+FD3F), ﴾ (U+FD3E), parens, quotes, punctuation, numbers, spaces
+        // 1. Preserve asterisks for multi-phrase annotations, strip non-Arabic punctuation
         // 2. Strip diacritics / harakat (U+064B-U+065F, U+0670, U+06D6-U+06ED)
         // 3. Normalize alef forms, yaa, taa marbuta
-        const clean = arabicText
-            .replace(/[^\u0621-\u064A\u0671-\u06D3]/g, '')
+        const cleanWithStar = arabicText
+            .replace(/[^\u0621-\u064A\u0671-\u06D3*]/g, '')
             .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
             .replace(/[إأآٱ]/g, 'ا')
             .replace(/ى/g, 'ي')
             .replace(/ة/g, 'ه');
 
-        if (!clean || clean.length < 3) return null;
-        const prefix = clean.slice(0, 15);
+        const cleanNoStar = cleanWithStar.replace(/\*/g, '');
+
+        if (!cleanNoStar || cleanNoStar.length < 3) return null;
+        const prefix = cleanNoStar.slice(0, 20);
 
         try {
             // 1. Check ayet_mealler (Risale-i Nur specialized translation and annotations)
-            // Filter out placeholder translations like 'mm' or 'x', and require minimum length for LIKE matching
             const risaleMeal = await this.db.getFirstAsync<AyetMeal>(
                 `SELECT arabic_text, meal_tr, source_ref 
                  FROM ayet_mealler 
                  WHERE (
                      clean_arabic = ? 
-                     OR (? LIKE clean_arabic || '%' AND LENGTH(clean_arabic) >= 5) 
-                     OR (clean_arabic LIKE ? || '%' AND LENGTH(clean_arabic) >= 5)
-                     OR (clean_arabic LIKE '%' || ? || '%' AND LENGTH(clean_arabic) >= 5)
+                     OR clean_arabic = ?
+                     OR (? LIKE clean_arabic || '%' AND LENGTH(clean_arabic) >= 8) 
+                     OR (? LIKE clean_arabic || '%' AND LENGTH(clean_arabic) >= 8) 
+                     OR (clean_arabic LIKE ? || '%' AND LENGTH(clean_arabic) >= 8)
+                     OR (clean_arabic LIKE '%' || ? || '%' AND LENGTH(clean_arabic) >= 8)
                  )
                  AND meal_tr NOT IN ('mm', 'x')
                  AND LENGTH(TRIM(meal_tr)) > 5
                  ORDER BY LENGTH(clean_arabic) DESC
                  LIMIT 1`,
-                [clean, clean, prefix, prefix]
+                [cleanWithStar, cleanNoStar, cleanWithStar, cleanNoStar, prefix, prefix]
             );
-            if (risaleMeal) return risaleMeal;
+
+            if (risaleMeal && risaleMeal.meal_tr) {
+                return {
+                    arabic_text: risaleMeal.arabic_text || arabicText,
+                    meal_tr: risaleMeal.meal_tr,
+                    source_ref: (risaleMeal.source_ref && risaleMeal.source_ref.trim().length > 0)
+                        ? risaleMeal.source_ref.trim()
+                        : 'Risale-i Nur Meâli'
+                };
+            }
 
             // 2. Fallback: Search all 6,236 Quran verses from quran_ayahs table
             const quranAyah = await this.db.getFirstAsync<{
@@ -291,7 +302,7 @@ class RisalePagesDb {
                     OR clean_arabic LIKE '%' || ? || '%'
                     OR clean_arabic LIKE '%' || ? || '%'
                  LIMIT 1`,
-                [prefix, clean, prefix]
+                [prefix, cleanNoStar, prefix]
             );
 
             if (quranAyah) {
@@ -305,9 +316,55 @@ class RisalePagesDb {
 
             return null;
         } catch (error) {
-            console.error('[RisalePagesDb] getAyetMeal error:', error);
+            console.error('[RisalePagesDb] lookupSingleAyetMeal error:', error);
             return null;
         }
+    }
+
+    async getAyetMeal(arabicText: string): Promise<AyetMeal | null> {
+        if (!this.initialized) await this.init();
+        if (!this.db || !arabicText) return null;
+
+        // 1. Try single lookup on full block first
+        const direct = await this.lookupSingleAyetMeal(arabicText);
+        if (direct) return direct;
+
+        // 2. If no direct match and block contains segment delimiters, try segmented lookup
+        if (/[۞*۝\n]+/.test(arabicText)) {
+            const segments = arabicText
+                .split(/[۞*۝\n]+/)
+                .map(s => s.trim())
+                .filter(s => s.length >= 8);
+
+            if (segments.length > 1) {
+                const foundMeals: string[] = [];
+                const foundSources: string[] = [];
+                const foundArabics: string[] = [];
+
+                for (const seg of segments) {
+                    const m = await this.lookupSingleAyetMeal(seg);
+                    if (m && m.meal_tr) {
+                        foundMeals.push(m.meal_tr.trim());
+                        if (m.source_ref && !foundSources.includes(m.source_ref)) {
+                            foundSources.push(m.source_ref);
+                        }
+                        if (m.arabic_text) {
+                            foundArabics.push(m.arabic_text.trim());
+                        }
+                    }
+                }
+
+                if (foundMeals.length > 0) {
+                    return {
+                        arabic_text: foundArabics.length > 0 ? foundArabics.join(' ۞ ') : arabicText,
+                        meal_tr: foundMeals.join('\n\n* * *\n\n'),
+                        source_ref: foundSources.length > 0 ? foundSources.join(' | ') : 'Risale-i Nur Meâli'
+                    };
+                }
+            }
+        }
+
+        return null;
     }
 
     async getQuranAyahs(surahId: number): Promise<QuranAyahEntry[]> {
